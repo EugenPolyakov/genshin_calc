@@ -49,14 +49,16 @@ char_navia = TemplateList(
     ),
     the_presidents_pursuit_of_victory_rus=Template(
         sentences=[
-            ['12:text_percent', '36:text_percent_max', '1:ignore'],
+            ['12:text_percent'],
+            ['36:text_percent_max', '1:ignore'],
             ['1:ignore'],
             [],
         ],
     ),
     the_presidents_pursuit_of_victory_eng=Template(
         sentences=[
-            ['12:text_percent', '36:text_percent_max'],
+            ['12:text_percent'],
+            ['36:text_percent_max'],
             [],
         ],
     ),

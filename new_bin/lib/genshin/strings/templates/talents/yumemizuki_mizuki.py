@@ -45,19 +45,20 @@ char_yumemizuki_mizuki = TemplateList(
             ['0.04:text_percent_dmg'],
         ],
     ),
-    buds_warm_lucid_springs_rus=Template(
+    buds_warm_lucid_springs=Template(
         sentences=[
             ['5:ignore'],
             ['4:ignore'],
         ],
     ),
-    buds_warm_lucid_springs_eng=Template(
-        sentences=[
-            ['5:ignore', '4:ignore'],
-        ],
-    ),
     the_heart_lingers_long=Template(
         sentences=[
+            ['30:crit_rate_swirl', '100:crit_dmg_swirl'],
+        ],
+    ),
+    the_heart_lingers_long_rus=Template(
+        sentences=[
+            [],
             ['30:crit_rate_swirl', '100:crit_dmg_swirl'],
         ],
     ),

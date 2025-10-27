@@ -553,7 +553,7 @@ flower_of_paradise_lost_2 = Template(
 
 flower_of_paradise_lost_4 = Template(
     sentences=[
-        ['dmg_reaction_bloom', 'dmg_reaction_moon_bloom'],
+        ['dmg_reaction_bloom', 'dmg_reaction_lunar_bloom'],
         ['ignore'],
         ['ignore'],
         ['ignore'],

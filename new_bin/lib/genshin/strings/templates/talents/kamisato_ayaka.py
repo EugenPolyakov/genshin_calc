@@ -62,7 +62,14 @@ char_kamisato_ayaka = TemplateList(
     ),
     dance_of_suigetsu=Template(
         sentences=[
-            ['ignore', 'dmg_charged'],
+            ['ignore', '298:dmg_charged'],
+            ['ignore'],
+        ],
+    ),
+    dance_of_suigetsu_rus=Template(
+        sentences=[
+            ['ignore'],
+            ['298:dmg_charged'],
             ['ignore'],
         ],
     ),

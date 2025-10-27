@@ -42,7 +42,8 @@ char_arlecchino = TemplateList(
     ),
     strength_alone_can_defend_rus=Template(
         sentences=[
-            ['100:ignore', '1000:ignore', '1:text_percent'],
+            ['100:ignore', '1000:ignore'],
+            ['1:text_percent'],
             ['20:text_percent_max'],
         ],
     ),

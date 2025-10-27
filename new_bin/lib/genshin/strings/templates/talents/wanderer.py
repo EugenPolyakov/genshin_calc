@@ -25,15 +25,10 @@ char_wanderer = TemplateList(
             'burst': ['Kyougen: Five Ceremonial Plays'],
         },
     ),
-    jade_claimed_flower_rus=Template(
+    jade_claimed_flower=Template(
         sentences=[
             [None, None, None, 'ignore'],
-            ['ignore',  'ignore'],
-        ],
-    ),
-    jade_claimed_flower_eng=Template(
-        sentences=[
-            [None, None, None, 'ignore', 'ignore',  'ignore'],
+            ['ignore', 'ignore'],
         ],
     ),
     gales_of_reverie=Template(
@@ -76,7 +71,8 @@ char_wanderer = TemplateList(
     the_curtains_melancholic_sway_eng=Template(
         sentences=[
             ['text_percent_dmg'],
-            ['ignore', 'ignore', 'ignore'],
+            ['ignore', 'ignore'],
+            ['ignore'],
             ['ignore'],
         ],
     ),

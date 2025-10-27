@@ -49,7 +49,8 @@ char_layla = TemplateList(
     ),
     fortress_of_fantasy_rus=Template(
         sentences=[
-            ['text_percent_bonus', 'ignore', 'text_percent_shield', 'ignore'],
+            ['text_percent_bonus', 'ignore', 'text_percent_shield'],
+            ['ignore'],
         ],
     ),
     fortress_of_fantasy_eng=Template(

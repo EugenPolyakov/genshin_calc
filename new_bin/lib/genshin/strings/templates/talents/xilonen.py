@@ -82,13 +82,7 @@ char_xilonen = TemplateList(
             ['50:text_percent_geo', '45:text_percent_pyro', '45:text_percent_hydro', '60:text_percent_cryo', '25:ignore', '6:ignore'],
         ],
     ),
-    suchitls_trance_rus=Template(
-        sentences=[
-            ['15:ignore', '65:text_percent_dmg'],
-            ['6:ignore'],
-        ],
-    ),
-    suchitls_trance_eng=Template(
+    suchitls_trance=Template(
         sentences=[
             ['15:ignore', '65:text_percent_dmg'],
             ['6:ignore'],
@@ -103,7 +97,8 @@ char_xilonen = TemplateList(
     ),
     imperishable_night_carnival_eng=Template(
         sentences=[
-            ['5:ignore', '300:normal_base_def_percent', '120:text_percent_heal', '1.5:ignore', '1:ignore', '15:ignore'],
+            ['5:ignore'],
+            ['300:normal_base_def_percent', '120:text_percent_heal', '1.5:ignore', '1:ignore', '15:ignore'],
         ],
     ),
 )

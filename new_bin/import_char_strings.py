@@ -93,6 +93,7 @@ for char in char_data.get_list():
             'depot_ids': [char['skillDepotId']],
         }
 
+hyperlinks = set()
 for char_key in sorted(char_keys):
     char = char_keys[char_key]
     char_id = char['char_id']
@@ -125,8 +126,6 @@ for char_key in sorted(char_keys):
             skill_ids.extend(depot.get('skills'))
         # if depot.get('SubSkills'):
         #     skill_ids.extend(depot.get('SubSkills'))
-
-        hyperlinks = set()
 
         for id in skill_ids:
             if not id:
@@ -273,34 +272,34 @@ for char_key in sorted(char_keys):
                             )
                         )
 
-        for hl_id in sorted(hyperlinks):
-            hl_item = hyperlink_data.get(int(hl_id))
-            skill_id = f'n{hl_id}'
+for hl_id in sorted(hyperlinks):
+    hl_item = hyperlink_data.get(int(hl_id))
+    skill_id = f'n{hl_id}'
 
-            if hl_item:
-                res_item1 = OrderedDict(
-                    category='talent_name',
-                    name=skill_id,
-                )
+    if hl_item:
+        res_item1 = OrderedDict(
+            category='talent_name',
+            name=skill_id,
+        )
 
-                res_item2 = OrderedDict(
-                    category='talent_descr',
-                    name=skill_id,
-                )
+        res_item2 = OrderedDict(
+            category='talent_descr',
+            name=skill_id,
+        )
 
-                for lang_name in lang_data:
-                    lang = lang_data[lang_name]['lang']
-                    skill_name = lang.get(hl_item['nameTextMapHash'])
-                    skill_descr = lang.get(hl_item['descTextMapHash'])
+        for lang_name in lang_data:
+            lang = lang_data[lang_name]['lang']
+            skill_name = lang.get(hl_item['nameTextMapHash'])
+            skill_descr = lang.get(hl_item['descTextMapHash'])
 
-                    tpl_patterns = lang_data[lang_name]['patterns']
-                    skill_descr = tpl_patterns.process(skill_descr)
+            tpl_patterns = lang_data[lang_name]['patterns']
+            skill_descr = tpl_patterns.process(skill_descr)
 
-                    res_item1[lang_name] = skill_name
-                    res_item2[lang_name] = skill_descr
+            res_item1[lang_name] = skill_name
+            res_item2[lang_name] = skill_descr
 
-                result_talents.append(res_item1)
-                result_talents.append(res_item2)
+        result_talents.append(res_item1)
+        result_talents.append(res_item2)
 
 CsvDumper().dump(result_talents, 'char_skills.csv')
 CsvDumper().dump(result_const, 'char_talents.csv')

@@ -40,31 +40,21 @@ char_nahida = TemplateList(
             ['ignore'],
         ],
     ),
-    the_root_of_all_fullness_rus=Template(
+    the_root_of_all_fullness=Template(
         patterns=[
-            (r'\s*· Полученный урон', '\\nПолученный урон'),
-            (r'\s*· В течени', '\\nВ течени'),
+            (r'<br>· ', '<br>\\n '),
         ],
         sentences=[
             [],
-            ['crit_rate_bloom', 'crit_dmg_bloom', 'ignore', 'enemy_def_reduce', None, None],
+            [],
+            ['crit_rate_bloom', 'crit_dmg_bloom'],
+            [],
+            ['ignore', 'enemy_def_reduce'],
+            ['crit_rate_lunar_bloom', 'crit_dmg_lunar_bloom'],
         ],
         results=[
-            [1],
-            [1],
-        ],
-    ),
-    the_root_of_all_fullness_eng=Template(
-        patterns=[
-            (r'\s*·pyro{Burning}', '\\n·pyro{Burning}'),
-            (r'\s*·Within', '\\nWithin'),
-        ],
-        sentences=[
-            ['crit_rate_bloom', 'crit_dmg_bloom', 'ignore', 'enemy_def_reduce', None, None],
-        ],
-        results=[
-            [0],
-            [0],
+            [1, 2, 3, 5],
+            [4],
         ],
     ),
     the_fruit_of_reasons_culmination=Template(

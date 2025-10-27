@@ -27,11 +27,13 @@ char_ifa = TemplateList(
     field_medics_vision_rus=Template(
         sentences=[
             ['1:ignore'],
+            [],
         ],
     ),
     field_medics_vision_eng=Template(
         sentences=[
             ['1:ignore', '1:ignore'],
+            [],
         ],
     ),
     mutual_aid_agreement=Template(

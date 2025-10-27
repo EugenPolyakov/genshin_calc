@@ -32,15 +32,10 @@ char_kachina = TemplateList(
             ['20:text_percent'],
         ],
     ),
-    shards_are_gems_too_rus=Template(
+    shards_are_gems_too=Template(
         sentences=[
             ['3:ignore'],
             ['5:ignore'],
-        ],
-    ),
-    shards_are_gems_too_eng=Template(
-        sentences=[
-            ['3:ignore', '5:ignore'],
         ],
     ),
     never_leave_home_without_turbo_twirly=Template(

@@ -67,14 +67,22 @@ char_sigewinne = TemplateList(
             ['30:text_percent_max'],
         ],
     ),
-    can_the_happiest_of_spirits_understand_anxiety_rus=Template(
-        patterns=[
-            ('30 000', '30000'),
-        ],
+    can_the_happiest_of_spirits_understand_anxiety=Template(
         sentences=[
             ['3:ignore', '1:ignore'],
             ['1000:ignore'],
-            ['30000:text_value_hp', '100:text_value_dmg'],
+            ['30000:text_value_hp'],
+            ['100:text_value_dmg'],
+            ['3500:text_value_max'],
+            [],
+        ],
+    ),
+    can_the_happiest_of_spirits_understand_anxiety_eng=Template(
+        patterns=[
+            (r'max name\{HP\}', 'name{max HP}')
+        ],
+        sentences=[
+            ['3:ignore', '3:ignore', '1:ignore', '1000:ignore', '30000:text_value_hp', '100:text_value_dmg'],
             ['3500:text_value_max'],
             [],
         ],

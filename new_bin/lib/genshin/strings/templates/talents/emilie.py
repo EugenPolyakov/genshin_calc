@@ -85,7 +85,8 @@ char_emilie = TemplateList(
     ),
     marcotte_sillage=Template(
         sentences=[
-            ['5:ignore', '1:ignore', '300:text_percent_dmg', '4:ignore', '12:ignore'],
+            ['5:ignore', '1:ignore', '300:text_percent_dmg', '4:ignore'],
+            ['12:ignore'],
         ],
     ),
 )

@@ -42,7 +42,8 @@ char_neuvillette = TemplateList(
     heir_to_the_ancient_seas_authority_eng=Template(
         sentences=[
             ['1:ignore', '30:ignore'],
-            ['3:ignore', '110:text_percent_dmg_1', '125:text_percent_dmg_2', '160:text_percent_dmg_3'],
+            ['3:ignore',],
+            ['110:text_percent_dmg_1', '125:text_percent_dmg_2', '160:text_percent_dmg_3'],
         ],
     ),
     discipline_of_the_supreme_arbitration_rus=Template(

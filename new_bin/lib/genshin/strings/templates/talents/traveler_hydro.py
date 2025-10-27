@@ -55,6 +55,7 @@ char_traveler_hydro = TemplateList(
     pouring_descent_rus=Template(
         sentences=[
             ['10:text_percent_hp'],
+            [],
             ['250:ignore'],
             ['2:ignore', '10:text_percent_hp_2'],
             [],

@@ -4,7 +4,7 @@ SKIP_CHARACTERS = [
     10000001, 11000008, 11000009, 11000010, 11000011, 11000013, 11000017,
     11000018, 11000019, 11000025, 11000026, 11000027, 11000028, 11000030, 11000031, 11000032, 11000033, 11000034,
     11000035, 11000036, 11000037, 11000038, 11000039, 11000040, 11000041, 11000042, 11000043, 11000044, 11000045,
-    10000901, 11000046, 10000902,
+    10000901, 11000046, 10000902, 10000903, 10000998, 10000999, 11000998, 11000999
 ]
 
 
@@ -28,3 +28,9 @@ class CharProudSkillData(ListParser):
 class CharTalentSkillData(ListParser):
     id_field = 'talentId'
     filename = 'AvatarTalentExcelConfigData.json'
+
+# AvatarExcelConfigData
+#   skillDepotId -> AvatarSkillDepotExcelConfigData
+# AvatarSkillDepotExcelConfigData
+#   energySkill, skills -> AvatarSkillExcelConfigData
+#

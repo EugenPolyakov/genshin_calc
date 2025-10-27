@@ -26,18 +26,11 @@ char_dehya = TemplateList(
             'burst': ['Leonine Bite'],
         },
     ),
-    unstinting_succor_rus=Template(
+    unstinting_succor=Template(
         sentences=[
             ['ignore', 'ignore'],
             ['ignore', 'ignore'],
             [],
-            ['ignore'],
-        ],
-    ),
-    unstinting_succor_eng=Template(
-        sentences=[
-            ['ignore', 'ignore'],
-            ['ignore', 'ignore'],
             ['ignore'],
         ],
     ),
@@ -57,6 +50,7 @@ char_dehya = TemplateList(
     ),
     the_flame_incandescent_rus=Template(
         sentences=[
+            [],
             ['hp_percent'],
             [],
             [None],
@@ -95,11 +89,12 @@ char_dehya = TemplateList(
             ['crit_rate_burst'],
             ['crit_dmg_burst', 'ignore'],
             ['ignore'],
-            ['ignore', None],
+            ['ignore'],
+            [None],
         ],
         results=[
             [0],
-            [1, 2, 3],
+            [1, 2, 3, 4],
         ],
     ),
     the_burning_claws_cleaving_eng=Template(

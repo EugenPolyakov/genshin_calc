@@ -5,7 +5,7 @@ char_citlali = TemplateList(
     default_rus=Template(
         names=[
             'Ситлали', 'Ицпапа', 'Ицпапы',
-            'Морозного урагана Ицпапы повышается', 'ледяного шторма', 'Одеяния опаловой звезды',
+            'Морозного урагана Ицпапы', 'ледяного шторма', 'Одеяния опаловой звезды',
             'Звёздных клинков', 'Опаловым щитом', 'Морозного урагана',
             'Холодного дождя Мамалоако', 'Холодный дождь Мамалоако', 'Белого пламени',
             'Духовный сосуд-череп: Обсидиановая звезда', 'Духовного сосуда-черепа',
@@ -27,17 +27,11 @@ char_citlali = TemplateList(
             'burst': ['Edict of Entwined Splendor'],
         },
     ),
-    mamaloacos_frigid_rain_rus=Template(
+    mamaloacos_frigid_rain=Template(
         sentences=[
             ['20:enemy_res_pyro', '12:ignore'],
             ['16:ignore'],
             ['8:ignore'],
-        ],
-    ),
-    mamaloacos_frigid_rain_eng=Template(
-        sentences=[
-            ['20:enemy_res_pyro', '12:ignore'],
-            ['16:ignore', '8:ignore'],
         ],
     ),
     itzpapalotls_star_garments=Template(

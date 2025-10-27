@@ -40,6 +40,14 @@ char_arataki_itto = TemplateList(
     stay_a_while_and_listen_up=Template(
         sentences=[
             ['ignore'],
+            [],
+            ['ignore', 'ignore'],
+            ['ignore', 'ignore'],
+        ],
+    ),
+    stay_a_while_and_listen_up_eng=Template(
+        sentences=[
+            ['ignore'],
             ['ignore', 'ignore', 'ignore', 'ignore'],
         ],
     ),

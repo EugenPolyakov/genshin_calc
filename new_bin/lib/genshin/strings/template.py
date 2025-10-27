@@ -42,29 +42,42 @@ class TemplateSentence:
         index = 0
         result = self.formatted
 
+        xx= ''
+        if xx:
+            print( xx =='ignore')
+
         for (own_value, ext_value) in itertools.zip_longest(self.values, values):
             ext_value = self.check_value(own_value, ext_value)
             index += 1
-            if ext_value and ext_value == 'ignore':
-                result = result.replace('{value_%d}' % index, own_value)
-            elif ext_value:
-                result = result.replace('{value_%d}' % index, '%%{%s}' % ext_value)
+            if len(ext_value) == 1:
+                leaf = '{value}'
             else:
-                result = result.replace('{value_%d}' % index, 'value{%s}' % own_value)
+                leaf = ext_value.pop(0)
+            val = ext_value.pop()
+            if val == 'ignore':
+                val = leaf.replace('{value}', own_value)
+            elif val:
+                val = leaf.replace('{value}', '%%{%s}' % val)
+            else:
+                val = leaf.replace('{value}', 'value{%s}' % own_value)
+            for leaf in ext_value:
+                val = leaf.replace('{value}', '%%{%s}' % val)
+
+            result = result.replace('{value_%d}' % index, val)
         #logger.error(f'\n------------------------------\n{result}')
         return result
 
     def check_value(self, own_value, ext_value):
         if not ext_value:
-            return ext_value
+            return [ext_value]
         parts = ext_value.split(':')
-        if len(parts) != 2:
-            return ext_value
+        if len(parts) < 2:
+            return [ext_value]
 
         if clean_number(own_value) != clean_number(parts[0]):
             raise SentenceMismatch(ext_value, own_value)
 
-        return parts[1]
+        return parts[1:]
 
 
 class TemplateString:
@@ -72,7 +85,7 @@ class TemplateString:
         self.source = source
         self.sentences = []
 
-        text = re.sub(r'\. ([A-ZА-Я])', ".\n\\1", source)
+        text = re.sub(r'\. (([a-zа-я]*\{)*[A-ZА-Я])', ".\n\\1", source)
         for item in re.split(r'\n', text):
             self.sentences.append(TemplateSentence(item))
 
@@ -89,7 +102,7 @@ class TemplateString:
             try:
                 result.append(item.apply(data))
             except SentenceMismatch as e:
-                logger.error(f'Template sentence value mismatch for {e.value} new value is {e.new_value}')
+                logger.error(f'Template sentence value mismatch for {e.value} new value is {e.new_value} is source \n{self.source}')
                 return ''
 
         if isinstance(res_index, list):
@@ -115,6 +128,8 @@ class Template:
         self.sentences = sentences
         self.patterns = patterns
         self.keywords = keywords
+        # results отвечает за объединение, каждый элемент - список последовательностей которые нужно объединить в одну
+        # если отсутсвует, то все последовательности будут объеденены в одну, нумерация сквозная
         self.results = results
         self.skills = skills
 
@@ -148,13 +163,29 @@ class Template:
     def apply_names(self, string):
         result = string
         for name in self.names:
-            result = re.sub(r'(?:^|([^\{])\b)' + re.escape(name) + r'(?:\b([^\}])|$)', '\\1name{%s}\\2' % name, result)
+        #     result = re.sub(r'(?:^|([^\{])\b)' + re.escape(name) + r'(?:\b([^\}])|$)', '\\1name{%s}\\2' % name, result)
+            idx = 0
+            cnt = 1
+            rx = re.compile(r'(^[^\{]*?|}[^\{]*?|{[^\{]*?})+\b(' + name + r')(?=\b[^\}]|$)')
+            while cnt > 0:
+                (result, cnt) = rx.subn('\\1name{\\2}', result)
+                idx+=1
+                if idx > 100:
+                    break
         return result
 
     def apply_keywords(self, string):
         result = string
         for keyword in self.keywords:
-            result = re.sub(r'(?:^|([^\{])\b)(' + re.escape(keyword[0]) + r')(?:$|\b([^\}]))', '\\1' + keyword[1] + '{\\2}\\3', result)
+        #     result = re.sub(r'(?:^|([^\{])\b)(' + re.escape(keyword[0]) + r')(?:$|\b([^\}]))', '\\1' + keyword[1] + '{\\2}\\3', result)
+            idx = 0
+            cnt = 1
+            rx = re.compile(r'(^[^\{]*?|}[^\{]*?|{[^\{]*?})+\b(' + keyword[0] + r')(?=\b[^\}]|$)')
+            while cnt > 0:
+                (result, cnt) = rx.subn('\\1' + keyword[1] + '{\\2}', result)
+                idx+=1
+                if idx > 100:
+                    break
         return result
 
     def apply_patterns(self, string):
@@ -178,7 +209,7 @@ class TemplateList:
     def process(self, lang, name, string):
         result = string
         default = self.templates.get(f'default_{lang}')
-        selected = self.templates.get(name) or self.templates.get(f'{name}_{lang}')
+        selected = self.templates.get(f'{name}_{lang}') or self.templates.get(name)
         if default:
             result = default.process(result)
         if selected:

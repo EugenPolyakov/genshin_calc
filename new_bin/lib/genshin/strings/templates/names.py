@@ -2,12 +2,16 @@ from ..template import Template
 
 names_eng = Template(
     names=[
+        'Bond of Life',
+
         'Nightsoul\'s Blessing',
         'Nightsoul point',
         'Nightsoul points',
         'Nightsoul Burst',
         'Nightsoul Bursts',
 
+        'Lunar Reactions',
+        'Lunar Reaction DMG',
         'Elemental DMG Bonus',
         'Charged Attack DMG',
         'Elemental Burst DMG',
@@ -43,6 +47,7 @@ names_eng = Template(
         'Movement SPD',
         'Attack SPD',
         'ATK SPD',
+        'AoE DMG',
 
         'Vaporize',
         'Melt',
@@ -66,6 +71,7 @@ names_eng = Template(
         'Crit DMG',
         'HP',
         'Base ATK',
+        'ATK DMG',
         'ATK',
         'DEF',
         'Elemental Energy',
@@ -75,6 +81,9 @@ names_eng = Template(
 
 keywords_eng = Template(
     keywords=[
+        ('Lunar-Bloom DMG', 'dendro'),
+        ('Lunar-Bloom', 'dendro'),
+
         ('Anemo DMG Bonus', 'anemo'),
         ('Cryo DMG Bonus', 'cryo'),
         ('Electro DMG Bonus', 'electro'),
@@ -112,6 +121,7 @@ keywords_eng = Template(
         ('Superconduct', 'cryo'),
         ('Electro Swirl', 'electro'),
         ('Hydro Swirl', 'hydro'),
+        ('Hydro-infused Swirl', 'hydro'),
         ('Cryo Swirl', 'cryo'),
         ('Swirl', 'anemo'),
         ('Quicken', 'dendro'),
@@ -197,27 +207,40 @@ color_patterns = Template(
 
 names_rus = Template(
     names=[
+        'Долг жизни',
+        'Долгом жизни',
+        'Долга жизни',
+
         'Вспышку Ночного духа',
         'Вспышке Ночного духа',
         'Благословение Ночного духа',
         'Благословения Ночного духа',
         'Ночного духа',
 
+        'элементальной сферы или частицы',
+        'Лунные реакции',
+        'Лунных реакций',
         'элементальный навык',
         'элементальных навыков',
         'элементального навыка',
         'элементальные навыки',
+        'Элементальным навыком',
         'элементальным навыком',
         'элементальными навыками',
         'взрывом стихии',
         'взрыва стихии',
         'взрыва стихий',
+        'взрыв стихии',
         'элементальный осколок',
         'элементального урона',
+        'элементальный урон',
         'элементальной реакции',
+        'урон обычной атаки',
+        'урон по площади',
         'обычной атаки',
         'обычной атакой',
         'обычной атаке',
+        'урон обычной',
         'обычных атак',
         'обычную атаку',
         'Обычные атаки',
@@ -226,6 +249,7 @@ names_rus = Template(
         'заряженной атаки',
         'заряженной атакой',
         'заряженных атак',
+        'Заряженные атаки',
         'заряженные атаки',
         'заряженными атаками',
         'атаками в падении',
@@ -233,6 +257,7 @@ names_rus = Template(
         'атаку в падении',
         'атака в падении',
         'бонус физического урона',
+        'бонус лечения',
         'атакой в падении',
         'атак в падении',
 
@@ -253,6 +278,7 @@ names_rus = Template(
         'Шанс крит. попадания',
         'критический урон',
         'крит. урон',
+        'Крит. урон',
         'бонус получаемого лечения',
 
         'восстановления энергии',
@@ -272,6 +298,7 @@ names_rus = Template(
         'Бонус лечения',
         'бонус получаемого лечения',
         'получаемое лечение',
+        'Макс. HP',
         'макс. HP',
         'макс. НР',
         'HP',
@@ -282,6 +309,10 @@ names_rus = Template(
 
 keywords_rus = Template(
     keywords=[
+        ('Лунная бутонизация', 'dendro'),
+        ('Лунную бутонизацию', 'dendro'),
+        ('Лунной бутонизации', 'dendro'),
+
         ('Гео урона', 'geo'),
         ('Гео урону', 'geo'),
         ('Гео урон', 'geo'),
@@ -322,6 +353,7 @@ keywords_rus = Template(
         ('Сверхпроводник', 'cryo'),
         ('Крио Рассеивание', 'cryo'),
         ('Гидро Рассеивание', 'hydro'),
+        ('Гидро рассеивание', 'hydro'),
         ('Электро Рассеивание', 'electro'),
         ('Рассеивание', 'anemo'),
         ('Рассеиваниe', 'anemo'),

@@ -43,7 +43,8 @@ char_chevreuse = TemplateList(
     ),
     vertical_force_coordination_eng=Template(
         sentences=[
-            ['text_percent', 'text_value', 'ignore', 'text_percent_max'],
+            ['text_percent', 'text_value', 'ignore'],
+            ['text_percent_max'],
         ],
     ),
     stable_front_lines_resolve=Template(

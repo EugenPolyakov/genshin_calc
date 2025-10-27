@@ -128,13 +128,13 @@ desert_pavilion_chronicle_4 = Template(
 
 flower_of_paradise_lost_4 = Template(
     sentences=[
-        ['dmg_reaction_bloom', 'dmg_reaction_moon_bloom'],
+        ['dmg_reaction_bloom', 'dmg_reaction_lunar_bloom'],
         ['ignore'],
         ['ignore', 'ignore', 'ignore'],
     ],
     results=[
-        [0, 0],
-        [1, 2, 2],
+        [0],
+        [1, 2],
     ],
 )
 

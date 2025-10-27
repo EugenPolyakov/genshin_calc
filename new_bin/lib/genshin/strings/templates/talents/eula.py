@@ -80,7 +80,8 @@ char_eula = TemplateList(
             (r'Lightfall name\{Sword\}', 'name{Lightfall Sword}'),
         ],
         sentences=[
-            ['ignore', 'ignore'],
+            ['ignore'],
+            ['ignore'],
         ],
     ),
 )

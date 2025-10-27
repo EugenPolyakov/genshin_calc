@@ -49,12 +49,7 @@ char_fischl = TemplateList(
             ['text_percent_dmg', 'text_percent_hp'],
         ],
     ),
-    evernight_raven_rus=Template(
-        sentences=[
-            ['ignore', 'text_percent_dmg'],
-        ],
-    ),
-    evernight_raven_eng=Template(
+    evernight_raven=Template(
         sentences=[
             ['ignore'],
             ['text_percent_dmg'],

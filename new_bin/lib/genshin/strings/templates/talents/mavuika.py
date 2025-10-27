@@ -98,13 +98,14 @@ char_mavuika = TemplateList(
             [],
             ['200:text_percent_dmg1'],
             ['20:text_percent_def', '500:text_percent_dmg2', '3:ignore'],
+            [],
             ['5:ignore', '80:ignore'],
             ['15:ignore'],
         ],
         results=[
             [1],
-            [2],
-            [3, 4],
+            [2, 3],
+            [4, 5],
         ],
     ),
 )

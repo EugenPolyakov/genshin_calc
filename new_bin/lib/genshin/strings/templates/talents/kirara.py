@@ -75,6 +75,12 @@ char_kirara = TemplateList(
             ['text_percent_shield', 'ignore', 'ignore', 'ignore'],
         ],
     ),
+    perfectly_packaged_rus=Template(
+        sentences=[
+            ['text_percent_shield'],
+            ['ignore', 'ignore', 'ignore'],
+        ],
+    ),
     steed_of_skanda=Template(
         sentences=[
             ['text_percent_atk'],

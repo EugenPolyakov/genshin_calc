@@ -66,4 +66,10 @@ char_gorou = TemplateList(
             ['ignore', None, None, None],
         ],
     ),
+    mountainous_fealty_rus=Template(
+        sentences=[
+            ['ignore'],
+            [None, None, None],
+        ],
+    ),
 )

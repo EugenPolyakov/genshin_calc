@@ -88,16 +88,10 @@ char_chiori = TemplateList(
             [],
         ],
     ),
-    in_five_colors_dyed_rus=Template(
+    in_five_colors_dyed=Template(
         sentences=[
             ['10:ignore', '3:ignore'],
             ['170:text_percent_dmg'],
-            ['1:ignore', '3:ignore'],
-        ],
-    ),
-    in_five_colors_dyed_eng=Template(
-        sentences=[
-            ['10:ignore', '3:ignore', '170:text_percent_dmg'],
             ['1:ignore', '3:ignore'],
         ],
     ),

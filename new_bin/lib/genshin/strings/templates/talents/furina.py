@@ -76,9 +76,6 @@ char_furina = TemplateList(
         ],
     ),
     hear_me_let_us_raise_the_chalice_of_love_rus=Template(
-        patterns=[
-            (r' \(как называется эта часть атаки坠地冲击\)', ''),
-        ],
         sentences=[
             ['10:ignore'],
             [],
@@ -88,7 +85,8 @@ char_furina = TemplateList(
             ['2.9:ignore'],
             ['25:text_percent_dmg_2'],
             [],
-            ['1:ignore', '6:ignore', '6:ignore'],
+            ['1:ignore', '6:ignore'],
+            ['6:ignore'],
         ],
     ),
     hear_me_let_us_raise_the_chalice_of_love_eng=Template(

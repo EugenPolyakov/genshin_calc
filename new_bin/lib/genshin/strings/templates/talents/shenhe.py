@@ -52,6 +52,13 @@ char_shenhe = TemplateList(
             ['crit_dmg_cryo'],
         ],
     ),
+    centered_spirit_rus=Template(
+        sentences=[
+            ['ignore'],
+            ['crit_dmg_cryo'],
+            [],
+        ],
+    ),
     insight_rus=Template(
         sentences=[
             [None, 'ignore', 'ignore'],

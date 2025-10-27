@@ -8,7 +8,7 @@ char_nilou = TemplateList(
             'Ядер изобилия', 'Изобилия золотого кубка', 'Изобилием золотого кубка',
             'Сияющей иллюзии', 'Ауры покоя', 'Зал кружащих лепестков',
             'Танец Хафткаршвар', 'Танца Хафткаршвар',
-            'Танца Абзендеги: Далёкие мечты',
+            'Танца Абзендеги: Далёкие мечты', 'Ядра изобилия',
         ],
         skills={
             'skill': ['Танец Хафткаршвар', 'Танца Хафткаршвар'],
@@ -38,27 +38,29 @@ char_nilou = TemplateList(
             [],
         ],
         results=[
-            [0],
+            [0, 2],
             [1],
         ],
     ),
     court_of_dancing_petals_eng=Template(
         patterns=[
-            (r'Если персонажи под воздействием', '\\nЕсли персонажи под воздействием'),
+            (r'Characters under the effect of ', '\\nCharacters under the effect of '),
         ],
         sentences=[
-            ['ignore', 'ignore', 'ignore'],
+            ['ignore'], 
+            ['mastery', 'ignore'],
             [],
             [],
         ],
         results=[
-            [0],
+            [0, 2],
             [1],
         ],
     ),
     dreamy_dance_of_aeons_rus=Template(
         sentences=[
-            ['ignore', 'ignore'],
+            ['ignore'],
+            ['ignore'],
             [None, None],
         ],
     ),
@@ -74,12 +76,10 @@ char_nilou = TemplateList(
     ),
     the_starry_skies_their_flowers_rain_rus=Template(
         patterns=[
-            (r'dendro{Дендро сопротивление}', '\\ndendro{Дендро сопротивление}'),
-            (r'Требуется разблокировать', '\\nТребуется разблокировать'),
+            (r'<br>', '\\n<br>'),
         ],
         sentences=[
             ['enemy_res_hydro', 'ignore'],
-            [],
             ['enemy_res_dendro', 'ignore'],
             [],
         ],
@@ -89,13 +89,17 @@ char_nilou = TemplateList(
         ],
     ),
     the_starry_skies_their_flowers_rain_eng=Template(
+        patterns=[
+            (r'<br>', '\\n<br>'),
+        ],
         sentences=[
             ['enemy_res_hydro', 'ignore'],
             ['enemy_res_dendro', 'ignore'],
+            [],
         ],
         results=[
-            [0],
-            [1],
+            [0, 2],
+            [1, 2],
         ],
     ),
     fricative_pulse_rus=Template(

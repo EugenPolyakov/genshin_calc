@@ -35,7 +35,8 @@ char_kinich= TemplateList(
     ),
     the_price_of_desolation_eng=Template(
         sentences=[
-            ['7:ignore', '0.8:ignore'],
+            ['7:ignore'],
+            ['0.8:ignore'],
             [],
         ],
     ),
@@ -72,15 +73,10 @@ char_kinich= TemplateList(
             [1],
         ],
     ),
-    hummingbirds_feather_rus=Template(
+    hummingbirds_feather=Template(
         sentences=[
             ['5:ignore'],
             ['2.8:ignore', 'dmg_burst_kinich'],
-        ],
-    ),
-    hummingbirds_feather_eng=Template(
-        sentences=[
-            ['5:ignore', '2.8:ignore', '70:dmg_burst_kinich'],
         ],
     ),
     auspicious_beasts_shape=Template(

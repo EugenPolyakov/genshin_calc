@@ -96,6 +96,7 @@ char_skirk = TemplateList(
     to_the_source_rus=Template(
         sentences=[
             ['1:ignore'],
+            [],
             ['15:ignore', '3:ignore'],
             ['750:text_percent_dmg_1'],
             ['1:ignore', '3:ignore', '180:text_percent_dmg_2'],

@@ -1,4 +1,4 @@
-import csv
+﻿import csv
 import os
 
 OUT_PATH = '../../../../data/strings/generated/'
@@ -24,4 +24,11 @@ class CsvDumper:
         file = self.open_file(filename)
         dumper = self.get_dumper(file, data[0].keys())
         dumper.writeheader()
-        dumper.writerows(data)
+        #dumper.writerows(data)
+        for row in data:
+            try:
+                dumper.writerow(row)
+            except ValueError as e:
+                print(f"Ошибка в строке: {e}")
+                print(f"Проблемная строка: {row}")
+                raise  # или continue чтобы пропустить проблемную строку
