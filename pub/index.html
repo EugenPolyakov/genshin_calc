@@ -1,0 +1,61 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Genshin Impact Calculator</title>
+    <meta name="description" content="Genshin Impact Calculator, artifacts and weapons.">
+    <meta property="og:title" content="Genshin Impact Calculator" />
+    <meta property="og:description" content="Genshin Impact Calculator, artifacts and weapons. Калькулятор Genshin Impact, подбор артефактов и оружия." />
+    <meta property="og:image" content="http://genshin.aspirine.su/images/share.jpg" />
+    <meta name="viewport" content="width=device-width">
+    <link rel="icon" href="images/favicon.png">
+    <link href="css/ui.css?3.2.8" rel="stylesheet">
+    <script>
+        let lang = localStorage.lang;
+        if (lang != 'eng' && lang != 'rus') {
+            let user_lang = navigator.language || navigator.userLanguage;
+
+            if (user_lang == 'ru-RU') {
+                lang = 'rus';
+            } else {
+                lang = 'eng';
+            }
+        }
+
+        document.write('<'+ 'script' +' src="js/lang/'+ lang +'.js?3.2.8"></' + 'script>');
+    </script>
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-W3QJT4QG');</script>
+    <!-- End Google Tag Manager -->
+</head>
+<body>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-W3QJT4QG"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+    <div class="gi-main-container">
+        <div class="gi-layout-left-tabs"><div class="tabs-narrow"></div><div class="tabs-all"></div></div>
+        <div class="gi-layout-left-container">
+            <div class="gi-layout-left-content"></div>
+        </div>
+        <div class="gi-layout-right-container">
+            <div class="gi-layout-right-content"></div>
+        </div>
+        <div class="gi-layout-right-tabs"></div>
+        <div class="gi-main-copyright">
+            <a class="gi-lang-switch lang-rus" href="#"><div class="flag flag-rus"></div><u>Русский</u></a>
+            <a class="gi-lang-switch lang-eng" href="#"><div class="flag flag-eng"></div><u>English</u></a>
+            <span class="gi-spacer"></span>
+            <span class="gi-copyright-text"></span>
+            <span class="gi-sync-status"></span>
+        </div>
+    </div>
+    <div class="tooltip-wrapper"></div>
+    <script src="js/db.js?3.2.8"></script>
+    <script src="js/app.js?3.2.8"></script>
+</body>
+</html>
