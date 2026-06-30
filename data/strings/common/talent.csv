@@ -21,4 +21,7 @@ talent_name;bond_of_life;Долг жизни;Bond of Life
 talent_name;imaginarium_theatre;Театр Воображариум;Imaginarium Theatre
 talent_descr;imaginarium_theatre;После включения в отряд name{макс. HP}, name{сила атаки} и name{защита} увеличиваются на %{atk_percent}. Эффект действует как в театре Воображариум, так и за его пределами.;After chatacter joins your party, name{Max HP}, name{ATK}, and name{DEF} are increased by %{atk_percent}. This will take effect both inside and outside Imaginarium Theatre.
 
+talent_name;exalted_one;Возвышенный;Exalted One
+talent_descr;exalted_one;После включения в отряд name{макс. HP}, name{сила атаки} и name{защита} увеличиваются на %{atk_percent}. Эффект действует в Мрачном натиске.;After chatacter joins your party, name{Max HP}, name{ATK}, and name{DEF} are increased by %{atk_percent}. This will take effect Stygian Onslaught.
+
 talent_name;nightsoul_blessing_state;Благословение Ночного духа;Nightsoul's Blessing state

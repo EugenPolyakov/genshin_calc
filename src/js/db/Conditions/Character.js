@@ -12,4 +12,15 @@ export const Character = [
             atk_percent: 20,
         },
     }),
+    new ConditionBoolean({
+        name: 'exalted_one',
+        serializeId: 26,
+        title: 'talent_name.exalted_one',
+        description: 'talent_descr.exalted_one',
+        stats: {
+            hp_percent: 20,
+            def_percent: 20,
+            atk_percent: 20,
+        },
+    }),
 ];

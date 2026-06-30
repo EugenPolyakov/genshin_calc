@@ -119,12 +119,12 @@ char_lauma = TemplateList(
             [],
             [],
             [],
-            ['15:format{text_number_f=1|{value}}:text_crit_rate_bloom', '100:format{text_number_f=1|{value}}:text_crit_dmg_bloom'],
+            ['15:format{text_number_f=1|{value}}:', '100:format{text_number_f=1|{value}}:'],
             [],
             [],
             [],
             [],
-            ['10:format{text_number_f=2|{value}}:text_crit_rate_lunarbloom', '20:format{text_number_f=2|{value}}:text_crit_dmg_lunarbloom'],
+            ['10:format{text_number_f=2|{value}}:', '20:format{text_number_f=2|{value}}:'],
         ],
         results=[
             [0, 1],
@@ -143,12 +143,12 @@ char_lauma = TemplateList(
             [],
             [],
             [],
-            ['15:format{text_number_f=1|{value}}:text_crit_rate_bloom', '100:format{text_number_f=1|{value}}:text_crit_dmg_bloom'],
+            ['15:format{text_number_f=1|{value}}:', '100:format{text_number_f=1|{value}}:'],
             [],
             [],
             [],
             [],
-            ['10:format{text_number_f=2|{value}}:text_crit_rate_lunarbloom', '20:format{text_number_f=2|{value}}:text_crit_dmg_lunarbloom'],
+            ['10:format{text_number_f=2|{value}}:', '20:format{text_number_f=2|{value}}:'],
         ],
         results=[
             [0, 1],
@@ -160,18 +160,69 @@ char_lauma = TemplateList(
         ],
         extracted_names=[1, 3],
     ),
+    cleansing_for_the_spring=Template(
+        sentences=[
+            [],
+            [],
+            ['0.04:'],
+            ['32:'],
+            [],
+            ['0.02:'],
+            ['20:'],
+        ],
+    ),
+    natures_chorus_rus=Template(
+        sentences=[
+            ['0.0175:'],
+            ['14:'],
+            [],
+            ['1:ignore'],
+        ],
+    ),
+    natures_chorus_eng=Template(
+        sentences=[
+            ['0.0175:', '14:'],
+            [],
+            ['1:ignore'],
+        ],
+    ),
+    o_lips_weave_me_songs_and_psalms=Template(
+        sentences=[
+            ['20:ignore'],
+            [],
+            ['500:'],
+            ['1.9:ignore'],
+            [],
+            ['40:ignore', '5:ignore'],
+        ],
+    ),
+    twine_warnings_and_tales_from_the_north=Template(
+        sentences=[
+            [],
+            [],
+            ['500:', '400:'],
+            [],
+            ['40:format{text_number_f=2|{value}}:'],
+        ],
+    ),
+    nor_yearn_for_the_great_bears_might=Template(
+        sentences=[
+            ['4:ignore'],
+            ['5:ignore'],
+        ],
+    ),
     i_offer_blood_and_tears_to_the_moonlight_rus=Template(
         sentences=[
-            ['185:text_percent_skill_dmg'],
+            ['185:'],
             ['2:'],
             [],
             ['8:'],
             [],
             [],
-            ['1:ignore', '150:text_percent_atk_dmg'],
+            ['1:ignore', '150:'],
             [],
             [],
-            ['25:format{text_number_f=2|{value}}:text_percent_lunarbloom_bonus'],
+            ['25:format{text_number_f=2|{value}}:'],
         ],
         results=[
             list(range(0, 10)),
@@ -180,30 +231,21 @@ char_lauma = TemplateList(
     ),
     i_offer_blood_and_tears_to_the_moonlight_eng=Template(
         sentences=[
-            ['1:ignore', '185:text_percent_skill_dmg'],
+            ['1:ignore', '185:'],
             [],
             ['2:'],
             [],
             ['8:'],
             [],
             [],
-            ['1:ignore', '150:text_percent_atk_dmg'],
+            ['1:ignore', '150:'],
             [],
             [],
-            ['25:format{text_number_f=2|{value}}:text_percent_lunarbloom_bonus'],
+            ['25:format{text_number_f=2|{value}}:'],
         ],
         results=[
             list(range(0, 11)),
             [10],
-        ],
-    ),
-    twine_warnings_and_tales_from_the_north=Template(
-        sentences=[
-            [],
-            [],
-            ['500:text_bloom_percent', '400:text_lunarbloom_percent'],
-            [],
-            ['40:format{text_number_f=2|{value}}:text_dmg_reaction_lunarbloom'],
         ],
     ),
 )

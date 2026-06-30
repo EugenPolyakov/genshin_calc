@@ -397,6 +397,7 @@ export const Lauma = new DbObjectChar({
             multipliers: [
                 new FeatureMultiplier({
                     scaling: 'mastery*',
+                    source: 'constellation1',
                     values: new StatTable('', [charTalentTables.Lauma.cons[0][1]], 100),
                 }),
             ],
@@ -442,8 +443,6 @@ export const Lauma = new DbObjectChar({
             description: 'talent_descr.lauma_light_for_the_frosty_night_2',
             stats: {
                 text_number_f: 1,
-                text_crit_rate_bloom: charTalentTables.Lauma.passsive[0][0] * 100,
-                text_crit_dmg_bloom: charTalentTables.Lauma.passsive[0][1] * 100,
                 crit_rate_bloom: charTalentTables.Lauma.passsive[0][0] * 100,
                 crit_dmg_bloom: charTalentTables.Lauma.passsive[0][1] * 100,
             },
@@ -459,8 +458,6 @@ export const Lauma = new DbObjectChar({
             description: 'talent_descr.lauma_light_for_the_frosty_night_3',
             stats: {
                 text_number_f: 2,
-                text_crit_rate_lunarbloom: charTalentTables.Lauma.passsive[0][2] * 100,
-                text_crit_dmg_lunarbloom: charTalentTables.Lauma.passsive[0][3] * 100,
                 crit_rate_lunarbloom: charTalentTables.Lauma.passsive[0][2] * 100,
                 crit_dmg_lunarbloom: charTalentTables.Lauma.passsive[0][3] * 100,
             },
@@ -544,11 +541,6 @@ export const Lauma = new DbObjectChar({
                 new ConditionMoonPhaseStatic({
                     title: 'talent_name.lauma_twine_warnings_and_tales_from_the_north',
                     description: 'talent_descr.lauma_twine_warnings_and_tales_from_the_north',
-                    stats: {
-                        text_bloom_percent: charTalentTables.Lauma.cons[1][0] * 100,
-                        text_lunarbloom_percent: charTalentTables.Lauma.cons[1][1] * 100,
-                        text_dmg_reaction_lunarbloom: charTalentTables.Lauma.cons[1][2] * 100,
-                    },
                     realStats: {
                         dmg_reaction_lunarbloom: [0, 0, charTalentTables.Lauma.cons[1][2] * 100],
                     },
@@ -569,9 +561,6 @@ export const Lauma = new DbObjectChar({
                 new ConditionStatic({
                     title: 'talent_name.lauma_nor_yearn_for_the_great_bears_might',
                     description: 'talent_descr.lauma_nor_yearn_for_the_great_bears_might',
-                    stats: {
-                        atk_percent: charTalentTables.Lauma.cons[3][0] * 100,
-                    }
                 }),
             ]
         },
@@ -590,11 +579,6 @@ export const Lauma = new DbObjectChar({
                 new ConditionMoonPhaseStatic({
                     title: 'talent_name.lauma_i_offer_blood_and_tears_to_the_moonlight',
                     description: 'talent_descr.lauma_i_offer_blood_and_tears_to_the_moonlight_1',
-                    stats: {
-                        text_percent_skill_dmg: charTalentTables.Lauma.cons[5][0] * 100,
-                        text_percent_atk_dmg: charTalentTables.Lauma.cons[5][4] * 100,
-                        text_percent_lunarbloom_bonus: charTalentTables.Lauma.cons[5][5] * 100,
-                    },
                     realStats: {
                         dmg_reaction_lunarbloom_bonus: [0, 0, charTalentTables.Lauma.cons[5][5] * 100],
                     },
@@ -686,12 +670,6 @@ export const Lauma = new DbObjectChar({
                 title: 'talent_name.lauma_light_for_the_frosty_night_1',
                 description: 'talent_descr.lauma_light_for_the_frosty_night_4',
                 serializeId: 8,
-                stats: {
-                    text_crit_rate_bloom: charTalentTables.Lauma.passsive[0][0] * 100,
-                    text_crit_dmg_bloom: charTalentTables.Lauma.passsive[0][1] * 100,
-                    text_crit_rate_lunarbloom: charTalentTables.Lauma.passsive[0][2] * 100,
-                    text_crit_dmg_lunarbloom: charTalentTables.Lauma.passsive[0][3] * 100,
-                },
                 realStats: {
                     crit_rate_bloom: [0, charTalentTables.Lauma.passsive[0][0] * 100, 0],
                     crit_dmg_bloom: [0, charTalentTables.Lauma.passsive[0][1] * 100, 0],
@@ -705,11 +683,6 @@ export const Lauma = new DbObjectChar({
                 serializeId: 9,
                 title: 'talent_name.lauma_twine_warnings_and_tales_from_the_north',
                 description: 'talent_descr.lauma_twine_warnings_and_tales_from_the_north',
-                stats: {
-                    text_bloom_percent: charTalentTables.Lauma.cons[1][0] * 100,
-                    text_lunarbloom_percent: charTalentTables.Lauma.cons[1][1] * 100,
-                    text_dmg_reaction_lunarbloom: charTalentTables.Lauma.cons[1][2] * 100,
-                },
                 realStats: {
                     dmg_reaction_lunarbloom: [0, 0, charTalentTables.Lauma.cons[1][2] * 100],
                 },
@@ -722,9 +695,6 @@ export const Lauma = new DbObjectChar({
                 serializeId: 10,
                 title: 'talent_name.lauma_i_offer_blood_and_tears_to_the_moonlight',
                 description: 'talent_descr.lauma_i_offer_blood_and_tears_to_the_moonlight_2',
-                stats: {
-                    text_percent_lunarbloom_bonus: charTalentTables.Lauma.cons[5][5] * 100,
-                },
                 realStats: {
                     dmg_reaction_lunarbloom_bonus: [0, 0, charTalentTables.Lauma.cons[5][5] * 100],
                 },
