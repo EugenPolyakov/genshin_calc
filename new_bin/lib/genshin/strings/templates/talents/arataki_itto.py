@@ -23,6 +23,57 @@ char_arataki_itto = TemplateList(
             'burst': ['Royal Descent: Behold, Itto the Evil!'],
         },
     ),
+    behold_itto_the_evil=Template(
+        replace={
+            '</p><p>': '\n</p>\n<p>',
+            '<br>': '<br>\n',
+        },
+        sentences=[
+            [],
+            [],
+            [],
+            [],
+            [],
+            [],
+            ['20:res_phys|20'],
+            [],
+            [],
+            [],
+            [],
+            [],
+            [],
+        ],
+        results=[
+            list(range(0, 13)),
+            ['<p>', 1, 2, 3, 4, 5, 6, 7, 8, 9],
+        ],
+    ),
+    behold_itto_the_evil_eng=Template(
+        replace={
+            '</p><p>': '\n</p>\n<p>',
+            '<br>': '<br>\n',
+        },
+        sentences=[
+            [],
+            [],
+            [],
+            [],
+            [],
+            [],
+            ['1:ignore', '3:ignore', '1:ignore'],
+            ['20:res_phys|20'],
+            [],
+            [],
+            [],
+            [],
+            [],
+            [],
+        ],
+        results=[
+            list(range(0, 14)),
+            ['<p>', 1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+        ],
+    ),
     arataki_ichiban=Template(
         patterns=[
             (r'<br><br>', '<br>'),

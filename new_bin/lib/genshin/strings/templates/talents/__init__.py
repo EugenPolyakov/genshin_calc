@@ -20,6 +20,7 @@ from .chongyun import char_chongyun  # noqa
 from .citlali import char_citlali  # noqa
 from .clorinde import char_clorinde  # noqa
 from .collei import char_collei  # noqa
+from .columbina import char_columbina  # noqa
 from .cyno import char_cyno  # noqa
 from .dahlia import char_dahlia  # noqa
 from .dehya import char_dehya  # noqa
@@ -89,6 +90,9 @@ from .sucrose import char_sucrose  # noqa
 from .tartaglia import char_tartaglia  # noqa
 from .thoma import char_thoma  # noqa
 from .tighnari import char_tighnari  # noqa
+from .traveler_anemo import char_traveler_anemo  # noqa
+from .traveler_geo import char_traveler_geo  # noqa
+from .traveler_electro import char_traveler_electro  # noqa
 from .traveler_hydro import char_traveler_hydro  # noqa
 from .traveler_pyro import char_traveler_pyro  # noqa
 from .traveler_dendro import char_traveler_dendro  # noqa

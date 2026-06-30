@@ -2,6 +2,3 @@ category;name;rus;eng
 
 feature_skill;alhaitham_mirror_2_total_dmg;Урон Проекционного удара 2 Зеркал (всего);2-Mirror Projection Attack DMG (total)
 feature_skill;alhaitham_mirror_3_total_dmg;Урон Проекционного удара 3 Зеркал (всего);3-Mirror Projection Attack DMG (total)
-
-talent_name;alhaitham_mirror;Зеркало света;Chisel-Light Mirror
-talent_descr;alhaitham_mirror;Когда существуют name{Зеркала света}, name{обычные атаки}, name{заряженные атаки} и name{атаки в падении} name{аль-Хайтама} конвертируются в dendro{Дендро урон}, который не может быть отменён другими инфузиями.;When he possesses name{Chisel-Light Mirrors}, name{Alhaitham}'s name{Normal}, name{Charged}, and name{Plunging Attacks} will be converted to dendro{Dendro DMG}. This cannot be overridden.

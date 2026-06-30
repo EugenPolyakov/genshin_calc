@@ -26,6 +26,7 @@ import { FeatureMultiplierReactionMelt } from '../../classes/Feature2/Multiplier
 import { FeatureReactionLunarCharged } from '../../classes/Feature2/Reaction/Transformative/Lunar/Charged';
 import { FeatureReactionLunarBloom } from '../../classes/Feature2/Reaction/Transformative/Lunar/Bloom';
 import { FeatureReactionLunar } from '../../classes/Feature2/Reaction/Transformative/Lunar';
+import { FeatureReactionLunarCrystallize } from '../../classes/Feature2/Reaction/Transformative/Lunar/Crystallize';
 
 let lang = new Lang();
 
@@ -36,8 +37,9 @@ const secondaryStatsList = [
     '!crit_rate_navia', '!crit_rate_gaming', '!crit_rate_normal_arlecchino', '!crit_rate_burst_arlecchino', '!crit_rate_sethos',
     '!crit_rate_amber', '!crit_rate_normal_mualani',
     'crit_dmg', '!crit_dmg_skill', '!crit_dmg_anemo', '!crit_dmg_cryo', '!crit_dmg_electro', '!crit_dmg_geo',
+    '!crit_dmg_hydro', '!crit_dmg_pyro', '!crit_dmg_dendro', '!crit_dmg_phys',
     '!crit_dmg_normal', '!crit_dmg_charged', '!crit_dmg_plunge', '!crit_dmg_neuvillette',
-    '!crit_dmg_hydro', '!crit_dmg_pyro', '!crit_dmg_phys', '!crit_dmg_charged_wriothesley', '!crit_dmg_burst',
+    '!crit_dmg_charged_wriothesley', '!crit_dmg_burst',
     '!crit_dmg_navia', '!crit_dmg_xianyun', '!crit_dmg_gaming', '!crit_dmg_normal_arlecchino', '!crit_dmg_burst_arlecchino',
     '!crit_dmg_skill_kinich', '!crit_dmg_normal_mualani', '!crit_dmg_chasca',
     'healing', 'healing_recv', 'recovery', 'shield',
@@ -62,6 +64,10 @@ const dmgStatsList = [
     '!dmg_burst_traveler_dendro', '!dmg_burst_tighnari', '!dmg_burst_layla', '!dmg_burst_wanderer',
     '!dmg_burst_alhaitham', '!dmg_burst_kirara', '!dmg_burst_lynette', '!dmg_burst_wriothesley', '!dmg_burst_mualani',
     '!dmg_burst_kinich', '!dmg_burst_clorinde', '!dmg_burst_varesa',
+    'dmg_reaction_lunar_bonus',
+    '!dmg_reaction_lunarcrystallize_bonus',
+    '!dmg_reaction_lunarbloom_bonus',
+    '!dmg_reaction_lunarcharged_bonus',
 ];
 
 const reactionStatList = {
@@ -86,6 +92,7 @@ const reactionStatList = {
     '!dmg_reaction_aggravate': FeatureMultiplierReactionAggravate,
     '!dmg_reaction_spread': FeatureMultiplierReactionSpread,
     'dmg_reaction_lunar': FeatureReactionLunar,
+    '!dmg_reaction_lunarcrystallize': FeatureReactionLunarCrystallize,
     '!dmg_reaction_lunarcharged': FeatureReactionLunarCharged,
     '!dmg_reaction_lunarbloom': FeatureReactionLunarBloom,
 

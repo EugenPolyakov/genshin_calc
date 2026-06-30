@@ -75,21 +75,21 @@ const Talents = new DbObjectTalents({
     skill: {
         gameId: charTalentTables.Hutao.s2_id,
         title: 'talent_name.hu_tao_guide_to_afterlife',
-        description: 'talent_descr.hu_tao_guide_to_afterlife',
+        description: 'talent_descr.hu_tao_guide_to_afterlife_1',
         items: [
             {
                 unit: 'current_hp',
-                table: new StatTable('hutao_skill_cost', charTalentTables.Hutao.s2.p1),
+                table: new StatTable('hu_tao_activation_cost', charTalentTables.Hutao.s2.p1),
             },
             {
-                table: new StatTable('hutao_atk_bonus', charTalentTables.Hutao.s2.p2),
+                table: new StatTable('hu_tao_atk_increase', charTalentTables.Hutao.s2.p2),
             },
             {
-                table: new StatTable('hutao_blood_blossom', charTalentTables.Hutao.s2.p3),
+                table: new StatTable('hu_tao_blood_blossom_dmg', charTalentTables.Hutao.s2.p3),
             },
             {
                 unit: 'sec',
-                table: new StatTable('hutao_blossom_duration', charTalentTables.Hutao.s2.p4),
+                table: new StatTable('hu_tao_blood_blossom_duration', charTalentTables.Hutao.s2.p4),
             },
             {
                 unit: 'sec',
@@ -110,7 +110,7 @@ const Talents = new DbObjectTalents({
                 table: new StatTable('burst_dmg', charTalentTables.Hutao.s3.p1),
             },
             {
-                table: new StatTable('hutao_burst_dmg_lowhp', charTalentTables.Hutao.s3.p2),
+                table: new StatTable('hu_tao_low_hp_skill_dmg', charTalentTables.Hutao.s3.p2),
             },
             {
                 unit: 'hp',
@@ -118,7 +118,7 @@ const Talents = new DbObjectTalents({
             },
             {
                 unit: 'hp',
-                table: new StatTable('hutao_heal_lowhp', charTalentTables.Hutao.s3.p4),
+                table: new StatTable('hu_tao_low_hp_skill_regeneration', charTalentTables.Hutao.s3.p4),
             },
             {
                 unit: 'sec',
@@ -145,7 +145,7 @@ const TalentValues = {
 const atkBuffPost = new PostEffectStatsHP({
     percent: Talents.getMulti({
         name: 'atk',
-        from: 'skill.hutao_atk_bonus',
+        from: 'skill.hu_tao_atk_increase',
         multi: 0.01,
     }),
     levelSetting: 'char_skill_elemental',
@@ -296,18 +296,17 @@ export const Hutao = new DbObjectChar({
             ],
         }),
         new FeatureDamageSkill({
-            name: 'hutao_blood_blossom',
             element: 'pyro',
             multipliers: [
                 new FeatureMultiplier({
                     leveling: 'char_skill_elemental',
-                    values: Talents.get('skill.hutao_blood_blossom'),
+                    values: Talents.get('skill.hu_tao_blood_blossom_dmg'),
                 }),
             ],
         }),
         new FeaturePostEffectValue({
             category: 'skill',
-            name: 'hutao_atk_bonus',
+            name: 'hu_tao_atk_increase',
             postEffect: atkBuffPost,
         }),
         new FeaturePostEffectValue({
@@ -318,7 +317,7 @@ export const Hutao = new DbObjectChar({
                 levelSetting: 'char_skill_elemental',
                 percent: Talents.getDivide({
                     name: 'hutao_max_hp_bonus',
-                    from: 'skill.hutao_atk_bonus',
+                    from: 'skill.hu_tao_atk_increase',
                     multi: TalentValues.SkillMaxBonus,
                 }),
             }),
@@ -334,12 +333,11 @@ export const Hutao = new DbObjectChar({
             ],
         }),
         new FeatureDamageBurst({
-            name: 'hutao_burst_dmg_lowhp',
             element: 'pyro',
             multipliers: [
                 new FeatureMultiplier({
                     leveling: 'char_skill_burst',
-                    values: Talents.get('burst.hutao_burst_dmg_lowhp'),
+                    values: Talents.get('burst.hu_tao_low_hp_skill_dmg'),
                 }),
             ],
         }),
@@ -356,12 +354,11 @@ export const Hutao = new DbObjectChar({
         }),
         new FeatureHeal({
             category: 'burst',
-            name: 'hutao_heal_lowhp',
             multipliers: [
                 new FeatureMultiplier({
                     scaling: 'hp*',
                     leveling: 'char_skill_burst',
-                    values: Talents.get('burst.hutao_heal_lowhp'),
+                    values: Talents.get('burst.hu_tao_low_hp_skill_regeneration'),
                 }),
             ],
         }),
@@ -380,7 +377,7 @@ export const Hutao = new DbObjectChar({
             name: 'hutao_paramita_papilio',
             serializeId: 1,
             title: 'talent_name.hutao_paramita_papilio',
-            description: 'talent_descr.hutao_paramita_papilio',
+            description: 'talent_descr.hu_tao_guide_to_afterlife_2',
             stats: {
                 text_percent_hp: TalentValues.SkillMaxBonus,
             },

@@ -206,8 +206,6 @@ class RotationListItem extends React.Component {
 }
 
 function RotationListFeature(props) {
-    let parts = props.item.feature.split('.');
-
     return (
         <div className="rotation-block feature handler">
             <div className="line">
@@ -217,10 +215,9 @@ function RotationListFeature(props) {
                     item={props.item}
                     feature={props.feature}
                 />
-                <div className="feature-line">
-                    <span className="feature-name">{parse(lang.get('feature_' + props.item.feature))}</span>
-                    <span className="feature-category">{lang.get('feature_rotation.' + parts[0])}</span>
-                </div>
+                <FeatureLine
+                    feature={ props.item.feature }
+                />
             </div>
             <RotationLineValues
                 count={props.feature.count}
@@ -300,8 +297,6 @@ function RotationLineValues(props) {
 }
 
 function RotationListFeatureInvalid(props) {
-    let parts = props.item.feature.split('.');
-
     return (
         <div className="rotation-block feature handler invalid">
             <div className="line">
@@ -310,11 +305,22 @@ function RotationListFeatureInvalid(props) {
                     item={props.item}
                     feature={props.feature}
                 />
-                <div className="feature-line">
-                    <span className="feature-name">{lang.get('feature_' + props.item.feature)}</span>
-                    <span className="feature-category">{lang.get('feature_rotation.' + parts[0])}</span>
-                </div>
+                <FeatureLine
+                    feature={ props.item.feature }
+                />
             </div>
+        </div>
+    );
+}
+
+function FeatureLine(props) {
+    let name = props.feature;
+    let parts = props.feature.split('.');
+
+    return (
+        <div className="feature-line">
+            <span className="feature-name">{ lang.get('feature_' + name) }</span>
+            <span className="feature-category">{ lang.get('feature_rotation.' + parts[0]) }</span>
         </div>
     );
 }
@@ -391,7 +397,9 @@ function RotationListCondition(props) {
         <div className={classes.join(' ')}>
             {mainIcon ? <div className={'icon sprite sprite-24 '+ mainIcon}></div> : null}
             {items}
-            <div className="condition-text" dangerouslySetInnerHTML={ { __html: valueHtml } } />
+            <div className="condition-text">
+                { parse(valueHtml) }
+            </div>
         </div>
     );
 }

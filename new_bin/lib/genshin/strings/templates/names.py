@@ -96,7 +96,7 @@ keywords_eng = Template(
     keywords=[
         ('Lunar-Bloom DMG', 'dendro'),
         ('Lunar-Bloom', 'dendro'),
-        ('Lunar-Crystallize', 'hydro'),
+        ('Lunar-Crystallize', 'geo'),
 
         ('Anemo DMG Bonus', 'anemo'),
         ('Cryo DMG Bonus', 'cryo'),
@@ -277,6 +277,7 @@ names_rus = Template(
         'обычных атак',
         'обычную атаку',
         'Обычные атаки',
+        'обычные атаки',
         'обычная атака',
         'обычными атаками',
         'Заряженной атакой',
@@ -354,7 +355,7 @@ keywords_rus = Template(
         ('Лунная бутонизация', 'dendro'),
         ('Лунную бутонизацию', 'dendro'),
         ('Лунной бутонизации', 'dendro'),
-        ('Лунный кристалл', 'hydro'),
+        ('Лунный кристалл', 'geo'),
 
         ('Гео урона', 'geo'),
         ('Гео урону', 'geo'),

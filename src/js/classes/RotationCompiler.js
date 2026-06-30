@@ -241,6 +241,7 @@ export class RotationCompiler {
         return new FeatureRotation({
             name: this.rotation.name,
             items: compiledItems,
+            category: 'rotation',
         });
     }
 }

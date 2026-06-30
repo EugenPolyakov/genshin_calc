@@ -1,6 +1,6 @@
 import { _ } from "core-js";
 import { makeStatItem, makeStatTotalItem } from "../Compile/Helpers";
-import { CMulti, CSumPlusOne } from "../Compile/Types/Block";
+import { CBaseBonusReaction, CMulti, CSumPlusOne } from "../Compile/Types/Block";
 import { CConst } from "../Compile/Types/Item";
 import { FeatureMultiplier } from "../Multiplier";
 
@@ -31,7 +31,7 @@ export class FeatureMultiplierReaction extends FeatureMultiplier  {
 
         if (this.scalingStat) {
             parts.push(
-                new CSumPlusOne([
+                new CBaseBonusReaction([
                     makeStatItem(this.scalingStat, data.stats),
                 ], {percent: true, comment: 'reaction_bonus'}),
             );

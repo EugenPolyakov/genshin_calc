@@ -132,7 +132,7 @@ export class CalcObject {
             if (type == 'checkbox') {
                 ++count;
                 result.push(cond.params.serializeId);
-            } else if (type == 'stacks') {
+            } else if (type == 'stacks' || type == 'groupbox') {
                 ++count;
                 result.push(cond.params.serializeId);
                 result.push(settings[cond.getName()]);
@@ -223,6 +223,9 @@ export class CalcObject {
 
             if (type == 'checkbox') {
                 result[cond.getName()] = true;
+            } else if (type == 'groupbox') {
+                let value = input.shift();
+                result[cond.getName()] = value;
             } else if (type == 'stacks') {
                 let value = input.shift();
 

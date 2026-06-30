@@ -91,8 +91,8 @@ class FeaturesView extends React.Component {
             let blocks = tree[section];
 
             for (const block in blocks) {
-                let featureName = section +'.'+ block;
-                let feature = featuresHash[featureName];
+                let featureName = blocks[block].getName();
+                let feature = blocks[block];
                 if (!feature || !feature.isActive(buildData)) {
                     continue;
                 }
@@ -289,10 +289,7 @@ function FeaturesTableBlock(props) {
             classes.push('odd');
         }
 
-        let str = 'feature_'+ item.name;
-        if (item.feature.title) {
-            str = item.feature.title;
-        }
+        let str = 'feature_' + item.name;
 
         let title = lang.get(str);
 

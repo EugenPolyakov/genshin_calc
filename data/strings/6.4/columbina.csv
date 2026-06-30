@@ -1,0 +1,6 @@
+category;name;rus;eng
+talent_descr;columbina_lunar_bonus;Повышение урона Лунных реакций %{dmg_reaction_lunar};Lunar Reaction DMG Bonus  %{dmg_reaction_lunar}
+talent_name;columbina_gravity_interference;Вмешательства тяготения;Gravity Interference
+feature_other;columbina_rainsea_shield;Щит моря дождей;Rainsea Shield
+feature_attack;columbina_moondew_cleanse_dmg_1;Урон Очищения лунной росой (1 удар);Moondew Cleanse DMG (1-Hit)
+feature_skill;columbina_lunar_bloom_dmg_1;Вмешательство тяготения: урон Лунной бутонизации (1 удар);Gravity Interference: Lunar-Bloom DMG (1-Hit)

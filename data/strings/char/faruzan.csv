@@ -1,5 +1,3 @@
 category;name;rus;eng
 talent_name;faruzan_wind_benefit;Дар молитвенного ветра;Prayerful Wind's Benefit
-talent_descr;faruzan_wind_benefit;name{Штормовая волна} накладывает на персонажей поблизости name{Дар молитвенного ветра}, предоставляя им anemo{Бонус Анемо урона}.;The name{Whirlwind Pulse} will apply name{Prayerful Wind's Benefit} to all nearby party members when it is unleashed, granting them an anemo{Anemo DMG Bonus}.
 talent_name;faruzan_wind_bale;Бич коварных ветров;Perfidious Wind's Bale
-talent_descr;faruzan_wind_bale;При попадании name{Штормовая волна} накладывает на противников поблизости name{Бич коварных ветров}, который снижает их anemo{Анемо сопротивление}.;When the name{Whirlwind Pulse} is unleashed, it will apply name{Perfidious Wind's Bale} to nearby opponents, decreasing their anemo{Anemo RES}.

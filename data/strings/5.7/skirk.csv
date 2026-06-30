@@ -11,6 +11,4 @@ feature_other;skirk_burst_coordinated_attack_dmg;Совместная атака
 feature_other;skirk_normal_coordinated_attack_dmg;Совместная атака обычной атаки;Normal Attack Coordinated Attack DMG
 feature_other;skirk_charged_coordinated_attack_dmg;Совместная атака при ударе;On hit Coordinated Attack DMG
 
-talent_name;skirk_seven_phase_flash;Режим Семифазной вспышки;Seven-Phase Flash mode
-talent_name;skirk_serpents_subtlety;Бонус Змеиного коварства;Serpent's Subtlety Bonus
 talent_name;skirk_havoc_extinction;Хаос: Опустошение;Havoc: Extinction

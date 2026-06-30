@@ -4,6 +4,9 @@ export class FeatureResult {
         this.critMulti  = 1;
 
         if (data) {
+            this.category = data.owner.category;
+            this.name = data.owner.getName();
+            delete data["owner"];
             let keys = Object.keys(data);
             for (let i = 0; i < keys.length; ++i) {
                 const key = keys[i];

@@ -16,6 +16,7 @@ import { FeatureDamageSkill } from "../../classes/Feature2/Damage/Skill";
 import { FeatureHeal } from "../../classes/Feature2/Heal";
 import { FeatureMultiplier } from "../../classes/Feature2/Multiplier";
 import { FeatureMultiplierList } from "../../classes/Feature2/Multiplier/List";
+import { FeaturePostEffectValue } from "../../classes/Feature2/PostEffectValue";
 import { FeatureShield } from "../../classes/Feature2/Shield";
 import { PostEffectStatsTotal } from "../../classes/PostEffect/Stats/Total";
 import { StatTable } from "../../classes/StatTable";
@@ -79,7 +80,7 @@ const Talents = new DbObjectTalents({
                 unit: 'def',
                 type: 'shield',
                 table: [
-                    new StatTable('shield', charTalentTables.Noelle.s2.p1),
+                    new StatTable('shield_absorption', charTalentTables.Noelle.s2.p1),
                     new StatTable('', charTalentTables.Noelle.s2.p7),
                 ],
             },
@@ -107,13 +108,13 @@ const Talents = new DbObjectTalents({
     burst: {
         gameId: charTalentTables.Noelle.s3_id,
         title: 'talent_name.noelle_sweeping_time',
-        description: 'talent_descr.noelle_sweeping_time',
+        description: 'talent_descr.noelle_sweeping_time_1',
         items: [
             {
                 table: new StatTable('burst_dmg', charTalentTables.Noelle.s3.p1),
             },
             {
-                table: new StatTable('noelle_skill_dmg', charTalentTables.Noelle.s3.p2),
+                table: new StatTable('skill_dmg', charTalentTables.Noelle.s3.p2),
             },
             {
                 unit: 'def',
@@ -140,6 +141,19 @@ const C1ChargedStamina = 20;
 const C1ChargedBonus = 15;
 const C4ShieldDmg = 400;
 const C6BuffBonus = 50;
+
+const atkBuffPost = new PostEffectStatsTotal({
+    from: 'def',
+    levelSetting: 'char_skill_burst',
+    percent: Talents.getMulti({
+        name: 'atk',
+        from: 'burst.noelle_atk_bonus',
+        multi: 0.01,
+    }),
+    condition: new ConditionBoolean({ name: 'noelle_sweeping_time' }),
+    percentBonus: new ValueTable([C6BuffBonus / 100]),
+    bonusCondition: new ConditionConstellation({ constellation: 6 }),
+});
 
 export const Noelle = new DbObjectChar({
     name: 'noelle',
@@ -247,13 +261,13 @@ export const Noelle = new DbObjectChar({
         }),
         new FeatureShield({
             category: 'skill',
-            name: 'shield',
+            name: 'shield_absorption',
             element: 'geo',
             multipliers: [
                 new FeatureMultiplierList({
                     scaling: 'def*',
                     leveling: 'char_skill_elemental',
-                    values: Talents.getList('skill.shield'),
+                    values: Talents.getList('skill.shield_absorption'),
                 }),
             ],
         }),
@@ -292,12 +306,11 @@ export const Noelle = new DbObjectChar({
             ],
         }),
         new FeatureDamageBurst({
-            name: 'noelle_skill_dmg',
             element: 'geo',
             multipliers: [
                 new FeatureMultiplier({
                     leveling: 'char_skill_burst',
-                    values: Talents.get('burst.noelle_skill_dmg'),
+                    values: Talents.get('burst.skill_dmg'),
                 }),
             ],
         }),
@@ -314,29 +327,21 @@ export const Noelle = new DbObjectChar({
             ],
             condition: new ConditionAscensionChar({ascension: 1}),
         }),
+        new FeaturePostEffectValue({
+            category: 'burst',
+            name: 'atk_bonus',
+            postEffect: atkBuffPost,
+        }),
     ],
     postEffects: [
-        new PostEffectStatsTotal({
-            from: 'def',
-            levelSetting: 'char_skill_burst',
-            percent: Talents.getMulti({
-                name: 'atk',
-                from: 'burst.noelle_atk_bonus',
-                multi: 0.01,
-            }),
-            conditions: [
-                new ConditionBoolean({name: 'noelle_sweeping_time'}),
-            ],
-            percentBonus: new ValueTable([C6BuffBonus / 100]),
-            bonusCondition: new ConditionConstellation({constellation: 6}),
-        }),
+        atkBuffPost,
     ],
     conditions: [
         new ConditionBoolean({
             name: 'noelle_sweeping_time',
             serializeId: 1,
             title: 'talent_name.noelle_sweeping_time',
-            description: 'talent_descr.noelle_sweeping_time_talent',
+            description: 'talent_descr.noelle_sweeping_time_2',
             settings: {
                 attack_infusion: 'geo',
             }

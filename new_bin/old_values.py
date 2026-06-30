@@ -129,7 +129,7 @@ old_values = {
     },
     #explosive_puppet
     (10032, 2132): {
-        915783462: "inherited_hp",
+        915783462: "amber_baron_hp",
         3672647638: "explosion_dmg",
         1955816807: "cd",
     },
@@ -255,9 +255,9 @@ old_values = {
     },
     #holistic_revivification
     (10825, 8239): {
-        2589249886: "seamless_shield_dmg_absorption",
+        2589249886: "seamless_shield",
         1656805230: "seamless_shield_duration",
-        182062471: "seamless_shield_healing",
+        182062471: "seamless_heal",
         910153983: "spiritvein_dmg",
         1699869782: "pulsing_clarity_duration",
         81290746: "cd",
@@ -461,9 +461,9 @@ old_values = {
     (10902, 9032): {
         1963997030: "press_dmg",
         361604854: "hold_dmg",
-        3170079631: "overcharged_ball_dmg",
+        3170079631: "overcharge_dmg",
         3687781967: "heal_dot",
-        3160446494: "healing_duration",
+        3160446494: "heal_interval",
         2919700034: "surging_blade_dmg",
         4156034479: "surging_blade_interval",
         3022493061: "cd",
@@ -471,7 +471,7 @@ old_values = {
     #ring_of_bursting_grenades
     (10905, 9039): {
         268207622: "explosive_grenade_dmg",
-        3638536014: "secondary_explosive_shell_dmg",
+        3638536014: "secondary_explosive_dmg",
         97409135: "cd",
         345685119: "energy_cost",
     },
@@ -489,10 +489,10 @@ old_values = {
     },
     #fluttering_hasode
     (10942, 9432): {
-        1307872286: "tamoto_dmg",
-        1343186342: "tamoto_duration",
-        1164577479: "tamoto_attack_interval",
-        2096090455: "upward_sweep_attack_dmg",
+        1307872286: "sode_dmg",
+        1343186342: "sode_duration",
+        1164577479: "sode_attack_interval",
+        2096090455: "upward_sweep_dmg",
         300376646: "cd",
     },
     #twin_blades
@@ -544,8 +544,8 @@ old_values = {
         3380317030: "obsidian_tzitzimitl_dmg",
         1132836230: "shield_absorption",
         331115463: "shield_duration",
-        3637251095: "itzpapa_duration",
-        1390059102: "opal_fire_nightsoul_point_consumption",
+        3637251095: "citlali_duration",
+        1390059102: "citlali_cost",
         113118866: "frostfall_storm_dmg",
         3968885391: "nightsoul_point_limit",
         3712306165: "cd",
@@ -553,9 +553,9 @@ old_values = {
     #edict_of_entwined_splendor
     (11075, 10739): {
         2644729302: "ice_storm_dmg",
-        3721791470: "ice_storm_nightsoul_point_gain",
+        3721791470: "point_gain",
         3888517343: "spiritvessel_skull_dmg",
-        646227871: "spiritvessel_skull_nightsoul_point_gain",
+        646227871: "skull_point_gain",
         2137508982: "cd",
         2132343002: "energy_cost",
     },
@@ -703,8 +703,8 @@ old_values = {
     #radiant_psalter
     (11155, 11539): {
         3818368302: "skill_dmg",
-        3134550718: "shield_of_sacred_favor_dmg_absorption",
-        482184839: "favonian_favor_duration",
+        3134550718: "base_shield_dmg_absorption",
+        482184839: "dahlia_duration",
         2743267631: "energy_cost",
         311554782: "cd",
     },
@@ -726,7 +726,7 @@ old_values = {
     (10792, 7932): {
         583538414: "indomitable_flame_dmg",
         1644940638: "ranging_flame_dmg",
-        4231628655: "field_dmg",
+        4231628655: "dehya_field_dmg",
         527111599: "mitigation",
         3257259094: "redmanes_blood_maximum",
         2353972866: "field_duration",
@@ -763,9 +763,9 @@ old_values = {
     },
     #dawn
     (10165, 1639): {
-        439659606: "slashing_dmg",
-        1139931606: "dot_dmg",
-        3948865119: "explosion_dmg",
+        439659606: "burst_slash",
+        1139931606: "burst_dot",
+        3948865119: "burst_explosion",
         1921212383: "cd",
         1217496542: "infusion_duration",
         2494530890: "energy_cost",
@@ -968,7 +968,7 @@ old_values = {
     (10762, 7632): {
         212724046: "skill_dmg",
         840578486: "pressurized_collapse_vortex_dmg",
-        3566362335: "duration",
+        3566362335: "faruzan_duration",
         2578042831: "cd",
     },
     #the_winds_secret_ways
@@ -1155,14 +1155,14 @@ old_values = {
         2350913290: "normal_hit_6",
         421320759: "aimed",
         1787325085: "charged_aimed",
-        441186212: "frostflake_arrow_dmg",
-        1824081655: "frostflake_arrow_bloom_dmg",
+        441186212: "frostflake",
+        1824081655: "frostflake_bloom",
         806703740: "plunge",
         3129033683: "plunge_low/plunge_high",
     },
     #trail_of_the_qilin
     (10372, 3732): {
-        1931714414: "inherited_hp",
+        1931714414: "lotus_hp",
         2636885550: "skill_dmg",
         2711308423: "duration",
         820551599: "cd",
@@ -1257,7 +1257,7 @@ old_values = {
     (10463, 4639): {
         3855616838: "skill_dmg",
         740862518: "low_hp_skill_dmg",
-        146086919: "skill_hp_regeneration",
+        146086919: "heal",
         4273914479: "low_hp_skill_regeneration",
         3198159862: "cd",
         779657770: "energy_cost",
@@ -2227,7 +2227,7 @@ old_values = {
     #distant_dreams_listening_spring
     (10705, 7039): {
         462219502: "skill_dmg",
-        2532871750: "lingering_aeon_dmg",
+        2532871750: "lingering_aeon",
         3408345319: "cd",
         1520462855: "energy_cost",
     },
@@ -2270,9 +2270,9 @@ old_values = {
     #breastplate
     (10342, 3432): {
         3544724366: "skill_dmg",
-        3273790494: "dmg_absorption",
+        3273790494: "shield_absorption",
         3718792183: "heal",
-        3772593935: "healing_triggering_chance",
+        3772593935: "heal_chance",
         2892134430: "duration",
         2622501922: "cd",
     },
@@ -2544,8 +2544,8 @@ old_values = {
         1457307942: "press_dmg",
         2402865678: "hold_dmg",
         3440918575: "dmg_bonus",
-        149131471: "press_hold_duration",
-        3337716406: "press_hold_trigger_quota",
+        149131471: "duration",
+        3337716406: "stacks",
         3109513674: "cd_press",
         2531569807: "cd_hold",
     },
@@ -2658,9 +2658,9 @@ old_values = {
         620358898: "normal_hit_6",
         2212336919: "aimed",
         4126243485: "charged_aimed",
-        1642482988: "riptide_flash_dmg",
-        2316712367: "riptide_burst_dmg",
-        3175146268: "riptide_duration",
+        1642482988: "tide_flash",
+        2316712367: "tide_burst",
+        3175146268: "tide_duration",
         2509348883: "plunge",
         355544111: "plunge_low/plunge_high",
     },
@@ -2675,17 +2675,17 @@ old_values = {
         2573837935: "normal_hit_6",
         1442994053: "charged_hit",
         2044577332: "stamina_cost",
-        1559146279: "riptide_slash",
+        1559146279: "slash_dmg",
         2441884532: "max_duration",
-        3613907915: "preemptive_cd",
+        3613907915: "tartaglia_cd",
         719967703: "max_cd",
     },
     #obliteration
     (10333, 3339): {
-        279079478: "melee",
-        1331675606: "ranged",
+        279079478: "burst_dmg_melee",
+        1331675606: "burst_dmg_ranged",
         3730717479: "riptide_blast_dmg",
-        1057955319: "energy_return_ranged",
+        1057955319: "energy_return",
         1269792238: "cd",
         3381788458: "energy_cost",
     },
@@ -2715,7 +2715,7 @@ old_values = {
         2154867918: "fiery_collapse_dmg",
         1151337151: "shield_absorption",
         3753905831: "shield_duration",
-        596679942: "scorching_ooyoroi_duration",
+        596679942: "burst_duration",
         3586884218: "cd",
         3234146671: "energy_cost",
     },
@@ -2727,7 +2727,7 @@ old_values = {
         1136127287: "normal_hit_3",
         2769722519: "normal_hit_4",
         3139640310: "aimed",
-        3860395226: "level_1_aimed_shot",
+        3860395226: "charged_dmg",
         372024495: "wreath_arrow_dmg",
         874475277: "clusterbloom_arrow_dmg",
         3858408116: "plunge",
@@ -2736,29 +2736,29 @@ old_values = {
     #vijnana_phala_mine
     (10692, 6932): {
         2264252526: "skill_dmg",
-        785213558: "vijnana_khanda_field_duration",
-        334055599: "vijnana_suffusion_duration",
+        785213558: "field_duration",
+        334055599: "penetrator_duration",
         1098986287: "cd",
     },
     #fashioners_tanglevine_shaft
     (10695, 6939): {
-        1029547534: "tanglevine_shaft_dmg",
-        147128678: "secondary_tanglevine_shaft_dmg",
+        1029547534: "primary_dmg",
+        147128678: "secondary_dmg",
         1154707271: "cd",
         2817566999: "energy_cost",
     },
-#traveler
+#traveler_anemo
     #foreign_ironwind
-    (100553, 731): {
-        1614345078: "normal_hit_1",
-        778044798: "normal_hit_2",
-        3947522063: "normal_hit_3",
-        3843758287: "normal_hit_4",
-        1828987358: "normal_hit_5",
-        3672756946: "charged_hit",
-        648807519: "stamina_cost",
-        2651732541: "plunge",
-        1610843220: "plunge_low/plunge_high",
+    (100543, 730): {
+        103667430: "normal_hit_1",
+        2729824750: "normal_hit_2",
+        1423911055: "normal_hit_3",
+        846647223: "normal_hit_4",
+        3445419230: "normal_hit_5",
+        607873546: "charged_hit",
+        3017237783: "stamina_cost",
+        746904173: "plunge",
+        67803476: "plunge_low/plunge_high",
     },
     #palm_vortex
     (10067, 732): {
@@ -2777,18 +2777,18 @@ old_values = {
         3999478399: "cd",
         2786978854: "energy_cost",
     },
-#traveler
+#traveler_dendro
     #foreign_fieldcleaver
-    (100557, 1131): {
-        2828405830: "normal_hit_1",
-        191864214: "normal_hit_2",
-        3928126183: "normal_hit_3",
-        3925407519: "normal_hit_4",
-        3535745510: "normal_hit_5",
-        169255034: "charged_hit",
-        1250782943: "stamina_cost",
-        2899749949: "plunge",
-        4069784292: "plunge_low/plunge_high",
+    (100547, 1130): {
+        1251515710: "normal_hit_1",
+        267441374: "normal_hit_2",
+        337170983: "normal_hit_3",
+        3205204183: "normal_hit_4",
+        1198001726: "normal_hit_5",
+        199836394: "charged_hit",
+        214426719: "stamina_cost",
+        1172545469: "plunge",
+        706991540: "plunge_low/plunge_high",
     },
     #razorgrass_blade
     (10117, 1132): {
@@ -2798,12 +2798,12 @@ old_values = {
     #surgent_manifestation
     (10118, 1139): {
         2215980550: "lea_lotus_lamp_attack_dmg",
-        1963189310: "explosion_dmg",
-        2743377127: "lea_lotus_lamp_duration",
+        1963189310: "traveler_explosion_dmg",
+        2743377127: "traveler_duration",
         742925023: "cd",
         1116082966: "energy_cost",
     },
-#traveler
+#traveler_electro
     #foreign_thundershock
     (100556, 1031): {
         2717296958: "normal_hit_1",
@@ -2819,22 +2819,22 @@ old_values = {
     #lightning_blade
     (10602, 1032): {
         1194829654: "skill_dmg",
-        2307742454: "energy_regeneration",
-        4179463743: "energy_recharge_increase",
+        2307742454: "amulet_recharge",
+        4179463743: "amulet_increase",
         291233039: "duration",
-        1453950654: "abundance_amulet_duration",
+        1453950654: "amulet_duration",
         1863948914: "cd",
     },
     #bellowing_thunder
     (10605, 1039): {
         2697497510: "skill_dmg",
         3383735846: "falling_thunder_dmg",
-        2670850575: "energy_regeneration",
+        2670850575: "energy_gain",
         1728236567: "duration",
         3932977734: "cd",
         14310474: "energy_cost",
     },
-#traveler
+#traveler_geo
     #foreign_rockblade
     (100555, 731): {
         1614345078: "normal_hit_1",
@@ -2850,28 +2850,28 @@ old_values = {
     #starfell_sword
     (10077, 932): {
         2490916078: "skill_dmg",
-        1502962318: "meteorite_duration",
+        1502962318: "meteor_duration",
         3483977783: "cd",
     },
     #wake_of_earth
     (10078, 939): {
-        2543526886: "dmg_per_shockwave",
-        4008643478: "stonewall_duration",
+        2543526886: "shockwave",
+        4008643478: "shockwave_duration",
         612997199: "cd",
         3988377847: "energy_cost",
     },
-#traveler
+#traveler_hydro
     #foreign_stream
-    (100552, 631): {
-        2032499814: "normal_hit_1",
-        1383761198: "normal_hit_2",
-        3842962455: "normal_hit_3",
-        698450399: "normal_hit_4",
-        4173892822: "normal_hit_5",
-        97530314: "charged_hit",
-        3775712415: "stamina_cost",
-        1546627493: "plunge",
-        806877116: "plunge_low/plunge_high",
+    (100542, 630): {
+        2788809638: "normal_hit_1",
+        1326920606: "normal_hit_2",
+        3940916303: "normal_hit_3",
+        3441239775: "normal_hit_4",
+        563524454: "normal_hit_5",
+        2646018098: "charged_hit",
+        1636624943: "stamina_cost",
+        2285157189: "plunge",
+        3631597908: "plunge_low/plunge_high",
     },
     #aquacrest_saber
     (10087, 632): {
@@ -2891,7 +2891,7 @@ old_values = {
         2276515999: "cd",
         3441354815: "energy_cost",
     },
-#traveler
+#traveler_pyro
     #foreign_blaze
     (100551, 531): {
         1701931126: "normal_hit_1",
@@ -2906,9 +2906,9 @@ old_values = {
     },
     #flowfire_blade
     (10097, 532): {
-        3849402222: "blazing_threshold",
+        3849402222: "blazing_threshold_dmg",
         116479926: "hold_dmg",
-        2663338039: "scorching_threshold",
+        2663338039: "scorching_threshold_dmg",
         1506478623: "nightsoul_point_limit",
         2382047214: "cd",
     },
@@ -3113,7 +3113,7 @@ old_values = {
     },
     #bane_of_all_evil
     (10265, 2639): {
-        92254606: "normal_charged_plunging_attack_dmg_bonus",
+        92254606: "burst_bonus",
         2254861462: "life_drain",
         3271067015: "duration",
         2695061279: "cd",

@@ -62,7 +62,7 @@ const Talents = new DbObjectTalents({
                 unit: 'hp',
                 type: 'shield',
                 table: [
-                    new StatTable('heal_normal_atk', charTalentTables.Barbara.s2.p3),
+                    new StatTable('barbara_hp_regeneration_per_hit', charTalentTables.Barbara.s2.p3),
                     new StatTable('', charTalentTables.Barbara.s2.p4),
                 ],
             },
@@ -213,13 +213,13 @@ export const Barbara = new DbObjectChar({
         }),
         new FeatureHeal({
             category: 'skill',
-            name: 'heal_normal_atk',
+            name: 'barbara_hp_regeneration_per_hit',
             partyHeal: 1,
             multipliers: [
                 new FeatureMultiplierList({
                     scaling: 'hp*',
                     leveling: 'char_skill_elemental',
-                    values: Talents.getList('skill.heal_normal_atk'),
+                    values: Talents.getList('skill.barbara_hp_regeneration_per_hit'),
                 }),
             ],
         }),
@@ -233,7 +233,7 @@ export const Barbara = new DbObjectChar({
                     leveling: 'char_skill_elemental',
                     values: Talents.getMulti({
                         name: 'heal_charged_atk',
-                        from: 'skill.heal_normal_atk',
+                        from: 'skill.barbara_hp_regeneration_per_hit',
                         multi: TalentValues.ChargedHealRatio,
                     }),
                 }),

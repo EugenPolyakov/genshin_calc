@@ -78,7 +78,7 @@ const Talents = new DbObjectTalents({
         description: 'talent_descr.tartaglia_raging_tide_1',
         items: [
             {
-                table: new StatTable('activation_dmg', charTalentTables.Tartaglia.s2.p1),
+                table: new StatTable('tartaglia_stance_change_dmg', charTalentTables.Tartaglia.s2.p1),
             },
             {
                 table: new StatTable('normal_hit_1', charTalentTables.Tartaglia.s2.p2),
@@ -466,7 +466,7 @@ export const Tartaglia = new DbObjectChar({
             multipliers: [
                 new FeatureMultiplier({
                     leveling: 'char_skill_elemental',
-                    values: Talents.get('skill.activation_dmg'),
+                    values: Talents.get('skill.tartaglia_stance_change_dmg'),
                 }),
             ],
         }),

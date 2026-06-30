@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import parse from 'html-react-parser';
 
 import "../../../../css/Components/Tab/Feature/Tree.css";
 
@@ -17,7 +18,8 @@ const ROOT_TYPES = {
     'multiplier_resistance': LeafRoot,
     'multiplier_amplifying': LeafRoot,
     'multiplier_reaction': LeafRoot,
-    'elevation_reaction': LeafRoot,
+    'elevation_reaction': LeafRootSum,
+    'base_bonus_reaction': LeafRootSum,
     'multiplier_custom': LeafRoot,
     'damage_result': LeafResult,
     'heal_result': LeafResult,
@@ -40,6 +42,7 @@ const INLINE_TYPES = {
     'flat_reduce': LeafSum,
     'multiplier_reaction': LeafSum,
     'elevation_reaction': LeafSum,
+    'base_bonus_reaction': LeafSum,
     'multiplier_resistance': LeafSum,
     'multiplier_bonus': LeafSumPlus,
     'multiplier_defence': LeafSum,
@@ -164,7 +167,8 @@ function LeafRootSum(props) {
     let tree;
     let type = props.tree.getType();
 
-    if (type == 'multiplier_bonus' || type == 'multiplier_reaction') {
+    //instanceof не работает т.к. у нас разные пакеты
+    if (type == 'multiplier_bonus' || type == 'multiplier_reaction' || type == 'elevation_reaction' || type == 'base_bonus_reaction') {
         tree = new CSum([
             new CConst({value: 1, comment: 'base_bonus', percent: true}),
             ...props.tree.items
@@ -528,7 +532,7 @@ function LeafInlineConst(props) {
     return (
         <div className="feature-detail-block const">
             <div className="stat-value">{value}</div>
-            {comment ? <div className="stat-name">{comment}</div> : ''}
+            {comment ? <div className="stat-name">{ parse(comment) }</div> : ''}
         </div>
     );
 }

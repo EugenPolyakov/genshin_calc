@@ -11,6 +11,10 @@ SKIP_CHARACTERS = [
 class CharData(ListParser):
     filename = 'AvatarExcelConfigData.json'
 
+class PromoteData(ListParser):
+    id_field = False
+    filename = 'AvatarPromoteExcelConfigData.json'
+
 
 class CharSkillDepotData(ListParser):
     filename = 'AvatarSkillDepotExcelConfigData.json'

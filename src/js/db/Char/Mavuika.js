@@ -69,7 +69,7 @@ const Talents = new DbObjectTalents({
     skill: {
         gameId: charTalentTables.Mavuika.s2_id,
         title: 'talent_name.mavuika_the_named_moment',
-        description: 'talent_descr.mavuika_the_named_moment',
+        description: 'talent_descr.mavuika_the_named_moment_1',
         items: [
             {
                 table: new StatTable('skill_dmg', charTalentTables.Mavuika.s2.p1),
@@ -120,8 +120,8 @@ const Talents = new DbObjectTalents({
     },
     burst: {
         gameId: charTalentTables.Mavuika.s3_id,
-        title: 'talent_name.mavuika_hour_of_burning_skies',
-        description: 'talent_descr.mavuika_hour_of_burning_skies',
+        title: 'talent_name.mavuika_hour_of_burning_skies_1',
+        description: 'talent_descr.mavuika_hour_of_burning_skies_1',
         items: [
             {
                 table: new StatTable('burst_dmg', charTalentTables.Mavuika.s3.p1),
@@ -581,13 +581,13 @@ export const Mavuika = new DbObjectChar({
             name: 'mavuika_stance',
             serializeId: 2,
             title: 'talent_name.mavuika_stance',
-            description: 'talent_descr.mavuika_stance',
+            description: 'talent_descr.mavuika_the_named_moment_2',
         }),
         new ConditionBoolean({
             name: 'mavuika_crucible_of_death_and_life',
             serializeId: 3,
-            title: 'talent_name.mavuika_crucible_of_death_and_life',
-            description: 'talent_descr.mavuika_crucible_of_death_and_life',
+            title: 'talent_name.mavuika_hour_of_burning_skies_2',
+            description: 'talent_descr.mavuika_hour_of_burning_skies_2',
         }),
         new ConditionBoolean({
             name: 'mavuika_gift_of_flaming_flowers',

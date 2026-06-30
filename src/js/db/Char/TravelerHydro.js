@@ -28,8 +28,8 @@ import { charTalentTables } from "../generated/CharTalentTables";
 const Talents = new DbObjectTalents({
     attack: {
         gameId: charTalentTables.TravelerHydro.s1_id,
-        title: 'talent_name.traveler_hydro_foreign_stream',
-        description: 'talent_descr.traveler_hydro_foreign_stream',
+        title: 'talent_name.traveler_foreign_stream',
+        description: 'talent_descr.traveler_foreign_stream',
         items: [
             {
                 table: new StatTable('normal_hit_1', charTalentTables.TravelerHydro.s1.p1),
@@ -71,8 +71,8 @@ const Talents = new DbObjectTalents({
     },
     skill: {
         gameId: charTalentTables.TravelerHydro.s2_id,
-        title: 'talent_name.traveler_hydro_aquacrest_saber',
-        description: 'talent_descr.traveler_hydro_aquacrest_saber',
+        title: 'talent_name.traveler_aquacrest_saber_1',
+        description: 'talent_descr.traveler_aquacrest_saber_2',
         items: [
             {
                 table: new StatTable('traveler_torrent_surge_dmg', charTalentTables.TravelerHydro.s2.p2),
@@ -97,7 +97,7 @@ const Talents = new DbObjectTalents({
             },
             {
                 unit: 'sec',
-                table: new StatTable('traveler_dewdrop_duration', charTalentTables.TravelerHydro.s2.p9),
+                table: new StatTable('traveler_hold_duration', charTalentTables.TravelerHydro.s2.p9),
             },
             {
                 unit: 'sec',
@@ -107,8 +107,8 @@ const Talents = new DbObjectTalents({
     },
     burst: {
         gameId: charTalentTables.TravelerHydro.s3_id,
-        title: 'talent_name.traveler_hydro_rising_waters',
-        description: 'talent_descr.traveler_hydro_rising_waters',
+        title: 'talent_name.traveler_rising_waters',
+        description: 'talent_descr.traveler_rising_waters',
         items: [
             {
                 table: new StatTable('burst_dmg', charTalentTables.TravelerHydro.s3.p1),
@@ -145,13 +145,7 @@ export const TravelerHydro = new DbObjectChar({
     weapon: 'sword',
     origin: 'foreign',
     talents: Talents,
-    statTable: [
-        ...charTables.Traveler,
-        new StatTableAscensionScale({
-			stat: 'burst_energy_cost',
-			base: Talents.get('burst.energy_cost').getValue(1),
-		}),
-    ],
+    statTable: charTables.TravelerHydro,
     features: [
         new FeatureDamageNormal({
             multipliers: [
@@ -347,12 +341,12 @@ export const TravelerHydro = new DbObjectChar({
         new ConditionBoolean({
             name: 'traveler_suffusion',
             serializeId: 3,
-            title: 'talent_name.traveler_suffusion',
-            description: 'talent_descr.traveler_suffusion',
+            title: 'talent_name.traveler_aquacrest_saber_2',
+            description: 'talent_descr.traveler_aquacrest_saber_2',
         }),
         new ConditionStatic({
-            title: 'talent_name.traveler_hydro_spotless_waters',
-            description: 'talent_descr.traveler_hydro_spotless_waters',
+            title: 'talent_name.traveler_spotless_waters',
+            description: 'talent_descr.traveler_spotless_waters',
             stats: {
                 text_percent_heal: dew_heal,
             },
@@ -365,7 +359,7 @@ export const TravelerHydro = new DbObjectChar({
             name: 'traveler_clear_waters_percent',
             serializeId: 1,
             title: 'talent_name.traveler_clear_waters_full',
-            description: 'talent_descr.traveler_hydro_clear_waters',
+            description: 'talent_descr.traveler_clear_waters',
             max: 100,
             stats: {
                 text_percent_dmg: skill_bonus_ratio,
@@ -401,16 +395,16 @@ export const TravelerHydro = new DbObjectChar({
         {
             conditions: [
                 new ConditionStatic({
-                    title: 'talent_name.traveler_hydro_swelling_lake',
-                    description: 'talent_descr.traveler_hydro_swelling_lake',
+                    title: 'talent_name.traveler_swelling_lake',
+                    description: 'talent_descr.traveler_swelling_lake',
                 }),
             ],
         },
         {
             conditions: [
                 new ConditionStatic({
-                    title: 'talent_name.traveler_hydro_trickling_purity',
-                    description: 'talent_descr.traveler_hydro_trickling_purity',
+                    title: 'talent_name.traveler_trickling_purity',
+                    description: 'talent_descr.traveler_trickling_purity',
                 }),
             ],
         },
@@ -426,8 +420,8 @@ export const TravelerHydro = new DbObjectChar({
         {
             conditions: [
                 new ConditionStatic({
-                    title: 'talent_name.traveler_hydro_pouring_descent',
-                    description: 'talent_descr.traveler_hydro_pouring_descent',
+                    title: 'talent_name.traveler_pouring_descent',
+                    description: 'talent_descr.traveler_pouring_descent',
                     stats: {
                         text_percent_hp: shield_hp_scale,
                         text_percent_hp_2: 10,
@@ -447,8 +441,8 @@ export const TravelerHydro = new DbObjectChar({
         {
             conditions: [
                 new ConditionStatic({
-                    title: 'talent_name.traveler_hydro_tides_of_justice',
-                    description: 'talent_descr.traveler_hydro_tides_of_justice',
+                    title: 'talent_name.traveler_tides_of_justice',
+                    description: 'talent_descr.traveler_tides_of_justice',
                     stats: {
                         text_percent_hp: 6,
                     },

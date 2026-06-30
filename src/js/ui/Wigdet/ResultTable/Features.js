@@ -22,7 +22,7 @@ export class ResultTableFeatures extends ResultTable {
                 if (data.hidden) {
                     continue
                 }
-                let str = 'feature_'+ section +'.'+ block;
+                let str = 'feature_'+ data.getName();
                 let format = data.format || '';
                 let className;
 

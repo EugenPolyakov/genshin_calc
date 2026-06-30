@@ -72,8 +72,8 @@ const Talents = new DbObjectTalents({
     },
     skill: {
         gameId: charTalentTables.TravelerElectro.s2_id,
-        title: 'talent_name.traveler_lightning_blade',
-        description: 'talent_descr.traveler_lightning_blade',
+        title: 'talent_name.traveler_lightning_blade_1',
+        description: 'talent_descr.traveler_lightning_blade_1',
         items: [
             {
                 table: new StatTable('skill_dmg', charTalentTables.TravelerElectro.s2.p1),
@@ -160,13 +160,7 @@ export const TravelerElectro = new DbObjectChar({
     weapon: 'sword',
     origin: 'foreign',
     talents: Talents,
-    statTable: [
-        ...charTables.Traveler,
-        new StatTableAscensionScale({
-			stat: 'burst_energy_cost',
-			base: Talents.get('burst.energy_cost').getValue(1),
-		}),
-    ],
+    statTable: charTables.TravelerElectro,
     features: [
         new FeatureDamageNormal({
             multipliers: [
@@ -338,8 +332,8 @@ export const TravelerElectro = new DbObjectChar({
         new ConditionBoolean({
             name: 'traveler_abundance_amulet',
             serializeId: 3,
-            title: 'talent_name.traveler_abundance_amulet',
-            description: 'talent_descr.traveler_abundance_amulet',
+            title: 'talent_name.traveler_lightning_blade_2',
+            description: 'talent_descr.traveler_lightning_blade_2',
         }),
         new ConditionStatic({
             title: 'talent_name.traveler_thunderflash',
@@ -443,7 +437,7 @@ export const TravelerElectro = new DbObjectChar({
                     title: 'talent_name.traveler_world_shaker',
                     description: 'talent_descr.traveler_world_shaker',
                     stats: {
-                        text_percent_dmg: 100,
+                        text_percent_dmg: 200,
                     },
                 }),
             ],
@@ -465,8 +459,8 @@ export const TravelerElectro = new DbObjectChar({
             new ConditionBoolean({
                 name: 'party.traveler_abundance_amulet',
                 serializeId: 4,
-                title: 'talent_name.traveler_abundance_amulet',
-                description: 'talent_descr.traveler_abundance_amulet',
+                title: 'talent_name.traveler_lightning_blade_2',
+                description: 'talent_descr.traveler_lightning_blade_2',
             }),
             new ConditionBoolean({
                 name: 'party.traveler_resounding_roar',

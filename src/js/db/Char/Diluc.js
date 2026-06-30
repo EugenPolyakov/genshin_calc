@@ -83,13 +83,13 @@ const Talents = new DbObjectTalents({
     burst: {
         gameId: charTalentTables.Diluc.s3_id,
         title: 'talent_name.diluc_dawn',
-        description: 'talent_descr.diluc_dawn',
+        description: 'talent_descr.diluc_dawn_1',
         items: [
             {
                 table: new StatTable('diluc_burst_slash', charTalentTables.Diluc.s3.p1),
             },
             {
-                table: new StatTable('dilic_burst_dot', charTalentTables.Diluc.s3.p2),
+                table: new StatTable('diluc_burst_dot', charTalentTables.Diluc.s3.p2),
             },
             {
                 table: new StatTable('diluc_burst_explosion', charTalentTables.Diluc.s3.p3),
@@ -257,12 +257,12 @@ export const Diluc = new DbObjectChar({
             ],
         }),
         new FeatureDamageBurst({
-            name: 'dilic_burst_dot',
+            name: 'diluc_burst_dot',
             element: 'pyro',
             multipliers: [
                 new FeatureMultiplier({
                     leveling: 'char_skill_burst',
-                    values: Talents.get('burst.dilic_burst_dot'),
+                    values: Talents.get('burst.diluc_burst_dot'),
                 }),
             ],
         }),
@@ -287,7 +287,7 @@ export const Diluc = new DbObjectChar({
             name: 'diluc_dawn',
             serializeId: 1,
             title: 'talent_name.diluc_dawn',
-            description: 'talent_descr.diluc_dawn_talent',
+            description: 'talent_descr.diluc_dawn_2',
             settings: {
                 attack_infusion_pyro: 1,
             },

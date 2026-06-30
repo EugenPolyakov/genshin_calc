@@ -75,7 +75,7 @@ const Talents = new DbObjectTalents({
         description: 'talent_descr.lan_yan_swallow_wisp_pinion_dance',
         items: [
             {
-                table: new StatTable('lanyan_feathermoon_ring_dmg', charTalentTables.LanYan.s2.p1),
+                table: new StatTable('lan_yan_feathermoon_ring_dmg', charTalentTables.LanYan.s2.p1),
             },
             {
                 type: 'shield',
@@ -303,7 +303,7 @@ export const LanYan = new DbObjectChar({
             multipliers: [
                 new FeatureMultiplier({
                     leveling: 'char_skill_elemental',
-                    values: Talents.get('skill.lanyan_feathermoon_ring_dmg'),
+                    values: Talents.get('skill.lan_yan_feathermoon_ring_dmg'),
                 }),
             ],
         }),
@@ -326,7 +326,7 @@ export const LanYan = new DbObjectChar({
                         leveling: 'char_skill_elemental',
                         scalingMultiplier: A1Scale / 100,
                         scalingSource: 'ascension1',
-                        values: Talents.get('skill.lanyan_feathermoon_ring_dmg'),
+                        values: Talents.get('skill.lan_yan_feathermoon_ring_dmg'),
                     }),
                 ],
                 condition: new ConditionAscensionChar({ascension: 1}),

@@ -378,6 +378,16 @@ export class CElevationReaction extends CSumPlusOne {
     }
 }
 
+export class CBaseBonusReaction extends CSumPlusOne {
+    getType() { return 'base_bonus_reaction' }
+
+    getInfoProperties(opts) {
+        let result = super.getInfoProperties(opts);
+        result.percent = true;
+        return result;
+    }
+}
+
 export class CMultiplierAmplifying extends CSum {
     getType() {return 'multiplier_amplifying'}
 }

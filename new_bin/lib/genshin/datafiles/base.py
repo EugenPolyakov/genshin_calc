@@ -35,7 +35,6 @@ class DictParser(Parser):
 
 class ListParser(Parser):
     id_field = 'id'
-    no_id = False
 
     def __init__(self):
         self.cache = {}
@@ -59,18 +58,24 @@ class ListParser(Parser):
         if not isinstance(self.data, list):
             raise StructureException
 
-    def get_item_by_field(self, field: str, value):
+    def get_item_by_filter(self, _filter):
         for item in self.data:
-            if item.get(field) == value:
+            if _filter(item):
                 return item
         return None
 
-    def get_list_by_field(self, field: str, value):
+    def get_item_by_field(self, field: str, value):
+        return self.get_item_by_filter(lambda x: x[field] == value)
+
+    def get_list_by_filter(self, _filter):
         result = []
         for item in self.data:
-            if item.get(field) == value:
+            if _filter(item):
                 result.append(item)
         return result
+
+    def get_list_by_field(self, field: str, value):
+        return self.get_list_by_filter(lambda x: x[field] == value)
 
     def get(self, obj_id: int):
         if not self.cache:

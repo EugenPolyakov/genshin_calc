@@ -51,7 +51,7 @@ export class Lang {
             let result = Stats.format(stat, value, {
                 signed: !!signed,
                 no_decimal_zero: 1,
-                decimal_digits: digits || 1,
+                decimal_digits: digits || 5,
             });
 
             return '<span class="text-value">'+ result +'</span>';

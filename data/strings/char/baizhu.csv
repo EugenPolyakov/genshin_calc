@@ -2,10 +2,5 @@ category;name;rus;eng
 
 feature_skill;baizhu_gossamer_splice_dmg;Урон Летучий дух: Разрез;Gossamer Sprite: Splice DMG
 feature_skill;baizhu_gossamer_splice_heal;Лечение Летучий дух: Разрез;Gossamer Sprite: Splice Heal
-feature_burst;baizhu_seamless_shield;Поглощение урона Бесшовного щита;Seamless Shield DMG Absorption
-feature_burst;baizhu_seamless_heal;Лечение Бесшовного щита;Seamless Shield Healing
-feature_burst;baizu_spiritvein_dmg;Урон Призрачной артерии;Spiritvein DMG
-feature_burst;baichu_seamless_duration;Длительность Бесшовного щита;Seamless Shield Duration
-feature_burst;baichu_duration;Длительность Пульсирующей ясности;Pulsing Clarity Duration
 feature_burst;baizhu_bloom_bonus;Бонус урона Горения и Бутонизации;Burning and Bloom DMG Bonus
 feature_burst;baizhu_quicken_bonus;Бонус урона Стимуляции;Quicken DMG Bonus

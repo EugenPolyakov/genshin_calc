@@ -22,6 +22,25 @@ char_diluc = TemplateList(
             'burst': ['Dawn'],
         },
     ),
+    dawn=Template(
+        replace={
+            '<br>': '\n<br>\n',
+            '</p><p>': '\n</p><p>',
+        },
+        sentences=[
+            [],
+            [],
+            [],
+            [],
+            [],
+            [],
+            [],
+        ],
+        results=[
+            list(range(0, 7)),
+            [4],
+        ],
+    ),
     relentless=Template(
         sentences=[
             ['stamina_consume_charged', 'ignore'],

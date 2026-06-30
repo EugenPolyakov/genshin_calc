@@ -47,7 +47,12 @@ export class Condition {
             return '';
         }
 
-        return UI.Lang.getTalent(this.params.description, stats);
+        let val = this.params.description.split(';');
+        if (val.length > 1) {
+            let result = val.map(x => UI.Lang.getTalent(x, stats)).join('<br><br>');
+            return result;
+        } else
+            return UI.Lang.getTalent(this.params.description, stats);
     }
 
     getInfo() {

@@ -79,10 +79,10 @@ const Talents = new DbObjectTalents({
         description: 'talent_descr.amber_fiery_rain',
         items: [
             {
-                table: new StatTable('wave_dmg', charTalentTables.Amber.s3.p1),
+                table: new StatTable('amber_fiery_rain_dmg_per_wave', charTalentTables.Amber.s3.p1),
             },
             {
-                table: new StatTable('total_dmg', charTalentTables.Amber.s3.p4),
+                table: new StatTable('amber_total_fiery_rain_dmg', charTalentTables.Amber.s3.p4),
             },
             {
                 unit: 'sec',
@@ -274,13 +274,13 @@ export const Amber = new DbObjectChar({
             ],
         }),
         new FeatureDamageBurst({
-            name: 'wave_dmg',
+            name: 'amber_fiery_rain_dmg_per_wave',
             element: 'pyro',
             critRateBonuses: ['crit_rate_amber'],
             multipliers: [
                 new FeatureMultiplier({
                     leveling: 'char_skill_burst',
-                    values: Talents.get('burst.wave_dmg'),
+                    values: Talents.get('burst.amber_fiery_rain_dmg_per_wave'),
                 }),
             ],
         }),

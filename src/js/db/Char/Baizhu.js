@@ -104,7 +104,7 @@ const Talents = new DbObjectTalents({
             },
             {
                 unit: 'sec',
-                table: new StatTable('baichu_seamless_duration', charTalentTables.Baizhu.s3.p3),
+                table: new StatTable('baizhu_seamless_shield_duration', charTalentTables.Baizhu.s3.p3),
             },
             {
                 unit: 'hp',
@@ -115,11 +115,11 @@ const Talents = new DbObjectTalents({
                 ],
             },
             {
-                table: new StatTable('baizu_spiritvein_dmg', charTalentTables.Baizhu.s3.p7),
+                table: new StatTable('baizhu_spiritvein_dmg', charTalentTables.Baizhu.s3.p7),
             },
             {
                 unit: 'sec',
-                table: new StatTable('baichu_duration', charTalentTables.Baizhu.s3.p8),
+                table: new StatTable('baizhu_pulsing_clarity_duration', charTalentTables.Baizhu.s3.p8),
             },
             {
                 unit: 'sec',
@@ -321,12 +321,12 @@ export const Baizhu = new DbObjectChar({
             condition: new ConditionConstellation({constellation: 2}),
         }),
         new FeatureDamageBurst({
-            name: 'baizu_spiritvein_dmg',
+            name: 'baizhu_spiritvein_dmg',
             element: 'dendro',
             multipliers: [
                 new FeatureMultiplier({
                     leveling: 'char_skill_burst',
-                    values: Talents.get('burst.baizu_spiritvein_dmg'),
+                    values: Talents.get('burst.baizhu_spiritvein_dmg'),
                 }),
                 new FeatureMultiplier({
                     scaling: 'hp*',

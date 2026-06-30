@@ -14,9 +14,9 @@ import { FeatureReactionRupture } from "../../classes/Feature2/Reaction/Transfor
 import { ConditionAnd } from "../../classes/Condition/And";
 import { ConditionNot } from "../../classes/Condition/Not";
 import { FeatureReactionLunarCharged } from "../../classes/Feature2/Reaction/Transformative/Lunar/Charged";
-import { FeatureReactionLunarBloom } from "../../classes/Feature2/Reaction/Transformative/Lunar/Bloom";
 import { FeatureMultiplierReaction } from "../../classes/Feature2/Multiplier/Reaction";
 import { reactionDamageValues, reactionShieldValues } from "../generated/ElementScale";
+import { FeatureReactionLunarCrystallize } from "../../classes/Feature2/Reaction/Transformative/Lunar/Crystallize";
 
 const lunarchargedCond = new ConditionAnd([
     new ConditionBoolean({name: 'allowed_lunarcharged'}),
@@ -28,13 +28,13 @@ const lunarchargedCond = new ConditionAnd([
     ]),
 ]);
 
-const lunarbloomCond = new ConditionAnd([
-    new ConditionBoolean({ name: 'allowed_lunarbloom' }),
+const lunarcrystallizeCond = new ConditionAnd([
+    new ConditionBoolean({ name: 'allowed_lunarcrystallize' }),
     new ConditionOr([
-        new ConditionBooleanCharElement({ element: ['hydro', 'dendro', 'anemo'] }),
+        new ConditionBooleanCharElement({ element: ['hydro', 'geo', 'anemo'] }),
         new ConditionBoolean({ name: 'allowed_infusion_hydro' }),
-        new ConditionBoolean({ name: 'allowed_infusion_dendro' }),
         new ConditionBoolean({ name: 'allowed_infusion_anemo' }),
+        new ConditionBoolean({ name: 'allowed_infusion_geo' }),
     ]),
 ]);
 
@@ -129,6 +129,47 @@ export const Reactions = [
             new ConditionBoolean({name: 'allowed_infusion_electro'}),
         ]),
     }),
+    new FeatureReactionLunarCrystallize({
+        name: 'lunarcrystallize_contrubution',
+        element: 'geo',
+        cannotReact: true,
+        multipliers: [
+            new FeatureMultiplierReaction({
+                reactionRate: 0.96,
+                reactionValue: reactionDamageValues,
+                scalingStat: 'lunarcrystallize_multi',
+            })
+        ],
+        condition: lunarcrystallizeCond,
+    }),
+    new FeatureReactionLunarCrystallize({
+        name: 'lunarcrystallize_contrubution_2',
+        element: 'geo',
+        cannotReact: true,
+        multipliers: [
+            new FeatureMultiplierReaction({
+                reactionRate: 0.96,
+                reactionValue: reactionDamageValues,
+                reactionPenalty: 1 / 2,
+                scalingStat: 'lunarcrystallize_multi',
+            })
+        ],
+        condition: lunarcrystallizeCond,
+    }),
+    new FeatureReactionLunarCrystallize({
+        name: 'lunarcrystallize_contrubution_12',
+        element: 'geo',
+        cannotReact: true,
+        multipliers: [
+            new FeatureMultiplierReaction({
+                reactionRate: 0.96,
+                reactionValue: reactionDamageValues,
+                reactionPenalty: 1 / 12,
+                scalingStat: 'lunarcrystallize_multi',
+            })
+        ],
+        condition: lunarcrystallizeCond,
+    }),
     new FeatureReactionElectroCharged({
         name: 'electrocharged',
         element: 'electro',
@@ -215,19 +256,6 @@ export const Reactions = [
             new ConditionBoolean({name: 'allowed_infusion_dendro'}),
             new ConditionBoolean({name: 'allowed_infusion_anemo'}),
         ]),
-    }),
-    new FeatureReactionLunarBloom({
-        name: 'lunarbloom',
-        element: 'dendro',
-        //cannotReact: false,
-        multipliers: [
-            new FeatureMultiplierReaction({
-                reactionRate: 1.8,
-                reactionValue: reactionDamageValues,
-                scalingStat: 'lunarbloom_multi',
-            })
-        ],
-        condition: lunarbloomCond,
     }),
     new FeatureReactionHyperBurgeon({
         name: 'burgeon',

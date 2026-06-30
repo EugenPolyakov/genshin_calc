@@ -92,6 +92,7 @@ export class FeaturePostEffectValue extends Feature2 {
 
         return {
             [this.getName()]: new FeatureResult({
+                owner: this,
                 icon: 'buff',
                 normal: normal,
                 crit: crit,

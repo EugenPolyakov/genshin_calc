@@ -5,8 +5,3 @@ feature_skill;mavuika_c6_ring_dmg;Урон Кольца испепеляющег
 talent_name;mavuika_points;Боевой дух;Fighting Spirit
 
 talent_name;mavuika_stance;Высвобождение древнего имени;Ancient Name Unbound
-talent_descr;mavuika_stance;Урон name{обычных атак}, name{заряженных атак} и name{атак в падении} name{Мавуики} конвертируется в pyro{Пиро} урон с характеристикой name{Ночного духа}, который не может быть отменён другими инфузиями. Во время спринта она также наносит врагам на своём пути pyro{Пиро} урон с характеристикой name{Ночного духа}.;name{Mavuika}'s name{Normal}, name{Charged}, and name{Plunging Attacks} will also be converted to deal name{Nightsoul-aligned} pyro{Pyro} DMG which cannot be overridden. When sprinting, she also deals Nightsoul-aligned pyro{Pyro} DMG to opponents along her path.
-
-talent_name;mavuika_crucible_of_death_and_life;Горнило смерти и жизни;Crucible of Death and Life
-talent_descr;mavuika_crucible_of_death_and_life;Во время его действия различные действия name{Мавуики} не расходуют очки name{Ночного духа}, а её сопротивление прерыванию повышается. Кроме того, повышается урон name{Удара падающего солнца}, а также name{обычной} и name{заряженной атаки} name{Высвобождения древнего имени}, пропорционально количеству name{Боевого духа} на момент активации взрыва стихии.;During this time, name{Mavuika}'s various actions will no longer consume name{Nightsoul points}, and her interruption resistance is increased. Also, the DMG dealt by name{Sunfell Slice} and "name{Ancient Name Unbound}"'s name{Normal} and name{Charged Attacks} is increased based on the amount of name{Fighting Spirit} she has when using the name{Elemental Burst}
-

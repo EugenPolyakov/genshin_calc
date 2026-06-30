@@ -40,21 +40,21 @@ const Talents = new DbObjectTalents({
                 table: new StatTable('normal_hit_4', charTalentTables.Itto.s1.p4),
             },
             {
-                table: new StatTable('itto_kesagiri_combo_slash_dmg', charTalentTables.Itto.s1.p6),
+                table: new StatTable('arataki_itto_arataki_kesagiri_combo_slash_dmg', charTalentTables.Itto.s1.p6),
             },
             {
-                table: new StatTable('itto_kesagiri_final_slash_dmg', charTalentTables.Itto.s1.p7),
+                table: new StatTable('arataki_itto_arataki_kesagiri_final_slash_dmg', charTalentTables.Itto.s1.p7),
             },
             {
                 unit: 'sec',
-                table: new StatTable('itto_duration_strength', charTalentTables.Itto.s1.p12),
+                table: new StatTable('arataki_itto_superlative_superstrength_duration', charTalentTables.Itto.s1.p12),
             },
             {
-                table: new StatTable('itto_saichimonji_slash_dmg', charTalentTables.Itto.s1.p5),
+                table: new StatTable('arataki_itto_saichimonji_slash_dmg', charTalentTables.Itto.s1.p5),
             },
             {
                 unit: 'unit',
-                table: new StatTable('itto_stamina_cost', charTalentTables.Itto.s1.p8),
+                table: new StatTable('arataki_itto_saichimonji_slash_stamina_cost', charTalentTables.Itto.s1.p8),
             },
             {
                 table: new StatTable('plunge', charTalentTables.Itto.s1.p9),
@@ -76,7 +76,7 @@ const Talents = new DbObjectTalents({
                 table: new StatTable('skill_dmg', charTalentTables.Itto.s2.p1),
             },
             {
-                table: new StatTable('itto_hurls_ushi_hp', charTalentTables.Itto.s2.p2),
+                table: new StatTable('arataki_itto_inherited_hp', charTalentTables.Itto.s2.p2),
             },
             {
                 unit: 'sec',
@@ -91,14 +91,14 @@ const Talents = new DbObjectTalents({
     burst: {
         gameId: charTalentTables.Itto.s3_id,
         title: 'talent_name.arataki_itto_behold_itto_the_evil',
-        description: 'talent_descr.arataki_itto_behold_itto_the_evil',
+        description: 'talent_descr.arataki_itto_behold_itto_the_evil_1',
         items: [
             {
                 unit: 'def',
-                table: new StatTable('itto_atk_bonus', charTalentTables.Itto.s3.p2),
+                table: new StatTable('arataki_itto_atk_bonus', charTalentTables.Itto.s3.p2),
             },
             {
-                table: new StatTable('itto_atk_speed_bonus', charTalentTables.Itto.s3.p1),
+                table: new StatTable('arataki_itto_atk_spd_bonus', charTalentTables.Itto.s3.p1),
             },
             {
                 unit: 'sec',
@@ -131,7 +131,7 @@ const atkBuffPost = new PostEffectStatsTotal({
     from: 'def',
     percent: Talents.getMulti({
         name: 'atk',
-        from: 'burst.itto_atk_bonus',
+        from: 'burst.arataki_itto_atk_bonus',
         multi: 0.01,
     }),
     levelSetting: 'char_skill_burst',
@@ -189,29 +189,29 @@ export const Itto = new DbObjectChar({
             ],
         }),
         new FeatureDamageCharged({
-            name: 'itto_kesagiri_combo_slash_dmg',
+            name: 'arataki_itto_arataki_kesagiri_combo_slash_dmg',
             multipliers: [
                 new FeatureMultiplier({
                     leveling: 'char_skill_attack',
-                    values: Talents.get('attack.itto_kesagiri_combo_slash_dmg'),
+                    values: Talents.get('attack.arataki_itto_arataki_kesagiri_combo_slash_dmg'),
                 }),
             ],
         }),
         new FeatureDamageCharged({
-            name: 'itto_kesagiri_final_slash_dmg',
+            name: 'arataki_itto_arataki_kesagiri_final_slash_dmg',
             multipliers: [
                 new FeatureMultiplier({
                     leveling: 'char_skill_attack',
-                    values: Talents.get('attack.itto_kesagiri_final_slash_dmg'),
+                    values: Talents.get('attack.arataki_itto_arataki_kesagiri_final_slash_dmg'),
                 }),
             ],
         }),
         new FeatureDamageCharged({
-            name: 'itto_saichimonji_slash_dmg',
+            name: 'arataki_itto_saichimonji_slash_dmg',
             multipliers: [
                 new FeatureMultiplier({
                     leveling: 'char_skill_attack',
-                    values: Talents.get('attack.itto_saichimonji_slash_dmg'),
+                    values: Talents.get('attack.arataki_itto_saichimonji_slash_dmg'),
                 }),
             ],
         }),
@@ -254,12 +254,12 @@ export const Itto = new DbObjectChar({
         }),
         new FeaturePostEffectValue({
             category: 'skill',
-            name: 'itto_hurls_ushi_hp',
+            name: 'arataki_itto_inherited_hp',
             postEffect: new PostEffectStatsHP({
                 levelSetting: 'char_skill_elemental',
                 percent: Talents.getMulti({
-                    name: 'itto_hurls_ushi_hp',
-                    from: 'skill.itto_hurls_ushi_hp',
+                    name: 'arataki_itto_inherited_hp',
+                    from: 'skill.arataki_itto_inherited_hp',
                     multi: 0.01,
                 }),
             }),
@@ -275,7 +275,7 @@ export const Itto = new DbObjectChar({
             name: 'itto_royal_descent',
             serializeId: 1,
             title: 'talent_name.itto_royal_descent',
-            description: 'talent_descr.itto_royal_descent',
+            description: 'talent_descr.arataki_itto_behold_itto_the_evil_2',
             stats: {
                 atk_speed_normal: TalentValues.BurstAtkSpeed,
                 res_pyro: TalentValues.BurstResistance,

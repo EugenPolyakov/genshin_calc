@@ -19,7 +19,7 @@ talent_name;beidou_upon_the_turbulent_sea_the_thunder_arises;Гроза море
 talent_descr;beidou_upon_the_turbulent_sea_the_thunder_arises;Цепная молния навыка skill{burst:Крушитель бури} может перепрыгнуть на двух дополнительных противников.;skill{burst:Stormbreaker}'s arc lightning can jump to 2 additional targets.
 talent_name;beidou_summoner_of_storm;Призыв бури;Summoner of Storm
 talent_name;beidou_stunning_revenge;Оглушающая месть;Stunning Revenge
-talent_descr;beidou_stunning_revenge;После полученного удара обычные атаки name{Бэй Доу} наносят дополнительные %{text_percent_dmg} electro{Электро урона} в течение 10 сек.;Upon being attacked, name{Beidou}'s name{Normal Attacks} gain an additional instance of %{text_percent_dmg} electro{Electro DMG} for 10s.
+talent_descr;beidou_stunning_revenge;После полученного удара name{обычные атаки} name{Бэй Доу} наносят дополнительные %{text_percent_dmg} electro{Электро урона} в течение 10 сек.;Upon being attacked, name{Beidou}'s name{Normal Attacks} gain an additional instance of %{text_percent_dmg} electro{Electro DMG} for 10s.
 talent_name;beidou_crimson_tidewalker;Алые паруса на горизонте;Crimson Tidewalker
 talent_name;beidou_bane_of_evil;Погибель порока;Bane of Evil
 talent_descr;beidou_bane_of_evil;На время действия навыка skill{burst:Крушитель бури} electro{Электро сопротивление} окружающих противников понижается на %{enemy_res_electro}.;During the duration of skill{burst:Stormbreaker}, the electro{Electro RES} of surrounding opponents is decreased by %{enemy_res_electro}.

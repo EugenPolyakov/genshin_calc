@@ -106,7 +106,7 @@ function ConditionItem(props) {
                         subcond={ subcond }
                     />
                 </div> }
-                <div className="title" dangerouslySetInnerHTML={{ __html: cond.getTitle(stats) }} />
+                <div className="title" >{ parse(cond.getTitle(stats)) }</div>
                 <ConditionLoadStat
                     stat={cond.params.loadPartyStat}
                     name={cond.getName()}
@@ -125,7 +125,7 @@ function ConditionItem(props) {
                             onChange={ props.onChange }
                         />
                     </div>
-                    <div className="title" dangerouslySetInnerHTML={ { __html: a.getTitle(stats) } } />
+                    <div className="title">{ parse(a.getTitle(stats)) }</div>
                 </div>) : '' }
             <ConditionDescription item={cond} stats={stats} />
         </div>
@@ -266,8 +266,15 @@ function ConditionControl(props) {
     if (type == 'checkbox') {
         return (
             <Checkbox
-                checked={props.settings[id]}
-                onChange={(checked) => props.onChange(id, checked)}
+                checked={ props.settings[id] }
+                onChange={ (checked) => props.onChange(id, checked) }
+            />
+        );
+    } else if (type == 'groupbox') {
+        return (
+            <Checkbox
+                checked={ props.settings[id] == cond.getGroupIndex() }
+                onChange={ (checked) => props.onChange(id, checked ? cond.getGroupIndex() : 0) }
             />
         );
     } else if (type == 'stacks') {

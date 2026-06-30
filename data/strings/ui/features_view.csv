@@ -12,6 +12,8 @@ features_view;block_heal_result;Итоговое лечение;Final Heal
 features_view;block_shield_result;Итоговое поглощение;Final Shield absorption
 features_view;block_flat_damage;Добавочное значение;Flat increase
 features_view;block_flat_reduce;Уменьшения значения;Flat reduce
+features_view;block_elevation_reaction;Возвышение;Elevation
+features_view;block_base_bonus_reaction;Бонус Базового урона реакции;Reaction Base Bonus
 
 features_view;reaction_remark;Выбор урона реакции влияет только на отображение в текущей вкладке. Для корректной оптимизации показатей с учётом реакций используйте вкладку tab{rotation:Ротация}.;Reaction damage selector is used only for display in this tab. For proper features optimisation use tab{rotation:Rotation} tab.
 
@@ -47,8 +49,19 @@ features_view;stat_dmg_reaction_quicken;Стимуляция;Quicken
 features_view;stat_dmg_reaction_spread;Разрастание;Spread
 features_view;stat_dmg_reaction_aggravate;Обострение;Aggravate
 features_view;stat_dmg_reaction_bloom;Бутонизация;Bloom
+features_view;stat_dmg_reaction_lunar;Лунная реакция;Lunar reaction
+features_view;stat_dmg_reaction_lunarbloom;Лунная бутонизация;Lunar-Bloom
 features_view;stat_dmg_reaction_lunarcharged;Лунный заряд;Lunar-Charged
+features_view;stat_dmg_reaction_lunarcrystallize;Лунная кристаллизация;Lunar-Crystallize
+features_view;stat_dmg_reaction_lunar_bonus;Возвышение<br>Лунных реакций;Lunar reactions<br>Elevation
+features_view;stat_dmg_reaction_lunarbloom_bonus;Возвышение<br>Лунной бутонизации;Lunar-Bloom<br>Elevation
+features_view;stat_dmg_reaction_lunarcharged_bonus;Возвышение<br>Лунного заряда;Lunar-Charged<br>Elevation
+features_view;stat_dmg_reaction_lunarcrystallize_bonus;Возвышение<br>Лунной кристаллизации;Lunar-Crystallize<br>Elevation
+features_view;stat_lunarcharged_multi;Бонус Базового урона<br>Лунного заряда;Lunar-Charged<br>Base Bonus
+features_view;stat_lunarbloom_multi;Бонус Базового урона<br>Лунной бутонизации;Lunar-Bloom<br>Base Bonus
+features_view;stat_lunarcrystallize_multi;Бонус Базового урона<br>Лунной кристаллизации;Lunar-Crystallize<br>Base Bonus
 features_view;stat_lunarcharged;Лунный заряд;Lunar-Charged
+features_view;stat_lunarcrystallize;Лунная кристаллизация;Lunar-Crystallize
 features_view;stat_reaction_aggravate;Обострение;Aggravate
 features_view;stat_reaction_spread;Разрастание;Spread
 features_view;stat_citlali_mastery_total;М. стихий;EM

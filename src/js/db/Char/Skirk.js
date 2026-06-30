@@ -563,12 +563,12 @@ export const Skirk = new DbObjectChar({
         new ConditionBoolean({
             name: 'skirk_seven_phase_flash',
             serializeId: 1,
-            title: 'talent_name.skirk_seven_phase_flash',
+            title: 'stat.dmg_normal_skirk',
         }),
         new ConditionNumberSkirk({
             name: 'skirk_serpents_subtlety',
             serializeId: 5,
-            title: 'talent_name.skirk_serpents_subtlety',
+            title: 'feature_burst.skirk_serpents_subtlety_bonus',
             max: 12,
             c2bonus: C2StackBonus,
             forceSettings: true,

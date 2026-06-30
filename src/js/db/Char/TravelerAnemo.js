@@ -131,13 +131,7 @@ export const TravelerAnemo = new DbObjectChar({
     weapon: 'sword',
     origin: 'foreign',
     talents: Talents,
-    statTable: [
-        ...charTables.Traveler,
-        new StatTableAscensionScale({
-			stat: 'burst_energy_cost',
-			base: Talents.get('burst.energy_cost').getValue(1),
-		}),
-    ],
+    statTable: charTables.TravelerAnemo,
     features: [
         new FeatureDamageNormal({
             multipliers: [
@@ -366,9 +360,7 @@ export const TravelerAnemo = new DbObjectChar({
                 text_percent_dmg: 60,
             },
             info: {ascension: 1},
-            subConditions: [
-                new ConditionAscensionChar({ascension: 1}),
-            ],
+            condition: new ConditionAscensionChar({ascension: 1}),
         }),
         new ConditionStatic({
             title: 'talent_name.traveler_second_wind',
@@ -377,9 +369,7 @@ export const TravelerAnemo = new DbObjectChar({
                 text_percent_hp: 2,
             },
             info: {ascension: 4},
-            subConditions: [
-                new ConditionAscensionChar({ascension: 4}),
-            ],
+            condition: new ConditionAscensionChar({ascension: 4}),
         }),
         new ConditionBoolean({
             name: 'traveler_swordfighting_techniques',
@@ -457,7 +447,7 @@ export const TravelerAnemo = new DbObjectChar({
                     name: 'traveler_intertwined_winds',
                     serializeId: 1,
                     title: 'talent_name.traveler_intertwined_winds',
-                    description: 'talent_descr.traveler_intertwined_winds',
+                    description: 'talent_descr.traveler_intertwined_winds_1',
                     stats: {
                         enemy_res_anemo: -20,
                     },
@@ -466,7 +456,7 @@ export const TravelerAnemo = new DbObjectChar({
                     name: 'traveler_intertwined_winds_element',
                     serializeId: 2,
                     title: 'talent_name.traveler_intertwined_winds',
-                    description: 'talent_descr.traveler_intertwined_winds_element',
+                    description: 'talent_descr.traveler_intertwined_winds_2',
                     values: [
                         {
                             value: 'cryo',
@@ -497,9 +487,7 @@ export const TravelerAnemo = new DbObjectChar({
                             ],
                         },
                     ],
-                    subConditions: [
-                        new ConditionBoolean({name: 'traveler_intertwined_winds'}),
-                    ],
+                    condition: new ConditionBoolean({name: 'traveler_intertwined_winds'}),
                 }),
             ],
         },
@@ -511,7 +499,7 @@ export const TravelerAnemo = new DbObjectChar({
                 serializeId: 1,
                 rotation: 'party',
                 title: 'talent_name.traveler_intertwined_winds',
-                description: 'talent_descr.traveler_intertwined_winds',
+                description: 'talent_descr.traveler_intertwined_winds_1',
                 info: {constellation: 6},
                 stats: {
                     enemy_res_anemo: -20,
@@ -522,7 +510,7 @@ export const TravelerAnemo = new DbObjectChar({
                 serializeId: 2,
                 rotation: 'party',
                 title: 'talent_name.traveler_intertwined_winds',
-                description: 'talent_descr.traveler_intertwined_winds_element',
+                description: 'talent_descr.traveler_intertwined_winds_2',
                 values: [
                     {
                         value: 'cryo',
@@ -554,9 +542,7 @@ export const TravelerAnemo = new DbObjectChar({
                     },
                 ],
                 info: {constellation: 6},
-                subConditions: [
-                    new ConditionBoolean({name: 'party.traveler_intertwined_winds'}),
-                ],
+                condition: new ConditionBoolean({name: 'party.traveler_intertwined_winds'}),
             }),
         ],
     },

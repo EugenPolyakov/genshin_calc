@@ -111,16 +111,19 @@
 .char-icon-nefer {background-image: url("../../images/chars/nefer.png")}
 .char-icon-durin {background-image: url("../../images/chars/durin.png")}
 .char-icon-jahoda {background-image: url("../../images/chars/jahoda.png")}
+.char-icon-columbina {background-image: url("../../images/chars/columbina.png")}
+.char-icon-zibai {background-image: url("../../images/chars/zibai.png")}
+.char-icon-illuga {background-image: url("../../images/chars/illuga.png")}
 .sprite-char.sprite-24 {
-	background-image: url("../../images/sprites/char_b0f1e2de94a7a1cb3d961a6c8d30fe3d.png");
+	background-image: url("../../images/sprites/char_b9ace775ff52d84c651189d07586fcd4.png");
 	background-size: 264px 264px;
 }
 .sprite-char.sprite-40 {
-	background-image: url("../../images/sprites/char_911461f958d4f12d520867d6996e08bb.png");
+	background-image: url("../../images/sprites/char_b5975f1b50e1fe08917d60e97aa9d533.png");
 	background-size: 440px 440px;
 }
 .sprite-char.sprite-60 {
-	background-image: url("../../images/sprites/char_35b15a2d8677aed0838889624be123a9.png");
+	background-image: url("../../images/sprites/char_177a5687a60cd5ed354ea3e2d5398104.png");
 	background-size: 660px 660px;
 }
 .sprite.char-icon-unknown {background-position: 0% 0%}
@@ -236,6 +239,9 @@
 .sprite.char-icon-nefer {background-position: 0% 100%}
 .sprite.char-icon-durin {background-position: 10% 100%}
 .sprite.char-icon-jahoda {background-position: 20% 100%}
+.sprite.char-icon-columbina {background-position: 30% 100%}
+.sprite.char-icon-zibai {background-position: 40% 100%}
+.sprite.char-icon-illuga {background-position: 50% 100%}
 
 @media
 only screen and (-webkit-min-device-pixel-ratio: 2),
@@ -357,7 +363,10 @@ only screen and (                min-resolution: 2dppx) {
 	.char-icon-nefer {background-image: url("../../images/chars/nefer_2x.png")}
 	.char-icon-durin {background-image: url("../../images/chars/durin_2x.png")}
 	.char-icon-jahoda {background-image: url("../../images/chars/jahoda_2x.png")}
-	.sprite-char.sprite-24 {background-image: url("../../images/sprites/char_525c15e8743ca767d22202eb467e274d.png")}
-	.sprite-char.sprite-40 {background-image: url("../../images/sprites/char_bc56bb8ff51356a544c60c4804be8ec4.png")}
-	.sprite-char.sprite-60 {background-image: url("../../images/sprites/char_f42df8337e6cf2ae15fd9f4ecac9b5cc.png")}
+	.char-icon-columbina {background-image: url("../../images/chars/columbina_2x.png")}
+	.char-icon-zibai {background-image: url("../../images/chars/zibai_2x.png")}
+	.char-icon-illuga {background-image: url("../../images/chars/illuga_2x.png")}
+	.sprite-char.sprite-24 {background-image: url("../../images/sprites/char_8c4b0822763504f4e230bbfaf1b0970f.png")}
+	.sprite-char.sprite-40 {background-image: url("../../images/sprites/char_384b7a04bd70fa915746bb0990c03171.png")}
+	.sprite-char.sprite-60 {background-image: url("../../images/sprites/char_4a3d1ebb824fa1b295cde4352f5f68c4.png")}
 }

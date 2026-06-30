@@ -1,0 +1,118 @@
+category;name;rus;eng
+feature_attack;normal_hit_1;Урон атаки 1;1-Hit DMG
+feature_attack;normal_hit_1_1;Урон атаки 1-1;1-1-Hit DMG
+feature_attack;normal_hit_1_2;Урон атаки 1-2;1-2-Hit DMG
+feature_skill;normal_hit_1;Урон атаки 1;1-Hit DMG
+feature_skill;normal_hit_1_1;Урон атаки 1-1;1-1-Hit DMG
+feature_skill;normal_hit_1_2;Урон атаки 1-2;1-2-Hit DMG
+feature_burst;normal_hit_1;Урон атаки 1;1-Hit DMG
+feature_burst;normal_hit_1_1;Урон атаки 1-1;1-1-Hit DMG
+feature_burst;normal_hit_1_2;Урон атаки 1-2;1-2-Hit DMG
+feature_attack;normal_hit_2;Урон атаки 2;2-Hit DMG
+feature_attack;normal_hit_2_1;Урон атаки 2-1;2-1-Hit DMG
+feature_attack;normal_hit_2_2;Урон атаки 2-2;2-2-Hit DMG
+feature_skill;normal_hit_2;Урон атаки 2;2-Hit DMG
+feature_skill;normal_hit_2_1;Урон атаки 2-1;2-1-Hit DMG
+feature_skill;normal_hit_2_2;Урон атаки 2-2;2-2-Hit DMG
+feature_burst;normal_hit_2;Урон атаки 2;2-Hit DMG
+feature_burst;normal_hit_2_1;Урон атаки 2-1;2-1-Hit DMG
+feature_burst;normal_hit_2_2;Урон атаки 2-2;2-2-Hit DMG
+feature_attack;normal_hit_3;Урон атаки 3;3-Hit DMG
+feature_attack;normal_hit_3_1;Урон атаки 3-1;3-1-Hit DMG
+feature_attack;normal_hit_3_2;Урон атаки 3-2;3-2-Hit DMG
+feature_skill;normal_hit_3;Урон атаки 3;3-Hit DMG
+feature_skill;normal_hit_3_1;Урон атаки 3-1;3-1-Hit DMG
+feature_skill;normal_hit_3_2;Урон атаки 3-2;3-2-Hit DMG
+feature_burst;normal_hit_3;Урон атаки 3;3-Hit DMG
+feature_burst;normal_hit_3_1;Урон атаки 3-1;3-1-Hit DMG
+feature_burst;normal_hit_3_2;Урон атаки 3-2;3-2-Hit DMG
+feature_attack;normal_hit_4;Урон атаки 4;4-Hit DMG
+feature_attack;normal_hit_4_1;Урон атаки 4-1;4-1-Hit DMG
+feature_attack;normal_hit_4_2;Урон атаки 4-2;4-2-Hit DMG
+feature_skill;normal_hit_4;Урон атаки 4;4-Hit DMG
+feature_skill;normal_hit_4_1;Урон атаки 4-1;4-1-Hit DMG
+feature_skill;normal_hit_4_2;Урон атаки 4-2;4-2-Hit DMG
+feature_burst;normal_hit_4;Урон атаки 4;4-Hit DMG
+feature_burst;normal_hit_4_1;Урон атаки 4-1;4-1-Hit DMG
+feature_burst;normal_hit_4_2;Урон атаки 4-2;4-2-Hit DMG
+feature_attack;normal_hit_5;Урон атаки 5;5-Hit DMG
+feature_attack;normal_hit_5_1;Урон атаки 5-1;5-1-Hit DMG
+feature_attack;normal_hit_5_2;Урон атаки 5-2;5-2-Hit DMG
+feature_skill;normal_hit_5;Урон атаки 5;5-Hit DMG
+feature_skill;normal_hit_5_1;Урон атаки 5-1;5-1-Hit DMG
+feature_skill;normal_hit_5_2;Урон атаки 5-2;5-2-Hit DMG
+feature_burst;normal_hit_5;Урон атаки 5;5-Hit DMG
+feature_burst;normal_hit_5_1;Урон атаки 5-1;5-1-Hit DMG
+feature_burst;normal_hit_5_2;Урон атаки 5-2;5-2-Hit DMG
+feature_attack;normal_hit_6;Урон атаки 6;6-Hit DMG
+feature_attack;normal_hit_6_1;Урон атаки 6-1;6-1-Hit DMG
+feature_attack;normal_hit_6_2;Урон атаки 6-2;6-2-Hit DMG
+feature_skill;normal_hit_6;Урон атаки 6;6-Hit DMG
+feature_skill;normal_hit_6_1;Урон атаки 6-1;6-1-Hit DMG
+feature_skill;normal_hit_6_2;Урон атаки 6-2;6-2-Hit DMG
+feature_burst;normal_hit_6;Урон атаки 6;6-Hit DMG
+feature_burst;normal_hit_6_1;Урон атаки 6-1;6-1-Hit DMG
+feature_burst;normal_hit_6_2;Урон атаки 6-2;6-2-Hit DMG
+feature_attack;aimed;Прицельный выстрел;Aimed Shot
+feature_skill;aimed;Прицельный выстрел;Aimed Shot
+feature_burst;aimed;Прицельный выстрел;Aimed Shot
+feature_attack;charged_aimed;Заряженный выстрел;Fully-Charged Aimed Shot
+feature_skill;charged_aimed;Заряженный выстрел;Fully-Charged Aimed Shot
+feature_burst;charged_aimed;Заряженный выстрел;Fully-Charged Aimed Shot
+feature_attack;plunge;Урон в падении;Plunge DMG
+feature_skill;plunge;Урон в падении;Plunge DMG
+feature_burst;plunge;Урон в падении;Plunge DMG
+feature_attack;charged_hit;Урон заряженной атаки;Charged Attack DMG
+feature_skill;charged_hit;Урон заряженной атаки;Charged Attack DMG
+feature_burst;charged_hit;Урон заряженной атаки;Charged Attack DMG
+feature_attack;press_dmg;Урон быстрого нажатия;Press DMG
+feature_skill;press_dmg;Урон быстрого нажатия;Press DMG
+feature_burst;press_dmg;Урон быстрого нажатия;Press DMG
+feature_attack;explosion_dmg;Урон взрыва;Explosion DMG
+feature_skill;explosion_dmg;Урон взрыва;Explosion DMG
+feature_burst;explosion_dmg;Урон взрыва;Explosion DMG
+feature_attack;cd;Время отката;CD
+feature_skill;cd;Время отката;CD
+feature_burst;cd;Время отката;CD
+feature_attack;charge_level_1;Урон заряда 1;Charge Level 1 DMG
+feature_attack;charge_level_1_1;Урон заряда 1-1;Charge Level 1-1 DMG
+feature_attack;charge_level_1_2;Урон заряда 1-2;Charge Level 1-2 DMG
+feature_skill;charge_level_1;Урон заряда 1;Charge Level 1 DMG
+feature_skill;charge_level_1_1;Урон заряда 1-1;Charge Level 1-1 DMG
+feature_skill;charge_level_1_2;Урон заряда 1-2;Charge Level 1-2 DMG
+feature_burst;charge_level_1;Урон заряда 1;Charge Level 1 DMG
+feature_burst;charge_level_1_1;Урон заряда 1-1;Charge Level 1-1 DMG
+feature_burst;charge_level_1_2;Урон заряда 1-2;Charge Level 1-2 DMG
+feature_attack;charge_level_2;Урон заряда 2;Charge Level 2 DMG
+feature_attack;charge_level_2_1;Урон заряда 2-1;Charge Level 2-1 DMG
+feature_attack;charge_level_2_2;Урон заряда 2-2;Charge Level 2-2 DMG
+feature_skill;charge_level_2;Урон заряда 2;Charge Level 2 DMG
+feature_skill;charge_level_2_1;Урон заряда 2-1;Charge Level 2-1 DMG
+feature_skill;charge_level_2_2;Урон заряда 2-2;Charge Level 2-2 DMG
+feature_burst;charge_level_2;Урон заряда 2;Charge Level 2 DMG
+feature_burst;charge_level_2_1;Урон заряда 2-1;Charge Level 2-1 DMG
+feature_burst;charge_level_2_2;Урон заряда 2-2;Charge Level 2-2 DMG
+feature_attack;skill_dmg;Урон навыка;Skill DMG
+feature_skill;skill_dmg;Урон навыка;Skill DMG
+feature_burst;skill_dmg;Урон навыка;Skill DMG
+feature_attack;heal_dot;Регенерация;Continuous Regeneration Per Sec
+feature_skill;heal_dot;Регенерация;Continuous Regeneration Per Sec
+feature_burst;heal_dot;Регенерация;Continuous Regeneration Per Sec
+feature_attack;duration;Длительность;Duration
+feature_skill;duration;Длительность;Duration
+feature_burst;duration;Длительность;Duration
+feature_attack;energy_cost;Потребление энергии;Energy Cost
+feature_skill;energy_cost;Потребление энергии;Energy Cost
+feature_burst;energy_cost;Потребление энергии;Energy Cost
+feature_attack;charged_spin;Урон вращающейся атаки;Charged Attack Cyclic DMG
+feature_skill;charged_spin;Урон вращающейся атаки;Charged Attack Cyclic DMG
+feature_burst;charged_spin;Урон вращающейся атаки;Charged Attack Cyclic DMG
+feature_attack;charged_final;Урон последней заряженной атаки;Charged Attack Final DMG
+feature_skill;charged_final;Урон последней заряженной атаки;Charged Attack Final DMG
+feature_burst;charged_final;Урон последней заряженной атаки;Charged Attack Final DMG
+feature_attack;stamina_cost;Потребление выносливости;Charged Attack Stamina Cost
+feature_skill;stamina_cost;Потребление выносливости;Charged Attack Stamina Cost
+feature_burst;stamina_cost;Потребление выносливости;Charged Attack Stamina Cost
+feature_attack;max_duration;Макс. длительность;Max Duration
+feature_skill;max_duration;Макс. длительность;Max Duration
+feature_burst;max_duration;Макс. длительность;Max Duration

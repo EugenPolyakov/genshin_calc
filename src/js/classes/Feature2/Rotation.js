@@ -55,6 +55,7 @@ export class FeatureRotation extends Feature2 {
 
         return {
             [this.getName()]: new FeatureResult({
+                owner: this,
                 icon: element,
                 normal: normal,
                 crit: crit,

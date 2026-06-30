@@ -1,3 +1,6 @@
+import { Feature2 } from "./Feature2";
+import { FeatureResult } from "./FeatureResult";
+
 const MAX_LEVEL = 110;
 
 export class Feature {
@@ -337,12 +340,16 @@ export class Feature {
         return {};
     }
 
+    /**
+     * @param {Set.<Feature2>} items
+     */
     static getTree(items) {
         let tree = {};
 
         for (const name of Object.keys(items)) {
             let parts = name.split('.');
-            let first = parts.shift();
+            let first = items[name].category;
+            parts.shift();
             let remain = parts.join('.');
 
             if (tree[first] === undefined) {
@@ -388,12 +395,8 @@ export class Feature {
                     continue;
                 }
 
-                let value = section +'.'+ feature;
-                let title = 'feature_'+ value;
-
-                if (featureData.title) {
-                    title = featureData.title;
-                }
+                let value = featureData.getName();
+                let title = 'feature_' + featureData.getName();
 
                 title = UI.Lang.get(title)
                 if (featureData.isChild) {

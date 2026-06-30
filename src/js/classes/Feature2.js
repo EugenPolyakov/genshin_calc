@@ -9,7 +9,7 @@ if (process.env.NODE_ENV !== 'production') {
     var FIELD_NAMES = [
         'name', 'category', 'element', 'damageType', 'multipliers', 'condition', 'tags',
         'cannotReact', 'format', 'digits', 'postEffect', 'items', 'isChild', 'hits',
-        'allowInfusion', 'icon', 'stat', 'title',
+        'allowInfusion', 'icon', 'stat', 'fullName',
         'damageBonuses', 'critRateBonuses', 'critDamageBonuses',
         'subtractBoL', 'partyHeal', 'noSelfHeal',
         'rotationHitCount', 'rotationHitDescription',
@@ -33,7 +33,7 @@ export class Feature2 {
         this.tags = params.tags || [];
         this.multipliers = params.multipliers || [];
         this.category = params.category;
-        this.title = params.title;
+        this.fullName = params.fullName;
         this.condition = params.condition;
         this.element = '';
         this.damageType = '';
@@ -52,7 +52,7 @@ export class Feature2 {
     }
 
     getName() {
-        return this.category +'.'+ this.name;
+        return this.fullName ? this.fullName : this.category + '.' + this.name;
     }
 
     getIsChild() {
@@ -215,7 +215,8 @@ export class Feature2 {
         let [normal, crit, average] = compiler.execute(data);
 
         return {
-            [this.title ? this.title : this.getName()]: new FeatureResult({
+            [this.getName()]: new FeatureResult({
+                owner: this,
                 icon: this.icon || this.getElement(data),
                 normal: normal,
                 crit: crit,
@@ -262,7 +263,8 @@ export class Feature2 {
 
         for (const name of Object.keys(items)) {
             let parts = name.split('.');
-            let first = parts.shift();
+            let first = items[name].category;
+            parts.shift();
             let remain = parts.join('.');
 
             if (tree[first] === undefined) {
@@ -296,12 +298,8 @@ export class Feature2 {
                     continue;
                 }
 
-                let value = section +'.'+ feature;
-                let title = 'feature_'+ value;
-
-                if (featureData.title) {
-                    title = 'feature_' + featureData.title;
-                }
+                let value = featureData.getName();
+                let title = 'feature_'+ featureData.getName();
 
                 title = UI.Lang.get(title)
                 if (featureData.isChild) {

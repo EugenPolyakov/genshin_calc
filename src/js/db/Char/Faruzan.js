@@ -81,7 +81,7 @@ const Talents = new DbObjectTalents({
     burst: {
         gameId: charTalentTables.Faruzan.s3_id,
         title: 'talent_name.faruzan_the_winds_secret_ways',
-        description: 'talent_descr.faruzan_the_winds_secret_ways',
+        description: 'talent_descr.faruzan_the_winds_secret_ways_1',
         items: [
             {
                 table: new StatTable('burst_dmg', charTalentTables.Faruzan.s3.p1),
@@ -259,7 +259,7 @@ export const Faruzan = new DbObjectChar({
             name: 'faruzan_wind_bale',
             serializeId: 1,
             title: 'talent_name.faruzan_wind_bale',
-            description: 'talent_descr.faruzan_wind_bale',
+            description: 'talent_descr.faruzan_the_winds_secret_ways_2',
             levelSetting: 'char_skill_burst',
             stats: [
                 Talents.getMulti({
@@ -273,7 +273,7 @@ export const Faruzan = new DbObjectChar({
             name: 'faruzan_wind_benefit',
             serializeId: 2,
             title: 'talent_name.faruzan_wind_benefit',
-            description: 'talent_descr.faruzan_wind_benefit',
+            description: 'talent_descr.faruzan_the_winds_secret_ways_3',
             levelSetting: 'char_skill_burst',
             stats: [
                 Talents.getAlias('burst.faruzan_anemo_dmg_bonus', 'dmg_anemo'),
@@ -401,7 +401,7 @@ export const Faruzan = new DbObjectChar({
                 serializeId: 4,
                 rotation: 'party',
                 title: 'talent_name.faruzan_wind_bale',
-                description: 'talent_descr.faruzan_wind_bale',
+                description: 'talent_descr.faruzan_the_winds_secret_ways_2',
                 levelSetting: 'faruzan_char_skill_burst',
                 stats: [
                     Talents.getMulti({
@@ -416,7 +416,7 @@ export const Faruzan = new DbObjectChar({
                 serializeId: 5,
                 rotation: 'party',
                 title: 'talent_name.faruzan_wind_benefit',
-                description: 'talent_descr.faruzan_wind_benefit',
+                description: 'talent_descr.faruzan_the_winds_secret_ways_3',
                 levelSetting: 'faruzan_char_skill_burst',
                 stats: [
                     Talents.getAlias('burst.faruzan_anemo_dmg_bonus', 'dmg_anemo'),

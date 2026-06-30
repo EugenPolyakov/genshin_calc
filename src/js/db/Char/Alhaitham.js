@@ -65,8 +65,8 @@ const Talents = new DbObjectTalents({
     },
     skill: {
         gameId: charTalentTables.Alhaitham.s2_id,
-        title: 'talent_name.alhaitham_an_elaboration_on_form',
-        description: 'talent_descr.alhaitham_an_elaboration_on_form',
+        title: 'talent_name.alhaitham_an_elaboration_on_form_1',
+        description: 'talent_descr.alhaitham_an_elaboration_on_form_1',
         items: [
             {
                 type: 'multivalue',
@@ -452,8 +452,8 @@ export const Alhaitham = new DbObjectChar({
         new ConditionBoolean({
             name: 'alhaitham_mirror',
             serializeId: 1,
-            title: 'talent_name.alhaitham_mirror',
-            description: 'talent_descr.alhaitham_mirror',
+            title: 'talent_name.alhaitham_an_elaboration_on_form_2',
+            description: 'talent_descr.alhaitham_an_elaboration_on_form_2',
             settings: {
                 attack_infusion: 'dendro',
             },

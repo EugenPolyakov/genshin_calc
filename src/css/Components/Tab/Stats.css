@@ -89,7 +89,7 @@
     background-image: url("../../../images/icons/stat_icons.png");
     background-position: 0px -20px;
 }
-.stats-table-block .icon-crit {
+.stats-table-block .icon-crit_dmg {
     background-image: url("../../../images/icons/stat_icons.png");
     background-position: 20px 0px;
 }

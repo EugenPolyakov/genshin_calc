@@ -108,7 +108,7 @@ class TemplateString:
                 r = ''
                 for index in indices:
                     v= index if isinstance(index, str) else result[index]
-                    if (v and v[0] in ',;.') or r == '':
+                    if r == '' or r[-1] in '>{} ' or (v and v[0] in ' ,;:.<{}'):
                         r+=v
                     else:
                         r+= ' ' + v

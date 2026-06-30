@@ -69,7 +69,7 @@ const Talents = new DbObjectTalents({
     skill: {
         gameId: charTalentTables.Shenhe.s2_id,
         title: 'talent_name.shenhe_spring_spirit_summoning',
-        description: 'talent_descr.shenhe_spring_spirit_summoning',
+        description: 'talent_descr.shenhe_spring_spirit_summoning_1',
         items: [
             {
                 table: new StatTable('press_dmg', charTalentTables.Shenhe.s2.p1),
@@ -320,7 +320,7 @@ export const Shenhe = new DbObjectChar({
             name: 'shenhe_icy_quill',
             serializeId: 1,
             title: 'talent_name.shenhe_icy_quill',
-            description: 'talent_descr.shenhe_icy_quill',
+            description: 'talent_descr.shenhe_spring_spirit_summoning_2',
         }),
         new ConditionBoolean({
             name: 'shenhe_spirit_field',
@@ -499,7 +499,7 @@ export const Shenhe = new DbObjectChar({
                 serializeId: 4,
                 rotation: 'party',
                 title: 'talent_name.shenhe_icy_quill',
-                description: 'talent_descr.shenhe_icy_quill',
+                description: 'talent_descr.shenhe_spring_spirit_summoning_2',
             }),
             new ConditionBoolean({
                 name: 'party.shenhe_spirit_field',

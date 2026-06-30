@@ -82,7 +82,7 @@ const Talents = new DbObjectTalents({
     burst: {
         gameId: charTalentTables.Xiao.s3_id,
         title: 'talent_name.xiao_bane_of_all_evil',
-        description: 'talent_descr.xiao_bane_of_all_evil',
+        description: 'talent_descr.xiao_bane_of_all_evil_1',
         items: [
             {
                 table: new StatTable('xiao_burst_bonus', charTalentTables.Xiao.s3.p1),
@@ -271,7 +271,7 @@ export const Xiao = new DbObjectChar({
             name: 'xiao_yaksha_mask',
             serializeId: 1,
             title: 'talent_name.xiao_yaksha_mask',
-            description: 'talent_descr.xiao_yaksha_mask',
+            description: 'talent_descr.xiao_bane_of_all_evil_2',
             levelSetting: 'char_skill_burst',
             settings: {
                 attack_infusion: 'anemo',

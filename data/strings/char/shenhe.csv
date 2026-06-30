@@ -2,13 +2,7 @@ category;name;rus;eng
 
 stat;dmg_skill_shenhe;Призыв духа;Spring Spirit Summoning
 
-feature_skill;shenhe_dmg_bonus;Повышение урона;DMG Bonus
-feature_skill;shenhe_duration;Длительность быстрого/долгого нажатия;Press/Hold Duration
-feature_skill;shenhe_stacks;Количество уровней эффекта при быстром/долгом нажатии;Press/Hold Stacks
-feature_burst;shenhe_res_decrease;Понижение сопротивления;RES Decrease
-
 talent_name;shenhe_icy_quill;Ледяное перо;Icy Quill
-talent_descr;shenhe_icy_quill;Когда name{обычные атаки}, name{заряженные атаки}, name{атаки в падении}, name{элементальные навыки} или name{взрывы стихии} наносят противникам cryo{Крио урон}, урон, нанесённый другими персонажами, увеличивается в зависимости от текущей name{силы атаки} name{Шэнь Хэ}.;When name{Normal}, name{Charged}, and name{Plunging Attacks}, name{Elemental Skills}, and name{Elemental Bursts} deal cryo{Cryo DMG} to opponents, the DMG dealt is increased based on name{Shenhe}'s current name{ATK}.
 
 talent_name;shenhe_spirit_field;Находится в области Духа талисмана;Within The Talisman Spirit's Field
 

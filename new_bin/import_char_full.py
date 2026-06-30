@@ -17,8 +17,11 @@ from lib.genshin.strings.template import SentenceMismatch
 from lib.genshin.utils import convert_id, add_array
 from lib.genshin.strings.csv import CsvDumper
 from lib.genshin.strings.text import TextDumper  # noqa
-import static
-from static import WEAPON_TYPES, shrink_table
+from lib.genshin import char_generator
+from lib.genshin.char_generator import CharGenerator, EmptyCharGenerator
+from lib.genshin.char_talent_generator import StatGenerator
+from lib import static
+from lib.static import WEAPON_TYPES, shrink_table, names_mapping, fix_name
 from old_values import old_values
 import logging
 
@@ -36,6 +39,11 @@ if len(sys.argv) > 1:
 if do_single and not generate_char:
     print('error')
     sys.exit()
+
+if generate_char:
+    generator = CharGenerator(generate_char)
+else:
+    generator = EmptyCharGenerator()
 
 char_data = CharData()
 depot_data = CharSkillDepotData()
@@ -69,12 +77,12 @@ texts = {}
 
 traveler_depot_ids = {
     702: 'pyro',
-    703: 'hydro',
-    704: 'anemo',
+    503: 'hydro',
+    504: 'anemo',
     # 705: 'cryo',
     706: 'geo',
     707: 'electro',
-    708: 'dendro',
+    508: 'dendro',
 }
 
 NEED_PASSIVE_TALENTS = [
@@ -84,83 +92,11 @@ NEED_PASSIVE_TALENTS = [
     'aino',
     'flins',
     'lauma',
-    'nefer'
+    'nefer',
+    'columbina',
+    'illuga',
+    'zibai',
 ]
-names_mapping = {
-    '1-Hit DMG': 'normal_hit_1',
-    '2-Hit DMG': 'normal_hit_2',
-    '3-Hit DMG': 'normal_hit_3',
-    '4-Hit DMG': 'normal_hit_4',
-    '5-Hit DMG': 'normal_hit_5',
-    '6-Hit DMG': 'normal_hit_6',
-    'Aimed Shot': 'aimed',
-    'Fully-Charged Aimed Shot': 'charged_aimed',
-    'Aimed Shot Charge Level 1': 'charged_aimed',
-    'Plunge DMG': 'plunge',
-    'Low/High Plunge DMG': 'plunge_low/plunge_high',
-    'Charged Attack': 'charged_hit',
-    'Charged Attack DMG': 'charged_hit',
-    'Charged Attack Stamina Cost': 'stamina_cost',
-    'Charged Attack Spinning DMG': 'charged_spin',
-    'Charged Attack Cyclic DMG': 'charged_spin',
-    'Charged Attack Loop DMG': 'charged_spin',
-    'Charged Attack Final DMG': 'charged_final',
-    'Charge Level 1 DMG': 'charge_level_1',
-    'Charge Level 2 DMG': 'charge_level_2',
-    'Max Duration': 'max_duration',
-    'CD': 'cd',
-    'Skill CD': 'cd',
-    'Duration': 'duration',
-    'Energy Cost': 'energy_cost',
-    'Elemental Burst DMG': 'burst_dmg',
-    'Burst DMG': 'burst_dmg',
-    'Skill DMG': 'skill_dmg',
-    'Press CD': 'cd_press',
-    'Press DMG': 'press_dmg',
-    'Press Skill DMG': 'press_dmg',
-    'Hold CD': 'cd_hold',
-    'Hold DMG': 'hold_dmg',
-    'Hold Skill DMG': 'hold_dmg',
-    'Heal': 'heal',
-    'Healing': 'heal',
-    'Cast Healing': 'heal',
-    'Regeneration': 'heal_dot',
-    'Continuous Healing': 'heal_dot',
-    'Continuous Regeneration': 'heal_dot',
-    'HP Regeneration Over Time': 'heal_dot',
-    'Continuous Regeneration Per Sec': 'heal_dot',
-    'Shield Duration': 'shield_duration',
-    'HP Cost': 'hp_cost',
-    'Shield DMG Absorption': 'shield_absorption',
-    'Max Shield DMG Absorption': 'shield_max_absorption',
-    'Max CD': 'max_cd',
-    'Explosion DMG': 'explosion_dmg',
-    'Activation Stamina Consumption': 'sprint_activation_cost',
-    'Stamina Drain': 'sprint_stamina_drain',
-    'DoT': 'dot_dmg',
-    'DMG Reduction': 'dmg_reduction',
-    'Continuous Field DMG': 'field_dmg',
-
-    'Spiritbreath Thorn DMG': 'spiritbreath_thorn_dmg',
-    'Surging Blade DMG': 'surging_blade_dmg',
-    'Surging Blade Interval': 'surging_blade_interval',
-    'Spiritbreath Thorn Interval': 'spiritbreath_thorn_interval',
-    'Spiritbreath Thorn DMG Interval': 'spiritbreath_thorn_interval',
-
-    'Nightsoul Point Limit': 'nightsoul_point_limit',
-
-# skiped
-    'Spiritbreath Thorn/Surging Blade DMG Interval': 'spiritbreath_thorn_surging_blade_dmg',
-    'Spiritbreath Thorn/Surging Blade DMG': 'spiritbreath_thorn_surging_blade_dmg_interval',
-    'Fiery Passion Low/High Plunge DMG': 'fiery_passion_low_high_plunge_dmg',
-    '0/1/2/3 Void Rift Absorption DMG Bonus': '0_1_2_3_void_rift_absorption_dmg_bonus',
-    'Shield Base Absorption': 'shield_base_absorption',
-    'Additional Shield Absorption': 'additional_shield_absorption',
-    'Stone Stele/Resonance DMG': 'stone_stele_resonance_dmg',
-    'Pyro: DMG Bonus': 'pyro_dmg_bonus',
-    'Electro: Trigger Interval Decrease': 'electro_trigger_interval_decrease',
-    'Hydro: Duration Extension': 'hydro_duration_extension',
-}
 
 skiped_features = set([
     'cd', 'cd_hold', 'max_cd', 'cd_press', 'energy_cost', 'surging_blade_interval',
@@ -170,11 +106,13 @@ skiped_features = set([
     '0_1_2_3_void_rift_absorption_dmg_bonus', 'shield_base_absorption',
     'additional_shield_absorption', 'stone_stele_resonance_dmg',
     'pyro_dmg_bonus', 'electro_trigger_interval_decrease', 'hydro_duration_extension',
+    'sword_dance_whirling_steps_1_hit_dmg', 'sword_dance_whirling_steps_2_hit_dmg',
+    'luminous_illusion_water_wheel_dmg'
 ])
 
-def outwrite(s):
+def talenttable(s):
     if not do_single:
-        out.write(s)
+        talentfile.write(s)
 
 def format_table(data, fmt):
     isPercent = fmt.find('P') >= 0
@@ -189,12 +127,7 @@ def format_table(data, fmt):
 
     return shrink_table(data)
 
-def fix_name(name):
-    name = re.sub(r'\#?{LAYOUT_PC#(.*?)\}', '\g<1>', name)
-    name = re.sub(r'\#?{.*?}', '', name)
-    return name
-
-def make_tables(data, generate):
+def make_tables(data):
     params = {}
     processed = {}
     elements = []
@@ -205,53 +138,28 @@ def make_tables(data, generate):
         for level in levels:
             params[index+1].append(data['levels'][level][index])
 
-    idx = 0
-    for desc in data['desc']:
+    for (desc, tmp) in data['desc']:
         if not desc:
             continue
         (name, params_str) = desc.split('|')
         params_indices = re.findall(r'param(\d+):(\w+)\b', params_str)
         name = fix_name(name)
-        if generate:
-            tmp = generate['param_name'][idx]
-            lst = tmp.split('/')
-            if len(lst) == len(params_indices):
-                for (localIdx, (ind, fmt)) in enumerate(params_indices):
-                    elements.append((lst[localIdx], 1))
-            else:
-                elements.append((tmp, len(params_indices)))
-                print("            {")
-                print("                type: 'hits',")
-                print(f"                name: '{tmp}',")
-                print("                table: [")
 
         for (localIdx, (ind, fmt)) in enumerate(params_indices):
             ind = int(ind)
-            if generate:
-                if len(lst) == len(params_indices):
-                    print("            {")
-                    print(f"                table: new StatTable('{lst[localIdx]}', charTalentTables.{generate['name']}.s{generate['id']}.p{ind}),")
-                    print("            },")
-                else:
-                    print(f"                    new StatTable('{tmp}_{localIdx+1}', charTalentTables.{generate['name']}.s{generate['id']}.p{ind}),")
-
             if ind in processed:
                 continue
             processed[ind] = 1
 
-            outwrite('\t\t\t// ' + name + '\n\t\t\t')
-            outwrite('p%d: [%s],\n' % (ind, ', '.join(
+            talenttable('\t\t\t// ' + name + '\n\t\t\t')
+            talenttable('p%d: [%s],\n' % (ind, ', '.join(
                 format_table(params.get(ind, []), fmt)
             )))
             del params[ind]
 
-        if generate:
-            if len(lst) != len(params_indices):
-                print("                ],")
-                print("            },")
+        generator.add_param(tmp, params_indices)
 
-        idx+=1
-    return elements if elements else None
+    return
 
 def collect_links(txt):
     return re.findall(r'{LINK#N(\d+)}', txt)
@@ -299,12 +207,11 @@ for char in char_data.get_list():
             'depot_ids': [char['skillDepotId']],
         }
 
-def scales_and_proud(skillId, proudId, index, generate):
+def scales_and_proud(skillId, proudId, index):
     scaleData = {
         'levels': {},
         'desc': [],
         'customParams': {},
-        'allParams': [],
     }
     allLevels = proud_data.get_list_by_field('proudSkillGroupId', proudId)
     if allLevels:
@@ -316,62 +223,67 @@ def scales_and_proud(skillId, proudId, index, generate):
                     updated_values.write(f'    ({skillId}, {proudId}): {{\n')
                 for desc in item['paramDescList']:
                     text = lang_default.get(desc)
-                    scaleData['desc'].append(text)
                     if text:
                         (name, params_str) = text.split('|')
                         name_idx=''
+                        cur_desc = desc
                         name = fix_name(name)
-                        if not name in names_mapping.keys():
-                            if (skillId, proudId) in old_values and desc in old_values[(skillId, proudId)]:
-                                name_idx = old_values[(skillId, proudId)][desc]
+                        isDefault = False
+                        if (skillId, proudId) in old_values and cur_desc in old_values[(skillId, proudId)]:
+                            name_idx = old_values[(skillId, proudId)][cur_desc]
+                            if not name_idx in names_mapping.values():
+                                scaleData['customParams'][name_idx] = str(cur_desc)
                             else:
-                                name = convert_id(name, True)
-                                idx = 0
-                                name_idx = name
-                                while name_idx in scaleData['customParams']:
-                                    idx += 1
-                                    name_idx = f'{name}_{idx}'
-                            scaleData['customParams'][name_idx] = desc
-                            if not do_single:
-                                updated_values.write(f'        {desc}: "{name_idx}",\n')
+                                isDefault = True
+                        elif not name in names_mapping.keys():
+                            name = convert_id(name, True)
+                            idx = 0
+                            name_idx = name
+                            while name_idx in scaleData['customParams']:
+                                idx += 1
+                                name_idx = f'{name}_{idx}'
+                            scaleData['customParams'][name_idx] = str(cur_desc)
                         else:
-                            if not do_single:
-                                updated_values.write(f'        {desc}: "{names_mapping[name]}",\n')
-                        if generate:
-                            if name_idx:
-                                scaleData['allParams'].append(f"{generate['local']}_{name_idx}")
-                            else:
-                                scaleData['allParams'].append(names_mapping[name])
+                            name_idx = names_mapping[name]
+                            isDefault = True
+                        if not do_single:
+                            updated_values.write(f'        {cur_desc}: "{name_idx}",\n')
+
+                        name_idx = generator.fix_name(isDefault, name_idx)
+
+                        scaleData['desc'].append((text, name_idx))
+                        # if skillId == 10702:
+                        #     print(scaleData)
                 if not do_single:
                     updated_values.write(f'    }},\n')
-# feature_skill;layout_mobile_tap_layout_pc_press_layout_ps_press_cd;Откат быстрого нажатия;#{LAYOUT_MOBILE#Tap}{LAYOUT_PC#Press}{LAYOUT_PS#Press} CD
 
             for scale in item['paramList']:
                 if skillLevel not in scaleData['levels']:
                     scaleData['levels'][skillLevel] = []
                 scaleData['levels'][skillLevel].append(scale)
 
-        outwrite(f'\t\ts{index}_id: {skillId},\n')
-        outwrite("\t\ts" + str(index) + ": {\n")
-        if generate:
-            generate["param_name"] = scaleData['allParams']
-        scaleData['allParams'] = make_tables(scaleData, generate)
-        outwrite("\t\t},\n")
-    elif generate:
-        print(f'skiped: proudId {proudId} skillId {skillId}')
+        talenttable(f'\t\ts{index}_id: {skillId},\n')
+        talenttable("\t\ts" + str(index) + ": {\n")
+        make_tables(scaleData)
+        talenttable("\t\t},\n")
+        if statgenerator: statgenerator.processScaleData(scaleData)
 
     return scaleData
 
 out_dir = os.path.join(dirname, '../src/js/db/generated/')
 if not do_single:
-    updated_values = open(dirname + '/old_values.py', 'w', encoding='utf-8')
+    updated_values = open(dirname + '/new_values.py', 'w', encoding='utf-8')
     updated_values.write('old_values = {\n')
 
 
 if not do_single:
-    out = open(out_dir + 'CharTalentTables.js', 'w', encoding='utf-8')
-outwrite('// This file is autogenerated\n')
-outwrite('export const charTalentTables = {\n')
+    talentfile = open(out_dir + 'CharTalentTables.js', 'w', encoding='utf-8')
+    statgenerator = StatGenerator(out_dir + 'CharTables.js')
+    statgenerator.generateHeader()
+    #scalefile = open(out_dir + 'CharScale.js', 'w', encoding='utf-8')
+
+talenttable('// This file is autogenerated\n')
+talenttable('export const charTalentTables = {\n')
 
 def prepare_talents(talent_items, generate):
     for talent in talent_items:
@@ -382,35 +294,7 @@ def prepare_talents(talent_items, generate):
         talent_id = char_id + '_' + talent_short_id
 
         if generate:
-            print("        {")
-            print("            conditions: [")
-            if talent.get('no_descr'):
-                print("                new Condition({")
-                print("                    settings: {")
-                print("                        char_skill_burst_bonus: 3, char_skill_elemental_bonus: 3,")
-                print("                    },")
-            else:
-                print("                new ConditionStatic({")
-                print(f"                    name: '{talent_id}',")
-                print(f"                    title: 'talent_name.{talent_id}',")
-                print(f"                    description: 'talent_descr.{talent_id}',")
-            if talent['descTextMapHash_hex'] and lang_default.get(talent['descTextMapHash_hex']):
-                print(f"                    condition: new ConditionBoolean({{ name: 'char_hex_{generate}', invert: 1}}),")
-                print("                }),")
-                if talent.get('no_descr'):
-                    print("                new Condition({")
-                    print("                    settings: {")
-                    print("                        char_skill_burst_bonus: 3, char_skill_elemental_bonus: 3,")
-                    print("                    },")
-                else:
-                    print("                new ConditionStatic({")
-                    print(f"                    name: '{talent_id}',")
-                    print(f"                    title: 'talent_name.{talent_id}',")
-                    print(f"                    description: 'talent_descr.{talent_id}_hex',")
-                print(f"                    condition: new ConditionBoolean({{ name: 'char_hex_{generate}'}}),")
-            print("                }),")
-            print("            ],")
-            print("        },")
+            generator.constellation(talent_id, talent.get('no_descr'), talent['descTextMapHash_hex'] and lang_default.get(talent['descTextMapHash_hex']))
 
         if uniq_skills.get(talent_id):
             continue
@@ -433,21 +317,23 @@ def prepare_talents(talent_items, generate):
             if talent['descTextMapHash']:
                 try:
                     texts[eng_name].append(lang.get(talent['descTextMapHash']))
-                    skill_descr = process_talent_desc(lang_name, lang.get(talent['descTextMapHash']), talent_short_id, tpl_talents, None, tpl_keywords)
+                    skill_descr = process_talent_desc(lang_name, lang.get(talent['descTextMapHash']), talent_short_id, tpl_talents, talent['no_descr'], None, tpl_keywords)
                     descItems[lang_name] = skill_descr['descr']
                     nameItems[lang_name].extend(skill_descr['names'])
-                except Exception:
+                except Exception as e:
                     logger.error(f'error on talent {talent_id}')
+                    logger.error(e)
                     err = True
 
             if talent['descTextMapHash_hex'] and lang.get(talent['descTextMapHash_hex']):
                 try:
                     texts[eng_name].append(lang.get(talent['descTextMapHash_hex']))
-                    skill_descr = process_talent_desc(lang_name, lang.get(talent['descTextMapHash_hex']), talent_short_id, tpl_talents, talent_short_id + '_hex', tpl_keywords)
+                    skill_descr = process_talent_desc(lang_name, lang.get(talent['descTextMapHash_hex']), talent_short_id, tpl_talents, talent['no_descr'], talent_short_id + '_hex', tpl_keywords)
                     descItems_hex[lang_name] = skill_descr['descr']
                     nameItems[lang_name].extend(skill_descr['names'])
-                except Exception:
+                except Exception as e:
                     logger.error(f'error on talent {talent_id}_hex')
+                    logger.error(e)
                     err = True
             #if not tpl_char: texts[eng_name].append('\n')
             texts[eng_name].append('\n')
@@ -455,50 +341,12 @@ def prepare_talents(talent_items, generate):
 
         add_array(nameItems, result_hero_strings, talent_id, 'talent_name')
 
-        if not talent.get('no_descr'):
-            if descItems:
-                add_array(descItems, result_hero_strings, talent_id, 'talent_descr')
-            if descItems_hex:
-                add_array(descItems_hex, result_hero_strings, talent_id + '_hex', 'talent_descr')
+        if descItems:
+            add_array(descItems, result_hero_strings, talent_id, 'talent_descr')
+        if descItems_hex:
+            add_array(descItems_hex, result_hero_strings, talent_id + '_hex', 'talent_descr')
 
-def print_skillmult(elem, name, vals, isChild):
-    if vals > 1:
-        print("        new FeatureDamageMultihit({")
-        print(f"            category: '{elem}',")
-        print(f"            damageType: '{'normal' if elem == 'attack' else elem}',")
-        print(f"            name: '{name}',")
-        print('            items: [');
-        for idx in range(1, vals + 1):
-            print('                {');
-            print("                    multipliers: [")
-            print("                        new FeatureMultiplier({")
-            print(f"                            leveling: 'char_skill_{'elemental' if elem == 'skill' else elem}',")
-            print(f"                            values: Talents.get('{elem}.{name}_{idx}'),")
-            print("                        }),")
-            print("                    ],")
-            print('                },')
-        print("            ],")
-        print("        }),")
-        for idx in range(1, vals + 1):
-            print_skillmult(elem, f'{name}_{idx}', 1, True)
-    else:
-        if elem == 'attack':
-            print("        new FeatureDamageNormal({")
-        elif elem == 'skill':
-            print("        new FeatureDamageSkill({")
-        else:
-            print("        new FeatureDamageBurst({")
-        if isChild:
-            print('            isChild: true,')
-        print("            multipliers: [")
-        print("                new FeatureMultiplier({")
-        print(f"                    leveling: 'char_skill_{'elemental' if elem == 'skill' else elem}',")
-        print(f"                    values: Talents.get('{elem}.{name}'),")
-        print("                }),")
-        print("            ],")
-        print("        }),")
-
-def process_talent_desc(lang_name, skill_descr, talent_short_id, tpl_patterns, talent_hex = None, tpl_keywords = None):
+def process_talent_desc(lang_name, skill_descr, talent_short_id, tpl_patterns, no_descr, talent_hex = None, tpl_keywords = None):
     locallinks.update(collect_links(skill_descr))
 
     tpl_names = lang_data[lang_name]['names']
@@ -514,45 +362,36 @@ def process_talent_desc(lang_name, skill_descr, talent_short_id, tpl_patterns, t
     # print('names:--------------------------')
     # print(skill_descr)
     if tpl_char:
-        if talent_hex: # and tpl_char.find(lang_name, talent_hex):
-            skill_descr = tpl_char.process(lang_name, talent_hex, skill_descr)
+        if no_descr and not tpl_char.find(lang_name, talent_short_id):
+            skill_descr = ''
         else:
-            skill_descr = tpl_char.process(lang_name, talent_short_id, skill_descr)
+            if talent_hex: # and tpl_char.find(lang_name, talent_hex):
+                skill_descr = tpl_char.process(lang_name, talent_hex, skill_descr)
+            else:
+                skill_descr = tpl_char.process(lang_name, talent_short_id, skill_descr)
         # print('char:--------------------------')
         # print(skill_descr)
+    elif no_descr:
+        skill_descr = ''
 
     if isinstance(skill_descr, str):
         skill_descr = {'descr': [skill_descr], 'names': []}
     return skill_descr
 
 hyperlinks = set()
-if generate_char != '':
-    print('import { Condition } from "../../classes/Condition";')
-    print('import { ConditionAscensionChar } from "../../classes/Condition/Ascension/Char";')
-    print('import { ConditionStatic } from "../../classes/Condition/Static";')
-    print('import { DbObjectChar } from "../../classes/DbObject/Char";')
-    print('import { DbObjectConstellation } from "../../classes/DbObject/Constellation";')
-    print('import { DbObjectTalents } from "../../classes/DbObject/Talents";')
-    print('import { FeatureDamageBurst } from "../../classes/Feature2/Damage/Burst";')
-    print('import { FeatureDamageMultihit } from "../../classes/Feature2/Damage/Multihit";')
-    print('import { FeatureDamageNormal } from "../../classes/Feature2/Damage/Normal";')
-    print('import { FeatureDamageSkill } from "../../classes/Feature2/Damage/Skill";')
-    print('import { FeatureMultiplier } from "../../classes/Feature2/Multiplier";')
-    print('import { StatTable } from "../../classes/StatTable";')
-    print('import { charTables } from "../generated/CharTables";')
-    print('import { charTalentTables } from "../generated/CharTalentTables";')
-    print()
-    print("const Talents = new DbObjectTalents({")
+generator.header()
+
 for charVarName in sorted(char_keys):
     result_hero_strings = []
     char = char_keys[charVarName]
     char_id = char['char_id']
     char_key = char['char_key']
     eng_name = lang_data['eng']['lang'].get(char['nameTextMapHash'])
+    generator.set_charName(char_id, charVarName)
 
     res_item = OrderedDict(
         category='char_name',
-        name=char_id,
+        name=char_key,
     )
     for lang_name in lang_data:
         lang = lang_data[lang_name]['lang']
@@ -567,35 +406,34 @@ for charVarName in sorted(char_keys):
     #if not tpl_char: texts[eng_name] = []
     texts[eng_name] = []
 
-    outwrite("\t" + charVarName + ': {\n')
-    outwrite(f"\t\tchar_id:'{char['id']}',\n")
-    outwrite(f"\t\tchar_weapon:'{char['weaponType']}',\n")
+    talenttable("\t" + charVarName + ': {\n')
+    talenttable(f"\t\tchar_id:'{char['id']}',\n")
+    talenttable(f"\t\tchar_weapon:'{char['weaponType']}',\n")
     hex_descr = 'HCAOGPJPGLM' # 'IACNAENANDH'
 
     locallinks = set()
     if not do_single:
-        updated_values.write(f'#{char_id}\n')
+        updated_values.write(f'#{char_key}\n')
     for depot_id in char['depot_ids']:
         depot = depot_data.get(depot_id)
         if not depot:
             continue
+        if statgenerator: statgenerator.prepareChar(char_data.get(char['id']))
         skill_ids = []
-        skill_type = {}
         if depot.get('skills'):
-            skill_type[depot.get('skills')[0]] = 'feature_attack'
-            skill_type[depot.get('skills')[1]] = 'feature_skill'
-            for idx in depot.get('skills'):
+            skill_ids.append((depot.get('skills')[0], 'feature_attack'))
+            skill_ids.append((depot.get('skills')[1], 'feature_skill'))
+            for idx in depot.get('skills')[2:]:
                 if idx:
-                    skill_ids.append(idx)
+                    skill_ids.append((idx, 'feature_other'))
         if depot.get('energySkill'):
-            skill_type[depot.get('energySkill')] = 'feature_burst'
-            skill_ids.append(depot.get('energySkill'))
+            skill_ids.append((depot.get('energySkill'), 'feature_burst'))
 
         # if depot.get('SubSkills'):
         #     skill_ids.extend(depot.get('SubSkills'))
         index = 1
         features = []
-        for id in skill_ids:
+        for (id, skill_type) in skill_ids:
             # print(f'index {index} id {id}')
             if not id:
                 continue
@@ -610,34 +448,18 @@ for charVarName in sorted(char_keys):
 
             if uniq_skills.get(skill_id):
                 continue
-            if generate_char == char_id:
-                print(f"    {(skill_type[id] if id in skill_type else 'feature_other')[8:]}: {{")
-                print(f"        gameId: charTalentTables.{charVarName}.s{index}_id,")
-            generate_params=None
-            if generate_char == char_id:
-                print(f"        title: 'talent_name.{skill_id}',")
-                print(f"        description: 'talent_descr.{skill_id}',")
-                print("        items: [")
-                generate_params={
-                    'name': charVarName,
-                    'local': char_id,
-                    'id': index,
-                }
+            generator.talent_begin(char_id, skill_id, index, skill_type)
+            if statgenerator and skill_type == 'feature_burst':
+                statgenerator.processBurst(skill)
             uniq_skills[skill_id] = 1
 
             if not do_single:
                 updated_values.write(f'    #{talent_short_id}\n')
-            proud_params = scales_and_proud(id, skill.get('proudSkillGroupId'), index, generate_params)
-            if generate_char == char_id:
-                print("        ],")
-                print("    },")
-                features.append({
-                    'type': skill_type[id] if id in skill_type else 'feature_other',
-                    'skills': proud_params['allParams']
-                })
+            proud_params = scales_and_proud(id, skill.get('proudSkillGroupId'), index)
+            generator.end_talent(char_id)
             if proud_params['desc']:
                 index+= 1
-                
+
             descItems = {}
             descItems_hex = {}
             nameItems = {}
@@ -651,15 +473,16 @@ for charVarName in sorted(char_keys):
                     nameItems[lang_name] = [skill_name]
                     tpl_patterns = lang_data[lang_name]['patterns']
                     extraDescr = lang.get(skill[extra_descr_fld]) or ''
-                    skill_descr = process_talent_desc(lang_name, lang.get(skill['descTextMapHash']) + extraDescr, talent_short_id, tpl_patterns)
+                    skill_descr = process_talent_desc(lang_name, lang.get(skill['descTextMapHash']) + extraDescr, talent_short_id, tpl_patterns, False)
                     descItems[lang_name] = skill_descr['descr']
                     nameItems[lang_name].extend(skill_descr['names'])
                     if skill[hex_descr] and lang.get(skill[hex_descr]):
-                        skill_descr = process_talent_desc(lang_name, lang.get(skill[hex_descr]) + extraDescr, talent_short_id, tpl_patterns, talent_short_id + '_hex')
+                        skill_descr = process_talent_desc(lang_name, lang.get(skill[hex_descr]) + extraDescr, talent_short_id, tpl_patterns, False, talent_short_id + '_hex')
                         descItems_hex[lang_name] = skill_descr['descr']
                         nameItems[lang_name].extend(skill_descr['names'])
-                except Exception:
+                except Exception as e:
                     logger.error(f'error on {talent_short_id}')
+                    logger.error(e)
                     err = True
             if err: continue
 
@@ -668,13 +491,13 @@ for charVarName in sorted(char_keys):
                     values = {}
                     for lang_name in lang_data:
                         lang = lang_data[lang_name]['lang']
-                        (name, params_str) = lang.get(proud_params['customParams'][param]).split('|')
+                        name_hash = proud_params['customParams'][param]
+                        (name, params_str) = lang.get(name_hash).split('|')
                         values[lang_name] = fix_name(name)
                     result_hero_strings.append(
                         OrderedDict(
-                            category=skill_type[id] if id in skill_type else 'feature_other',
-                            # name=param,
-                            name=char_id + '_' + param,
+                            category=skill_type,
+                            name=param if param.startswith(f"{char_id}_") else char_id + '_' + param,
                             rus=values['rus'],
                             eng=values['eng'],
                         )
@@ -685,33 +508,12 @@ for charVarName in sorted(char_keys):
             if descItems_hex:
                 add_array(descItems_hex, result_hero_strings, skill_id + '_hex', 'talent_descr')
 
-        if generate_char == char_id:
-            print(f"    links: charTalentTables.{charVarName}.links,")
-            print("});")
-            print()
-            print(f"export const {charVarName} = new DbObjectChar({{")
-            print(f"    name: '{char_id}',")
-            print("    serializeId: ?,")
-            print(f"    gameId: charTalentTables.{charVarName}.char_id,")
-            print(f"    iconClass: 'char-icon-{char_id}',")
-            print("    rarity: ?,")
-            print("    element: ?,")
-            print(f"    weapon: charTalentTables.{charVarName}.char_weapon,")
-            print("    origin: ?,")
-            print("    talents: Talents,")
-            print(f"    statTable: charTables.{charVarName},")
-            print("    features: [")
-            for elem in features:
-                for (item, vals) in elem['skills']:
-                    if item in skiped_features: continue
-                    print_skillmult(elem['type'][8:], item, vals, False)
-            print("    ],")
-            print("    conditions: [")
+        generator.begin_char(char_id, skiped_features)
 
         talent_items = []
         const_num = 0
 
-        outwrite('\t\tcons: [\n')
+        talenttable('\t\tcons: [\n')
         for const_id in depot.get('talents'):
             const_num += 1
             talent = talent_data.get(const_id)
@@ -723,12 +525,12 @@ for charVarName in sorted(char_keys):
                 'descTextMapHash_hex': talent.get(hex_descr),
                 'no_descr': const_num == 3 or const_num == 5,
             })
-            outwrite('\t\t\t')
-            outwrite(repr(shrink_table(talent.get('paramList'))))
-            outwrite(',\n')
-        outwrite('\t\t],\n')
+            talenttable('\t\t\t')
+            talenttable(repr(shrink_table(talent.get('paramList'))))
+            talenttable(',\n')
+        talenttable('\t\t],\n')
 
-        outwrite('\t\tpasssive: [\n')
+        talenttable('\t\tpasssive: [\n')
         passive_count = 0
         inherentProudSkillOpens = 'LOAMPGAFLMA' # 'inherentProudSkillOpens'
         needAvatarPromoteLevel = 'AMKLKEEBGPM' #'needAvatarPromoteLevel'
@@ -737,48 +539,36 @@ for charVarName in sorted(char_keys):
                 passive_count += 1
                 passive_id = passive.get('proudSkillGroupId')
                 proud = proud_data.get_item_by_field('proudSkillGroupId', passive_id)
-                outwrite('\t\t\t')
-                outwrite(repr(shrink_table(proud.get('paramList'))))
-                outwrite(',\n')
+                talenttable('\t\t\t')
+                talenttable(repr(shrink_table(proud.get('paramList'))))
+                talenttable(',\n')
+                talent_name = lang_default.get(proud.get('nameTextMapHash'))
+                if not talent_name:
+                    continue
                 talent_items.append({
                     'nameTextMapHash': proud.get('nameTextMapHash'),
                     'descTextMapHash': proud.get('descTextMapHash'),
                     'descTextMapHash_hex': proud.get(hex_descr),
+                    'no_descr': False
                 })
-                if generate_char == char_id:
-                    talent_name = lang_default.get(proud.get('nameTextMapHash'))
-                    if not talent_name:
-                        continue
-                    talent_short_id = convert_id(talent_name, removeSemicolon=True)
-                    talent_id = char_id + '_' + talent_short_id
-                    print("        new ConditionStatic({")
-                    print(f"            name: '{talent_id}',")
-                    print("            serializeId: 1,")
-                    print(f"            title: 'talent_name.{talent_id}',")
-                    print(f"            description: 'talent_descr.{talent_id}',")
-                    if passive.get(needAvatarPromoteLevel) > 0:
-                        print(f"            info: {{ascension: {passive.get(needAvatarPromoteLevel)}}},")
-                        print(f"            condition: new ConditionAscensionChar({{ascension: {passive.get(needAvatarPromoteLevel)}}}),")
-                    print("        }),")
+                talent_short_id = convert_id(talent_name, removeSemicolon=True)
+                talent_id = char_id + '_' + talent_short_id
+                generator.condition(char_id, talent_id, passive.get(needAvatarPromoteLevel))
             else: break
-        outwrite('\t\t],\n')
+        talenttable('\t\t],\n')
 
-        if generate_char == char_id:
-            print("    ],")
-            print("    multipliers: [")
-            print("    ],")
-            print("    constellation: new DbObjectConstellation([")
+        generator.begin_constellation(char_id)
 
-        prepare_talents(talent_items[-passive_count:], None)
-        prepare_talents(talent_items[0:-passive_count], char_id if generate_char == char_id else None)
+        prepare_talents(talent_items[-passive_count:], False)
+        prepare_talents(talent_items[0:-passive_count], True)
+    if statgenerator: statgenerator.generateChar(charVarName)
     CsvDumper().dump(result_hero_strings, f'char/{char_key}.csv')
     hyperlinks.update(locallinks)
-    outwrite('\t\tlinks: [%s],\n' % (', '.join(sorted(locallinks))))
-    outwrite('\t},\n')
+    talenttable('\t\tlinks: [%s],\n' % (', '.join(sorted(locallinks))))
+    talenttable('\t},\n')
 
-if generate_char != '':
-    print("    ]),")
-    print("});")
+if statgenerator: statgenerator.generateFooter()
+generator.end_char()
 
 if not do_single:
     result_talents = []
@@ -818,7 +608,12 @@ if not do_single:
 
     updated_values.write('}\n')
 
-outwrite('};\n')
+talenttable('};\n')
+
+if not do_single:
+    updated_values.close()
+    os.remove(dirname + '/old_values.py')
+    os.rename(dirname + '/new_values.py', dirname + '/old_values.py')
 
 if generate_char == '':
     print("--- %s ms ---" % (int((time.time() - start_time) * 1000)))

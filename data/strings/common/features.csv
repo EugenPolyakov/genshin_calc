@@ -1,42 +1,15 @@
 category;name;rus;eng
-feature_attack;aimed;Прицельная;Aimed
-feature_attack;charged_aimed;Заряженная прицельная;Charged Aimed
-feature_attack;charged_final;Завершающий удар;Charged final
 feature_attack;charged_hit_1;Заряженная-1;Charged hit-1
 feature_attack;charged_hit_2;Заряженная-2;Charged hit-2
 feature_attack;charged_hit_3;Заряженная-3;Charged hit-3
 feature_attack;charged_hit_total;Заряженная (всего);Charged Total
-feature_attack;charged_hit;Заряженная;Charged
-feature_attack;charged_spin;Урон вращающейся атаки;Charged Attack Cyclic DMG
 feature_attack;hits;удара;hits
-feature_attack;max_duration;Макс. длительность;Max Duration
-feature_attack;normal_hit_1_1;Урон атаки 1-1;1-1-Hit DMG
-feature_attack;normal_hit_1_2;Урон атаки 1-2;1-2-Hit DMG
-feature_attack;normal_hit_1;Урон атаки 1;1-Hit DMG
-feature_attack;normal_hit_2_1;Урон атаки 2-1;2-1-Hit DMG
-feature_attack;normal_hit_2_2;Урон атаки 2-2;2-2-Hit DMG
-feature_attack;normal_hit_2;Урон атаки 2;2-Hit DMG
-feature_attack;normal_hit_3_1;Урон атаки 3-1;3-1-Hit DMG
-feature_attack;normal_hit_3_2;Урон атаки 3-2;3-2-Hit DMG
-feature_attack;normal_hit_3;Урон атаки 3;3-Hit DMG
-feature_attack;normal_hit_4_1;Урон атаки 4-1;4-1-Hit DMG
-feature_attack;normal_hit_4_2;Урон атаки 4-2;4-2-Hit DMG
-feature_attack;normal_hit_4_3;Урон атаки 4-3;4-3-Hit DMG
-feature_attack;normal_hit_4;Урон атаки 4;4-Hit DMG
-feature_attack;normal_hit_5_1;Урон атаки 5-1;5-1-Hit DMG
-feature_attack;normal_hit_5_2;Урон атаки 5-2;5-2-Hit DMG
-feature_attack;normal_hit_5;Урон атаки 5;5-Hit DMG
-feature_attack;normal_hit_6_1;Урон атаки 6-1;6-1-Hit DMG
-feature_attack;normal_hit_6_2;Урон атаки 6-2;6-2-Hit DMG
-feature_attack;normal_hit_6;Урон атаки 6;6-Hit DMG
 feature_attack;normal_hit;Обычная;Normal
 feature_attack;party_heal_on_hit;Лечение отряда при ударе;Party Heal on Hit
 feature_attack;plunge_high;Высокая;Plunge High
 feature_attack;plunge_low;Низкая;Plunge Low
-feature_attack;plunge;В падении;Plunge
 feature_attack;second_aimed;Доп. прицельная;Additional aimed
 feature_attack;second_charged_aimed;Доп. заряженная прицельная;Add. charged aimed
-feature_attack;stamina_cost;Потребление выносливости;Charged Attack Stamina Cost
 feature_attack;additional_dmg;Дополнительный урон;Additional DMG
 feature_burst;additional_dmg;Дополнительный урон;Additional DMG
 feature_burst;anemoskill_cryo_dmg;Доп. урон Крио;Additional Cryo DMG
@@ -47,26 +20,14 @@ feature_burst;anemoskill_hydro_dmg;Доп. урон Гидро;Additional Hydro 
 feature_burst;anemoskill_pyro_dmg;Доп. урон Пиро;Additional Pyro DMG
 feature_burst;atk_bonus;Бонус cилы атаки;ATK Bonus
 feature_burst;burst_dmg;Урон взрыва стихий;Elemental Burst Dmg
-feature_burst;cd;Время отката;CD
-feature_burst;charged_hit;Заряженная;Charged
 feature_burst;charged_hit_total;Заряженная (всего);Charged Total
 feature_burst;dmg_reduction;Снижение входящего урона;Damage taken reduction
 feature_burst;dot_dmg;Периодический урон;DMG over time
-feature_burst;duration;Длительность;Duration
-feature_burst;energy_cost;Потребление энергии;Energy Cost
 feature_burst;field_dmg;Урон поля;Field Dmg
-feature_burst;heal_dot;Периодическое лечение;Continuous Healing
 feature_burst;heal;Лечение;Heal
-feature_burst;normal_hit_1;Урон атаки 1;1-Hit DMG
-feature_burst;normal_hit_2;Урон атаки 2;2-Hit DMG
-feature_burst;normal_hit_3;Урон атаки 3;3-Hit DMG
-feature_burst;normal_hit_4;Урон атаки 4;4-Hit DMG
-feature_burst;normal_hit_5;Урон атаки 5;5-Hit DMG
 feature_burst;plunge_high;Высокая;Plunge High
 feature_burst;plunge_low;Низкая;Plunge Low
-feature_burst;plunge;В падении;Plunge
 feature_burst;shield;Щит;Shield
-feature_burst;stamina_cost;Потребление выносливости;Charged Attack Stamina Cost
 feature_burst;total_dmg;Урон (всего);Total DMG
 feature_burst;wave_dmg;Урон волны;Wave DMG
 feature_heal;healing_recv;Бонус получаемого лечения;With Incoming Healing Bonus
@@ -81,6 +42,7 @@ feature_other;electro_dmg_bonus;Бонус электро урона;Electro DMG
 feature_other;mastery_bonus;Бонус мастерства стихий;Elemental Mastery Bonus
 feature_other;lunarcharged_base_bonus;Базовый урон Лунного заряда;Lunar-Charged Base Bonus
 feature_other;lunarbloom_base_bonus;Базовый урон Лунной бутонизации;Lunar-Bloom Base Bonus
+feature_other;lunar_base_bonus;Базовый урон Лунных реакций;Lunar reaction Base Bonus
 feature_other;heal;Лечение;Heal
 feature_reaction;amplifying;Мультипликативные реакции;Amplifying Reactions
 feature_reaction;transformative;Трансформативные реакции;Transformative Reactions
@@ -92,6 +54,9 @@ feature_reaction;lunar;Лунные реакции;Lunar Reactions
 feature_reaction;lunarcharged_contrubution;Вклад в Лунный заряд;Lunar-Charged Contribution
 feature_reaction;lunarcharged_contrubution_2;Вклад в Лунный заряд / 2;Lunar-Charged Contribution / 2
 feature_reaction;lunarcharged_contrubution_12;Вклад в Лунный заряд / 12;Lunar-Charged Contribution / 12
+feature_reaction;lunarcrystallize_contrubution;Вклад в Лунную кристаллизацию;Lunar-Crystallize Contribution
+feature_reaction;lunarcrystallize_contrubution_2;Вклад в Лунную кристаллизацию / 2;Lunar-Crystallize Contribution / 2
+feature_reaction;lunarcrystallize_contrubution_12;Вклад в Лунную кристаллизацию / 12;Lunar-Crystallize Contribution / 12
 feature_reaction;melt;Таяние;Melt
 feature_reaction;none;Без реакции;No reaction
 feature_reaction;overloaded;Перегрузка;Overloaded
@@ -116,6 +81,7 @@ feature_reaction;bloom;Бутонизация;Bloom
 feature_reaction;hyperbloom;Вегетация;Hyperbloom
 feature_reaction;lunarcharged;Лунный заряд;Lunar-Charged
 feature_reaction;lunarbloom;Лунная бутонизация;Lunar-Bloom
+feature_reaction;lunarcrystallize;Лунная кристаллизация;Lunar-Crystallize
 feature_rotation;anemo;Анемо урон;Anemo DMG
 feature_rotation;attack;Атака;Attack
 feature_rotation;normal;Обычная атака;Normal attack
@@ -152,53 +118,30 @@ feature_section;stats;Характеристики;Attributes
 feature_section;weapon;Оружие;Weapon
 feature_shield;element_bonus;С бонусом элемента;With element absorption
 feature_shield;strength_bonus;С Прочностью щита;With Shield Strength
-feature_skill;activation_dmg;Урон активации;Activation DMG
 feature_skill;cd_hold;Откат долгого нажатия;Hold CD
 feature_skill;cd_press;Откат быстрого нажатия;Press CD
-feature_skill;cd;Время отката;CD
 feature_skill;nightsoul_point_limit;Максимум очков Ночного духа;Nightsoul Point Limit
-feature_skill;charge_level_1_1;Урон заряда 1-1;Charge Level 1-1 DMG
-feature_skill;charge_level_1_2;Урон заряда 1-2;Charge Level 1-2 DMG
-feature_skill;charge_level_1;Урон заряда 1;Charge Level 1 DMG
-feature_skill;charge_level_2_1;Урон заряда 2-1;Урон заряда 2;Charge Level 2-1 DMG
-feature_skill;charge_level_2_2;Урон заряда 2-2;Charge Level 2-2 DMG
-feature_skill;charge_level_2;Урон заряда 2;Charge Level 2 DMG
 feature_skill;charged_hit_total;Заряженная (всего);Charged Total
 feature_skill;dmg_reduction;Снижение входящего урона;Damage taken reduction
 feature_skill;dot_dmg;Периодический урон;DMG over time
-feature_skill;duration;Длительность;Duration
-feature_skill;explosion_dmg;Урон взрыва;Explosion DMG
 feature_skill;heal_charged_atk;Лечение заряженной атакой;Charged Atk Heal
-feature_skill;heal_dot;Периодическое лечение;Continuous Healing
 feature_skill;heal_normal_atk;Лечение обычной атакой;Normal Atk Heal
 feature_skill;heal;Лечение;Heal
 feature_skill;hold_dmg;Урон долгого нажатия;Hold DMG
 feature_skill;max_cd;Макс. время отката;Max CD
-feature_skill;max_duration;Макс. длительность;Max Duration
-feature_skill;normal_hit_1;Урон атаки 1;1-Hit DMG
-feature_skill;normal_hit_2;Урон атаки 2;2-Hit DMG
-feature_skill;normal_hit_3;Урон атаки 3;3-Hit DMG
-feature_skill;normal_hit_4;Урон атаки 4;4-Hit DMG
-feature_skill;normal_hit_5;Урон атаки 5;5-Hit DMG
-feature_skill;normal_hit_6;Урон атаки 6;6-Hit DMG
-feature_skill;charged_hit;Заряженная;Charged
 feature_skill;plunge_high;Высокая;Plunge High
 feature_skill;plunge_low;Низкая;Plunge Low
-feature_skill;plunge;В падении;Plunge
 feature_skill;party_heal_on_hit;Лечение отряда при ударе;Party Heal on Hit
 feature_skill;party_shield_hold;Щит отряда (удержание);Party Shield (hold)
 feature_skill;party_shield_press;Щит отряда (быстрое нажатие);Party Shield (press)
-feature_skill;press_dmg;Урон быстрого нажатия;Press DMG
 feature_skill;shield_absorption;Поглощение урона;Shield DMG Absorption
 feature_skill;shield_hold;Щит (удержание);Shield (hold)
 feature_skill;shield_press;Щит (быстрое нажатие);Shield (press)
 feature_skill;shield;Щит;Shield
-feature_skill;skill_dmg;Урон элементального навыка;Elemental Skill Dmg
 feature_skill;skill_hit_1;Удар-1;Hit-1
 feature_skill;skill_hit_2;Удар-2;Hit-2
 feature_skill;skill_hit_3;Удар-3;Hit-3
 feature_skill;stamina_consume;Потребление выносливости;Stamina Consumption
-feature_skill;stamina_cost;Потребление выносливости;Charged Attack Stamina Cost
 feature_skill;additional_dmg;Дополнительный урон;Additional DMG
 feature_skill;swing_dmg;Урон взмаха;Swing DMG
 feature_stats;atk;Сила атаки;ATK
@@ -224,3 +167,4 @@ feature_burst;spiritbreath_thorn_dmg;Урон Иглы дыхания душ;Spi
 feature_burst;spiritbreath_thorn_interval;Интервал Иглы дыхания душ;Spiritbreath Thorn Interval
 feature_burst;surging_blade_dmg;Урон Клинка бурных вод;Surging Blade DMG
 feature_burst;surging_blade_interval;Интервал Клинка бурных вод;Surging Blade Interval
+feature_burst;shield_duration;Длительность щита;Shield Duration

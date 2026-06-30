@@ -134,13 +134,7 @@ export const TravelerDendro = new DbObjectChar({
     weapon: 'sword',
     origin: 'foreign',
     talents: Talents,
-    statTable: [
-        ...charTables.Traveler,
-        new StatTableAscensionScale({
-			stat: 'burst_energy_cost',
-			base: Talents.get('burst.energy_cost').getValue(1),
-		}),
-    ],
+    statTable: charTables.TravelerDendro,
     features: [
         new FeatureDamageNormal({
             multipliers: [

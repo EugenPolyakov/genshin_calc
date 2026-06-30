@@ -348,7 +348,7 @@ export const Chiori = new DbObjectChar({
     ],
     conditions: [
         new ConditionStatic({
-            title: 'talent_name.chiori_tailor_made',
+            title: 'talent_name.chiori_tailor_made_1',
             description: 'talent_descr.chiori_tailor_made_1',
             info: {ascension: 1},
             subConditions: [

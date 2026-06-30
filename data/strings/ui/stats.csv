@@ -61,7 +61,13 @@ stat;move_speed;Cкорость передвижения;Movement SPD
 
 stat;dmg_reaction_swirl;Урон Рассеивания;Swirl DMG
 stat;dmg_reaction_rupture;Урон Бутонизации;Bloom DMG
-stat;lunarcharged_multi;Базовый урон Лунного заряда;Lunar-Charged Base Bonus
+stat;lunarcharged_multi;Бонус Базового урона Лунного заряда;Lunar-Charged Base Bonus
+stat;lunarbloom_multi;Бонус Базового урона Лунной бутонизации;Lunar-Bloom Base Bonus
+stat;lunarcrystallize_multi;Бонус Базового урона Лунной кристаллизации;Lunar-Crystallize Base Bonus
+stat;dmg_reaction_lunar_bonus;Возвышение Лунных реакций;Lunar reactions Elevation
+stat;dmg_reaction_lunarbloom_bonus;Возвышение Лунной бутонизации;Lunar-Bloom Elevation
+stat;dmg_reaction_lunarcharged_bonus;Возвышение Лунного заряда;Lunar-Charged Elevation
+stat;dmg_reaction_lunarcrystallize_bonus;Возвышение Лунной кристаллизации;Lunar-Crystallize Elevation
 
 stat_short;mastery;М. стихий;EM
 stat_short;hp;HP;HP
@@ -130,6 +136,7 @@ stat;crit_dmg_electro;Электро урон;Electro DMG
 stat;crit_dmg_geo;Гео урон;Geo DMG
 stat;crit_dmg_hydro;Гидро урон;Hydro DMG
 stat;crit_dmg_pyro;Пиро урон;Pyro DMG
+stat;crit_dmg_dendro;Дендро урон;Dendro DMG
 stat;crit_dmg_phys;Физический урон;Physical DMG
 stat;crit_dmg_normal;Обычная атака;Normal attack
 stat;crit_dmg_charged;Заряженная атака;Charged Attack

@@ -149,10 +149,7 @@ function FeatureList(props) {
                 continue;
             }
 
-            let str = 'feature_'+ featName;
-            if (feature.title) {
-                str = feature.title;
-            }
+            let str = 'feature_'+ feature.name;
 
             items.push(
                 <Checkbox

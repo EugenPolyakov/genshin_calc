@@ -72,7 +72,7 @@ const Talents = new DbObjectTalents({
     skill: {
         gameId: charTalentTables.Navia.s2_id,
         title: 'talent_name.navia_ceremonial_crystalshot',
-        description: 'talent_descr.navia_ceremonial_crystalshot',
+        description: 'talent_descr.navia_ceremonial_crystalshot_1',
         items: [
             {
                 table: new StatTable('navia_rosula_shardshot_base_dmg', charTalentTables.Navia.s2.p1),
@@ -296,7 +296,7 @@ export const Navia = new DbObjectChar({
             name: 'navia_shrapnel_charge',
             serializeId: 1,
             title: 'talent_name.navia_shrapnel_charge',
-            description: 'talent_descr.navia_shrapnel_charge',
+            description: 'talent_descr.navia_ceremonial_crystalshot_2',
             maxStacks: 6,
             stats: [
                 new StatTable('text_percent_dmg', [SkillDmgBonus]),
@@ -306,7 +306,7 @@ export const Navia = new DbObjectChar({
             name: 'navia_bullets',
             serializeId: 2,
             title: 'talent_name.navia_bullets',
-            description: 'talent_descr.navia_bullets',
+            description: 'talent_descr.navia_ceremonial_crystalshot_3',
             min: 1,
             nonEmpty: true,
             class: 'inputs-2digit',

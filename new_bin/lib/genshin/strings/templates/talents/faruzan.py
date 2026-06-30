@@ -6,8 +6,9 @@ char_faruzan = TemplateList(
         names=[
             'Фарузан',
             'Проявления бури', 'Царство ветров насамджнин', 'воронки Обвала под давлением', 'Бич коварных ветров',
-            'Тайные тропы ветров', 'Дара молитвенного ветра', 'Покровительство ураганов',
+            'Тайные тропы ветров', 'Дар[а]? молитвенного ветра', 'Покровительство ураганов',
             'базовой атаки', 'стрел урагана', 'Ослепительный многогранник', 'Обвал под давлением',
+            'Штормовая волна',
         ],
         skills={
             'skill': ['Царство ветров насамджнин', 'Обвал под давлением'],
@@ -20,11 +21,58 @@ char_faruzan = TemplateList(
             'Manifest Gale', 'Wind Realm of Nasamjnin', 'The Wind\'s Secret Ways',
             'Perfidious Wind\'s Bale', 'Pressurized Collapse', 'Prayerful Wind\'s Gift', 'Hurricane Guard',
             'Prayerful Wind\'s Benefit', 'Hurricane Arrows', 'Dazzling Polyhedron', 'Pressurized Collapses',
+            'Whirlwind Pulse',
         ],
         skills={
             'skill': ['Wind Realm of Nasamjnin', 'Pressurized Collapses'],
             'burst': ['The Wind\'s Secret Ways'],
         },
+    ),
+    the_winds_secret_ways=Template(
+        replace={
+            '· ': '· \n',
+            '<br>': '\n<br>',
+            '</p><p>': '\n</p><p>',
+        },
+        sentences=[
+            [],
+            [],
+            [],
+            [],
+            [],
+            [],
+            [],
+            [],
+            [],
+        ],
+        results=[
+            list(range(0, 9)),
+            [5],
+            [7],
+        ],
+    ),
+    the_winds_secret_ways_eng=Template(
+        replace={
+            '·': '·\n',
+            '<br>': '\n<br>',
+            '</p><p>': '\n</p><p>',
+        },
+        sentences=[
+            [],
+            [],
+            ['1:ignore'],
+            [],
+            [],
+            [],
+            [],
+            [],
+            [],
+        ],
+        results=[
+            list(range(0, 9)),
+            [5],
+            [7],
+        ],
     ),
     impetuous_flow=Template(
         sentences=[

@@ -21,6 +21,41 @@ char_noelle = TemplateList(
             'burst': ['Sweeping Time'],
         },
     ),
+    sweeping_time_rus=Template(
+        replace={
+            "</p><p>": "\n</p><p>",
+        },
+        patterns=[
+            (r'этого name\{', 'этого\nname{'),
+        ],
+        sentences=[
+            [],
+            [],
+            [],
+        ],
+        results=[
+            [0, 1, 2],
+            [1]
+        ],
+    ),
+    sweeping_time_eng=Template(
+        replace={
+            "</p><p>": "\n</p><p>",
+        },
+        patterns=[
+            (r', name\{', ',\nname{'),
+        ],
+        sentences=[
+            [],
+            [],
+            [],
+            [],
+        ],
+        results=[
+            [0, 1, 2, 3],
+            [2]
+        ],
+    ),
     devotion=Template(
         sentences=[
             ['ignore', 'ignore', 'text_percent', 'ignore', 'ignore'],

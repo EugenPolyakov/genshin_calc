@@ -254,7 +254,7 @@ export class Stats {
         let result = value;
         let percent = isPercent(stat);
 
-        if (Math.abs(value) < 0.00001) {
+        if (Math.abs(value) < 0.0000001) {
             return opts.zero ? '0' : '';
         }
 

@@ -143,20 +143,100 @@ curve_names_to_stat = {
     'GROW_CURVE_CRITICAL_301': 'crt_3_1',
 }
 
+names_mapping = {
+    '1-Hit DMG': 'normal_hit_1',
+    '2-Hit DMG': 'normal_hit_2',
+    '3-Hit DMG': 'normal_hit_3',
+    '4-Hit DMG': 'normal_hit_4',
+    '5-Hit DMG': 'normal_hit_5',
+    '6-Hit DMG': 'normal_hit_6',
+    'Aimed Shot': 'aimed',
+    'Fully-Charged Aimed Shot': 'charged_aimed',
+    'Aimed Shot Charge Level 1': 'charged_aimed',
+    'Plunge DMG': 'plunge',
+    'Low/High Plunge DMG': 'plunge_low/plunge_high',
+    'Charged Attack': 'charged_hit',
+    'Charged Attack DMG': 'charged_hit',
+    'Charged Attack Stamina Cost': 'stamina_cost',
+    'Charged Attack Spinning DMG': 'charged_spin',
+    'Charged Attack Cyclic DMG': 'charged_spin',
+    'Charged Attack Loop DMG': 'charged_spin',
+    'Charged Attack Final DMG': 'charged_final',
+    'Charge Level 1 DMG': 'charge_level_1',
+    'Charge Level 2 DMG': 'charge_level_2',
+    'Max Duration': 'max_duration',
+    'CD': 'cd',
+    'Skill CD': 'cd',
+    'Duration': 'duration',
+    'Energy Cost': 'energy_cost',
+    'Elemental Burst DMG': 'burst_dmg',
+    'Burst DMG': 'burst_dmg',
+    'Skill DMG': 'skill_dmg',
+    'Press CD': 'cd_press',
+    'Press DMG': 'press_dmg',
+    'Press Skill DMG': 'press_dmg',
+    'Hold CD': 'cd_hold',
+    'Hold DMG': 'hold_dmg',
+    'Hold Skill DMG': 'hold_dmg',
+    'Heal': 'heal',
+    'Healing': 'heal',
+    'Cast Healing': 'heal',
+    'Regeneration': 'heal_dot',
+    'Continuous Healing': 'heal_dot',
+    'Continuous Regeneration': 'heal_dot',
+    'HP Regeneration Over Time': 'heal_dot',
+    'Continuous Regeneration Per Sec': 'heal_dot',
+    'Shield Duration': 'shield_duration',
+    'HP Cost': 'hp_cost',
+    'DMG Absorption': 'shield_absorption',
+    'Shield DMG Absorption': 'shield_absorption',
+    'Max Shield DMG Absorption': 'shield_max_absorption',
+    'Max CD': 'max_cd',
+    'Explosion DMG': 'explosion_dmg',
+    'Activation Stamina Consumption': 'sprint_activation_cost',
+    'Stamina Drain': 'sprint_stamina_drain',
+    'DoT': 'dot_dmg',
+    'DMG Reduction': 'dmg_reduction',
+    'Continuous Field DMG': 'field_dmg',
+
+    'Spiritbreath Thorn DMG': 'spiritbreath_thorn_dmg',
+    'Surging Blade DMG': 'surging_blade_dmg',
+    'Surging Blade Interval': 'surging_blade_interval',
+    'Spiritbreath Thorn Interval': 'spiritbreath_thorn_interval',
+    'Spiritbreath Thorn DMG Interval': 'spiritbreath_thorn_interval',
+
+    'Nightsoul Point Limit': 'nightsoul_point_limit',
+
+# skiped
+    'Spiritbreath Thorn/Surging Blade DMG Interval': 'spiritbreath_thorn_surging_blade_dmg',
+    'Spiritbreath Thorn/Surging Blade DMG': 'spiritbreath_thorn_surging_blade_dmg_interval',
+    'Fiery Passion Low/High Plunge DMG': 'fiery_passion_low_high_plunge_dmg',
+    '0/1/2/3 Void Rift Absorption DMG Bonus': '0_1_2_3_void_rift_absorption_dmg_bonus',
+    'Shield Base Absorption': 'shield_base_absorption',
+    'Additional Shield Absorption': 'additional_shield_absorption',
+    'Stone Stele/Resonance DMG': 'stone_stele_resonance_dmg',
+    'Pyro: DMG Bonus': 'pyro_dmg_bonus',
+    'Electro: Trigger Interval Decrease': 'electro_trigger_interval_decrease',
+    'Hydro: Duration Extension': 'hydro_duration_extension',
+    'Sword Dance/Whirling Steps 1-Hit DMG': 'sword_dance_whirling_steps_1_hit_dmg',
+    'Sword Dance/Whirling Steps 2-Hit DMG': 'sword_dance_whirling_steps_2_hit_dmg',
+    'Luminous Illusion/Water Wheel DMG': 'luminous_illusion_water_wheel_dmg',
+}
+
 char_ids = {
     # 10000001
     10000002: 'Ayaka',
     10000003: 'Jean',
     # 10000005: 'Traveler', # Boy
     10000006: 'Lisa',
-    10000007: 'Traveler', # Girl
+    # 10000007: 'Traveler', # Girl
     702: 'TravelerPyro',
-    703: 'TravelerHydro',
-    704: 'TravelerAnemo',
+    503: 'TravelerHydro',
+    504: 'TravelerAnemo',
     # 705: 'TravelerCryo',
     706: 'TravelerGeo',
     707: 'TravelerElectro',
-    708: 'TravelerDendro',
+    508: 'TravelerDendro',
     10000014: 'Barbara',
     10000015: 'Kaeya',
     10000016: 'Diluc',
@@ -321,3 +401,9 @@ def getCharById(id, name):
         result = re.sub(r' +', '', result, flags=re.IGNORECASE)
         return result
     return result
+
+def fix_name(name):
+    name = re.sub(r'\#?{LAYOUT_PC#(.*?)\}', '\g<1>', name)
+    name = re.sub(r'\#?{.*?}', '', name)
+    return name
+
