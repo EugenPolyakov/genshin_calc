@@ -503,7 +503,7 @@ export const Lauma = new DbObjectChar({
         new FeatureMultiplier({
             scaling: 'mastery',
             source: 'constellation2',
-            values: new StatTable('', [charTalentTables.Lauma.cons[1][0]], 100),
+            values: new ValueTable([charTalentTables.Lauma.cons[1][0]], 100),
             target: bloomTarget,
             condition: new ConditionAnd([
                 new ConditionBoolean({ name: 'lauma_all_hearts_become_the_beating_moon' }),
@@ -513,7 +513,7 @@ export const Lauma = new DbObjectChar({
         new FeatureMultiplier({
             scaling: 'mastery',
             source: 'constellation2',
-            values: new StatTable('', [charTalentTables.Lauma.cons[1][1]], 100),
+            values: new ValueTable([charTalentTables.Lauma.cons[1][1]], 100),
             target: lunarbloomTarget,
             condition: new ConditionAnd([
                 new ConditionBoolean({ name: 'lauma_all_hearts_become_the_beating_moon' }),
@@ -737,7 +737,7 @@ export const Lauma = new DbObjectChar({
             new FeatureMultiplier({
                 scaling: 'lauma_mastery_total',
                 leveling: 'lauma_char_skill_burst',
-                source: 'talent_burst',
+                source: 'lauma',
                 values: Talents.get('burst.lauma_bloom_hyperbloom_and_burgeon_dmg_increase'),
                 target: bloomTarget,
                 condition: new ConditionBoolean({ name: 'party.lauma_all_hearts_become_the_beating_moon' }),
@@ -745,14 +745,14 @@ export const Lauma = new DbObjectChar({
             new FeatureMultiplier({
                 scaling: 'lauma_mastery_total',
                 leveling: 'lauma_char_skill_burst',
-                source: 'talent_burst',
+                source: 'lauma',
                 values: Talents.get('burst.lauma_lunar_bloom_dmg_increase'),
                 target: lunarbloomTarget,
                 condition: new ConditionBoolean({ name: 'party.lauma_all_hearts_become_the_beating_moon' }),
             }),
             new FeatureMultiplier({
                 scaling: 'lauma_mastery_total',
-                source: 'constellation2',
+                source: 'lauma',
                 values: new StatTable('', [charTalentTables.Lauma.cons[1][0]], 100),
                 target: bloomTarget,
                 condition: new ConditionAnd([
@@ -762,7 +762,7 @@ export const Lauma = new DbObjectChar({
             }),
             new FeatureMultiplier({
                 scaling: 'lauma_mastery_total',
-                source: 'constellation2',
+                source: 'lauma',
                 values: new StatTable('', [charTalentTables.Lauma.cons[1][1]], 100),
                 target: lunarbloomTarget,
                 condition: new ConditionAnd([

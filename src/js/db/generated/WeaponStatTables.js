@@ -1270,6 +1270,10 @@ export const weaponStatTables = {
 		enumStatTables.atk48,
 		enumStatTables.cdmg10_3,
 	],
+	golden_frostbound_oath: [
+		enumStatTables.atk44_2,
+		enumStatTables.cdmg19,
+	],
 };
 export const weaponDataTable = {
 	CoolSteel: {
@@ -3584,6 +3588,19 @@ export const weaponDataTable = {
 			param4: [0.1, 0.125, 0.15, 0.175, 0.2],
 			param5: [0.1],
 			param6: [0.2, 0.25, 0.3, 0.35, 0.4],
+		},
+	},
+	golden_frostbound_oath: {
+		rarity: 5,
+		weapon: "bow",
+		gameId: 15516,
+		golden_frostbound_oath: {
+			param1: [6],
+			param2: [0.4, 0.5, 0.6, 0.7, 0.8],
+			param3: [0.4, 0.5, 0.6, 0.7, 0.8],
+			param4: [0.5],
+			param5: [0.16, 0.2, 0.24, 0.28, 0.32],
+			def_percent: [16.0, 20.0, 24.0, 28.0, 32.0],
 		},
 	},
 };

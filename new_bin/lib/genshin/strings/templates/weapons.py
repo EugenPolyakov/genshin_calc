@@ -3205,3 +3205,40 @@ gest_of_the_mighty_wolf_eng = Template(
     ],
 )
 
+golden_frostbound_oath_rus = Template(
+    names=[
+        'Благодарности инеевого альва', 'Озорства инеевого альва'
+    ],
+    sentences=[
+        ['16:def_percent'],
+        ['6:ignore', '40:dmg_geo', '40:dmg_reaction_lunarcrystallize'],
+        ['20:text_dmg_geo_percent|20', '20:text_dmg_reaction_lunarcrystallize_percent|20'],
+        [],
+    ],
+    results=[
+        [0],
+        [1, 2, 3],
+        [2, 3],
+        ['Благодарность инеевого альва'],
+        ['Озорство инеевого альва'],
+    ],
+    extracted_names=[3, 4],
+)
+
+golden_frostbound_oath_eng = Template(
+    sentences=[
+        ['16:def_percent'],
+        ['6:ignore', '40:dmg_geo', '40:dmg_reaction_lunarcrystallize'],
+        ['20:text_dmg_geo_percent|20', '20:text_dmg_reaction_lunarcrystallize_percent|20'],
+        [],
+    ],
+    results=[
+        [0],
+        [1, 2, 3],
+        [2, 3],
+        ['Frost Fae\'s Favor'],
+        ['Frost Fae\'s Mischief'],
+    ],
+    extracted_names=[3, 4],
+)
+

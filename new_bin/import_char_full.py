@@ -97,6 +97,7 @@ NEED_PASSIVE_TALENTS = [
     'columbina',
     'illuga',
     'zibai',
+    'linnea',
 ]
 
 skiped_features = set([
@@ -220,12 +221,11 @@ def scales_and_proud(skillId, proudId, index, char_id):
             if skillLevel == 1:
                 if not do_single:
                     updated_values.write(f'    ({skillId}, {proudId}): {{\n')
-                for desc in item['paramDescList']:
+                for (cur_desc, desc) in enumerate(item['paramDescList']):
                     text = lang_default.get(desc)
                     if text:
                         (name, params_str) = text.split('|')
                         name_idx=''
-                        cur_desc = desc
                         name = fix_name(name)
                         isDefault = False
                         comments = ''
@@ -238,7 +238,7 @@ def scales_and_proud(skillId, proudId, index, char_id):
                                     name = convert_id(name, True)
                                     if name != name_idx and f'{char_id}_{name}' != name_idx:
                                         comments = f' #WasChanged from {name}'
-                                scaleData['customParams'][name_idx] = str(cur_desc)
+                                scaleData['customParams'][name_idx] = str(desc)
                             else:
                                 if not name in names_mapping.keys():
                                     comments = f' #ManualToDefault {convert_id(name, True)}'
@@ -252,7 +252,7 @@ def scales_and_proud(skillId, proudId, index, char_id):
                             while name_idx in scaleData['customParams']:
                                 idx += 1
                                 name_idx = f'{name}_{idx}'
-                            scaleData['customParams'][name_idx] = str(cur_desc)
+                            scaleData['customParams'][name_idx] = str(desc)
                             comments = ' #Custom'
                         else:
                             name_idx = names_mapping[name]
@@ -336,7 +336,7 @@ def prepare_talents(talent_items, generate):
                     descItems[lang_name] = skill_descr['descr']
                     nameItems[lang_name].extend(skill_descr['names'])
                 except Exception as e:
-                    logger.error(f'error on talent {talent_id}')
+                    logger.error(f'error on talent {talent_id}  [{talent["descTextMapHash"]}]')
                     logger.error(e)
                     err = True
 
@@ -347,7 +347,7 @@ def prepare_talents(talent_items, generate):
                     descItems_hex[lang_name] = skill_descr['descr']
                     nameItems[lang_name].extend(skill_descr['names'])
                 except Exception as e:
-                    logger.error(f'error on talent {talent_id}_hex')
+                    logger.error(f'error on talent {talent_id}_hex  [{talent["descTextMapHash"]}]')
                     logger.error(e)
                     err = True
             #if not tpl_char: texts[eng_name].append('\n')
@@ -422,10 +422,10 @@ def processPassiveTalent(proud, paramList):
     talent_id = char_id + '_' + talent_short_id
     generator.condition(char_id, talent_id, passive.get(needAvatarPromoteLevel_fld) or 0)
 
-inherentProudSkillOpens_fld = 'BKHEBEGJIAO'#'LOAMPGAFLMA' # 'inherentProudSkillOpens'
-hexProudSkillOpens_fld = 'GPDJAHEANHE'
-needAvatarPromoteLevel_fld = 'AEELKPGFNEA'# 'AMKLKEEBGPM' #'needAvatarPromoteLevel'
-hex_descr_fld = 'JDKOMPNCEMO'#'HCAOGPJPGLM' # 'IACNAENANDH'
+inherentProudSkillOpens_fld = 'inherentProudSkillOpens'
+hexProudSkillOpens_fld = 'DAEIJGCFNLL'
+needAvatarPromoteLevel_fld = 'needAvatarPromoteLevel'
+hex_descr_fld = 'POMMPOECOFA'#'JDKOMPNCEMO'#'HCAOGPJPGLM' # 'IACNAENANDH'
 extra_descr_fld = 'extraDescTextMapHash'
 
 for charVarName in sorted(char_keys):
@@ -527,7 +527,7 @@ for charVarName in sorted(char_keys):
                     descItems_hex[lang_name] = skill_descr['descr']
                     nameItems[lang_name].extend(skill_descr['names'])
             except Exception as e:
-                logger.error(f'error on {skill_id}')
+                logger.error(f'error on {skill_id} [{skill["descTextMapHash"]}]')
                 logger.error(e)
                 err = True
         if err: continue
@@ -623,7 +623,7 @@ for charVarName in sorted(char_keys):
                     descItems[lang_name] = skill_descr['descr']
                     nameItems[lang_name].extend(skill_descr['names'])
                 except Exception as e:
-                    logger.error(f'error on {char_id} {skill_id}')
+                    logger.error(f'error on {char_id} {skill_id} [{hl_item["descTextMapHash"]}]')
                     logger.error(e)
                     err = True
             if err: continue

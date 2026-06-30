@@ -671,4 +671,9 @@ export const Rotation = new DbObjectRotation({
     'attack.traveler_blade_wind_cryo': 659,
     'attack.traveler_blade_wind_electro': 660,
     'attack.traveler_vinecore': 661,
+
+    'skill.linnea_lumi_pound_pound_pummeler_dmg': 662,
+    'skill.linnea_lumi_pound_pound_pummeler_dmg_1': 663,
+    'skill.linnea_lumi_heavy_overdrive_hammer_dmg': 664,
+    'skill.linnea_lumi_million_ton_crush_dmg': 665,
 });

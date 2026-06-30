@@ -290,13 +290,11 @@ export const Weapons = new DbObjectBuff({
                 ]),
             ],
         }),
-        new ConditionLevelSelect({
+        new ConditionPartyWeapon({
             name: 'weapon_other.weapon_symphonist_of_scents',
-            serializeId: 58,
+            serializeIds: [58, 76, 77],
             title: 'talent_name.weapon_seasoned_symphony',
             description: 'talent_descr.weapon_seasoned_symphony_3',
-            rotation: 'buffs',
-            maxStacks: 5,
             icon: {
                 rarity: 5,
                 name: 'sprite-weapon-polearm weapon-icon-polearm-symphonist-of-scents',
@@ -308,14 +306,12 @@ export const Weapons = new DbObjectBuff({
                 new ConditionBoolean({name: 'symphonist_of_scents_3'}),
             ]),
         }),
-        new ConditionLevelSelect({
+        new ConditionPartyWeapon({
             name: 'weapon_other.weapon_fractured_halo',
             activeWeapon: 'weapon_fractured_halo_2',
-            serializeId: 59,
+            serializeIds: [59, 74, 75],
             title: 'talent_name.weapon_purifying_crown',
             description: 'talent_descr.weapon_purifying_crown_2',
-            rotation: 'buffs',
-            maxStacks: 5,
             icon: {
                 rarity: 5,
                 name: 'sprite-weapon-polearm weapon-icon-polearm-fractured-halo',
@@ -347,13 +343,11 @@ export const Weapons = new DbObjectBuff({
                 new StatTable('dmg_reaction_lunarbloom', weaponDataTable.nightweavers_looking_glass.nightweavers_looking_glass.param7, 100),
             ],
         }),
-        new ConditionLevelSelect({
+        new ConditionPartyWeapon({
             name: 'weapon_other.weapon_athame_artis',
-            serializeId: 63,
+            serializeIds: [63, 72, 73],
             title: 'talent_name.weapon_athame_artis',
             description: 'talent_descr.weapon_athame_artis_4',
-            rotation: 'buffs',
-            maxStacks: 5,
             icon: {
                 rarity: weaponDataTable.athame_artis.rarity,
                 name: 'sprite-weapon-sword weapon-icon-sword-athame-artis',
@@ -363,6 +357,22 @@ export const Weapons = new DbObjectBuff({
                 new StatTable('text_percent2', weaponDataTable.athame_artis.athame_artis.param3, 100),
                 new StatTable('text_percent', weaponDataTable.athame_artis.athame_artis.param4, 100),
                 new StatTableConditions('atk_percent', weaponDataTable.athame_artis.athame_artis.param4, new ConditionHexCheck({ hex: 2 }), 75),
+            ],
+        }),
+        new ConditionPartyWeapon({
+            name: 'weapon_other.weapon_golden_frostbound_oath',
+            serializeIds: [70, 71, 78],
+            title: 'talent_name.weapon_golden_frostbound_oath_3',
+            description: 'talent_descr.weapon_golden_frostbound_oath_3',
+            icon: {
+                rarity: weaponDataTable.golden_frostbound_oath.rarity,
+                name: 'sprite-weapon-sword weapon-icon-bow-golden-frostbound-oath',
+            },
+            stats: [
+                new StatTable('text_dmg_geo_percent', weaponDataTable.golden_frostbound_oath.golden_frostbound_oath.param3, 50),
+                new StatTable('text_dmg_reaction_lunarcrystallize_percent', weaponDataTable.golden_frostbound_oath.golden_frostbound_oath.param3, 50),
+                new StatTable('dmg_geo', weaponDataTable.golden_frostbound_oath.golden_frostbound_oath.param3, 50),
+                new StatTable('dmg_reaction_lunarcrystallize', weaponDataTable.golden_frostbound_oath.golden_frostbound_oath.param3, 50),
             ],
         }),
     ],

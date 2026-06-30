@@ -61,6 +61,7 @@ from .kuki_shinobu import char_kuki_shinobu  # noqa
 from .lan_yan import char_lan_yan  # noqa
 from .lauma import char_lauma  # noqa
 from .layla import char_layla  # noqa
+from .linnea import char_linnea  # noqa
 from .lisa import char_lisa  # noqa
 from .lynette import char_lynette  # noqa
 from .lyney import char_lyney  # noqa

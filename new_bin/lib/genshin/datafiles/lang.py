@@ -5,6 +5,8 @@ import json
 
 class LangData(DictParser):
     path = 'TextMap'
+    # def_name = 'TextMap'
+    def_name = 'TextMap_Medium'
 
     def __init__(self, lang: str = 'EN'):
         self.lang = lang.upper()
@@ -12,10 +14,10 @@ class LangData(DictParser):
 
     @property
     def filename(self):
-        return f'TextMap{self.lang}.json'
+        return f'TextMap_Medium{self.lang}.json'
 
     def parse(self):
-        name = f'{DATA_FILES_PATH}/{self.path}/TextMap{self.lang}'
+        name = f'{DATA_FILES_PATH}/{self.path}/{self.def_name}{self.lang}'
         if os.path.isfile(name + '.json'):
             file = open(name + '.json', 'r', encoding='utf-8')
             self.data = json.load(file)

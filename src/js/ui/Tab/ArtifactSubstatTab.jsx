@@ -8,7 +8,7 @@ import { FullHeight, FullHeightStatic, FullHeightScrollable } from '../Component
 import { Lang } from '../Lang';
 import { ReactTab } from '../Components/Tab';
 import { Tab } from "../Tab";
-import { Stats } from '../../classes/Stats';
+import { Stats, isPercent } from '../../classes/Stats';
 import { FeatureTableHeader, FeatureTableValues } from '../Components/FeatureTable';
 import { Feature2 } from '../../classes/Feature2';
 
@@ -73,16 +73,17 @@ class ArtifactSubstatView extends React.Component {
 
         let statsList = DB.Artifacts.Substats.getKeys();
 
-        for (const stat of statsList) {
+        for (let stat of statsList) {
             let data = DB.Artifacts.Substats.get(stat);
             let rolls = data.rollsReal[data.rollsReal.length - 1];
 
-            const sum = rolls.reduce((a, b) => a + b, 0);
-            const avg = (sum / rolls.length) || 0;
+            let sum = rolls.reduce((a, b) => a + b, 0);
+            let avg = (sum / rolls.length) || 0;
 
             let bonus = new Stats();
             bonus.add(stat, avg);
-            //bonus.processPercent();
+            if (isPercent(stat))
+                avg *= 100;
 
             let buildData = build.getBuildData();
             buildData.stats.concat(bonus);

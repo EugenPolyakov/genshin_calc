@@ -2,7 +2,6 @@ import { Feature2 } from "../Feature2";
 import { FeatureResult } from "../FeatureResult";
 import { CBlock } from "./Compile/Types";
 import { Feature2RotationTree, getReactionName } from "./Rotation/Tree";
-// import { getUsedStats } from "./Compile/Stats";
 
 
 export class FeatureRotation extends Feature2 {

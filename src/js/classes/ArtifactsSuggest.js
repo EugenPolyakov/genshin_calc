@@ -261,7 +261,7 @@ export class ArtifactsSuggest {
             setDataStats[setId] = new Stats(this.setData[setId][Math.max(...Object.keys(this.setData[setId]))].stats);
         }
 
-        let canEmblem4 = this.setData['EmblemofSeveredFate'] && Math.max(...Object.keys(this.setData['EmblemofSeveredFate'])) >= 4;
+        let canEmblem4 = this.setData['EmblemofSeveredFate'] && Math.max(...Object.keys(this.setData['EmblemofSeveredFate'])) >= 4 && this.usedStats.has("dmg_burst");
         let arr = Array.from(this.usedStats);
         for (let art of this.artifacts) {
             art.calcCache(arr);
@@ -271,7 +271,7 @@ export class ArtifactsSuggest {
             //Эмблема всегда добавляется если учитывается урон Взрыва стихии, т.к. на данном этапе невозможно просчитать насколько артефакт будет полезен
             //подобный механизм нужно делать для всех артефактов с постэффектами
             //так же добавляем все артефакты из наборов которые требует пользователь, чтобы можно было хоть что-то подобрать
-            if ((canEmblem4 && this.usedStats.has("dmg_burst") && art.set == "EmblemofSeveredFate") || this.settings.setMinValues[art.set]) {
+            if ((canEmblem4 && art.set == "EmblemofSeveredFate") || this.settings.setMinValues[art.set]) {
                 art.concatFunc = art.calculated.getConcatFunc();
                 this.setNames[art.set] = 1;
                 this.slots[art.slot].push(art);
