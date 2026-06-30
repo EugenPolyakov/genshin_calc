@@ -36,6 +36,7 @@ import { ConditionNumberTalent } from "../../classes/Condition/Number/Talent";
 import { ConditionNumber } from "../../classes/Condition/Number";
 import { FeatureDamageMultihit } from "../../classes/Feature2/Damage/Multihit";
 import { ConditionStacks } from "../../classes/Condition/Stacks";
+import { PostEffectStatsPartyStat } from "../../classes/PostEffect/Stats/PartyStat";
 
 
 const Talents = new DbObjectTalents({
@@ -649,174 +650,61 @@ export const Nefer = new DbObjectChar({
         {
             conditions: [
                 new ConditionMoonPhaseSetting(),
-                new ConditionMoonPhaseBuff({
+                new ConditionMoonPhaseStatic({
                     title: 'talent_name.nefer_victory_flows_from_the_turning_of_tides',
                     description: 'talent_descr.nefer_victory_flows_from_the_turning_of_tides',
                     realStats: {
-                        dmg_reaction_lunarcharged_bonus: [0, 0, charTalentTables.Nefer.cons[5][2] * 100],
+                        dmg_reaction_lunarbloom_bonus: [0, 0, charTalentTables.Nefer.cons[5][2] * 100],
                     },
-                    condition: new ConditionConstellation({ constellation: 6 }),
                 }),
             ]
         },
     ]),
     partyData: {
         loadStats: {
-            settings: ['char_skill_burst', 'char_skill_elemental'],
             stats: ['mastery_total'],
         },
         conditions: [
             new Condition({ settings: { allowed_lunarbloom: 1 } }),
             new ConditionMoonPhaseSetting(),
-            new ConditionNumberTalent({
-                name: 'nefer_char_skill_elemental',
-                serializeId: 1,
-                title: 'talent_name.stats_level_skill',
-                partySetting: 'char_skill_elemental',
-            }),
-            new ConditionBoolean({
-                name: 'party.nefer_if_truth_may_be_subject_to_witness',
-                serializeId: 2,
-                title: 'talent_name.nefer_if_truth_may_be_subject_to_witness',
-                description: 'talent_descr.char_constellation_skill',
-                settings: {
-                    nefer_char_skill_elemental_bonus: 3,
-                },
-                info: {
-                    constellation: 5,
-                },
-            }),
-            new ConditionBooleanLevels({
-                serializeId: 3,
-                name: 'party.nefer_dawnless_rest_of_karsikko',
-                title: 'talent_name.nefer_dawnless_rest_of_karsikko',
-                description: 'talent_descr.nefer_dawnless_rest_of_karsikko_2',
-                levelSetting: 'nefer_char_skill_elemental',
-                rotation: 'party',
-                stats: [
-                    Talents.getAlias('skill.nefer_dawnless_rest_of_karsikko_6', 'enemy_res_dendro', -1),
-                ],
-            }),
             new ConditionNumber({
                 name: 'nefer_mastery_total',
-                serializeId: 4,
+                serializeId: 1,
                 title: 'talent_name.stats_total_mastery',
                 partyStat: 'mastery_total',
                 rotation: 'party',
                 max: 10000,
             }),
-            new ConditionNumberTalent({
-                name: 'nefer_char_skill_burst',
-                serializeId: 5,
-                title: 'talent_name.stats_level_burst',
-                partySetting: 'char_skill_burst',
-            }),
-            new ConditionBoolean({
-                name: 'party.nefer_seek_not_to_tread_the_sly_foxs_path',
-                serializeId: 6,
-                title: 'talent_name.nefer_seek_not_to_tread_the_sly_foxs_path',
-                description: 'talent_descr.char_constellation_burst',
-                settings: {
-                    nefer_char_skill_burst_bonus: 3,
-                },
-                info: {
-                    constellation: 3,
-                },
-            }),
-            new ConditionBoolean({
-                serializeId: 7,
-                name: 'party.nefer_all_hearts_become_the_beating_moon',
-                title: 'talent_name.nefer_all_hearts_become_the_beating_moon_2',
-                description: 'talent_descr.nefer_all_hearts_become_the_beating_moon_2',
-                rotation: 'party',
-            }),
-            new ConditionMoonPhase({
-                name: 'party.nefer_light_for_the_frosty_night',
-                title: 'talent_name.nefer_light_for_the_frosty_night_1',
-                description: 'talent_descr.nefer_light_for_the_frosty_night_4',
-                serializeId: 8,
+            new ConditionStatic({
+                title: 'talent_name.nefer_dusklit_eaves',
+                description: 'talent_descr.nefer_dusklit_eaves',
                 stats: {
-                    text_crit_rate_bloom: charTalentTables.Nefer.passsive[0][0] * 100,
-                    text_crit_dmg_bloom: charTalentTables.Nefer.passsive[0][1] * 100,
-                    text_crit_rate_lunarbloom: charTalentTables.Nefer.passsive[0][2] * 100,
-                    text_crit_dmg_lunarbloom: charTalentTables.Nefer.passsive[0][3] * 100,
+                    text_percent: charTalentTables.Nefer.passsive[2][0] * 100,
+                    text_percent_max: charTalentTables.Nefer.passsive[2][1] * 100,
                 },
-                realStats: {
-                    crit_rate_bloom: [0, charTalentTables.Nefer.passsive[0][0] * 100, 0],
-                    crit_dmg_bloom: [0, charTalentTables.Nefer.passsive[0][1] * 100, 0],
-                    crit_rate_lunarbloom: [0, 0, charTalentTables.Nefer.passsive[0][2] * 100],
-                    crit_dmg_lunarbloom: [0, 0, charTalentTables.Nefer.passsive[0][3] * 100],
-                },
-                info: { ascension: 1 },
             }),
             new ConditionBoolean({
-                name: 'party.nefer_twine_warnings_and_tales_from_the_north',
-                serializeId: 9,
-                title: 'talent_name.nefer_twine_warnings_and_tales_from_the_north',
-                description: 'talent_descr.nefer_twine_warnings_and_tales_from_the_north',
-                info: {
-                    constellation: 2,
-                },
-            }),
-            new ConditionMoonPhaseBuff({
-                realStats: {
-                    dmg_reaction_lunarbloom: [0, 0, charTalentTables.Nefer.cons[1][2] * 100],
-                },
-                condition: new ConditionBoolean({ name: 'party.nefer_twine_warnings_and_tales_from_the_north' }),
-            }),
-            new ConditionMoonPhase({
-                name: 'party.nefer_i_offer_blood_and_tears_to_the_moonlight',
-                serializeId: 10,
-                title: 'talent_name.nefer_i_offer_blood_and_tears_to_the_moonlight',
-                description: 'talent_descr.nefer_i_offer_blood_and_tears_to_the_moonlight_2',
+                name: 'nefer_delusion_ensnares_reason',
+                serializeId: 2,
+                title: 'talent_name.nefer_delusion_ensnares_reason',
+                description: 'talent_descr.nefer_delusion_ensnares_reason',
                 stats: {
-                    text_percent_lunarbloom_bonus: charTalentTables.Nefer.cons[5][5] * 100,
+                    enemy_res_dendro: -charTalentTables.Nefer.cons[3][2] * 100,
                 },
+                //считаем отдельно от танца теней т.к. эффект сохраняется после выхода
+                //condition: new ConditionBoolean({ name: 'nefer_dance_of_a_thousand_nights' }),
                 info: {
-                    constellation: 6,
+                    constellation: 4,
                 },
-            }),
-            new ConditionMoonPhaseBuff({
-                realStats: {
-                    dmg_reaction_lunarbloom_bonus: [0, 0, charTalentTables.Nefer.cons[5][5] * 100],
-                },
-                condition: new ConditionBoolean({ name: 'party.nefer_i_offer_blood_and_tears_to_the_moonlight' }),
             }),
         ],
-        multipliers: [
-            new FeatureMultiplier({
-                scaling: 'nefer_mastery_total',
-                leveling: 'nefer_char_skill_burst',
-                values: Talents.get('burst.nefer_all_hearts_become_the_beating_moon_3'),
-                target: bloomTarget,
-                condition: new ConditionBoolean({ name: 'party.nefer_all_hearts_become_the_beating_moon' }),
+        postEffects: [
+            new PostEffectStatsPartyStat({
+                partyStat: 'nefer_mastery_total',
+                percent: new StatTable('lunarbloom_multi', [charTalentTables.Nefer.passsive[2][0] * 100]),
+                statCap: new ValueTable([charTalentTables.Nefer.passsive[2][1] * 100]),
             }),
-            new FeatureMultiplier({
-                scaling: 'nefer_mastery_total',
-                leveling: 'nefer_char_skill_burst',
-                values: Talents.get('burst.nefer_all_hearts_become_the_beating_moon_4'),
-                target: lunarbloomTarget,
-                condition: new ConditionBoolean({ name: 'party.nefer_all_hearts_become_the_beating_moon' }),
-            }),
-            new FeatureMultiplier({
-                scaling: 'nefer_mastery_total',
-                values: new StatTable('', [charTalentTables.Nefer.cons[1][0]], 100),
-                target: bloomTarget,
-                condition: new ConditionAnd([
-                    new ConditionBoolean({ name: 'party.nefer_all_hearts_become_the_beating_moon' }),
-                    new ConditionBoolean({ name: 'party.nefer_twine_warnings_and_tales_from_the_north' }),
-                ]),
-            }),
-            new FeatureMultiplier({
-                scaling: 'nefer_mastery_total',
-                values: new StatTable('', [charTalentTables.Nefer.cons[1][1]], 100),
-                target: lunarbloomTarget,
-                condition: new ConditionAnd([
-                    new ConditionBoolean({ name: 'party.nefer_all_hearts_become_the_beating_moon' }),
-                    new ConditionBoolean({ name: 'party.nefer_twine_warnings_and_tales_from_the_north' }),
-                ]),
-            }),
-        ],
+        ]
     }
 });
 

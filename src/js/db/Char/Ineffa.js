@@ -22,6 +22,7 @@ import { FeatureReactionLunarChargedLike } from "../../classes/Feature2/Reaction
 import { FeatureShield } from "../../classes/Feature2/Shield";
 import { PostEffectStats } from "../../classes/PostEffect/Stats";
 import { PostEffectStatsAtk } from "../../classes/PostEffect/Stats/Atk";
+import { PostEffectStatsPartyStat } from "../../classes/PostEffect/Stats/PartyStat";
 import { StatTable } from "../../classes/StatTable";
 import { ValueTable } from "../../classes/ValueTable";
 import { charTables } from "../generated/CharTables";
@@ -122,8 +123,6 @@ const Talents = new DbObjectTalents({
     links: charTalentTables.Ineffa.links,
 });
 
-const PassiveLunarScale = 0.7;
-const PassiveLunarScaleCap = 14;
 const A1Dmg = 65;
 const A4EmScale = 6;
 const C1AtkScale = 2.5;
@@ -137,8 +136,8 @@ const emBuffPost = new PostEffectStatsAtk({
 });
 
 const lunarPost = new PostEffectStatsAtk({
-    percent: new StatTable('lunarcharged_multi', [PassiveLunarScale / 100]),
-    statCap: new ValueTable([PassiveLunarScaleCap]),
+    percent: new StatTable('lunarcharged_multi', [charTalentTables.Ineffa.passsive[2][0]]),
+    statCap: new ValueTable([charTalentTables.Ineffa.passsive[2][1] * 100]),
 });
 
 const lunarPost2 = new PostEffectStatsAtk({
@@ -288,8 +287,6 @@ export const Ineffa = new DbObjectChar({
             multipliers: [
                 new FeatureMultiplier({
                     source: 'ascension1',
-                    scalingMultiplier: 'lunarcharged_multi',
-                    scalingSource: 'lunarcharged_multi',
                     values: new StatTable('ineffa_birgitta_coordinated_dmg', [A1Dmg]),
                 }),
             ],
@@ -310,8 +307,6 @@ export const Ineffa = new DbObjectChar({
             multipliers: [
                 new FeatureMultiplier({
                     source: 'constellation2',
-                    scalingMultiplier: 'lunarcharged_multi',
-                    scalingSource: 'lunarcharged_multi',
                     values: new StatTable('ineffa_punishment_edict_dmg', [C2Dmg]),
                 }),
             ],
@@ -341,8 +336,6 @@ export const Ineffa = new DbObjectChar({
             multipliers: [
                 new FeatureMultiplier({
                     source: 'constellation6',
-                    scalingMultiplier: 'lunarcharged_multi',
-                    scalingSource: 'lunarcharged_multi',
                     values: new StatTable('ineffa_carrier_flow_composite_dmg', [C6Dmg]),
                 }),
             ],
@@ -374,8 +367,8 @@ export const Ineffa = new DbObjectChar({
             title: 'talent_name.ineffa_assemblage_hub',
             description: 'talent_descr.ineffa_assemblage_hub',
             stats: {
-                text_percent: PassiveLunarScale,
-                text_percent_max: PassiveLunarScaleCap,
+                text_percent: charTalentTables.Ineffa.passsive[2][0] * 100,
+                text_percent_max: charTalentTables.Ineffa.passsive[2][1] * 100,
             },
             settings: {
                 allowed_lunarcharged: 1,
@@ -469,8 +462,8 @@ export const Ineffa = new DbObjectChar({
                 title: 'talent_name.ineffa_assemblage_hub',
                 description: 'talent_descr.ineffa_assemblage_hub',
                 stats: {
-                    text_percent: PassiveLunarScale,
-                    text_percent_max: PassiveLunarScaleCap,
+                    text_percent: charTalentTables.Ineffa.passsive[2][0] * 100,
+                    text_percent_max: charTalentTables.Ineffa.passsive[2][1] * 100,
                 },
             }),
             new ConditionBoolean({
@@ -496,5 +489,12 @@ export const Ineffa = new DbObjectChar({
                 },
             }),
         ],
+        postEffects: [
+            new PostEffectStatsPartyStat({
+                partyStat: 'ineffa_atk_total',
+                percent: new StatTable('lunarcharged_multi', [charTalentTables.Ineffa.passsive[2][0]]),
+                statCap: new ValueTable([charTalentTables.Ineffa.passsive[2][1] * 100]),
+            }),
+        ]
     },
 });

@@ -21,7 +21,7 @@ export class FeatureReactionLunarBloomLike extends FeatureReactionLunarBloom {
     getMultiplierReaction(data) {
         let result = super.getMultiplierReaction(data);
         result.push(
-            new CSumPlusOne([makeStatItem('lunarbloom_multi', data.stats)])
+            new CSumPlusOne([makeStatItem('lunarbloom_multi', data.stats)], { percent: true, comment: 'reaction_bonus' })
         );
         return result;
     }

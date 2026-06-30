@@ -388,7 +388,7 @@ export const ElementalResonance = new DbObjectBuff({
         }),
         new ConditionMoonPhaseSetting(),
         new ConditionBoolean({
-            name: 'bufs.ascendant_gleam_PEC',
+            name: 'buffs.ascendant_gleam_PEC',
             serializeId: 62,
             title: 'buffs_name.ascendant_gleam_PEC',
             description: 'buffs_descr.ascendant_gleam_PEC',
@@ -410,7 +410,7 @@ export const ElementalResonance = new DbObjectBuff({
             ]),
         }),
         new ConditionBoolean({
-            name: 'bufs.ascendant_gleam_AD',
+            name: 'buffs.ascendant_gleam_AD',
             serializeId: 63,
             title: 'buffs_name.ascendant_gleam_AD',
             description: 'buffs_descr.ascendant_gleam_AD',
@@ -432,7 +432,7 @@ export const ElementalResonance = new DbObjectBuff({
             ]),
         }),
         new ConditionBoolean({
-            name: 'bufs.ascendant_gleam_hydro',
+            name: 'buffs.ascendant_gleam_hydro',
             serializeId: 64,
             title: 'buffs_name.ascendant_gleam_hydro',
             description: 'buffs_descr.ascendant_gleam_hydro',
@@ -451,7 +451,26 @@ export const ElementalResonance = new DbObjectBuff({
             ]),
         }),
         new ConditionBoolean({
-            name: 'bufs.ascendant_gleam_geo',
+            name: 'buffs.ascendant_gleam_geo',
+            serializeId: 65,
+            title: 'buffs_name.ascendant_gleam_geo',
+            description: 'buffs_descr.ascendant_gleam_geo',
+            rotation: 'buffs',
+            hideInactive: true,
+            customStats: [
+                new ConditionNumber({
+                    name: 'ascendant_gleam_def',
+                    serializeId: 69,
+                    title: 'pool_stat.def',
+                }),
+            ],
+            condition: new ConditionAnd([
+                new ConditionMoonPhaseCheck({ moonphase: 2 }),
+                new ConditionNonLunarElement({ element: 'geo' }),
+            ]),
+        }),
+        new ConditionBoolean({
+            name: 'buffs.ascendant_gleam_geo',
             serializeId: 65,
             title: 'buffs_name.ascendant_gleam_geo',
             description: 'buffs_descr.ascendant_gleam_geo',
@@ -476,7 +495,7 @@ export const ElementalResonance = new DbObjectBuff({
             percent: new StatTable('dmg_reaction_lunar', [2.25 / 100.0]),
             statCap: new ValueTable([36]),
             conditions: [
-                new ConditionBoolean({ name: 'bufs.ascendant_gleam_AD' }),
+                new ConditionBoolean({ name: 'buffs.ascendant_gleam_AD' }),
             ],
         }),
         new PostEffectStats({
@@ -484,7 +503,7 @@ export const ElementalResonance = new DbObjectBuff({
             percent: new StatTable('dmg_reaction_lunar', [1 / 100.0]),
             statCap: new ValueTable([36]),
             conditions: [
-                new ConditionBoolean({ name: 'bufs.ascendant_gleam_geo' }),
+                new ConditionBoolean({ name: 'buffs.ascendant_gleam_geo' }),
             ],
         }),
         new PostEffectStats({
@@ -492,7 +511,7 @@ export const ElementalResonance = new DbObjectBuff({
             percent: new StatTable('dmg_reaction_lunar', [6 / 1000.0]),
             statCap: new ValueTable([36]),
             conditions: [
-                new ConditionBoolean({ name: 'bufs.ascendant_gleam_hydro' }),
+                new ConditionBoolean({ name: 'buffs.ascendant_gleam_hydro' }),
             ],
         }),
         new PostEffectStats({
@@ -500,7 +519,7 @@ export const ElementalResonance = new DbObjectBuff({
             percent: new StatTable('dmg_reaction_lunar', [9 / 100.0]),
             statCap: new ValueTable([36]),
             conditions: [
-                new ConditionBoolean({ name: 'bufs.ascendant_gleam_PEC' }),
+                new ConditionBoolean({ name: 'buffs.ascendant_gleam_PEC' }),
             ],
         }),
     ],

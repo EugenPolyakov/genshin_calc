@@ -28,6 +28,8 @@ import { charTalentTables } from "../generated/CharTalentTables";
 import { PostEffectStats } from "../../classes/PostEffect/Stats";
 import { PostEffectStatsAtk } from "../../classes/PostEffect/Stats/Atk";
 import { ConditionAnd } from "../../classes/Condition/And";
+import { PostEffectStatsPartyStat } from "../../classes/PostEffect/Stats/PartyStat";
+import { ConditionNumber } from "../../classes/Condition/Number";
 
 
 const Talents = new DbObjectTalents({
@@ -573,9 +575,28 @@ export const Flins = new DbObjectChar({
         },
     ]),
     partyData: {
+        loadStats: {
+            stats: ['atk_total'],
+        },
         conditions: [
             new Condition({ settings: { allowed_lunarcharged: 1 } }),
             new ConditionMoonPhaseSetting(),
+            new ConditionNumber({
+                name: 'flins_atk_total',
+                title: 'talent_name.stats_total_atk',
+                partyStat: 'atk_total',
+                serializeId: 2,
+                rotation: 'party',
+                max: 10000,
+            }),
+            new ConditionStatic({
+                title: 'talent_name.flins_old_world_secrets',
+                description: 'talent_descr.flins_old_world_secrets',
+                stats: {
+                    text_percent: charTalentTables.Flins.passsive[2][0] * 100,
+                    text_percent_max: charTalentTables.Flins.passsive[2][1] * 100,
+                },
+            }),
             new ConditionMoonPhase({
                 name: 'party.flins_songs_and_dances_of_death',
                 serializeId: 1,
@@ -592,6 +613,13 @@ export const Flins = new DbObjectChar({
                 condition: new ConditionBoolean({ name: 'party.flins_songs_and_dances_of_death' }),
             }),
         ],
+        postEffects: [
+            new PostEffectStatsPartyStat({
+                partyStat: 'flins_atk_total',
+                percent: new StatTable('lunarcharged_multi', [charTalentTables.Flins.passsive[2][0]]),
+                statCap: new ValueTable([charTalentTables.Flins.passsive[2][1] * 100]),
+            }),
+        ]
     }
 });
 

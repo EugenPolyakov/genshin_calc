@@ -35,6 +35,7 @@ import { ConditionBooleanLevels } from "../../classes/Condition/Boolean/Levels";
 import { ConditionNumberTalent } from "../../classes/Condition/Number/Talent";
 import { ConditionNumber } from "../../classes/Condition/Number";
 import { ConditionStacks } from "../../classes/Condition/Stacks";
+import { PostEffectStatsPartyStat } from "../../classes/PostEffect/Stats/PartyStat";
 
 
 const Talents = new DbObjectTalents({
@@ -577,6 +578,22 @@ export const Lauma = new DbObjectChar({
         conditions: [
             new Condition({ settings: { allowed_lunarbloom: 1 } }),
             new ConditionMoonPhaseSetting(),
+            new ConditionNumber({
+                name: 'lauma_mastery_total',
+                serializeId: 4,
+                title: 'talent_name.stats_total_mastery',
+                partyStat: 'mastery_total',
+                rotation: 'party',
+                max: 10000,
+            }),
+            new ConditionStatic({
+                title: 'talent_name.lauma_natures_chorus',
+                description: 'talent_descr.lauma_natures_chorus',
+                stats: {
+                    text_percent: charTalentTables.Lauma.passsive[2][0] * 100,
+                    text_percent_max: charTalentTables.Lauma.passsive[2][1] * 100,
+                },
+            }),
             new ConditionNumberTalent({
                 name: 'lauma_char_skill_elemental',
                 serializeId: 1,
@@ -605,14 +622,6 @@ export const Lauma = new DbObjectChar({
                 stats: [
                     Talents.getAlias('skill.lauma_elemental_res_decrease', 'enemy_res_dendro', -1),
                 ],
-            }),
-            new ConditionNumber({
-                name: 'lauma_mastery_total',
-                serializeId: 4,
-                title: 'talent_name.stats_total_mastery',
-                partyStat: 'mastery_total',
-                rotation: 'party',
-                max: 10000,
             }),
             new ConditionNumberTalent({
                 name: 'lauma_char_skill_burst',
@@ -726,6 +735,13 @@ export const Lauma = new DbObjectChar({
                 ]),
             }),
         ],
+        postEffects: [
+            new PostEffectStatsPartyStat({
+                partyStat: 'lauma_mastery_total',
+                percent: new StatTable('lunarbloom_multi', [charTalentTables.Lauma.passsive[2][0] * 100]),
+                statCap: new ValueTable([charTalentTables.Lauma.passsive[2][1] * 100]),
+            })
+        ]
     }
 });
 

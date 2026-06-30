@@ -226,16 +226,6 @@ def make_tables(data, generate):
 
         for (localIdx, (ind, fmt)) in enumerate(params_indices):
             ind = int(ind)
-
-            if ind in processed:
-                print(desc)
-                continue
-            processed[ind] = 1
-
-            outwrite('\t\t\t// ' + name + '\n\t\t\t')
-            outwrite('p%d: [%s],\n' % (ind, ', '.join(
-                format_table(params.get(ind, []), fmt)
-            )))
             if generate:
                 if len(lst) == len(params_indices):
                     print("            {")
@@ -243,6 +233,15 @@ def make_tables(data, generate):
                     print("            },")
                 else:
                     print(f"                    new StatTable('{tmp}_{localIdx+1}', charTalentTables.{generate['name']}.s{generate['id']}.p{ind}),")
+
+            if ind in processed:
+                continue
+            processed[ind] = 1
+
+            outwrite('\t\t\t// ' + name + '\n\t\t\t')
+            outwrite('p%d: [%s],\n' % (ind, ', '.join(
+                format_table(params.get(ind, []), fmt)
+            )))
             del params[ind]
 
         if generate:
@@ -394,6 +393,20 @@ def prepare_talents(talent_items, generate):
                 print(f"                    name: '{talent_id}',")
                 print(f"                    title: 'talent_name.{talent_id}',")
                 print(f"                    description: 'talent_descr.{talent_id}',")
+            if talent['descTextMapHash_hex'] and lang_default.get(talent['descTextMapHash_hex']):
+                print(f"                    condition: new ConditionBoolean({{ name: 'char_hex_{generate}', invert: 1}}),")
+                print("                }),")
+                if talent.get('no_descr'):
+                    print("                new Condition({")
+                    print("                    settings: {")
+                    print("                        char_skill_burst_bonus: 3, char_skill_elemental_bonus: 3,")
+                    print("                    },")
+                else:
+                    print("                new ConditionStatic({")
+                    print(f"                    name: '{talent_id}',")
+                    print(f"                    title: 'talent_name.{talent_id}',")
+                    print(f"                    description: 'talent_descr.{talent_id}_hex',")
+                print(f"                    condition: new ConditionBoolean({{ name: 'char_hex_{generate}'}}),")
             print("                }),")
             print("            ],")
             print("        },")
@@ -401,52 +414,41 @@ def prepare_talents(talent_items, generate):
         if uniq_skills.get(talent_id):
             continue
         uniq_skills[talent_id] = 1
-
+        
         descItems = {}
+        descItems_hex = {}
         nameItems = {}
 
         for lang_name in lang_data:
             lang = lang_data[lang_name]['lang']
             skill_name = lang.get(talent['nameTextMapHash'])
             nameItems[lang_name] = [skill_name]
-
+            tpl_keywords = lang_data[lang_name]['keywords']
             #if not tpl_char: texts[eng_name].append(skill_name)
             texts[eng_name].append(skill_name)
+            tpl_talents = lang_data[lang_name]['talents']
 
             if talent['descTextMapHash']:
-                skill_descr = lang.get(talent['descTextMapHash'])
-                locallinks.update(collect_links(skill_descr))
-                #if not tpl_char: texts[eng_name].append(skill_descr)
-                texts[eng_name].append(skill_descr)
-
-                tpl_names = lang_data[lang_name]['names']
-                tpl_keywords = lang_data[lang_name]['keywords']
-                tpl_talents = lang_data[lang_name]['talents']
-
-                # skill_name = re.sub(r'^.*?:\s*', '', skill_name)
-                # if char_id=="flins": print(skill_descr, '\n-----------------\n')
-                skill_descr = tpl_talents.process(skill_descr)['descr'][0]
-                # if char_id=="flins": print(skill_descr, '\n-----------------\n')
-                skill_descr = tpl_keywords.process(skill_descr)['descr'][0]
-                # if char_id=="flins": print(skill_descr, '\n-----------------\n')
-                skill_descr = tpl_names. process(skill_descr)['descr'][0]
-                # if char_id=="flins": print(skill_descr, '\n-----------------\n')
-                if tpl_char:
-                    skill_descr = tpl_char.process(lang_name, talent_short_id, skill_descr)
-                # if char_id=="flins": print(skill_descr, '\n-----------------\n')
-
-                if isinstance(skill_descr, str):
-                    skill_descr = {'descr': [skill_descr], 'names': []}
-
+                texts[eng_name].append(lang.get(talent['descTextMapHash']))
+                skill_descr = process_talent_desc(lang_name, lang.get(talent['descTextMapHash']), talent_short_id, tpl_talents, None, tpl_keywords)
                 descItems[lang_name] = skill_descr['descr']
+                nameItems[lang_name].extend(skill_descr['names'])
+
+            if talent['descTextMapHash_hex'] and lang.get(talent['descTextMapHash_hex']):
+                texts[eng_name].append(lang.get(talent['descTextMapHash_hex']))
+                skill_descr = process_talent_desc(lang_name, lang.get(talent['descTextMapHash_hex']), talent_short_id, tpl_talents, talent_short_id + '_hex', tpl_keywords)
+                descItems_hex[lang_name] = skill_descr['descr']
                 nameItems[lang_name].extend(skill_descr['names'])
             #if not tpl_char: texts[eng_name].append('\n')
             texts[eng_name].append('\n')
 
         add_array(nameItems, result_hero_strings, talent_id, 'talent_name')
 
-        if descItems and not talent.get('no_descr'):
-            add_array(descItems, result_hero_strings, talent_id, 'talent_descr')
+        if not talent.get('no_descr'):
+            if descItems:
+                add_array(descItems, result_hero_strings, talent_id, 'talent_descr')
+            if descItems_hex:
+                add_array(descItems_hex, result_hero_strings, talent_id + '_hex', 'talent_descr')
 
 
 def print_skillmult(elem, name, vals, isChild):
@@ -485,6 +487,33 @@ def print_skillmult(elem, name, vals, isChild):
         print("                }),")
         print("            ],")
         print("        }),")
+
+def process_talent_desc(lang_name, skill_descr, talent_short_id, tpl_patterns, talent_hex = None, tpl_keywords = None):
+    locallinks.update(collect_links(skill_descr))
+
+    tpl_names = lang_data[lang_name]['names']
+
+    # print('default:--------------------------')
+    # print(skill_descr)
+    skill_descr = tpl_patterns.process(skill_descr)['descr'][0]
+    if tpl_keywords:
+        skill_descr = tpl_keywords.process(skill_descr)['descr'][0]
+    # print('patterns:--------------------------')
+    # print(skill_descr)
+    skill_descr = tpl_names.process(skill_descr)['descr'][0]
+    # print('names:--------------------------')
+    # print(skill_descr)
+    if tpl_char:
+        if talent_hex: # and tpl_char.find(lang_name, talent_hex):
+            skill_descr = tpl_char.process(lang_name, talent_hex, skill_descr)
+        else:
+            skill_descr = tpl_char.process(lang_name, talent_short_id, skill_descr)
+        # print('char:--------------------------')
+        # print(skill_descr)
+
+    if isinstance(skill_descr, str):
+        skill_descr = {'descr': [skill_descr], 'names': []}
+    return skill_descr
 
 hyperlinks = set()
 if generate_char != '':
@@ -597,41 +626,23 @@ for charVarName in sorted(char_keys):
                 })
             if proud_params['desc']:
                 index+= 1
-
+                
             descItems = {}
+            descItems_hex = {}
             nameItems = {}
             for lang_name in lang_data:
                 lang = lang_data[lang_name]['lang']
                 skill_name = lang.get(skill['nameTextMapHash'])
-                skill_descr = lang.get(skill['descTextMapHash'])
-
-                locallinks.update(collect_links(skill_descr))
-
-                tpl_names = lang_data[lang_name]['names']
-                tpl_keywords = lang_data[lang_name]['keywords']
-                tpl_patterns = lang_data[lang_name]['patterns']
-
                 skill_name = re.sub(r'^Normal Attack:\s*', '', skill_name)
-                # print('default:--------------------------')
-                # print(skill_descr)
-                skill_descr = tpl_patterns.process(skill_descr)['descr'][0]
-                # skill_descr = tpl_keywords.process(skill_descr)
-                # print('patterns:--------------------------')
-                # print(skill_descr)
-                skill_descr = tpl_names.process(skill_descr)['descr'][0]
-                # print('names:--------------------------')
-                # print(skill_descr)
-                if tpl_char:
-                    skill_descr = tpl_char.process(lang_name, talent_short_id, skill_descr)
-                    # print('char:--------------------------')
-                    # print(skill_descr)
-
-                if isinstance(skill_descr, str):
-                    skill_descr = {'descr': [skill_descr], 'names': []}
-
                 nameItems[lang_name] = [skill_name]
+                tpl_patterns = lang_data[lang_name]['patterns']
+                skill_descr = process_talent_desc(lang_name, lang.get(skill['descTextMapHash']), talent_short_id, tpl_patterns)
                 descItems[lang_name] = skill_descr['descr']
                 nameItems[lang_name].extend(skill_descr['names'])
+                if skill['IACNAENANDH'] and lang.get(skill['IACNAENANDH']):
+                    skill_descr = process_talent_desc(lang_name, lang.get(skill['IACNAENANDH']), talent_short_id, tpl_patterns, talent_short_id + '_hex')
+                    descItems_hex[lang_name] = skill_descr['descr']
+                    nameItems[lang_name].extend(skill_descr['names'])
 
             if proud_params['customParams'].keys():
                 for param in proud_params['customParams']:
@@ -652,6 +663,8 @@ for charVarName in sorted(char_keys):
 
             add_array(nameItems, result_hero_strings, skill_id, 'talent_name')
             add_array(descItems, result_hero_strings, skill_id, 'talent_descr')
+            if descItems_hex:
+                add_array(descItems_hex, result_hero_strings, skill_id + '_hex', 'talent_descr')
 
         if generate_char == char_id:
             print(f"    links: charTalentTables.{charVarName}.links,")
@@ -688,6 +701,7 @@ for charVarName in sorted(char_keys):
             talent_items.append({
                 'nameTextMapHash': talent.get('nameTextMapHash'),
                 'descTextMapHash': talent.get('descTextMapHash'),
+                'descTextMapHash_hex': talent.get('IACNAENANDH'),
                 'no_descr': const_num == 3 or const_num == 5,
             })
             outwrite('\t\t\t')
@@ -710,6 +724,7 @@ for charVarName in sorted(char_keys):
                 talent_items.append({
                     'nameTextMapHash': proud.get('nameTextMapHash'),
                     'descTextMapHash': proud.get('descTextMapHash'),
+                    'descTextMapHash_hex': proud.get('IACNAENANDH'),
                 })
                 if generate_char == char_id:
                     talent_name = lang_default.get(proud.get('nameTextMapHash'))
@@ -735,8 +750,8 @@ for charVarName in sorted(char_keys):
             print("    ],")
             print("    constellation: new DbObjectConstellation([")
 
-        prepare_talents(talent_items[-passive_count:], False)
-        prepare_talents(talent_items[0:-passive_count], generate_char == char_id)
+        prepare_talents(talent_items[-passive_count:], None)
+        prepare_talents(talent_items[0:-passive_count], char_id if generate_char == char_id else None)
     CsvDumper().dump(result_hero_strings, f'char/{char_key}.csv')
     hyperlinks.update(locallinks)
     outwrite('\t\tlinks: [%s],\n' % (', '.join(sorted(locallinks))))

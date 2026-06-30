@@ -297,8 +297,8 @@ export class ArtifactsSuggest {
                     let stats = new Stats();
 
                     for (let cond of conditions) {
-                        let data = cond.getData(localSettings);
-                        stats.concat(data.stats);
+                        let data = cond.getActualStats(localSettings);
+                        stats.concat(data);
                     }
 
                     // stats.truncate(this.usedStats); // TODO нужно пересчитать после обработки всех variation

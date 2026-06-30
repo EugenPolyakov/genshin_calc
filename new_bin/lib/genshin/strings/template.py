@@ -226,10 +226,14 @@ class TemplateList:
     def __init__(self, prouds = [], **templates):
         self.templates = dict(**templates)
 
+    def find(self, lang, name):
+        selected = self.templates.get(f'{name}_{lang}') or self.templates.get(name)
+        return selected
+
     def process(self, lang, name, string):
         result = string
         default = self.templates.get(f'default_{lang}')
-        selected = self.templates.get(f'{name}_{lang}') or self.templates.get(name)
+        selected = self.find(lang, name)
         if default:
             result = default.process(result)
         if selected:
