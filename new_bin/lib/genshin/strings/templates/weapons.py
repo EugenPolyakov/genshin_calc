@@ -66,38 +66,36 @@ halcyon_years_unending_eng = Template(
 )
 
 sunset_reignites_the_dawn = Template(
-    patterns=[
-        ('<br>', '<br>\n'),
-    ],
     names=['Палящим сиянием', 'Палящего сияния', 'обычной'],
     sentences=[
         ['20:crit_dmg', '28:atk_percent', '6:ignore'],
         ['1:ignore', '10:ignore'],
+        [],
         ['2:ignore'],
         ['1:ignore', '1:ignore', '6:ignore'],
+        [],
         ['75:'],
     ],
     results=[
-        [0, 1, 2, 3],
-        [4],
+        [0, 1, 2, 3, 4],
+        [6],
     ],
 )
 
 sunset_reignites_the_dawn_eng = Template(
-    patterns=[
-        ('<br>', '<br>\n'),
-    ],
     names=['Scorching Brilliance'],
     sentences=[
         ['20:crit_dmg', '28:atk_percent', '6:ignore'],
         ['10:ignore'],
+        [],
         ['2:ignore'],
         ['6:ignore'],
+        [],
         ['75:'],
     ],
     results=[
-        [0, 1, 2, 3],
-        [4],
+        [0, 1, 2, 3, 4],
+        [6],
     ],
 )
 
@@ -216,17 +214,9 @@ falcons_defiance = Template(
     ],
 )
 
-tupacs_grip_eng = Template(
-    sentences=[
-        ['40:text_percent_dmg'],
-        ['15:ignore'],
-    ],
-)
-
 tupacs_grip = Template(
     sentences=[
         ['40:text_percent_dmg'],
-        [],
         ['15:ignore'],
     ],
 )
@@ -311,12 +301,11 @@ desert_watch = Template(
         ['20:atk_percent', '8:ignore'],
         ['20:atk_percent', '8:ignore'],
         [],
-        [],
         ['32:hp_percent'],
     ],
     results=[
         [0, 1, 2],
-        [3, 4],
+        [3],
     ]
 )
 
@@ -473,22 +462,6 @@ infusion_needle_eng = Template(
 )
 
 ashen_suns_shadow = Template(
-    sentences=[
-        ['25:text_percent'],
-        [],
-        ['14:ignore'],
-        ['12:dmg_all'],
-        ['30:text_percent'],
-        ['24:dmg_all'],
-    ],
-    results=[
-        [0, 1, 2],
-        [3],
-        [4, 5],
-    ]
-)
-
-ashen_suns_shadow_eng = Template(
     patterns=[
         ('; if the value', '\nif the value'),
     ],
@@ -652,19 +625,6 @@ byakuya_kougetsu = Template(
     names=['Энергию'],
     sentences=[
         ['10:healing', '1:normal_base_hp_percent'],
-        [],
-        ['12:ignore', '0.6:'],
-        ['0.1:ignore'],
-    ],
-    results=[
-        [0, 1],
-        [2, 3],
-    ]
-)
-
-byakuya_kougetsu_eng = Template(
-    sentences=[
-        ['10:healing', '1:normal_base_hp_percent'],
         ['12:ignore', '0.6:'],
         ['0.1:ignore'],
     ],
@@ -714,13 +674,12 @@ gash = Template(
 an_end_sublime = Template(
     sentences=[
         ['12:atk_percent', '15:ignore', '25:ignore',],
-        [],
         ['10:ignore', ],
         ['2.4:text_percent_hp', '150:text_decimal', '15:ignore']
     ],
     results=[
-        [0, 1, 2],
-        [3],
+        [0, 1],
+        [2],
         ['Долг жизнии'],
     ],
     extracted_names=[2],
@@ -769,15 +728,14 @@ unfinished_masterpiece = Template(
     names=['бонус урона всеми элементами'],
     sentences=[
         ['8:dmg_pyro', '15:ignore', '24:ignore'],
-        [],
         ['10:ignore'],
         ['15:ignore', '2:text_percent', '1000:text_value_hp'],
         [],
         ['12:text_percent_max'],
     ],
     results=[
-        [0, 1, 2],
-        [3, 4, 5],
+        [0, 1],
+        [2, 3, 4],
     ]
 )
 
@@ -893,8 +851,7 @@ infusion_stinger = Template(
 primordial_jade_regalia = Template(
     names=['Камня воли', 'создаёт щит'],
     sentences=[
-        ['3:ignore', '2.5:ignore', '4.5:ignore', '0.3:text_percent|0|2', '1000:ignore'],
-        ['12:text_percent_max'],
+        ['3:ignore', '2.5:ignore', '4.5:ignore', '0.3:text_percent|0|2', '1000:ignore', '12:text_percent_max'],
         [],
     ],
 )
@@ -997,7 +954,6 @@ itinerant_hero = Template(
 aqua_remembrance = Template(
     names=['Знойного лета'],
     sentences=[
-        [],
         ['20:hp_percent'],
         ['15:ignore', '14:ignore', '4:ignore'],
         ['12:dmg_normal'],
@@ -1005,8 +961,8 @@ aqua_remembrance = Template(
         ['4:ignore'],
     ],
     results=[
-        [0, 1],
-        [2, 3, 4, 5]
+        [0],
+        [1, 2, 3, 4]
     ],
 )
 
@@ -1232,14 +1188,13 @@ dawn_and_dusk_by_the_lake = Template(
     sentences=[
         ['8:dmg_skill', '6:ignore'],
         ['1:ignore', '0.2:ignore', '3:ignore'],
-        [],
         ['14:hp_percent', '6:ignore'],
         ['1:ignore', '0.2:ignore', '2:ignore'],
         [],
     ],
     results=[
         [0, 1],
-        [2, 3, 4, 5],
+        [2, 3, 4],
     ],
 )
 
@@ -1329,10 +1284,9 @@ descension = Template(
         'Мечом нисхождения',
         'обычными',
     ],
-    patterns=[
-        ('<br>', '<br>\n'),
-    ],
     sentences=[
+        [],
+        [],
         [],
         [],
         ['50:text_percent_chance', '200:text_percent_dmg'],
@@ -1340,8 +1294,9 @@ descension = Template(
         ['66:atk'],
     ],
     results=[
-        [4],
-        [2, 3],
+        [6],
+        [4, 5],
+        [0, 1, 2],
     ],
 )
 
@@ -1351,10 +1306,11 @@ descension_eng = Template(
         'Sword of Descension',
     ],
     patterns=[
-        ('<br>', '<br>\n'),
         ('name{Sword}', 'Sword'),
     ],
     sentences=[
+        [],
+        [],
         [],
         [],
         ['50:text_percent_chance', '200:text_percent_dmg'],
@@ -1362,8 +1318,9 @@ descension_eng = Template(
         ['66:atk'],
     ],
     results=[
-        [4],
-        [2, 3],
+        [6],
+        [4, 5],
+        [0, 1, 2],
     ],
 )
 
@@ -1426,16 +1383,15 @@ dryass_nocturne = Template(
     ],
     sentences=[
         [],
-        ['1:ignore','2:ignore', '3:ignore'],
-        ['40:hp_percent', '1:ignore', '25:ignore', '25:ignore', '20:ignore'],
+        ['1:ignore','2:ignore', '3:ignore', '40:hp_percent', '1:ignore', '25:ignore', '25:ignore', '20:ignore'],
         [],
         [],
         ['3:ignore', '28:crit_rate_burst'],
         ['4:ignore', '3:ignore']
     ],
     results=[
-        [0, 1, 2, 3, 4],
-        [5, 6],
+        [0, 1, 2, 3],
+        [4, 5],
     ],
 )
 
@@ -1529,17 +1485,15 @@ evernight_duet = Template(
 fangs_flying_to_and_fro = Template(
     sentences=[
         ['15:ignore'],
-        [],
         ['20:hp_percent','10:ignore'],
-        [],
         ['12:text_percent'],
         ['24:text_percent_max'],
         ['15:ignore'],
     ],
     results=[
         [0],
-        [1, 2, 6],
-        [3, 4, 5, '(%{text_number_f})'],
+        [1, 4],
+        [2, 3, '(%{text_number_f})'],
     ],
 )
 
@@ -1908,14 +1862,6 @@ melussistance = Template(
 
 jade_circulation = Template(
     sentences=[
-        ['5:ignore'],
-        ['32:hp_percent', '40:mastery'],
-        ['10:ignore']
-    ],
-)
-
-jade_circulation_eng = Template(
-    sentences=[
         ['5:ignore', '32:hp_percent', '40:mastery'],
         ['10:ignore']
     ],
@@ -2049,7 +1995,10 @@ northwind_wolf = Template(
         [0],
         [1, 4],
         [2, 4],
+        ['$$$name$$$ (элементальный навык)'],
+        ['$$$name$$$ (взрыв стихии)'],
     ],
+    extracted_names=[3, 4],
 )
 
 northwind_wolf_eng = Template(
@@ -2063,7 +2012,10 @@ northwind_wolf_eng = Template(
         [0],
         [1, 3],
         [2, 3],
+        ['$$$name$$$ (Elemental Skill)'],
+        ['$$$name$$$ (Elemental Burst)'],
     ],
+    extracted_names=[3, 4],
 )
 
 oceanic_victory = Template(
@@ -2172,14 +2124,6 @@ protectors_virtue = Template(
     sentences=[
         ['20:hp_percent'],
         ['1.2:text_percent', ],
-        [],
-    ],
-)
-
-protectors_virtue_eng = Template(
-    sentences=[
-        ['20:hp_percent'],
-        ['1.2:text_percent', ],
     ],
 )
 
@@ -2234,13 +2178,12 @@ rebellious_guardian = Template(
     names=['защитой щита', 'урон', 'щит'],
     sentences=[
         ['10:ignore', '20:text_percent_hp'],
-        [],
         ['45:ignore'],
         ['12:dmg_all']
     ],
     results=[
-        [3],
-        [0, 1, 2],
+        [2],
+        [0, 1],
     ],
 )
 
@@ -2298,20 +2241,6 @@ rebels_banner_hymn_eng = Template(
 )
 
 reckless_cinnabar = Template(
-    sentences=[
-        ['20:hp_percent'],
-        ['0.8:text_percent'],
-        [],
-        ['50:', '1:text_percent'],
-        [],
-    ],
-    results=[
-        [0, 1, 2 ],
-        [3, 4],
-    ],
-)
-
-reckless_cinnabar_eng = Template(
     sentences=[
         ['20:hp_percent'],
         ['0.8:text_percent'],
@@ -2455,14 +2384,6 @@ precise_eng = Template(
 silent_trigger = Template(
     sentences=[
         ['40:text_percent_dmg'],
-        [],
-        ['15:ignore'],
-    ],
-)
-
-silent_trigger_eng = Template(
-    sentences=[
-        ['40:text_percent_dmg'],
         ['15:ignore'],
     ],
 )
@@ -2546,10 +2467,9 @@ stillwood_moonshadow_eng = Template(
 
 strong_strike = Template(
     names=['Элой', 'Хищником', 'Aloy', 'Predator'],
-    replace={
-        '<br>': '\n'
-    },
     sentences=[
+        [],
+        [],
         [],
         [],
         ['10:dmg_normal', '6:ignore'],
@@ -2557,9 +2477,9 @@ strong_strike = Template(
         ['66:atk'],
     ],
     results=[
-        [4],
-        [2, 3],
-        [0, 1],
+        [6],
+        [4, 5],
+        [0, 2],
     ],
 )
 
@@ -2568,15 +2488,13 @@ sunken_song_of_the_sands = Template(
     sentences=[
         ['20:hp_percent'],
         ['20:ignore', '0.12:text_percent'],
-        [],
         ['1:ignore', '0.3:ignore', '3:ignore'],
-        ['3:ignore', '3:ignore', '0.2:text_percent|0.2'],
-        ['20:ignore'],
+        ['3:ignore', '3:ignore', '0.2:text_percent|0.2', '20:ignore'],
     ],
     results=[
         [0],
-        [1, 2, 3],
-        [4, 5],
+        [1, 2],
+        [3],
     ],
 )
 
@@ -2607,7 +2525,9 @@ the_silver_tongue = Template(
     results=[
         [0, 1],
         [2, 3],
+        ['$$$name$$$ (Пиро)'],
     ],
+    extracted_names=[2],
 )
 
 the_silver_tongue_eng = Template(
@@ -2620,7 +2540,9 @@ the_silver_tongue_eng = Template(
     results=[
         [0, 1],
         [2, 3],
+        ['$$$name$$$ (Пиро)'],
     ],
+    extracted_names=[2],
 )
 
 the_way_of_sunfire = Template(
@@ -2805,8 +2727,7 @@ busybodys_running_light_eng = Template(
 echoes_of_the_plentiful_land = Template(
     names=['Нефритовой короны'],
     sentences=[
-        ['0.6:text_percent', '1000:ignore'],
-        ['10:ignore'],
+        ['0.6:text_percent', '1000:ignore', '10:ignore'],
         ['16:text_percent_max'],
     ],
 )
@@ -2874,7 +2795,7 @@ jinnis_whisper = Template(
     ],
     results=[
         [0, 1, 2, 3],
-        ['Шёпот джинна (Всего МС)']
+        ['$$$name$$$ (Всего МС)']
     ],
     extracted_names=[1],
 )
@@ -2887,7 +2808,7 @@ jinnis_whisper_eng = Template(
     ],
     results=[
         [0, 1, 2],
-        ['Whisper of the Jinn (Total EM)']
+        ['$$$name$$$ (Total EM)']
     ],
     extracted_names=[1],
 )
@@ -2974,11 +2895,9 @@ radiance_of_the_deeps_eng = Template(
     extracted_names=[2,3,4],
 )
 
-serenitys_call = Template(
+serenitys_call_rus = Template(
     sentences=[
-        ['12:ignore'],
-        ['16:text_hp_percent_default'],
-        [],
+        ['12:ignore', '16:text_hp_percent_default'],
         ['16:format{text_number_f=2|{value}}:text_hp_percent'],
         [],
     ],
@@ -3010,15 +2929,23 @@ master_key_eng = Template(
 
 prospectors_shovel = Template(
     sentences=[
-        ['48:dmg_reaction_electrocharged', '12:text_dmg_reaction_lunarcharged_percent_default'],
-        ['12:format{text_number_f=2|{value}}:text_dmg_reaction_lunarcharged_percent'],
+        ['48:dmg_reaction_electrocharged', '12:dmg_reaction_lunarcharged'],
+        ['12:dmg_reaction_lunarcharged'],
+    ],
+    results=[
+        [0],
+        [1],
     ],
 )
 
 blackmarrow_lantern = Template(
     sentences=[
-        ['48:dmg_reaction_rupture', '12:text_dmg_reaction_lunarbloom_percent_default'],
-        ['12:format{text_number_f=2|{value}}:text_dmg_reaction_lunarbloom_percent'],
+        ['48:dmg_reaction_rupture', '12:dmg_reaction_lunarbloom'],
+        ['12:dmg_reaction_lunarbloom'],
+    ],
+    results=[
+        [0],
+        [1],
     ],
 )
 
@@ -3204,7 +3131,9 @@ the_daybreak_chronicles_rus = Template(
         ['3:ignore', '60:text_dmg_percent'],
         ['10:text_lose_percent', '0:'],
         ['10:dmg_normal', '60:text_dmg_percent'],
-        ['0.1:ignore', '20:text_restore_percent2'],
+        ['0.1:ignore'],
+        [],
+        ['20:text_restore_percent2'],
     ],
 )
 
@@ -3214,6 +3143,8 @@ the_daybreak_chronicles_eng = Template(
         ['10:text_lose_percent', '0:'],
         ['10:dmg_normal', '60:text_dmg_percent'],
         ['0.1:ignore'],
+        [],
+        [],
         ['20:text_restore_percent2'],
     ],
 )
@@ -3233,21 +3164,7 @@ nightweavers_looking_glass = Template(
     ],
 )
 
-nocturnes_curtain_call_rus = Template(
-    sentences=[
-        [],
-        ['10:hp_percent'],
-        ['14:text_energy', '12:ignore'],
-        ['14:hp_percent', '60:crit_dmg_lunar'],
-        ['18:ignore'],
-    ],
-    results=[
-        [0, 1],
-        [2, 3, 4],
-    ],
-)
-
-nocturnes_curtain_call_eng = Template(
+nocturnes_curtain_call = Template(
     sentences=[
         ['10:hp_percent'],
         ['14:text_energy', '12:ignore', '14:hp_percent', '60:crit_dmg_lunar'],
@@ -3263,11 +3180,13 @@ gest_of_the_mighty_wolf_rus = Template(
     sentences=[
         ['10:atk_speed_normal'],
         ['1:ignore', '2:ignore', '2:ignore', '7.5:dmg_all'],
-        ['4:ignore', '4:ignore', '0.01:ignore', '7.5:format{text_number_f=1|{value}}:text_percent'],
+        ['4:ignore', '4:ignore', '0.01:ignore'],
+        [],
+        ['7.5:format{text_number_f=1|{value}}:text_percent'],
     ],
     results=[
         [0],
-        [1, 2],
+        [1, 2, 3, 4],
     ],
 )
 
@@ -3276,11 +3195,13 @@ gest_of_the_mighty_wolf_eng = Template(
         ['10:atk_speed_normal'],
         ['1:ignore', '2:ignore', '2:ignore', '7.5:dmg_all', '4:ignore'],
         ['4:ignore'],
-        ['0.01:ignore', '7.5:format{text_number_f=1|{value}}:text_percent'],
+        ['0.01:ignore'],
+        [],
+        ['7.5:format{text_number_f=1|{value}}:text_percent'],
     ],
     results=[
         [0],
-        [1, 2, 3],
+        [1, 2, 3, 4, 5],
     ],
 )
 

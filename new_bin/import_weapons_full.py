@@ -10,7 +10,7 @@ from lib.genshin.datafiles.weapons import IGNORED_WEAPONS, WeaponData, WeaponSki
 from lib.genshin.utils import convert_id, add_array
 from lib.genshin.strings.templates import weapons as weapons_tpl
 from lib.genshin.strings.templates.talents import templates as common_tpl
-from lib.genshin.strings.templates.names import names_eng, names_rus, keywords_eng, keywords_rus, color_patterns
+from lib.genshin.strings.templates.names import names_eng, names_rus, keywords_eng, keywords_rus, color_patterns, postprocess
 from lib.genshin.strings.csv import CsvDumper
 from lib.genshin.strings.text import TextDumper
 import lib.static as static
@@ -656,10 +656,15 @@ def print_Texts(weapons):
 
                         values = tpl_weapon.process(item_descr[lang_name])
                         item_descr[lang_name] = values['descr'];
-                        item_name[lang_name].extend(values['names']);
+                        for i in range(0, len(item_descr[lang_name])):
+                            if item_descr[lang_name][i]:
+                                item_descr[lang_name][i] = postprocess.process(item_descr[lang_name][i])['descr'][0]
+
+                        for i in values['names']:
+                            item_name[lang_name].append(i.replace('$$$name$$$', item_name[lang_name][0]));
 
                     if not isinstance(item_descr[lang_name], list):
-                        item_descr[lang_name] = [item_descr[lang_name]]
+                        item_descr[lang_name] = [postprocess.process(item_descr[lang_name])['descr'][0]]
 
                 add_array(item_name, result_talents, talent_name, 'talent_name')
 

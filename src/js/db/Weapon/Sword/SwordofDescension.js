@@ -20,7 +20,7 @@ export const SwordofDescension = new DbObjectWeapon({
             name: 'common.ps_network',
             serializeId: 1,
             title: 'talent_name.ps_network',
-            description: 'talent_descr.ps_network',
+            description: 'talent_descr.weapon_descension_3',
         }),
         new ConditionStatic({
             title: 'talent_name.weapon_descension',

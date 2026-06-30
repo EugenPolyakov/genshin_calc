@@ -46,7 +46,13 @@ export class ArtifactGenerator {
 
         this.usefulStats = [];
         this.uselessStats = [];
-        this.statRolls = getStatRolls(this.settings.mode)
+        if (this.settings.mode == 'min') {
+            this.statRolls = [0];
+        } else if (this.settings.mode == 'max') {
+            this.statRolls = [3];
+        } else {
+            this.statRolls = [1, 2];
+        }
 
         for (let stat of DB.Artifacts.Substats.getKeys()) {
             if (usedStats.includes(stat)) {
@@ -157,7 +163,7 @@ export class ArtifactGenerator {
 
                     for (let j = 0; j < i; j++) {
                         let rollValue = obj.addRoll(stat);
-                        stats.add(stat, rollValue);
+                        stats.add(stat, DB.Artifacts.Substats.get(stat).rollsReal[4][rollValue]);
                     }
 
                     let featureValue;
@@ -171,7 +177,7 @@ export class ArtifactGenerator {
                             if (!bestStat) break;
 
                             let rollValue = obj.addRoll(bestStat);
-                            stats.add(bestStat, rollValue);
+                            stats.add(bestStat, DB.Artifacts.Substats.get(bestStat).rollsReal[4][rollValue]);
                         }
                     } else {
                         this.buildData.stats = stats;
@@ -317,15 +323,15 @@ export class StatsObject {
     }
 
     getRollValue(stat) {
-        let cnt = this.statValues[stat].length;
+        let cnt = this.statValues.length;
 
         if (cnt > 1) {
             let used = 1 + (this.rolls[stat] ? this.rolls[stat].length : 0);
             let index = used % cnt;
-            return this.statValues[stat][index];
+            return this.statValues[index];
         }
 
-        return this.statValues[stat][0];
+        return this.statValues[0];
     }
 
     satisfyStat(stat, value, total) {
@@ -336,7 +342,7 @@ export class StatsObject {
                 return false;
             }
 
-            let rollValue = this.addRoll(stat);
+            let rollValue = DB.Artifacts.Substats.get(stat).rollsReal[4][this.addRoll(stat)];
             current += rollValue;
             total.add(stat, rollValue);
         }
@@ -350,7 +356,7 @@ export class StatsObject {
         if (!this.rolls[stat]) { this.rolls[stat] = []; }
         this.rolls[stat].push(value);
         ++this.rollsCnt;
-        this.stats.add(stat, value);
+        this.stats.add(stat, DB.Artifacts.Substats.get(stat).rollsReal[4][value]);
 
         return value;
     }
@@ -377,17 +383,7 @@ export class StatsObject {
         for (let slot of Object.keys(this.mainStats)) {
             let art = new Artifact(5, 20, slot, setsList.shift(), this.mainStats[slot]);
             for (let [stat, rolls] of Object.entries(dist.result[slot])) {
-                let value = rolls.reduce((s, i) => {return s + i});
-
-                if (isPercent(stat)) {
-                    value = Math.round(value * 10000) / 100;
-                    value = Math.round(value * 10) / 10;
-                    value = parseFloat(value.toFixed(1));
-                } else {
-                    value = Math.round(value);
-                }
-
-                art.addStat(stat, value);
+                art.addStatByProcs(stat, rolls);
             }
             result.push(art);
         }
@@ -431,38 +427,47 @@ export class StatDistributor {
     }
 
     process() {
-        this.lowCounters();
-
-        // for (let stat of Object.keys(this.rolls)) {
-        //     let rolls = this.rolls[stat].splice(0, 1);
-        //     this.putIntoLowestCount(stat, rolls);
-
-        //     if (this.rolls[stat].length == 0) {
-        //         delete this.rolls[stat];
-        //     }
-        // }
-
         let byNumSlots = {};
         for (let stat of Object.keys(this.rolls)) {
-            let avail = Object.values(this.mainStats).reduce((s, i) => {return s + (stat == i ? 0 : 1)}, 0);
+            let avail = Object.values(this.mainStats).reduce((s, i) => { return s + (stat == i ? 0 : 1) }, 0);
             if (!byNumSlots[avail]) byNumSlots[avail] = [];
             byNumSlots[avail].push(stat);
         }
 
-        for (let num of Object.keys(byNumSlots).sort((a, b) => {return a - b})) {
+
+        let byCount = {};
+        for (let stat of Object.keys(this.rolls)) {
+            byCount[stat] = this.rolls[stat].length;
+        }
+        for (let num of Object.keys(byNumSlots).sort((a, b) => a - b)) {
             let stats = byNumSlots[num];
 
-            while (1) {
-                if (stats.length == 0) break;
-
-                for (let stat of stats) {
-                    let rolls = this.rolls[stat].splice(0, 1);
+            let filtered = Object.entries(byCount).filter(x => stats.includes(x[0])).reduce((acc, x) => { acc[x[0]] = x[1]; return acc; }, {});
+            for (let stat of Object.keys(filtered).sort((a, b) => filtered[b] - filtered[a])) {
+                let len = this.rolls[stat].length;
+                for (let i = 0, cnt = Math.floor((len + 5) / 6); i < cnt; i++) {
+                    let rolls = this.rolls[stat].splice(0, Math.max(1, Math.floor(len / num)));
                     this.putIntoLowestCount(stat, rolls);
 
                     if (this.rolls[stat].length == 0) {
                         delete this.rolls[stat];
-                        stats.splice(stats.indexOf(stat), 1);
                     }
+                }
+            }
+        }
+
+        byCount = {};
+        for (let stat of Object.keys(this.rolls)) {
+            byCount[stat] = this.rolls[stat].length;
+        }
+
+        for (let stat of Object.keys(this.rolls).sort((a, b) => byCount[b] - byCount[a])) {
+            while (this.rolls[stat] && this.rolls[stat].length > 0) {
+                let rolls = this.rolls[stat].splice(0, 1);
+                this.putIntoLowestCount(stat, rolls);
+
+                if (this.rolls[stat].length == 0) {
+                    delete this.rolls[stat];
                 }
             }
         }
@@ -553,27 +558,18 @@ export class StatDistributor {
                 used.push(stat);
 
                 // console.log(stat)
-                this.putIntoSlot(slot, stat, rollValues[stat][0]);
+                this.putIntoSlot(slot, stat, rollValues[0]);
             }
 
             if (used.length == 0) continue;
 
             while (this.upgradesCount[slot] < MAX_UPGRADES_PER_ARTIFACT) {
                 for (let stat of used) {
-                    this.putIntoSlot(slot, stat, rollValues[stat][0]);
+                    this.putIntoSlot(slot, stat, rollValues[0]);
                     // console.log(stat)
                     if (this.upgradesCount[slot] >= MAX_UPGRADES_PER_ARTIFACT) break;
                 }
             }
-        }
-    }
-
-    lowCounters() {
-        for (let stat of Object.keys(this.rolls)) {
-            if (this.rolls[stat].length > MAX_ROLLS_TO_PUT_LOWEST) continue;
-
-            this.putIntoLowestDifferent(stat, this.rolls[stat]);
-            delete this.rolls[stat];
         }
     }
 
@@ -707,30 +703,6 @@ export function getMainStatCombinations(params) {
         for (let s2 of statsBySlot.goblet) {
             for (let s3 of statsBySlot.circlet) {
                 result.push({sands: s1, goblet: s2, circlet: s3});
-            }
-        }
-    }
-
-    return result;
-}
-
-function getStatRolls(mode) {
-    let result = {};
-
-    for (let stat of DB.Artifacts.Substats.getKeys()) {
-        let rolls = DB.Artifacts.Substats.get(stat).rolls[4];
-
-        if (mode == 'min') {
-            result[stat] = [rolls[0]];
-        } else if (mode == 'max') {
-            result[stat] = [rolls[rolls.length - 1]];
-        } else {
-            result[stat] = [rolls[1], rolls[2]];
-        }
-
-        if (isPercent(stat)) {
-            for (let i = 0; i < result[stat].length; ++i) {
-                result[stat][i] = result[stat][i] / 100;
             }
         }
     }

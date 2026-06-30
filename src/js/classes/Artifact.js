@@ -276,7 +276,7 @@ export class Artifact {
             errors.push('too_much_upgrades');
         }
 
-        if (upgradesCnt < minRarityUpdates - 1) {
+        if (upgradesCnt < minRarityUpdates) {
             errors.push('too_low_upgrades');
         }
 

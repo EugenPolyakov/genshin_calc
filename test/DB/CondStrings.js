@@ -22,7 +22,7 @@ expect.extend({toBeEmptyArray});
 for (const data of list) {
     let items = getItems(data);
 
-    test('Empty ids for '+ data.name, () => {
+    test('Empty strings for '+ data.name, () => {
         expect(Object.keys(items)).toBeEmptyArray();
     });
 }
@@ -39,10 +39,7 @@ function getItems(data) {
                     for (let str of [cond.params.title, cond.params.description]) {
                         if (!str) continue;
 
-                        let lang_str = lang.get(str);
-                        if (lang_str == str) {
-                            result[str] = 1;
-                        }
+                        Object.assign(result, CheckLangString(str));
                     }
                 }
             }
@@ -55,10 +52,7 @@ function getItems(data) {
                 for (let str of [cond.params.title, cond.params.description]) {
                     if (!str) continue;
 
-                    let lang_str = lang.get(str);
-                    if (lang_str == str) {
-                        result[str] = 1;
-                    }
+                    Object.assign(result, CheckLangString(str));
                 }
             }
         }
@@ -70,10 +64,7 @@ function getItems(data) {
                 for (let str of [cond.params.title, cond.params.description]) {
                     if (!str) continue;
 
-                    let lang_str = lang.get(str);
-                    if (lang_str == str) {
-                        result[str] = 1;
-                    }
+                    Object.assign(result, CheckLangString(str));
                 }
             }
         }
@@ -85,15 +76,23 @@ function getItems(data) {
                 for (let str of [cond.params.title, cond.params.description]) {
                     if (!str) continue;
 
-                    let lang_str = lang.get(str);
-                    if (lang_str == str) {
-                        result[str] = 1;
-                    }
+                    Object.assign(result, CheckLangString(str));
                 }
             }
         }
     }
 
+    return result;
+}
+
+function CheckLangString(str) {
+    let result = {};
+    for (let s of str.split(';')) {
+        let lang_str = lang.get(s);
+        if (lang_str == s) {
+            result[s] = 1;
+        }
+    }
     return result;
 }
 

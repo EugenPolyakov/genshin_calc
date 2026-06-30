@@ -13,6 +13,7 @@ if (process.env.NODE_ENV !== 'production') {
         'damageBonuses', 'critRateBonuses', 'critDamageBonuses',
         'subtractBoL', 'partyHeal', 'noSelfHeal',
         'rotationHitCount', 'rotationHitDescription',
+        'rotationAfterItems',
     ];
 }
 

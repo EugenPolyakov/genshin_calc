@@ -38,7 +38,7 @@ export const TalkingStick = new DbObjectWeapon({
         new ConditionBooleanRefine({
             name: 'weapon_talking_stick_1',
             serializeId: 1,
-            title: 'talent_name.weapon_the_silver_tongue_1',
+            title: 'talent_name.weapon_the_silver_tongue_2',
             description: 'talent_descr.weapon_the_silver_tongue_1',
             stats: [
                 new StatTable('atk_percent', [16, 20, 24, 28, 32]),
@@ -47,7 +47,7 @@ export const TalkingStick = new DbObjectWeapon({
         new ConditionBooleanRefine({
             name: 'weapon_talking_stick_2',
             serializeId: 2,
-            title: 'talent_name.weapon_the_silver_tongue_2',
+            title: 'talent_name.weapon_the_silver_tongue_1',
             description: 'talent_descr.weapon_the_silver_tongue_2',
             stats: [
                 new StatTable('dmg_anemo', [12, 15, 18, 21, 24]),

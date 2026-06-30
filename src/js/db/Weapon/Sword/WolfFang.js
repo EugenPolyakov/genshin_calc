@@ -14,7 +14,7 @@ export const WolfFang = new DbObjectWeapon({
     statTable: weaponStatTables.WolfFang,
     conditions: [
         new ConditionStaticRefine({
-            title: 'talent_name.weapon_northwind_wolf',
+            title: 'talent_name.weapon_northwind_wolf_1',
             description: 'talent_descr.weapon_northwind_wolf_1',
             stats: [
                 new StatTable('dmg_skill', [16, 20, 24, 28, 32]),

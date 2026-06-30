@@ -146,14 +146,14 @@ function getDuplicatedIds(items) {
         if (!id) continue;
 
         if (!ids[id]) {
-            ids[id] = [];
+            ids[id] = new Set();
         }
 
-        ids[id].push(data.key);
+        ids[id].add(data.key);
     }
 
     for (const id of Object.keys(ids)) {
-        if (ids[id].length > 1) {
+        if (ids[id].size > 1) {
             result.push('id='+ id +' keys='+ ids[id].join(','));
         }
     }

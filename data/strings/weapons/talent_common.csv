@@ -20,10 +20,6 @@ feature_weapon;titanic_tuna_dmg;Урон Титанический тунец;Tit
 feature_weapon;prototype_amber_heal;Позолота;Gilding
 feature_weapon;kagotsurube_isshin_dmg;Ясность искусства Иссин;Isshin Art Clarity
 feature_weapon;trawler_dmg;Разрывающий сети;Net Snapper DMG
-feature_weapon;desert_pavilion;Чертоги в пустыне;Desert Pavilion
-feature_weapon;desert_pavilion_party;Чертоги в пустыне (Отряд);Desert Pavilion (Party)
-feature_weapon;wildling_nightstar;Звезда диких лесов;Wildling Nightstar
-feature_weapon;wildling_nightstar_party;Звезда диких лесов (Отряд);Wildling Nightstar (Party)
 feature_weapon;atk_bonus;Бонус силы атаки;ATK bonus
 feature_weapon;atk_bonus_bonus;Бонус силы атаки (отряд);ATK bonus (party)
 feature_weapon;normal_dmg_bonus;Урон обычной атаки;Normal attack DMG

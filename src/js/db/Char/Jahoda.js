@@ -7,6 +7,7 @@ import { ConditionMoonPhaseSetting } from "../../classes/Condition/CustomOrigin/
 import { ConditionJahodaParty } from "../../classes/Condition/JahodaParty";
 import { ConditionMoonPhaseCheck } from "../../classes/Condition/MoonPhaseCheck";
 import { ConditionOr } from "../../classes/Condition/Or";
+import { ConditionOriginCheck } from "../../classes/Condition/OriginCheck";
 import { ConditionStatic } from "../../classes/Condition/Static";
 import { DbObjectChar } from "../../classes/DbObject/Char";
 import { DbObjectConstellation } from "../../classes/DbObject/Constellation";
@@ -426,6 +427,7 @@ export const Jahoda = new DbObjectChar({
             conditions: [
                 new ConditionBoolean({
                     name: 'jahoda_the_littlest_luck',
+                    serializeId: 2,
                     title: 'talent_name.jahoda_the_littlest_luck',
                     description: 'talent_descr.jahoda_the_littlest_luck',
                     condition: new ConditionMoonPhaseCheck({ moonphase: 2 }),
@@ -452,10 +454,14 @@ export const Jahoda = new DbObjectChar({
             }),
             new ConditionBoolean({
                 name: 'party.jahoda_the_littlest_luck',
+                serializeId: 2,
                 title: 'talent_name.jahoda_the_littlest_luck',
                 description: 'talent_descr.jahoda_the_littlest_luck',
                 info: { constellation: 6 },
-                condition: new ConditionMoonPhaseCheck({ moonphase: 2 }),
+                condition: new ConditionAnd([
+                    new ConditionMoonPhaseCheck({ moonphase: 2 }),
+                    new ConditionOriginCheck({ origin: 'lunar' }),
+                ]),
                 stats: {
                     crit_rate: charTalentTables.Jahoda.cons[5][0] * 100,
                     crit_dmg: charTalentTables.Jahoda.cons[5][1] * 100,

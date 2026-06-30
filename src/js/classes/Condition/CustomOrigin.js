@@ -29,7 +29,7 @@ export class ConditionCustomOrigin extends Condition {
         }
 
         var result = super.getSettings(settings);
-        result[this.params.name] = stacks;
+        result[this.params.result] = stacks;
 
         return result;
     }

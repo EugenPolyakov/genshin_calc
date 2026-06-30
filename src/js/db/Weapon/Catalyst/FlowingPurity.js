@@ -59,7 +59,7 @@ export const FlowingPurity = new DbObjectWeapon({
             serializeId: 2,
             max: BOND_OF_LIFE_MAX_PERCENT,
             levelSetting: 'weapon_refine',
-            title: 'talent_name.weapon_unfinished_masterpiece_2',
+            title: 'talent_name.weapon_unfinished_masterpiece',
             description: 'talent_descr.weapon_unfinished_masterpiece_2',
             stats: [
                 new StatTable('text_percent', [2, 2.5, 3, 3.5, 4]),

@@ -26,7 +26,7 @@ export const WanderingEvenstar = new DbObjectWeapon({
         new ConditionBooleanRefine({
             name: 'weapon_desert_pavilion',
             serializeId: 1,
-            title: 'talent_name.wildling_nightstar',
+            title: 'talent_name.weapon_wildling_nightstar',
             description: 'talent_descr.weapon_wildling_nightstar',
             stats: [
                 new StatTable('text_percent', [24, 30, 36, 42, 48]),
