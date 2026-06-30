@@ -1,7 +1,4 @@
 category;name;rus;eng
-weapon_name;calamity_of_eshu;Бедствие Эшу;Calamity of Eshu
-weapon_name;flower_wreathed_feathers;Украшенные цветами перья;Flower-Wreathed Feathers
-weapon_name;astral_vultures_crimson_plumage;Алое перо звёздного грифа;Astral Vulture's Crimson Plumage
 
 talent_name;astral_vultures_crimson_plumage;Глаза с лунным ореолом;The Moonring Sighted
 talent_descr;astral_vultures_crimson_plumage_1;Повышает name{силу атаки} на %{atk_percent} на 12 сек. после активации реакции anemo{Рассеивание}.;For 12s after triggering a anemo{Swirl} reaction, name{ATK} increases by %{atk_percent}.
@@ -14,7 +11,6 @@ talent_descr;flower_wreathed_feathers_2;Урон name{заряженных ат�
 talent_name;calamity_of_eshu;Надвигающийся рубеж;Diffusing Boundary
 talent_descr;calamity_of_eshu;Повышает урон name{обычной} и name{заряженной атаки} на %{dmg_normal}, а также name{шанс крит. попадания} name{обычной} и name{заряженной атаки} на %{crit_rate_normal}, если персонаж защищён щитом.;While characters are protected by a Shield, DMG dealt by name{Normal} and name{Charged Attacks} is increased by %{dmg_normal}, and name{Normal} and name{Charged Attack} name{CRIT Rate} is increased by %{crit_rate_normal}.
 
-weapon_name;waveriding_whirl;Вихрь на волнах;Waveriding Whirl
 talent_name;waveriding_whirl;Мечущиеся клыки;Fangs Flying To and Fro
 talent_descr;waveriding_whirl_1;Уменьшает потребление выносливости во время плавания на 15%.;Decreases Swimming Stamina consumption by 15%.
 talent_descr;waveriding_whirl_2;Кроме того, увеличивает name{макс. HP} на %{hp_percent} на 10 сек. после применения элементального навыка. Этот эффект может возникнуть один раз в 15 сек.;In addition, for 10s after using an name{Elemental Skill}, name{Max HP} is increased by %{hp_percent}. Can be triggered once every 15s.

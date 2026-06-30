@@ -10,7 +10,6 @@ char_talent;unit_atk;% атаки;% ATK
 char_talent;unit_def;% защиты;% DEF
 char_talent;unit_per_paw; сек/коготь;s per paw
 char_talent;unit_per_seal;%;% Per Seal
-char_talent;unit_per_stack;/уровень;/Stack
 char_talent;unit_percent_per_stack;%/ур.;% per stack
 char_talent;unit_current_hp;% текущего HP;% Current HP
 char_talent;unit_per_energy;% за энергию;% Per Energy

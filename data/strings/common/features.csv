@@ -160,7 +160,6 @@ feature_skill;charge_level_2_1;Уровень заряда 2-1;Charge Level 2-1
 feature_skill;charge_level_2_2;Уровень заряда 2-2;Charge Level 2-2
 feature_skill;charge_level_2;Уровень заряда 2;Charge Level 2
 feature_skill;charged_hit_total;Заряженная (всего);Charged Total
-feature_skill;dmg_reduction;Отношение понижения урона;Damage Reduction Ratio
 feature_skill;dmg_reduction;Снижение входящего урона;Damage taken reduction
 feature_skill;dot_dmg;Периодический урон;DMG over time
 feature_skill;duration;Длительность;Duration
@@ -177,7 +176,6 @@ feature_skill;normal_hit_2;Обычная-2;Normal hit-2
 feature_skill;normal_hit_3;Обычная-3;Normal hit-3
 feature_skill;normal_hit_4;Обычная-4;Normal hit-4
 feature_skill;normal_hit_5;Обычная-5;Normal hit-5
-feature_skill;normal_hit_6;Обычная-6;Normal hit-6
 feature_skill;normal_hit_6;Обычная-6;Normal hit-6
 feature_skill;charged_hit;Заряженная;Charged
 feature_skill;plunge_high;Высокая;Plunge High
@@ -208,8 +206,6 @@ feature_stats;mastery;Мастерство стихий;Elemental Mastery
 feature_stats;recharge;Воcст. энергии;Energy Recharge
 feature_skill;shield_duration;Длительность щита;Shield Duration
 feature_skill;shield_max_absorption;Макс. поглощение урона;Max Shield DMG Absorption
-feature_skill;surging_blade_dmg;Урон Клинка бурных вод;Surging Blade DMG
-feature_skill;surging_blade_interval;Интервал Клинка бурных вод;Surging Blade Interval
 feature_skill;hp_cost;Потребление HP;HP Cost
 feature_attack;spiritbreath_thorn_dmg;Урон Иглы дыхания душ;Spiritbreath Thorn DMG
 feature_attack;spiritbreath_thorn_interval;Интервал Иглы дыхания душ;Spiritbreath Thorn Interval

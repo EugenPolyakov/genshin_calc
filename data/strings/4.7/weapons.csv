@@ -1,7 +1,4 @@
 category;name;rus;eng
-weapon_name;absolution;Отпущение грехов;Absolution
-weapon_name;cloudforged;Выкованный из облаков;Cloudforged
-weapon_name;silvershower_heartstrings;Сердечные струны дождя;Silvershower Heartstrings
 
 talent_name;weapon_absolution;Пакт смерти;Deathly Pact
 talent_descr;weapon_absolution_1;Крит. урон увеличивается на %{crit_dmg}.;name{CRIT DMG} increased by %{crit_dmg}.

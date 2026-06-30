@@ -1,6 +1,5 @@
 category;name;rus;eng
 feature_skill;kokomi_ripple_dmg;Урон волны;Ripple DMG
-feature_skill;kokomi_ripple_dmg;Урон волны;Ripple DMG
 feature_burst;kokomi_burst_heal;Лечение/удар;HP Regeneration Per Hit
 feature_other;kokomi_swimming_fish_dmg;Урон плавающей рыбы;Swimming fish DMG
 feature_burst;kokomi_normal_atk_bonus;Повышение урона обычной атаки;Normal Attack DMG Bonus

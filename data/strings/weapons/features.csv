@@ -12,7 +12,6 @@ feature_weapon;messenger_aimed_hit;Урон Шальная почта;Archer's M
 feature_weapon;prototype_archaic_aoe;Урон Громила;Crush DMG
 feature_weapon;skyward_atlas_cloud;Благословение облаков;Favor of the clouds
 feature_weapon;skyward_blade_dmg;Урон Клыка, пронзившего небеса;Sky-Piercing Fang DMG
-feature_weapon;skyward_harp_aoe;;Skyward Harp AoE
 feature_weapon;skyward_harp_aoe;Урон Эха небесной поэзии;Echoing Ballad DMG
 feature_weapon;skyward_pride_vacuum_blade;Урон лезвия;Vacuum blade DMG
 feature_weapon;viridescent_hunt_whirl;Урон Циклона;Cyclone DMG

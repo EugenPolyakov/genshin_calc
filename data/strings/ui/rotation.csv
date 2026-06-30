@@ -16,7 +16,6 @@ rotation_view;section_artifacts;Артефакты;Artifacts
 rotation_view;section_enemy;Противник;Enemy
 rotation_view;section_buffs;Усиления;Buffs
 rotation_view;section_party;Отряд;Party
-rotation_view;confirm_delete;Удалить из ротации?;Delete rotation item?
 rotation_view;clear;Очистить;Clear
 rotation_view;copy_link;Поделиться;Share
 rotation_view;add_placeholder;Введите название ротации;Enter rotation name
