@@ -2,7 +2,7 @@ import json
 import os
 
 dirname = os.path.dirname(__file__)
-data_dir = os.path.join(dirname, '../../dimrepo/ExcelBinOutput/')
+data_dir = os.path.join(dirname, '../../../AnimeGameData/ExcelBinOutput/')
 
 
 def parse_lang():

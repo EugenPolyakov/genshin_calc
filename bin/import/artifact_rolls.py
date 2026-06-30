@@ -1,11 +1,14 @@
-import json
+import sys
 import os
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+
+import json
 import re
 from decimal import Decimal
 import static # type: ignore
 
 dirname  = os.path.dirname(__file__)
-data_dir = os.path.join(dirname, '../../dimrepo/ExcelBinOutput/')
+data_dir = os.path.join(dirname, '../../../AnimeGameData/ExcelBinOutput/')
 
 rounded_stats = ['atk', 'hp', 'def', 'mastery']
 
@@ -16,13 +19,13 @@ def parse_rolls():
     result = {}
 
     for item in json.load(file):
-        type = item.get('PropType')
+        type = item.get('propType')
         stat = static.getStatByName(type)
         if not stat:
             continue
-        value = static.getStatValue(type, item.get('PropValue', 0))
+        value = static.getStatValue(type, item.get('propValue', 0))
 
-        id = str(item['DepotId'])
+        id = str(item['depotId'])
         stat = re.sub(r'_base$', '', stat)
 
         if not id in result:

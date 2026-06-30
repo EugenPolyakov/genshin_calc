@@ -1,12 +1,15 @@
-import json
+import sys
 import os
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+
+import json
 import static # type: ignore
 
 dirname  = os.path.dirname(__file__)
-data_dir = os.path.join(dirname, '../../dimrepo/ExcelBinOutput/')
+data_dir = os.path.join(dirname, '../../../AnimeGameData/ExcelBinOutput/')
 out_dir  = os.path.join(dirname, '../../src/js/db/generated/')
 
-MAX_LEVEL = 90
+MAX_LEVEL = 100
 
 def split_list(data):
     result = []
@@ -33,12 +36,12 @@ def parse_curves():
     }
 
     for item in json.load(file):
-        level = item.get('Level')
+        level = item.get('level')
         if not level: continue
         if level > MAX_LEVEL: continue
 
-        curves['reaction'][level] = static.trimValue(item['PlayerElementLevelCo'])
-        curves['shield']  [level] = static.trimValue(item['PlayerShieldLevelCo'])
+        curves['reaction'][level] = static.trimValue(item['playerElementLevelCo'])
+        curves['shield']  [level] = static.trimValue(item['playerShieldLevelCo'])
 
     out.write('// This file is auto generated\n')
     out.write('import { StatTable } from "../../classes/StatTable";\n\n')

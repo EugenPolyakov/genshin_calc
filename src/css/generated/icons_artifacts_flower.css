@@ -1,13 +1,13 @@
 .sprite-artifact.flower.sprite-24 {
-	background-image: url("../../images/sprites/artifacts_abc6bfc3545cac3744a37dc6205ce73a.png");
+	background-image: url("../../images/sprites/artifacts_9ec49f951b7b0632a229282390c19999.png");
 	background-size: 120px 264px;
 }
 .sprite-artifact.flower.sprite-40 {
-	background-image: url("../../images/sprites/artifacts_1fd497920706586d026381462af39b63.png");
+	background-image: url("../../images/sprites/artifacts_94ab422272be69868f2c23e3ea14cb77.png");
 	background-size: 200px 440px;
 }
 .sprite-artifact.flower.sprite-60 {
-	background-image: url("../../images/sprites/artifacts_a31723d8e83a21783c224e2f989bb52f.png");
+	background-image: url("../../images/sprites/artifacts_2d63d02f53fc596e1723dc67989a7609.png");
 	background-size: 300px 660px;
 }
 .sprite.artifact-icon-unknown {background-position: 0% 0%}
@@ -62,6 +62,8 @@
 .sprite.artifact-icon-obsidian-codex.flower {background-position: 100% 90%}
 .sprite.artifact-icon-long-nights-oath.flower {background-position: 0% 100%}
 .sprite.artifact-icon-finale-of-the-deep-galleries.flower {background-position: 25% 100%}
+.sprite.artifact-icon-night-of-the-skys-unveiling.flower {background-position: 50% 100%}
+.sprite.artifact-icon-silken-moons-serenade.flower {background-position: 75% 100%}
 
 @media
 only screen and (-webkit-min-device-pixel-ratio: 2),
@@ -70,7 +72,7 @@ only screen and (     -o-min-device-pixel-ratio: 2/1),
 only screen and (        min-device-pixel-ratio: 2),
 only screen and (                min-resolution: 192dpi),
 only screen and (                min-resolution: 2dppx) {
-	.sprite-artifact.flower.sprite-24 {background-image: url("../../images/sprites/artifacts_5251a3c803a52410d576a6a943707513.png")}
-	.sprite-artifact.flower.sprite-40 {background-image: url("../../images/sprites/artifacts_92a38d7728e1f846c03ddf5fe85d7a18.png")}
-	.sprite-artifact.flower.sprite-60 {background-image: url("../../images/sprites/artifacts_efa25e9955af43066cc044fd0904b581.png")}
+	.sprite-artifact.flower.sprite-24 {background-image: url("../../images/sprites/artifacts_f8f8a71805a2df21d7e6773e273fb041.png")}
+	.sprite-artifact.flower.sprite-40 {background-image: url("../../images/sprites/artifacts_4666dd52bbb11b8fa390705c21315268.png")}
+	.sprite-artifact.flower.sprite-60 {background-image: url("../../images/sprites/artifacts_5f4c202502291c2939692154b88e8659.png")}
 }

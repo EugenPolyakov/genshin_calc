@@ -553,7 +553,7 @@ flower_of_paradise_lost_2 = Template(
 
 flower_of_paradise_lost_4 = Template(
     sentences=[
-        ['dmg_reaction_bloom'],
+        ['dmg_reaction_bloom', 'dmg_reaction_moon_bloom'],
         ['ignore'],
         ['ignore'],
         ['ignore'],
@@ -752,4 +752,16 @@ long_nights_oath_4 = Template(
         ['5:ignore'],
         [],
     ],
+)
+
+night_of_the_skys_unveiling_2 = Template(
+)
+
+night_of_the_skys_unveiling_4 = Template(
+)
+
+silken_moons_serenade_2 = Template(
+)
+
+silken_moons_serenade_4 = Template(
 )

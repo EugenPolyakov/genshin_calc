@@ -41,6 +41,10 @@ export const charTables = {
 			scale: charScales.s5hp,
 		}),
 		new StatTableAscensionScale({
+			stat: 'mastery_base',
+			base: 0,
+		}),
+		new StatTableAscensionScale({
 			stat: 'recharge_base',
 			base: 100,
 		}),
@@ -84,6 +88,10 @@ export const charTables = {
 			base: 1143.984,
 			ascension: new StatTable('', [980.8628, 1677.7917, 2607.0303, 3303.959, 4000.888, 4697.817]),
 			scale: charScales.s5hp,
+		}),
+		new StatTableAscensionScale({
+			stat: 'mastery_base',
+			base: 0,
 		}),
 		new StatTableAscensionScale({
 			stat: 'recharge_base',
@@ -172,6 +180,10 @@ export const charTables = {
 			scale: charScales.s4hp,
 		}),
 		new StatTableAscensionScale({
+			stat: 'mastery_base',
+			base: 0,
+		}),
+		new StatTableAscensionScale({
 			stat: 'recharge_base',
 			base: 100,
 		}),
@@ -217,6 +229,10 @@ export const charTables = {
 			ascension: new StatTable('', [0, 6, 12, 12, 18, 24]),
 		}),
 		new StatTableAscensionScale({
+			stat: 'mastery_base',
+			base: 0,
+		}),
+		new StatTableAscensionScale({
 			stat: 'recharge_base',
 			base: 100,
 		}),
@@ -255,6 +271,10 @@ export const charTables = {
 			base: 975.6164,
 			ascension: new StatTable('', [728.8354, 1246.6921, 1937.1677, 2455.0244, 2972.881, 3490.7378]),
 			scale: charScales.s4hp,
+		}),
+		new StatTableAscensionScale({
+			stat: 'mastery_base',
+			base: 0,
 		}),
 		new StatTableAscensionScale({
 			stat: 'recharge_base',
@@ -297,6 +317,10 @@ export const charTables = {
 			base: 1010.5192,
 			ascension: new StatTable('', [866.4288, 1482.0493, 2302.8767, 2918.497, 3534.1177, 4149.7383]),
 			scale: charScales.s5hp,
+		}),
+		new StatTableAscensionScale({
+			stat: 'mastery_base',
+			base: 0,
 		}),
 		new StatTableAscensionScale({
 			stat: 'recharge_base',
@@ -344,6 +368,10 @@ export const charTables = {
 			scale: charScales.s4hp,
 		}),
 		new StatTableAscensionScale({
+			stat: 'mastery_base',
+			base: 0,
+		}),
+		new StatTableAscensionScale({
 			stat: 'recharge_base',
 			base: 100,
 		}),
@@ -385,6 +413,10 @@ export const charTables = {
 			scale: charScales.s4hp,
 		}),
 		new StatTableAscensionScale({
+			stat: 'mastery_base',
+			base: 0,
+		}),
+		new StatTableAscensionScale({
 			stat: 'recharge_base',
 			base: 100,
 		}),
@@ -419,6 +451,10 @@ export const charTables = {
 			base: 819.8552,
 			ascension: new StatTable('', [702.9517, 1202.4174, 1868.3716, 2367.8374, 2867.303, 3366.7688]),
 			scale: charScales.s5hp,
+		}),
+		new StatTableAscensionScale({
+			stat: 'mastery_base',
+			base: 0,
 		}),
 		new StatTableAscensionScale({
 			stat: 'recharge_base',
@@ -512,6 +548,10 @@ export const charTables = {
 			scale: charScales.s4hp,
 		}),
 		new StatTableAscensionScale({
+			stat: 'mastery_base',
+			base: 0,
+		}),
+		new StatTableAscensionScale({
 			stat: 'recharge_base',
 			base: 100,
 		}),
@@ -557,6 +597,10 @@ export const charTables = {
 			scale: charScales.s4hp,
 		}),
 		new StatTableAscensionScale({
+			stat: 'mastery_base',
+			base: 0,
+		}),
+		new StatTableAscensionScale({
 			stat: 'recharge_base',
 			base: 100,
 		}),
@@ -596,6 +640,10 @@ export const charTables = {
 			base: 991.4528,
 			ascension: new StatTable('', [850.0811, 1454.0862, 2259.4263, 2863.4312, 3467.4363, 4071.4412]),
 			scale: charScales.s5hp,
+		}),
+		new StatTableAscensionScale({
+			stat: 'mastery_base',
+			base: 0,
 		}),
 		new StatTableAscensionScale({
 			stat: 'recharge_base',
@@ -643,6 +691,10 @@ export const charTables = {
 			scale: charScales.s4hp,
 		}),
 		new StatTableAscensionScale({
+			stat: 'mastery_base',
+			base: 0,
+		}),
+		new StatTableAscensionScale({
 			stat: 'recharge_base',
 			base: 100,
 		}),
@@ -686,6 +738,10 @@ export const charTables = {
 			base: 800.7888,
 			ascension: new StatTable('', [686.604, 1174.4542, 1824.9211, 2312.7712, 2800.6216, 3288.4717]),
 			scale: charScales.s5hp,
+		}),
+		new StatTableAscensionScale({
+			stat: 'mastery_base',
+			base: 0,
 		}),
 		new StatTableAscensionScale({
 			stat: 'recharge_base',
@@ -733,6 +789,10 @@ export const charTables = {
 			scale: charScales.s5hp,
 		}),
 		new StatTableAscensionScale({
+			stat: 'mastery_base',
+			base: 0,
+		}),
+		new StatTableAscensionScale({
 			stat: 'recharge_base',
 			base: 100,
 		}),
@@ -774,6 +834,10 @@ export const charTables = {
 			scale: charScales.s4hp,
 		}),
 		new StatTableAscensionScale({
+			stat: 'mastery_base',
+			base: 0,
+		}),
+		new StatTableAscensionScale({
 			stat: 'recharge_base',
 			base: 100,
 		}),
@@ -812,6 +876,10 @@ export const charTables = {
 			base: 1039.4418,
 			ascension: new StatTable('', [776.5162, 1328.2513, 2063.8984, 2615.6335, 3167.3687, 3719.104]),
 			scale: charScales.s4hp,
+		}),
+		new StatTableAscensionScale({
+			stat: 'mastery_base',
+			base: 0,
 		}),
 		new StatTableAscensionScale({
 			stat: 'recharge_base',
@@ -860,6 +928,10 @@ export const charTables = {
 			scale: charScales.s5hp,
 		}),
 		new StatTableAscensionScale({
+			stat: 'mastery_base',
+			base: 0,
+		}),
+		new StatTableAscensionScale({
 			stat: 'recharge_base',
 			base: 100,
 		}),
@@ -903,6 +975,10 @@ export const charTables = {
 			base: 1012.088,
 			ascension: new StatTable('', [756.0815, 1293.2974, 2009.5852, 2546.801, 3084.0168, 3621.2327]),
 			scale: charScales.s4hp,
+		}),
+		new StatTableAscensionScale({
+			stat: 'mastery_base',
+			base: 0,
 		}),
 		new StatTableAscensionScale({
 			stat: 'recharge_base',
@@ -950,6 +1026,10 @@ export const charTables = {
 			scale: charScales.s5hp,
 		}),
 		new StatTableAscensionScale({
+			stat: 'mastery_base',
+			base: 0,
+		}),
+		new StatTableAscensionScale({
 			stat: 'recharge_base',
 			base: 100,
 		}),
@@ -995,6 +1075,10 @@ export const charTables = {
 			scale: charScales.s4hp,
 		}),
 		new StatTableAscensionScale({
+			stat: 'mastery_base',
+			base: 0,
+		}),
+		new StatTableAscensionScale({
 			stat: 'recharge_base',
 			base: 100,
 		}),
@@ -1030,6 +1114,10 @@ export const charTables = {
 			base: 762.656,
 			ascension: new StatTable('', [653.9086, 1118.5278, 1738.0201, 2202.6394, 2667.2585, 3131.878]),
 			scale: charScales.s5hp,
+		}),
+		new StatTableAscensionScale({
+			stat: 'mastery_base',
+			base: 0,
 		}),
 		new StatTableAscensionScale({
 			stat: 'recharge_base',
@@ -1077,6 +1165,10 @@ export const charTables = {
 			scale: charScales.s5hp,
 		}),
 		new StatTableAscensionScale({
+			stat: 'mastery_base',
+			base: 0,
+		}),
+		new StatTableAscensionScale({
 			stat: 'recharge_base',
 			base: 100,
 		}),
@@ -1116,6 +1208,10 @@ export const charTables = {
 			base: 802.3761,
 			ascension: new StatTable('', [599.416, 1025.3169, 1593.1847, 2019.0854, 2444.9863, 2870.8872]),
 			scale: charScales.s4hp,
+		}),
+		new StatTableAscensionScale({
+			stat: 'mastery_base',
+			base: 0,
 		}),
 		new StatTableAscensionScale({
 			stat: 'recharge_base',
@@ -1158,6 +1254,10 @@ export const charTables = {
 			scale: charScales.s5hp,
 		}),
 		new StatTableAscensionScale({
+			stat: 'mastery_base',
+			base: 0,
+		}),
+		new StatTableAscensionScale({
 			stat: 'recharge_base',
 			base: 100,
 			ascension: new StatTable('', [0, 8, 16, 16, 24, 32]),
@@ -1198,6 +1298,10 @@ export const charTables = {
 			base: 1020.0524,
 			ascension: new StatTable('', [874.6027, 1496.0309, 2324.6018, 2946.03, 3567.4585, 4188.8867]),
 			scale: charScales.s5hp,
+		}),
+		new StatTableAscensionScale({
+			stat: 'mastery_base',
+			base: 0,
 		}),
 		new StatTableAscensionScale({
 			stat: 'recharge_base',
@@ -1245,6 +1349,10 @@ export const charTables = {
 			scale: charScales.s4hp,
 		}),
 		new StatTableAscensionScale({
+			stat: 'mastery_base',
+			base: 0,
+		}),
+		new StatTableAscensionScale({
 			stat: 'recharge_base',
 			base: 100,
 		}),
@@ -1288,6 +1396,10 @@ export const charTables = {
 			base: 939.1447,
 			ascension: new StatTable('', [701.5892, 1200.0868, 1864.7502, 2363.2478, 2861.7454, 3360.243]),
 			scale: charScales.s4hp,
+		}),
+		new StatTableAscensionScale({
+			stat: 'mastery_base',
+			base: 0,
 		}),
 		new StatTableAscensionScale({
 			stat: 'recharge_base',
@@ -1335,6 +1447,10 @@ export const charTables = {
 			scale: charScales.s4hp,
 		}),
 		new StatTableAscensionScale({
+			stat: 'mastery_base',
+			base: 0,
+		}),
+		new StatTableAscensionScale({
 			stat: 'recharge_base',
 			base: 100,
 		}),
@@ -1374,6 +1490,10 @@ export const charTables = {
 			base: 1210.7164,
 			ascension: new StatTable('', [1038.0798, 1775.6628, 2759.107, 3496.69, 4234.273, 4971.856]),
 			scale: charScales.s5hp,
+		}),
+		new StatTableAscensionScale({
+			stat: 'mastery_base',
+			base: 0,
 		}),
 		new StatTableAscensionScale({
 			stat: 'recharge_base',
@@ -1466,6 +1586,10 @@ export const charTables = {
 			scale: charScales.s4hp,
 		}),
 		new StatTableAscensionScale({
+			stat: 'mastery_base',
+			base: 0,
+		}),
+		new StatTableAscensionScale({
 			stat: 'recharge_base',
 			base: 100,
 		}),
@@ -1501,6 +1625,10 @@ export const charTables = {
 			base: 791.2556,
 			ascension: new StatTable('', [678.4301, 1160.4725, 1803.1959, 2285.2383, 2767.2808, 3249.3232]),
 			scale: charScales.s5hp,
+		}),
+		new StatTableAscensionScale({
+			stat: 'mastery_base',
+			base: 0,
 		}),
 		new StatTableAscensionScale({
 			stat: 'recharge_base',
@@ -1548,6 +1676,10 @@ export const charTables = {
 			scale: charScales.s4hp,
 		}),
 		new StatTableAscensionScale({
+			stat: 'mastery_base',
+			base: 0,
+		}),
+		new StatTableAscensionScale({
 			stat: 'recharge_base',
 			base: 100,
 		}),
@@ -1589,6 +1721,10 @@ export const charTables = {
 			scale: charScales.s5hp,
 		}),
 		new StatTableAscensionScale({
+			stat: 'mastery_base',
+			base: 0,
+		}),
+		new StatTableAscensionScale({
 			stat: 'recharge_base',
 			base: 100,
 		}),
@@ -1627,6 +1763,10 @@ export const charTables = {
 			base: 1004.7993,
 			ascension: new StatTable('', [861.5245, 1473.6604, 2289.8416, 2901.9773, 3514.1133, 4126.249]),
 			scale: charScales.s5hp,
+		}),
+		new StatTableAscensionScale({
+			stat: 'mastery_base',
+			base: 0,
 		}),
 		new StatTableAscensionScale({
 			stat: 'recharge_base',
@@ -1720,6 +1860,10 @@ export const charTables = {
 			scale: charScales.s5hp,
 		}),
 		new StatTableAscensionScale({
+			stat: 'mastery_base',
+			base: 0,
+		}),
+		new StatTableAscensionScale({
 			stat: 'recharge_base',
 			base: 100,
 		}),
@@ -1759,6 +1903,10 @@ export const charTables = {
 			base: 802.3761,
 			ascension: new StatTable('', [599.416, 1025.3169, 1593.1847, 2019.0856, 2444.9863, 2870.8872]),
 			scale: charScales.s4hp,
+		}),
+		new StatTableAscensionScale({
+			stat: 'mastery_base',
+			base: 0,
 		}),
 		new StatTableAscensionScale({
 			stat: 'recharge_base',
@@ -1802,6 +1950,10 @@ export const charTables = {
 			scale: charScales.s4hp,
 		}),
 		new StatTableAscensionScale({
+			stat: 'mastery_base',
+			base: 0,
+		}),
+		new StatTableAscensionScale({
 			stat: 'recharge_base',
 			base: 100,
 		}),
@@ -1843,6 +1995,10 @@ export const charTables = {
 			scale: charScales.s5hp,
 		}),
 		new StatTableAscensionScale({
+			stat: 'mastery_base',
+			base: 0,
+		}),
+		new StatTableAscensionScale({
 			stat: 'recharge_base',
 			base: 100,
 		}),
@@ -1882,6 +2038,10 @@ export const charTables = {
 			base: 807.462,
 			ascension: new StatTable('', [692.3257, 1184.2413, 1840.1288, 2332.0444, 2823.96, 3315.8757]),
 			scale: charScales.s5hp,
+		}),
+		new StatTableAscensionScale({
+			stat: 'mastery_base',
+			base: 0,
 		}),
 		new StatTableAscensionScale({
 			stat: 'recharge_base',
@@ -1929,6 +2089,10 @@ export const charTables = {
 			scale: charScales.s4hp,
 		}),
 		new StatTableAscensionScale({
+			stat: 'mastery_base',
+			base: 0,
+		}),
+		new StatTableAscensionScale({
 			stat: 'recharge_base',
 			base: 100,
 		}),
@@ -1964,6 +2128,10 @@ export const charTables = {
 			base: 1124.9176,
 			ascension: new StatTable('', [964.5151, 1649.8285, 2563.5796, 3248.893, 3934.2065, 4619.52]),
 			scale: charScales.s5hp,
+		}),
+		new StatTableAscensionScale({
+			stat: 'mastery_base',
+			base: 0,
 		}),
 		new StatTableAscensionScale({
 			stat: 'recharge_base',
@@ -2011,6 +2179,10 @@ export const charTables = {
 			ascension: new StatTable('', [0, 6, 12, 12, 18, 24]),
 		}),
 		new StatTableAscensionScale({
+			stat: 'mastery_base',
+			base: 0,
+		}),
+		new StatTableAscensionScale({
 			stat: 'recharge_base',
 			base: 100,
 		}),
@@ -2050,6 +2222,10 @@ export const charTables = {
 			base: 848.4548,
 			ascension: new StatTable('', [727.4733, 1244.3622, 1933.5474, 2450.4363, 2967.3252, 3484.214]),
 			scale: charScales.s5hp,
+		}),
+		new StatTableAscensionScale({
+			stat: 'mastery_base',
+			base: 0,
 		}),
 		new StatTableAscensionScale({
 			stat: 'recharge_base',
@@ -2097,6 +2273,10 @@ export const charTables = {
 			scale: charScales.s5hp,
 		}),
 		new StatTableAscensionScale({
+			stat: 'mastery_base',
+			base: 0,
+		}),
+		new StatTableAscensionScale({
 			stat: 'recharge_base',
 			base: 100,
 		}),
@@ -2135,6 +2315,10 @@ export const charTables = {
 			base: 893.5552,
 			ascension: new StatTable('', [667.5315, 1141.8302, 1774.2284, 2248.527, 2722.8257, 3197.1245]),
 			scale: charScales.s4hp,
+		}),
+		new StatTableAscensionScale({
+			stat: 'mastery_base',
+			base: 0,
 		}),
 		new StatTableAscensionScale({
 			stat: 'recharge_base',
@@ -2183,6 +2367,10 @@ export const charTables = {
 			ascension: new StatTable('', [0, 6, 12, 12, 18, 24]),
 		}),
 		new StatTableAscensionScale({
+			stat: 'mastery_base',
+			base: 0,
+		}),
+		new StatTableAscensionScale({
 			stat: 'recharge_base',
 			base: 100,
 		}),
@@ -2224,6 +2412,10 @@ export const charTables = {
 			scale: charScales.s5hp,
 		}),
 		new StatTableAscensionScale({
+			stat: 'mastery_base',
+			base: 0,
+		}),
+		new StatTableAscensionScale({
 			stat: 'recharge_base',
 			base: 100,
 		}),
@@ -2263,6 +2455,10 @@ export const charTables = {
 			base: 820.6119,
 			ascension: new StatTable('', [613.0391, 1048.6195, 1629.3934, 2064.9739, 2500.5542, 2936.1348]),
 			scale: charScales.s4hp,
+		}),
+		new StatTableAscensionScale({
+			stat: 'mastery_base',
+			base: 0,
 		}),
 		new StatTableAscensionScale({
 			stat: 'recharge_base',
@@ -2310,6 +2506,10 @@ export const charTables = {
 			ascension: new StatTable('', [0, 6, 12, 12, 18, 24]),
 		}),
 		new StatTableAscensionScale({
+			stat: 'mastery_base',
+			base: 0,
+		}),
+		new StatTableAscensionScale({
 			stat: 'recharge_base',
 			base: 100,
 		}),
@@ -2349,6 +2549,10 @@ export const charTables = {
 			base: 844.6415,
 			ascension: new StatTable('', [724.2037, 1238.7695, 1924.8573, 2439.423, 2953.989, 3468.5547]),
 			scale: charScales.s5hp,
+		}),
+		new StatTableAscensionScale({
+			stat: 'mastery_base',
+			base: 0,
 		}),
 		new StatTableAscensionScale({
 			stat: 'recharge_base',
@@ -2396,6 +2600,10 @@ export const charTables = {
 			ascension: new StatTable('', [0, 7.2, 14.4, 14.4, 21.6, 28.8]),
 		}),
 		new StatTableAscensionScale({
+			stat: 'mastery_base',
+			base: 0,
+		}),
+		new StatTableAscensionScale({
 			stat: 'recharge_base',
 			base: 100,
 		}),
@@ -2435,6 +2643,10 @@ export const charTables = {
 			base: 972.3864,
 			ascension: new StatTable('', [833.7334, 1426.1229, 2215.9756, 2808.3652, 3400.7546, 3993.1443]),
 			scale: charScales.s5hp,
+		}),
+		new StatTableAscensionScale({
+			stat: 'mastery_base',
+			base: 0,
 		}),
 		new StatTableAscensionScale({
 			stat: 'recharge_base',
@@ -2480,6 +2692,10 @@ export const charTables = {
 			stat: 'hp_percent',
 			base: 0,
 			ascension: new StatTable('', [0, 6, 12, 12, 18, 24]),
+		}),
+		new StatTableAscensionScale({
+			stat: 'mastery_base',
+			base: 0,
 		}),
 		new StatTableAscensionScale({
 			stat: 'recharge_base',
@@ -2572,6 +2788,10 @@ export const charTables = {
 			ascension: new StatTable('', [0, 6, 12, 12, 18, 24]),
 		}),
 		new StatTableAscensionScale({
+			stat: 'mastery_base',
+			base: 0,
+		}),
+		new StatTableAscensionScale({
 			stat: 'recharge_base',
 			base: 100,
 		}),
@@ -2613,6 +2833,10 @@ export const charTables = {
 			scale: charScales.s5hp,
 		}),
 		new StatTableAscensionScale({
+			stat: 'mastery_base',
+			base: 0,
+		}),
+		new StatTableAscensionScale({
 			stat: 'recharge_base',
 			base: 100,
 		}),
@@ -2652,6 +2876,10 @@ export const charTables = {
 			base: 802.3761,
 			ascension: new StatTable('', [599.416, 1025.3169, 1593.1847, 2019.0856, 2444.9863, 2870.8872]),
 			scale: charScales.s4hp,
+		}),
+		new StatTableAscensionScale({
+			stat: 'mastery_base',
+			base: 0,
 		}),
 		new StatTableAscensionScale({
 			stat: 'recharge_base',
@@ -2699,6 +2927,10 @@ export const charTables = {
 			ascension: new StatTable('', [0, 6, 12, 12, 18, 24]),
 		}),
 		new StatTableAscensionScale({
+			stat: 'mastery_base',
+			base: 0,
+		}),
+		new StatTableAscensionScale({
 			stat: 'recharge_base',
 			base: 100,
 		}),
@@ -2742,6 +2974,10 @@ export const charTables = {
 			base: 1039.1188,
 			ascension: new StatTable('', [890.9504, 1523.9941, 2368.0525, 3001.0962, 3634.14, 4267.1836]),
 			scale: charScales.s5hp,
+		}),
+		new StatTableAscensionScale({
+			stat: 'mastery_base',
+			base: 0,
 		}),
 		new StatTableAscensionScale({
 			stat: 'recharge_base',
@@ -2789,6 +3025,10 @@ export const charTables = {
 			ascension: new StatTable('', [0, 7.2, 14.4, 14.4, 21.6, 28.8]),
 		}),
 		new StatTableAscensionScale({
+			stat: 'mastery_base',
+			base: 0,
+		}),
+		new StatTableAscensionScale({
 			stat: 'recharge_base',
 			base: 100,
 		}),
@@ -2832,6 +3072,10 @@ export const charTables = {
 			stat: 'hp_percent',
 			base: 0,
 			ascension: new StatTable('', [0, 6, 12, 12, 18, 24]),
+		}),
+		new StatTableAscensionScale({
+			stat: 'mastery_base',
+			base: 0,
 		}),
 		new StatTableAscensionScale({
 			stat: 'recharge_base',
@@ -2924,6 +3168,10 @@ export const charTables = {
 			ascension: new StatTable('', [0, 7.2, 14.4, 14.4, 21.6, 28.8]),
 		}),
 		new StatTableAscensionScale({
+			stat: 'mastery_base',
+			base: 0,
+		}),
+		new StatTableAscensionScale({
 			stat: 'recharge_base',
 			base: 100,
 		}),
@@ -2969,6 +3217,10 @@ export const charTables = {
 			scale: charScales.s4hp,
 		}),
 		new StatTableAscensionScale({
+			stat: 'mastery_base',
+			base: 0,
+		}),
+		new StatTableAscensionScale({
 			stat: 'recharge_base',
 			base: 100,
 		}),
@@ -3004,6 +3256,10 @@ export const charTables = {
 			base: 857.988,
 			ascension: new StatTable('', [735.6472, 1258.3438, 1955.2726, 2477.9692, 3000.666, 3523.3625]),
 			scale: charScales.s5hp,
+		}),
+		new StatTableAscensionScale({
+			stat: 'mastery_base',
+			base: 0,
 		}),
 		new StatTableAscensionScale({
 			stat: 'recharge_base',
@@ -3051,6 +3307,10 @@ export const charTables = {
 			scale: charScales.s4hp,
 		}),
 		new StatTableAscensionScale({
+			stat: 'mastery_base',
+			base: 0,
+		}),
+		new StatTableAscensionScale({
 			stat: 'recharge_base',
 			base: 100,
 		}),
@@ -3092,6 +3352,10 @@ export const charTables = {
 			scale: charScales.s5hp,
 		}),
 		new StatTableAscensionScale({
+			stat: 'mastery_base',
+			base: 0,
+		}),
+		new StatTableAscensionScale({
 			stat: 'recharge_base',
 			base: 100,
 		}),
@@ -3131,6 +3395,10 @@ export const charTables = {
 			base: 1143.984,
 			ascension: new StatTable('', [980.8628, 1677.7917, 2607.0303, 3303.959, 4000.888, 4697.817]),
 			scale: charScales.s5hp,
+		}),
+		new StatTableAscensionScale({
+			stat: 'mastery_base',
+			base: 0,
 		}),
 		new StatTableAscensionScale({
 			stat: 'recharge_base',
@@ -3178,6 +3446,10 @@ export const charTables = {
 			scale: charScales.s4hp,
 		}),
 		new StatTableAscensionScale({
+			stat: 'mastery_base',
+			base: 0,
+		}),
+		new StatTableAscensionScale({
 			stat: 'recharge_base',
 			base: 100,
 		}),
@@ -3217,6 +3489,10 @@ export const charTables = {
 			base: 1191.65,
 			ascension: new StatTable('', [1021.7321, 1747.6997, 2715.6565, 3441.624, 4167.592, 4893.559]),
 			scale: charScales.s5hp,
+		}),
+		new StatTableAscensionScale({
+			stat: 'mastery_base',
+			base: 0,
 		}),
 		new StatTableAscensionScale({
 			stat: 'recharge_base',
@@ -3264,6 +3540,10 @@ export const charTables = {
 			ascension: new StatTable('', [0, 6, 12, 12, 18, 24]),
 		}),
 		new StatTableAscensionScale({
+			stat: 'mastery_base',
+			base: 0,
+		}),
+		new StatTableAscensionScale({
 			stat: 'recharge_base',
 			base: 100,
 		}),
@@ -3303,6 +3583,10 @@ export const charTables = {
 			base: 984.7795,
 			ascension: new StatTable('', [844.3594, 1444.2991, 2244.2185, 2844.158, 3444.0977, 4044.0374]),
 			scale: charScales.s5hp,
+		}),
+		new StatTableAscensionScale({
+			stat: 'mastery_base',
+			base: 0,
 		}),
 		new StatTableAscensionScale({
 			stat: 'recharge_base',
@@ -3350,6 +3634,10 @@ export const charTables = {
 			scale: charScales.s4hp,
 		}),
 		new StatTableAscensionScale({
+			stat: 'mastery_base',
+			base: 0,
+		}),
+		new StatTableAscensionScale({
 			stat: 'recharge_base',
 			base: 100,
 		}),
@@ -3395,6 +3683,10 @@ export const charTables = {
 			scale: charScales.s5hp,
 		}),
 		new StatTableAscensionScale({
+			stat: 'mastery_base',
+			base: 0,
+		}),
+		new StatTableAscensionScale({
 			stat: 'recharge_base',
 			base: 100,
 		}),
@@ -3434,6 +3726,10 @@ export const charTables = {
 			base: 890.4009,
 			ascension: new StatTable('', [763.4382, 1305.8812, 2029.1385, 2571.5815, 3114.0244, 3656.4673]),
 			scale: charScales.s5hp,
+		}),
+		new StatTableAscensionScale({
+			stat: 'mastery_base',
+			base: 0,
 		}),
 		new StatTableAscensionScale({
 			stat: 'recharge_base',
@@ -3477,6 +3773,10 @@ export const charTables = {
 			ascension: new StatTable('', [0, 7.2, 14.4, 14.4, 21.6, 28.8]),
 		}),
 		new StatTableAscensionScale({
+			stat: 'mastery_base',
+			base: 0,
+		}),
+		new StatTableAscensionScale({
 			stat: 'recharge_base',
 			base: 100,
 		}),
@@ -3516,6 +3816,10 @@ export const charTables = {
 			base: 1020.0524,
 			ascension: new StatTable('', [874.6027, 1496.0309, 2324.6018, 2946.03, 3567.4585, 4188.8867]),
 			scale: charScales.s5hp,
+		}),
+		new StatTableAscensionScale({
+			stat: 'mastery_base',
+			base: 0,
 		}),
 		new StatTableAscensionScale({
 			stat: 'recharge_base',
@@ -3600,6 +3904,10 @@ export const charTables = {
 			scale: charScales.s5hp,
 		}),
 		new StatTableAscensionScale({
+			stat: 'mastery_base',
+			base: 0,
+		}),
+		new StatTableAscensionScale({
 			stat: 'recharge_base',
 			base: 100,
 		}),
@@ -3639,6 +3947,10 @@ export const charTables = {
 			base: 1056.2786,
 			ascension: new StatTable('', [905.6633, 1549.161, 2407.158, 3050.6555, 3694.153, 4337.651]),
 			scale: charScales.s5hp,
+		}),
+		new StatTableAscensionScale({
+			stat: 'mastery_base',
+			base: 0,
 		}),
 		new StatTableAscensionScale({
 			stat: 'recharge_base',
@@ -3686,6 +3998,10 @@ export const charTables = {
 			scale: charScales.s4hp,
 		}),
 		new StatTableAscensionScale({
+			stat: 'mastery_base',
+			base: 0,
+		}),
+		new StatTableAscensionScale({
 			stat: 'recharge_base',
 			base: 100,
 		}),
@@ -3727,6 +4043,10 @@ export const charTables = {
 			scale: charScales.s5hp,
 		}),
 		new StatTableAscensionScale({
+			stat: 'mastery_base',
+			base: 0,
+		}),
+		new StatTableAscensionScale({
 			stat: 'recharge_base',
 			base: 100,
 		}),
@@ -3766,6 +4086,10 @@ export const charTables = {
 			base: 1182.1168,
 			ascension: new StatTable('', [1013.5583, 1733.7181, 2693.9312, 3414.091, 4134.251, 4854.4106]),
 			scale: charScales.s5hp,
+		}),
+		new StatTableAscensionScale({
+			stat: 'mastery_base',
+			base: 0,
 		}),
 		new StatTableAscensionScale({
 			stat: 'recharge_base',
@@ -3813,6 +4137,10 @@ export const charTables = {
 			scale: charScales.s5hp,
 		}),
 		new StatTableAscensionScale({
+			stat: 'mastery_base',
+			base: 0,
+		}),
+		new StatTableAscensionScale({
 			stat: 'recharge_base',
 			base: 100,
 		}),
@@ -3848,6 +4176,10 @@ export const charTables = {
 			base: 762.656,
 			ascension: new StatTable('', [653.9086, 1118.5278, 1738.0201, 2202.6394, 2667.2585, 3131.878]),
 			scale: charScales.s5hp,
+		}),
+		new StatTableAscensionScale({
+			stat: 'mastery_base',
+			base: 0,
 		}),
 		new StatTableAscensionScale({
 			stat: 'recharge_base',
@@ -3891,6 +4223,10 @@ export const charTables = {
 			scale: charScales.s4hp,
 		}),
 		new StatTableAscensionScale({
+			stat: 'mastery_base',
+			base: 0,
+		}),
+		new StatTableAscensionScale({
 			stat: 'recharge_base',
 			base: 100,
 		}),
@@ -3926,6 +4262,10 @@ export const charTables = {
 			base: 977.153,
 			ascension: new StatTable('', [837.8203, 1433.1138, 2226.8384, 2822.1316, 3417.425, 4012.7185]),
 			scale: charScales.s5hp,
+		}),
+		new StatTableAscensionScale({
+			stat: 'mastery_base',
+			base: 0,
 		}),
 		new StatTableAscensionScale({
 			stat: 'recharge_base',
@@ -4018,6 +4358,10 @@ export const charTables = {
 			scale: charScales.s4hp,
 		}),
 		new StatTableAscensionScale({
+			stat: 'mastery_base',
+			base: 0,
+		}),
+		new StatTableAscensionScale({
 			stat: 'recharge_base',
 			base: 100,
 		}),
@@ -4104,6 +4448,10 @@ export const charTables = {
 			scale: charScales.s4hp,
 		}),
 		new StatTableAscensionScale({
+			stat: 'mastery_base',
+			base: 0,
+		}),
+		new StatTableAscensionScale({
 			stat: 'recharge_base',
 			base: 100,
 		}),
@@ -4145,6 +4493,10 @@ export const charTables = {
 			scale: charScales.s5hp,
 		}),
 		new StatTableAscensionScale({
+			stat: 'mastery_base',
+			base: 0,
+		}),
+		new StatTableAscensionScale({
 			stat: 'recharge_base',
 			base: 100,
 		}),
@@ -4184,6 +4536,10 @@ export const charTables = {
 			base: 1039.1188,
 			ascension: new StatTable('', [890.9504, 1523.9941, 2368.0525, 3001.0962, 3634.14, 4267.1836]),
 			scale: charScales.s5hp,
+		}),
+		new StatTableAscensionScale({
+			stat: 'mastery_base',
+			base: 0,
 		}),
 		new StatTableAscensionScale({
 			stat: 'recharge_base',
@@ -4268,6 +4624,10 @@ export const charTables = {
 			scale: charScales.s5hp,
 		}),
 		new StatTableAscensionScale({
+			stat: 'mastery_base',
+			base: 0,
+		}),
+		new StatTableAscensionScale({
 			stat: 'recharge_base',
 			base: 100,
 		}),
@@ -4313,6 +4673,10 @@ export const charTables = {
 			ascension: new StatTable('', [0, 6, 12, 12, 18, 24]),
 		}),
 		new StatTableAscensionScale({
+			stat: 'mastery_base',
+			base: 0,
+		}),
+		new StatTableAscensionScale({
 			stat: 'recharge_base',
 			base: 100,
 		}),
@@ -4352,6 +4716,276 @@ export const charTables = {
 			base: 981.9196,
 			ascension: new StatTable('', [841.9073, 1440.1045, 2237.701, 2835.8982, 3434.0955, 4032.2927]),
 			scale: charScales.s5hp,
+		}),
+		new StatTableAscensionScale({
+			stat: 'mastery_base',
+			base: 0,
+		}),
+		new StatTableAscensionScale({
+			stat: 'recharge_base',
+			base: 100,
+		}),
+	],
+	MannequinBoy: [
+		new StatTableAscensionScale({
+			stat: 'atk_base',
+			base: 17.808,
+			ascension: new StatTable('', [13.3038, 22.7565, 35.3601, 44.8128, 54.2655, 63.7182]),
+			scale: charScales.s4atk,
+		}),
+		new StatTableAscensionScale({
+			stat: 'atk_percent',
+			base: 0,
+			ascension: new StatTable('', [0, 6, 12, 12, 18, 24]),
+		}),
+		new StatTableAscensionScale({
+			stat: 'charged_stamina_cost',
+			base: 20,
+		}),
+		new StatTableAscensionScale({
+			stat: 'crit_dmg_base',
+			base: 50,
+		}),
+		new StatTableAscensionScale({
+			stat: 'crit_rate_base',
+			base: 5,
+		}),
+		new StatTableAscensionScale({
+			stat: 'def_base',
+			base: 57.225,
+			ascension: new StatTable('', [42.75, 73.125, 113.625, 144, 174.375, 204.75]),
+			scale: charScales.s4hp,
+		}),
+		new StatTableAscensionScale({
+			stat: 'hp_base',
+			base: 911.791,
+			ascension: new StatTable('', [681.1545, 1165.1328, 1810.4371, 2294.4153, 2778.3936, 3262.3718]),
+			scale: charScales.s4hp,
+		}),
+		new StatTableAscensionScale({
+			stat: 'mastery_base',
+			base: 0,
+		}),
+		new StatTableAscensionScale({
+			stat: 'recharge_base',
+			base: 100,
+		}),
+	],
+	MannequinGirl: [
+		new StatTableAscensionScale({
+			stat: 'atk_base',
+			base: 17.808,
+			ascension: new StatTable('', [13.3038, 22.7565, 35.3601, 44.8128, 54.2655, 63.7182]),
+			scale: charScales.s4atk,
+		}),
+		new StatTableAscensionScale({
+			stat: 'atk_percent',
+			base: 0,
+			ascension: new StatTable('', [0, 6, 12, 12, 18, 24]),
+		}),
+		new StatTableAscensionScale({
+			stat: 'charged_stamina_cost',
+			base: 20,
+		}),
+		new StatTableAscensionScale({
+			stat: 'crit_dmg_base',
+			base: 50,
+		}),
+		new StatTableAscensionScale({
+			stat: 'crit_rate_base',
+			base: 5,
+		}),
+		new StatTableAscensionScale({
+			stat: 'def_base',
+			base: 57.225,
+			ascension: new StatTable('', [42.75, 73.125, 113.625, 144, 174.375, 204.75]),
+			scale: charScales.s4hp,
+		}),
+		new StatTableAscensionScale({
+			stat: 'hp_base',
+			base: 911.791,
+			ascension: new StatTable('', [681.1545, 1165.1328, 1810.4371, 2294.4153, 2778.3936, 3262.3718]),
+			scale: charScales.s4hp,
+		}),
+		new StatTableAscensionScale({
+			stat: 'mastery_base',
+			base: 0,
+		}),
+		new StatTableAscensionScale({
+			stat: 'recharge_base',
+			base: 100,
+		}),
+	],
+	Lauma: [
+		new StatTableAscensionScale({
+			stat: 'atk_base',
+			base: 19.8489,
+			ascension: new StatTable('', [17.0174, 29.1087, 45.2305, 57.3218, 69.4131, 81.5044]),
+			scale: charScales.s5atk,
+		}),
+		new StatTableAscensionScale({
+			stat: 'burst_energy_cost',
+			base: 60,
+		}),
+		new StatTableAscensionScale({
+			stat: 'crit_dmg_base',
+			base: 50,
+		}),
+		new StatTableAscensionScale({
+			stat: 'crit_rate_base',
+			base: 5,
+		}),
+		new StatTableAscensionScale({
+			stat: 'def_base',
+			base: 52.0521,
+			ascension: new StatTable('', [44.631, 76.3425, 118.6245, 150.336, 182.0475, 213.759]),
+			scale: charScales.s5hp,
+		}),
+		new StatTableAscensionScale({
+			stat: 'hp_base',
+			base: 829.3884,
+			ascension: new StatTable('', [711.1255, 1216.3989, 1890.0969, 2395.3704, 2900.6438, 3405.9172]),
+			scale: charScales.s5hp,
+		}),
+		new StatTableAscensionScale({
+			stat: 'mastery_base',
+			base: 200,
+			ascension: new StatTable('', [0, 28.8, 57.6, 57.6, 86.4, 115.2]),
+		}),
+		new StatTableAscensionScale({
+			stat: 'recharge_base',
+			base: 100,
+		}),
+	],
+	Flins: [
+		new StatTableAscensionScale({
+			stat: 'atk_base',
+			base: 27.3714,
+			ascension: new StatTable('', [23.4668, 40.1406, 62.3722, 79.046, 95.7198, 112.3936]),
+			scale: charScales.s5atk,
+		}),
+		new StatTableAscensionScale({
+			stat: 'burst_energy_cost',
+			base: 80,
+		}),
+		new StatTableAscensionScale({
+			stat: 'charged_stamina_cost',
+			base: 25,
+		}),
+		new StatTableAscensionScale({
+			stat: 'crit_dmg_base',
+			base: 50,
+			ascension: new StatTable('', [0, 9.6, 19.2, 19.2, 28.8, 38.4]),
+		}),
+		new StatTableAscensionScale({
+			stat: 'crit_rate_base',
+			base: 5,
+		}),
+		new StatTableAscensionScale({
+			stat: 'def_base',
+			base: 62.9412,
+			ascension: new StatTable('', [53.9676, 92.313, 143.4402, 181.7856, 220.131, 258.4764]),
+			scale: charScales.s5hp,
+		}),
+		new StatTableAscensionScale({
+			stat: 'hp_base',
+			base: 972.3864,
+			ascension: new StatTable('', [833.7334, 1426.1229, 2215.9756, 2808.3652, 3400.7546, 3993.1443]),
+			scale: charScales.s5hp,
+		}),
+		new StatTableAscensionScale({
+			stat: 'mastery_base',
+			base: 0,
+		}),
+		new StatTableAscensionScale({
+			stat: 'recharge_base',
+			base: 100,
+		}),
+	],
+	Aino: [
+		new StatTableAscensionScale({
+			stat: 'atk_base',
+			base: 20.3011,
+			ascension: new StatTable('', [15.1663, 25.9424, 40.3105, 51.0866, 61.8627, 72.6388]),
+			scale: charScales.s4atk,
+		}),
+		new StatTableAscensionScale({
+			stat: 'burst_energy_cost',
+			base: 50,
+		}),
+		new StatTableAscensionScale({
+			stat: 'charged_stamina_cost',
+			base: 40,
+		}),
+		new StatTableAscensionScale({
+			stat: 'crit_dmg_base',
+			base: 50,
+		}),
+		new StatTableAscensionScale({
+			stat: 'crit_rate_base',
+			base: 5,
+		}),
+		new StatTableAscensionScale({
+			stat: 'def_base',
+			base: 50.9303,
+			ascension: new StatTable('', [38.0475, 65.0812, 101.1262, 128.16, 155.1938, 182.2275]),
+			scale: charScales.s4hp,
+		}),
+		new StatTableAscensionScale({
+			stat: 'hp_base',
+			base: 939.1447,
+			ascension: new StatTable('', [701.5892, 1200.0868, 1864.7502, 2363.2478, 2861.7454, 3360.243]),
+			scale: charScales.s4hp,
+		}),
+		new StatTableAscensionScale({
+			stat: 'mastery_base',
+			base: 0,
+			ascension: new StatTable('', [0, 24, 48, 48, 72, 96]),
+		}),
+		new StatTableAscensionScale({
+			stat: 'recharge_base',
+			base: 100,
+		}),
+	],
+	Nefer: [
+		new StatTableAscensionScale({
+			stat: 'atk_base',
+			base: 26.8128,
+			ascension: new StatTable('', [22.9879, 39.3214, 61.0993, 77.4328, 93.7663, 110.0998]),
+			scale: charScales.s5atk,
+		}),
+		new StatTableAscensionScale({
+			stat: 'burst_energy_cost',
+			base: 60,
+		}),
+		new StatTableAscensionScale({
+			stat: 'charged_stamina_cost',
+			base: 50,
+		}),
+		new StatTableAscensionScale({
+			stat: 'crit_dmg_base',
+			base: 50,
+			ascension: new StatTable('', [0, 9.6, 19.2, 19.2, 28.8, 38.4]),
+		}),
+		new StatTableAscensionScale({
+			stat: 'crit_rate_base',
+			base: 5,
+		}),
+		new StatTableAscensionScale({
+			stat: 'def_base',
+			base: 62.2232,
+			ascension: new StatTable('', [53.352, 91.26, 141.804, 179.712, 217.62, 255.528]),
+			scale: charScales.s5hp,
+		}),
+		new StatTableAscensionScale({
+			stat: 'hp_base',
+			base: 988.9742,
+			ascension: new StatTable('', [847.9559, 1450.4509, 2253.7776, 2856.2727, 3458.7676, 4061.2627]),
+			scale: charScales.s5hp,
+		}),
+		new StatTableAscensionScale({
+			stat: 'mastery_base',
+			base: 100,
 		}),
 		new StatTableAscensionScale({
 			stat: 'recharge_base',

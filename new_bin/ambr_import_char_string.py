@@ -1,3 +1,7 @@
+import sys
+import os
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+
 import requests
 
 from collections import OrderedDict
@@ -21,7 +25,7 @@ lang_data = {
     },
 }
 
-DATA_URL = 'https://api.ambr.top/v2/en/avatar/10000093?vh=43F5'
+DATA_URL = 'https://gi.yatta.moe/api/v2/en/avatar/10000093?vh=43F5'
 
 
 def import_char():

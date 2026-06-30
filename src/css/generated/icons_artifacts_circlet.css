@@ -1,13 +1,13 @@
 .sprite-artifact.circlet.sprite-24 {
-	background-image: url("../../images/sprites/artifacts_9be251c9385a21f3db6d93916777aff1.png");
+	background-image: url("../../images/sprites/artifacts_9364873980ab25479bd20544fe77227a.png");
 	background-size: 144px 264px;
 }
 .sprite-artifact.circlet.sprite-40 {
-	background-image: url("../../images/sprites/artifacts_1bbbfd1ece3fb17895271d712cd964d5.png");
+	background-image: url("../../images/sprites/artifacts_8226f034752b7c8ec1dbc1f82e380c88.png");
 	background-size: 240px 440px;
 }
 .sprite-artifact.circlet.sprite-60 {
-	background-image: url("../../images/sprites/artifacts_33b3fb72a5e779a4408342f1a87d2c55.png");
+	background-image: url("../../images/sprites/artifacts_19848f108b9e32dd8bc0d83d3f58bcc4.png");
 	background-size: 360px 660px;
 }
 .sprite.artifact-icon-unknown {background-position: 0% 0%}
@@ -66,6 +66,8 @@
 .sprite.artifact-icon-obsidian-codex.circlet {background-position: 100% 80%}
 .sprite.artifact-icon-long-nights-oath.circlet {background-position: 0% 90%}
 .sprite.artifact-icon-finale-of-the-deep-galleries.circlet {background-position: 20% 90%}
+.sprite.artifact-icon-night-of-the-skys-unveiling.circlet {background-position: 40% 90%}
+.sprite.artifact-icon-silken-moons-serenade.circlet {background-position: 60% 90%}
 
 @media
 only screen and (-webkit-min-device-pixel-ratio: 2),
@@ -74,7 +76,7 @@ only screen and (     -o-min-device-pixel-ratio: 2/1),
 only screen and (        min-device-pixel-ratio: 2),
 only screen and (                min-resolution: 192dpi),
 only screen and (                min-resolution: 2dppx) {
-	.sprite-artifact.circlet.sprite-24 {background-image: url("../../images/sprites/artifacts_9e5eed50808a24d2a08c1413bbcca1a6.png")}
-	.sprite-artifact.circlet.sprite-40 {background-image: url("../../images/sprites/artifacts_addeaab62a9d9ef9a5b6d84c5cc752b1.png")}
-	.sprite-artifact.circlet.sprite-60 {background-image: url("../../images/sprites/artifacts_54140fe71f74ce2b3ce01c54c3ad73fd.png")}
+	.sprite-artifact.circlet.sprite-24 {background-image: url("../../images/sprites/artifacts_58c01dc5719291a69387b985601a19aa.png")}
+	.sprite-artifact.circlet.sprite-40 {background-image: url("../../images/sprites/artifacts_f5ad98292deaf5cacd283b003f6f08d3.png")}
+	.sprite-artifact.circlet.sprite-60 {background-image: url("../../images/sprites/artifacts_8b801b34e75618fa55c9a302ed089f26.png")}
 }

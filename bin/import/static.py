@@ -247,6 +247,12 @@ char_ids = {
     10000114: 'Skirk',
     10000115: 'Dahlia',
     10000116: 'Ineffa',
+    10000117: 'MannequinBoy',
+    10000118: 'MannequinGirl',
+    10000119: 'Lauma',
+    10000120: 'Flins',
+    10000121: 'Aino',
+    10000122: 'Nefer',
 }
 
 def trimValue(value):

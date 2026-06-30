@@ -1,4 +1,7 @@
+import sys
 import os
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+
 from os.path import exists
 
 from lib.genshin.datafiles.artifacts import ArtifactData, ArtifactPieceBonusesData, ArtifactSetData
@@ -43,9 +46,18 @@ images = {
     'goblet': [f"{img_path}artifacts/UI_RelicIcon_Unknown_1.png"],
     'circlet': [f"{img_path}artifacts/UI_RelicIcon_Unknown_3.png"],
 }
+loading = {
+    'flower': [None],
+    'plume': [None],
+    'sands': [None],
+    'goblet': [None],
+    'circlet': [None],
+}
 
 for art_set in set_data.get_list():
-    if 'equipAffixId' not in art_set:
+    if 'equipAffixId' not in art_set or art_set['equipAffixId'] == 0:
+        continue
+    if art_set['setId'] in [15004, 15012]:
         continue
 
     bonus = sets_bonuses.bonuses_list(art_set['equipAffixId'])[0]
@@ -58,29 +70,35 @@ for art_set in set_data.get_list():
         icon = item['icon']
         file_name = f"{img_path}artifacts/{item['icon']}.png"
 
-        if exists(file_name):
-            if slot not in items:
-                items[slot] = []
-                images[slot] = []
-            items[slot].append(f'artifact-icon-{item_id}.{slot}')
-            images[slot].append(file_name)
+        #if exists(file_name):
+        if slot not in items:
+            items[slot] = []
+            images[slot] = []
+        items[slot].append(f'artifact-icon-{item_id}.{slot}')
+        images[slot].append(file_name)
+        loading[slot].append(f"https://gi.yatta.moe/assets/UI/reliquary/{item['icon']}.png");
 
-for slot in SLOT_DATA.values():
-    items[slot].extend([
-        f'artifact-icon-long-nights-oath.{slot}',
-        f'artifact-icon-finale-of-the-deep-galleries.{slot}',
-    ])
+#for slot in SLOT_DATA.values():
+#    items[slot].extend([
+#        f'artifact-icon-long-nights-oath.{slot}',
+#        f'artifact-icon-finale-of-the-deep-galleries.{slot}',
+#    ])
 
-for slot, id in CUSTOM_NAMES_DATA.items():
-    images[slot].extend([
-        f"{img_path}artifacts/UI_RelicIcon_15039_{id}.png",
-        f"{img_path}artifacts/UI_RelicIcon_15040_{id}.png",
-    ])
+#for slot, id in CUSTOM_NAMES_DATA.items():
+#    images[slot].extend([
+#        f"{img_path}artifacts/UI_RelicIcon_15039_{id}.png",
+#        f"{img_path}artifacts/UI_RelicIcon_15040_{id}.png",
+#    ])
+#    loading[slot].extend([
+#        f"https://gi.yatta.moe/assets/UI/reliquary/UI_RelicIcon_15039_{id}.png",
+#        f"https://gi.yatta.moe/assets/UI/reliquary/UI_RelicIcon_15039_{id}.png"
+#    ]);
 
 for slot in items:
     image_gen = ImageGenerator(
         items=items[slot],
         images=images[slot],
+        loading=loading[slot],
         pack_name=f'artifacts_{slot}',
     )
 

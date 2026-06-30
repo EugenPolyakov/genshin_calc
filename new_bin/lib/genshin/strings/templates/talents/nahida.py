@@ -47,12 +47,11 @@ char_nahida = TemplateList(
         ],
         sentences=[
             [],
-            ['crit_rate_bloom', 'crit_dmg_bloom'],
-            ['ignore', 'enemy_def_reduce'],
+            ['crit_rate_bloom', 'crit_dmg_bloom', 'ignore', 'enemy_def_reduce', None, None],
         ],
         results=[
             [1],
-            [2],
+            [1],
         ],
     ),
     the_root_of_all_fullness_eng=Template(
@@ -61,13 +60,11 @@ char_nahida = TemplateList(
             (r'\s*·Within', '\\nWithin'),
         ],
         sentences=[
-            [],
-            ['crit_rate_bloom', 'crit_dmg_bloom'],
-            ['ignore', 'enemy_def_reduce'],
+            ['crit_rate_bloom', 'crit_dmg_bloom', 'ignore', 'enemy_def_reduce', None, None],
         ],
         results=[
-            [1],
-            [2],
+            [0],
+            [0],
         ],
     ),
     the_fruit_of_reasons_culmination=Template(

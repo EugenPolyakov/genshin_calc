@@ -32,6 +32,8 @@
 .weapon-icon-sword-sturdy-bone {background-image: url("../../images/weapons/sword/sword_umpakati.png")}
 .weapon-icon-sword-flute-of-ezpitzal {background-image: url("../../images/weapons/sword/sword_isikhulu.png")}
 .weapon-icon-sword-calamity-of-eshu {background-image: url("../../images/weapons/sword/sword_sacrificialngombe.png")}
+.weapon-icon-sword-serenitys-call {background-image: url("../../images/weapons/sword/sword_ilmarinen.png")}
+.weapon-icon-sword-moonweavers-dawn {background-image: url("../../images/weapons/sword/sword_miekka.png")}
 .weapon-icon-sword-aquila-favonia {background-image: url("../../images/weapons/sword/sword_falcon.png")}
 .weapon-icon-sword-skyward-blade {background-image: url("../../images/weapons/sword/sword_dvalin.png")}
 .weapon-icon-sword-freedom-sworn {background-image: url("../../images/weapons/sword/sword_widsith.png")}
@@ -47,15 +49,15 @@
 .weapon-icon-sword-peak-patrol-song {background-image: url("../../images/weapons/sword/sword_xochitlstube.png")}
 .weapon-icon-sword-azurelight {background-image: url("../../images/weapons/sword/sword_outersword.png")}
 .sprite-weapon-sword.sprite-24 {
-	background-image: url("../../images/sprites/weapon_sword_26139a79b3847cfe81f9d2c3d7d13e59.png");
+	background-image: url("../../images/sprites/weapon_sword_db26eebb436fbd733ac9e6fe0bbb5d1c.png");
 	background-size: 120px 264px;
 }
 .sprite-weapon-sword.sprite-40 {
-	background-image: url("../../images/sprites/weapon_sword_fb946f3c1d3745cc0c80ae231d021ce0.png");
+	background-image: url("../../images/sprites/weapon_sword_bb99ee1ac3572a42f77158b52ed369c1.png");
 	background-size: 200px 440px;
 }
 .sprite-weapon-sword.sprite-60 {
-	background-image: url("../../images/sprites/weapon_sword_79d8a171da2145e4e0ffb619b44283f0.png");
+	background-image: url("../../images/sprites/weapon_sword_cef8982073e4a3786e6dfdf95642441e.png");
 	background-size: 300px 660px;
 }
 .sprite.weapon-icon-sword-unknown {background-position: 0% 0%}
@@ -92,20 +94,22 @@
 .sprite.weapon-icon-sword-sturdy-bone {background-position: 25% 60%}
 .sprite.weapon-icon-sword-flute-of-ezpitzal {background-position: 50% 60%}
 .sprite.weapon-icon-sword-calamity-of-eshu {background-position: 75% 60%}
-.sprite.weapon-icon-sword-aquila-favonia {background-position: 100% 60%}
-.sprite.weapon-icon-sword-skyward-blade {background-position: 0% 70%}
-.sprite.weapon-icon-sword-freedom-sworn {background-position: 25% 70%}
-.sprite.weapon-icon-sword-summit-shaper {background-position: 50% 70%}
-.sprite.weapon-icon-sword-primordial-jade-cutter {background-position: 75% 70%}
-.sprite.weapon-icon-sword-mistsplitter-reforged {background-position: 100% 70%}
-.sprite.weapon-icon-sword-haran-geppaku-futsu {background-position: 0% 80%}
-.sprite.weapon-icon-sword-key-of-khaj-nisut {background-position: 25% 80%}
-.sprite.weapon-icon-sword-light-of-foliar-incision {background-position: 50% 80%}
-.sprite.weapon-icon-sword-splendor-of-tranquil-waters {background-position: 75% 80%}
-.sprite.weapon-icon-sword-uraku-misugiri {background-position: 100% 80%}
-.sprite.weapon-icon-sword-absolution {background-position: 0% 90%}
-.sprite.weapon-icon-sword-peak-patrol-song {background-position: 25% 90%}
-.sprite.weapon-icon-sword-azurelight {background-position: 50% 90%}
+.sprite.weapon-icon-sword-serenitys-call {background-position: 100% 60%}
+.sprite.weapon-icon-sword-moonweavers-dawn {background-position: 0% 70%}
+.sprite.weapon-icon-sword-aquila-favonia {background-position: 25% 70%}
+.sprite.weapon-icon-sword-skyward-blade {background-position: 50% 70%}
+.sprite.weapon-icon-sword-freedom-sworn {background-position: 75% 70%}
+.sprite.weapon-icon-sword-summit-shaper {background-position: 100% 70%}
+.sprite.weapon-icon-sword-primordial-jade-cutter {background-position: 0% 80%}
+.sprite.weapon-icon-sword-mistsplitter-reforged {background-position: 25% 80%}
+.sprite.weapon-icon-sword-haran-geppaku-futsu {background-position: 50% 80%}
+.sprite.weapon-icon-sword-key-of-khaj-nisut {background-position: 75% 80%}
+.sprite.weapon-icon-sword-light-of-foliar-incision {background-position: 100% 80%}
+.sprite.weapon-icon-sword-splendor-of-tranquil-waters {background-position: 0% 90%}
+.sprite.weapon-icon-sword-uraku-misugiri {background-position: 25% 90%}
+.sprite.weapon-icon-sword-absolution {background-position: 50% 90%}
+.sprite.weapon-icon-sword-peak-patrol-song {background-position: 75% 90%}
+.sprite.weapon-icon-sword-azurelight {background-position: 100% 90%}
 
 @media
 only screen and (-webkit-min-device-pixel-ratio: 2),
@@ -148,6 +152,8 @@ only screen and (                min-resolution: 2dppx) {
 	.weapon-icon-sword-sturdy-bone {background-image: url("../../images/weapons/sword/sword_umpakati_2x.png")}
 	.weapon-icon-sword-flute-of-ezpitzal {background-image: url("../../images/weapons/sword/sword_isikhulu_2x.png")}
 	.weapon-icon-sword-calamity-of-eshu {background-image: url("../../images/weapons/sword/sword_sacrificialngombe_2x.png")}
+	.weapon-icon-sword-serenitys-call {background-image: url("../../images/weapons/sword/sword_ilmarinen_2x.png")}
+	.weapon-icon-sword-moonweavers-dawn {background-image: url("../../images/weapons/sword/sword_miekka_2x.png")}
 	.weapon-icon-sword-aquila-favonia {background-image: url("../../images/weapons/sword/sword_falcon_2x.png")}
 	.weapon-icon-sword-skyward-blade {background-image: url("../../images/weapons/sword/sword_dvalin_2x.png")}
 	.weapon-icon-sword-freedom-sworn {background-image: url("../../images/weapons/sword/sword_widsith_2x.png")}
@@ -162,7 +168,7 @@ only screen and (                min-resolution: 2dppx) {
 	.weapon-icon-sword-absolution {background-image: url("../../images/weapons/sword/sword_estoc_2x.png")}
 	.weapon-icon-sword-peak-patrol-song {background-image: url("../../images/weapons/sword/sword_xochitlstube_2x.png")}
 	.weapon-icon-sword-azurelight {background-image: url("../../images/weapons/sword/sword_outersword_2x.png")}
-	.sprite-weapon-sword.sprite-24 {background-image: url("../../images/sprites/weapon_sword_3bf26cf16bcae995e892ee92038e4596.png")}
-	.sprite-weapon-sword.sprite-40 {background-image: url("../../images/sprites/weapon_sword_b6e08c843253e6534a2890a9a80cea0d.png")}
-	.sprite-weapon-sword.sprite-60 {background-image: url("../../images/sprites/weapon_sword_486a0c8667264890f7e91ed2ee83d823.png")}
+	.sprite-weapon-sword.sprite-24 {background-image: url("../../images/sprites/weapon_sword_17901f664e18658f67d1e9da4e59f523.png")}
+	.sprite-weapon-sword.sprite-40 {background-image: url("../../images/sprites/weapon_sword_deb2464f4f39f52f19a788724da0551c.png")}
+	.sprite-weapon-sword.sprite-60 {background-image: url("../../images/sprites/weapon_sword_d464c6d62b56a479262f07a6dd5ac697.png")}
 }

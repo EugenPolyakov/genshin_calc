@@ -1,4 +1,6 @@
+import sys
 import os
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
 from lib.genshin.datafiles.char import CharData, SKIP_CHARACTERS
 from lib.genshin.datafiles.lang import LangData
@@ -18,6 +20,10 @@ images = [
     f'{img_path}chars/UI_Icon_Unknown.png',
     f'{img_path}chars/UI_Icon_Reset.png',
 ]
+loading = [
+    None,
+    None,
+]
 
 for char in char_data.get_list():
     if char['id'] in SKIP_CHARACTERS:
@@ -31,18 +37,12 @@ for char in char_data.get_list():
 
     items.append(f'char-icon-{char_id}')
     images.append(f"{img_path}chars/{char['iconName']}.png")
-
-items.extend([
-    'char-icon-ineffa',
-])
-
-images.extend([
-    f'{img_path}chars/UI_AvatarIcon_Ineffa.png',
-])
+    loading.append(f"https://gi.yatta.moe/assets/UI/{char['iconName']}.png")
 
 image_gen = ImageGenerator(
     items=items,
     images=images,
+    loading=loading,
     pack_name='chars',
 )
 

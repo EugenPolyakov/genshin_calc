@@ -58,7 +58,7 @@ char_nilou = TemplateList(
     ),
     dreamy_dance_of_aeons_rus=Template(
         sentences=[
-            ['ignore', 'ignore', 'ignore'],
+            ['ignore', 'ignore'],
             [None, None],
         ],
     ),
@@ -79,6 +79,7 @@ char_nilou = TemplateList(
         ],
         sentences=[
             ['enemy_res_hydro', 'ignore'],
+            [],
             ['enemy_res_dendro', 'ignore'],
             [],
         ],

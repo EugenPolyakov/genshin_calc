@@ -1,13 +1,13 @@
 .sprite-artifact.plume.sprite-24 {
-	background-image: url("../../images/sprites/artifacts_a4aef49cec9248d94ae5e1ec9b792677.png");
+	background-image: url("../../images/sprites/artifacts_9d896785fa960ed2d4af6aade74c362f.png");
 	background-size: 120px 264px;
 }
 .sprite-artifact.plume.sprite-40 {
-	background-image: url("../../images/sprites/artifacts_498a7f5b09dd234dad3dc2f79846b186.png");
+	background-image: url("../../images/sprites/artifacts_89ce93e395549864de005e9b7da5cfaf.png");
 	background-size: 200px 440px;
 }
 .sprite-artifact.plume.sprite-60 {
-	background-image: url("../../images/sprites/artifacts_666a86402ccd14483ff72c9caa18473e.png");
+	background-image: url("../../images/sprites/artifacts_00a79e7fe57aad1b73f3861dabbcbf1f.png");
 	background-size: 300px 660px;
 }
 .sprite.artifact-icon-unknown {background-position: 0% 0%}
@@ -62,6 +62,8 @@
 .sprite.artifact-icon-obsidian-codex.plume {background-position: 100% 90%}
 .sprite.artifact-icon-long-nights-oath.plume {background-position: 0% 100%}
 .sprite.artifact-icon-finale-of-the-deep-galleries.plume {background-position: 25% 100%}
+.sprite.artifact-icon-night-of-the-skys-unveiling.plume {background-position: 50% 100%}
+.sprite.artifact-icon-silken-moons-serenade.plume {background-position: 75% 100%}
 
 @media
 only screen and (-webkit-min-device-pixel-ratio: 2),
@@ -70,7 +72,7 @@ only screen and (     -o-min-device-pixel-ratio: 2/1),
 only screen and (        min-device-pixel-ratio: 2),
 only screen and (                min-resolution: 192dpi),
 only screen and (                min-resolution: 2dppx) {
-	.sprite-artifact.plume.sprite-24 {background-image: url("../../images/sprites/artifacts_02609f1eb11bf18182715b7c8ad21180.png")}
-	.sprite-artifact.plume.sprite-40 {background-image: url("../../images/sprites/artifacts_63d2d841324d90968ff24ab3f1afc738.png")}
-	.sprite-artifact.plume.sprite-60 {background-image: url("../../images/sprites/artifacts_116354b677acaf73fbe564f60bb9a142.png")}
+	.sprite-artifact.plume.sprite-24 {background-image: url("../../images/sprites/artifacts_1963bf4e9cd0fe4d92ad7a600ef39ca6.png")}
+	.sprite-artifact.plume.sprite-40 {background-image: url("../../images/sprites/artifacts_8b17528acde5ad48c956898c0c6bdc80.png")}
+	.sprite-artifact.plume.sprite-60 {background-image: url("../../images/sprites/artifacts_945240426a4b78a6dc40730bf22087dd.png")}
 }

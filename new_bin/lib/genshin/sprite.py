@@ -2,19 +2,13 @@ import hashlib
 import io
 import os
 import re
-import tinify  # type: ignore
+import requests
 
 from os.path import exists
 from logging import Logger
 from PIL import Image
 from posixpath import basename
 from typing import List, Tuple
-
-# try:
-#     from lib.secret.tinypng import api_key
-#     tinify.key = api_key
-# except ModuleNotFoundError:
-#     pass
 
 logger = Logger(__name__)
 dirname = os.path.dirname(__file__)
@@ -41,11 +35,13 @@ class ImageGenerator:
         self,
         items: List[str],
         images: List[str],
+        loading: List[str],
         pack_name: str,
         sprite_css_prefix: str = 'sprite',
     ) -> None:
         self.images = []
         self.images_names = images
+        self.loading = loading
         self.items = items
         self.pack_name = pack_name
         self.sprite_css_prefix = sprite_css_prefix
@@ -55,8 +51,15 @@ class ImageGenerator:
         self.result_css = ''
         self.result_css_2x = ''
 
-        for image in images:
-            self.images.append(Image.open(image))
+        for idx, image in enumerate(images):
+            if not os.path.exists(image) and loading[idx]:
+                r = requests.get(loading[idx])
+                with open(image, 'wb') as fd:
+                    for chunk in r.iter_content(chunk_size=128):
+                        fd.write(chunk)
+            img = Image.open(image)
+            img = img.convert('RGBA')
+            self.images.append(img)
 
     @property
     def path(self):
@@ -135,20 +138,6 @@ class ImageGenerator:
     def _minify_file(self, image, file_path):
         if not exists(file_path):
             saved = False
-            if tinify.key:
-                try:
-                    f = io.BytesIO(b'')
-                    image.save(f, 'png')
-                    tinify.from_buffer(f.getbuffer()).to_file(file_path)
-                    saved = True
-                except tinify.AccountError as e:
-                    logger.error('tinify AccountError: ' + e)
-                except tinify.ConnectionError as e:
-                    logger.error('tinify ConnectionError: ' + e)
-                except tinify.ClientError as e:
-                    logger.error('tinify ClientError: ' + e)
-                except tinify.ServerError as e:
-                    logger.error('tinify ServerError: ' + e)
 
             if not saved:
                 print(file_path)

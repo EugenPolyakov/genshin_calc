@@ -1,12 +1,15 @@
-import json
+import sys
 import os
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+
+import json
 import re
 
 import static  # noqa
 from char_common import parse_scales, parse_skills
 
 dirname = os.path.dirname(__file__)
-data_dir = os.path.join(dirname, '../../dimrepo/ExcelBinOutput/')
+data_dir = os.path.join(dirname, '../../../AnimeGameData/ExcelBinOutput/')
 out_dir = os.path.join(dirname, '../../src/js/db/generated/')
 
 
@@ -128,6 +131,7 @@ def parse_chars():
             'hp_base':  static.trimValue(item["hpBase"]),
             'atk_base': static.trimValue(item["attackBase"]),
             'def_base': static.trimValue(item["defenseBase"]),
+            'mastery_base': static.trimValue(item["elementMastery"]),
             'recharge_base': 100,
             'crit_rate_base': 5,
             'crit_dmg_base': 50,

@@ -1,11 +1,14 @@
-import json
+import sys
 import os
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+
+import json
 import re
 import static # type: ignore
 import accumulator # type: ignore
 
 dirname  = os.path.dirname(__file__)
-data_dir = os.path.join(dirname, '../../dimrepo/ExcelBinOutput/')
+data_dir = os.path.join(dirname, '../../../AnimeGameData/ExcelBinOutput/')
 out_dir  = os.path.join(dirname, '../../src/js/db/generated/')
 
 weapon_names = {

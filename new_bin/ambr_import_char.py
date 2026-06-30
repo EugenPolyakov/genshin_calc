@@ -1,3 +1,7 @@
+import sys
+import os
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+
 import requests
 import re
 
@@ -35,8 +39,8 @@ WEAPON_TYPES = {
     'WEAPON_POLE': 'polearm',
 }
 
-DATA_URL = 'https://api.ambr.top/v2/en/avatar/10000106'
-
+DATA_URL = 'https://gi.yatta.moe/api/v2/en/avatar/10000106'
+#https://gi.yatta.moe/assets/UI/UI_AvatarIcon_Nefer.png?vh=2024123000
 
 def import_char():
     data = requests.get(DATA_URL).json()['data']

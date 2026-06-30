@@ -27,11 +27,17 @@ class TemplateSentence:
             self.values.append(match.group(1))
             return '{value_%d}' % (len(self.values),)
 
-        self.formatted = re.sub(r'\b(\d+(?:(?:,|\.)\d+)?\%?)', repalce_callback, source)
+        self.formatted = re.sub(r'\b(\d+(?:(?:,|\.| )\d+)?\%?)', repalce_callback, source)
 
     def apply(self, values: list):
+        #logger.error(f'\n------------------------------\n{self.formatted}')
         if len(self.values) != len(values):
-            logger.error(f'Template Sentence values length mismatch: {self.source}')
+            logger.error(f'Template Sentence values length mismatch:({len(self.values)} != {len(values)})')
+            logger.error(f'\n------------------------------\n{self.source}')
+            logger.error(f'\n------------------------------\n{self.formatted}')
+            logger.error(f'\n------------------------------\n{self.values}')
+            logger.error(f'\n------------------------------\n{values}')
+            logger.error(f'\n------------------------------\n')
 
         index = 0
         result = self.formatted
@@ -45,6 +51,7 @@ class TemplateSentence:
                 result = result.replace('{value_%d}' % index, '%%{%s}' % ext_value)
             else:
                 result = result.replace('{value_%d}' % index, 'value{%s}' % own_value)
+        #logger.error(f'\n------------------------------\n{result}')
         return result
 
     def check_value(self, own_value, ext_value):
@@ -71,8 +78,10 @@ class TemplateString:
 
     def apply(self, values: list, res_index=None):
         if len(self.sentences) != len(values):
-            logger.error('Template sentence length mismatch')
+            logger.error('Template sentence length mismatch\n~~~~~~~~~~~~~~~~~~~~~~~\n')
+            logger.error(f'{values}\n~~~~~~~~~~~~~~~~~~~~~~~\n')
             self.dump()
+            logger.error('\n~~~~~~~~~~~~~~~~~~~~~~~\n')
             return ''
 
         result = []

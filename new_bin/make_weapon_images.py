@@ -1,4 +1,6 @@
+import sys
 import os
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
 from lib.genshin.datafiles.weapons import IGNORED_WEAPONS, WeaponData
 from lib.genshin.datafiles.lang import LangData
@@ -35,6 +37,13 @@ images = {
     'catalyst': [f'{img_path}chars/UI_Icon_Unknown.png'],
     'bow': [f'{img_path}chars/UI_Icon_Unknown.png'],
 }
+loading = {
+    'sword': [None],
+    'claymore': [None],
+    'polearm': [None],
+    'catalyst': [None],
+    'bow': [None],
+}
 
 for weapon in weapon_data.get_list():
     if weapon['id'] in IGNORED_WEAPONS:
@@ -51,17 +60,19 @@ for weapon in weapon_data.get_list():
         images[wtype] = []
     weapons[wtype].append(f'weapon-icon-{wtype}-{weapon_id}')
     images[wtype].append(f"{img_path}weapons/{weapon['icon']}.png")
+    loading[wtype].append(f"https://gi.yatta.moe/assets/UI/{weapon['icon']}.png")
 
 
-weapons['polearm'].append('weapon-icon-polearm-fractured-halo')
-weapons['claymore'].append('weapon-icon-claymore-flame-forged-insight')
-images['polearm'].append(f'{img_path}weapons/UI_EquipIcon_Pole_Perdix.png')
-images['claymore'].append(f'{img_path}weapons/UI_EquipIcon_Claymore_Polilith.png')
+#weapons['polearm'].append('weapon-icon-polearm-fractured-halo')
+#weapons['claymore'].append('weapon-icon-claymore-flame-forged-insight')
+#images['polearm'].append(f'{img_path}weapons/UI_EquipIcon_Pole_Perdix.png')
+#images['claymore'].append(f'{img_path}weapons/UI_EquipIcon_Claymore_Polilith.png')
 
 for wtype in weapons:
     image_gen = ImageGenerator(
         items=weapons[wtype],
         images=images[wtype],
+        loading=loading[wtype],
         pack_name=f'weapons/{wtype}',
     )
 

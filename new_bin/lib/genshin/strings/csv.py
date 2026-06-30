@@ -17,6 +17,7 @@ class CsvDumper:
             escapechar='~',
             quotechar='"',
             delimiter=';',
+            lineterminator="\n"
         )
 
     def dump(self, data, filename):
