@@ -74,14 +74,14 @@ const Talents = new DbObjectTalents({
     },
     skill: {
         gameId: charTalentTables.RaidenShogun.s2_id,
-        title: 'talent_name.raiden_shogun_baleful_omen',
-        description: 'talent_descr.raiden_shogun_baleful_omen',
+        title: 'talent_name.raiden_shogun_baleful_omen_1',
+        description: 'talent_descr.raiden_shogun_baleful_omen_1',
         items: [
             {
                 table: new StatTable('skill_dmg', charTalentTables.RaidenShogun.s2.p1),
             },
             {
-                table: new StatTable('baal_coordinated_atk_dmg', charTalentTables.RaidenShogun.s2.p2),
+                table: new StatTable('raiden_shogun_coordinated_atk_dmg', charTalentTables.RaidenShogun.s2.p2),
             },
             {
                 unit: 'sec',
@@ -90,7 +90,7 @@ const Talents = new DbObjectTalents({
             {
                 unit: 'per_energy',
                 digits: 2,
-                table: new StatTable('baal_burst_bonus', charTalentTables.RaidenShogun.s2.p4),
+                table: new StatTable('raiden_shogun_elemental_burst_dmg_bonus', charTalentTables.RaidenShogun.s2.p4),
             },
             {
                 unit: 'sec',
@@ -100,11 +100,11 @@ const Talents = new DbObjectTalents({
     },
     burst: {
         gameId: charTalentTables.RaidenShogun.s3_id,
-        title: 'talent_name.raiden_shogun_musou_shinsetsu',
-        description: 'talent_descr.raiden_shogun_musou_shinsetsu',
+        title: 'talent_name.raiden_shogun_musou_shinsetsu_1',
+        description: 'talent_descr.raiden_shogun_musou_shinsetsu_1',
         items: [
             {
-                table: new StatTable('baal_musou_no_hitotachi_dmg', charTalentTables.RaidenShogun.s3.p1),
+                table: new StatTable('raiden_shogun_musou_no_hitotachi_base_dmg', charTalentTables.RaidenShogun.s3.p1),
             },
             {
                 unit: 'percent_per_stack',
@@ -119,7 +119,7 @@ const Talents = new DbObjectTalents({
             {
                 unit: 'per_energy',
                 digits: 2,
-                table: new StatTable('baal_resolve_stack', charTalentTables.RaidenShogun.s3.p4),
+                table: new StatTable('raiden_shogun_resolve_stacks_gained', charTalentTables.RaidenShogun.s3.p4),
             },
             {
                 table: new StatTable('normal_hit_1', charTalentTables.RaidenShogun.s3.p5),
@@ -164,11 +164,11 @@ const Talents = new DbObjectTalents({
             },
             {
                 unit: '',
-                table: new StatTable('baal_energy_recharge', charTalentTables.RaidenShogun.s3.p17),
+                table: new StatTable('raiden_shogun_musou_isshin_energy_restoration', charTalentTables.RaidenShogun.s3.p17),
             },
             {
                 unit: 'sec',
-                table: new StatTable('duration', charTalentTables.RaidenShogun.s3.p18),
+                table: new StatTable('raiden_shogun_musou_isshin_duration', charTalentTables.RaidenShogun.s3.p18),
             },
             {
                 unit: 'sec',
@@ -185,7 +185,7 @@ const Talents = new DbObjectTalents({
 const burstDmgPost = new PostEffectStats({
     levelSetting: 'char_skill_elemental',
     from: 'burst_energy_cost',
-    percent: Talents.getAlias('skill.baal_burst_bonus', 'dmg_burst'),
+    percent: Talents.getAlias('skill.raiden_shogun_elemental_burst_dmg_bonus', 'dmg_burst'),
     conditions: [
         new ConditionBoolean({name: 'baal_eye_of_stormy_judgment'}),
     ],
@@ -569,12 +569,11 @@ export const RaidenShogun = new DbObjectChar({
             ],
         }),
         new FeatureDamageSkill({
-            name: 'baal_coordinated_atk_dmg',
             element: 'electro',
             multipliers: [
                 new FeatureMultiplier({
                     leveling: 'char_skill_elemental',
-                    values: Talents.get('skill.baal_coordinated_atk_dmg'),
+                    values: Talents.get('skill.raiden_shogun_coordinated_atk_dmg'),
                 }),
             ],
         }),
@@ -584,7 +583,7 @@ export const RaidenShogun = new DbObjectChar({
             multipliers: [
                 new FeatureMultiplier({
                     leveling: 'char_skill_burst',
-                    values: Talents.get('burst.baal_musou_no_hitotachi_dmg'),
+                    values: Talents.get('burst.raiden_shogun_musou_no_hitotachi_base_dmg'),
                 }),
                 new FeatureMultiplier({
                     leveling: 'char_skill_burst',
@@ -596,7 +595,7 @@ export const RaidenShogun = new DbObjectChar({
         }),
         new FeatureStatic({
             category: 'burst',
-            name: 'baal_energy_recharge',
+            name: 'raiden_shogun_musou_isshin_energy_restoration',
             format: 'decimal',
             digits: 2,
             multipliers: [
@@ -607,7 +606,7 @@ export const RaidenShogun = new DbObjectChar({
                     scaling: 'recharge*',
                     leveling: 'char_skill_elemental',
                     values: Talents.getMulti({
-                        from: 'burst.baal_energy_recharge',
+                        from: 'burst.raiden_shogun_musou_isshin_energy_restoration',
                         multi: 60,
                     }),
                 }),
@@ -632,14 +631,14 @@ export const RaidenShogun = new DbObjectChar({
         new ConditionBoolean({
             name: 'baal_eye_of_stormy_judgment',
             serializeId: 1,
-            title: 'talent_name.baal_eye_of_stormy_judgment',
-            description: 'talent_descr.baal_eye_of_stormy_judgment',
+            title: 'talent_name.raiden_shogun_baleful_omen_2',
+            description: 'talent_descr.raiden_shogun_baleful_omen_2',
         }),
         new ConditionBoolean({
             name: 'baal_musou_isshin',
             serializeId: 2,
-            title: 'talent_name.baal_musou_isshin',
-            description: 'talent_descr.baal_musou_isshin',
+            title: 'talent_name.raiden_shogun_musou_shinsetsu_2',
+            description: 'talent_descr.raiden_shogun_musou_shinsetsu_2',
             settings: {
                 attack_infusion: 'electro',
             },
@@ -648,7 +647,7 @@ export const RaidenShogun = new DbObjectChar({
             name: 'baal_resolve_stacks',
             serializeId: 3,
             title: 'talent_name.baal_resolve_stacks',
-            description: 'talent_descr.baal_resolve_stacks',
+            description: 'talent_descr.raiden_shogun_musou_shinsetsu_3',
             max: 60,
         }),
         new ConditionStatic({
@@ -757,8 +756,8 @@ export const RaidenShogun = new DbObjectChar({
                 name: 'party.baal_eye_of_stormy_judgment',
                 serializeId: 2,
                 rotation: 'party',
-                title: 'talent_name.baal_eye_of_stormy_judgment',
-                description: 'talent_descr.baal_eye_of_stormy_judgment',
+                title: 'talent_name.raiden_shogun_baleful_omen_2',
+                description: 'talent_descr.raiden_shogun_baleful_omen_2',
             }),
             new ConditionBoolean({
                 name: 'party.raiden_shogun_pledge_of_propriety',
@@ -788,7 +787,7 @@ export const RaidenShogun = new DbObjectChar({
                 levelSetting: 'baal_char_skill_elemental',
                 maxLevelSetting: 10,
                 from: 'burst_energy_cost',
-                percent: Talents.getAlias('skill.baal_burst_bonus', 'dmg_burst'),
+                percent: Talents.getAlias('skill.raiden_shogun_elemental_burst_dmg_bonus', 'dmg_burst'),
                 conditions: [
                     new ConditionBoolean({name: 'party.baal_eye_of_stormy_judgment'}),
                 ],

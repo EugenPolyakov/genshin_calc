@@ -12,6 +12,7 @@ export class DialogContainer extends React.Component {
                 maxHeight={this.props.maxHeight}
                 isVisible={this.props.isVisible}
                 addClass={this.props.addClass}
+                data-char={ this.props['data-char'] }
             >
                 <div className="dialog-border">
                     <div className="dialog-corner top-left"></div>
@@ -100,7 +101,7 @@ class Modal extends React.Component {
         let classPart = hiddenClass + (this.props.addClass ? ' '+ this.props.addClass : '');
         return (
             <>
-                <div ref={el => this.el = el} className={'dialog' + classPart}>
+                <div ref={ el => this.el = el } className={ 'dialog' + classPart } data-char={ this.props['data-char'] }>
                     {this.props.children}
                 </div>
                 <div className={'dialog-back' + classPart}/>

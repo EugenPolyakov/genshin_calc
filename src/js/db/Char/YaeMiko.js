@@ -59,16 +59,16 @@ const Talents = new DbObjectTalents({
         description: 'talent_descr.yae_miko_sesshou_sakura',
         items: [
             {
-                table: new StatTable('miko_sesshou_sakura_1_dmg', charTalentTables.YaeMiko.s2.p1),
+                table: new StatTable('yae_miko_level_1', charTalentTables.YaeMiko.s2.p1),
             },
             {
-                table: new StatTable('miko_sesshou_sakura_2_dmg', charTalentTables.YaeMiko.s2.p2),
+                table: new StatTable('yae_miko_level_2', charTalentTables.YaeMiko.s2.p2),
             },
             {
-                table: new StatTable('miko_sesshou_sakura_3_dmg', charTalentTables.YaeMiko.s2.p3),
+                table: new StatTable('yae_miko_level_3', charTalentTables.YaeMiko.s2.p3),
             },
             {
-                table: new StatTable('miko_sesshou_sakura_4_dmg', charTalentTables.YaeMiko.s2.p4),
+                table: new StatTable('yae_miko_level_4', charTalentTables.YaeMiko.s2.p4),
             },
             {
                 unit: 'sec',
@@ -89,7 +89,7 @@ const Talents = new DbObjectTalents({
                 table: new StatTable('burst_dmg', charTalentTables.YaeMiko.s3.p1),
             },
             {
-                table: new StatTable('miko_thunderbolt_dmg', charTalentTables.YaeMiko.s3.p2),
+                table: new StatTable('yae_miko_tenko_thunderbolt_dmg', charTalentTables.YaeMiko.s3.p2),
             },
             {
                 unit: 'sec',
@@ -192,7 +192,7 @@ export const YaeMiko = new DbObjectChar({
             multipliers: [
                 new FeatureMultiplier({
                     leveling: 'char_skill_elemental',
-                    values: Talents.get('skill.miko_sesshou_sakura_1_dmg'),
+                    values: Talents.get('skill.yae_miko_level_1'),
                 }),
             ],
         }),
@@ -202,7 +202,7 @@ export const YaeMiko = new DbObjectChar({
             multipliers: [
                 new FeatureMultiplier({
                     leveling: 'char_skill_elemental',
-                    values: Talents.get('skill.miko_sesshou_sakura_2_dmg'),
+                    values: Talents.get('skill.yae_miko_level_2'),
                 }),
             ],
         }),
@@ -212,7 +212,7 @@ export const YaeMiko = new DbObjectChar({
             multipliers: [
                 new FeatureMultiplier({
                     leveling: 'char_skill_elemental',
-                    values: Talents.get('skill.miko_sesshou_sakura_3_dmg'),
+                    values: Talents.get('skill.yae_miko_level_3'),
                 }),
             ],
         }),
@@ -222,7 +222,7 @@ export const YaeMiko = new DbObjectChar({
             multipliers: [
                 new FeatureMultiplier({
                     leveling: 'char_skill_elemental',
-                    values: Talents.get('skill.miko_sesshou_sakura_4_dmg'),
+                    values: Talents.get('skill.yae_miko_level_4'),
                 }),
             ],
             condition: new ConditionConstellation({constellation: 2}),
@@ -241,7 +241,7 @@ export const YaeMiko = new DbObjectChar({
             multipliers: [
                 new FeatureMultiplier({
                     leveling: 'char_skill_burst',
-                    values: Talents.get('burst.miko_thunderbolt_dmg'),
+                    values: Talents.get('burst.yae_miko_tenko_thunderbolt_dmg'),
                 }),
             ],
         }),

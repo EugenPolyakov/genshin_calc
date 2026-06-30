@@ -97,6 +97,7 @@ keywords_eng = Template(
         ('Lunar-Bloom DMG', 'dendro'),
         ('Lunar-Bloom', 'dendro'),
         ('Lunar-Crystallize', 'geo'),
+        ('Moondrift Harmony', 'geo'),
 
         ('Anemo DMG Bonus', 'anemo'),
         ('Cryo DMG Bonus', 'cryo'),
@@ -244,7 +245,7 @@ names_rus = Template(
         'Высшее сияние',
         'Лунные реакции',
         'Лунных реакций',
-        'элементальный навык',
+        '[эЭ]лементальный навык',
         'элементальных навыков',
         'урона всеми элементами',
         'урон элементального навыка',
@@ -356,6 +357,7 @@ keywords_rus = Template(
         ('Лунную бутонизацию', 'dendro'),
         ('Лунной бутонизации', 'dendro'),
         ('Лунный кристалл', 'geo'),
+        ('Гармони[ия] Лунной пелены', 'geo'),
 
         ('Гео урона', 'geo'),
         ('Гео урону', 'geo'),

@@ -128,13 +128,18 @@ def add_hits(name_idx, desc, types, repl):
             category='feature_' + skill_type,
             name=name_idx+'_2',
         )
-        
+        res_item4 = OrderedDict(
+            category='feature_' + skill_type,
+            name=name_idx+'_3',
+        )
+
         lang = lang_data['rus']['lang']
         (name, params_str) = lang.get(desc).split('|')
         name = fix_name(name)
         res_item1['rus'] = name
         res_item2['rus'] = res_item1['rus'] + '-1'
         res_item3['rus'] = res_item1['rus'] + '-2'
+        res_item4['rus'] = res_item1['rus'] + '-3'
 
         lang = lang_data['eng']['lang']
         (name, params_str) = lang.get(desc).split('|')
@@ -142,17 +147,19 @@ def add_hits(name_idx, desc, types, repl):
         res_item1['eng'] = name
         res_item2['eng'] = res_item1['eng'].replace(repl, '-1' + repl)
         res_item3['eng'] = res_item1['eng'].replace(repl, '-2' + repl)
+        res_item4['eng'] = res_item1['eng'].replace(repl, '-3' + repl)
 
         result_talents.append(res_item1)
         result_talents.append(res_item2)
         result_talents.append(res_item3)
-        
+        result_talents.append(res_item4)
+
 def normal_hit(name_idx, desc, types):
     add_hits(name_idx, desc, types, '-Hit')
 
 def dmg_hit(name_idx, desc, types):
     add_hits(name_idx, desc, types, ' DMG')
-    
+
 #ganyu
 extract_params(10371, 3731, range(0, 6), normal_hit, ['attack', 'skill', 'burst'])
 #ningguang

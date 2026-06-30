@@ -23,6 +23,63 @@ char_sangonomiya_kokomi = TemplateList(
             'burst': ['Nereid\'s Ascension'],
         },
     ),
+    nereids_ascension_rus=Template(
+        replace={
+            '</p><p>': '\n</p><p>\n',
+            '<br>': '\n<br>\n',
+        },
+        sentences=[
+            [],
+            [],
+            [],
+            [],
+            [],
+            [],
+            [],
+            [],
+            [],
+            [],
+            [],
+            [],
+            [],
+            [],
+            [],
+            [],
+        ],
+        results=[
+            list(range(0, 16)),
+            [4, 5, 6, 7, 8, 9, 10, 11, '<br>', 13],
+            [2],
+        ],
+        extracted_names=[2],
+    ),
+    nereids_ascension_eng=Template(
+        replace={
+            '</p><p>': '\n</p><p>\n',
+            '<br>': '\n<br>\n',
+        },
+        sentences=[
+            [],
+            [],
+            [],
+            [],
+            [],
+            [],
+            [],
+            [],
+            [],
+            [],
+            [],
+            [],
+            [],
+        ],
+        results=[
+            list(range(0, 13)),
+            [4, 5, 6, 7, 8, '<br>', 10],
+            [2],
+        ],
+        extracted_names=[2],
+    ),
     tamakushi_casket=Template(
         sentences=[
             [],
@@ -38,6 +95,11 @@ char_sangonomiya_kokomi = TemplateList(
     song_of_pearls_eng=Template(
         sentences=[
             ['text_percent'],
+        ],
+    ),
+    flawless_strategy=Template(
+        sentences=[
+            ['25:healing', '100:crit_rate'],
         ],
     ),
     at_waters_edge_rus=Template(

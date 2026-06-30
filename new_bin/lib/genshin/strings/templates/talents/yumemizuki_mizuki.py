@@ -1,4 +1,5 @@
 from ...template import Template, TemplateList
+from ..names import keywords_rus, keywords_eng, names_eng, names_rus
 
 
 char_yumemizuki_mizuki = TemplateList(
@@ -22,6 +23,62 @@ char_yumemizuki_mizuki = TemplateList(
             'skill': [],
             'burst': ['Anraku Secret Spring Therapy'],
         },
+    ),
+    aisa_utamakura_pilgrimage_rus=Template(
+        names=['мастерству стихий'],
+        keywords=keywords_rus.keywords,
+        replace={
+            '</p><p>': '</p><p>\n',
+            '<br>': '\n<br>',
+            '·': '·\n',
+        },
+        sentences=[
+            [],
+            [],
+            [],
+            [],
+            [],
+            [],
+            [],
+            [],
+            [],
+            [],
+            [],
+        ],
+        results=[
+            list(range(0, 11)),
+            [7],
+            [1],
+        ],
+        extracted_names=[2],
+    ),
+    aisa_utamakura_pilgrimage_eng=Template(
+        names=['мастерству стихий'],
+        keywords=keywords_eng.keywords,
+        replace={
+            '</p><p>': '</p><p>\n',
+            '<br>': '\n<br>',
+            '·': '·\n',
+        },
+        sentences=[
+            ['1:ignore'],
+            [],
+            [],
+            [],
+            [],
+            [],
+            [],
+            [],
+            [],
+            [],
+            [],
+        ],
+        results=[
+            list(range(0, 11)),
+            [7],
+            [1],
+        ],
+        extracted_names=[2],
     ),
     bright_moons_restless_voice=Template(
         sentences=[

@@ -69,8 +69,8 @@ const Talents = new DbObjectTalents({
     },
     skill: {
         gameId: charTalentTables.Yoimiya.s2_id,
-        title: 'talent_name.yoimiya_niwabi_fire_dance',
-        description: 'talent_descr.yoimiya_niwabi_fire_dance',
+        title: 'talent_name.yoimiya_niwabi_fire_dance_1',
+        description: 'talent_descr.yoimiya_niwabi_fire_dance_1',
         items: [
             {
                 unit: 'normal_atk',
@@ -415,8 +415,8 @@ export const Yoimiya = new DbObjectChar({
         new ConditionBoolean({
             name: 'yoimiya_teika_enshou',
             serializeId: 1,
-            title: 'talent_name.yoimiya_teika_enshou',
-            description: 'talent_descr.yoimiya_teika_enshou',
+            title: 'talent_name.yoimiya_niwabi_fire_dance_2',
+            description: 'talent_descr.yoimiya_niwabi_fire_dance_2',
             settings: {
                 attack_infusion: 'pyro',
             },

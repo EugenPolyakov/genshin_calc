@@ -61,8 +61,8 @@ const Talents = new DbObjectTalents({
     },
     skill: {
         gameId: charTalentTables.Wanderer.s2_id,
-        title: 'talent_name.wanderer_song_of_the_wind',
-        description: 'talent_descr.wanderer_song_of_the_wind',
+        title: 'talent_name.wanderer_song_of_the_wind_1',
+        description: 'talent_descr.wanderer_song_of_the_wind_1',
         items: [
             {
                 table: new StatTable('skill_dmg', charTalentTables.Wanderer.s2.p1),
@@ -135,6 +135,20 @@ export const Wanderer = new DbObjectChar({
             ],
         }),
         new FeatureDamageNormal({
+            name: 'wanderer_normal_hit_1',
+            element: 'anemo',
+            multipliers: [
+                new FeatureMultiplierWanderer({
+                    scalingMultiplier: 0.4,
+                    scalingSource: 'constellation6',
+                    leveling: 'char_skill_attack',
+                    values: Talents.get('attack.normal_hit_1'),
+                    scalingValues: Talents.get('skill.wanderer_fushoudan'),
+                }),
+            ],
+            condition: c6cond,
+        }),
+        new FeatureDamageNormal({
             element: 'anemo',
             multipliers: [
                 new FeatureMultiplierWanderer({
@@ -143,6 +157,20 @@ export const Wanderer = new DbObjectChar({
                     scalingValues: Talents.get('skill.wanderer_fushoudan'),
                 }),
             ],
+        }),
+        new FeatureDamageNormal({
+            name: 'wanderer_normal_hit_2',
+            element: 'anemo',
+            multipliers: [
+                new FeatureMultiplierWanderer({
+                    scalingMultiplier: 0.4,
+                    scalingSource: 'constellation6',
+                    leveling: 'char_skill_attack',
+                    values: Talents.get('attack.normal_hit_2'),
+                    scalingValues: Talents.get('skill.wanderer_fushoudan'),
+                }),
+            ],
+            condition: c6cond,
         }),
         new FeatureDamageMultihit({
             name: 'normal_hit_3',
@@ -175,34 +203,6 @@ export const Wanderer = new DbObjectChar({
                     scalingValues: Talents.get('skill.wanderer_fushoudan'),
                 }),
             ],
-        }),
-        new FeatureDamageNormal({
-            name: 'wanderer_normal_hit_1',
-            element: 'anemo',
-            multipliers: [
-                new FeatureMultiplierWanderer({
-                    scalingMultiplier: 0.4,
-                    scalingSource: 'constellation6',
-                    leveling: 'char_skill_attack',
-                    values: Talents.get('attack.normal_hit_1'),
-                    scalingValues: Talents.get('skill.wanderer_fushoudan'),
-                }),
-            ],
-            condition: c6cond,
-        }),
-        new FeatureDamageNormal({
-            name: 'wanderer_normal_hit_2',
-            element: 'anemo',
-            multipliers: [
-                new FeatureMultiplierWanderer({
-                    scalingMultiplier: 0.4,
-                    scalingSource: 'constellation6',
-                    leveling: 'char_skill_attack',
-                    values: Talents.get('attack.normal_hit_2'),
-                    scalingValues: Talents.get('skill.wanderer_fushoudan'),
-                }),
-            ],
-            condition: c6cond,
         }),
         new FeatureDamageMultihit({
             name: 'wanderer_normal_hit_3',
@@ -315,8 +315,8 @@ export const Wanderer = new DbObjectChar({
         new ConditionBoolean({
             name: 'wanderer_windfavored',
             serializeId: 1,
-            title: 'talent_name.wanderer_windfavored',
-            description: 'talent_descr.wanderer_windfavored',
+            title: 'talent_name.wanderer_song_of_the_wind_2',
+            description: 'talent_descr.wanderer_song_of_the_wind_2',
         }),
         new ConditionDropdownElementWanderer({
             name: 'wanderer_jade_claimed_flower',

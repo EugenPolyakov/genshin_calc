@@ -96,7 +96,7 @@ const Talents = new DbObjectTalents({
             },
             {
                 unit: 'sec',
-                table: new StatTable('zhongli_shield_duration', charTalentTables.Zhongli.s2.p7),
+                table: new StatTable('shield_duration', charTalentTables.Zhongli.s2.p7),
             },
             {
                 unit: 'sec',

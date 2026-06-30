@@ -31,39 +31,39 @@ const Talents = new DbObjectTalents({
         description: 'talent_descr.kaveh_schematic_setup',
         items: [
             {
-                table: new StatTable('normal_hit_1', [76.19, 82.39, 88.59, 97.45, 103.65, 110.73, 120.48, 130.22, 139.97, 150.6, 161.23, 171.86, 182.49, 193.12, 203.75]),
+                table: new StatTable('normal_hit_1', charTalentTables.Kaveh.s1.p1),
             },
             {
-                table: new StatTable('normal_hit_2', [69.64, 75.31, 80.98, 89.07, 94.74, 101.22, 110.13, 119.03, 127.94, 137.66, 147.37, 157.09, 166.81, 176.53, 186.24]),
+                table: new StatTable('normal_hit_2', charTalentTables.Kaveh.s1.p2),
             },
             {
-                table: new StatTable('normal_hit_3', [84.26, 91.12, 97.98, 107.78, 114.63, 122.47, 133.25, 144.03, 154.81, 166.56, 178.32, 190.08, 201.83, 213.59, 225.35]),
+                table: new StatTable('normal_hit_3', charTalentTables.Kaveh.s1.p3),
             },
             {
-                table: new StatTable('normal_hit_4', [102.69, 111.05, 119.4, 131.35, 139.7, 149.26, 162.39, 175.53, 188.66, 202.99, 217.32, 231.65, 245.97, 260.3, 274.63]),
+                table: new StatTable('normal_hit_4', charTalentTables.Kaveh.s1.p4),
             },
             {
-                table: new StatTable('charged_spin', [53.15, 57.47, 61.8, 67.98, 72.31, 77.25, 84.05, 90.85, 97.64, 105.06, 112.48, 119.89, 127.31, 134.72, 142.14]),
+                table: new StatTable('charged_spin', charTalentTables.Kaveh.s1.p5),
             },
             {
-                table: new StatTable('charged_final', [96.15, 103.97, 111.8, 122.98, 130.81, 139.75, 152.05, 164.35, 176.64, 190.06, 203.48, 216.89, 230.31, 243.72, 257.14]),
+                table: new StatTable('charged_final', charTalentTables.Kaveh.s1.p6),
             },
             {
                 unit: 'per_sec',
-                table: new StatTable('stamina_cost', [40]),
+                table: new StatTable('stamina_cost', charTalentTables.Kaveh.s1.p7),
             },
             {
                 unit: 'sec',
-                table: new StatTable('max_duration', [5]),
+                table: new StatTable('max_duration', charTalentTables.Kaveh.s1.p8),
             },
             {
-                table: new StatTable('plunge', [74.59, 80.66, 86.73, 95.4, 101.47, 108.41, 117.95, 127.49, 137.03, 147.44, 157.85, 168.26, 178.66, 189.07, 199.48]),
+                table: new StatTable('plunge', charTalentTables.Kaveh.s1.p9),
             },
             {
-                table: new StatTable('plunge_low', [149.14, 161.28, 173.42, 190.77, 202.91, 216.78, 235.86, 254.93, 274.01, 294.82, 315.63, 336.44, 357.25, 378.06, 398.87]),
+                table: new StatTable('plunge_low', charTalentTables.Kaveh.s1.p10),
             },
             {
-                table: new StatTable('plunge_high', [186.29, 201.45, 216.62, 238.28, 253.44, 270.77, 294.6, 318.42, 342.25, 368.25, 394.24, 420.23, 446.23, 472.22, 498.21]),
+                table: new StatTable('plunge_high', charTalentTables.Kaveh.s1.p11),
             },
         ],
     },
@@ -73,36 +73,36 @@ const Talents = new DbObjectTalents({
         description: 'talent_descr.kaveh_artistic_ingenuity',
         items: [
             {
-                table: new StatTable('skill_dmg', [204, 219.3, 234.6, 255, 270.3, 285.6, 306, 326.4, 346.8, 367.2, 387.6, 408, 433.5, 459, 484.5]),
+                table: new StatTable('skill_dmg', charTalentTables.Kaveh.s2.p1),
             },
             {
                 unit: 'sec',
-                table: new StatTable('cd', [6]),
+                table: new StatTable('cd', charTalentTables.Kaveh.s2.p2),
             },
         ],
     },
     burst: {
         gameId: charTalentTables.Kaveh.s3_id,
         title: 'talent_name.kaveh_painted_dome',
-        description: 'talent_descr.kaveh_painted_dome',
+        description: 'talent_descr.kaveh_painted_dome_1',
         items: [
             {
-                table: new StatTable('burst_dmg', [160, 172, 184, 200, 212, 224, 240, 256, 272, 288, 304, 320, 340, 360, 380]),
+                table: new StatTable('burst_dmg', charTalentTables.Kaveh.s3.p1),
             },
             {
-                table: new StatTable('kaveh_bloom_dmg_bonus', [27.49, 29.55, 31.61, 34.36, 36.42, 38.48, 41.23, 43.98, 46.73, 49.48, 52.23, 54.98, 58.41, 61.85, 65.28]),
-            },
-            {
-                unit: 'sec',
-                table: new StatTable('duration', [12]),
+                table: new StatTable('kaveh_bloom_dmg_bonus', charTalentTables.Kaveh.s3.p3),
             },
             {
                 unit: 'sec',
-                table: new StatTable('cd', [20]),
+                table: new StatTable('duration', charTalentTables.Kaveh.s3.p2),
+            },
+            {
+                unit: 'sec',
+                table: new StatTable('cd', charTalentTables.Kaveh.s3.p4),
             },
             {
                 unit: '',
-                table: new StatTable('energy_cost', [80]),
+                table: new StatTable('energy_cost', charTalentTables.Kaveh.s3.p5),
             },
         ],
     },
@@ -261,7 +261,7 @@ export const Kaveh = new DbObjectChar({
             name: 'kaveh_painted_dome',
             serializeId: 1,
             title: 'talent_name.kaveh_painted_dome',
-            description: 'talent_descr.kaveh_painted_dome_talent',
+            description: 'talent_descr.kaveh_painted_dome_2',
             settings: {
                 attack_infusion: 'dendro',
             },
@@ -390,7 +390,7 @@ export const Kaveh = new DbObjectChar({
                 serializeId: 3,
                 rotation: 'party',
                 title: 'talent_name.kaveh_painted_dome',
-                description: 'talent_descr.kaveh_painted_dome_talent_2',
+                description: 'talent_descr.kaveh_painted_dome_3',
                 levelSetting: 'kaveh_char_skill_burst',
                 stats: [
                     Talents.getAlias('burst.kaveh_bloom_dmg_bonus', 'dmg_reaction_rupture'),

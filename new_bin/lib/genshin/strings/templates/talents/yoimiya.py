@@ -4,8 +4,9 @@ from ...template import Template, TemplateList
 char_yoimiya = TemplateList(
     default_rus=Template(
         names=[
-            'Ёимии', 'Ёимия',
+            'Ёимии', 'Ёимия', 'Вспышка фейерверка',
             'Трюки нарушителя порядка', 'Камнеломка Рюкин', 'Взрыва золотого сияния', 'Взрыв золотого сияния',
+            'Зажигательны(е|ми) стрел(ы|ами)',
         ],
         skills={
             'skill': ['Огненный танец Ниваби'],
@@ -14,13 +15,67 @@ char_yoimiya = TemplateList(
     ),
     default_eng=Template(
         names=[
-            'Yoimiya',
-            'ATK Bonus', 'Tricks of the Trouble-Maker', 'Aurous Blaze', 'Blazing Arrow', 'Ryuukin Saxifrage',
+            'Yoimiya', 'Kindling Arrows', 'Firework Flare-Up',
+            'ATK Bonus', 'Tricks of the Trouble-Maker', 'Aurous Blaze', 'Blazing Arrows?', 'Ryuukin Saxifrage',
         ],
         skills={
             'skill': ['Niwabi Fire-Dance'],
             'burst': ['Ryuukin Saxifrage', 'Aurous Blaze'],
         },
+    ),
+    niwabi_fire_dance_rus=Template(
+        replace={
+            '</p><p>': '\n</p><p>\n',
+            '<br>': '\n<br>\n',
+        },
+        sentences=[
+            [],
+            [],
+            [],
+            [],
+            [],
+            [],
+            [],
+            [],
+            [],
+            [],
+            [],
+            [],
+            [],
+        ],
+        results=[
+            list(range(0, 13)),
+            [4, 5, '<br>', 7],
+            [2],
+        ],
+        extracted_names=[2],
+    ),
+    niwabi_fire_dance_eng=Template(
+        replace={
+            '</p><p>': '\n</p><p>\n',
+            '<br>': '\n<br>\n',
+        },
+        sentences=[
+            [],
+            [],
+            [],
+            [],
+            [],
+            ['2:ignore'],
+            [],
+            [],
+            [],
+            [],
+            [],
+            [],
+            [],
+        ],
+        results=[
+            list(range(0, 13)),
+            [4, 5, '<br>', 7],
+            [2],
+        ],
+        extracted_names=[2],
     ),
     tricks_of_the_trouble_maker=Template(
         sentences=[

@@ -1,3 +1,4 @@
+from os import replace
 from ...template import Template, TemplateList
 
 
@@ -21,6 +22,62 @@ char_yanfei = TemplateList(
             'skill': [],
             'burst': ['Done Deal'],
         },
+    ),
+    done_deal_rus=Template(
+        replace={
+            '</p><p>': '\n</p><p>\n',
+            '<br>': '\n<br>\n',
+        },
+        sentences=[
+            [],
+            [],
+            [],
+            [],
+            [],
+            [],
+            [],
+            [],
+            [],
+            [],
+            [],
+            [],
+            [],
+            [],
+            [],
+        ],
+        results=[
+            list(range(0, 15)),
+            [5, 6, 7, 8, 9],
+            [3],
+        ],
+        extracted_names=[2],
+    ),
+    done_deal_eng=Template(
+        replace={
+            '</p><p>': '\n</p><p>\n',
+            '<br>': '\n<br>\n',
+        },
+        sentences=[
+            [],
+            [],
+            [],
+            [],
+            [],
+            [],
+            [],
+            [],
+            [],
+            [],
+            [],
+            [],
+            [],
+        ],
+        results=[
+            list(range(0, 13)),
+            [4, 5, 6, 7, 8],
+            [2],
+        ],
+        extracted_names=[2],
     ),
     proviso_rus=Template(
         sentences=[

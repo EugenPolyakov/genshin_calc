@@ -184,6 +184,7 @@ export const Jahoda = new DbObjectChar({
             ],
         }),
         new FeatureDamageChargedAimed({
+            element: 'anemo',
             multipliers: [
                 new FeatureMultiplier({
                     leveling: 'char_skill_attack',
@@ -216,6 +217,7 @@ export const Jahoda = new DbObjectChar({
             ],
         }),
         new FeatureDamageSkill({
+            element: 'anemo',
             multipliers: [
                 new FeatureMultiplier({
                     leveling: 'char_skill_elemental',
@@ -224,6 +226,7 @@ export const Jahoda = new DbObjectChar({
             ],
         }),
         new FeatureDamageSkill({
+            element: 'anemo',
             multipliers: [
                 new FeatureMultiplier({
                     leveling: 'char_skill_elemental',
@@ -232,6 +235,7 @@ export const Jahoda = new DbObjectChar({
             ],
         }),
         new FeatureDamageSkill({
+            element: 'anemo',
             multipliers: [
                 new FeatureMultiplier({
                     leveling: 'char_skill_elemental',
@@ -240,14 +244,51 @@ export const Jahoda = new DbObjectChar({
             ],
         }),
         new FeatureDamageSkill({
+            name: 'jahoda_meowball_dmg_pyro',
+            element: 'pyro',
             multipliers: [
                 new FeatureMultiplier({
                     leveling: 'char_skill_elemental',
                     values: Talents.get('skill.jahoda_meowball_dmg'),
                 }),
             ],
+            condition: new ConditionMoonPhaseCheck({ moonphase: 2 }),
+        }),
+        new FeatureDamageSkill({
+            name: 'jahoda_meowball_dmg_hydro',
+            element: 'hydro',
+            multipliers: [
+                new FeatureMultiplier({
+                    leveling: 'char_skill_elemental',
+                    values: Talents.get('skill.jahoda_meowball_dmg'),
+                }),
+            ],
+            condition: new ConditionMoonPhaseCheck({ moonphase: 2 }),
+        }),
+        new FeatureDamageSkill({
+            name: 'jahoda_meowball_dmg_electro',
+            element: 'electro',
+            multipliers: [
+                new FeatureMultiplier({
+                    leveling: 'char_skill_elemental',
+                    values: Talents.get('skill.jahoda_meowball_dmg'),
+                }),
+            ],
+            condition: new ConditionMoonPhaseCheck({ moonphase: 2 }),
+        }),
+        new FeatureDamageSkill({
+            name: 'jahoda_meowball_dmg_cryo',
+            element: 'cryo',
+            multipliers: [
+                new FeatureMultiplier({
+                    leveling: 'char_skill_elemental',
+                    values: Talents.get('skill.jahoda_meowball_dmg'),
+                }),
+            ],
+            condition: new ConditionMoonPhaseCheck({ moonphase: 2 }),
         }),
         new FeatureDamageBurst({
+            element: 'anemo',
             multipliers: [
                 new FeatureMultiplier({
                     leveling: 'char_skill_burst',
@@ -268,6 +309,91 @@ export const Jahoda = new DbObjectChar({
                     ]),
                 }),
             ],
+        }),
+        new FeatureDamageBurst({
+            name: 'jahoda_purrsonal_coordinated_assistance_robot_dmg_pyro',
+            element: 'pyro',
+            multipliers: [
+                new FeatureMultiplier({
+                    leveling: 'char_skill_burst',
+                    values: Talents.get('burst.jahoda_purrsonal_coordinated_assistance_robot_dmg'),
+                    scalingSource: 'ascension1',
+                    scalingMultiplier: charTalentTables.Jahoda.passsive[0][0],
+                    scalingMultiplierCondition: new ConditionAnd([
+                        new ConditionAscensionChar({ ascension: 1 }),
+                        new ConditionBoolean({ name: 'jahoda_a1_pyro' }),
+                    ]),
+                }),
+            ],
+            condition: new ConditionMoonPhaseCheck({ moonphase: 2 }),
+        }),
+        new FeatureDamageBurst({
+            name: 'jahoda_purrsonal_coordinated_assistance_robot_dmg_pyro',
+            element: 'pyro',
+            multipliers: [
+                new FeatureMultiplier({
+                    leveling: 'char_skill_burst',
+                    values: Talents.get('burst.jahoda_purrsonal_coordinated_assistance_robot_dmg'),
+                    scalingSource: 'ascension1',
+                    scalingMultiplier: charTalentTables.Jahoda.passsive[0][0],
+                    scalingMultiplierCondition: new ConditionAnd([
+                        new ConditionAscensionChar({ ascension: 1 }),
+                        new ConditionBoolean({ name: 'jahoda_a1_pyro' }),
+                    ]),
+                }),
+            ],
+            condition: new ConditionMoonPhaseCheck({ moonphase: 2 }),
+        }),
+        new FeatureDamageBurst({
+            name: 'jahoda_purrsonal_coordinated_assistance_robot_dmg_hydro',
+            element: 'hydro',
+            multipliers: [
+                new FeatureMultiplier({
+                    leveling: 'char_skill_burst',
+                    values: Talents.get('burst.jahoda_purrsonal_coordinated_assistance_robot_dmg'),
+                    scalingSource: 'ascension1',
+                    scalingMultiplier: charTalentTables.Jahoda.passsive[0][0],
+                    scalingMultiplierCondition: new ConditionAnd([
+                        new ConditionAscensionChar({ ascension: 1 }),
+                        new ConditionBoolean({ name: 'jahoda_a1_pyro' }),
+                    ]),
+                }),
+            ],
+            condition: new ConditionMoonPhaseCheck({ moonphase: 2 }),
+        }),
+        new FeatureDamageBurst({
+            name: 'jahoda_purrsonal_coordinated_assistance_robot_dmg_electro',
+            element: 'electro',
+            multipliers: [
+                new FeatureMultiplier({
+                    leveling: 'char_skill_burst',
+                    values: Talents.get('burst.jahoda_purrsonal_coordinated_assistance_robot_dmg'),
+                    scalingSource: 'ascension1',
+                    scalingMultiplier: charTalentTables.Jahoda.passsive[0][0],
+                    scalingMultiplierCondition: new ConditionAnd([
+                        new ConditionAscensionChar({ ascension: 1 }),
+                        new ConditionBoolean({ name: 'jahoda_a1_pyro' }),
+                    ]),
+                }),
+            ],
+            condition: new ConditionMoonPhaseCheck({ moonphase: 2 }),
+        }),
+        new FeatureDamageBurst({
+            name: 'jahoda_purrsonal_coordinated_assistance_robot_dmg_cryo',
+            element: 'cryo',
+            multipliers: [
+                new FeatureMultiplier({
+                    leveling: 'char_skill_burst',
+                    values: Talents.get('burst.jahoda_purrsonal_coordinated_assistance_robot_dmg'),
+                    scalingSource: 'ascension1',
+                    scalingMultiplier: charTalentTables.Jahoda.passsive[0][0],
+                    scalingMultiplierCondition: new ConditionAnd([
+                        new ConditionAscensionChar({ ascension: 1 }),
+                        new ConditionBoolean({ name: 'jahoda_a1_pyro' }),
+                    ]),
+                }),
+            ],
+            condition: new ConditionMoonPhaseCheck({ moonphase: 2 }),
         }),
         new FeatureHeal({
             category: 'burst',

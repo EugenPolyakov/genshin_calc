@@ -6,6 +6,3 @@ feature_attack;yoimiya_normal_hit_4;Доп. стрела-4;Extra Kindling Arrow-
 feature_attack;yoimiya_normal_hit_5;Доп. стрела-5;Extra Kindling Arrow-5
 feature_attack;yoimiya_normal_hit_1_1;Доп. стрела-1-1;Extra Kindling Arrow-1-1
 feature_attack;yoimiya_normal_hit_4_1;Доп. стрела-4-1;Extra Kindling Arrow-4-1
-
-talent_name;yoimiya_teika_enshou;Ниваби энсё;Niwabi Enshou
-talent_descr;yoimiya_teika_enshou;Пока навык активен, стрелы, выпущенные name{обычной атакой Ёимии}, становятся name{Зажигательными стрелами}, а их урон увеличивается и конвертируется в pyro{Пиро урон}. Однако второй уровень заряда name{обычной атаки Вспышка фейерверка} не будет генерировать name{Зажигательные стрелы}.<br>Этот эффект перестаёт действовать, когда name{Ёимия} покидает бой.;During this time, arrows fired by name{Yoimiya}'s name{Normal Attack} will be name{Blazing Arrows}, and their name{DMG} will be increased and converted to pyro{Pyro DMG}.<br>During this time, name{Normal Attack: Firework Flare-Up} will not generate name{Kindling Arrows} at Charge Level 2.<br>This effect will deactivate when name{Yoimiya} leaves the field.

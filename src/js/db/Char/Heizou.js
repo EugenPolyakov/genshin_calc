@@ -72,14 +72,14 @@ const Talents = new DbObjectTalents({
                 table: new StatTable('skill_dmg', charTalentTables.Heizou.s2.p1),
             },
             {
-                table: new StatTable('heizou_declension_dmg', charTalentTables.Heizou.s2.p2),
+                table: new StatTable('shikanoin_heizou_declension_dmg_bonus', charTalentTables.Heizou.s2.p2),
             },
             {
-                table: new StatTable('heizou_conviction_dmg', charTalentTables.Heizou.s2.p3),
+                table: new StatTable('shikanoin_heizou_conviction_dmg_bonus', charTalentTables.Heizou.s2.p3),
             },
             {
                 unit: 'sec',
-                table: new StatTable('heizou_duration', charTalentTables.Heizou.s2.p5),
+                table: new StatTable('shikanoin_heizou_declension_duration', charTalentTables.Heizou.s2.p5),
             },
             {
                 unit: 'sec',
@@ -93,10 +93,10 @@ const Talents = new DbObjectTalents({
         description: 'talent_descr.shikanoin_heizou_windmuster_kick',
         items: [
             {
-                table: new StatTable('heizou_vacuum_slugger_dmg', charTalentTables.Heizou.s3.p1),
+                table: new StatTable('shikanoin_heizou_fudou_style_vacuum_slugger_dmg', charTalentTables.Heizou.s3.p1),
             },
             {
-                table: new StatTable('heizou_windmuster_iris_dmg', charTalentTables.Heizou.s3.p2),
+                table: new StatTable('shikanoin_heizou_windmuster_iris_dmg', charTalentTables.Heizou.s3.p2),
             },
             {
                 unit: 'sec',
@@ -295,7 +295,7 @@ export const Heizou = new DbObjectChar({
                 }),
                 new FeatureMultiplier({
                     leveling: 'char_skill_elemental',
-                    values: Talents.get('skill.heizou_declension_dmg'),
+                    values: Talents.get('skill.shikanoin_heizou_declension_dmg_bonus'),
                 }),
             ],
         }),
@@ -312,7 +312,7 @@ export const Heizou = new DbObjectChar({
                     leveling: 'char_skill_elemental',
                     scalingMultiplier: 2,
                     scalingSource: 'stacks',
-                    values: Talents.get('skill.heizou_declension_dmg'),
+                    values: Talents.get('skill.shikanoin_heizou_declension_dmg_bonus'),
                 }),
             ],
         }),
@@ -329,7 +329,7 @@ export const Heizou = new DbObjectChar({
                     leveling: 'char_skill_elemental',
                     scalingMultiplier: 3,
                     scalingSource: 'stacks',
-                    values: Talents.get('skill.heizou_declension_dmg'),
+                    values: Talents.get('skill.shikanoin_heizou_declension_dmg_bonus'),
                 }),
             ],
         }),
@@ -347,21 +347,20 @@ export const Heizou = new DbObjectChar({
                     leveling: 'char_skill_elemental',
                     scalingMultiplier: 4,
                     scalingSource: 'stacks',
-                    values: Talents.get('skill.heizou_declension_dmg'),
+                    values: Talents.get('skill.shikanoin_heizou_declension_dmg_bonus'),
                 }),
                 new FeatureMultiplier({
                     leveling: 'char_skill_elemental',
-                    values: Talents.get('skill.heizou_conviction_dmg'),
+                    values: Talents.get('skill.shikanoin_heizou_conviction_dmg_bonus'),
                 }),
             ],
         }),
         new FeatureDamageBurst({
-            name: 'heizou_vacuum_slugger_dmg',
             element: 'anemo',
             multipliers: [
                 new FeatureMultiplier({
                     leveling: 'char_skill_burst',
-                    values: Talents.get('burst.heizou_vacuum_slugger_dmg'),
+                    values: Talents.get('burst.shikanoin_heizou_fudou_style_vacuum_slugger_dmg'),
                 }),
             ],
         }),
@@ -371,7 +370,7 @@ export const Heizou = new DbObjectChar({
             multipliers: [
                 new FeatureMultiplier({
                     leveling: 'char_skill_burst',
-                    values: Talents.get('burst.heizou_windmuster_iris_dmg'),
+                    values: Talents.get('burst.shikanoin_heizou_windmuster_iris_dmg'),
                 }),
             ],
         }),
@@ -381,7 +380,7 @@ export const Heizou = new DbObjectChar({
             multipliers: [
                 new FeatureMultiplier({
                     leveling: 'char_skill_burst',
-                    values: Talents.get('burst.heizou_windmuster_iris_dmg'),
+                    values: Talents.get('burst.shikanoin_heizou_windmuster_iris_dmg'),
                 }),
             ],
         }),
@@ -391,7 +390,7 @@ export const Heizou = new DbObjectChar({
             multipliers: [
                 new FeatureMultiplier({
                     leveling: 'char_skill_burst',
-                    values: Talents.get('burst.heizou_windmuster_iris_dmg'),
+                    values: Talents.get('burst.shikanoin_heizou_windmuster_iris_dmg'),
                 }),
             ],
         }),
@@ -401,7 +400,7 @@ export const Heizou = new DbObjectChar({
             multipliers: [
                 new FeatureMultiplier({
                     leveling: 'char_skill_burst',
-                    values: Talents.get('burst.heizou_windmuster_iris_dmg'),
+                    values: Talents.get('burst.shikanoin_heizou_windmuster_iris_dmg'),
                 }),
             ],
         }),

@@ -2,57 +2,75 @@ category;name;rus;eng
 feature_attack;normal_hit_1;Урон атаки 1;1-Hit DMG
 feature_attack;normal_hit_1_1;Урон атаки 1-1;1-1-Hit DMG
 feature_attack;normal_hit_1_2;Урон атаки 1-2;1-2-Hit DMG
+feature_attack;normal_hit_1_3;Урон атаки 1-3;1-3-Hit DMG
 feature_skill;normal_hit_1;Урон атаки 1;1-Hit DMG
 feature_skill;normal_hit_1_1;Урон атаки 1-1;1-1-Hit DMG
 feature_skill;normal_hit_1_2;Урон атаки 1-2;1-2-Hit DMG
+feature_skill;normal_hit_1_3;Урон атаки 1-3;1-3-Hit DMG
 feature_burst;normal_hit_1;Урон атаки 1;1-Hit DMG
 feature_burst;normal_hit_1_1;Урон атаки 1-1;1-1-Hit DMG
 feature_burst;normal_hit_1_2;Урон атаки 1-2;1-2-Hit DMG
+feature_burst;normal_hit_1_3;Урон атаки 1-3;1-3-Hit DMG
 feature_attack;normal_hit_2;Урон атаки 2;2-Hit DMG
 feature_attack;normal_hit_2_1;Урон атаки 2-1;2-1-Hit DMG
 feature_attack;normal_hit_2_2;Урон атаки 2-2;2-2-Hit DMG
+feature_attack;normal_hit_2_3;Урон атаки 2-3;2-3-Hit DMG
 feature_skill;normal_hit_2;Урон атаки 2;2-Hit DMG
 feature_skill;normal_hit_2_1;Урон атаки 2-1;2-1-Hit DMG
 feature_skill;normal_hit_2_2;Урон атаки 2-2;2-2-Hit DMG
+feature_skill;normal_hit_2_3;Урон атаки 2-3;2-3-Hit DMG
 feature_burst;normal_hit_2;Урон атаки 2;2-Hit DMG
 feature_burst;normal_hit_2_1;Урон атаки 2-1;2-1-Hit DMG
 feature_burst;normal_hit_2_2;Урон атаки 2-2;2-2-Hit DMG
+feature_burst;normal_hit_2_3;Урон атаки 2-3;2-3-Hit DMG
 feature_attack;normal_hit_3;Урон атаки 3;3-Hit DMG
 feature_attack;normal_hit_3_1;Урон атаки 3-1;3-1-Hit DMG
 feature_attack;normal_hit_3_2;Урон атаки 3-2;3-2-Hit DMG
+feature_attack;normal_hit_3_3;Урон атаки 3-3;3-3-Hit DMG
 feature_skill;normal_hit_3;Урон атаки 3;3-Hit DMG
 feature_skill;normal_hit_3_1;Урон атаки 3-1;3-1-Hit DMG
 feature_skill;normal_hit_3_2;Урон атаки 3-2;3-2-Hit DMG
+feature_skill;normal_hit_3_3;Урон атаки 3-3;3-3-Hit DMG
 feature_burst;normal_hit_3;Урон атаки 3;3-Hit DMG
 feature_burst;normal_hit_3_1;Урон атаки 3-1;3-1-Hit DMG
 feature_burst;normal_hit_3_2;Урон атаки 3-2;3-2-Hit DMG
+feature_burst;normal_hit_3_3;Урон атаки 3-3;3-3-Hit DMG
 feature_attack;normal_hit_4;Урон атаки 4;4-Hit DMG
 feature_attack;normal_hit_4_1;Урон атаки 4-1;4-1-Hit DMG
 feature_attack;normal_hit_4_2;Урон атаки 4-2;4-2-Hit DMG
+feature_attack;normal_hit_4_3;Урон атаки 4-3;4-3-Hit DMG
 feature_skill;normal_hit_4;Урон атаки 4;4-Hit DMG
 feature_skill;normal_hit_4_1;Урон атаки 4-1;4-1-Hit DMG
 feature_skill;normal_hit_4_2;Урон атаки 4-2;4-2-Hit DMG
+feature_skill;normal_hit_4_3;Урон атаки 4-3;4-3-Hit DMG
 feature_burst;normal_hit_4;Урон атаки 4;4-Hit DMG
 feature_burst;normal_hit_4_1;Урон атаки 4-1;4-1-Hit DMG
 feature_burst;normal_hit_4_2;Урон атаки 4-2;4-2-Hit DMG
+feature_burst;normal_hit_4_3;Урон атаки 4-3;4-3-Hit DMG
 feature_attack;normal_hit_5;Урон атаки 5;5-Hit DMG
 feature_attack;normal_hit_5_1;Урон атаки 5-1;5-1-Hit DMG
 feature_attack;normal_hit_5_2;Урон атаки 5-2;5-2-Hit DMG
+feature_attack;normal_hit_5_3;Урон атаки 5-3;5-3-Hit DMG
 feature_skill;normal_hit_5;Урон атаки 5;5-Hit DMG
 feature_skill;normal_hit_5_1;Урон атаки 5-1;5-1-Hit DMG
 feature_skill;normal_hit_5_2;Урон атаки 5-2;5-2-Hit DMG
+feature_skill;normal_hit_5_3;Урон атаки 5-3;5-3-Hit DMG
 feature_burst;normal_hit_5;Урон атаки 5;5-Hit DMG
 feature_burst;normal_hit_5_1;Урон атаки 5-1;5-1-Hit DMG
 feature_burst;normal_hit_5_2;Урон атаки 5-2;5-2-Hit DMG
+feature_burst;normal_hit_5_3;Урон атаки 5-3;5-3-Hit DMG
 feature_attack;normal_hit_6;Урон атаки 6;6-Hit DMG
 feature_attack;normal_hit_6_1;Урон атаки 6-1;6-1-Hit DMG
 feature_attack;normal_hit_6_2;Урон атаки 6-2;6-2-Hit DMG
+feature_attack;normal_hit_6_3;Урон атаки 6-3;6-3-Hit DMG
 feature_skill;normal_hit_6;Урон атаки 6;6-Hit DMG
 feature_skill;normal_hit_6_1;Урон атаки 6-1;6-1-Hit DMG
 feature_skill;normal_hit_6_2;Урон атаки 6-2;6-2-Hit DMG
+feature_skill;normal_hit_6_3;Урон атаки 6-3;6-3-Hit DMG
 feature_burst;normal_hit_6;Урон атаки 6;6-Hit DMG
 feature_burst;normal_hit_6_1;Урон атаки 6-1;6-1-Hit DMG
 feature_burst;normal_hit_6_2;Урон атаки 6-2;6-2-Hit DMG
+feature_burst;normal_hit_6_3;Урон атаки 6-3;6-3-Hit DMG
 feature_attack;normal_hit;Урон обычной атаки;Normal Attack DMG
 feature_skill;normal_hit;Урон обычной атаки;Normal Attack DMG
 feature_burst;normal_hit;Урон обычной атаки;Normal Attack DMG
@@ -80,21 +98,27 @@ feature_burst;cd;Время отката;CD
 feature_attack;charge_level_1;Урон заряда 1;Charge Level 1 DMG
 feature_attack;charge_level_1_1;Урон заряда 1-1;Charge Level 1-1 DMG
 feature_attack;charge_level_1_2;Урон заряда 1-2;Charge Level 1-2 DMG
+feature_attack;charge_level_1_3;Урон заряда 1-3;Charge Level 1-3 DMG
 feature_skill;charge_level_1;Урон заряда 1;Charge Level 1 DMG
 feature_skill;charge_level_1_1;Урон заряда 1-1;Charge Level 1-1 DMG
 feature_skill;charge_level_1_2;Урон заряда 1-2;Charge Level 1-2 DMG
+feature_skill;charge_level_1_3;Урон заряда 1-3;Charge Level 1-3 DMG
 feature_burst;charge_level_1;Урон заряда 1;Charge Level 1 DMG
 feature_burst;charge_level_1_1;Урон заряда 1-1;Charge Level 1-1 DMG
 feature_burst;charge_level_1_2;Урон заряда 1-2;Charge Level 1-2 DMG
+feature_burst;charge_level_1_3;Урон заряда 1-3;Charge Level 1-3 DMG
 feature_attack;charge_level_2;Урон заряда 2;Charge Level 2 DMG
 feature_attack;charge_level_2_1;Урон заряда 2-1;Charge Level 2-1 DMG
 feature_attack;charge_level_2_2;Урон заряда 2-2;Charge Level 2-2 DMG
+feature_attack;charge_level_2_3;Урон заряда 2-3;Charge Level 2-3 DMG
 feature_skill;charge_level_2;Урон заряда 2;Charge Level 2 DMG
 feature_skill;charge_level_2_1;Урон заряда 2-1;Charge Level 2-1 DMG
 feature_skill;charge_level_2_2;Урон заряда 2-2;Charge Level 2-2 DMG
+feature_skill;charge_level_2_3;Урон заряда 2-3;Charge Level 2-3 DMG
 feature_burst;charge_level_2;Урон заряда 2;Charge Level 2 DMG
 feature_burst;charge_level_2_1;Урон заряда 2-1;Charge Level 2-1 DMG
 feature_burst;charge_level_2_2;Урон заряда 2-2;Charge Level 2-2 DMG
+feature_burst;charge_level_2_3;Урон заряда 2-3;Charge Level 2-3 DMG
 feature_attack;skill_dmg;Урон навыка;Skill DMG
 feature_skill;skill_dmg;Урон навыка;Skill DMG
 feature_burst;skill_dmg;Урон навыка;Skill DMG

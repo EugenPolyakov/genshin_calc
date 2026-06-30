@@ -1,9 +1,6 @@
 class EmptyCharGenerator:
     def header(self): return
 
-    def fix_name(self, isDefault, name):
-        return name
-
     def set_charName(self, char_id, charVarName: str): return
 
     def talent_begin(self, char_id, skill_id, index, skill_type): return
@@ -28,12 +25,6 @@ class CharGenerator(EmptyCharGenerator):
     def __init__(self, char_id: str):
         self.char_id = char_id
         self.feature_list = []
-
-    def fix_name(self, isDefault, name):
-        if isDefault or name.startswith(f"{self.char_id}_"):
-            return name
-        else:
-            return f"{self.char_id}_{name}"
 
     def header(self):
         print('import { Condition } from "../../classes/Condition";')

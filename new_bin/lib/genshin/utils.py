@@ -23,13 +23,12 @@ def convert_id(name: str, removeSemicolon=False):
     return result
 
 
-def add_array(descItems, result_hero_strings, talent_id, categ):
-    index = 0
+def add_array(descItems, result_hero_strings, talent_id, categ, beg_index = 1):
+    index = beg_index
     for (rus, eng) in zip(descItems['rus'], descItems['eng']):
         if rus or eng:
-            index += 1
             namei = talent_id
-            if len(descItems['rus']) > 1:
+            if len(descItems['rus']) > 1 or beg_index > 1:
                 namei = f'{talent_id}_{index}'
             result_hero_strings.append(
                 OrderedDict(
@@ -39,3 +38,5 @@ def add_array(descItems, result_hero_strings, talent_id, categ):
                     eng=eng,
                 )
             )
+            index += 1
+    return index - 1

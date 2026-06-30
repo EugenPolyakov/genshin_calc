@@ -102,7 +102,7 @@ const Talents = new DbObjectTalents({
             },
             {
                 unit: 'sec',
-                table: new StatTable('xinyan_duration', charTalentTables.Xinyan.s2.p9),
+                table: new StatTable('shield_duration', charTalentTables.Xinyan.s2.p9),
             },
             {
                 unit: 'sec',

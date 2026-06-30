@@ -52,7 +52,7 @@ features_view;stat_dmg_reaction_bloom;Бутонизация;Bloom
 features_view;stat_dmg_reaction_lunar;Лунная реакция;Lunar reaction
 features_view;stat_dmg_reaction_lunarbloom;Лунная бутонизация;Lunar-Bloom
 features_view;stat_dmg_reaction_lunarcharged;Лунный заряд;Lunar-Charged
-features_view;stat_dmg_reaction_lunarcrystallize;Лунная кристаллизация;Lunar-Crystallize
+features_view;stat_dmg_reaction_lunarcrystallize;Лунный кристалл;Lunar-Crystallize
 features_view;stat_dmg_reaction_lunar_bonus;Возвышение<br>Лунных реакций;Lunar reactions<br>Elevation
 features_view;stat_dmg_reaction_lunarbloom_bonus;Возвышение<br>Лунной бутонизации;Lunar-Bloom<br>Elevation
 features_view;stat_dmg_reaction_lunarcharged_bonus;Возвышение<br>Лунного заряда;Lunar-Charged<br>Elevation
@@ -61,7 +61,7 @@ features_view;stat_lunarcharged_multi;Бонус Базового урона<br>
 features_view;stat_lunarbloom_multi;Бонус Базового урона<br>Лунной бутонизации;Lunar-Bloom<br>Base Bonus
 features_view;stat_lunarcrystallize_multi;Бонус Базового урона<br>Лунной кристаллизации;Lunar-Crystallize<br>Base Bonus
 features_view;stat_lunarcharged;Лунный заряд;Lunar-Charged
-features_view;stat_lunarcrystallize;Лунная кристаллизация;Lunar-Crystallize
+features_view;stat_lunarcrystallize;Лунный кристалл;Lunar-Crystallize
 features_view;stat_reaction_aggravate;Обострение;Aggravate
 features_view;stat_reaction_spread;Разрастание;Spread
 features_view;stat_citlali_mastery_total;М. стихий;EM

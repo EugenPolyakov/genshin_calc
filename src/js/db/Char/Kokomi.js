@@ -72,7 +72,7 @@ const Talents = new DbObjectTalents({
                 ],
             },
             {
-                table: new StatTable('kokomi_ripple_dmg', charTalentTables.Kokomi.s2.p3),
+                table: new StatTable('sangonomiya_kokomi_ripple_dmg', charTalentTables.Kokomi.s2.p3),
             },
             {
                 unit: 'sec',
@@ -86,8 +86,8 @@ const Talents = new DbObjectTalents({
     },
     burst: {
         gameId: charTalentTables.Kokomi.s3_id,
-        title: 'talent_name.sangonomiya_kokomi_nereids_ascension',
-        description: 'talent_descr.sangonomiya_kokomi_nereids_ascension',
+        title: 'talent_name.sangonomiya_kokomi_nereids_ascension_1',
+        description: 'talent_descr.sangonomiya_kokomi_nereids_ascension_1',
         items: [
             {
                 unit: 'hp',
@@ -95,21 +95,21 @@ const Talents = new DbObjectTalents({
             },
             {
                 unit: 'hp',
-                table: new StatTable('kokomi_normal_atk_bonus', charTalentTables.Kokomi.s3.p4),
+                table: new StatTable('sangonomiya_kokomi_normal_attack_dmg_bonus', charTalentTables.Kokomi.s3.p4),
             },
             {
                 unit: 'hp',
-                table: new StatTable('kokomi_charged_atk_bonus', charTalentTables.Kokomi.s3.p5),
+                table: new StatTable('sangonomiya_kokomi_charged_attack_dmg_bonus', charTalentTables.Kokomi.s3.p5),
             },
             {
                 unit: 'hp',
-                table: new StatTable('kokomi_skill_atk_bonus', charTalentTables.Kokomi.s3.p9),
+                table: new StatTable('sangonomiya_kokomi_bake_kurage_dmg_bonus', charTalentTables.Kokomi.s3.p9),
             },
             {
                 type: 'shield',
                 unit: 'hp',
                 table: [
-                    new StatTable('kokomi_burst_heal', charTalentTables.Kokomi.s3.p2),
+                    new StatTable('sangonomiya_kokomi_hp_regeneration_per_hit', charTalentTables.Kokomi.s3.p2),
                     new StatTable('', charTalentTables.Kokomi.s3.p3),
                 ],
             },
@@ -130,8 +130,6 @@ const Talents = new DbObjectTalents({
 });
 
 const TalentValues = {
-    PassiveHealing: 25,
-    PassiveCritRate: -100,
     A4HealingMultiplier: 15,
     C1AttackDmg: 30,
     C2SkillHeal: 4.5,
@@ -222,12 +220,11 @@ export const Kokomi = new DbObjectChar({
             ],
         }),
         new FeatureDamageSkill({
-            name: 'kokomi_ripple_dmg',
             element: 'hydro',
             multipliers: [
                 new FeatureMultiplier({
                     leveling: 'char_skill_elemental',
-                    values: Talents.get('skill.kokomi_ripple_dmg'),
+                    values: Talents.get('skill.sangonomiya_kokomi_ripple_dmg'),
                 }),
             ],
         }),
@@ -264,12 +261,12 @@ export const Kokomi = new DbObjectChar({
         }),
         new FeatureHeal({
             category: 'burst',
-            name: 'kokomi_burst_heal',
+            name: 'sangonomiya_kokomi_hp_regeneration_per_hit',
             multipliers: [
                 new FeatureMultiplierList({
                     scaling: 'hp*',
                     leveling: 'char_skill_burst',
-                    values: Talents.getList('burst.kokomi_burst_heal'),
+                    values: Talents.getList('burst.sangonomiya_kokomi_hp_regeneration_per_hit'),
                 }),
                 new FeatureMultiplier({
                     scaling: 'hp*',
@@ -298,18 +295,18 @@ export const Kokomi = new DbObjectChar({
     ],
     conditions: [
         new ConditionStatic({
-            title: 'talent_name.kokomi_flawless_strategy',
-            description: 'talent_descr.kokomi_flawless_strategy',
+            title: 'talent_name.sangonomiya_kokomi_flawless_strategy',
+            description: 'talent_descr.sangonomiya_kokomi_flawless_strategy',
             stats: {
-                healing: TalentValues.PassiveHealing,
-                crit_rate: TalentValues.PassiveCritRate,
+                healing: charTalentTables.Kokomi.passsive[2][1] * 100,
+                crit_rate: charTalentTables.Kokomi.passsive[2][0] * 100,
             },
         }),
         new ConditionBoolean({
             name: 'kokomi_ceremonial_garment',
             serializeId: 1,
-            title: 'talent_name.kokomi_ceremonial_garment',
-            description: 'talent_descr.kokomi_ceremonial_garment',
+            title: 'talent_name.sangonomiya_kokomi_nereids_ascension_2',
+            description: 'talent_descr.sangonomiya_kokomi_nereids_ascension_2',
         }),
         new ConditionStatic({
             title: 'talent_name.sangonomiya_kokomi_tamakushi_casket',
@@ -332,7 +329,7 @@ export const Kokomi = new DbObjectChar({
             scaling: 'hp*',
             leveling: 'char_skill_burst',
             source: 'talent_burst',
-            values: Talents.get('burst.kokomi_normal_atk_bonus'),
+            values: Talents.get('burst.sangonomiya_kokomi_normal_attack_dmg_bonus'),
             condition: new ConditionBoolean({name: 'kokomi_ceremonial_garment'}),
             target: new FeatureMultiplierTarget({
                 damageTypes: ['normal'],
@@ -342,7 +339,7 @@ export const Kokomi = new DbObjectChar({
             scaling: 'hp*',
             leveling: 'char_skill_burst',
             source: 'talent_burst',
-            values: Talents.get('burst.kokomi_charged_atk_bonus'),
+            values: Talents.get('burst.sangonomiya_kokomi_charged_attack_dmg_bonus'),
             condition: new ConditionBoolean({name: 'kokomi_ceremonial_garment'}),
             target: new FeatureMultiplierTarget({
                 damageTypes: ['charged'],
@@ -352,7 +349,7 @@ export const Kokomi = new DbObjectChar({
             scaling: 'hp*',
             leveling: 'char_skill_burst',
             source: 'talent_burst',
-            values: Talents.get('burst.kokomi_skill_atk_bonus'),
+            values: Talents.get('burst.sangonomiya_kokomi_bake_kurage_dmg_bonus'),
             condition: new ConditionBoolean({name: 'kokomi_ceremonial_garment'}),
             target: new FeatureMultiplierTarget({
                 damageTypes: ['skill'],

@@ -1,0 +1,11 @@
+category;name;rus;eng
+
+feature_skill;jahoda_meowball_dmg_pyro;Пиро Урон котошарика;Meowball Pyro DMG
+feature_skill;jahoda_meowball_dmg_hydro;Гидро Урон котошарика;Meowball Hydro DMG
+feature_skill;jahoda_meowball_dmg_electro;Электро Урон котошарика;Meowball Electro DMG
+feature_skill;jahoda_meowball_dmg_cryo;Крио Урон котошарика;Meowball Cryo DMG
+
+feature_burst;jahoda_purrsonal_coordinated_assistance_robot_dmg_pyro;Пиро Урон Персонального котординатора помощи;Purrsonal Coordinated Assistance Robot Pyro DMG
+feature_burst;jahoda_purrsonal_coordinated_assistance_robot_dmg_hydro;Гидро Урон Персонального котординатора помощи;Purrsonal Coordinated Assistance Robot Hydro DMG
+feature_burst;jahoda_purrsonal_coordinated_assistance_robot_dmg_electro;Электро Урон Персонального котординатора помощи;Purrsonal Coordinated Assistance Robot Electro DMG
+feature_burst;jahoda_purrsonal_coordinated_assistance_robot_dmg_cryo;Крио Урон Персонального котординатора помощи;Purrsonal Coordinated Assistance Robot Cryo DMG

@@ -115,6 +115,7 @@ from .yoimiya import char_yoimiya  # noqa
 from .yumemizuki_mizuki import char_yumemizuki_mizuki  # noqa
 from .yun_jin import char_yun_jin  # noqa
 from .zhongli import char_zhongli  # noqa
+from .zibai import char_zibai  # noqa
 
 
 templates = Template(

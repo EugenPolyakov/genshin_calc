@@ -87,7 +87,7 @@ const Talents = new DbObjectTalents({
             },
             {
                 unit: 'sec',
-                table: new StatTable('layla_shield_duration', charTalentTables.Layla.s2.p5),
+                table: new StatTable('shield_duration', charTalentTables.Layla.s2.p5),
             },
             {
                 unit: 'sec',

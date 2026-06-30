@@ -223,6 +223,7 @@ names_mapping = {
     'Sword Dance/Whirling Steps 1-Hit DMG': 'sword_dance_whirling_steps_1_hit_dmg',
     'Sword Dance/Whirling Steps 2-Hit DMG': 'sword_dance_whirling_steps_2_hit_dmg',
     'Luminous Illusion/Water Wheel DMG': 'luminous_illusion_water_wheel_dmg',
+    'Resolve Bonus': 'resolve_bonus',
 }
 
 char_ids = {

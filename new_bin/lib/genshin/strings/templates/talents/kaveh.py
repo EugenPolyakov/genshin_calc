@@ -1,4 +1,5 @@
 from ...template import Template, TemplateList
+from ..names import keywords_eng, keywords_rus
 
 
 char_kaveh = TemplateList(
@@ -21,6 +22,65 @@ char_kaveh = TemplateList(
             'skill': ['Artistic Ingenuity'],
             'burst': ['Painted Dome'],
         },
+    ),
+    painted_dome_rus=Template(
+        replace={
+            '</p><p>': '\n</p><p>\n',
+            '<br>': '\n<br>\n',
+            '· ': '· \n',
+        },
+        keywords=keywords_rus.keywords,
+        sentences=[
+            [],
+            [],
+            [],
+            [],
+            [],
+            [],
+            [],
+            [],
+            [],
+            [],
+            [],
+            [],
+            [],
+            [],
+            [],
+        ],
+        results=[
+            list(range(0, 15)),
+            [2, 3, 4, 5, 6, 7, 8, 9, 10, 11],
+            [6],
+        ],
+    ),
+    painted_dome_eng=Template(
+        replace={
+            '</p><p>': '\n</p><p>\n',
+            '<br>': '\n<br>\n',
+            '· ': '· \n',
+        },
+        keywords=keywords_eng.keywords,
+        sentences=[
+            [],
+            [],
+            [],
+            [],
+            [],
+            [],
+            [],
+            [],
+            [],
+            [],
+            [],
+            [],
+            [],
+            [],
+        ],
+        results=[
+            list(range(0, 14)),
+            [2, 3, 4, 5, 6, 7, 8, 9, 10, 11],
+            [6],
+        ],
     ),
     an_architects_undertaking=Template(
         sentences=[

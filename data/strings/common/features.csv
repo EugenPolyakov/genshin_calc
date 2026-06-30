@@ -40,6 +40,7 @@ feature_other;electro_dmg_bonus;Бонус электро урона;Electro DMG
 feature_other;mastery_bonus;Бонус мастерства стихий;Elemental Mastery Bonus
 feature_other;lunarcharged_base_bonus;Базовый урон Лунного заряда;Lunar-Charged Base Bonus
 feature_other;lunarbloom_base_bonus;Базовый урон Лунной бутонизации;Lunar-Bloom Base Bonus
+feature_other;lunarcrystallize_base_bonus;Базовый урон Лунной кристаллизации;Lunar-Crystallize Base Bonus
 feature_other;lunar_base_bonus;Базовый урон Лунных реакций;Lunar reaction Base Bonus
 feature_other;heal;Лечение;Heal
 feature_reaction;amplifying;Мультипликативные реакции;Amplifying Reactions
@@ -52,9 +53,9 @@ feature_reaction;lunar;Лунные реакции;Lunar Reactions
 feature_reaction;lunarcharged_contrubution;Вклад в Лунный заряд;Lunar-Charged Contribution
 feature_reaction;lunarcharged_contrubution_2;Вклад в Лунный заряд / 2;Lunar-Charged Contribution / 2
 feature_reaction;lunarcharged_contrubution_12;Вклад в Лунный заряд / 12;Lunar-Charged Contribution / 12
-feature_reaction;lunarcrystallize_contrubution;Вклад в Лунную кристаллизацию;Lunar-Crystallize Contribution
-feature_reaction;lunarcrystallize_contrubution_2;Вклад в Лунную кристаллизацию / 2;Lunar-Crystallize Contribution / 2
-feature_reaction;lunarcrystallize_contrubution_12;Вклад в Лунную кристаллизацию / 12;Lunar-Crystallize Contribution / 12
+feature_reaction;lunarcrystallize_contrubution;Вклад в Лунный кристалл;Lunar-Crystallize Contribution
+feature_reaction;lunarcrystallize_contrubution_2;Вклад в Лунный кристалл / 2;Lunar-Crystallize Contribution / 2
+feature_reaction;lunarcrystallize_contrubution_12;Вклад в Лунный кристалл / 12;Lunar-Crystallize Contribution / 12
 feature_reaction;melt;Таяние;Melt
 feature_reaction;none;Без реакции;No reaction
 feature_reaction;overloaded;Перегрузка;Overloaded
@@ -79,7 +80,7 @@ feature_reaction;bloom;Бутонизация;Bloom
 feature_reaction;hyperbloom;Вегетация;Hyperbloom
 feature_reaction;lunarcharged;Лунный заряд;Lunar-Charged
 feature_reaction;lunarbloom;Лунная бутонизация;Lunar-Bloom
-feature_reaction;lunarcrystallize;Лунная кристаллизация;Lunar-Crystallize
+feature_reaction;lunarcrystallize;Лунный кристалл;Lunar-Crystallize
 feature_rotation;anemo;Анемо урон;Anemo DMG
 feature_rotation;attack;Атака;Attack
 feature_rotation;normal;Обычная атака;Normal attack

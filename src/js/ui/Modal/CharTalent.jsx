@@ -112,6 +112,7 @@ export class CharTalentComponent extends React.Component {
                 maxHeight={true}
                 title={ (this.char ? lang.get(this.char.getName()) + ': ' : '') + lang.get('char_talent.caption') }
                 closeCallback={() => this.handleClose()}
+                data-char={ this.char ? this.char.getId() : "" }
             >
                 <FullHeight>
                     <FullHeightStatic>

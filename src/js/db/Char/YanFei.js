@@ -86,8 +86,8 @@ const Talents = new DbObjectTalents({
     },
     burst: {
         gameId: charTalentTables.YanFei.s3_id,
-        title: 'talent_name.yanfei_done_deal',
-        description: 'talent_descr.yanfei_done_deal',
+        title: 'talent_name.yanfei_done_deal_1',
+        description: 'talent_descr.yanfei_done_deal_1',
         items: [
             {
                 table: new StatTable('burst_dmg', charTalentTables.YanFei.s3.p1),
@@ -290,19 +290,11 @@ export const YanFei = new DbObjectChar({
         }),
     ],
     conditions: [
-        new Condition({
-            settings: {
-                char_skill_burst_bonus: 3,
-            },
-            subConditions: [
-                new ConditionConstellation({constellation: 5}),
-            ],
-        }),
         new ConditionBooleanLevels({
             name: 'yanfei_brilliance',
             serializeId: 3,
-            title: 'talent_name.yanfei_brilliance',
-            description: 'talent_descr.yanfei_brilliance',
+            title: 'talent_name.yanfei_done_deal_2',
+            description: 'talent_descr.yanfei_done_deal_2',
             levelSetting: 'char_skill_burst',
             stats: [
                 Talents.getAlias('burst.yanfei_charged_bonus', 'dmg_charged'),
@@ -315,7 +307,7 @@ export const YanFei = new DbObjectChar({
             description: 'talent_descr.yanfei_scarlet_seal',
             maxStacks: scarletSealsCnt,
             stats: [
-                new StatTable('stamina_consume', [15]),
+                new StatTable('stamina_consume', charTalentTables.YanFei.s1.p15),
             ],
         }),
         new ConditionLevels({
@@ -408,7 +400,15 @@ export const YanFei = new DbObjectChar({
                 }),
             ],
         },
-        {},
+        {
+            conditions: [
+                new Condition({
+                    settings: {
+                        char_skill_burst_bonus: 3,
+                    },
+                }),
+            ],
+        },
         {
             conditions: [
                 new ConditionStatic({

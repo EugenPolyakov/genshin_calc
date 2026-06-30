@@ -446,7 +446,6 @@ export const Columbina = new DbObjectChar({
             condition: new ConditionAscensionChar({ascension: 4}),
         }),
         new ConditionStatic({
-            name: 'columbina_moonlight_lent_unto_you',
             title: 'talent_name.columbina_moonlight_lent_unto_you',
             description: 'talent_descr.columbina_moonlight_lent_unto_you',
             settings: {
@@ -456,7 +455,7 @@ export const Columbina = new DbObjectChar({
             },
             stats: {
                 text_percent: charTalentTables.Columbina.passsive[2][0] * 100,
-                text_max_percent: charTalentTables.Columbina.passsive[2][1] * 100,
+                text_percent_max: charTalentTables.Columbina.passsive[2][1] * 100,
             },
         }),
         new ConditionBooleanLevels({
@@ -475,10 +474,10 @@ export const Columbina = new DbObjectChar({
     postEffects: [
         lunarchargedPost,
         new PostEffectStats({
-                from: 'hp*',
-                percent: new StatTable('lunarbloom_multi', [charTalentTables.Columbina.passsive[2][0] / 10]),
-                statCap: new ValueTable([charTalentTables.Columbina.passsive[2][1] * 100]),
-            }),
+            from: 'hp*',
+            percent: new StatTable('lunarbloom_multi', [charTalentTables.Columbina.passsive[2][0] / 10]),
+            statCap: new ValueTable([charTalentTables.Columbina.passsive[2][1] * 100]),
+        }),
         new PostEffectStats({
             from: 'hp*',
             percent: new StatTable('lunarcrystallize_multi', [charTalentTables.Columbina.passsive[2][0] / 10]),
@@ -732,6 +731,11 @@ export const Columbina = new DbObjectChar({
         postEffects: [
             new PostEffectStats({
                 from: 'colombina_hp_total',
+                percent: new StatTable('lunarcharged_multi', [charTalentTables.Columbina.passsive[2][0] / 10]),
+                statCap: new ValueTable([charTalentTables.Columbina.passsive[2][1] * 100]),
+            }),
+            new PostEffectStats({
+                from: 'colombina_hp_total',
                 percent: new StatTable('lunarbloom_multi', [charTalentTables.Columbina.passsive[2][0] / 10]),
                 statCap: new ValueTable([charTalentTables.Columbina.passsive[2][1] * 100]),
             }),
@@ -781,13 +785,6 @@ export const Columbina = new DbObjectChar({
             }),
         ],
         conditions: [
-            new Condition({
-                settings: {
-                    allowed_lunarcharged: 1,
-                    allowed_lunarcrystallize: 1,
-                    allowed_lunarbloom: 1,
-                },
-            }),
             new ConditionMoonPhaseSetting(),
             new ConditionNumber({
                 name: 'colombina_hp_total',
@@ -797,6 +794,19 @@ export const Columbina = new DbObjectChar({
                 rotation: 'party',
                 max: CHARACTER_MAX_POSSIBLE_HP,
                 class: "gi-inputs-5digit",
+            }),
+            new ConditionStatic({
+                title: 'talent_name.columbina_moonlight_lent_unto_you',
+                description: 'talent_descr.columbina_moonlight_lent_unto_you',
+                settings: {
+                    allowed_lunarcharged: 1,
+                    allowed_lunarcrystallize: 1,
+                    allowed_lunarbloom: 1,
+                },
+                stats: {
+                    text_percent: charTalentTables.Columbina.passsive[2][0] * 100,
+                    text_percent_max: charTalentTables.Columbina.passsive[2][1] * 100,
+                },
             }),
             new ConditionNumberTalent({
                 name: 'columbina_char_skill_burst',

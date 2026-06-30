@@ -58,14 +58,14 @@ char_columbina = TemplateList(
         sentences=[
             ['0.2:text_percent', '1000:'],
             [],
-            ['7:text_max_percent', '1:ignore'],
+            ['7:text_percent_max', '1:ignore'],
         ],
     ),
     moonlight_lent_unto_you_eng=Template(
         sentences=[
             [],
             [],
-            ['1000:', '0.2:text_percent', '7:text_max_percent', '1:ignore'],
+            ['1000:', '0.2:text_percent', '7:text_percent_max', '1:ignore'],
         ],
     ),
     radiance_over_blossoms_and_peaks_rus=Template(

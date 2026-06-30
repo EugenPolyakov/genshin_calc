@@ -62,22 +62,22 @@ const Talents = new DbObjectTalents({
     },
     skill: {
         gameId: charTalentTables.Mizuki.s2_id,
-        title: 'talent_name.yumemizuki_mizuki_aisa_utamakura_pilgrimage',
-        description: 'talent_descr.yumemizuki_mizuki_aisa_utamakura_pilgrimage',
+        title: 'talent_name.yumemizuki_mizuki_aisa_utamakura_pilgrimage_1',
+        description: 'talent_descr.yumemizuki_mizuki_aisa_utamakura_pilgrimage_1',
         items: [
             {
                 table: new StatTable('skill_dmg', charTalentTables.Mizuki.s2.p4),
             },
             {
-                table: new StatTable('mizuki_continuous_attack_dmg', charTalentTables.Mizuki.s2.p1),
+                table: new StatTable('yumemizuki_mizuki_continuous_attack_dmg', charTalentTables.Mizuki.s2.p1),
             },
             {
                 unit: 'sec',
-                table: new StatTable('mizuki_duration', charTalentTables.Mizuki.s2.p5),
+                table: new StatTable('yumemizuki_mizuki_dreamdrifter_duration', charTalentTables.Mizuki.s2.p5),
             },
             {
                 digits: 2,
-                table: new StatTable('mizuki_em_buff', charTalentTables.Mizuki.s2.p2),
+                table: new StatTable('yumemizuki_mizuki_elemental_mastery_based_swirl_dmg_increase', charTalentTables.Mizuki.s2.p2),
             },
             {
                 unit: 'sec',
@@ -94,13 +94,13 @@ const Talents = new DbObjectTalents({
                 table: new StatTable('burst_dmg', charTalentTables.Mizuki.s3.p1),
             },
             {
-                table: new StatTable('mizuki_munen_shockwave_dmg', charTalentTables.Mizuki.s3.p2),
+                table: new StatTable('yumemizuki_mizuki_munen_shockwave_dmg', charTalentTables.Mizuki.s3.p2),
             },
             {
                 type: 'shield',
                 unit: 'mastery',
                 table: [
-                    new StatTable('mizuki_snack_heal', charTalentTables.Mizuki.s3.p3),
+                    new StatTable('yumemizuki_mizuki_snack_pick_up_hp_regeneration', charTalentTables.Mizuki.s3.p3),
                     new StatTable('', charTalentTables.Mizuki.s3.p7),
                 ],
             },
@@ -128,7 +128,7 @@ const C6SwirlCritDmg = 100;
 
 const buffSwirl = new PostEffectStatsMastery({
     levelSetting: 'char_skill_elemental',
-    percent: Talents.getAlias('skill.mizuki_em_buff', 'dmg_reaction_swirl'),
+    percent: Talents.getAlias('skill.yumemizuki_mizuki_elemental_mastery_based_swirl_dmg_increase', 'dmg_reaction_swirl'),
     conditions: [
         new ConditionBoolean({name: 'mizuki_dreamdrifter'}),
     ],
@@ -236,7 +236,7 @@ export const Mizuki = new DbObjectChar({
             multipliers: [
                 new FeatureMultiplier({
                     leveling: 'char_skill_elemental',
-                    values: Talents.get('skill.mizuki_continuous_attack_dmg'),
+                    values: Talents.get('skill.yumemizuki_mizuki_continuous_attack_dmg'),
                 }),
             ],
         }),
@@ -254,7 +254,7 @@ export const Mizuki = new DbObjectChar({
             multipliers: [
                 new FeatureMultiplier({
                     leveling: 'char_skill_burst',
-                    values: Talents.get('burst.mizuki_munen_shockwave_dmg'),
+                    values: Talents.get('burst.yumemizuki_mizuki_munen_shockwave_dmg'),
                 }),
             ],
         }),
@@ -265,7 +265,7 @@ export const Mizuki = new DbObjectChar({
                 new FeatureMultiplierList({
                     scaling: 'mastery*',
                     leveling: 'char_skill_burst',
-                    values: Talents.getList('burst.mizuki_snack_heal'),
+                    values: Talents.getList('burst.yumemizuki_mizuki_snack_pick_up_hp_regeneration'),
                 }),
             ],
         }),
@@ -278,7 +278,7 @@ export const Mizuki = new DbObjectChar({
                     leveling: 'char_skill_burst',
                     scalingMultiplier: 2,
                     scalingSource: 'mizuki_selfheal',
-                    values: Talents.getList('burst.mizuki_snack_heal'),
+                    values: Talents.getList('burst.yumemizuki_mizuki_snack_pick_up_hp_regeneration'),
                 }),
             ],
         }),
@@ -300,8 +300,8 @@ export const Mizuki = new DbObjectChar({
         new ConditionBoolean({
             name: 'mizuki_dreamdrifter',
             serializeId: 1,
-            title: 'talent_name.yumemizuki_mizuki_dreamdrifter',
-            description: 'talent_descr.yumemizuki_mizuki_dreamdrifter',
+            title: 'talent_name.yumemizuki_mizuki_aisa_utamakura_pilgrimage_2',
+            description: 'talent_descr.yumemizuki_mizuki_aisa_utamakura_pilgrimage_2',
         }),
         new ConditionStatic({
             title: 'talent_name.yumemizuki_mizuki_bright_moons_restless_voice',
@@ -449,8 +449,8 @@ export const Mizuki = new DbObjectChar({
             new ConditionBoolean({
                 name: 'party.mizuki_dreamdrifter',
                 serializeId: 3,
-                title: 'talent_name.yumemizuki_mizuki_dreamdrifter',
-                description: 'talent_descr.yumemizuki_mizuki_dreamdrifter',
+                title: 'talent_name.yumemizuki_mizuki_aisa_utamakura_pilgrimage_2',
+                description: 'talent_descr.yumemizuki_mizuki_aisa_utamakura_pilgrimage_2',
                 rotation: 'party',
             }),
             new ConditionBoolean({
@@ -519,7 +519,7 @@ export const Mizuki = new DbObjectChar({
             new PostEffectStats({
                 from: 'mizuki_mastery',
                 levelSetting: 'mizuki_char_skill_elemental',
-                percent: Talents.getAlias('skill.mizuki_em_buff', 'dmg_reaction_swirl'),
+                percent: Talents.getAlias('skill.yumemizuki_mizuki_elemental_mastery_based_swirl_dmg_increase', 'dmg_reaction_swirl'),
                 conditions: [
                     new ConditionBoolean({name: 'party.mizuki_dreamdrifter'}),
                 ],

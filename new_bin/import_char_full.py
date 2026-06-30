@@ -107,7 +107,7 @@ skiped_features = set([
     'additional_shield_absorption', 'stone_stele_resonance_dmg',
     'pyro_dmg_bonus', 'electro_trigger_interval_decrease', 'hydro_duration_extension',
     'sword_dance_whirling_steps_1_hit_dmg', 'sword_dance_whirling_steps_2_hit_dmg',
-    'luminous_illusion_water_wheel_dmg'
+    'luminous_illusion_water_wheel_dmg', 'resolve_bonus'
 ])
 
 def talenttable(s):
@@ -193,7 +193,7 @@ for char in char_data.get_list():
                 'id': char['id'],
                 'weaponType': WEAPON_TYPES[char['weaponType']],
                 'nameTextMapHash': char['nameTextMapHash'],
-                'depot_ids': [depot_id],
+                'depot_id': depot_id,
             }
     else:
         key = static.getCharById(char['id'], char_name)
@@ -204,10 +204,10 @@ for char in char_data.get_list():
             'id': char['id'],
             'weaponType': WEAPON_TYPES[char['weaponType']],
             'nameTextMapHash': char['nameTextMapHash'],
-            'depot_ids': [char['skillDepotId']],
+            'depot_id': char['skillDepotId'],
         }
 
-def scales_and_proud(skillId, proudId, index):
+def scales_and_proud(skillId, proudId, index, char_id):
     scaleData = {
         'levels': {},
         'desc': [],
@@ -229,11 +229,19 @@ def scales_and_proud(skillId, proudId, index):
                         cur_desc = desc
                         name = fix_name(name)
                         isDefault = False
+                        comments = ''
                         if (skillId, proudId) in old_values and cur_desc in old_values[(skillId, proudId)]:
                             name_idx = old_values[(skillId, proudId)][cur_desc]
                             if not name_idx in names_mapping.values():
+                                name = convert_id(name, True)
+                                if name != name_idx and f'{char_id}_{name}' != name_idx:
+                                    comments = f' #WasChanged from {name}'
                                 scaleData['customParams'][name_idx] = str(cur_desc)
                             else:
+                                if not name in names_mapping.keys():
+                                    comments = f' #ManualToDefault {convert_id(name, True)}'
+                                else:
+                                    comments = ' #Default'
                                 isDefault = True
                         elif not name in names_mapping.keys():
                             name = convert_id(name, True)
@@ -243,13 +251,16 @@ def scales_and_proud(skillId, proudId, index):
                                 idx += 1
                                 name_idx = f'{name}_{idx}'
                             scaleData['customParams'][name_idx] = str(cur_desc)
+                            comments = ' #Custom'
                         else:
                             name_idx = names_mapping[name]
                             isDefault = True
+                            comments = ' #Default'
                         if not do_single:
-                            updated_values.write(f'        {cur_desc}: "{name_idx}",\n')
+                            updated_values.write(f'        {cur_desc}: "{name_idx}",{comments}\n')
 
-                        name_idx = generator.fix_name(isDefault, name_idx)
+                        if not (isDefault or name_idx.startswith(f"{char_id}_")):
+                            name_idx = f"{char_id}_{name_idx}"
 
                         scaleData['desc'].append((text, name_idx))
                         # if skillId == 10702:
@@ -356,9 +367,12 @@ def process_talent_desc(lang_name, skill_descr, talent_short_id, tpl_patterns, n
     # print('default:--------------------------')
     # print(skill_descr)
     skill_descr = tpl_patterns.process(skill_descr)['descr'][0]
+    # print('patterns:--------------------------')
+    # print(skill_descr)
+    # print(tpl_keywords)
     if tpl_keywords:
         skill_descr = tpl_keywords.process(skill_descr)['descr'][0]
-    # print('patterns:--------------------------')
+    # print('keywords:--------------------------')
     # print(skill_descr)
     skill_descr = tpl_names.process(skill_descr)['descr'][0]
     # print('names:--------------------------')
@@ -380,8 +394,21 @@ def process_talent_desc(lang_name, skill_descr, talent_short_id, tpl_patterns, n
         skill_descr = {'descr': [skill_descr], 'names': []}
     return skill_descr
 
-hyperlinks = set()
+hyperlinks = {}
 generator.header()
+
+def extractPramList(proud):
+    paramList = []
+    for prop in proud['addProps']:
+        type = prop.get('propType')
+        if type != "FIGHT_PROP_NONE" and prop.get('value', 0):
+            paramList.append(prop.get('value', 0))
+    return paramList
+
+inherentProudSkillOpens_fld = 'BKHEBEGJIAO'#'LOAMPGAFLMA' # 'inherentProudSkillOpens'
+needAvatarPromoteLevel_fld = 'AEELKPGFNEA'# 'AMKLKEEBGPM' #'needAvatarPromoteLevel'
+hex_descr_fld = 'JDKOMPNCEMO'#'HCAOGPJPGLM' # 'IACNAENANDH'
+extra_descr_fld = 'extraDescTextMapHash'
 
 for charVarName in sorted(char_keys):
     result_hero_strings = []
@@ -411,138 +438,140 @@ for charVarName in sorted(char_keys):
     talenttable("\t" + charVarName + ': {\n')
     talenttable(f"\t\tchar_id:'{char['id']}',\n")
     talenttable(f"\t\tchar_weapon:'{char['weaponType']}',\n")
-    hex_descr = 'HCAOGPJPGLM' # 'IACNAENANDH'
 
     locallinks = set()
     if not do_single:
         updated_values.write(f'#{char_key}\n')
-    for depot_id in char['depot_ids']:
-        depot = depot_data.get(depot_id)
-        if not depot:
+    depot_id = char['depot_id']
+    depot = depot_data.get(depot_id)
+    if not depot:
+        continue
+    if statgenerator: statgenerator.prepareChar(char_data.get(char['id']))
+    skill_ids = []
+    if depot.get('skills'):
+        skill_ids.append((depot.get('skills')[0], 'feature_attack'))
+        skill_ids.append((depot.get('skills')[1], 'feature_skill'))
+        for idx in depot.get('skills')[2:]:
+            if idx:
+                skill_ids.append((idx, 'feature_other'))
+    if depot.get('energySkill'):
+        skill_ids.append((depot.get('energySkill'), 'feature_burst'))
+
+    # if depot.get('SubSkills'):
+    #     skill_ids.extend(depot.get('SubSkills'))
+    index = 1
+    features = []
+    for (id, skill_type) in skill_ids:
+        # print(f'index {index} id {id}')
+        if not id:
             continue
-        if statgenerator: statgenerator.prepareChar(char_data.get(char['id']))
-        skill_ids = []
-        if depot.get('skills'):
-            skill_ids.append((depot.get('skills')[0], 'feature_attack'))
-            skill_ids.append((depot.get('skills')[1], 'feature_skill'))
-            for idx in depot.get('skills')[2:]:
-                if idx:
-                    skill_ids.append((idx, 'feature_other'))
-        if depot.get('energySkill'):
-            skill_ids.append((depot.get('energySkill'), 'feature_burst'))
+        skill = char_skill_data.get(id)
+        if not skill:
+            continue
+        skill_name = lang_default.get(skill['nameTextMapHash'])
+        if not skill_name:
+            continue
+        talent_short_id = convert_id(skill_name, removeSemicolon=True)
+        skill_id = char_id + '_' + talent_short_id
 
-        # if depot.get('SubSkills'):
-        #     skill_ids.extend(depot.get('SubSkills'))
-        index = 1
-        features = []
-        for (id, skill_type) in skill_ids:
-            # print(f'index {index} id {id}')
-            if not id:
-                continue
-            skill = char_skill_data.get(id)
-            if not skill:
-                continue
-            skill_name = lang_default.get(skill['nameTextMapHash'])
-            if not skill_name:
-                continue
-            talent_short_id = convert_id(skill_name, removeSemicolon=True)
-            skill_id = char_id + '_' + talent_short_id
+        if uniq_skills.get(skill_id):
+            continue
+        generator.talent_begin(char_id, skill_id, index, skill_type)
+        if statgenerator and skill_type == 'feature_burst':
+            statgenerator.processBurst(skill)
+        uniq_skills[skill_id] = 1
 
-            if uniq_skills.get(skill_id):
-                continue
-            generator.talent_begin(char_id, skill_id, index, skill_type)
-            if statgenerator and skill_type == 'feature_burst':
-                statgenerator.processBurst(skill)
-            uniq_skills[skill_id] = 1
+        if not do_single:
+            updated_values.write(f'    #{talent_short_id}\n')
+        proud_params = scales_and_proud(id, skill.get('proudSkillGroupId'), index, char_id)
+        generator.end_talent(char_id)
+        if proud_params['desc']:
+            index+= 1
 
-            if not do_single:
-                updated_values.write(f'    #{talent_short_id}\n')
-            proud_params = scales_and_proud(id, skill.get('proudSkillGroupId'), index)
-            generator.end_talent(char_id)
-            if proud_params['desc']:
-                index+= 1
-
-            descItems = {}
-            descItems_hex = {}
-            nameItems = {}
-            extra_descr_fld = 'extraDescTextMapHash'
-            err = False
-            for lang_name in lang_data:
-                try:
-                    lang = lang_data[lang_name]['lang']
-                    skill_name = lang.get(skill['nameTextMapHash'])
-                    skill_name = re.sub(r'^Normal Attack:\s*', '', skill_name)
-                    nameItems[lang_name] = [skill_name]
-                    tpl_patterns = lang_data[lang_name]['patterns']
-                    extraDescr = lang.get(skill[extra_descr_fld]) or ''
-                    skill_descr = process_talent_desc(lang_name, lang.get(skill['descTextMapHash']) + extraDescr, talent_short_id, tpl_patterns, False)
-                    descItems[lang_name] = skill_descr['descr']
+        descItems = {}
+        descItems_hex = {}
+        nameItems = {}
+        err = False
+        for lang_name in lang_data:
+            try:
+                lang = lang_data[lang_name]['lang']
+                skill_name = lang.get(skill['nameTextMapHash'])
+                skill_name = re.sub(r'^Normal Attack:\s*', '', skill_name)
+                nameItems[lang_name] = [skill_name]
+                tpl_patterns = lang_data[lang_name]['patterns']
+                tpl_keywords = None # lang_data[lang_name]['keywords']
+                extraDescr = lang.get(skill[extra_descr_fld]) or ''
+                skill_descr = process_talent_desc(lang_name, lang.get(skill['descTextMapHash']) + extraDescr, talent_short_id, tpl_patterns, False, None, tpl_keywords)
+                descItems[lang_name] = skill_descr['descr']
+                nameItems[lang_name].extend(skill_descr['names'])
+                if skill[hex_descr_fld] and lang.get(skill[hex_descr_fld]):
+                    skill_descr = process_talent_desc(lang_name, lang.get(skill[hex_descr_fld]) + extraDescr, talent_short_id, tpl_patterns, False, talent_short_id + '_hex', tpl_keywords)
+                    descItems_hex[lang_name] = skill_descr['descr']
                     nameItems[lang_name].extend(skill_descr['names'])
-                    if skill[hex_descr] and lang.get(skill[hex_descr]):
-                        skill_descr = process_talent_desc(lang_name, lang.get(skill[hex_descr]) + extraDescr, talent_short_id, tpl_patterns, False, talent_short_id + '_hex')
-                        descItems_hex[lang_name] = skill_descr['descr']
-                        nameItems[lang_name].extend(skill_descr['names'])
-                except Exception as e:
-                    logger.error(f'error on {talent_short_id}')
-                    logger.error(e)
-                    err = True
-            if err: continue
+            except Exception as e:
+                logger.error(f'error on {talent_short_id}')
+                logger.error(e)
+                err = True
+        if err: continue
 
-            if proud_params['customParams'].keys():
-                for param in proud_params['customParams']:
-                    values = {}
-                    for lang_name in lang_data:
-                        lang = lang_data[lang_name]['lang']
-                        name_hash = proud_params['customParams'][param]
-                        (name, params_str) = lang.get(name_hash).split('|')
-                        values[lang_name] = fix_name(name)
-                    result_hero_strings.append(
-                        OrderedDict(
-                            category=skill_type,
-                            name=param if param.startswith(f"{char_id}_") else char_id + '_' + param,
-                            rus=values['rus'],
-                            eng=values['eng'],
-                        )
+        if proud_params['customParams'].keys():
+            for param in proud_params['customParams']:
+                values = {}
+                for lang_name in lang_data:
+                    lang = lang_data[lang_name]['lang']
+                    name_hash = proud_params['customParams'][param]
+                    (name, params_str) = lang.get(name_hash).split('|')
+                    values[lang_name] = fix_name(name)
+                result_hero_strings.append(
+                    OrderedDict(
+                        category=skill_type,
+                        name=param if param.startswith(f"{char_id}_") else char_id + '_' + param,
+                        rus=values['rus'],
+                        eng=values['eng'],
                     )
+                )
 
-            add_array(nameItems, result_hero_strings, skill_id, 'talent_name')
-            add_array(descItems, result_hero_strings, skill_id, 'talent_descr')
-            if descItems_hex:
-                add_array(descItems_hex, result_hero_strings, skill_id + '_hex', 'talent_descr')
+        add_array(nameItems, result_hero_strings, skill_id, 'talent_name')
+        add_array(descItems, result_hero_strings, skill_id, 'talent_descr')
+        if descItems_hex:
+            add_array(descItems_hex, result_hero_strings, skill_id + '_hex', 'talent_descr')
 
-        generator.begin_char(char_id, skiped_features)
+    generator.begin_char(char_id, skiped_features)
 
-        talent_items = []
-        const_num = 0
+    talent_items = []
+    const_num = 0
 
-        talenttable('\t\tcons: [\n')
-        for const_id in depot.get('talents'):
-            const_num += 1
-            talent = talent_data.get(const_id)
-            if not talent:
-                continue
-            talent_items.append({
-                'nameTextMapHash': talent.get('nameTextMapHash'),
-                'descTextMapHash': talent.get('descTextMapHash'),
-                'descTextMapHash_hex': talent.get(hex_descr),
-                'no_descr': const_num == 3 or const_num == 5,
-            })
-            talenttable('\t\t\t')
-            talenttable(repr(shrink_table(talent.get('paramList'))))
-            talenttable(',\n')
-        talenttable('\t\t],\n')
+    talenttable('\t\tcons: [\n')
+    for const_id in depot.get('talents'):
+        const_num += 1
+        talent = talent_data.get(const_id)
+        if not talent:
+            continue
+        talent_items.append({
+            'nameTextMapHash': talent.get('nameTextMapHash'),
+            'descTextMapHash': talent.get('descTextMapHash'),
+            'descTextMapHash_hex': talent.get(hex_descr_fld),
+            'no_descr': const_num == 3 or const_num == 5,
+        })
+        talenttable('\t\t\t')
+        talenttable(repr(shrink_table(talent.get('paramList'))))
+        talenttable(',\n')
+    talenttable('\t\t],\n')
 
-        talenttable('\t\tpasssive: [\n')
-        passive_count = 0
-        inherentProudSkillOpens = 'LOAMPGAFLMA' # 'inherentProudSkillOpens'
-        needAvatarPromoteLevel = 'AMKLKEEBGPM' #'needAvatarPromoteLevel'
-        for passive in depot.get(inherentProudSkillOpens, []):
-            if (passive.get(needAvatarPromoteLevel) > 0 or char_id in NEED_PASSIVE_TALENTS) and passive.get('proudSkillGroupId') > 0:
+    talenttable('\t\tpasssive: [\n')
+    passive_count = 0
+    needed = char_id in NEED_PASSIVE_TALENTS
+    for passive in depot.get(inherentProudSkillOpens_fld, []):
+        passive_id = passive.get('proudSkillGroupId')
+        if passive_id > 0:
+            proud = proud_data.get_item_by_field('proudSkillGroupId', passive_id)
+            paramList = extractPramList(proud)
+            if passive[needAvatarPromoteLevel_fld] > 0 or needed or len(paramList) > 0:
                 passive_count += 1
-                passive_id = passive.get('proudSkillGroupId')
-                proud = proud_data.get_item_by_field('proudSkillGroupId', passive_id)
                 talenttable('\t\t\t')
-                talenttable(repr(shrink_table(proud.get('paramList'))))
+
+                paramList.extend(proud.get('paramList'))
+                talenttable(repr(shrink_table(paramList)))
                 talenttable(',\n')
                 talent_name = lang_default.get(proud.get('nameTextMapHash'))
                 if not talent_name:
@@ -550,22 +579,53 @@ for charVarName in sorted(char_keys):
                 talent_items.append({
                     'nameTextMapHash': proud.get('nameTextMapHash'),
                     'descTextMapHash': proud.get('descTextMapHash'),
-                    'descTextMapHash_hex': proud.get(hex_descr),
+                    'descTextMapHash_hex': proud.get(hex_descr_fld),
                     'no_descr': False
                 })
                 talent_short_id = convert_id(talent_name, removeSemicolon=True)
                 talent_id = char_id + '_' + talent_short_id
-                generator.condition(char_id, talent_id, passive.get(needAvatarPromoteLevel))
-            else: break
-        talenttable('\t\t],\n')
+                generator.condition(char_id, talent_id, passive[needAvatarPromoteLevel_fld])
+            elif needed: break
+            else: continue
+        elif needed: break
+        else: continue
+    talenttable('\t\t],\n')
 
-        generator.begin_constellation(char_id)
+    generator.begin_constellation(char_id)
 
-        prepare_talents(talent_items[-passive_count:], False)
-        prepare_talents(talent_items[0:-passive_count], True)
+    prepare_talents(talent_items[-passive_count:], False)
+    prepare_talents(talent_items[0:-passive_count], True)
+
+    for hl_id in locallinks:
+        if not hyperlinks.get(hl_id):
+            hyperlinks[hl_id] = 1
+        skill_id = f'n{hl_id}'
+        if tpl_char and tpl_char.find('eng', skill_id):
+            hl_item = hyperlink_data.get(int(hl_id))
+            descItems = {}
+            nameItems = {}
+            err = False
+            for lang_name in lang_data:
+                nameItems[lang_name] = []
+                try:
+                    lang = lang_data[lang_name]['lang']
+                    tpl_patterns = lang_data[lang_name]['patterns']
+                    tpl_keywords = None # lang_data[lang_name]['keywords']
+                    skill_descr = process_talent_desc(lang_name, lang.get(hl_item['descTextMapHash']), skill_id, tpl_patterns, False, None, tpl_keywords)
+                    descItems[lang_name] = skill_descr['descr']
+                    nameItems[lang_name].extend(skill_descr['names'])
+                except Exception as e:
+                    logger.error(f'error on {skill_id}')
+                    logger.error(e)
+                    err = True
+            if err: continue
+            n_idx = add_array(nameItems, result_hero_strings, skill_id, 'talent_name', hyperlinks[hl_id] + 1)
+            d_idx = add_array(descItems, result_hero_strings, skill_id, 'talent_descr', hyperlinks[hl_id] + 1)
+            hyperlinks[hl_id] = max(n_idx, d_idx)
+
+
     if statgenerator: statgenerator.generateChar(charVarName)
     CsvDumper().dump(result_hero_strings, f'char/{char_key}.csv')
-    hyperlinks.update(locallinks)
     talenttable('\t\tlinks: [%s],\n' % (', '.join(sorted(locallinks))))
     talenttable('\t},\n')
 
@@ -574,7 +634,7 @@ generator.end_char()
 
 if not do_single:
     result_talents = []
-    for hl_id in sorted(hyperlinks):
+    for hl_id in sorted(hyperlinks.keys()):
         hl_item = hyperlink_data.get(int(hl_id))
         skill_id = f'n{hl_id}'
 

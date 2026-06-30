@@ -65,8 +65,8 @@ const Talents = new DbObjectTalents({
     },
     skill: {
         gameId: charTalentTables.Wriothesley.s2_id,
-        title: 'talent_name.wriothesley_icefang_rush',
-        description: 'talent_descr.wriothesley_icefang_rush',
+        title: 'talent_name.wriothesley_icefang_rush_1',
+        description: 'talent_descr.wriothesley_icefang_rush_1',
         items: [
             {
                 unit: 'normal_attack',
@@ -280,8 +280,8 @@ export const Wriothesley = new DbObjectChar({
         new ConditionBoolean({
             name: 'wriothesley_chilling_penalty',
             serializeId: 1,
-            title: 'talent_name.wriothesley_chilling_penalty',
-            description: 'talent_descr.wriothesley_chilling_penalty',
+            title: 'talent_name.wriothesley_icefang_rush_2',
+            description: 'talent_descr.wriothesley_icefang_rush_2',
         }),
         new ConditionStatic({
             title: 'talent_name.wriothesley_there_shall_be_a_plea_for_justice',
