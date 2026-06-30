@@ -1,6 +1,6 @@
 category;name;rus;eng
 layout;locale;ru-RU;en-GB
-layout;copyright;<span class="copyright-item">Разработано ASPirine.</span> <span class="copyright-item">Все игровые материалы принадлежат miHoYo.</span> <span class="copyright-item">Версия <span class="gi-version"></span>.</span> <span class="copyright-item"><a href="mailto://hots@hvdbs.com">Контакты</a></span>;<span class="copyright-item">Developed by ASPirine.</span> <span class="copyright-item">All game resources are property of miHoYo.</span> <span class="copyright-item">Version <span class="gi-version"></span>.</span> <span class="copyright-item"><a href="mailto://hots@hvdbs.com">Contacts</a></span>
+layout;copyright;<span class="copyright-item">Разработано ASPirine.</span> <span class="copyright-item">Все игровые материалы принадлежат miHoYo.</span> <span class="copyright-item">Версия <span class="gi-version"></span>.</span> <span class="copyright-item"><a href="https://github.com/EugenPolyakov/genshin_calc/issues">Контакты</a></span>;<span class="copyright-item">Developed by ASPirine.</span> <span class="copyright-item">All game resources are property of miHoYo.</span> <span class="copyright-item">Version <span class="gi-version"></span>.</span> <span class="copyright-item"><a href="https://github.com/EugenPolyakov/genshin_calc/issues">Contacts</a></span>
 tab_header;stat_view;Характеристики;Attributes
 tab_header;features;Показатели;Features
 tab_header;suggest-artifact-set;Подбор комплекта;Artifact set optimizer
