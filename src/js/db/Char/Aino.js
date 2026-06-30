@@ -369,6 +369,7 @@ export const Aino = new DbObjectChar({
             new ConditionMoonPhaseSetting(),
             new ConditionBoolean({
                 name: 'party.aino_the_theory_of_ashfield_equilibrium',
+                partySetting: 'aino_the_theory_of_ashfield_equilibrium',
                 serializeId: 1,
                 title: 'talent_name.aino_the_theory_of_ashfield_equilibrium',
                 description: 'talent_descr.aino_the_theory_of_ashfield_equilibrium',
@@ -381,6 +382,7 @@ export const Aino = new DbObjectChar({
             }),
             new ConditionMoonPhaseBoolean({
                 name: 'party.aino_the_burden_of_creative_genius',
+                partySetting: 'aino_the_burden_of_creative_genius',
                 serializeId: 2,
                 title: 'talent_name.aino_the_burden_of_creative_genius',
                 description: 'talent_descr.aino_the_burden_of_creative_genius',

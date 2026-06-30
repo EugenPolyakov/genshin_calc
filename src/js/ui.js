@@ -122,12 +122,6 @@ export var UI = {
     WindowCharTalent: new CharTalentModal(),
     ArtifactSetSettingsModal: new ArtifactSetSettingsModal(),
     Sync: new Sync(),
-
-    debug: (text) => {if (isDevel()) { console.log(text) }}
 };
 
 window.UI = UI;
-
-function isDevel() {
-    return typeof __DEVEL__ !== 'undefined' && __DEVEL__;
-}

@@ -411,6 +411,7 @@ export const Aloy = new DbObjectChar({
         conditions: [
             new ConditionBoolean({
                 name: 'party.aloy_combat_override',
+                partySetting: 'aloy_combat_override',
                 serializeId: 1,
                 rotation: 'party',
                 title: 'talent_name.aloy_combat_override',

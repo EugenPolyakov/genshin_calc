@@ -384,6 +384,7 @@ export const Amber = new DbObjectChar({
         conditions: [
             new ConditionBoolean({
                 name: 'party.amber_wildfire',
+                partySetting: 'amber_wildfire',
                 serializeId: 1,
                 rotation: 'party',
                 title: 'talent_name.amber_wildfire',

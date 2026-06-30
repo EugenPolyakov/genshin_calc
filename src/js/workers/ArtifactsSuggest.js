@@ -1,6 +1,6 @@
 import { Artifact } from "../classes/Artifact";
-import { ArtifactsSuggest } from "../classes/ArtifactsSuggest";
 import { CalcSet } from "../classes/CalcSet";
+import { ArtifactsSuggest } from "./ArtifactsSuggest/ArtifactsSuggest";
 
 self.onmessage = function(input) {
     let artifactsList = [];

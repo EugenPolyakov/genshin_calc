@@ -1,6 +1,6 @@
 {
     "name": "genshin_impact_calculator",
-    "version": "3.2.4",
+    "version": "3.2.5",
     "private": true,
     "scripts": {
         "dev": "npm run build:lang && rollup -c --environment mode:production,min:false",
@@ -58,7 +58,6 @@
         "estree-walker": "^2.0.2",
         "html-react-parser": "^3.0.1",
         "jest": "^27.0.6",
-        "postcss-copy": "^7.1.0",
         "rollup": "^4.60.1",
         "rollup-plugin-clear": "^2.0.7",
         "rollup-plugin-copy": "^3.5.0",

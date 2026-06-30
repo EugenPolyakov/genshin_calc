@@ -571,6 +571,7 @@ export const Alhaitham = new DbObjectChar({
         conditions: [
             new ConditionStacks({
                 name: 'party.alhaitham_elucidation',
+                partySetting: 'alhaitham_elucidation',
                 serializeId: 3,
                 rotation: 'party',
                 title: 'talent_name.alhaitham_elucidation',

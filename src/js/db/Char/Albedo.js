@@ -331,7 +331,6 @@ export const Albedo = new DbObjectChar({
                     source: 'constellation6',
                     values: new ValueTable([charTalentTables.Albedo.cons[5][1]], 100),
                     condition: new ConditionAnd([
-                        new ConditionHexCheck({ hex: 2 }),
                         new ConditionHexCurrent(),
                         new ConditionBoolean({ name: 'albedo_dust_of_purification_2' }),
                     ])
@@ -351,7 +350,6 @@ export const Albedo = new DbObjectChar({
             ],
             condition: new ConditionAnd([
                 new ConditionConstellation({ constellation: 2 }),
-                new ConditionHexCheck({ hex: 2 }),
                 new ConditionHexCurrent(),
             ]),
         }),
@@ -507,13 +505,8 @@ export const Albedo = new DbObjectChar({
         new FeatureMultiplier({
             scaling: 'def*',
             source: 'constellation2',
-            leveling: 'albedo_opening_of_hanerozoic',
-            values: new ValueTable([
-                charTalentTables.Albedo.cons[1][0],
-                charTalentTables.Albedo.cons[1][0] * 2,
-                charTalentTables.Albedo.cons[1][0] * 3,
-                charTalentTables.Albedo.cons[1][0] * 4,
-            ], 100),
+            stacksLeveling: 'albedo_opening_of_hanerozoic',
+            values: new ValueTable([charTalentTables.Albedo.cons[1][0]], 100),
             condition: new ConditionAnd([
                 new ConditionConstellation({constellation: 2}),
                 new ConditionBoolean({name: 'albedo_opening_of_hanerozoic'}),
@@ -597,9 +590,7 @@ export const Albedo = new DbObjectChar({
                     title: 'talent_name.albedo_descent_of_divinity',
                     description: 'talent_descr.albedo_descent_of_divinity',
                     hideCondition: new ConditionBoolean({ name: 'char_hex_albedo' }),
-                    condition: new ConditionAnd([
-                        new ConditionBoolean({ name: 'char_hex_albedo', invert: 1 }),
-                    ]),
+                    condition: new ConditionBoolean({ name: 'char_hex_albedo', invert: 1 }),
                     stats: {
                         dmg_plunge: charTalentTables.Albedo.cons[3][0] * 100,
                     },
@@ -610,9 +601,7 @@ export const Albedo = new DbObjectChar({
                     title: 'talent_name.albedo_descent_of_divinity',
                     description: 'talent_descr.albedo_descent_of_divinity_hex_1',
                     hideCondition: new ConditionBoolean({ name: 'char_hex_albedo', invert: 1 }),
-                    condition: new ConditionAnd([
-                        new ConditionBoolean({ name: 'char_hex_albedo' }),
-                    ]),
+                    condition: new ConditionBoolean({ name: 'char_hex_albedo' }),
                     stats: {
                         dmg_plunge: charTalentTables.Albedo.cons[3][0] * 100,
                     },
@@ -695,13 +684,16 @@ export const Albedo = new DbObjectChar({
             }),
             new ConditionBoolean({
                 name: 'char_hex_albedo',
+                partySetting: 'char_hex_albedo',
                 serializeId: 4,
                 title: 'talent_name.albedo_book_of_blinding_light_1',
                 description: 'talent_descr.albedo_book_of_blinding_light_1',
             }),
             new ConditionBoolean({
                 name: 'party.albedo_solar_isotoma',
+                partySetting: 'albedo_solar_isotoma',
                 serializeId: 6,
+                rotation: 'party',
                 title: 'talent_name.albedo_book_of_blinding_light_2',
                 description: 'talent_descr.albedo_book_of_blinding_light_3',
                 condition: new ConditionAnd([
@@ -715,7 +707,9 @@ export const Albedo = new DbObjectChar({
             }),
             new ConditionBoolean({
                 name: 'party.albedo_silver_isotoma',
+                partySetting: 'albedo_silver_isotoma',
                 serializeId: 7,
+                rotation: 'party',
                 title: 'talent_name.albedo_book_of_blinding_light_3',
                 description: 'talent_descr.albedo_book_of_blinding_light_4',
                 condition: new ConditionAnd([
@@ -730,6 +724,7 @@ export const Albedo = new DbObjectChar({
             }),
             new ConditionBoolean({
                 name: 'party.albedo_homuncular_nature',
+                partySetting: 'albedo_homuncular_nature',
                 serializeId: 1,
                 rotation: 'party',
                 title: 'talent_name.albedo_homuncular_nature',
@@ -743,6 +738,7 @@ export const Albedo = new DbObjectChar({
             }),
             new ConditionBoolean({
                 name: 'party.albedo_descent_of_divinity',
+                partySetting: 'albedo_descent_of_divinity',
                 serializeId: 2,
                 rotation: 'party',
                 title: 'talent_name.albedo_descent_of_divinity',
@@ -760,6 +756,7 @@ export const Albedo = new DbObjectChar({
             }),
             new ConditionBoolean({
                 name: 'party.albedo_descent_of_divinity',
+                partySetting: 'albedo_descent_of_divinity',
                 serializeId: 2,
                 title: 'talent_name.albedo_descent_of_divinity',
                 description: 'talent_descr.albedo_descent_of_divinity_hex_1',
@@ -774,6 +771,7 @@ export const Albedo = new DbObjectChar({
             }),
             new ConditionBoolean({
                 name: 'party.albedo_descent_of_divinity_2',
+                partySetting: 'albedo_descent_of_divinity_2',
                 serializeId: 5,
                 title: 'talent_name.albedo_descent_of_divinity',
                 description: 'talent_descr.albedo_descent_of_divinity_hex_2',
@@ -789,10 +787,10 @@ export const Albedo = new DbObjectChar({
             }),
             new ConditionBoolean({
                 name: 'party.albedo_dust_of_purification',
+                partySetting: 'albedo_dust_of_purification',
                 serializeId: 3,
                 rotation: 'party',
                 title: 'talent_name.albedo_dust_of_purification',
-                statTitle: 'talent_name.weapon_jinnis_whisper_2',
                 description: 'talent_descr.albedo_dust_of_purification',
                 stats: {
                     dmg_all: TalentValues.C6ShieldDmg,

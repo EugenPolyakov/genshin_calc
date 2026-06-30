@@ -91,7 +91,7 @@ function ConditionItem(props) {
     }
 
     let stats = cond.getDisplayStats(props.settings);
-    let list = cond.getCondtitionList()
+    let list = (!props.hideControls ? (cond.getCondtitionList() || []) : []).filter(a => !a.isHidden(props.settings));
     let result = (
         <div
             className="condition-list-item"
@@ -115,9 +115,8 @@ function ConditionItem(props) {
                 />
                 <ConditionInfo item={cond} />
             </div>
-            { !props.hideControls && list ? list.map(a =>
-                a.isHidden(props.settings) ? '' :
-                <div className="top-line">
+            { list.map((a, index) =>
+                <div className="top-line" key={ index }>
                     <div className="control">
                         <ConditionControl
                             item={ a }
@@ -127,7 +126,7 @@ function ConditionItem(props) {
                         />
                     </div>
                     <div className="title">{ parse(a.getTitle(stats)) }</div>
-                </div>) : '' }
+                </div>)}
             <ConditionDescription item={cond} stats={stats} />
         </div>
     );

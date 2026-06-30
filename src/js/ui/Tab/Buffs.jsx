@@ -119,24 +119,16 @@ export class Buffs extends React.Component {
                 continue;
             }
 
-            let partyButton = null;
-            let loadData = char.isLoadParty();
-            if (loadData) {
-                partyButton = (
-                    <ControlsBar>
-                        <ControlsBarDivider/>
-                        <TitledButton
-                            icon="icon-ok"
-                            title={this.strings.load_char}
-                            onClick={() => this.handleCharLoad(char.getId(), loadData)}
-                        />
-                    </ControlsBar>
-                );
-            }
-
             charItems.push(
                 <AccordionItem id={'char'+ char.getId()} title={makeTitleWithCount(this.lang.get(char.getName()), conditions, settings)}>
-                    {partyButton}
+                    <ControlsBar>
+                        <ControlsBarDivider />
+                        <TitledButton
+                            icon="icon-ok"
+                            title={ this.strings.load_char }
+                            onClick={ () => this.handleCharLoad(char.getId(), char.isLoadParty()) }
+                        />
+                    </ControlsBar>
                     <ConditionList
                         charId={char.getId()}
                         items={conditions}

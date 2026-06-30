@@ -1,11 +1,11 @@
-import { REAL_TOTAL } from "../db/Constants";
-import { DB } from "../db/DB";
-import { Artifact } from "./Artifact";
-import { filterPostEffectTreeByStats } from "./Build/Data";
-import { Condition } from "./Condition";
-import { CBlock } from "./Feature2/Compile/Types";
-import { FeatureCompiler } from "./Feature2/Compiler";
-import { isPercent, Stats } from "./Stats";
+import { REAL_TOTAL } from "../../db/Constants";
+import { DB } from "../../db/DB";
+import { Artifact } from "../../classes/Artifact";
+import { filterPostEffectTreeByStats } from "../../classes/Build/Data";
+import { Condition } from "../../classes/Condition";
+import { CBlock } from "../../classes/Feature2/Compile/Types";
+import { FeatureCompiler } from "../../classes/Feature2/Compiler";
+import { isPercent, Stats } from "../../classes/Stats";
 
 const FEATURE_TYPE_INDEX = {
     'normal': 0,

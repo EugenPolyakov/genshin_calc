@@ -293,6 +293,14 @@ export class CNumberFloor extends CSum {
     getType() {return 'number_floor'}
     isCollapsable() {return false}
 
+    process(opts) {
+        let result = super.process(opts);
+        if (result instanceof CConst) {
+            result.value = Math.floor(result.value);
+        }
+        return result;
+    }
+
     compile(opts) {
         return 'Math.floor('+ super.compile(opts) +')';
     }
@@ -301,6 +309,14 @@ export class CNumberFloor extends CSum {
 export class CNumberCeil extends CSum {
     getType() {return 'number_ceil'}
     isCollapsable() {return false}
+
+    process(opts) {
+        let result = super.process(opts);
+        if (result instanceof CConst) {
+            result.value = Math.ceil(result.value);
+        }
+        return result;
+    }
 
     compile(opts) {
         return 'Math.ceil('+ super.compile(opts) +')';
@@ -379,6 +395,7 @@ export class CVarIncrease extends CSum {
     isCollapsable() {return false}
     isVariableSet() {return true}
     isVariableGet() {return true}
+    dontShrink() { return 1 }
 
     compile(opts) {
         return this.name +' += '+ super.compile(opts);
@@ -488,6 +505,7 @@ export class CPostEffect extends CMulti {
 
 export class CStatIncrease extends CSum {
     getType() {return 'stat_increase'}
+    dontShrink() { return 1 }
     isCollapsable() {return false}
 
     getAssignedStats() {
@@ -506,6 +524,7 @@ export class CStatIncrease extends CSum {
 
 export class CStatDecrease extends CSum {
     getType() {return 'stat_decrease'}
+    dontShrink() { return 1 }
     isCollapsable() {return false}
 
     getAssignedStats() {
@@ -524,6 +543,7 @@ export class CStatDecrease extends CSum {
 
 export class CStatSet extends CSum {
     getType() {return 'stat_set'}
+    dontShrink() { return 1 }
     isCollapsable() {return false}
 
     getAssignedStats() {
@@ -542,7 +562,15 @@ export class CStatSet extends CSum {
 
 export class CValueCap extends CSum {
     getType() {return 'value_cap'}
+    dontShrink() {return 1}
 
+    process(opts) {
+        if (this.value.process) {
+            this.value = this.value.process(opts);
+        }
+        let result = super.process(opts);
+        return result;
+    }
     /**
      * @param {Object} opts Compilation options
      * @returns {string} String contains code
@@ -557,6 +585,13 @@ export class CValueCap extends CSum {
 export class CValueAboveZero extends CSum {
     getType() {return 'value_above_zero'}
 
+    process(opts) {
+        let result = super.process(opts);
+        if (result instanceof CConst) {
+            result.value = Math.max(0, result.value);
+        }
+        return result;
+    }
     /**
      * @param {Object} opts Compilation options
      * @returns {string} String contains code
@@ -574,6 +609,11 @@ export class CResistanceValue extends CSum {
     process(opts) {
         let result = super.process(opts);
         if (!opts.processResistance) {
+            if (this.items.length == 1 && this.items[0] instanceof CConst) {
+                let val = this.items[0].value;
+                val = val < 0 ? (1 - val / 2) : (val > 0.75 ? (1 / (4 * val + 1)) : 1 - val);
+                return new CConst({ value: val, comment: 'processed' });
+            }
             return result;
         }
 

@@ -8,6 +8,7 @@ import { Lang } from "../../Lang";
 import { NumberInput, RadioList } from "../../Components/Inputs/Input";
 import { TitledButton } from "../../Components/Inputs/Buttons";
 import { Feature2 } from "../../../classes/Feature2";
+import { DB } from "../../../db/DB";
 
 let lang = new Lang();
 

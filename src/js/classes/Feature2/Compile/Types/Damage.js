@@ -4,6 +4,14 @@ import { CMulti, CSubtract, CSum, CSumPlusOne, CVar } from "./Block";
 import { CConst, CVarValue } from "./Item";
 
 export class CCritRate extends CSum {
+    process(opts) {
+        let result = super.process(opts);
+        if (result instanceof CConst) {
+            result.value = Math.max(0, Math.min(1, result.value));
+        }
+        return result;
+    }
+
     compile(opts) {
         let result = super.compile(opts);
         return `Math.max(0, Math.min(1, ${result}))`;

@@ -1,3 +1,5 @@
+import { debugLog } from "./Debug";
+
 export class WorkerFactory {
     constructor(params) {
         params = Object.assign({}, params);
@@ -110,7 +112,7 @@ export class WorkerFactory {
     }
 
     submitResult() {
-        UI.debug(this.constructor.name +' finished in: '+ (performance.now() - this.startedAt));
+        debugLog(this.constructor.name +' finished in: '+ (performance.now() - this.startedAt));
         this.callback(this.getResult());
     }
 
