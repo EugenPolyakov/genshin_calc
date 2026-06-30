@@ -21,7 +21,6 @@ export class GoodImportModal extends Modal {
         return (
             <GoodImportComponent
                 ref={(obj) => this.modal = obj}
-                app={this.app}
                 storage={this.app.storage.artifacts}
             />
         );
@@ -124,7 +123,7 @@ export class GoodImportComponent extends React.Component {
             }
         }
 
-        this.props.app.refresh();
+        UI.Layout.app.refresh();
         this.handleClose();
     }
 

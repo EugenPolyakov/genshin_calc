@@ -13,8 +13,8 @@ export class FoodTypes extends React.PureComponent {
         let slots = [];
 
         for (let type of types) {
-            let food  = this.props.app.getFood(type);
-            let level = this.props.app.getFoodLevel(type);
+            let food  = UI.Layout.app.getFood(type);
+            let level = UI.Layout.app.getFoodLevel(type);
 
             slots.push(
                 <FoodTypesSlot

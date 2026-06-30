@@ -41,7 +41,6 @@ export class ArtifactSetTab extends Tab {
         return (
             <ArtifactSetView
                 ref={obj => { this.component = obj }}
-                app={this.app}
                 feature={this.app.getFeature()}
                 displayMode={this.app.getDisplayMode()}
             />
@@ -70,21 +69,21 @@ class ArtifactSetView extends React.Component {
     }
 
     dataFeaturesItems() {
-        return Feature2.buildDropdown(this.props.app.currentSet());
+        return Feature2.buildDropdown(UI.Layout.app.currentSet());
     }
 
     handleFeature(feature) {
         this.setState({feature: feature});
-        this.props.app.setFeature(feature);
+        UI.Layout.app.setFeature(feature);
     }
 
     handleDisplayMode(mode) {
         this.setState({displayMode: mode});
-        this.props.app.setDisplayMode(mode);
+        UI.Layout.app.setDisplayMode(mode);
     }
 
     handleApplySet(data) {
-        let build = this.props.app.currentSet().clone();
+        let build = UI.Layout.app.currentSet().clone();
         let oldArts = build.getArtifacts();
         let arts = [];
 
@@ -138,11 +137,11 @@ class ArtifactSetView extends React.Component {
             build.setArtifact(art);
         }
         build.setArtifactsSettings(data.settings);
-        this.props.app.replaceSet(build);
+        UI.Layout.app.replaceSet(build);
     }
 
     triggerGenerate() {
-        let hash = this.props.app.currentSet().getHash();
+        let hash = UI.Layout.app.currentSet().getHash();
         if (this.lastBuild == hash && this.lastFeature == this.state.feature) {
             return;
         }
@@ -151,7 +150,7 @@ class ArtifactSetView extends React.Component {
             this.factory.terminate();
         }
 
-        let build = this.props.app.currentSet();
+        let build = UI.Layout.app.currentSet();
 
         this.lastBuild = build.getHash();
         this.lastFeature = this.state.feature;
@@ -161,14 +160,14 @@ class ArtifactSetView extends React.Component {
         });
 
         this.factory.run({
-            calcset: this.props.app.currentSet(),
+            calcset: UI.Layout.app.currentSet(),
             feature: this.state.feature,
-            showBeta: this.props.app.showBetaContent(),
+            showBeta: UI.Layout.app.showBetaContent(),
         });
     }
 
     completeCallback(data) {
-        this.baseFeature = this.props.app.currentSet().getFeatureResultByName(this.state.feature);
+        this.baseFeature = UI.Layout.app.currentSet().getFeatureResultByName(this.state.feature);
 
         this.setState({
             isLoading: false,

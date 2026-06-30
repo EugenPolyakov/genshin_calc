@@ -19,7 +19,6 @@ export class SelectGroupListModal extends Modal {
         return (
             <GroupListComponent
                 ref={(obj) => this.modal = obj}
-                app={this.app}
                 addClass="group-list-modal"
             />
         );
@@ -40,7 +39,7 @@ class GroupListComponent extends React.Component {
         this.callback = callback;
 
         if (selectedNames.length == 0) {
-            for (let item of this.props.app.storage.artifacts.listGroups()) {
+            for (let item of UI.Layout.app.storage.artifacts.listGroups()) {
                 selectedNames.push(item.value);
             }
         }
@@ -87,7 +86,7 @@ class GroupListComponent extends React.Component {
     handleEditGroup(title) {
         if (title) {
             UI.PromptWindow.show('artifact_group.edit_group_name', title, (newTitle) => {
-                this.props.app.storage.artifacts.updateGroup(title + '', newTitle + '');
+                UI.Layout.app.storage.artifacts.updateGroup(title + '', newTitle + '');
                 this.setState({});
             });
         }
@@ -96,7 +95,7 @@ class GroupListComponent extends React.Component {
     handleDeleteGroup(title) {
         if (title) {
             UI.ConfirmWindow.show('modal.confirm', 'artifact_group.confirm_delete', () => {
-                this.props.app.storage.artifacts.updateGroup(title + '', '');
+                UI.Layout.app.storage.artifacts.updateGroup(title + '', '');
                 this.setState({});
             });
         }
@@ -114,7 +113,6 @@ class GroupListComponent extends React.Component {
                 <FullHeight>
                     <FullHeightScrollable>
                         <GroupList
-                            app={this.props.app}
                             selectedNames={this.state.selectedNames}
                             onChange={(name) => this.handleSelectName(name)}
                             onEdit={(name) => this.handleEditGroup(name)}
@@ -151,7 +149,7 @@ class GroupListComponent extends React.Component {
 function GroupList(props) {
     let items = [];
 
-    for (let item of props.app.storage.artifacts.listGroups()) {
+    for (let item of UI.Layout.app.storage.artifacts.listGroups()) {
         items.push(
             <div key={'key-'+ item.value} className="item">
                 <Checkbox

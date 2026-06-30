@@ -18,7 +18,6 @@ export class SelectFeatureListModal extends Modal {
         return (
             <FeatureListComponent
                 ref={(obj) => this.modal = obj}
-                app={this.app}
                 addClass="feature-list-modal"
             />
         );
@@ -89,7 +88,6 @@ class FeatureListComponent extends React.Component {
                 <FullHeight>
                     <FullHeightScrollable>
                         <FeatureList
-                            app={this.props.app}
                             selectedNames={this.state.selectedNames}
                             onChange={(name) => this.handleSelectName(name)}
                         />
@@ -122,8 +120,8 @@ class FeatureListComponent extends React.Component {
 }
 
 function FeatureList(props) {
-    let stats    = props.app.getStats();
-    let features = props.app.getFeatures(stats, 1);
+    let stats    = UI.Layout.app.getStats();
+    let features = UI.Layout.app.getFeatures(stats, 1);
     let tree     = Feature2.getTree(features);
 
     let selected = {};

@@ -191,6 +191,7 @@ weapon_names = {
     13514: 'SymphonistofScents',
     13515: 'FracturedHalo',
     13516: 'bloodsoaked_ruins',
+    13517: 'disaster_and_remorse',
 
     #CATALYSTS
     14301: "MagicGuide",

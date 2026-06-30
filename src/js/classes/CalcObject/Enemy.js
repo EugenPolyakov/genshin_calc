@@ -3,7 +3,7 @@ import {CalcObject} from '../CalcObject';
 import {Stats} from '../Stats';
 
 export class CalcObjectEnemy extends CalcObject {
-    constructor() {
+    constructor(parentCalcSet) {
         super();
         this.levels = {
             level : 1,
@@ -17,17 +17,20 @@ export class CalcObjectEnemy extends CalcObject {
             pyro: 0,
             electro: 0,
             dendro: 0,
-        };
+            };
+        this.parentCalcSet = parentCalcSet;
     }
 
     setLevels(data) {
         this.levels.level = data.level;
+        this.parentCalcSet?.clearProfitData();
     }
 
     setResistances(data) {
         for (const res of ['anemo', 'cryo', 'dendro', 'electro', 'geo', 'hydro', 'phys', 'pyro']) {
             this.resistances[res] = parseInt(data[res]) || 0;
         }
+        this.parentCalcSet?.clearProfitData();
     }
 
     getResistances() {

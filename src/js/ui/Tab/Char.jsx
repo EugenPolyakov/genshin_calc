@@ -33,7 +33,6 @@ export class CharTab extends Tab {
         return (
             <CharView
                 ref={element => { this.component = element }}
-                app={this.app}
                 title={this.title}
             />
         )
@@ -52,8 +51,8 @@ export class CharView extends React.Component {
     }
 
     handleSettingChange(name, value) {
-        let conditions = this.props.app.getConditions({objects: ['char']});
-        let oldSettings = this.props.app.getSettings();
+        let conditions = UI.Layout.app.getConditions({objects: ['char']});
+        let oldSettings = UI.Layout.app.getSettings();
         let settings = {};
 
         for (let cond of conditions) {
@@ -66,27 +65,27 @@ export class CharView extends React.Component {
 
         settings[name] = value;
 
-        this.props.app.setCharSettings(settings);
+        UI.Layout.app.setCharSettings(settings);
     }
 
     handleCharChange() {
-        let currentChar = this.props.app.getChar().object
+        let currentChar = UI.Layout.app.getChar().object
 
         UI.CharSelectReact.show({
             selectedId: currentChar.getId(),
             showReset: true,
             callback: (char) => {
                 if (char) {
-                    this.props.app.setChar(char);
+                    UI.Layout.app.setChar(char);
                 } else {
-                    this.props.app.resetBuild(this.props.app.currentSet().getChar().getId());
+                    UI.Layout.app.resetBuild(UI.Layout.app.currentSet().getChar().getId());
                 }
             },
         });
     }
 
     handleLevelChange(data) {
-        let settings = this.props.app.getSettings();
+        let settings = UI.Layout.app.getSettings();
 
         let levels = Object.assign({
             level: settings.char_level,
@@ -94,11 +93,11 @@ export class CharView extends React.Component {
             constellation: settings.char_constellation,
         }, data);
 
-        this.props.app.setCharLevels(levels);
+        UI.Layout.app.setCharLevels(levels);
     }
 
     handleSkillChange(data) {
-        let skills = this.props.app.getChar().skills;
+        let skills = UI.Layout.app.getChar().skills;
 
         let levels = Object.assign({
             attack: skills.attack,
@@ -106,11 +105,11 @@ export class CharView extends React.Component {
             burst: skills.burst,
         }, data);
 
-        this.props.app.setCharSkills(levels);
+        UI.Layout.app.setCharSkills(levels);
     }
 
     handleInfoClick(name) {
-        let char = this.props.app.getChar();
+        let char = UI.Layout.app.getChar();
         UI.WindowCharTalent.show(name, char.getId());
     }
 
@@ -125,9 +124,9 @@ export class CharView extends React.Component {
     }
 
     tabContent() {
-        let settings = this.props.app.getStats().settings;
-        let char = this.props.app.getChar();
-        let conditions = this.props.app.getConditions({objects: ['char']});
+        let settings = UI.Layout.app.getStats().settings;
+        let char = UI.Layout.app.getChar();
+        let conditions = UI.Layout.app.getConditions({objects: ['char']});
 
         return (
             <FullHeight>
@@ -135,7 +134,7 @@ export class CharView extends React.Component {
                     <CharObjectBlock
                         char={char}
                         settings={settings}
-                        skills={this.props.app.getChar().skills}
+                        skills={UI.Layout.app.getChar().skills}
                         onObjectChange={() => this.handleCharChange()}
                         onInfoClick={(name) => this.handleInfoClick(name)}
                         onLevelChange={(data) => this.handleLevelChange(data)}

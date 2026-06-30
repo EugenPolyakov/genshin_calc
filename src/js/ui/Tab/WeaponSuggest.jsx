@@ -48,7 +48,6 @@ export class WeaponSuggestTab extends Tab {
         return (
             <WeaponSuggestView
                 ref={element => { this.component = element }}
-                app={this.app}
                 title={this.title}
             />
         )
@@ -99,7 +98,7 @@ export class WeaponSuggestView extends React.Component {
 
     loadDefaultListSettings() {
         let savedSettings = this.loadWeaponSettings();
-        let showBeta = this.props.app.showBetaContent();
+        let showBeta = UI.Layout.app.showBetaContent();
 
         for (let type of DB.Weapons.getKeys(showBeta)) {
             let weapons = DB.Weapons.get(type);
@@ -156,11 +155,11 @@ export class WeaponSuggestView extends React.Component {
     }
 
     getWeaponType() {
-        return this.props.app.getChar().object.weapon;
+        return UI.Layout.app.getChar().object.weapon;
     }
 
     dataFeaturesItems() {
-        return Feature2.buildDropdown(this.props.app.currentSet());
+        return Feature2.buildDropdown(UI.Layout.app.currentSet());
     }
 
     dataWeaponList() {
@@ -170,7 +169,7 @@ export class WeaponSuggestView extends React.Component {
     loadWeaponSettings() {
         let result = {};
         try {
-            result = JSON.parse(this.props.app.getSetting('suggester_weapon'));
+            result = JSON.parse(UI.Layout.app.getSetting('suggester_weapon'));
             if (!Object.isObject(result)) {
                 result = {};
             }
@@ -179,7 +178,7 @@ export class WeaponSuggestView extends React.Component {
     }
 
     saveWeaponSettings() {
-        this.props.app.setSetting('suggester_weapon', JSON.stringify(this.state.weaponList));
+        UI.Layout.app.setSetting('suggester_weapon', JSON.stringify(this.state.weaponList));
     }
 
     handleSettingsOpen() {
@@ -194,7 +193,7 @@ export class WeaponSuggestView extends React.Component {
 
     handleListOpen() {
         let weaponType = this.getWeaponType();
-        let showBeta = this.props.app.showBetaContent();
+        let showBeta = UI.Layout.app.showBetaContent();
 
         this.listModal.show(
             {
@@ -235,19 +234,19 @@ export class WeaponSuggestView extends React.Component {
     }
 
     handleFeature(feature) {
-        this.props.app.setFeature(feature);
-        this.props.app.refresh();
+        UI.Layout.app.setFeature(feature);
+        UI.Layout.app.refresh();
     }
 
     handleDisplayMode(mode) {
         this.setState({displayMode: mode});
-        this.props.app.setDisplayMode(mode);
+        UI.Layout.app.setDisplayMode(mode);
     }
 
     handleApplyWeapon(data) {
         let weapon = DB.Weapons.getById(data.weaponId);
 
-        let build = this.props.app.currentSet();
+        let build = UI.Layout.app.currentSet();
         let settings = {};
 
         if (data.suggestName) {
@@ -282,7 +281,7 @@ export class WeaponSuggestView extends React.Component {
         this.lastBuild = build.getHash();
         this.state.baseFeature = build.getFeatureResultByName(this.state.feature);
 
-        this.props.app.refresh({objects: ['build']});
+        UI.Layout.app.refresh({objects: ['build']});
     }
 
     handleStartSuggest() {
@@ -306,7 +305,7 @@ export class WeaponSuggestView extends React.Component {
         let weaponType = this.getWeaponType();
         let weaponDb = DB.Weapons.get(weaponType);
         let items = [];
-        let showBeta = this.props.app.showBetaContent();
+        let showBeta = UI.Layout.app.showBetaContent();
 
         for (let weaponName of weaponDb.getKeys(showBeta)) {
             let weaponSettings = this.state.weaponList[weaponType][weaponName];
@@ -351,7 +350,7 @@ export class WeaponSuggestView extends React.Component {
             return;
         }
 
-        let hash = this.props.app.currentSet().getHash();
+        let hash = UI.Layout.app.currentSet().getHash();
         if (this.lastBuild == hash && this.lastFeature == this.state.feature && !this.settingsChanged) {
             return;
         }
@@ -364,7 +363,7 @@ export class WeaponSuggestView extends React.Component {
             this.factory.terminate();
         }
 
-        let build = this.props.app.currentSet();
+        let build = UI.Layout.app.currentSet();
 
         this.settingsChanged = false;
         this.lastBuild = build.getHash();
@@ -391,10 +390,10 @@ export class WeaponSuggestView extends React.Component {
                 isLoading: true,
             });
 
-            let showBeta = this.props.app.showBetaContent();
+            let showBeta = UI.Layout.app.showBetaContent();
 
             this.factory.run({
-                build: this.props.app.currentSet(),
+                build: UI.Layout.app.currentSet(),
                 feature: this.state.feature,
                 weaponType: weaponType,
                 showBeta: showBeta,
@@ -450,7 +449,7 @@ export class WeaponSuggestView extends React.Component {
             this.storageCompleteCallback(item, results);
         };
 
-        let showBeta = this.props.app.showBetaContent();
+        let showBeta = UI.Layout.app.showBetaContent();
         let build = this.makeBuildFromItem(item);
 
         this.suggestFactory.run({
@@ -465,7 +464,7 @@ export class WeaponSuggestView extends React.Component {
     }
 
     makeBuildFromItem(item) {
-        let build = this.props.app.currentSet().clone();
+        let build = UI.Layout.app.currentSet().clone();
         let weapon = DB.Weapons.getById(item.weaponId);
 
         build.setWeapon(weapon);

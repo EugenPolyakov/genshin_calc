@@ -40,7 +40,6 @@ export class ArtifactsTab extends Tab {
         return (
             <ArtifactsView
                 ref={element => { this.component = element }}
-                app={this.app}
                 title={this.title}
             />
         )
@@ -71,22 +70,22 @@ export class ArtifactsView extends React.Component {
 
     replaceArtifacts(arts) {
         for (let art of arts) {
-            this.props.app.setArtifact(art, true);
+            UI.Layout.app.setArtifact(art, true);
         }
-        this.props.app.refresh({objects: ['build']});
+        UI.Layout.app.refresh({objects: ['build']});
     }
 
     handleSettingChange(name, value) {
-        let oldSettings = this.props.app.currentSet().artifacts.getSettings();
+        let oldSettings = UI.Layout.app.currentSet().artifacts.getSettings();
         oldSettings[name] = value;
-        this.props.app.setArtifactsSettings(oldSettings);
+        UI.Layout.app.setArtifactsSettings(oldSettings);
     }
 
     handleScanClick() {
         UI.ArtifactScanner.show((art) => {
             if (art) {
                 UI.ArtifactScanner.hide();
-                this.props.app.setArtifact(art);
+                UI.Layout.app.setArtifact(art);
             }
         }, {ignoreStorage: true});
     }
@@ -99,7 +98,7 @@ export class ArtifactsView extends React.Component {
                 }
 
                 let maxLevel = DB.Artifacts.Rarity[data.maxRarity-1].maxLevel;
-                let arts = this.props.app.getArtifacts();
+                let arts = UI.Layout.app.getArtifacts();
 
                 for (const slot of Object.keys(arts)) {
                     if (data.slots.length && !data.slots.includes(slot)) {
@@ -114,56 +113,56 @@ export class ArtifactsView extends React.Component {
                         art.level  = Math.min(art.level, maxLevel);
                         art.rarity = Math.max(Math.min(art.rarity, data.maxRarity), data.minRarity);
 
-                        this.props.app.currentSet().setArtifact(art);
+                        UI.Layout.app.currentSet().setArtifact(art);
                     }
                 }
 
-                this.props.app.refresh();
+                UI.Layout.app.refresh();
             },
         });
     }
 
     handleClearClick() {
         UI.ConfirmWindow.show('modal.confirm', 'artifact_view.clear_confirm', () => {
-            this.props.app.currentSet().clearArtifacts();
-            this.props.app.refresh();
+            UI.Layout.app.currentSet().clearArtifacts();
+            UI.Layout.app.refresh();
         });
     }
 
     handleArtifactOpen(slot) {
-        let art = this.props.app.getArtifacts()[slot];
+        let art = UI.Layout.app.getArtifacts()[slot];
 
         UI.ArtifactWindow.show((art) => {
-            this.props.app.setArtifact(art);
+            UI.Layout.app.setArtifact(art);
         }, art, slot);
     }
 
     handleArtifactDelete(slot) {
-        let art = this.props.app.getArtifacts()[slot];
+        let art = UI.Layout.app.getArtifacts()[slot];
 
         UI.ConfirmWindow.show('modal.confirm', 'artifact_pool.confirm_unequip_artifact', () => {
-            this.props.app.removeArtifact(art);
+            UI.Layout.app.removeArtifact(art);
         });
     }
 
     handleArtifactStorage(slot) {
-        let art = this.props.app.getArtifacts()[slot];
+        let art = UI.Layout.app.getArtifacts()[slot];
 
         if (art) {
             UI.ConfirmWindow.show('modal.confirm', 'artifact_pool.confirm_add_storage', () => {
-                this.props.app.storage.artifacts.addArtifacts([art]);
-                this.props.app.refresh({objects: ['storage.artifacts']});
+                UI.Layout.app.storage.artifacts.addArtifacts([art]);
+                UI.Layout.app.refresh({objects: ['storage.artifacts']});
             });
         }
     }
 
     tabContent() {
-        let data = this.props.app.getStats();
-        let conditions = this.props.app.getConditions({objects: ['artifacts']});
+        let data = UI.Layout.app.getStats();
+        let conditions = UI.Layout.app.getConditions({objects: ['artifacts']});
 
         let artifacts = [];
-        let artData = this.props.app.getArtifacts();
-        let storageHashes = this.props.app.storage.artifacts.storageHashes();
+        let artData = UI.Layout.app.getArtifacts();
+        let storageHashes = UI.Layout.app.storage.artifacts.storageHashes();
 
         for (let slot of Object.keys(artData)) {
             let artifact = artData[slot];
@@ -209,11 +208,11 @@ export class ArtifactsView extends React.Component {
                         onChange={(name, value) => this.handleSettingChange(name, value)}
                     />
                     <StatsInfo
-                        build={this.props.app.currentSet()}
+                        build={UI.Layout.app.currentSet()}
                     />
                     <RollsInfo
-                        build={this.props.app.currentSet()}
-                        feature={this.props.app.getFeature()}
+                        build={UI.Layout.app.currentSet()}
+                        feature={UI.Layout.app.getFeature()}
                     />
                 </FullHeightScrollable>
             </FullHeight>

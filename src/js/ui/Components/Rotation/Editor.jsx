@@ -32,7 +32,7 @@ export class RotationEditor extends React.Component {
     }
 
     refreshModal() {
-        this.props.app.refresh({objects: ['storage.rotation']});
+        UI.Layout.app.refresh({objects: ['storage.rotation']});
         this.handleOpenStorage();
     }
 

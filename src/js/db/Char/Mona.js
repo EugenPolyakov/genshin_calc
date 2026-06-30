@@ -637,7 +637,7 @@ export const Mona = new DbObjectChar({
                 },
             }),
             new ConditionBoolean({
-                name: 'party.mona_prophecy_of_submersion_offield',
+                name: 'common.char_status_shield_off_field',
                 serializeId: 6,
                 title: 'talent_name.mona_prophecy_of_submersion',
                 description: 'talent_descr.mona_prophecy_of_submersion_hex_2',

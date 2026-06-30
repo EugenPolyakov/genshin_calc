@@ -5,7 +5,7 @@ import { StatTable } from "../StatTable";
 export const SKILL_LEVELS = new StatTable('', [1, 2, 4, 6, 8, 10])
 
 export class CalcObjectCharacter extends CalcObject {
-    constructor() {
+    constructor (parentCalcSet) {
         super();
         this.levels = {
             level: 1,
@@ -17,12 +17,14 @@ export class CalcObjectCharacter extends CalcObject {
             elemental: 1,
             burst: 1,
         };
+        this.parentCalcSet = parentCalcSet;
     }
 
     setLevels(data) {
         this.levels.level = data.level;
         this.levels.ascension = data.ascension;
         this.levels.constellation = data.constellation;
+        this.parentCalcSet?.clearProfitData();
     }
 
     getLevels() {
@@ -37,6 +39,7 @@ export class CalcObjectCharacter extends CalcObject {
         this.skills.attack = data.attack;
         this.skills.elemental = data.elemental;
         this.skills.burst = data.burst;
+        this.parentCalcSet?.clearProfitData();
     }
 
     getId() {

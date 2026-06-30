@@ -42,7 +42,6 @@ export class ArtifactsGeneratorTab extends Tab {
         return (
             <ArtifactsGeneratorView
                 ref={element => { this.component = element }}
-                app={this.app}
                 title={this.title}
             />
         )
@@ -74,7 +73,7 @@ export class ArtifactsGeneratorView extends React.Component {
     }
 
     dataFeaturesItems() {
-        return Feature2.buildDropdown(this.props.app.currentSet());
+        return Feature2.buildDropdown(UI.Layout.app.currentSet());
     }
 
     handleSettingsOpen() {
@@ -91,17 +90,17 @@ export class ArtifactsGeneratorView extends React.Component {
     }
 
     handleFeature(feature) {
-        this.props.app.setFeature(feature);
-        this.props.app.refresh();
+        UI.Layout.app.setFeature(feature);
+        UI.Layout.app.refresh();
     }
 
     handleDisplayMode(mode) {
         this.setState({displayMode: mode});
-        this.props.app.setDisplayMode(mode);
+        UI.Layout.app.setDisplayMode(mode);
     }
 
     makeBuildWithResults(data) {
-        let build = this.props.app.currentSet().clone();
+        let build = UI.Layout.app.currentSet().clone();
         for (let art of data) {
             build.setArtifact(art);
         }
@@ -122,7 +121,7 @@ export class ArtifactsGeneratorView extends React.Component {
         this.lastBuild = build.getHash();
         this.state.baseFeature = build.getFeatureResultByName(this.state.feature);
 
-        this.props.app.replaceSet(build);
+        UI.Layout.app.replaceSet(build);
     }
 
     handleCompareResult(data) {
@@ -132,7 +131,7 @@ export class ArtifactsGeneratorView extends React.Component {
 
     triggerGenerate(feature) {
         feature = feature || this.state.feature;
-        let hash = this.props.app.currentSet().getHash();
+        let hash = UI.Layout.app.currentSet().getHash();
 
         if (this.lastBuild == hash && this.lastFeature == feature && !this.settingsChanged) {
             return;
@@ -153,15 +152,15 @@ export class ArtifactsGeneratorView extends React.Component {
         });
 
         this.factory.run({
-            build: this.props.app.currentSet(),
+            build: UI.Layout.app.currentSet(),
             feature: feature,
             settings: generatorSettings(this.settings),
         });
     }
 
     generateCompleteCallback(result) {
-        let baseFeature = this.props.app.currentSet().getFeatureResultByName(this.state.feature);
-        let build = this.props.app.currentSet().clone();
+        let baseFeature = UI.Layout.app.currentSet().getFeatureResultByName(this.state.feature);
+        let build = UI.Layout.app.currentSet().clone();
 
         for (let item of result) {
             for (let art of item.artifacts) {

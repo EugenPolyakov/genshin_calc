@@ -3,13 +3,15 @@ import { Rotation } from "../Rotation";
 import { RotationCompiler } from "../RotationCompiler";
 
 export class CalcObjectRotation extends CalcObject {
-    constructor() {
+    constructor(parentCalcSet) {
         super();
         this.object = new Rotation();
+        this.parentCalcSet = parentCalcSet;
     }
 
     set(data) {
         this.object = data ? data.clone() : new Rotation();
+        this.parentCalcSet?.clearProfitData();
     }
 
     isBeta() {

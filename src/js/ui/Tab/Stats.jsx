@@ -127,7 +127,6 @@ export class StatsTab extends Tab {
         return (
             <StatsView
                 ref={element => { this.component = element }}
-                app={this.app}
                 title={lang.get('tab_header.stat_view')}
             />
         );
@@ -393,7 +392,7 @@ class StatsView extends React.Component {
     }
 
     render() {
-        let build = this.props.app.currentSet();
+        let build = UI.Layout.app.currentSet();
         let buildData = build.getBuildData();
         let stats = buildData.stats;
         buildData.applyPostEffects();

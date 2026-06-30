@@ -456,12 +456,12 @@ export class Artifact {
 
         this.tryDoRightSubstats();
         Object.keys(this.subStats).forEach((stat) => {
-            if (stat.unactivated)
+            let statData = this.subStats[stat];
+            if (statData.unactivated)
                 result.push(25);
             result.push(DB.Artifacts.Substats.getId(stat));
 
             let substat = DB.Artifacts.Substats.get(stat);
-            let statData = this.subStats[stat];
             let value = statData.value;
 
             if (statData.values && statData.values.length > 0 && value.toFixed(1) == substat.rollsToValue[this.rarity - 1][statData.values.join('')].toFixed(1)) {

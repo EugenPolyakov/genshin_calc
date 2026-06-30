@@ -14,7 +14,6 @@ export class EnkaImportModal extends Modal {
         return (
             <EnkaImportComponent
                 ref={(obj) => this.modal = obj}
-                app={this.app}
                 storage={this.app.storage.char}
                 artifactStorage={this.app.storage.artifacts}
                 addClass="lockartifacts-select-modal"
@@ -48,27 +47,27 @@ export class EnkaImportComponent extends React.Component {
 
     applyCalcSet(set) {
         UI.ConfirmWindow.show('modal.confirm', 'enka_import.confirm_load_char', () => {
-            this.props.app.replaceSet(set.clone());
+            UI.Layout.app.replaceSet(set.clone());
         });
     }
 
     saveCalcSet(set) {
         UI.ConfirmWindow.show('modal.confirm', 'enka_import.confirm_save_char', () => {
-            this.props.app.storage.char.add(set.clone(), {});
-            this.props.app.refresh();
-            this.props.app.queueUpdate();
+            UI.Layout.app.storage.char.add(set.clone(), {});
+            UI.Layout.app.refresh();
+            UI.Layout.app.queueUpdate();
         });
     }
 
     saveAllCharacters(chars) {
         UI.ConfirmWindow.show('modal.confirm', 'enka_import.confirm_save_all_chars', () => {
-            this.props.app.addCharactersToStorage(chars);
+            UI.Layout.app.addCharactersToStorage(chars);
         });
     }
 
     saveAllArtifacts(arts) {
         UI.ConfirmWindow.show('modal.confirm', 'enka_import.confirm_save_all_arts', () => {
-            this.props.app.addArtifactsToStorage(arts);
+            UI.Layout.app.addArtifactsToStorage(arts);
         });
     }
 

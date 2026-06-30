@@ -38,7 +38,6 @@ export class ShareTab extends Tab {
         return (
             <ShareView
                 ref={element => { this.component = element }}
-                app={this.app}
                 title={this.title}
             />
         );
@@ -54,7 +53,7 @@ export class ShareView extends React.Component {
             filterString: '',
         };
         this.needFiltering = true;
-        this.storage = this.props.app.storage.char;
+        this.storage = UI.Layout.app.storage.char;
     }
 
     reloadItems() {
@@ -68,7 +67,7 @@ export class ShareView extends React.Component {
 
         let index = 0;
         let prefix = Math.random();
-        let showBeta = this.props.app.showBetaContent();
+        let showBeta = UI.Layout.app.showBetaContent();
 
         for (let item of this.storage.listDecoded(showBeta)) {
             let title = item.title || lang.get(item.data.getChar().object.getName());
@@ -77,7 +76,7 @@ export class ShareView extends React.Component {
                 key: index +' '+ prefix,
                 callbackData: {index: item.index},
                 title: title,
-                sortTitle: title.toLocaleUpperCase() + ' ' + lang.get(item.data.getChar().object.getName()).toLocaleUpperCase(),
+                sortTitle: (title + ' ' + lang.get(item.data.getChar().object.getName())).toLocaleUpperCase(),
                 set: item.data,
             });
             ++index;
@@ -101,7 +100,7 @@ export class ShareView extends React.Component {
     }
 
     dataBuildLink() {
-        let hash = Serializer.pack(this.props.app.currentSet());
+        let hash = Serializer.pack(UI.Layout.app.currentSet());
         let url = window.location.toString();
         url = url.replace(/#.*$/, '');
         url += '#'+ hash;
@@ -119,11 +118,11 @@ export class ShareView extends React.Component {
     }
 
     handleSaveBuild() {
-        this.storage.add(this.props.app.currentSet().clone(), {
+        this.storage.add(UI.Layout.app.currentSet().clone(), {
             title: this.state.saveString,
         });
 
-        this.props.app.refresh({objects: ['storage.characters']});
+        UI.Layout.app.refresh({objects: ['storage.characters']});
     }
 
     handleRenameBuild(build, data) {
@@ -132,27 +131,27 @@ export class ShareView extends React.Component {
 
         UI.PromptWindow.show('modal.edit_char_name', item.title, (text) => {
             this.storage.setTitle(index, text);
-            this.props.app.refresh({objects: ['storage.characters']});
+            UI.Layout.app.refresh({objects: ['storage.characters']});
         });
     }
 
     handleOverwriteBuild(build, data) {
         UI.ConfirmWindow.show('modal.confirm', 'share_view.confirm_overwrite', () => {
-            this.storage.replace(data.index, this.props.app.currentSet().clone());
-            this.props.app.refresh({objects: ['storage.characters']});
+            this.storage.replace(data.index, UI.Layout.app.currentSet().clone());
+            UI.Layout.app.refresh({objects: ['storage.characters']});
         });
     }
 
     handleDeleteBuild(build, data) {
         UI.ConfirmWindow.show('modal.confirm', 'share_view.confirm_delete', () => {
             this.storage.remove(data.index);
-            this.props.app.refresh({objects: ['storage.characters']});
+            UI.Layout.app.refresh({objects: ['storage.characters']});
         });
     }
 
     handleLoadBuild(build) {
         UI.ConfirmWindow.show('modal.confirm', 'share_view.confirm_load', () => {
-            this.props.app.replaceSet(build)
+            UI.Layout.app.replaceSet(build)
         });
     }
 

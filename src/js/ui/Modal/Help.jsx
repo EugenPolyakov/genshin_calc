@@ -14,7 +14,6 @@ export class HelpModal extends Modal {
         return (
             <HelpComponent
                 ref={(obj) => this.modal = obj}
-                app={this.app}
             />
         )
     }
@@ -30,7 +29,7 @@ export class HelpComponent extends React.Component {
     }
 
     show(title, name) {
-        let url = '/help/'+ lang.getLang() +'/'+ name +'.html?v='+ this.props.app.getVersion();
+        let url = '/help/'+ lang.getLang() +'/'+ name +'.html?v='+ UI.Layout.app.getVersion();
 
         this.setState({
             title: title,

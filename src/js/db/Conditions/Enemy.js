@@ -63,7 +63,7 @@ export const Enemy = [
     //     title: 'talent_name.enemy_reaction_quicken',
     // }),
     new ConditionBoolean({
-        name: 'enemy.superconduct',
+        name: 'common.enemy_superconduct',
         serializeId: 15,
         title: 'talent_name.enemy_reaction_superconduct',
         description: 'talent_descr.enemy_reaction_superconduct',

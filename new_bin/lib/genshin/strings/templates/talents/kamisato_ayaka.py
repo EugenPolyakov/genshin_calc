@@ -94,12 +94,12 @@ char_kamisato_ayaka = TemplateList(
     ),
     blizzard_blade_seki_no_to_rus=Template(
         sentences=[
-            ['text_percent_dmg'],
+            ['20:'],
         ],
     ),
     blizzard_blade_seki_no_to_eng=Template(
         sentences=[
-            ['ignore', 'text_percent_dmg'],
+            ['ignore', '20:'],
         ],
     ),
     ebb_and_flow=Template(

@@ -64,7 +64,6 @@ export class BestArtifactTab extends Tab {
         return (
             <BestArtifact
                 ref={BestArtifact => { this.component = BestArtifact }}
-                app={this.app}
                 feature={this.app.getFeature()}
                 displayMode={this.app.getDisplayMode()}
                 onFeatureChanged={(feature) => this.app.setFeature(feature)}
@@ -78,7 +77,7 @@ class BestArtifact extends React.Component {
         super(props);
         this.lang = new Lang();
 
-        this.storage = this.props.app.storage.artifacts;
+        this.storage = UI.Layout.app.storage.artifacts;
         this.factory = new WorkerFactorySuggestArtifacts({
             callback: (data) => this.suggestCompleteCallback(data),
             startCallback: (data) => this.suggestStartCallback(data),
@@ -235,7 +234,7 @@ class BestArtifact extends React.Component {
             this.filteredArtifacts.push(art);
         }
 
-        let artifacts = this.props.app.currentSet().getArtifacts();
+        let artifacts = UI.Layout.app.currentSet().getArtifacts();
         for (let slot of DB.Artifacts.Slots.getKeys()) {
             if (hasSlots[slot]) continue;
 
@@ -256,7 +255,7 @@ class BestArtifact extends React.Component {
     }
 
     dataFeaturesItems() {
-        return Feature2.buildDropdown(this.props.app.currentSet());
+        return Feature2.buildDropdown(UI.Layout.app.currentSet());
     }
 
     dataArtifactGroups() {
@@ -272,13 +271,13 @@ class BestArtifact extends React.Component {
     }
 
     savedHashes() {
-        return this.props.app.storage.char.savedHashes();
+        return UI.Layout.app.storage.char.savedHashes();
     }
 
     handleFeature(selectedItem) {
         let feature = selectedItem.value;
         this.setState({feature: feature});
-        this.props.app.setFeature(feature);
+        UI.Layout.app.setFeature(feature);
     }
 
     handleFeatureType(selectedItem) {
@@ -361,7 +360,7 @@ class BestArtifact extends React.Component {
             ignoreSideEffects: 1,
             staticStats: [],
         };
-        let calcset = this.props.app.currentSet().clone();
+        let calcset = UI.Layout.app.currentSet().clone();
         let feature = calcset.getFeatureByName(this.state.feature);
         let vBuildData = calcset.getBuildData();
         let tree = feature.getTree(vBuildData, compilerOpts);
@@ -429,7 +428,7 @@ class BestArtifact extends React.Component {
     }
 
     handleApplyResult(set) {
-        this.props.app.replaceSet(set);
+        UI.Layout.app.replaceSet(set);
     }
 
     handleCompareResult(set) {
@@ -444,7 +443,7 @@ class BestArtifact extends React.Component {
 
     handleDisplayMode(mode) {
         this.setState({displayMode: mode});
-        this.props.app.setDisplayMode(mode);
+        UI.Layout.app.setDisplayMode(mode);
     }
 
     handleArtifactLock(art, value) {
@@ -454,23 +453,9 @@ class BestArtifact extends React.Component {
         if (item) {
             item.setLocked(value);
             this.storage.updateByHash(hash, item);
-            this.props.app.queueUpdate();
+            UI.Layout.app.queueUpdate();
 
-            for (let result of this.state.result.items) {
-                let arts = result.getArtifacts();
-                for (let slot of Object.keys(arts)) {
-                    let buildArt = arts[slot];
-                    if (!buildArt) {
-                        continue
-                    }
-
-                    if (hash == buildArt.getHash()) {
-                        art.setLocked(value);
-                    }
-                }
-            }
-
-            this.setState({view: this.state.view})
+            this.setState({view: this.state.view});
         }
     }
 
@@ -482,7 +467,7 @@ class BestArtifact extends React.Component {
         UI.LockArtifacts.show({
             closeCallback: () => {
                 setTimeout(() => {
-                    this.props.app.refresh({
+                    UI.Layout.app.refresh({
                         objects: ['storage.artifacts'],
                     });
                 }, 1);
@@ -557,7 +542,7 @@ class BestArtifact extends React.Component {
         this.progressModal.hide();
 
         for (let item of data) {
-            let build = this.props.app.currentSet().clone();
+            let build = UI.Layout.app.currentSet().clone();
             for (let art of item.artifacts) {
                 build.setArtifact(art);
             }
@@ -609,7 +594,7 @@ class BestArtifact extends React.Component {
             settings: this.state.settings,
             feature: this.state.feature,
             featureType: this.state.featureType,
-            calcset: this.props.app.currentSet(),
+            calcset: UI.Layout.app.currentSet(),
             maxThreads: this.state.maxThreads,
             fastFilter: this.state.artifactFilter,
         });

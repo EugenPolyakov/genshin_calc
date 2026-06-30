@@ -24,7 +24,6 @@ export class ModalLockArtifacts extends Modal {
         return (
             <LockArtifactComponent
                 ref={(obj) => this.modal = obj}
-                app={this.app}
                 storage={this.app.storage.char}
                 artifactStorage={this.app.storage.artifacts}
                 addClass="lockartifacts-select-modal"
@@ -62,7 +61,7 @@ class LockArtifactComponent extends ModalSelectBase {
         }
 
         let index = 0;
-        let showBeta = this.props.app.showBetaContent();
+        let showBeta = UI.Layout.app.showBetaContent();
 
         for (let item of this.props.storage.listDecoded(showBeta)) {
             let build = item.data;
@@ -80,7 +79,7 @@ class LockArtifactComponent extends ModalSelectBase {
                 id: 'save'+ (index++),
                 build: item.data,
                 title: item.title,
-                sortTitle: title.toUpperCase(),
+                sortTitle: (title + ' ' + lang.get(char.getName())).toLocaleUpperCase(),
                 storageArts: storageArts,
             });
         }
@@ -173,7 +172,7 @@ class LockArtifactComponent extends ModalSelectBase {
                 artifactsHashes = artifactsHashes.concat( item.build.getArtifactsHashList() );
             }
         } else {
-            let build = this.props.app.currentSet();
+            let build = UI.Layout.app.currentSet();
             artifactsHashes = build.getArtifactsHashList();
         }
 

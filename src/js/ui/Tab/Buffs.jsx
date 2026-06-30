@@ -39,7 +39,6 @@ export class BuffsTab extends Tab {
         return (
             <Buffs
                 ref={element => { this.component = element }}
-                app={this.app}
                 title={this.title}
             />
         )
@@ -70,11 +69,11 @@ export class Buffs extends React.Component {
     handleSettingChange(name, value) {
         let data = {};
         data[name] = value;
-        this.props.app.modifyBuffsSettings(data);
+        UI.Layout.app.modifyBuffsSettings(data);
     }
 
     handlePartyChars(ids) {
-        this.props.app.setPartyChars(ids);
+        UI.Layout.app.setPartyChars(ids);
     }
 
     handleCharLoad(charId, data) {
@@ -86,7 +85,7 @@ export class Buffs extends React.Component {
                 stats: data ? data.stats: null,
                 settings: data ? data.settings: null,
                 callback: (data) => {
-                    this.props.app.modifyBuffsSettings(
+                    UI.Layout.app.modifyBuffsSettings(
                         partyCharSettings(char, data)
                     );
                 },
@@ -105,7 +104,7 @@ export class Buffs extends React.Component {
     }
 
     tabContent() {
-        let settings = this.props.app.getStats().settings;
+        let settings = UI.Layout.app.getStats().settings;
 
         let charItems = [];
         for (let name of ['party_char_1', 'party_char_2', 'party_char_3']) {
@@ -167,7 +166,7 @@ export class Buffs extends React.Component {
                         </AccordionItem>
                         <AccordionItem id="weapons" title={makeTitleWithCount(this.strings.weapons, this.weaponsConditions, settings)}>
                             <ConditionList
-                                showBeta={this.props.app.showBetaContent()}
+                                showBeta={UI.Layout.app.showBetaContent()}
                                 items={this.weaponsConditions}
                                 settings={settings}
                                 onChange={(name, value) => this.handleSettingChange(name, value)}

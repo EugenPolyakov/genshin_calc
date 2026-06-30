@@ -35,7 +35,7 @@ export const DisenchantmentInDeepShadow = new ArtifactSet({
                     },
                 }),
                 new ConditionBoolean({
-                    name: 'enemy.superconduct',
+                    name: 'common.enemy_superconduct',
                     serializeId: 81,
                     title: 'set_bonus.disenchantment_in_deep_shadow_4',
                     description: 'set_descr.disenchantment_in_deep_shadow_4_2',

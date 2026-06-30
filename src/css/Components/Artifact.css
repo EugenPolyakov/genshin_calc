@@ -50,6 +50,10 @@
     box-sizing: border-box;
 }
 
+.artifact-list-box .substat.unactivated {
+    text-decoration: line-through;
+}
+
 .artifact-list-box .stat {
     color: #BEAEA9;
     margin-right: 3px;

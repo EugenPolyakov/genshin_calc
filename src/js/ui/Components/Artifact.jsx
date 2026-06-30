@@ -13,12 +13,13 @@ export function ArtifactList(props) {
 
     for (let item of props.items) {
         let hash = item.getHash();
+        let realArt = UI.Layout.app.storage.artifacts.getByHash(hash);
         items.push(
             <ArtifactListItem
                 key={hash}
                 hash={hash}
                 art={item}
-                locked={item.isLocked()}
+                locked={realArt ? realArt.isLocked() : false }
                 onLock={props.onLock}
                 showLockCallback={props.showLockCallback}
                 charIcons={props.savedHashes ? props.savedHashes[hash] : null}
@@ -95,7 +96,7 @@ export class ArtifactListItem extends React.Component {
             let value = art.getSubStats()[item];
             let stat = item.replace('_percent', '');
             substats[value.index] = (
-                <div key={item} className={'substat'+ (item == this.props.highlightStat ? ' highlight' : '')}>
+                <div key={item} className={'substat'+ (item == this.props.highlightStat ? ' highlight' : '') + (value.unactivated ? ' unactivated' : '')}>
                     <span className="stat">{lang.get('stat_mini.'+ stat)}</span>
                     <span className="value">{Stats.format(item, value.value, {signed: false})}</span>
                 </div>
@@ -123,7 +124,7 @@ export class ArtifactListItem extends React.Component {
                     <div className="main">
                         <ArtifactListItemButtons
                             art={art}
-                            locked={art.isLocked()}
+                            locked={this.props.locked}
                             onClick={this.props.onClick}
                             onEdit={this.props.onEdit}
                             onDelete={this.props.onDelete}

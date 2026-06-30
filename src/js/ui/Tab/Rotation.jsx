@@ -30,7 +30,6 @@ export class RotationTab extends Tab {
         return (
             <RotationView
                 ref={element => { this.component = element }}
-                app={this.app}
                 title={this.title}
             />
         )
@@ -49,17 +48,16 @@ export class RotationView extends React.Component {
     }
 
     handleRotationChange(rotation) {
-        this.props.app.setRotation(rotation);
-        this.props.app.refresh({objects: ['build']});
+        UI.Layout.app.setRotation(rotation);
+        UI.Layout.app.refresh({objects: ['build']});
     }
 
     render() {
         return (
             <ReactTab title={this.strings.title}>
                 <RotationEditor
-                    app={this.props.app}
-                    build={this.props.app.currentSet()}
-                    storage={this.props.app.storage.rotation}
+                    build={UI.Layout.app.currentSet()}
+                    storage={UI.Layout.app.storage.rotation}
                     onRotationChange={(rotation) => this.handleRotationChange(rotation)}
                 />
             </ReactTab>

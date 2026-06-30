@@ -120,10 +120,11 @@ for (let key of Object.keys(CUSTOM_STATS)) {
 }
 
 export class CalcObjectBuffs extends CalcObject {
-    constructor() {
+    constructor(parentCalcSet) {
         super();
         this.buffs = DB.Buffs;
         this.partyCharIds = [];
+        this.parentCalcSet = parentCalcSet;
     }
 
     get() {
@@ -228,6 +229,7 @@ export class CalcObjectBuffs extends CalcObject {
             }
         }
         this.removeInvalidSettings();
+        this.parentCalcSet?.clearProfitData();
     }
 
     getPartyChars() {

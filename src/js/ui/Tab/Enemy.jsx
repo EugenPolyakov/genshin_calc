@@ -35,7 +35,6 @@ export class EnemyTab extends Tab {
         return (
             <EnemyView
                 ref={element => { this.component = element }}
-                app={this.app}
                 title={this.title}
             />
         )
@@ -54,24 +53,24 @@ export class EnemyView extends React.Component {
     }
 
     handleEnemyChange() {
-        let enemy = this.props.app.getEnemy().object;
+        let enemy = UI.Layout.app.getEnemy().object;
         let enemyId = enemy ? enemy.getId() : 0;
 
         UI.EnemySelectReact.show({
             selectedId: enemyId,
             callback: (item) => {
                 if (item) {
-                    this.props.app.setEnemy(item);
+                    UI.Layout.app.setEnemy(item);
                 } else {
-                    this.props.app.setEnemy(null);
+                    UI.Layout.app.setEnemy(null);
                 }
             },
         });
     }
 
     handleSettingChange(name, value) {
-        let conditions = this.props.app.getConditions({objects: ['enemy']});
-        let oldSettings = this.props.app.getSettings();
+        let conditions = UI.Layout.app.getConditions({objects: ['enemy']});
+        let oldSettings = UI.Layout.app.getSettings();
         let settings = {};
 
         for (let cond of conditions) {
@@ -83,19 +82,19 @@ export class EnemyView extends React.Component {
 
         settings[name] = value;
 
-        this.props.app.setEnemySettings(settings);
+        UI.Layout.app.setEnemySettings(settings);
     }
 
     handleLevelChange(level) {
-        this.props.app.setEnemyLevels({
+        UI.Layout.app.setEnemyLevels({
             level: level,
         });
     }
 
     handleResistanceChange(element, value) {
-        let res = this.props.app.currentSet().enemy.getResistances();
+        let res = UI.Layout.app.currentSet().enemy.getResistances();
         res[element] = value;
-        this.props.app.setEnemyResistances(res);
+        UI.Layout.app.setEnemyResistances(res);
     }
 
     render() {
@@ -109,10 +108,10 @@ export class EnemyView extends React.Component {
     }
 
     tabContent() {
-        let data = this.props.app.current.getBuildData();
+        let data = UI.Layout.app.current.getBuildData();
         data.applyPostEffects();
-        let enemy = this.props.app.getEnemy().object;
-        let conditions = this.props.app.getConditions({objects: ['enemy']});
+        let enemy = UI.Layout.app.getEnemy().object;
+        let conditions = UI.Layout.app.getConditions({objects: ['enemy']});
 
         return (
             <FullHeight>
@@ -126,7 +125,7 @@ export class EnemyView extends React.Component {
                     />
                     <CustomEnemy
                         hidden={!!enemy}
-                        resistances={this.props.app.currentSet().enemy.getResistances()}
+                        resistances={UI.Layout.app.currentSet().enemy.getResistances()}
                         onResistanceChange={(element, value) => this.handleResistanceChange(element, value)}
                     />
                     <ResistanceBlock

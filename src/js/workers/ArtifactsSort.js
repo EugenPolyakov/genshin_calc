@@ -41,6 +41,7 @@ self.onmessage = function(input) {
             statValue: 0,
             setValue: setsOrders[art.getSet()],
             slotValue: slotOrders[art.getSlot()],
+            level: art.getLevel(),
         };
 
         if (sortByFeature && feature) {
@@ -70,7 +71,7 @@ self.onmessage = function(input) {
 
 
     results = results.sort( (a, b) => {
-        return b.featureValue - a.featureValue || b.statValue - a.statValue || a.setValue - b.setValue || a.slotValue - b.slotValue;
+        return b.featureValue - a.featureValue || b.statValue - a.statValue || a.setValue - b.setValue || a.slotValue - b.slotValue || b.level - a.level;
     });
 
     self.postMessage({result: results.map((i) => {return i.hash})});

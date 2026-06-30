@@ -44,7 +44,6 @@ export class FoodTab extends Tab {
         return (
             <FoodView
                 ref={element => { this.component = element }}
-                app={this.app}
                 title={this.title}
                 feature={this.app.getFeature()}
                 displayMode={this.app.getDisplayMode()}
@@ -78,12 +77,12 @@ export class FoodView extends React.Component {
     handleFeature(selectedItem) {
         let feature = selectedItem.value;
         this.setState({feature: feature});
-        this.props.app.setFeature(feature);
+        UI.Layout.app.setFeature(feature);
     }
 
     handleDisplayMode(mode) {
         this.setState({displayMode: mode});
-        this.props.app.setDisplayMode(mode);
+        UI.Layout.app.setDisplayMode(mode);
     }
 
     handleTypeChange(type) {
@@ -97,18 +96,18 @@ export class FoodView extends React.Component {
     }
 
     handleFoodSelect(food, level) {
-        let curFood  = this.props.app.getFood(this.state.foodCategory);
-        let curLevel = this.props.app.getFoodLevel(this.state.foodCategory);
+        let curFood  = UI.Layout.app.getFood(this.state.foodCategory);
+        let curLevel = UI.Layout.app.getFoodLevel(this.state.foodCategory);
 
         if (curFood == food && curLevel == level) {
-            this.props.app.setFood(this.state.foodCategory, null, 0);
+            UI.Layout.app.setFood(this.state.foodCategory, null, 0);
         } else {
-            this.props.app.setFood(this.state.foodCategory, food, level);
+            UI.Layout.app.setFood(this.state.foodCategory, food, level);
         }
     }
 
     dataFeaturesItems() {
-        return Feature2.buildDropdown(this.props.app.currentSet());
+        return Feature2.buildDropdown(UI.Layout.app.currentSet());
     }
 
     buildFoodList() {
@@ -119,7 +118,7 @@ export class FoodView extends React.Component {
             return;
         }
 
-        let build = this.props.app.currentSet().clone();
+        let build = UI.Layout.app.currentSet().clone();
         let feature = build.getFeatureByName(this.state.feature);
         if (!feature) {
             return;
@@ -129,8 +128,8 @@ export class FoodView extends React.Component {
         this.baseResult = feature.getResult(buildData)[this.state.feature];
 
         let items = data.getList();
-        let curFood  = this.props.app.getFood(this.state.foodCategory);
-        let curLevel = this.props.app.getFoodLevel(this.state.foodCategory);
+        let curFood  = UI.Layout.app.getFood(this.state.foodCategory);
+        let curLevel = UI.Layout.app.getFoodLevel(this.state.foodCategory);
 
         for (let food of items) {
             for (let level = 1; level <= 4; ++level) {
@@ -194,7 +193,6 @@ export class FoodView extends React.Component {
                             />
                         </ControlsBar>
                         <FoodTypes
-                            app={this.props.app}
                             selectedType={this.state.foodCategory}
                             onTypeChange={(type) => this.handleTypeChange(type)}
                         />
@@ -211,8 +209,8 @@ export class FoodView extends React.Component {
                             base={this.baseResult}
                             levels={this.state.levels}
                             displayMode={this.state.displayMode}
-                            selectedFoodLevel={this.props.app.getFoodLevel(this.state.foodCategory)}
-                            selectedFood={this.props.app.getFood(this.state.foodCategory)}
+                            selectedFoodLevel={UI.Layout.app.getFoodLevel(this.state.foodCategory)}
+                            selectedFood={UI.Layout.app.getFood(this.state.foodCategory)}
                             onClick={(name, level) => this.handleFoodSelect(name, level)}
                         />
                     </FullHeightScrollable>

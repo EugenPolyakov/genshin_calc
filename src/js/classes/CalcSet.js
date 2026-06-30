@@ -20,15 +20,16 @@ const serializeObjectsNames = ['char', 'weapon', 'artifacts', 'enemy', 'buffs', 
 
 export class CalcSet {
     constructor() {
-        this.char      = new CalcObjectCharacter();
-        this.weapon    = new CalcObjectWeapon();
-        this.artifacts = new CalcObjectArtifacts();
-        this.enemy     = new CalcObjectEnemy();
-        this.buffs     = new CalcObjectBuffs();
-        this.rotation  = new CalcObjectRotation();
-        this.food      = new CalcObjectFood();
+        this.char      = new CalcObjectCharacter(this);
+        this.weapon    = new CalcObjectWeapon(this);
+        this.artifacts = new CalcObjectArtifacts(this);
+        this.enemy     = new CalcObjectEnemy(this);
+        this.buffs     = new CalcObjectBuffs(this);
+        this.rotation  = new CalcObjectRotation(this);
+        this.food      = new CalcObjectFood(this);
         this.reaction  = new CalcObjectReaction();
         this.static    = new CalcObjectStatic();
+        this.profitArtsSet = new Map();
     }
 
     getChar() {
@@ -105,6 +106,20 @@ export class CalcSet {
 
     getEnemy() {
         return this.enemy;
+    }
+
+    clearProfitData() {
+        this.profitArtsSet.clear();
+    }
+
+    getProfitArtifact(hash) {
+        if (this.profitArtsSet.has(hash))
+            return this.profitArtsSet.get(hash);
+        return null;
+    }
+
+    setProfitArtifact(hash, result) {
+        this.profitArtsSet.set(hash, result);
     }
 
     setArtifact(data) {
@@ -639,24 +654,31 @@ export class CalcSet {
 
             result.char = CalcObjectCharacter.deserialize(input);
             if (!result.char) return null;
+            result.char.parentCalcSet = result;
 
             result.weapon = CalcObjectWeapon.deserialize(input);
             if (!result.weapon) return null;
+            result.weapon.parentCalcSet = result;
 
             result.artifacts = CalcObjectArtifacts.deserialize(input);
             if (!result.artifacts) return null;
+            result.artifacts.parentCalcSet = result;
 
             result.enemy = CalcObjectEnemy.deserialize(input);
             if (!result.enemy) return null;
+            result.enemy.parentCalcSet = result;
 
             result.buffs = CalcObjectBuffs.deserialize(input);
             if (!result.buffs) return null;
+            result.buffs.parentCalcSet = result;
 
             result.rotation = CalcObjectRotation.deserialize(input);
             if (!result.rotation) return null;
+            result.rotation.parentCalcSet = result;
 
             result.food = CalcObjectFood.deserialize(input);
             if (!result.food) return null;
+            result.food.parentCalcSet = result;
         }
 
         return result;

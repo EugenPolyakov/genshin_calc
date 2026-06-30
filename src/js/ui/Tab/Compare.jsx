@@ -48,7 +48,6 @@ export class CompareTab extends Tab {
         return (
             <CompareView
                 ref={element => { this.component = element }}
-                app={this.app}
               />
         );
     }
@@ -95,7 +94,7 @@ export class CompareView extends React.Component {
             return;
         }
 
-        let showBetaContent = this.props.app.showBetaContent();
+        let showBetaContent = UI.Layout.app.showBetaContent();
 
         if (Array.isArray(result)) {
             for (let item of result) {
@@ -138,17 +137,17 @@ export class CompareView extends React.Component {
     }
 
     dataFeaturesItems() {
-        return Feature2.buildDropdown(this.props.app.currentSet());
+        return Feature2.buildDropdown(UI.Layout.app.currentSet());
     }
 
     handleFeature(feature) {
-        this.props.app.setFeature(feature);
-        this.props.app.refresh();
+        UI.Layout.app.setFeature(feature);
+        UI.Layout.app.refresh();
     }
 
     handleDisplayMode(mode) {
         this.setState({displayMode: mode});
-        this.props.app.setDisplayMode(mode);
+        UI.Layout.app.setDisplayMode(mode);
     }
 
     handleFeaturesSelect() {
@@ -163,7 +162,7 @@ export class CompareView extends React.Component {
 
     handleAddItem() {
         this.index++;
-        let build = this.props.app.currentSet().clone();
+        let build = UI.Layout.app.currentSet().clone();
         let title = lang.get(build.getChar().getName()) +' '+ this.index;
 
         this.state.items.push({
@@ -224,14 +223,14 @@ export class CompareView extends React.Component {
         }
 
         UI.ConfirmWindow.show('modal.confirm', 'share_view.confirm_load', () => {
-            this.props.app.replaceSet(item.build.clone());
+            UI.Layout.app.replaceSet(item.build.clone());
         });
     }
 
     getItemsSorted() {
         let rotation;
         if (this.state.rotationType == ROTATION_TYPE_CURRENT) {
-            rotation = this.props.app.getRotation().clone();
+            rotation = UI.Layout.app.getRotation().clone();
         }
 
         let base = this.state.items[0];

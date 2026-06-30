@@ -17,7 +17,6 @@ export class ArtifactSetSettingsModal extends Modal {
         return (
             <ArtifactSetSettingsComponent
                 ref={(obj) => this.modal = obj}
-                app={this.app}
                 storage={this.app.storage.char}
                 artifactStorage={this.app.storage.artifacts}
             />

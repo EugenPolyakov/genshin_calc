@@ -16,7 +16,6 @@ export class ModalPartyLoad extends Modal {
         return (
             <PartyLoadComponent
                 ref={(obj) => this.modal = obj}
-                app={this.app}
                 width={650}
                 storage={this.app.storage.char}
                 addClass="partyload-select-modal"
@@ -62,7 +61,7 @@ class PartyLoadComponent extends ModalSelectBase {
         this.needLoadItems = false;
 
         let index = 0;
-        let showBeta = this.props.app.showBetaContent();
+        let showBeta = UI.Layout.app.showBetaContent();
 
         for (let item of this.props.storage.listDecoded(showBeta)) {
             let build = item.data;
@@ -97,7 +96,7 @@ class PartyLoadComponent extends ModalSelectBase {
                 build: item.data,
                 title: item.title || '',
                 charId: char.getId(),
-                sortTitle: title.toUpperCase(),
+                sortTitle: (title + ' ' + lang.get(char.getName())).toLocaleUpperCase(),
                 values: buildValues,
             });
         }

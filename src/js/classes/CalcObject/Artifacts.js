@@ -6,7 +6,7 @@ import { Stats } from '../Stats';
 const slots = ['flower', 'plume', 'sands', 'goblet', 'circlet'];
 
 export class CalcObjectArtifacts extends CalcObject {
-    constructor() {
+    constructor(parentCalcSet) {
         super();
         this.artifacts = {
             flower: null,
@@ -15,6 +15,7 @@ export class CalcObjectArtifacts extends CalcObject {
             goblet: null,
             circlet: null,
         };
+        this.parentCalcSet = parentCalcSet;
     }
 
     get() {
@@ -179,6 +180,9 @@ export class CalcObjectArtifacts extends CalcObject {
                 curArt.set = name;
             }
         }
+
+        this.removeInvalidSettings();
+        this.parentCalcSet?.clearProfitData();
     }
 
     set(art) {
@@ -186,6 +190,7 @@ export class CalcObjectArtifacts extends CalcObject {
         this.artifacts[slot] = art;
 
         this.removeInvalidSettings();
+        this.parentCalcSet?.clearProfitData();
     }
 
     replace(items) {
@@ -195,6 +200,7 @@ export class CalcObjectArtifacts extends CalcObject {
         }
 
         this.removeInvalidSettings();
+        this.parentCalcSet?.clearProfitData();
     }
 
     remove(art) {
@@ -205,6 +211,8 @@ export class CalcObjectArtifacts extends CalcObject {
             if (art && art.getHash() == hash) {
                 this.artifacts[slot] = null;
                 this.removeInvalidSettings();
+                this.parentCalcSet?.clearProfitData();
+                break;
             }
         }
     }
@@ -214,6 +222,7 @@ export class CalcObjectArtifacts extends CalcObject {
             const slot = slots[i];
             this.artifacts[slot] = null;
         }
+        this.parentCalcSet?.clearProfitData();
     }
 
     isEquipped(art) {

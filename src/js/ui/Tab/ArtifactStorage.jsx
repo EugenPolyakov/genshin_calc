@@ -36,7 +36,6 @@ export class ArtifactsStorageTab extends Tab {
         return (
             <ArtifactsPoolView
                 ref={element => { this.component = element }}
-                app={this.app}
                 title={this.title}
             />
         )
@@ -54,7 +53,7 @@ export class ArtifactsPoolView extends React.Component {
         };
 
         this.lastResults = [];
-        this.storage = props.app.storage.artifacts;
+        this.storage = UI.Layout.app.storage.artifacts;
         this.factory = new WorkerFactoryArtifactsSort({
             callback: (data) => this.sortCompleteCallback(data),
         });
@@ -67,7 +66,7 @@ export class ArtifactsPoolView extends React.Component {
     handleFeature(item) {
         let feature = item.value;
         this.setState({feature: feature});
-        this.props.app.setFeature(feature);
+        UI.Layout.app.setFeature(feature);
     }
 
     handleStatSort(item) {
@@ -79,11 +78,11 @@ export class ArtifactsPoolView extends React.Component {
         let equipped = this.equippedHashes();
 
         if (equipped.includes(art.getHash())) {
-            this.props.app.removeArtifact(art);
+            UI.Layout.app.removeArtifact(art);
         } else {
             let settings = this.getSettingsForArt(art);
-            this.props.app.currentSet().setArtifact(art);
-            this.props.app.setArtifactsSettings(settings);
+            UI.Layout.app.currentSet().setArtifact(art);
+            UI.Layout.app.setArtifactsSettings(settings);
         }
     }
 
@@ -95,7 +94,7 @@ export class ArtifactsPoolView extends React.Component {
             UI.ArtifactWindow.show((result) => {
                 result.setLocked(item.isLocked())
                 this.storage.updateByHash(hash, result);
-                this.props.app.refresh({
+                UI.Layout.app.refresh({
                     objects: ['storage.artifacts'],
                 });
             }, item, undefined, {groups: this.storage.listGroups()});
@@ -106,7 +105,7 @@ export class ArtifactsPoolView extends React.Component {
     handleArtifactDelete(art) {
         UI.ConfirmWindow.show('modal.confirm', 'artifact_pool.confirm_delete_artifact', () => {
             this.storage.deleteByHash(art.getHash());
-            this.props.app.refresh({
+            UI.Layout.app.refresh({
                 objects: ['storage.artifacts'],
             });
         });
@@ -120,7 +119,7 @@ export class ArtifactsPoolView extends React.Component {
             item.setLocked(value);
             this.storage.updateByHash(hash, item);
             this.sortCompleteCallback(this.lastResults);
-            this.props.app.queueUpdate();
+            UI.Layout.app.queueUpdate();
         }
     }
 
@@ -136,7 +135,7 @@ export class ArtifactsPoolView extends React.Component {
     handleCreateArtifact() {
         UI.ArtifactWindow.show((art) => {
             this.storage.add(art, {group: art.getGroups()})
-            this.props.app.refresh({
+            UI.Layout.app.refresh({
                 objects: ['storage.artifacts'],
             });
         }, undefined, undefined, {groups: this.storage.listGroups()});
@@ -146,7 +145,7 @@ export class ArtifactsPoolView extends React.Component {
         UI.ArtifactScanner.show((art) => {
             if (art) {
                 this.storage.addArtifacts([art]);
-                this.props.app.refresh({
+                UI.Layout.app.refresh({
                     objects: ['storage.artifacts'],
                 });
             }
@@ -157,7 +156,7 @@ export class ArtifactsPoolView extends React.Component {
         UI.LockArtifacts.show({
             closeCallback: () => {
                 setTimeout(() => {
-                    this.props.app.refresh({
+                    UI.Layout.app.refresh({
                         objects: ['storage.artifacts'],
                     });
                 }, 1);
@@ -166,12 +165,12 @@ export class ArtifactsPoolView extends React.Component {
     }
 
     dataFeaturesItems() {
-        return Feature2.buildDropdown(this.props.app.currentSet());
+        return Feature2.buildDropdown(UI.Layout.app.currentSet());
     }
 
     allowedArtifactsList() {
         let result = [];
-        let showBetaContent = this.props.app.showBetaContent();
+        let showBetaContent = UI.Layout.app.showBetaContent();
 
         for (let item of this.storage.listDecoded()) {
             let setData = DB.Artifacts.Sets.get(item.data.getSet());
@@ -200,7 +199,7 @@ export class ArtifactsPoolView extends React.Component {
             sortByStat: this.state.sortByStat,
             feature: this.state.feature,
             featureType: 'average',
-            calcSet: this.props.app.currentSet().serialize(),
+            calcSet: UI.Layout.app.currentSet().serialize(),
         });
     }
 
@@ -225,7 +224,7 @@ export class ArtifactsPoolView extends React.Component {
 
     equippedHashes() {
         let result = [];
-        let artifacts = this.props.app.getArtifacts();
+        let artifacts = UI.Layout.app.getArtifacts();
 
         for (let slot of Object.keys(artifacts)) {
             let art = artifacts[slot];
@@ -238,11 +237,11 @@ export class ArtifactsPoolView extends React.Component {
     }
 
     savedHashes() {
-        return this.props.app.storage.char.savedHashes();
+        return UI.Layout.app.storage.char.savedHashes();
     }
 
     getSettingsForArt(art) {
-        let build = this.props.app.currentSet().clone();
+        let build = UI.Layout.app.currentSet().clone();
         let currentSettings = build.artifacts.getSettings();
 
         // Init all turned off existed settings

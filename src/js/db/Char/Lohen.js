@@ -21,7 +21,6 @@ import { FeatureDamagePlungeShockWave } from "../../classes/Feature2/Damage/Plun
 import { FeatureDamageSkill } from "../../classes/Feature2/Damage/Skill";
 import { FeatureMultiplier } from "../../classes/Feature2/Multiplier";
 import { FeaturePostEffectValue } from "../../classes/Feature2/PostEffectValue";
-import { FeatureStatic } from "../../classes/Feature2/Static";
 import { PostEffectStats } from "../../classes/PostEffect/Stats";
 import { StatTable } from "../../classes/StatTable";
 import { ValueTable } from "../../classes/ValueTable";
@@ -210,7 +209,6 @@ export const Lohen = new DbObjectChar({
     weapon: charTalentTables.Lohen.char_weapon,
     origin: 'mondstadt',
     talents: Talents,
-    beta: true,
     statTable: charTables.Lohen,
     features: [
         new FeatureDamageNormal({

@@ -5,13 +5,14 @@ import { Stats } from "../Stats";
 export const foodTypes = ['Attack', 'Defence', 'Potion'];
 
 export class CalcObjectFood extends CalcObject {
-    constructor() {
+    constructor(parentCalcSet) {
         super();
         this.food = {
             Attack:  {item: null, level: 0},
             Defence: {item: null, level: 0},
             Potion:  {item: null, level: 0},
         };
+        this.parentCalcSet = parentCalcSet;
     }
 
     get(type) {
@@ -39,6 +40,7 @@ export class CalcObjectFood extends CalcObject {
             item: data,
             level: level,
         };
+        this.parentCalcSet?.clearProfitData();
     }
 
     isBeta() {

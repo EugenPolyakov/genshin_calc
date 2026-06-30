@@ -33,7 +33,6 @@ export class WeaponTab extends Tab {
         return (
             <WeaponView
                 ref={element => { this.component = element }}
-                app={this.app}
                 title={this.title}
             />
         )
@@ -52,7 +51,7 @@ export class WeaponView extends React.Component {
     }
 
     handleWeaponChange() {
-        let char = this.props.app.getChar().object;
+        let char = UI.Layout.app.getChar().object;
         let weapon = this.getEquippedWeapon()
 
         UI.WeaponSelectReact.show({
@@ -60,14 +59,14 @@ export class WeaponView extends React.Component {
             weaponType: char.weapon,
             selectedId: weapon ? weapon.getId() : 0,
             callback: (weapon) => {
-                this.props.app.setWeapon(weapon);
+                UI.Layout.app.setWeapon(weapon);
             },
         });
     }
 
     handleSettingChange(name, value) {
-        let conditions = this.props.app.getConditions({objects: ['weapon']});
-        let oldSettings = this.props.app.getSettings();
+        let conditions = UI.Layout.app.getConditions({objects: ['weapon']});
+        let oldSettings = UI.Layout.app.getSettings();
 
         let settings = {};
 
@@ -80,11 +79,11 @@ export class WeaponView extends React.Component {
 
         settings[name] = value;
 
-        this.props.app.setWeaponSettings(settings);
+        UI.Layout.app.setWeaponSettings(settings);
     }
 
     handleLevelChange(data) {
-        let settings = this.props.app.getSettings();
+        let settings = UI.Layout.app.getSettings();
 
         let levels = Object.assign({
             level: settings.weapon_level,
@@ -92,7 +91,7 @@ export class WeaponView extends React.Component {
             refine: settings.weapon_refine,
         }, data);
 
-        this.props.app.setWeaponLevels(levels);
+        UI.Layout.app.setWeaponLevels(levels);
     }
 
     render() {
@@ -106,13 +105,13 @@ export class WeaponView extends React.Component {
     }
 
     getEquippedWeapon() {
-        return this.props.app.getWeapon().object;
+        return UI.Layout.app.getWeapon().object;
     }
 
     tabContent() {
-        let settings = this.props.app.getStats().settings;
+        let settings = UI.Layout.app.getStats().settings;
         let weapon = this.getEquippedWeapon();
-        let conditions = this.props.app.getConditions({objects: ['weapon']});
+        let conditions = UI.Layout.app.getConditions({objects: ['weapon']});
 
         return (
             <FullHeight>

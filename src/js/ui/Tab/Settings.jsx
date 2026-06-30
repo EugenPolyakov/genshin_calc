@@ -39,7 +39,6 @@ export class SettingsTab extends Tab {
         return (
             <SettingsView
                 ref={element => { this.component = element }}
-                app={this.app}
                 title={this.title}
             />
         );
@@ -83,7 +82,7 @@ export class SettingsView extends React.Component {
     }
 
     handleCreateBackup() {
-        let data = this.props.app.storage.createBackup(this.state.create_backup);
+        let data = UI.Layout.app.storage.createBackup(this.state.create_backup);
         FileSaver.saveAs(data.toBlob(), 'backup.json');
     }
 
@@ -103,9 +102,9 @@ export class SettingsView extends React.Component {
             let backup = Backup.fromString(reader.result);
             let opts = this.state.load_backup;
 
-            if (this.props.app.storage.loadBackup(backup, opts)) {
+            if (UI.Layout.app.storage.loadBackup(backup, opts)) {
                 UI.WindowMessage.show('settings_view.success', 'settings_view.success_text');
-                this.props.app.refresh();
+                UI.Layout.app.refresh();
             } else {
                 this.backupError();
             }
@@ -119,18 +118,18 @@ export class SettingsView extends React.Component {
     }
 
     handleSyncEnable() {
-        this.props.app.enableSync();
+        UI.Layout.app.enableSync();
         this.refresh();
     }
 
     handleSyncDisable(del_files) {
         if (del_files) {
             UI.ConfirmWindow.show('modal.confirm', 'sync.delete_confirm', () => {
-                this.props.app.disableSync(true);
+                UI.Layout.app.disableSync(true);
                 this.refresh();
             });
         } else {
-            this.props.app.disableSync();
+            UI.Layout.app.disableSync();
             this.refresh();
         }
     }
@@ -140,18 +139,18 @@ export class SettingsView extends React.Component {
     }
 
     handleGoodExport() {
-        let data = ImporterGood.export(this.props.app.storage.artifacts.listArtifacts());
+        let data = ImporterGood.export(UI.Layout.app.storage.artifacts.listArtifacts());
         let blob = new Blob([JSON.stringify(data)], {type: "application/json;charset=utf-8"});
         FileSaver.saveAs(blob, 'artifacts_GOOD.json');
     }
 
     handleToggleBetaContent(value) {
-        this.props.app.setSetting('show_beta_content', value ? 1 : 0)
+        UI.Layout.app.setSetting('show_beta_content', value ? 1 : 0)
         this.refresh();
     }
 
     render() {
-        this.beta_content = this.props.app.showBetaContent();
+        this.beta_content = UI.Layout.app.showBetaContent();
 
         return (
             <ReactTab title={lang.get('tab_header.settings_view')}>
@@ -222,7 +221,6 @@ export class SettingsView extends React.Component {
                                 <GroupBox addClass="description" title={lang.get('sync.settings_title')}>
                                     {parse(lang.get('sync.settings_text'))}
                                     <GoogleButtons
-                                        app={this.props.app}
                                         handleSyncDisable={(val) => this.handleSyncDisable(val)}
                                         handleSyncEnable={() => this.handleSyncEnable()}
                                     />
@@ -257,7 +255,7 @@ export class SettingsView extends React.Component {
 }
 
 function GoogleButtons(props) {
-    if (!props.app.storage.sync.isScriptsLoaded()) {
+    if (!UI.Layout.app.storage.sync.isScriptsLoaded()) {
         return (
             <div className="beta-warning">
                 {parse(lang.get('sync.api_fail'))}
@@ -265,7 +263,7 @@ function GoogleButtons(props) {
         );
     }
 
-    if (props.app.getSetting('storage_sync_enabled')) {
+    if (UI.Layout.app.getSetting('storage_sync_enabled')) {
         return (<>
             <TitledButton
                 icon='icon-cancel'

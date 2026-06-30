@@ -47,7 +47,6 @@ export class FeaturesTab extends Tab {
         return (
             <FeaturesView
                 ref={element => { this.component = element }}
-                app={this.app}
                 feature={this.app.getFeature()}
                 title={lang.get('tab_header.features')}
             />
@@ -67,17 +66,17 @@ class FeaturesView extends React.Component {
     }
 
     getFeaturesDropdown() {
-        return Feature2.buildDropdown(this.props.app.currentSet());
+        return Feature2.buildDropdown(UI.Layout.app.currentSet());
     }
 
     getFeaturesDetailsDropdown() {
-        return Feature2.buildDropdown(this.props.app.currentSet(), {
+        return Feature2.buildDropdown(UI.Layout.app.currentSet(), {
             checkCallback: (f) => {return f.hasDetails()},
         });
     }
 
     getFeatureItems() {
-        let build = this.props.app.currentSet();
+        let build = UI.Layout.app.currentSet();
         let buildData = build.getBuildData();
         let featuresHash = build.getFeaturesHash(buildData);
         let tree = Feature.getTree(featuresHash);
@@ -164,7 +163,7 @@ class FeaturesView extends React.Component {
     }
 
     handleFeature(feature) {
-        this.props.app.setFeature(feature);
+        UI.Layout.app.setFeature(feature);
         this.setState({feature: feature});
     }
 
@@ -217,7 +216,7 @@ class FeaturesView extends React.Component {
     }
 
     getContentDetail() {
-        let build = this.props.app.currentSet();
+        let build = UI.Layout.app.currentSet();
         let dropdownItems = this.getFeaturesDetailsDropdown();
         let feature = build.getFeatureByName(this.state.feature);
         let selectedFeature = this.state.feature;

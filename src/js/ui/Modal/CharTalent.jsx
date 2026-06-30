@@ -26,7 +26,6 @@ export class CharTalentModal extends Modal {
         return (
             <CharTalentComponent
                 ref={(obj) => this.modal = obj}
-                app={this.app}
                 storage={this.app.storage.char}
                 artifactStorage={this.app.storage.artifacts}
                 addClass="lockartifacts-select-modal"
@@ -61,7 +60,7 @@ export class CharTalentComponent extends React.Component {
         if (charId) {
             this.char = DB.Chars.getById(charId);
         } else {
-            this.char = this.props.app.getChar().get();
+            this.char = UI.Layout.app.getChar().get();
         }
 
         this.tabs = [];

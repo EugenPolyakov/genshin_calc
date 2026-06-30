@@ -74,10 +74,10 @@ export class ArtifactWidget {
         return html;
     }
 
-    getOneSubStat(value, substat, selected) {
+    getOneSubStat(value, substat, selected, unactivated) {
         let html = '';
         let stat = UI.Lang.get('stat_mini.' + substat.replace('_percent', ''));
-        html += '<div class="artifact-list-box-substat"><span class="stat">' + stat + '</span> ';
+        html += '<div class="artifact-list-box-substat' + (unactivated ? ' unactivated' : '') + '"><span class="stat">' + stat + '</span> ';
         html += '<span class="value ' + (selected ? 'selected' : '') + '">';
         html += Stats.format(substat, value, { signed: false }) + '</span></div>';
 
@@ -88,7 +88,7 @@ export class ArtifactWidget {
         let html = new Array(Object.keys(art.subStats).length);
 
         for (let substat in art.subStats)
-            html[art.subStats[substat].index] = this.getOneSubStat(art.subStats[substat].value, substat, substat == opts.selectedStat);
+            html[art.subStats[substat].index] = this.getOneSubStat(art.subStats[substat].value, substat, substat == opts.selectedStat, art.subStats[substat].unactivated);
 
         return html.reduce((r, v) => r += v, '');
     }

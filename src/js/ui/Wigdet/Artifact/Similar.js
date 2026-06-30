@@ -47,7 +47,7 @@ export class ArtifactWidgetSimilar extends ArtifactWidget {
                 }
             }
 
-            html[art.subStats[substat].index] = this.getOneSubStat(art.subStats[substat].value, substat, selected);
+            html[art.subStats[substat].index] = this.getOneSubStat(art.subStats[substat].value, substat, selected, art.subStats[substat].unactivated);
         }
 
         return html.reduce((r, v) => r += v, '');

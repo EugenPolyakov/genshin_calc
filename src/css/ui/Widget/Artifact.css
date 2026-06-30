@@ -30,6 +30,10 @@
     white-space: nowrap;
 }
 
+.artifact-list-box-substat.unactivated {
+    text-decoration: line-through;
+}
+
 .artifact-list-box-substat .stat {
     color: #BEAEA9;
 }

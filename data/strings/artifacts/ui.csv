@@ -26,3 +26,7 @@ artifacts_ui;accordion_sets;Бонусы комплектов;Artifact sets
 artifacts_ui;accordion_filter;Фильтр по уровню и характеристике;Level and main stat filter
 artifacts_ui;auto_stats;Необходимые хар-ки;Required main stats
 artifacts_ui;all_stats;Все хар-ки;All main stats
+
+artifacts_ui;calculation_progress;Расчёт: ;Calculation progress: 
+artifacts_ui;maximum_possible_values;Максимально возможные значения;Maximum possible values
+artifacts_ui;chance;Шанс;Chance

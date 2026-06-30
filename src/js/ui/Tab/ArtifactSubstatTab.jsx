@@ -38,7 +38,6 @@ export class ArtifactSubstatTab extends Tab {
         return (
             <ArtifactSubstatView
                 ref={obj => { this.component = obj }}
-                app={this.app}
                 feature={this.app.getFeature()}
                 displayMode={this.app.getDisplayMode()}
             />
@@ -57,12 +56,12 @@ class ArtifactSubstatView extends React.Component {
     }
 
     dataFeaturesItems() {
-        return Feature2.buildDropdown(this.props.app.currentSet());
+        return Feature2.buildDropdown(UI.Layout.app.currentSet());
     }
 
     dataResults() {
         let results = [];
-        let build = this.props.app.currentSet();
+        let build = UI.Layout.app.currentSet();
 
         let feature = build.getFeatureByName(this.state.feature);
         if (!feature) {
@@ -107,12 +106,12 @@ class ArtifactSubstatView extends React.Component {
 
     handleFeature(feature) {
         this.setState({feature: feature});
-        this.props.app.setFeature(feature);
+        UI.Layout.app.setFeature(feature);
     }
 
     handleDisplayMode(mode) {
         this.setState({displayMode: mode});
-        this.props.app.setDisplayMode(mode);
+        UI.Layout.app.setDisplayMode(mode);
     }
 
     render() {

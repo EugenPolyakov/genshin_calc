@@ -130,7 +130,7 @@ export class WorkerFactory {
         this.workers = [];
 
         for (let payload of this.getWorkersPayload(data)) {
-            let old = finishedWorkers.shift();
+            let old = finishedWorkers.pop();
             let worker;
 
             if (old) {
@@ -139,7 +139,7 @@ export class WorkerFactory {
                 worker = this.createWorker();
             }
 
-            let index = this.workers.length
+            let index = this.workers.length;
             this.workers.push({
                 isCompleted: false,
                 isError: false,

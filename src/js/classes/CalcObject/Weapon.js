@@ -2,19 +2,21 @@ import { DB } from "../../db/DB";
 import {CalcObject} from "../CalcObject";
 
 export class CalcObjectWeapon extends CalcObject {
-    constructor() {
+    constructor (parentCalcSet) {
         super();
         this.levels = {
             level: 1,
             ascension: 0,
             refine: 1,
         };
+        this.parentCalcSet = parentCalcSet;
     }
 
     setLevels(data) {
         this.levels.level = data.level;
         this.levels.ascension = data.ascension;
         this.levels.refine = Math.min(5, Math.max(1, data.refine));
+        this.parentCalcSet?.clearProfitData();
     }
 
     getStats() {
