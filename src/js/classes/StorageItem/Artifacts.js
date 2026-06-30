@@ -34,6 +34,8 @@ export class StorageItemArtifacts extends StorageItem {
         let art = this.decodeItem(item.data);
         if (!art) return null;
 
+        //обновляем хеш т.к. сериализатор мог обновиться
+        item.data = art.getHash();
         return StorageItemArtifacts.getValidData(item);
     }
 
