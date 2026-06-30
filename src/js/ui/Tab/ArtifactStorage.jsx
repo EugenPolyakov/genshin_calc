@@ -97,7 +97,8 @@ export class ArtifactsPoolView extends React.Component {
                     objects: ['storage.artifacts'],
                 });
             }, item, undefined, {groups: this.storage.listGroups()});
-        }
+        } else
+            console.log("artifact not found: " + hash);
     }
 
     handleArtifactDelete(art) {

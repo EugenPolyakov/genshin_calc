@@ -287,17 +287,19 @@ function insertVariables(items, variables) {
         newItems = [];
 
         for (let item of items) {
-            let usedVars = {};
-            item.walk((item) => {
-                if (item.isVariableGet() && !item.isVariableSet()) {
-                    usedVars[item.name] = 1
-                }
-            });
+            if (item.walk) {
+                let usedVars = {};
+                item.walk((item) => {
+                    if (item.isVariableGet() && !item.isVariableSet()) {
+                        usedVars[item.name] = 1
+                    }
+                });
 
-            for (var name of Object.keys(usedVars)) {
-                if (variables[name]) {
-                    newItems.push(variables[name]);
-                    delete variables[name];
+                for (var name of Object.keys(usedVars)) {
+                    if (variables[name]) {
+                        newItems.push(variables[name]);
+                        delete variables[name];
+                    }
                 }
             }
 

@@ -30,12 +30,10 @@ export class RollsInfo extends React.Component {
         usefulSubstats = usefulSubstats.filter((v) => {return v == 'atk' || v == 'def' || v == 'hp' ? false : true});
 
         let rolls = {};
-        let rollsSum = {};
         let rollsMaxSum = {};
 
         for (let stat of usefulSubstats) {
             rolls[stat] = 0;
-            rollsSum[stat] = 0;
             rollsMaxSum[stat] = 0;
         }
 
@@ -51,12 +49,10 @@ export class RollsInfo extends React.Component {
                 }
 
                 let data = substatCheck(item, art.getRarity(), art.getSubStats()[item].value, art.getSubStats()[item].values);
-                let statData = DB.Artifacts.Substats.get(item)
 
                 if (data && data.steps) {
                     rolls[item] += data.steps.length;
-                    rollsSum[item] += statData.getPreciseValue( art.getSubStats()[item].value, art.getRarity());
-                    rollsMaxSum[item] += data.maxValue;
+                    rollsMaxSum[item] += data.steps.reduce((a, x) => a + x.rarity + 5, 0);
                 }
             }
         }
@@ -65,7 +61,7 @@ export class RollsInfo extends React.Component {
         let total = 0;
 
         for (let stat of Object.keys(rolls)) {
-            if (!rollsSum[stat]) {
+            if (!rollsMaxSum[stat]) {
                 continue;
             }
 
@@ -73,8 +69,7 @@ export class RollsInfo extends React.Component {
             result.push({
                 stat: stat,
                 count: rolls[stat],
-                value: rollsSum[stat],
-                efficency: rollsSum[stat] / rollsMaxSum[stat],
+                efficency: rollsMaxSum[stat] / (rolls[stat] * 10),
             });
         }
 

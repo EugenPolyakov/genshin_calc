@@ -13,7 +13,7 @@ module.exports = (env, argv) => {
             'app': path.resolve(__dirname, 'src/js/app.js'),
             'db': path.resolve(__dirname, 'src/js/db.js'),
             'ui': path.resolve(__dirname, 'src/js/ui.js'),
-            'cli': path.resolve(__dirname, 'src/js/cli.js'),
+            //'cli': path.resolve(__dirname, 'src/js/cli.js'),
         },
         output: {
             path: path.resolve(__dirname, 'dist'),

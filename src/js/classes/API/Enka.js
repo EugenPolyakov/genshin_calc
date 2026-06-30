@@ -99,12 +99,11 @@ function getPlayer(data) {
 }
 
 function getChars(data) {
-    let player = data.playerInfo;
-    if (!player.hasOwnProperty('avatarInfoList')) {
+    if (!data.hasOwnProperty('avatarInfoList')) {
         return;
     }
 
-    let chars = player.avatarInfoList;
+    let chars = data.avatarInfoList;
     if (!Array.isArray(chars)) {
         return;
     }
@@ -114,7 +113,6 @@ function getChars(data) {
         let calcset = processChar(charData);
         if (calcset) {
             result.push({
-                title: calcset.char.getName(),
                 set: calcset,
             });
         }
@@ -212,6 +210,7 @@ function listArtifacts(data) {
         }
 
         let art = new Artifact(rarity, level, slot, setId, mainStat, subStats);
+        art.tryDoRightSubstats();
         result.push(art);
     }
 

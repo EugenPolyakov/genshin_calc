@@ -7,7 +7,7 @@ const MAX_ROLLS_TO_PUT_LOWEST = 2;
 const MAX_STATS_PER_ARTIFACT = 4;
 const MAX_UPGRADES_PER_ARTIFACT = 5;
 const MAX_UPGRADES_TOTAL = MAX_UPGRADES_PER_ARTIFACT * 5;
-const MAX_ROLLS = 45;
+const MAX_ROLLS = 30;
 const MAX_REALLOCATE_LOOP = 10;
 
 export class ArtifactGenerator {
@@ -278,24 +278,22 @@ export class StatsObject {
 
     getStatRollsAllowed(stat) {
         let used = 0;
-        if (stat == 'crit_rate' || stat == 'crit_dmg') {
-            used += this.rolls.crit_rate ? this.rolls.crit_rate.length : 0;
-            used += this.rolls.crit_dmg ? this.rolls.crit_dmg.length : 0;
-        } else {
-            used = this.rolls[stat] ? this.rolls[stat].length : 0;
+        if (stat != 'crit_rate' && stat != 'crit_dmg') {
+            used = this.rolls[stat] ? Math.min(this.rolls[stat].length, 5 - this.getMainStatsCnt(stat)) : 0;
         }
 
-        return this.getStatMaxAllowed(stat) - used;
+        let maxBySettings = this.settings.count;
+        let maxByStat = MAX_ROLLS;
+        let maxByMainStat = Math.max(0, (5 - this.getMainStatsCnt(stat)) * MAX_UPGRADES_PER_ARTIFACT - this.getUpgradesCnt()) + (5 - this.getMainStatsCnt(stat));
+
+        if (stat == 'crit_rate' || stat == 'crit_dmg') {
+            maxByStat = this.settings.critRolls - (this.rolls.crit_rate ? this.rolls.crit_rate.length : 0) - (this.rolls.crit_dmg ? this.rolls.crit_dmg.length : 0);
+        }
+
+        return Math.min(maxBySettings, maxByStat, maxByMainStat) - used;
     }
 
-    getAllowedRolls(exclude) {
-        let result = [];
-
-        if (this.rollsCnt >= this.settings.count) {
-            return result;
-        }
-
-        // let upgradesCnt = Math.max(0, Object.keys(this.rolls).length - 4);
+    getUpgradesCnt() {
         let upgradesCnt = 0;
         for (let stat of Object.keys(this.rolls)) {
             let used = this.rolls[stat].length;
@@ -305,6 +303,17 @@ export class StatsObject {
 
             upgradesCnt += Math.max(0, used);
         }
+        return upgradesCnt;
+    }
+
+    getAllowedRolls(exclude) {
+        let result = [];
+
+        if (this.rollsCnt >= this.settings.count) {
+            return result;
+        }
+
+        let upgradesCnt = this.getUpgradesCnt();
 
         for (let stat of DB.Artifacts.Substats.getKeys()) {
             if (exclude && exclude == stat) continue;
@@ -476,17 +485,33 @@ export class StatDistributor {
     }
 
     balanceUpgrades() {
-        let count = Object.values(this.upgradesCount).reduce((s, i) => {return s + i}, 0);
-        if (count <= MAX_UPGRADES_TOTAL) return;
-
-        let isMoved = 1;
         let loop = 0;
-        // try to move 1 upgrade to another piece without this stat
-        while (isMoved) {
+        mainloop: while (true) {
             if (++loop > MAX_REALLOCATE_LOOP) break;
 
-            isMoved = 0;
-            mainloop: for (let slot of Object.keys(this.mainStats)) {
+            for (let slot of Object.keys(this.mainStats)) {
+                if (this.upgradesCount[slot] <= MAX_UPGRADES_PER_ARTIFACT) continue;
+                for (let stat of Object.keys(this.result[slot])) {
+                    if (this.result[slot][stat].length == 1) continue;
+
+                    for (let possibleSlot of Object.keys(this.mainStats)) {
+                        if (slot == possibleSlot) continue;
+                        if (stat == this.mainStats[possibleSlot]) continue;
+                        if (!this.result[possibleSlot][stat]) continue;
+                        if (this.upgradesCount[possibleSlot] >= MAX_UPGRADES_PER_ARTIFACT) continue;
+
+                        let roll = this.result[slot][stat].pop();
+                        this.putIntoSlot(possibleSlot, stat, roll);
+
+                        --this.upgradesCount[slot];
+
+                        continue mainloop;
+                    }
+                }
+            }
+
+            // try to move 1 upgrade to another piece without this stat
+            for (let slot of Object.keys(this.mainStats)) {
                 if (this.upgradesCount[slot] <= MAX_UPGRADES_PER_ARTIFACT) continue;
 
                 for (let stat of Object.keys(this.result[slot])) {
@@ -503,43 +528,31 @@ export class StatDistributor {
 
                         --this.upgradesCount[slot];
 
-                        isMoved = 1;
-                        break mainloop;
+                        continue mainloop;
                     }
                 }
             }
-        }
 
-        loop = 0;
-        isMoved = 1;
-        // try to move 1 upgrade to another piece without this stat
-        while (isMoved) {
-            if (++loop > MAX_REALLOCATE_LOOP) break;
-
-            isMoved = 0;
-            mainloop: for (let slot of Object.keys(this.mainStats)) {
-                if (this.upgradesCount[slot] <= MAX_UPGRADES_PER_ARTIFACT) continue;
-
+            for (let slot of Object.keys(this.mainStats)) {
+                if (this.upgradesCount[slot] >= MAX_UPGRADES_PER_ARTIFACT) continue;
                 for (let stat of Object.keys(this.result[slot])) {
-                    if (this.result[slot][stat].length == 1) continue;
-
                     for (let possibleSlot of Object.keys(this.mainStats)) {
                         if (slot == possibleSlot) continue;
-                        if (stat == this.mainStats[possibleSlot]) continue;
                         if (!this.result[possibleSlot][stat]) continue;
-                        if (this.upgradesCount[possibleSlot] >= MAX_UPGRADES_PER_ARTIFACT) continue;
+                        if (this.result[possibleSlot][stat].length <= 1) continue;
+                        if (this.upgradesCount[possibleSlot] < MAX_UPGRADES_PER_ARTIFACT) continue;
 
-                        let roll = this.result[slot][stat].pop();
-                        this.result[possibleSlot][stat].push(roll);
+                        let roll = this.result[possibleSlot][stat].pop();
+                        this.putIntoSlot(slot, stat, roll);
 
-                        --this.upgradesCount[slot];
-                        ++this.upgradesCount[possibleSlot];
+                        --this.upgradesCount[possibleSlot];
 
-                        isMoved = 1;
-                        break mainloop;
+                        continue mainloop;
                     }
                 }
             }
+
+            break;
         }
 
         // try to reallocate upgrades
@@ -554,6 +567,7 @@ export class StatDistributor {
             while (Object.keys(this.result[slot]).length < MAX_STATS_PER_ARTIFACT) {
                 let stat = list.pop();
                 if (!stat) break;
+                if (this.result[slot][stat]) continue;
 
                 used.push(stat);
 

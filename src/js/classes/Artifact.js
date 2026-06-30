@@ -15,11 +15,12 @@ export class Artifact {
         this.calculated = null;
     }
 
-    addStat(stat, value, unactivated) {
+    addStat(stat, value, unactivated, firstValue) {
         this.subStats[stat] = {
             index: Object.keys(this.subStats).length,
             value: value,
             unactivated: unactivated,
+            initialValue: firstValue,
         };
 
         this.calculated = null;
@@ -36,10 +37,13 @@ export class Artifact {
             };
         } else {
             values = values.sort((a, b) => a - b);
+            let value = substat.rollsToValue[this.rarity - 1][values.join('')];
+            if (!value)
+                value = values.reduce((a, x) => a + substat.rolls[this.rarity - 1][x], 0);
 
             this.subStats[stat] = {
                 index: Object.keys(this.subStats).length,
-                value: substat.rollsToValue[this.rarity - 1][values.join('')],
+                value: value,
                 values: values,
                 unactivated: unactivated,
             };
@@ -48,13 +52,95 @@ export class Artifact {
         this.calculated = null;
     }
 
+    tryDoRightSubstats() {
+        let upgradesCnt = 0;
+        let isWrong = false;
+        Object.keys(this.subStats).forEach((i) => {
+            this.tryGetSubstatValues(this.subStats[i], i);
+            if (this.subStats[i].values)
+                upgradesCnt += this.subStats[i].values.length - 1;
+            else
+                isWrong = true;
+        });
+
+        if (isWrong) return;
+
+        let rarityData = DB.Artifacts.Rarity[this.rarity - 1];
+        let minRarityUpdates = Math.max(0, rarityData.minSubstats - 4 + Math.floor(this.level / 4));
+        if (upgradesCnt < minRarityUpdates) {
+            let possibleStacks = {};
+            Object.keys(this.subStats).forEach((sub) => {
+                let subStat = this.subStats[sub];
+                if (subStat.values.length > 1) {
+                    let statData = DB.Artifacts.Substats.get(sub);
+                    let stacks = statData.stacks[this.rarity - 1][subStat.value];
+                    if (subStat.initialValue)
+                        stacks = stacks.filter(x => x.includes(subStat.initialValue - 1));
+                    possibleStacks[sub] = stacks;
+                }
+            });
+            let keys = Object.keys(possibleStacks);
+            if (keys.length > 0) {
+                let key1 = keys[0];
+                for (let i = 0; i < possibleStacks[key1].length; i++) {
+                    upgradesCnt = possibleStacks[key1][i].length - 1;
+                    if (keys.length > 1) {
+                        let key2 = keys[1];
+                        for (let j = 0; j < possibleStacks[key2].length; j++) {
+                            upgradesCnt += possibleStacks[key2][j].length - 1;
+                            if (keys.length > 2) {
+                                let key3 = keys[2];
+                                for (let k = 0; k < possibleStacks[key3].length; k++) {
+                                    upgradesCnt += possibleStacks[key3][k].length - 1;
+                                    if (keys.length > 3) {
+                                        key4 = keys[3];
+                                        for (let l = 0; l < possibleStacks[key4].length; l++) {
+                                            if (upgradesCnt + possibleStacks[key4][l].length - 1 >= minRarityUpdates) {
+                                                this.subStats[key1].values = possibleStacks[key1][i].slice();
+                                                this.subStats[key2].values = possibleStacks[key2][j].slice();
+                                                this.subStats[key3].values = possibleStacks[key3][k].slice();
+                                                this.subStats[key4].values = possibleStacks[key4][l].slice();
+                                                return;
+                                            }
+                                        }
+                                    } else {
+                                        if (upgradesCnt >= minRarityUpdates) {
+                                            this.subStats[key1].values = possibleStacks[key1][i].slice();
+                                            this.subStats[key2].values = possibleStacks[key2][j].slice();
+                                            this.subStats[key3].values = possibleStacks[key3][k].slice();
+                                            return;
+                                        }
+                                    }
+                                    upgradesCnt -= possibleStacks[key3][k].length - 1;
+                                }
+                            } else {
+                                if (upgradesCnt >= minRarityUpdates) {
+                                    this.subStats[key1].values = possibleStacks[key1][i].slice();
+                                    this.subStats[key2].values = possibleStacks[key2][j].slice();
+                                    return;
+                                }
+                            }
+                            upgradesCnt -= possibleStacks[key2][j].length - 1;
+                        }
+                    } else {
+                        if (upgradesCnt >= minRarityUpdates) {
+                            this.subStats[key1].values = possibleStacks[key1][i].slice();
+                            return;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
     tryGetSubstatValues(subStat, stat) {
         let data = DB.Artifacts.Substats.get(stat);
         if (subStat.values && subStat.values.length > 0 && subStat.value.toFixed(1) == data.rollsToValue[this.rarity - 1][subStat.values.join('')].toFixed(1))
             return;
-        let result = substatCheck(stat, this.rarity, subStat.value, subStat.values);
+        let result = substatCheck(stat, this.rarity, subStat.value, subStat.values, subStat.initialValue);
         if (result.last == 0) {
             subStat.values = result.steps.map(x => x.rarity - 2);
+            subStat.initialValue = result.initialValue;
         } else {
             delete subStat.values;
         }
@@ -245,22 +331,18 @@ export class Artifact {
             if (substatListValid(sub, this.subStats[sub].value, this.subStats[sub].values, this.rarity)) {
                 upgradesCnt += this.subStats[sub].values.length - 1;
             } else {
-                if (statData.stacks[this.rarity - 1][this.subStats[sub].value]) {
-                    upgradesCnt += statData.stacks[this.rarity - 1][this.subStats[sub].value].length - 1;
-                } else {
-                    let rollData = substatCheck(sub, this.rarity, this.subStats[sub].value);
+                let rollData = substatCheck(sub, this.rarity, this.subStats[sub].value);
 
-                    if (rollData.last > 0) {
-                        if (rollData.steps.length < rollData.maxUpgrades) {
-                            isSubstatValueRolls = true;
-                        } else {
-                            isSubstatValueRange = true;
-                        }
+                if (rollData.last > 0) {
+                    if (rollData.steps.length < rollData.maxUpgrades) {
+                        isSubstatValueRolls = true;
+                    } else {
+                        isSubstatValueRange = true;
                     }
+                }
 
-                    if (rollData.steps.length > 1) {
-                        upgradesCnt += rollData.steps.length - 1;
-                    }
+                if (rollData.steps.length > 1) {
+                    upgradesCnt += rollData.steps.length - 1;
                 }
             }
         });
@@ -326,18 +408,30 @@ export class Artifact {
             location: "",
             lock: false,
             substats: [],
+            unactivatedSubstats: [],
         };
 
+        this.tryDoRightSubstats();
         Object.keys(this.subStats).forEach((item) => {
             let data = DB.Artifacts.Substats.get(item);
-            if (!data || this.subStats[item].unactivated) {
-                return null;
+            if (data) {
+                let subStat = this.subStats[item];
+                if (subStat.unactivated)
+                    result.unactivatedSubstats.push({
+                        key: data.goodId,
+                        value: subStat.value,
+                        initialValue: subStat.value,
+                    });
+                else
+                    result.substats.push({
+                        key: data.goodId,
+                        value: subStat.value,
+                        initialValue:
+                            subStat.initialValue ? data.rolls[this.rarity - 1][subStat.initialValue - 1] : (
+                                subStat.values && subStat.values.length > 0 ? data.rolls[this.rarity - 1][subStat.values[0]] : data.rolls[this.rarity - 1][0]
+                            ),
+                    });
             }
-
-            result.substats.push({
-                key: data.goodId,
-                value: this.subStats[item].value,
-            });
         });
 
         return result;
@@ -353,6 +447,7 @@ export class Artifact {
         result.push(DB.Artifacts.Mainstats.getId(this.mainStat) || 0);
         result.push(Object.keys(this.subStats).length);
 
+        this.tryDoRightSubstats();
         Object.keys(this.subStats).forEach((stat) => {
             if (stat.unactivated)
                 result.push(25);
@@ -361,7 +456,6 @@ export class Artifact {
             let substat = DB.Artifacts.Substats.get(stat);
             let statData = this.subStats[stat];
             let value = statData.value;
-            this.tryGetSubstatValues(statData, stat);
 
             if (statData.values && statData.values.length > 0 && value.toFixed(1) == substat.rollsToValue[this.rarity - 1][statData.values.join('')].toFixed(1)) {
                 value = statData.values[statData.values.length - 1] + 1;
@@ -371,7 +465,7 @@ export class Artifact {
                 result.push((value << 1) + 1);
             } else {
                 if (substat.type == 'percent') {
-                    value = Math.floor(value * 10) << 1;
+                    value = Math.floor(value * 10);
                 }
                 result.push(value << 1);
             }
@@ -498,21 +592,39 @@ export class Artifact {
 
         let result = new Artifact(data.rarity, data.level, data.slotKey, setName, mainStat);
 
-        if (Array.isArray(data.substats)) {
-            if (data.substats.length > 4) return null;
-
-            for (const item of data.substats) {
-                if (!item.key) {
-                    continue;
-                }
-                let subStat = DB.Artifacts.Substats.getKeyIdGood(item.key);
-                if (!subStat) return null;
-
-                let value = item.value;
-                result.addStat(subStat, value);
+        let processSubstat = (item, unactivated) => {
+            if (!item.key) {
+                return;
             }
+            let subStat = DB.Artifacts.Substats.getKeyIdGood(item.key);
+            if (!subStat) return null;
+
+            let value = item.value;
+            let initialValue = 0;
+            if (item.initialValue) {
+                let fixed = item.initialValue.toFixed(1);
+                let ss = DB.Artifacts.Substats.get(subStat);
+                for (let i = 0; i < ss.rolls[data.rarity - 1].length; i++)
+                    if (fixed == ss.rolls[data.rarity - 1][i].toFixed(1)) {
+                        initialValue = i + 1;
+                        break;
+                    }
+            }
+            result.addStat(subStat, value, unactivated, initialValue);
         }
 
+        if (Array.isArray(data.substats)) {
+            if (data.substats.length > 4) return null;
+            data.substats.forEach((item) => processSubstat(item, false));
+        }
+
+        if (Array.isArray(data.unactivatedSubstats)) {
+            if (data.unactivatedSubstats.length > 4) return null;
+
+            data.unactivatedSubstats.forEach((item) => processSubstat(item, true));
+        }
+
+        result.tryDoRightSubstats();
         return result;
     }
 

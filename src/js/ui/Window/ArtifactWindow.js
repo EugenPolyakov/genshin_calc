@@ -236,15 +236,19 @@ export class ArtifactWindow extends Window{
         this.refreshError();
     }
 
+    internalSetSubstatStat(slot, stat) {
+        this.substats[slot - 1].stat = stat;
+
+        this.root.find('.gi-modal-substat-line.slot-' + slot + ' .gi-modal-substat-item').removeClass('active');
+        this.root.find('.gi-modal-substat-line.slot-' + slot + ' .gi-modal-substat-item[data-stat="' + stat + '"]').addClass('active');
+        this.root.find('.gi-modal-substat-line.slot-' + slot + ' .gi-inputs-number-input').data('stat', stat);
+    }
+
     setSubstatStat(slot, stat) {
         if (slot >= 1 && slot <= 4) {
-            this.substats[slot-1].stat = stat;
+            this.internalSetSubstatStat(slot, stat);
 
-            this.root.find('.gi-modal-substat-line.slot-'+ slot +' .gi-modal-substat-item').removeClass('active');
-            this.root.find('.gi-modal-substat-line.slot-'+ slot +' .gi-modal-substat-item[data-stat="'+ stat +'"]').addClass('active');
-            this.root.find('.gi-modal-substat-line.slot-'+ slot +' .gi-inputs-number-input').data('stat', stat);
-
-            this.refreshSubstats(slot)
+            this.refreshSubstats(slot);
         }
 
         this.refreshError();
@@ -261,13 +265,14 @@ export class ArtifactWindow extends Window{
 
             if (stat) {
                 const db = DB.Artifacts.Substats.get(stat);
-                const rarityInfo = DB.Artifacts.Rarity[this.rarity-1];
 
-                let rolls = db.rolls[this.rarity-1]
-                let min = Stats.roundStatValue(stat, rolls[0])
+                let rolls = db.rolls[this.rarity - 1];
+                let min = rolls[0];
+                let values = !substat.values || !substat.values.length ? [0] : substat.values;
 
-                this.setSubstatValue(slot, substat.value || min);
-            }
+                this.setSubstatValue(slot, substat.value && substat.value > 0 ? substat.value : min, values);
+            } else
+                this.refreshSubstatsValue(slot);
         }
     }
 
@@ -337,38 +342,26 @@ export class ArtifactWindow extends Window{
         this.refreshRollsForStat(slot);
     }
 
+    internalSetSubstatValue(slot, value, values) {
+        if (value < 0) {
+            value = 0;
+        }
+
+        let stat = this.substats[slot - 1].stat;
+        value = Stats.roundStatValue(stat, value).toString();
+
+        this.substats[slot - 1].value = value;
+        this.substats[slot - 1].values = values;
+    }
+
     setSubstatValue(slot, value, values) {
         if (slot >= 1 && slot <= 4) {
-            if (value < 0) {
-                value = 0;
-            }
+            this.internalSetSubstatValue(slot, value, values);
 
-            let stat = this.substats[slot-1].stat;
-            if (stat) {
-                let subStat = DB.Artifacts.Substats.get(stat);
-                let type = subStat.type;
-
-                if (type == 'percent') {
-                    value = value + '';
-                    value = value.replace(',', '.');
-                    value = parseFloat(value);
-                    value = value.toFixed(1);
-
-                    if (!/^\d+(\.\d)?$/.test(value)) {
-                        value = "0";
-                    }
-                } else {
-                    value = parseInt(value);
-                    if (! /^\d+$/.test(value)) {
-                        value = "0";
-                    }
-                }
-            } else {
-                value = "0";
-            }
-
-            this.substats[slot - 1].value = value;
-            this.substats[slot - 1].values = values;
+            let art = this.getArtifact();
+            art.tryDoRightSubstats();
+            let data = substatCheck(this.substats[slot - 1].stat, this.rarity, art.value, art.values);
+            this.substats[slot - 1].values = data.steps.map(x => x.rarity - 2);
             this.refreshSubstatsValue(slot);
         }
 
@@ -436,7 +429,7 @@ export class ArtifactWindow extends Window{
             if (this.substats[i].stat) {
                 if (substatListValid(this.substats[i].stat, parseFloat(this.substats[i].value), this.substats[i].values, this.rarity)) {
                     result.addStatByProcs(this.substats[i].stat, this.substats[i].values);
-                } else if (this.substats[i].value) {
+                } else {//if (this.substats[i].value) {
                     result.addStat(this.substats[i].stat, this.substats[i].value - 0);
                 }
             }
@@ -651,15 +644,20 @@ export class ArtifactWindow extends Window{
                 this.lockedSlot = true;
             }
 
+            let slots = new Set([1, 2, 3, 4]);
             for (let stat in artifact.subStats) {
-                this.setSubstatStat(artifact.subStats[stat].index + 1, stat);
-                this.setSubstatValue(artifact.subStats[stat].index + 1, artifact.subStats[stat].value, artifact.subStats[stat].values);
+                this.internalSetSubstatStat(artifact.subStats[stat].index + 1, stat);
+                this.internalSetSubstatValue(artifact.subStats[stat].index + 1, artifact.subStats[stat].value, artifact.subStats[stat].values);
+                this.refreshSubstatsValue(artifact.subStats[stat].index + 1);
+                slots.delete(artifact.subStats[stat].index + 1);
             }
 
-            for (let i = Object.keys(artifact.subStats).length + 1; i <= 4; ++i) {
-                this.setSubstatStat(i, '');
-                this.setSubstatValue(i, 0, []);
+            for (let i of slots) {
+                this.internalSetSubstatStat(i, '');
+                this.internalSetSubstatValue(i, 0);
+                this.refreshSubstatsValue(i);
             }
+            this.refreshError();
 
             this.root.find('.gi-artifact-slider-level').giSlider('set value', this.level);
         } else {
@@ -671,8 +669,9 @@ export class ArtifactWindow extends Window{
             for (let i = 1; i <= 4; ++i) {
                 let data = this.substats[i-1];
 
-                this.setSubstatStat(i, data && data.stat ? data.stat : '');
-                this.setSubstatValue(i, data && data.value ? data.value : 0);
+                this.internalSetSubstatStat(i, data && data.stat ? data.stat : '');
+                this.internalSetSubstatValue(i, data && data.stat && data.value ? data.value : 0);
+                this.refreshSubstatsValue(i);
             }
 
             this.setSet(this.setName);

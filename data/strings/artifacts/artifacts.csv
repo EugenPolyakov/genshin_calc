@@ -4,7 +4,8 @@ artifact_set;pieces_2;2 предмета;2-Piece bonus
 artifact_set;pieces_3;3 предмета;3-Piece bonus
 artifact_set;pieces_4;4 предмета;4-Piece bonus
 artifact_set;pieces_5;5 предметов;5-Piece bonus
-artifact_pool;confirm_delete_artifact;Вы действительно хотите снять выбранный артефакт?;Are you sure you want to unequip selected artifact?
+artifact_pool;confirm_unequip_artifact;Вы действительно хотите снять выбранный артефакт?;Are you sure you want to unequip selected artifact?
+artifact_pool;confirm_delete_artifact;Вы действительно хотите удалить выбранный артефакт?;Are you sure you want to delete selected artifact?
 artifact_set;flower;Цветок жизни;Flower of Life
 artifact_set;plume;Перо смерти;Plume of Death
 artifact_set;sands;Пески времени;Sands of Eon

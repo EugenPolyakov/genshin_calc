@@ -139,7 +139,7 @@ export class ArtifactsView extends React.Component {
     handleArtifactDelete(slot) {
         let art = this.props.app.getArtifacts()[slot];
 
-        UI.ConfirmWindow.show('modal.confirm', 'artifact_pool.confirm_delete_artifact', () => {
+        UI.ConfirmWindow.show('modal.confirm', 'artifact_pool.confirm_unequip_artifact', () => {
             this.props.app.removeArtifact(art);
         });
     }

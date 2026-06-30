@@ -75,14 +75,14 @@ class ArtifactSubstatView extends React.Component {
 
         for (const stat of statsList) {
             let data = DB.Artifacts.Substats.get(stat);
-            let rolls = data.rolls[ data.rolls.length - 1 ];
+            let rolls = data.rollsReal[data.rollsReal.length - 1];
 
             const sum = rolls.reduce((a, b) => a + b, 0);
             const avg = (sum / rolls.length) || 0;
 
             let bonus = new Stats();
             bonus.add(stat, avg);
-            bonus.processPercent();
+            //bonus.processPercent();
 
             let buildData = build.getBuildData();
             buildData.stats.concat(bonus);

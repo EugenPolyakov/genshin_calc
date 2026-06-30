@@ -133,17 +133,19 @@ function getSets(original, featureName, maxPieces, showBeta) {
                 newSet.setArtifactsSettings(newset);
 
                 let feature = newSet.getFeatureByName(featureName);
-                let data = newSet.getBuildData();
-                let value = feature.getResult(data)[featureName];
+                if (feature) {
+                    let data = newSet.getBuildData();
+                    let value = feature.getResult(data)[featureName];
 
-                if (valueIsGreater(prev, value)) {
-                    setResult.push({
-                        pieces: pieces,
-                        settings: settings,
-                        setNames: [].concat(setNames),
-                    });
+                    if (valueIsGreater(prev, value)) {
+                        setResult.push({
+                            pieces: pieces,
+                            settings: settings,
+                            setNames: [].concat(setNames),
+                        });
 
-                    prev = value;
+                        prev = value;
+                    }
                 }
             }
         }
