@@ -26,4 +26,5 @@ char_talent;unit_bond;% Долга дизни;% Bond of Life
 char_talent;unit_atk_nightsoul;% силы атаки за оч. Ночного духа;% ATK / Nightsoul Point
 char_talent;unit_atk_per_point;% силы атаки/очко;% ATK Per Point
 char_talent;unit_mastery_per_verdant_dew;% МС за Зелёную росу;% EM Per Verdant Dew
+char_talent;unit_stack_per_geo_construct; ур. за каждую констр.; Per Geo Construct
 char_talent;unit_stack; ур.; 

@@ -276,6 +276,8 @@ if not do_single:
     updated_values.write('old_values = {\n')
 
 
+statgenerator = None
+talentfile = None
 if not do_single:
     talentfile = open(out_dir + 'CharTalentTables.js', 'w', encoding='utf-8')
     statgenerator = StatGenerator(out_dir + 'CharTables.js')

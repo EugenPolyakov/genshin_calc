@@ -103,13 +103,13 @@ const Talents = new DbObjectTalents({
         description: 'talent_descr.kaedehara_kazuha_kazuha_slash',
         items: [
             {
-                table: new StatTable('kazuha_slashing_dmg', charTalentTables.Kazuha.s3.p1),
+                table: new StatTable('kaedehara_kazuha_slashing_dmg', charTalentTables.Kazuha.s3.p1),
             },
             {
                 table: new StatTable('dot_dmg', charTalentTables.Kazuha.s3.p2),
             },
             {
-                table: new StatTable('anemoskill_elemental_dmg', charTalentTables.Kazuha.s3.p3),
+                table: new StatTable('kaedehara_kazuha_additional_elemental_dmg', charTalentTables.Kazuha.s3.p3),
             },
             {
                 unit: 'sec',
@@ -425,12 +425,11 @@ export const Kazuha = new DbObjectChar({
             ],
         }),
         new FeatureDamageBurst({
-            name: 'kazuha_slashing_dmg',
             element: 'anemo',
             multipliers: [
                 new FeatureMultiplier({
                     leveling: 'char_skill_burst',
-                    values: Talents.get('burst.kazuha_slashing_dmg'),
+                    values: Talents.get('burst.kaedehara_kazuha_slashing_dmg'),
                 }),
             ],
         }),
@@ -450,7 +449,7 @@ export const Kazuha = new DbObjectChar({
             multipliers: [
                 new FeatureMultiplier({
                     leveling: 'char_skill_burst',
-                    values: Talents.get('burst.anemoskill_elemental_dmg'),
+                    values: Talents.get('burst.kaedehara_kazuha_additional_elemental_dmg'),
                 }),
             ],
         }),
@@ -460,7 +459,7 @@ export const Kazuha = new DbObjectChar({
             multipliers: [
                 new FeatureMultiplier({
                     leveling: 'char_skill_burst',
-                    values: Talents.get('burst.anemoskill_elemental_dmg'),
+                    values: Talents.get('burst.kaedehara_kazuha_additional_elemental_dmg'),
                 }),
             ],
         }),
@@ -470,7 +469,7 @@ export const Kazuha = new DbObjectChar({
             multipliers: [
                 new FeatureMultiplier({
                     leveling: 'char_skill_burst',
-                    values: Talents.get('burst.anemoskill_elemental_dmg'),
+                    values: Talents.get('burst.kaedehara_kazuha_additional_elemental_dmg'),
                 }),
             ],
         }),
@@ -480,7 +479,7 @@ export const Kazuha = new DbObjectChar({
             multipliers: [
                 new FeatureMultiplier({
                     leveling: 'char_skill_burst',
-                    values: Talents.get('burst.anemoskill_elemental_dmg'),
+                    values: Talents.get('burst.kaedehara_kazuha_additional_elemental_dmg'),
                 }),
             ],
         }),

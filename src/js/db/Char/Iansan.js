@@ -79,8 +79,8 @@ const Talents = new DbObjectTalents({
     },
     burst: {
         gameId: charTalentTables.Iansan.s3_id,
-        title: 'talent_name.iansan_the_three_principles_of_power',
-        description: 'talent_descr.iansan_the_three_principles_of_power',
+        title: 'talent_name.iansan_the_three_principles_of_power_1',
+        description: 'talent_descr.iansan_the_three_principles_of_power_1',
         items: [
             {
                 table: new StatTable('burst_dmg', charTalentTables.Iansan.s3.p1),
@@ -269,7 +269,7 @@ export const Iansan = new DbObjectChar({
         }),
         new FeatureHeal({
             category: 'other',
-            name: 'iansan_heal',
+            name: 'heal',
             multipliers: [
                 new FeatureMultiplier({
                     scaling: 'atk*',
@@ -288,8 +288,8 @@ export const Iansan = new DbObjectChar({
             max: BurstPointsMax,
         }),
         new ConditionStatic({
-            title: 'talent_name.iansan_kinetic_energy_scale',
-            description: 'talent_descr.iansan_kinetic_energy_scale',
+            title: 'talent_name.iansan_the_three_principles_of_power_2',
+            description: 'talent_descr.iansan_the_three_principles_of_power_2',
             condition: new ConditionBoolean({name: 'iansan_points'}),
         }),
         new ConditionBoolean({
@@ -410,8 +410,8 @@ export const Iansan = new DbObjectChar({
                 max: BurstPointsMax,
             }),
             new ConditionStatic({
-                title: 'talent_name.iansan_kinetic_energy_scale',
-                description: 'talent_descr.iansan_kinetic_energy_scale',
+                title: 'talent_name.iansan_the_three_principles_of_power_2',
+                description: 'talent_descr.iansan_the_three_principles_of_power_2',
                 condition: new ConditionBoolean({name: 'party_iansan_points'}),
             }),
             new ConditionBoolean({

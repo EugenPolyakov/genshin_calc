@@ -36,6 +36,7 @@ const secondaryStatsList = [
     '!crit_rate_skill', '!crit_rate_burst', '!crit_rate_ganyu', '!crit_rate_nahida', '!crit_rate_freminet', '!crit_rate_charged_wriothesley',
     '!crit_rate_navia', '!crit_rate_gaming', '!crit_rate_normal_arlecchino', '!crit_rate_burst_arlecchino', '!crit_rate_sethos',
     '!crit_rate_amber', '!crit_rate_normal_mualani',
+    '!crit_rate_anemo', '!crit_rate_cryo', '!crit_rate_electro', '!crit_rate_geo', '!crit_rate_hydro', '!crit_rate_pyro', '!crit_rate_dendro', '!crit_rate_phys',
     'crit_dmg', '!crit_dmg_skill', '!crit_dmg_anemo', '!crit_dmg_cryo', '!crit_dmg_electro', '!crit_dmg_geo',
     '!crit_dmg_hydro', '!crit_dmg_pyro', '!crit_dmg_dendro', '!crit_dmg_phys',
     '!crit_dmg_normal', '!crit_dmg_charged', '!crit_dmg_plunge', '!crit_dmg_neuvillette',

@@ -1,9 +1,6 @@
 category;name;rus;eng
-
-feature_attack;lyney_hp_cost;Потребление HP;HP Cost
 feature_attack;lyney_pyrotechnic_strike_reprised_dmg;Урон Пиротехнического снаряда: Реприза;Pyrotechnic Strike: Reprised DMG
 
 feature_skill;lyney_energy_regeneration;Восстановление энергии;Energy Regeneration
 
 talent_name;lyney_surplus_stacks;Уровни Избыточного реквизита;Prop Surplus stacks
-talent_descr;lyney_surplus_stacks;В зависимости от снятых уровней эффекта урон увеличивается. Кроме того, HP name{Лини} восстанавливается в зависимости от его name{макс. HP}.;DMG will be increased according to the stacks cleared, and this will also regenerate name{Lyney}'s HP based on his name{Max HP}.

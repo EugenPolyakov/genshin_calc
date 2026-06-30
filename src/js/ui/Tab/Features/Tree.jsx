@@ -27,6 +27,7 @@ const ROOT_TYPES = {
     'reaction_base': LeafRoot,
     'block_multi': LeafRootMulti,
     'block_subtract': LeafRootSubtract,
+    'item_const': 'skip',
 };
 
 const INLINE_TYPES = {
@@ -95,9 +96,10 @@ export class FeatureViewTree extends React.Component {
             let type = item.getType();
             let leaf = ROOT_TYPES[type];
             if (!leaf) {
-                console.log('unknown root type '+ type);
+                console.log('unknown root type ' + type);
                 continue;
-            }
+            } else if (leaf == 'skip')
+                continue;
 
             compiler.processBlock(item, processOpts);
 

@@ -4,7 +4,7 @@ import { ConditionAscensionChar } from "../../classes/Condition/Ascension/Char";
 import { ConditionBoolean } from "../../classes/Condition/Boolean";
 import { ConditionConstellation } from "../../classes/Condition/Constellation";
 import { ConditionMoonPhaseBuff } from "../../classes/Condition/MoonPhaseBuff";
-import { ConditionMoonPhase } from "../../classes/Condition/Boolean/MoonPhase";
+import { ConditionMoonPhaseBoolean } from "../../classes/Condition/Boolean/MoonPhase";
 import { ConditionMoonPhaseSetting } from "../../classes/Condition/CustomOrigin/MoonPhaseSetting";
 import { ConditionMoonPhaseStatic } from "../../classes/Condition/Static/MoonPhase";
 import { ConditionStatic } from "../../classes/Condition/Static";
@@ -34,6 +34,8 @@ import { ConditionBooleanLevels } from "../../classes/Condition/Boolean/Levels";
 import { ConditionNumberTalent } from "../../classes/Condition/Number/Talent";
 import { ConditionNumber } from "../../classes/Condition/Number";
 import { ConditionStacks } from "../../classes/Condition/Stacks";
+import { ConditionBooleanValue } from "../../classes/Condition/Boolean/Value";
+import { FeatureStatic } from "../../classes/Feature2/Static";
 
 
 const Talents = new DbObjectTalents({
@@ -179,13 +181,13 @@ const lunarPost = new PostEffectStatsMastery({
 
 const bloomTarget = new FeatureMultiplierTarget({
     isReactionFlatBonus: true,
-    damageTypesExclude: 'lauma_frostgrove_sanctuary',
+    tagsExclude: 'lauma_frostgrove_sanctuary',
     tags: 'bloom',
 });
 
 const lunarbloomTarget = new FeatureMultiplierTarget({
     isReactionFlatBonus: true,
-    damageTypesExclude: 'lauma_frostgrove_sanctuary',
+    tagsExclude: 'lauma_frostgrove_sanctuary',
     tags: 'lunarbloom',
 });
 
@@ -281,7 +283,10 @@ export const Lauma = new DbObjectChar({
                     values: new StatTable('', [charTalentTables.Lauma.cons[5][4]], 100),
                 }),
             ],
-            condition: new ConditionConstellation({ constellation: 6 }),
+            condition: new ConditionAnd([
+                new ConditionBoolean({ name: 'lauma_all_hearts_become_the_beating_moon' }),
+                new ConditionConstellation({ constellation: 6 }),
+            ]),
         }),
         new FeatureDamageSkill({
             name: 'skill_dmg',
@@ -315,6 +320,11 @@ export const Lauma = new DbObjectChar({
                     values: Talents.get('skill.lauma_2_hit_hold_dmg'),
                 }),
             ],
+            condition: new ConditionBooleanValue({
+                setting: 'n11190008',
+                cond: 'gt',
+                value: 0
+            }),
         }),
         new FeatureDamageSkill({
             name: 'lauma_frostgrove_sanctuary_attack_dmg',
@@ -335,7 +345,7 @@ export const Lauma = new DbObjectChar({
             name: 'lauma_frostgrove_sanctuary_additional_dmg',
             element: 'dendro',
             category: 'skill',
-            damageType: 'lauma_frostgrove_sanctuary',
+            tags: ['lauma_frostgrove_sanctuary'],
             multipliers: [
                 new FeatureMultiplier({
                     scaling: 'mastery*',
@@ -349,6 +359,38 @@ export const Lauma = new DbObjectChar({
             name: 'lunarbloom_base_bonus',
             postEffect: lunarPost,
             format: 'percent',
+        }),
+        new FeatureStatic({
+            category: 'other',
+            name: 'lauma_bloom_flat_bonus',
+            multipliers: [
+                new FeatureMultiplier({
+                    scaling: 'mastery*',
+                    leveling: 'char_skill_burst',
+                    values: Talents.get('burst.lauma_bloom_hyperbloom_and_burgeon_dmg_increase'),
+                }),
+                new FeatureMultiplier({
+                    scaling: 'mastery*',
+                    values: new StatTable('', [charTalentTables.Lauma.cons[1][0]], 100),
+                    condition: new ConditionConstellation({ constellation: 2 }),
+                }),
+            ],
+        }),
+        new FeatureStatic({
+            category: 'other',
+            name: 'lauma_lunarbloom_flat_bonus',
+            multipliers: [
+                new FeatureMultiplier({
+                    scaling: 'mastery*',
+                    leveling: 'char_skill_burst',
+                    values: Talents.get('burst.lauma_lunar_bloom_dmg_increase'),
+                }),
+                new FeatureMultiplier({
+                    scaling: 'mastery*',
+                    values: new StatTable('', [charTalentTables.Lauma.cons[1][1]], 100),
+                    condition: new ConditionConstellation({ constellation: 2 }),
+                }),
+            ],
         }),
         new FeatureHeal({
             name: 'heal',
@@ -378,6 +420,7 @@ export const Lauma = new DbObjectChar({
             levelSetting: 'char_skill_elemental',
             stats: [
                 Talents.getAlias('skill.lauma_elemental_res_decrease', 'enemy_res_dendro', -1),
+                Talents.getAlias('skill.lauma_elemental_res_decrease', 'enemy_res_hydro', -1),
             ],
         }),
         new ConditionBoolean({
@@ -444,41 +487,37 @@ export const Lauma = new DbObjectChar({
     ],
     multipliers: [
         new FeatureMultiplier({
-            scaling: 'mastery*',
+            scaling: 'mastery',
             leveling: 'char_skill_burst',
             values: Talents.get('burst.lauma_bloom_hyperbloom_and_burgeon_dmg_increase'),
             target: bloomTarget,
             condition: new ConditionBoolean({ name: 'lauma_all_hearts_become_the_beating_moon' }),
         }),
         new FeatureMultiplier({
-            scaling: 'mastery*',
+            scaling: 'mastery',
             leveling: 'char_skill_burst',
             values: Talents.get('burst.lauma_lunar_bloom_dmg_increase'),
             target: lunarbloomTarget,
             condition: new ConditionBoolean({ name: 'lauma_all_hearts_become_the_beating_moon' }),
         }),
         new FeatureMultiplier({
-            scaling: 'mastery*',
+            scaling: 'mastery',
+            source: 'constellation2',
             values: new StatTable('', [charTalentTables.Lauma.cons[1][0]], 100),
             target: bloomTarget,
             condition: new ConditionAnd([
                 new ConditionBoolean({ name: 'lauma_all_hearts_become_the_beating_moon' }),
-                new ConditionAnd([
-                    new ConditionBoolean({ name: 'lauma_twine_warnings_and_tales_from_the_north' }),
-                    new ConditionConstellation({ constellation: 2 }),
-                ]),
+                new ConditionConstellation({ constellation: 2 }),
             ]),
         }),
         new FeatureMultiplier({
-            scaling: 'mastery*',
+            scaling: 'mastery',
+            source: 'constellation2',
             values: new StatTable('', [charTalentTables.Lauma.cons[1][1]], 100),
             target: lunarbloomTarget,
             condition: new ConditionAnd([
                 new ConditionBoolean({ name: 'lauma_all_hearts_become_the_beating_moon' }),
-                new ConditionAnd([
-                    new ConditionBoolean({ name: 'lauma_twine_warnings_and_tales_from_the_north' }),
-                    new ConditionConstellation({ constellation: 2 }),
-                ]),
+                new ConditionConstellation({ constellation: 2 }),
             ]),
         }),
     ],
@@ -502,19 +541,17 @@ export const Lauma = new DbObjectChar({
         {
             conditions: [
                 new ConditionMoonPhaseSetting(),
-                new ConditionStatic({
+                new ConditionMoonPhaseStatic({
                     title: 'talent_name.lauma_twine_warnings_and_tales_from_the_north',
                     description: 'talent_descr.lauma_twine_warnings_and_tales_from_the_north',
-                    settings: {
-                        lauma_twine_warnings_and_tales_from_the_north: true,
+                    stats: {
+                        text_bloom_percent: charTalentTables.Lauma.cons[1][0] * 100,
+                        text_lunarbloom_percent: charTalentTables.Lauma.cons[1][1] * 100,
+                        text_dmg_reaction_lunarbloom: charTalentTables.Lauma.cons[1][2] * 100,
                     },
-                    //condition: new ConditionConstellation()
-                }),
-                new ConditionMoonPhaseBuff({
                     realStats: {
                         dmg_reaction_lunarbloom: [0, 0, charTalentTables.Lauma.cons[1][2] * 100],
                     },
-                    //condition: new ConditionConstellation({ constellation: 6 }),
                 }),
             ],
         },
@@ -550,7 +587,7 @@ export const Lauma = new DbObjectChar({
         {
             conditions: [
                 new ConditionMoonPhaseSetting(),
-                new ConditionStatic({
+                new ConditionMoonPhaseStatic({
                     title: 'talent_name.lauma_i_offer_blood_and_tears_to_the_moonlight',
                     description: 'talent_descr.lauma_i_offer_blood_and_tears_to_the_moonlight_1',
                     stats: {
@@ -558,12 +595,9 @@ export const Lauma = new DbObjectChar({
                         text_percent_atk_dmg: charTalentTables.Lauma.cons[5][4] * 100,
                         text_percent_lunarbloom_bonus: charTalentTables.Lauma.cons[5][5] * 100,
                     },
-                }),
-                new ConditionMoonPhaseBuff({
                     realStats: {
                         dmg_reaction_lunarbloom_bonus: [0, 0, charTalentTables.Lauma.cons[5][5] * 100],
                     },
-                    condition: new ConditionConstellation({ constellation: 6 }),
                 }),
             ]
         },
@@ -619,6 +653,7 @@ export const Lauma = new DbObjectChar({
                 rotation: 'party',
                 stats: [
                     Talents.getAlias('skill.lauma_elemental_res_decrease', 'enemy_res_dendro', -1),
+                    Talents.getAlias('skill.lauma_elemental_res_decrease', 'enemy_res_hydro', -1),
                 ],
             }),
             new ConditionNumberTalent({
@@ -646,7 +681,7 @@ export const Lauma = new DbObjectChar({
                 description: 'talent_descr.lauma_all_hearts_become_the_beating_moon_2',
                 rotation: 'party',
             }),
-            new ConditionMoonPhase({
+            new ConditionMoonPhaseBoolean({
                 name: 'party.lauma_light_for_the_frosty_night',
                 title: 'talent_name.lauma_light_for_the_frosty_night_1',
                 description: 'talent_descr.lauma_light_for_the_frosty_night_4',
@@ -665,22 +700,19 @@ export const Lauma = new DbObjectChar({
                 },
                 info: { ascension: 1 },
             }),
-            new ConditionBoolean({
+            new ConditionMoonPhaseBoolean({
                 name: 'party.lauma_twine_warnings_and_tales_from_the_north',
                 serializeId: 9,
                 title: 'talent_name.lauma_twine_warnings_and_tales_from_the_north',
                 description: 'talent_descr.lauma_twine_warnings_and_tales_from_the_north',
+                realStats: {
+                    dmg_reaction_lunarbloom: [0, 0, charTalentTables.Lauma.cons[1][2] * 100],
+                },
                 info: {
                     constellation: 2,
                 },
             }),
-            new ConditionMoonPhaseBuff({
-                realStats: {
-                    dmg_reaction_lunarbloom: [0, 0, charTalentTables.Lauma.cons[1][2] * 100],
-                },
-                condition: new ConditionBoolean({ name: 'party.lauma_twine_warnings_and_tales_from_the_north' }),
-            }),
-            new ConditionMoonPhase({
+            new ConditionMoonPhaseBoolean({
                 name: 'party.lauma_i_offer_blood_and_tears_to_the_moonlight',
                 serializeId: 10,
                 title: 'talent_name.lauma_i_offer_blood_and_tears_to_the_moonlight',
@@ -688,21 +720,19 @@ export const Lauma = new DbObjectChar({
                 stats: {
                     text_percent_lunarbloom_bonus: charTalentTables.Lauma.cons[5][5] * 100,
                 },
-                info: {
-                    constellation: 6,
-                },
-            }),
-            new ConditionMoonPhaseBuff({
                 realStats: {
                     dmg_reaction_lunarbloom_bonus: [0, 0, charTalentTables.Lauma.cons[5][5] * 100],
                 },
-                condition: new ConditionBoolean({ name: 'party.lauma_i_offer_blood_and_tears_to_the_moonlight' }),
+                info: {
+                    constellation: 6,
+                },
             }),
         ],
         multipliers: [
             new FeatureMultiplier({
                 scaling: 'lauma_mastery_total',
                 leveling: 'lauma_char_skill_burst',
+                source: 'talent_burst',
                 values: Talents.get('burst.lauma_bloom_hyperbloom_and_burgeon_dmg_increase'),
                 target: bloomTarget,
                 condition: new ConditionBoolean({ name: 'party.lauma_all_hearts_become_the_beating_moon' }),
@@ -710,12 +740,14 @@ export const Lauma = new DbObjectChar({
             new FeatureMultiplier({
                 scaling: 'lauma_mastery_total',
                 leveling: 'lauma_char_skill_burst',
+                source: 'talent_burst',
                 values: Talents.get('burst.lauma_lunar_bloom_dmg_increase'),
                 target: lunarbloomTarget,
                 condition: new ConditionBoolean({ name: 'party.lauma_all_hearts_become_the_beating_moon' }),
             }),
             new FeatureMultiplier({
                 scaling: 'lauma_mastery_total',
+                source: 'constellation2',
                 values: new StatTable('', [charTalentTables.Lauma.cons[1][0]], 100),
                 target: bloomTarget,
                 condition: new ConditionAnd([
@@ -725,6 +757,7 @@ export const Lauma = new DbObjectChar({
             }),
             new FeatureMultiplier({
                 scaling: 'lauma_mastery_total',
+                source: 'constellation2',
                 values: new StatTable('', [charTalentTables.Lauma.cons[1][1]], 100),
                 target: lunarbloomTarget,
                 condition: new ConditionAnd([

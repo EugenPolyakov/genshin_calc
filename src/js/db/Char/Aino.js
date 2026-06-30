@@ -4,7 +4,7 @@ import { ConditionAscensionChar } from "../../classes/Condition/Ascension/Char";
 import { ConditionBoolean } from "../../classes/Condition/Boolean";
 import { ConditionConstellation } from "../../classes/Condition/Constellation";
 import { ConditionMoonPhaseBuff } from "../../classes/Condition/MoonPhaseBuff";
-import { ConditionMoonPhase } from "../../classes/Condition/Boolean/MoonPhase";
+import { ConditionMoonPhaseBoolean } from "../../classes/Condition/Boolean/MoonPhase";
 import { ConditionMoonPhaseSetting } from "../../classes/Condition/CustomOrigin/MoonPhaseSetting";
 import { ConditionStatic } from "../../classes/Condition/Static";
 import { DbObjectChar } from "../../classes/DbObject/Char";
@@ -346,7 +346,7 @@ export const Aino = new DbObjectChar({
         {
             conditions: [
                 new ConditionMoonPhaseSetting(),
-                new ConditionMoonPhase({
+                new ConditionMoonPhaseBoolean({
                     name: 'aino_the_burden_of_creative_genius',
                     serializeId: 4,
                     title: 'talent_name.aino_the_burden_of_creative_genius',
@@ -354,20 +354,12 @@ export const Aino = new DbObjectChar({
                     stats: {
                         text_number_percent_1: charTalentTables.Aino.cons[5][0] * 100,
                         text_number_percent_2: charTalentTables.Aino.cons[5][1] * 100,
-                        dmg_reaction_electrocharged: charTalentTables.Aino.cons[5][0] * 100,
-                        dmg_reaction_rupture: charTalentTables.Aino.cons[5][0] * 100,
-                        dmg_reaction_lunarcharged: charTalentTables.Aino.cons[5][0] * 100,
-                        dmg_reaction_lunarbloom: charTalentTables.Aino.cons[5][0] * 100,
                     },
-                }),
-                new ConditionMoonPhaseBuff({
                     realStats: {
-                        dmg_reaction_electrocharged: [0, 0, charTalentTables.Aino.cons[5][1] * 100],
-                        dmg_reaction_rupture: [0, 0, charTalentTables.Aino.cons[5][1] * 100],
-                        dmg_reaction_lunarcharged: [0, 0, charTalentTables.Aino.cons[5][1] * 100],
-                        dmg_reaction_lunarbloom: [0, 0, charTalentTables.Aino.cons[5][1] * 100],
+                        dmg_reaction_electrocharged: [charTalentTables.Aino.cons[5][0] * 100, charTalentTables.Aino.cons[5][0] * 100, charTalentTables.Aino.cons[5][0] * 100 + charTalentTables.Aino.cons[5][1] * 100],
+                        dmg_reaction_rupture: [charTalentTables.Aino.cons[5][0] * 100, charTalentTables.Aino.cons[5][0] * 100, charTalentTables.Aino.cons[5][0] * 100 + charTalentTables.Aino.cons[5][1] * 100],
+                        dmg_reaction_lunar: [charTalentTables.Aino.cons[5][0] * 100, charTalentTables.Aino.cons[5][0] * 100, charTalentTables.Aino.cons[5][0] * 100 + charTalentTables.Aino.cons[5][1] * 100],
                     },
-                    condition: new ConditionBoolean({ name: 'aino_the_burden_of_creative_genius' }),
                 }),
             ]
         },
@@ -387,7 +379,7 @@ export const Aino = new DbObjectChar({
                     constellation: 1,
                 },
             }),
-            new ConditionMoonPhase({
+            new ConditionMoonPhaseBoolean({
                 name: 'party.aino_the_burden_of_creative_genius',
                 serializeId: 2,
                 title: 'talent_name.aino_the_burden_of_creative_genius',
@@ -395,23 +387,15 @@ export const Aino = new DbObjectChar({
                 stats: {
                     text_number_percent_1: charTalentTables.Aino.cons[5][0] * 100,
                     text_number_percent_2: charTalentTables.Aino.cons[5][1] * 100,
-                    dmg_reaction_electrocharged: charTalentTables.Aino.cons[5][0] * 100,
-                    dmg_reaction_rupture: charTalentTables.Aino.cons[5][0] * 100,
-                    dmg_reaction_lunarcharged: charTalentTables.Aino.cons[5][0] * 100,
-                    dmg_reaction_lunarbloom: charTalentTables.Aino.cons[5][0] * 100,
+                },
+                realStats: {
+                    dmg_reaction_electrocharged: [charTalentTables.Aino.cons[5][0] * 100, charTalentTables.Aino.cons[5][0] * 100, charTalentTables.Aino.cons[5][0] * 100 + charTalentTables.Aino.cons[5][1] * 100],
+                    dmg_reaction_rupture: [charTalentTables.Aino.cons[5][0] * 100, charTalentTables.Aino.cons[5][0] * 100, charTalentTables.Aino.cons[5][0] * 100 + charTalentTables.Aino.cons[5][1] * 100],
+                    dmg_reaction_lunar: [charTalentTables.Aino.cons[5][0] * 100, charTalentTables.Aino.cons[5][0] * 100, charTalentTables.Aino.cons[5][0] * 100 + charTalentTables.Aino.cons[5][1] * 100],
                 },
                 info: {
                     constellation: 6,
                 },
-            }),
-            new ConditionMoonPhaseBuff({
-                realStats: {
-                    dmg_reaction_electrocharged: [0, 0, charTalentTables.Aino.cons[5][1] * 100],
-                    dmg_reaction_rupture: [0, 0, charTalentTables.Aino.cons[5][1] * 100],
-                    dmg_reaction_lunarcharged: [0, 0, charTalentTables.Aino.cons[5][1] * 100],
-                    dmg_reaction_lunarbloom: [0, 0, charTalentTables.Aino.cons[5][1] * 100],
-                },
-                condition: new ConditionBoolean({ name: 'party.aino_the_burden_of_creative_genius' }),
             }),
         ],
     }

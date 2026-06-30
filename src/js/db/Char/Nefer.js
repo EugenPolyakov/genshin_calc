@@ -3,8 +3,6 @@ import { ConditionOr } from "../../classes/Condition/Or";
 import { ConditionAscensionChar } from "../../classes/Condition/Ascension/Char";
 import { ConditionBoolean } from "../../classes/Condition/Boolean";
 import { ConditionConstellation } from "../../classes/Condition/Constellation";
-import { ConditionMoonPhaseBuff } from "../../classes/Condition/MoonPhaseBuff";
-import { ConditionMoonPhase } from "../../classes/Condition/Boolean/MoonPhase";
 import { ConditionMoonPhaseSetting } from "../../classes/Condition/CustomOrigin/MoonPhaseSetting";
 import { ConditionMoonPhaseStatic } from "../../classes/Condition/Static/MoonPhase";
 import { ConditionStatic } from "../../classes/Condition/Static";

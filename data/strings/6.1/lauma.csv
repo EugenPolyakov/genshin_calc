@@ -2,3 +2,6 @@ category;name;rus;eng
 
 char_talent;unit_stacks_per_moon_song; ур. за Песню луны; Stacks Per Moon Song
 feature_skill;lauma_frostgrove_sanctuary_additional_dmg;Дополнительный Урон Святыни инеевой чащи;Frostgrove Sanctuary Additional Attack DMG
+feature_other;lauma_bloom_flat_bonus;Дополнительный урон бутонизации;Additional Bloom DMG
+feature_other;lauma_lunarbloom_flat_bonus;Дополнительный урон лунной бутонизации;Additional Lunar-Bloom DMG
+features_view;stat_lauma_mastery_total;М. стихий;EM

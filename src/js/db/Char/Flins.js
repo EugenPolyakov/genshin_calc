@@ -4,7 +4,7 @@ import { ConditionAscensionChar } from "../../classes/Condition/Ascension/Char";
 import { ConditionBoolean } from "../../classes/Condition/Boolean";
 import { ConditionConstellation } from "../../classes/Condition/Constellation";
 import { ConditionMoonPhaseBuff } from "../../classes/Condition/MoonPhaseBuff";
-import { ConditionMoonPhase } from "../../classes/Condition/Boolean/MoonPhase";
+import { ConditionMoonPhaseBoolean } from "../../classes/Condition/Boolean/MoonPhase";
 import { ConditionMoonPhaseSetting } from "../../classes/Condition/CustomOrigin/MoonPhaseSetting";
 import { ConditionMoonPhaseStatic } from "../../classes/Condition/Static/MoonPhase";
 import { ConditionStatic } from "../../classes/Condition/Static";
@@ -560,18 +560,13 @@ export const Flins = new DbObjectChar({
         {
             conditions: [
                 new ConditionMoonPhaseSetting(),
-                new ConditionStatic({
+                new ConditionMoonPhaseStatic({
                     title: 'talent_name.flins_songs_and_dances_of_death',
                     description: 'talent_descr.flins_songs_and_dances_of_death',
-                    stats: {
-                        dmg_reaction_lunarcharged_bonus: charTalentTables.Flins.cons[5][0] * 100,
-                    },
-                }),
-                new ConditionMoonPhaseBuff({
                     realStats: {
-                        dmg_reaction_lunarcharged_bonus: [0, 0, charTalentTables.Flins.cons[5][1] * 100],
+                        dmg_reaction_lunarcharged_bonus: [charTalentTables.Flins.cons[5][0] * 100, charTalentTables.Flins.cons[5][0] * 100,
+                            charTalentTables.Flins.cons[5][0] * 100 + charTalentTables.Flins.cons[5][1] * 100],
                     },
-                    condition: new ConditionConstellation({ constellation: 6 }),
                 }),
             ]
         },
@@ -599,7 +594,7 @@ export const Flins = new DbObjectChar({
                     text_percent_max: charTalentTables.Flins.passsive[2][1] * 100,
                 },
             }),
-            new ConditionMoonPhase({
+            new ConditionMoonPhaseBoolean({
                 name: 'party.flins_songs_and_dances_of_death',
                 serializeId: 1,
                 title: 'talent_name.flins_songs_and_dances_of_death',
@@ -607,12 +602,9 @@ export const Flins = new DbObjectChar({
                 info: {
                     constellation: 6,
                 },
-            }),
-            new ConditionMoonPhaseBuff({
                 realStats: {
                     dmg_reaction_lunarcharged_bonus: [0, 0, charTalentTables.Flins.cons[5][1] * 100],
                 },
-                condition: new ConditionBoolean({ name: 'party.flins_songs_and_dances_of_death' }),
             }),
         ],
         postEffects: [

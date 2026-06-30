@@ -4,7 +4,6 @@ feature_attack;charged_hit_2;Заряженная-2;Charged hit-2
 feature_attack;charged_hit_3;Заряженная-3;Charged hit-3
 feature_attack;charged_hit_total;Заряженная (всего);Charged Total
 feature_attack;hits;удара;hits
-feature_attack;normal_hit;Обычная;Normal
 feature_attack;party_heal_on_hit;Лечение отряда при ударе;Party Heal on Hit
 feature_attack;plunge_high;Высокая;Plunge High
 feature_attack;plunge_low;Низкая;Plunge Low
@@ -15,7 +14,6 @@ feature_burst;additional_dmg;Дополнительный урон;Additional DM
 feature_burst;anemoskill_cryo_dmg;Доп. урон Крио;Additional Cryo DMG
 feature_burst;anemoskill_dmg;Доп. элементальный урон;Additional Elemental DMG
 feature_burst;anemoskill_electro_dmg;Доп. урон Электро;Additional Electro DMG
-feature_burst;anemoskill_elemental_dmg;Доп. элементальный урон;Additional Elemental DMG
 feature_burst;anemoskill_hydro_dmg;Доп. урон Гидро;Additional Hydro DMG
 feature_burst;anemoskill_pyro_dmg;Доп. урон Пиро;Additional Pyro DMG
 feature_burst;atk_bonus;Бонус cилы атаки;ATK Bonus
@@ -141,7 +139,6 @@ feature_skill;shield;Щит;Shield
 feature_skill;skill_hit_1;Удар-1;Hit-1
 feature_skill;skill_hit_2;Удар-2;Hit-2
 feature_skill;skill_hit_3;Удар-3;Hit-3
-feature_skill;stamina_consume;Потребление выносливости;Stamina Consumption
 feature_skill;additional_dmg;Дополнительный урон;Additional DMG
 feature_skill;swing_dmg;Урон взмаха;Swing DMG
 feature_stats;atk;Сила атаки;ATK

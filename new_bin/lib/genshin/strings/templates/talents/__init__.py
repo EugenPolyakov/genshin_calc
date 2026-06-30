@@ -41,6 +41,7 @@ from .gorou import char_gorou  # noqa
 from .hu_tao import char_hu_tao  # noqa
 from .iansan import char_iansan  # noqa
 from .ifa import char_ifa # noqa
+from .illuga import char_illuga # noqa
 from .ineffa import char_ineffa # noqa
 from .jahoda import char_jahoda  # noqa
 from .jean import char_jean  # noqa

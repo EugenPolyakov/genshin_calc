@@ -27,6 +27,42 @@ char_lyney = TemplateList(
             'burst': [],
         },
     ),
+    bewildering_lights_rus=Template(
+        replace={
+            '</p><p>': '\n</p><p>'
+        },
+        sentences=[
+            [],
+            [],
+            [],
+            [],
+            [],
+            [],
+            [],
+            [],
+        ],
+        results=[
+            list(range(0, 8)),
+            [1, 2, 3],
+        ],
+    ),
+    bewildering_lights_eng=Template(
+        replace={
+            '</p><p>': '\n</p><p>'
+        },
+        sentences=[
+            [],
+            [],
+            [],
+            [],
+            [],
+            [],
+        ],
+        results=[
+            list(range(0, 6)),
+            [1],
+        ],
+    ),
     perilous_performance=Template(
         sentences=[
             ['3:ignore', '80:text_percent_dmg'],

@@ -1,6 +1,6 @@
 import { Feature2 } from "../../Feature2";
 
-const FIELD_NAMES = ['damageTypes', 'damageTypesExclude', 'damageElements', 'tags'];
+const FIELD_NAMES = ['damageTypes', 'damageTypesExclude', 'damageElements', 'tags', 'tagsExclude'];
 
 export class FeatureMultiplierTarget {
     constructor(params) {
@@ -50,6 +50,14 @@ export class FeatureMultiplierTarget {
 
             if (!hasTag) {
                 return false;
+            }
+        }
+
+        if (this.tagsExclude.length) {
+            for (let tag of feature.getTags()) {
+                if (this.tagsExclude.includes(tag)) {
+                    return false;
+                }
             }
         }
 

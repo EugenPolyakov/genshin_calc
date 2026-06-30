@@ -59,7 +59,7 @@ const Talents = new DbObjectTalents({
     skill: {
         gameId: charTalentTables.Mualani.s2_id,
         title: 'talent_name.mualani_surfshark_wavebreaker',
-        description: 'talent_descr.mualani_surfshark_wavebreaker',
+        description: 'talent_descr.mualani_surfshark_wavebreaker_1',
         items: [
             {
                 unit: 'hp',
@@ -288,14 +288,14 @@ export const Mualani = new DbObjectChar({
             name: 'mualani_wave_momentum',
             serializeId: 1,
             title: 'talent_name.mualani_wave_momentum',
-            description: 'talent_descr.mualani_wave_momentum',
+            description: 'talent_descr.mualani_surfshark_wavebreaker_2',
             maxStacks: 3,
         }),
         new ConditionDropdown({
             name: 'mualani_byte_targets',
             serializeId: 2,
             title: 'talent_name.mualani_byte_targets',
-            description: 'talent_descr.mualani_byte_targets',
+            description: 'talent_descr.mualani_surfshark_wavebreaker_3',
             hideEmpty: true,
             defaultValue: 1,
             values: [

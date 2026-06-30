@@ -125,6 +125,14 @@ stat;crit_rate_enemy;Эффект противника;Enemy modifier
 stat;crit_rate_normal;Обычная атака;Normal attack
 stat;crit_rate_charged;Заряженная атака;Charged attack
 stat;crit_rate_plunge;Атака в падении;Plunge attack
+stat;crit_rate_anemo;Анемо урон;Anemo DMG
+stat;crit_rate_cryo;Крио урон;Cryo DMG
+stat;crit_rate_electro;Электро урон;Electro DMG
+stat;crit_rate_geo;Гео урон;Geo DMG
+stat;crit_rate_hydro;Гидро урон;Hydro DMG
+stat;crit_rate_pyro;Пиро урон;Pyro DMG
+stat;crit_rate_dendro;Дендро урон;Dendro DMG
+stat;crit_rate_phys;Физический урон;Physical DMG
 stat;crit_rate_skill;Элементальный навык;Elemental Skill
 stat;crit_rate_burst;Взрыв стихий;Elemental Burst
 stat;crit_rate_ganyu;Стрела-снежинка;Frostflake arrow

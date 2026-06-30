@@ -68,7 +68,7 @@ const Talents = new DbObjectTalents({
             },
             {
                 unit: 'per_sec',
-                table: new StatTable('stamina_consume', charTalentTables.Jean.s2.p2),
+                table: new StatTable('jean_stamina_consumption', charTalentTables.Jean.s2.p2),
             },
             {
                 unit: 'sec',

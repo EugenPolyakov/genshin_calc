@@ -17,8 +17,8 @@ from lib.genshin.strings.template import SentenceMismatch
 from lib.genshin.utils import convert_id, add_array
 from lib.genshin.strings.csv import CsvDumper
 from lib.genshin.strings.text import TextDumper  # noqa
-import static
-from static import WEAPON_TYPES, shrink_table, names_mapping, fix_name
+import lib.static
+from lib.static import WEAPON_TYPES, shrink_table, names_mapping, fix_name
 from old_values import old_values
 import logging
 
@@ -152,9 +152,11 @@ def normal_hit(name_idx, desc, types):
 
 def dmg_hit(name_idx, desc, types):
     add_hits(name_idx, desc, types, ' DMG')
-
+    
 #ganyu
 extract_params(10371, 3731, range(0, 6), normal_hit, ['attack', 'skill', 'burst'])
+#ningguang
+extract_params(10271, 2731, [0], default_skill, ['attack', 'skill', 'burst'])
 #venti
 extract_params(10221, 2231, range(6, 9), default_skill, ['attack', 'skill', 'burst'])
 #bennett

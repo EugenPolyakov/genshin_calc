@@ -11,7 +11,7 @@ export const AubadeOfMorningstarAndMoon = new ArtifactSet({
     gameId: 15044,
     itemIds: [44412, 44413, 44422, 44423, 44432, 44433, 44442, 44443, 44452, 44453, 44513, 44514, 44523, 44524, 44533, 44534, 44543, 44544, 44553, 44554, 23811, 23812, 23813, 23814, 23815, 23816, 23817, 23818, 23819, 23820],
     name: "artifact_set.aubade_of_morningstar_and_moon",
-    iconClass: "artifact-icon-a-day-carved-from-rising-winds",
+    iconClass: "artifact-icon-aubade-of-morningstar-and-moon",
     minRarity: 4,
     maxRarity: 5,
     setBonus:  [

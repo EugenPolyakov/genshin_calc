@@ -28,6 +28,7 @@ import { FeatureMultiplierList } from "../../classes/Feature2/Multiplier/List";
 import { FeatureDamageBurst } from "../../classes/Feature2/Damage/Burst";
 import { FeaturePostEffectValue } from "../../classes/Feature2/PostEffectValue";
 import { PostEffectStatsTotal } from "../../classes/PostEffect/Stats/Total";
+import { Stats } from "../../classes/Stats";
 
 const Talents = new DbObjectTalents({
     attack: {
@@ -91,11 +92,11 @@ const Talents = new DbObjectTalents({
             },
             {
                 unit: 'def',
-                table: new StatTable('yunjin_charge_1_dmg', charTalentTables.YunJin.s2.p4),
+                table: new StatTable('charge_level_1', charTalentTables.YunJin.s2.p4),
             },
             {
                 unit: 'def',
-                table: new StatTable('yunjin_charge_2_dmg', charTalentTables.YunJin.s2.p5),
+                table: new StatTable('charge_level_2', charTalentTables.YunJin.s2.p5),
             },
             {
                 type: 'shield',
@@ -113,15 +114,15 @@ const Talents = new DbObjectTalents({
     },
     burst: {
         gameId: charTalentTables.YunJin.s3_id,
-        title: 'talent_name.yun_jin_cliffbreakers_banner',
-        description: 'talent_descr.yun_jin_cliffbreakers_banner',
+        title: 'talent_name.yun_jin_cliffbreakers_banner_1',
+        description: 'talent_descr.yun_jin_cliffbreakers_banner_1',
         items: [
             {
                 table: new StatTable('burst_dmg', charTalentTables.YunJin.s3.p1),
             },
             {
                 unit: 'def',
-                table: new StatTable('yunjin_dmg_bonus', charTalentTables.YunJin.s3.p2),
+                table: new StatTable('yun_jin_dmg_increase', charTalentTables.YunJin.s3.p2),
             },
             {
                 unit: 'sec',
@@ -129,7 +130,7 @@ const Talents = new DbObjectTalents({
             },
             {
                 unit: '',
-                table: new StatTable('yunjin_quota', charTalentTables.YunJin.s3.p6),
+                table: new StatTable('yun_jin_trigger_quota', charTalentTables.YunJin.s3.p6),
             },
             {
                 unit: 'sec',
@@ -145,7 +146,10 @@ const Talents = new DbObjectTalents({
 
 export function FillYunJinSettingsStacks(settings) {
     let result = Object.getPrototypeOf(Object.getPrototypeOf(this)).getSettings.call(this, settings);
-    result.yunjin_traditionalist_stacks = settings.party_elements_count_level;
+    if (this.isActive(settings))
+        result.yunjin_traditionalist_stacks = (settings.party_elements_count_level || 0) + 1;
+    else
+        result.yunjin_traditionalist_stacks = 1;
 
     return result;
 }
@@ -330,7 +334,7 @@ export const YunJin = new DbObjectChar({
                 new FeatureMultiplier({
                     scaling: 'def*',
                     leveling: 'char_skill_elemental',
-                    values: Talents.get('skill.yunjin_charge_1_dmg'),
+                    values: Talents.get('skill.charge_level_1'),
                 }),
             ],
         }),
@@ -340,7 +344,7 @@ export const YunJin = new DbObjectChar({
                 new FeatureMultiplier({
                     scaling: 'def*',
                     leveling: 'char_skill_elemental',
-                    values: Talents.get('skill.yunjin_charge_2_dmg'),
+                    values: Talents.get('skill.charge_level_2'),
                 }),
             ],
         }),
@@ -366,16 +370,16 @@ export const YunJin = new DbObjectChar({
         }),
         new FeaturePostEffectValue({
             category: 'burst',
-            name: 'yunjin_dmg_bonus',
+            name: 'yun_jin_dmg_increase',
             postEffect: new PostEffectStatsTotal({
                 from: 'def',
                 percent: Talents.getMulti({
                     name: '',
-                    from: 'burst.yunjin_dmg_bonus',
+                    from: 'burst.yun_jin_dmg_increase',
                     multi: 0.01,
                 }),
                 levelSetting: 'char_skill_burst',
-                percentBonus: new StatTable('', [0.025, 0.05, 0.075, 0.115]),
+                percentBonus: new StatTable('', [0, 0.025, 0.05, 0.075, 0.115]),
                 percentBonusLevel: 'yunjin_traditionalist_stacks',
             }),
         }),
@@ -385,9 +389,9 @@ export const YunJin = new DbObjectChar({
             scaling: 'def*',
             leveling: 'char_skill_burst',
             source: 'talent_burst',
-            values: Talents.get('burst.yunjin_dmg_bonus'),
+            values: Talents.get('burst.yun_jin_dmg_increase'),
             bonusLeveling: 'yunjin_traditionalist_stacks',
-            bonusValues: new ValueTable([2.5, 5, 7.5, 11.5]),
+            bonusValues: new ValueTable([0, 2.5, 5, 7.5, 11.5]),
             target: new FeatureMultiplierTarget({
                 damageTypes: ['normal'],
             }),
@@ -399,8 +403,8 @@ export const YunJin = new DbObjectChar({
         new ConditionBoolean({
             name: 'yunjin_flag',
             serializeId: 1,
-            title: 'talent_name.yunjin_flag',
-            description: 'talent_descr.yunjin_flag',
+            title: 'talent_name.yun_jin_cliffbreakers_banner_2',
+            description: 'talent_descr.yun_jin_cliffbreakers_banner_2',
         }),
         new ConditionStatic({
             title: 'talent_name.yun_jin_true_to_oneself',
@@ -491,7 +495,7 @@ export const YunJin = new DbObjectChar({
     partyData: {
         loadStats: {
             stats: ['def_total'],
-            settings: ['char_skill_elemental'],
+            settings: ['char_skill_burst'],
         },
         conditions: [
             new ConditionCalcElements({}),
@@ -513,8 +517,8 @@ export const YunJin = new DbObjectChar({
                 name: 'party.yunjin_flag',
                 serializeId: 3,
                 rotation: 'party',
-                title: 'talent_name.yunjin_flag',
-                description: 'talent_descr.yunjin_flag',
+                title: 'talent_name.yun_jin_cliffbreakers_banner_2',
+                description: 'talent_descr.yun_jin_cliffbreakers_banner_2',
             }),
             new ConditionBooleanYunJin({
                 name: 'party.yunjin_traditionalist',
@@ -581,9 +585,9 @@ export const YunJin = new DbObjectChar({
                 scaling: 'yunjin_def_total',
                 leveling: 'yunjin_char_skill_burst',
                 source: 'yun_jin',
-                values: Talents.get('burst.yunjin_dmg_bonus'),
+                values: Talents.get('burst.yun_jin_dmg_increase'),
                 bonusLeveling: 'yunjin_traditionalist_stacks',
-                bonusValues: new ValueTable([2.5, 5, 7.5, 11.5]),
+                bonusValues: new ValueTable([0, 2.5, 5, 7.5, 11.5]),
                 target: new FeatureMultiplierTarget({
                     damageTypes: ['normal'],
                 }),

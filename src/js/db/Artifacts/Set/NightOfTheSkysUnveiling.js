@@ -1,5 +1,5 @@
 import { ArtifactSet } from "../../../classes/ArtifactSet";
-import { ConditionMoonPhase } from "../../../classes/Condition/Boolean/MoonPhase";
+import { ConditionMoonPhaseBoolean } from "../../../classes/Condition/Boolean/MoonPhase";
 import { ConditionStatic } from "../../../classes/Condition/Static";
 import { ConditionMoonPhaseSetting } from "../../../classes/Condition/CustomOrigin/MoonPhaseSetting";
 
@@ -29,7 +29,7 @@ export const NightOfTheSkysUnveiling = new ArtifactSet({
         {
             conditions: [
                 new ConditionMoonPhaseSetting(),
-                new ConditionMoonPhase({
+                new ConditionMoonPhaseBoolean({
                     name: 'set.night_of_the_skys_unveiling_4',
                     title: 'set_bonus.night_of_the_skys_unveiling_4',
                     description: 'set_descr.night_of_the_skys_unveiling_4',

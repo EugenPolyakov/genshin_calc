@@ -77,6 +77,7 @@ char_lauma = TemplateList(
         replace={
             '<p>name': '<p>\nname',
             '<br>': '\n<br>\n',
+            '</p><p>': '\n</p><p>',
         },
         sentences=[
             [],
@@ -86,15 +87,17 @@ char_lauma = TemplateList(
             ['15:ignore'],
             [],
             [],
+            [],
             ['1:'],
+            [],
             [],
             [],
             [],
         ],
         results=[
-            [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
-            [5],
-            [7, 8, 9, 10]
+            list(range(0, 13)),
+            [6],
+            [8, 9, 10, 11]
         ],
         extracted_names=[1],
     ),
@@ -173,7 +176,7 @@ char_lauma = TemplateList(
             [],
             [],
             [],
-            ['25:text_percent_lunarbloom_bonus'],
+            ['25:format{text_number_f=2|{value}}:text_percent_lunarbloom_bonus'],
         ],
         results=[
             [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13],
@@ -197,11 +200,16 @@ char_lauma = TemplateList(
             [],
             [],
             [],
-            ['25:text_percent_lunarbloom_bonus'],
+            ['25:format{text_number_f=2|{value}}:text_percent_lunarbloom_bonus'],
         ],
         results=[
             [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14],
             [14],
+        ],
+    ),
+    twine_warnings_and_tales_from_the_north=Template(
+        sentences=[
+            ['500:text_bloom_percent', '400:text_lunarbloom_percent', '40:format{text_number_f=2|{value}}:text_dmg_reaction_lunarbloom'],
         ],
     ),
 )

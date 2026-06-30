@@ -66,14 +66,14 @@ const Talents = new DbObjectTalents({
         description: 'talent_descr.kujou_sara_tengu_stormcall',
         items: [
             {
-                table: new StatTable('sara_ambush_dmg', charTalentTables.Sara.s2.p1),
+                table: new StatTable('kujou_sara_ambush_dmg', charTalentTables.Sara.s2.p1),
             },
             {
-                table: new StatTable('sara_atk_bonus', charTalentTables.Sara.s2.p2),
+                table: new StatTable('kujou_sara_atk_bonus_ratio', charTalentTables.Sara.s2.p2),
             },
             {
                 unit: 'sec',
-                table: new StatTable('sara_atk_bonus_duration', charTalentTables.Sara.s2.p3),
+                table: new StatTable('kujou_sara_atk_bonus_duration', charTalentTables.Sara.s2.p3),
             },
             {
                 unit: 'sec',
@@ -87,10 +87,10 @@ const Talents = new DbObjectTalents({
         description: 'talent_descr.kujou_sara_koukou_sendou',
         items: [
             {
-                table: new StatTable('sara_titanbreaker_dmg', charTalentTables.Sara.s3.p1),
+                table: new StatTable('kujou_sara_titanbreaker_dmg', charTalentTables.Sara.s3.p1),
             },
             {
-                table: new StatTable('sara_stormcluster_dmg', charTalentTables.Sara.s3.p2),
+                table: new StatTable('kujou_sara_stormcluster_dmg', charTalentTables.Sara.s3.p2),
             },
             {
                 unit: 'sec',
@@ -109,7 +109,7 @@ const atkBuffPost = new PostEffectStats({
     from: 'atk_base',
     percent: Talents.getMulti({
         name: 'atk',
-        from: 'skill.sara_atk_bonus',
+        from: 'skill.kujou_sara_atk_bonus_ratio',
         multi: 0.01,
     }),
     conditions: [
@@ -215,7 +215,7 @@ export const Sara = new DbObjectChar({
             multipliers: [
                 new FeatureMultiplier({
                     leveling: 'char_skill_elemental',
-                    values: Talents.get('skill.sara_ambush_dmg'),
+                    values: Talents.get('skill.kujou_sara_ambush_dmg'),
                 }),
             ],
         }),
@@ -227,14 +227,14 @@ export const Sara = new DbObjectChar({
                     scalingMultiplier: 0.3,
                     scalingSource: 'constellation2',
                     leveling: 'char_skill_elemental',
-                    values: Talents.get('skill.sara_ambush_dmg'),
+                    values: Talents.get('skill.kujou_sara_ambush_dmg'),
                 }),
             ],
             condition: new ConditionConstellation({constellation: 2}),
         }),
         new FeaturePostEffectValue({
             category: 'skill',
-            name: 'sara_atk_bonus',
+            name: 'kujou_sara_atk_bonus_ratio',
             postEffect: atkBuffPost,
         }),
         new FeaturePostEffectValue({
@@ -252,7 +252,7 @@ export const Sara = new DbObjectChar({
             multipliers: [
                 new FeatureMultiplier({
                     leveling: 'char_skill_burst',
-                    values: Talents.get('burst.sara_titanbreaker_dmg'),
+                    values: Talents.get('burst.kujou_sara_titanbreaker_dmg'),
                 }),
             ],
         }),
@@ -261,7 +261,7 @@ export const Sara = new DbObjectChar({
             multipliers: [
                 new FeatureMultiplier({
                     leveling: 'char_skill_burst',
-                    values: Talents.get('burst.sara_stormcluster_dmg'),
+                    values: Talents.get('burst.kujou_sara_stormcluster_dmg'),
                 }),
             ],
         }),
@@ -412,7 +412,7 @@ export const Sara = new DbObjectChar({
                 from: 'sara_atk_base',
                 percent: Talents.getMulti({
                     name: 'atk',
-                    from: 'skill.sara_atk_bonus',
+                    from: 'skill.kujou_sara_atk_bonus_ratio',
                     multi: 0.01,
                 }),
                 conditions: [

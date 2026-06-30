@@ -66,33 +66,33 @@ const Talents = new DbObjectTalents({
     },
     skill: {
         gameId: charTalentTables.Ayato.s2_id,
-        title: 'talent_name.kamisato_ayato_kyouka',
-        description: 'talent_descr.kamisato_ayato_kyouka',
+        title: 'talent_name.kamisato_ayato_kyouka_1',
+        description: 'talent_descr.kamisato_ayato_kyouka_1',
         items: [
             {
-                table: new StatTable('ayato_shunsuiken_1', charTalentTables.Ayato.s2.p1),
+                table: new StatTable('kamisato_ayato_shunsuiken_1_hit_dmg', charTalentTables.Ayato.s2.p1),
             },
             {
-                table: new StatTable('ayato_shunsuiken_2', charTalentTables.Ayato.s2.p2),
+                table: new StatTable('kamisato_ayato_shunsuiken_2_hit_dmg', charTalentTables.Ayato.s2.p2),
             },
             {
-                table: new StatTable('ayato_shunsuiken_3', charTalentTables.Ayato.s2.p3),
+                table: new StatTable('kamisato_ayato_shunsuiken_3_hit_dmg', charTalentTables.Ayato.s2.p3),
             },
             {
                 unit: 'sec',
-                table: new StatTable('ayato_duration', charTalentTables.Ayato.s2.p4),
+                table: new StatTable('kamisato_ayato_takimeguri_kanka_duration', charTalentTables.Ayato.s2.p4),
             },
             {
                 unit: 'hp',
                 digits: 2,
-                table: new StatTable('ayato_namisen_bonus', charTalentTables.Ayato.s2.p5),
+                table: new StatTable('kamisato_ayato_namisen_dmg_bonus', charTalentTables.Ayato.s2.p5),
             },
             {
-                table: new StatTable('ayato_water_illusion_dmg', charTalentTables.Ayato.s2.p6),
+                table: new StatTable('kamisato_ayato_water_illusion_dmg', charTalentTables.Ayato.s2.p6),
             },
             {
                 unit: 'sec',
-                table: new StatTable('ayato_duration_2', charTalentTables.Ayato.s2.p7),
+                table: new StatTable('kamisato_ayato_water_illusion_duration', charTalentTables.Ayato.s2.p7),
             },
             {
                 unit: 'sec',
@@ -103,13 +103,13 @@ const Talents = new DbObjectTalents({
     burst: {
         gameId: charTalentTables.Ayato.s3_id,
         title: 'talent_name.kamisato_ayato_suiyuu',
-        description: 'talent_descr.kamisato_ayato_suiyuu',
+        description: 'talent_descr.kamisato_ayato_suiyuu_1',
         items: [
             {
-                table: new StatTable('ayato_bloomwater_blade_dmg', charTalentTables.Ayato.s3.p1),
+                table: new StatTable('kamisato_ayato_bloomwater_blade_dmg', charTalentTables.Ayato.s3.p1),
             },
             {
-                table: new StatTable('ayato_normal_attack_bonus', charTalentTables.Ayato.s3.p2),
+                table: new StatTable('kamisato_ayato_normal_attack_dmg_bonus', charTalentTables.Ayato.s3.p2),
             },
             {
                 unit: 'sec',
@@ -206,40 +206,40 @@ export const Ayato = new DbObjectChar({
             condition: condNotStance,
         }),
         new FeatureDamageNormal({
-            name: 'ayato_shunsuiken_1',
+            fullName: 'skill.kamisato_ayato_shunsuiken_1_hit_dmg',
             element: 'hydro',
             damageBonuses: ['dmg_normal_ayato'],
             tags: ['shunsuiken'],
             multipliers: [
                 new FeatureMultiplier({
                     leveling: 'char_skill_elemental',
-                    values: Talents.get('skill.ayato_shunsuiken_1'),
+                    values: Talents.get('skill.kamisato_ayato_shunsuiken_1_hit_dmg'),
                 }),
             ],
             condition: condStance,
         }),
         new FeatureDamageNormal({
-            name: 'ayato_shunsuiken_2',
+            fullName: 'skill.kamisato_ayato_shunsuiken_2_hit_dmg',
             element: 'hydro',
             damageBonuses: ['dmg_normal_ayato'],
             tags: ['shunsuiken'],
             multipliers: [
                 new FeatureMultiplier({
                     leveling: 'char_skill_elemental',
-                    values: Talents.get('skill.ayato_shunsuiken_2'),
+                    values: Talents.get('skill.kamisato_ayato_shunsuiken_2_hit_dmg'),
                 }),
             ],
             condition: condStance,
         }),
         new FeatureDamageNormal({
-            name: 'ayato_shunsuiken_3',
+            fullName: 'skill.kamisato_ayato_shunsuiken_3_hit_dmg',
             element: 'hydro',
             damageBonuses: ['dmg_normal_ayato'],
             tags: ['shunsuiken'],
             multipliers: [
                 new FeatureMultiplier({
                     leveling: 'char_skill_elemental',
-                    values: Talents.get('skill.ayato_shunsuiken_3'),
+                    values: Talents.get('skill.kamisato_ayato_shunsuiken_3_hit_dmg'),
                 }),
             ],
             condition: condStance,
@@ -299,22 +299,20 @@ export const Ayato = new DbObjectChar({
             condition: condNotStance,
         }),
         new FeatureDamageSkill({
-            name: 'ayato_water_illusion_dmg',
             element: 'hydro',
             multipliers: [
                 new FeatureMultiplier({
                     leveling: 'char_skill_elemental',
-                    values: Talents.get('skill.ayato_water_illusion_dmg'),
+                    values: Talents.get('skill.kamisato_ayato_water_illusion_dmg'),
                 }),
             ],
         }),
         new FeatureDamageBurst({
-            name: 'ayato_bloomwater_blade_dmg',
             element: 'hydro',
             multipliers: [
                 new FeatureMultiplier({
                     leveling: 'char_skill_burst',
-                    values: Talents.get('burst.ayato_bloomwater_blade_dmg'),
+                    values: Talents.get('burst.kamisato_ayato_bloomwater_blade_dmg'),
                 }),
             ],
         }),
@@ -325,7 +323,7 @@ export const Ayato = new DbObjectChar({
             leveling: 'char_skill_elemental',
             stacksLeveling: 'ayato_namisen',
             maxStacks: maxStacksFunc,
-            values: Talents.get('skill.ayato_namisen_bonus'),
+            values: Talents.get('skill.kamisato_ayato_namisen_dmg_bonus'),
             condition: new ConditionBooleanValue({
                 setting: 'ayato_namisen',
                 cond: 'ge',
@@ -356,24 +354,24 @@ export const Ayato = new DbObjectChar({
         new ConditionBoolean({
             name: 'ayato_takimeguri_kanka',
             serializeId: 1,
-            title: 'talent_name.ayato_takimeguri_kanka',
-            description: 'talent_descr.ayato_takimeguri_kanka',
+            title: 'talent_name.kamisato_ayato_kyouka_2',
+            description: 'talent_descr.kamisato_ayato_kyouka_2',
         }),
         new ConditionStacks({
             name: 'ayato_namisen',
             serializeId: 2,
             title: 'talent_name.ayato_namisen',
-            description: 'talent_descr.ayato_namisen',
+            description: 'talent_descr.kamisato_ayato_kyouka_3',
             maxStacks: maxStacksFunc,
         }),
         new ConditionBooleanLevels({
             name: 'ayato_bloomwater_blades',
             serializeId: 3,
             title: 'talent_name.ayato_bloomwater_blades',
-            description: 'talent_descr.ayato_bloomwater_blades',
+            description: 'talent_descr.kamisato_ayato_suiyuu_2',
             levelSetting: 'char_skill_burst',
             stats: [
-                Talents.getAlias('burst.ayato_normal_attack_bonus', 'dmg_normal'),
+                Talents.getAlias('burst.kamisato_ayato_normal_attack_dmg_bonus', 'dmg_normal'),
             ],
         }),
         new ConditionStatic({
@@ -482,10 +480,10 @@ export const Ayato = new DbObjectChar({
                 serializeId: 2,
                 rotation: 'party',
                 title: 'talent_name.ayato_bloomwater_blades',
-                description: 'talent_descr.ayato_bloomwater_blades',
+                description: 'talent_descr.kamisato_ayato_suiyuu_2',
                 levelSetting: 'ayato_char_skill_burst',
                 stats: [
-                    Talents.getAlias('burst.ayato_normal_attack_bonus', 'dmg_normal'),
+                    Talents.getAlias('burst.kamisato_ayato_normal_attack_dmg_bonus', 'dmg_normal'),
                 ],
             }),
             new ConditionBoolean({

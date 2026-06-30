@@ -113,6 +113,7 @@ import { Nefer } from "./Char/Nefer"
 import { Durin } from "./Char/Durin"
 import { Jahoda } from "./Char/Jahoda"
 import { Columbina } from "./Char/Columbina"
+import { Illuga } from "./Char/Illuga"
 
 export const Chars = new DbObjectListSerializeChars({
     Albedo: Albedo, // 1
@@ -229,4 +230,5 @@ export const Chars = new DbObjectListSerializeChars({
     Durin: Durin, //113
     Jahoda: Jahoda, //114
     Columbina: Columbina, //115
+    Illuga: Illuga, //116
 });

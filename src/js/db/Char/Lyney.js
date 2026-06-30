@@ -93,7 +93,7 @@ const Talents = new DbObjectTalents({
     skill: {
         gameId: charTalentTables.Lyney.s2_id,
         title: 'talent_name.lyney_bewildering_lights',
-        description: 'talent_descr.lyney_bewildering_lights',
+        description: 'talent_descr.lyney_bewildering_lights_1',
         items: [
             {
                 table: new StatTable('skill_dmg', charTalentTables.Lyney.s2.p1),
@@ -376,7 +376,7 @@ export const Lyney = new DbObjectChar({
             name: 'lyney_surplus_stacks',
             serializeId: 1,
             title: 'talent_name.lyney_surplus_stacks',
-            description: 'talent_descr.lyney_surplus_stacks',
+            description: 'talent_descr.lyney_bewildering_lights_2',
             maxStacks: 5,
         }),
         new ConditionBoolean({

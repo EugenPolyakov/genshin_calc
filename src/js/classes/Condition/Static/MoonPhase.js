@@ -1,20 +1,9 @@
-import { ConditionStatic } from "../Static";
+import { ConditionCustomLevelStatic } from "./CustomLevel";
 
-export class ConditionMoonPhaseStatic extends ConditionStatic {
-    getDefaultStats(settings) {
-        let stats = super.getDefaultStats(settings);
-        let level = Math.min(2, settings['moon_phase']);
-        if (!level) {
-            return stats;
-        }
-
-        stats.add('text_number_f', level);
-
-        if (this.params.realStats) {
-            for (var i in this.params.realStats)
-                stats.add(i, this.params.realStats[i][level]);
-        }
-
-        return stats;
+export class ConditionMoonPhaseStatic extends ConditionCustomLevelStatic {
+    constructor (params) {
+        params.levelSetting = 'moon_phase';
+        params.maxLevelSetting = 2;
+        super(params);
     }
 }

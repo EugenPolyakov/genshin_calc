@@ -1269,8 +1269,8 @@ old_values = {
         3049635894: "normal_hit_2",
         2880459095: "normal_hit_3",
         1723351439: "charged_hit",
-        3209174990: "swift_stormflight_dmg",
-        4226111610: "charged_attack_swift_stormflight_stamina_cost",
+        3209174990: "iansan_charged_hit",
+        4226111610: "stamina_cost",
         1013377703: "plunge",
         2166501301: "plunge_low/plunge_high",
     },
@@ -1283,11 +1283,11 @@ old_values = {
     #the_three_principles_of_power
     (11105, 11039): {
         3073974310: "skill_dmg",
-        3865075350: "high_nightsoul_points_atk_conversion_rate",
-        3715173087: "low_nightsoul_points_atk_conversion_rate",
-        1024075903: "max_atk_bonus",
-        1184972150: "duration",
-        822855506: "non_combat_state_duration",
+        3865075350: "conversion_high",
+        3715173087: "conversion_low",
+        1024075903: "bonus_max",
+        1184972150: "iansan_duration_combat",
+        822855506: "iansan_duration",
         3033115887: "cd",
         823498189: "energy_cost",
     },
@@ -1455,8 +1455,8 @@ old_values = {
     #dandelion_breeze
     (10034, 339): {
         4263921502: "burst_dmg",
-        1372719686: "field_entering_exiting_dmg",
-        357496679: "field_activation_healing",
+        1372719686: "field_dmg",
+        357496679: "heal",
         2598948879: "heal_dot",
         654244022: "cd",
         4237010618: "energy_cost",
@@ -1475,15 +1475,15 @@ old_values = {
     },
     #go_go_turbo_twirly
     (11002, 10032): {
-        1697502086: "turbo_twirly_mounted_dmg",
-        1924586798: "turbo_twirly_independent_dmg",
+        1697502086: "ride_dmg",
+        1924586798: "independed_dmg",
         3490899927: "nightsoul_point_limit",
         1179350143: "cd",
     },
     #time_to_get_serious
     (11005, 10039): {
         689100294: "skill_dmg",
-        1060100838: "field_duration",
+        1060100838: "kachina_duration",
         1565682215: "cd",
         890260063: "energy_cost",
     },
@@ -1731,7 +1731,7 @@ old_values = {
     },
     #gyoei_narukami_kariyama_rite
     (10655, 6539): {
-        4130003526: "burst_dmg",
+        4130003526: "kuki_shinobu_burst_dmg",
         4074500286: "burst_total_dmg",
         1195956679: "duration",
         1437885527: "cd",
@@ -1841,11 +1841,11 @@ old_values = {
     (10061, 432): {
         1326924022: "press_dmg",
         754398542: "cd_press",
-        2164796639: "non_conductive_hold_dmg",
-        607681151: "stack_1_conductive_hold_dmg",
-        2706807862: "stack_2_conductive_hold_dmg",
-        1899748370: "stack_3_conductive_hold_dmg",
-        3226654919: "holding_cd",
+        2164796639: "hold_dmg",
+        607681151: "stack_1",
+        2706807862: "stack_2",
+        1899748370: "stack_3",
+        3226654919: "cd_hold",
     },
     #lightning_rose
     (10062, 439): {
@@ -1895,9 +1895,9 @@ old_values = {
         3219335550: "plunge",
         337992178: "plunge_low/plunge_high",
         2204864447: "aimed",
-        2858779685: "charged_aimed",
+        2858779685: "aimed_shot_charge_level_1",
         845050484: "prop_arrow_dmg",
-        1266041863: "hp_cost",
+        1266041863: "lyney_hp_cost",
         3955351580: "grin_malkin_hat_inherited_hp",
         1849172955: "grin_malkin_hat_duration",
         2906656535: "pyrotechnic_strike_dmg",
@@ -1983,9 +1983,9 @@ old_values = {
     #skyfeather_song
     (10805, 8039): {
         343216622: "heal",
-        1878022510: "heal_dot",
+        1878022510: "mika_heal_dot",
         3461123831: "eagleplume_regen_interval",
-        2154991559: "duration",
+        2154991559: "mika_duration",
         3087836134: "cd",
         1517717986: "energy_cost",
     },
@@ -2062,10 +2062,10 @@ old_values = {
     },
     #surfshark_wavebreaker
     (30002, 10232): {
-        1363351606: "sharkys_bite_base_dmg",
-        3788114030: "wave_momentum_dmg_bonus",
-        189929367: "sharkys_surging_bite_additional_dmg_bonus",
-        2196177519: "sharkys_bite_cd",
+        1363351606: "shark_base_dmg",
+        3788114030: "wave_monentum_dmg",
+        189929367: "shark_add_dmg",
+        2196177519: "shark_cd",
         58219326: "nightsoul_point_limit",
         3592952146: "cd",
     },
@@ -2234,22 +2234,22 @@ old_values = {
 #ningguang
     #sparkling_scatter
     (10271, 2731): {
-        1787189966: "normal_attack_dmg",
+        1787189966: "normal_hit",
         3911851198: "charged_hit",
-        1124243887: "dmg_per_star_jade",
+        1124243887: "star_jade",
         2194954983: "stamina_cost",
         4146630358: "plunge",
         4021569018: "plunge_low/plunge_high",
     },
     #jade_screen
     (10272, 2732): {
-        2256683638: "inherited_hp",
+        2256683638: "jade_screen_hp",
         1507634574: "skill_dmg",
         1488622399: "cd",
     },
     #starshatter
     (10274, 2739): {
-        2964369222: "dmg_per_gem",
+        2964369222: "gem_dmg",
         4075890670: "cd",
         226393063: "energy_cost",
     },
@@ -2326,9 +2326,9 @@ old_values = {
     #herald_of_frost
     (10352, 3532): {
         1892982862: "skill_dmg",
-        1947081126: "regeneration_on_hit",
+        1947081126: "party_heal_on_hit",
         1077365591: "heal_dot",
-        2415057471: "herald_of_frost_dmg",
+        2415057471: "herald_of_frost",
         1712521390: "duration",
         780363642: "cd",
     },

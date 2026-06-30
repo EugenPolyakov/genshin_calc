@@ -582,7 +582,7 @@ export const Columbina = new DbObjectChar({
                     group: 2,
                     title: 'talent_name.columbina_not_in_lone_splendor',
                     description: 'talent_descr.columbina_not_in_lone_splendor_4',
-                    serializeId: 3,
+                    serializeId: 7,
                     stats: {
                         text_mastery_percent: charTalentTables.Columbina.cons[1][4] * 100,
                     },
@@ -596,7 +596,7 @@ export const Columbina = new DbObjectChar({
                     group: 3,
                     title: 'talent_name.columbina_not_in_lone_splendor',
                     description: 'talent_descr.columbina_not_in_lone_splendor_5',
-                    serializeId: 3,
+                    serializeId: 8,
                     stats: {
                         text_def_percent: charTalentTables.Columbina.cons[1][5] * 100,
                     },
@@ -848,6 +848,7 @@ export const Columbina = new DbObjectChar({
                 name: 'party.columbina_not_in_lone_splendor',
                 group: 1,
                 serializeId: 10,
+                rotation: 'party',
                 title: 'talent_name.columbina_not_in_lone_splendor',
                 description: 'talent_descr.columbina_not_in_lone_splendor_3',
                 info: {
@@ -865,7 +866,8 @@ export const Columbina = new DbObjectChar({
             new ConditionGroup({
                 name: 'party.columbina_not_in_lone_splendor',
                 group: 2,
-                serializeId: 10,
+                serializeId: 13,
+                rotation: 'party',
                 title: 'talent_name.columbina_not_in_lone_splendor',
                 description: 'talent_descr.columbina_not_in_lone_splendor_4',
                 info: {
@@ -883,7 +885,8 @@ export const Columbina = new DbObjectChar({
             new ConditionGroup({
                 name: 'party.columbina_not_in_lone_splendor',
                 group: 3,
-                serializeId: 10,
+                serializeId: 14,
+                rotation: 'party',
                 title: 'talent_name.columbina_not_in_lone_splendor',
                 description: 'talent_descr.columbina_not_in_lone_splendor_5',
                 info: {

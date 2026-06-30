@@ -53,6 +53,9 @@ feature_skill;normal_hit_6_2;Урон атаки 6-2;6-2-Hit DMG
 feature_burst;normal_hit_6;Урон атаки 6;6-Hit DMG
 feature_burst;normal_hit_6_1;Урон атаки 6-1;6-1-Hit DMG
 feature_burst;normal_hit_6_2;Урон атаки 6-2;6-2-Hit DMG
+feature_attack;normal_hit;Урон обычной атаки;Normal Attack DMG
+feature_skill;normal_hit;Урон обычной атаки;Normal Attack DMG
+feature_burst;normal_hit;Урон обычной атаки;Normal Attack DMG
 feature_attack;aimed;Прицельный выстрел;Aimed Shot
 feature_skill;aimed;Прицельный выстрел;Aimed Shot
 feature_burst;aimed;Прицельный выстрел;Aimed Shot

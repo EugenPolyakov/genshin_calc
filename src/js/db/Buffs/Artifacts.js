@@ -1,6 +1,6 @@
 import { Condition } from "../../classes/Condition";
 import { ConditionMoonPhaseBuff } from "../../classes/Condition/MoonPhaseBuff";
-import { ConditionMoonPhase } from "../../classes/Condition/Boolean/MoonPhase";
+import { ConditionMoonPhaseBoolean } from "../../classes/Condition/Boolean/MoonPhase";
 import { ConditionMoonPhaseSetting } from "../../classes/Condition/CustomOrigin/MoonPhaseSetting";
 import { ConditionAnd } from "../../classes/Condition/And";
 import { ConditionArchaic } from "../../classes/Condition/Archaic";
@@ -362,7 +362,7 @@ export const Artifacts = new DbObjectBuff({
         }),
         new ConditionMoonPhaseSetting(),
         //max SerializeId = DB.Buffs.getList().reduce((acc, val)=> acc.concat(val.getConditions()), []).reduce((amax, val)=>Array.isArray(val.params.serializeIds)?(amax>=Math.max(val.params.serializeIds)?amax:Math.max(val.params.serializeIds)):amax>=(val.params.serializeId|0)?amax:val.params.serializeId, 0)
-        new ConditionMoonPhase({
+        new ConditionMoonPhaseBoolean({
             name: 'set_other.silken_moons_serenade_4',
             serializeId: 60,
             rotation: 'buffs',
@@ -392,7 +392,7 @@ export const Artifacts = new DbObjectBuff({
                 new ConditionBoolean({ name: 'set_other.silken_moons_serenade_4' }),
             ]),
         }),
-        new ConditionMoonPhase({
+        new ConditionMoonPhaseBoolean({
             name: 'set_other.night_of_the_skys_unveiling_4',
             serializeId: 61,
             rotation: 'buffs',

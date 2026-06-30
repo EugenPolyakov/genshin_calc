@@ -3,6 +3,7 @@ import { makeStatItem } from "./Compile/Helpers";
 import { CBlock, CItem } from "./Compile/Types";
 import { CBaseDamage, CFlatDamage, CMultiplierReaction, CMultiplierResistance, CReactionBase, CReactionBaseBonus, CSum } from "./Compile/Types/Block";
 import { CDamage } from "./Compile/Types/Damage";
+import { CConst } from "./Compile/Types/Item";
 import { FeatureDamage } from "./Damage";
 
 export class FeatureReaction extends FeatureDamage {
@@ -10,6 +11,8 @@ export class FeatureReaction extends FeatureDamage {
         params.category ||= 'reaction';
         params.damageType ||= 'reaction';
         super(params);
+
+        this.hits = params.hits || 1;
     }
 
     /**
@@ -100,6 +103,9 @@ export class FeatureReaction extends FeatureDamage {
                 items.push(item);
             }
         }
+
+        if (this.hits > 1)
+            items.push(new CConst({ value: this.hits }));
 
         return new CDamage(items, {
             critRate: this.getCritRateBlock(data),

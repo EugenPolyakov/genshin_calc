@@ -1,5 +1,5 @@
 import { ArtifactSet } from "../../../classes/ArtifactSet";
-import { ConditionMoonPhase } from "../../../classes/Condition/Boolean/MoonPhase";
+import { ConditionMoonPhaseBoolean } from "../../../classes/Condition/Boolean/MoonPhase";
 import { ConditionStatic } from "../../../classes/Condition/Static";
 import { ConditionMoonPhaseSetting } from "../../../classes/Condition/CustomOrigin/MoonPhaseSetting";
 
@@ -29,7 +29,7 @@ export const SilkenMoonsSerenade = new ArtifactSet({
         {
             conditions: [
                 new ConditionMoonPhaseSetting(),
-                new ConditionMoonPhase({
+                new ConditionMoonPhaseBoolean({
                     name: 'set.silken_moons_serenade_4',
                     title: 'set_bonus.silken_moons_serenade_4',
                     description: 'set_descr.silken_moons_serenade_4',

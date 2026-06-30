@@ -12,20 +12,21 @@ import { FeatureReactionHyperBurgeon } from "../../classes/Feature2/Reaction/Tra
 import { FeatureReactionCrystallize } from "../../classes/Feature2/Reaction/Crystallize";
 import { FeatureReactionRupture } from "../../classes/Feature2/Reaction/Transformative/Bloom/Rupture";
 import { ConditionAnd } from "../../classes/Condition/And";
-import { ConditionNot } from "../../classes/Condition/Not";
 import { FeatureReactionLunarCharged } from "../../classes/Feature2/Reaction/Transformative/Lunar/Charged";
 import { FeatureMultiplierReaction } from "../../classes/Feature2/Multiplier/Reaction";
 import { reactionDamageValues, reactionShieldValues } from "../generated/ElementScale";
 import { FeatureReactionLunarCrystallize } from "../../classes/Feature2/Reaction/Transformative/Lunar/Crystallize";
 
+const chargedCond = new ConditionOr([
+    new ConditionBooleanCharElement({ element: ['hydro', 'electro', 'anemo'] }),
+    new ConditionBoolean({ name: 'allowed_infusion_hydro' }),
+    new ConditionBoolean({ name: 'allowed_infusion_anemo' }),
+    new ConditionBoolean({ name: 'allowed_infusion_electro' }),
+]);
+
 const lunarchargedCond = new ConditionAnd([
     new ConditionBoolean({name: 'allowed_lunarcharged'}),
-    new ConditionOr([
-        new ConditionBooleanCharElement({element: ['hydro', 'electro', 'anemo']}),
-        new ConditionBoolean({name: 'allowed_infusion_hydro'}),
-        new ConditionBoolean({name: 'allowed_infusion_anemo'}),
-        new ConditionBoolean({name: 'allowed_infusion_electro'}),
-    ]),
+    chargedCond,
 ]);
 
 const lunarcrystallizeCond = new ConditionAnd([
@@ -180,7 +181,10 @@ export const Reactions = [
                 reactionValue: reactionDamageValues,
             })
         ],
-        condition: new ConditionNot([lunarchargedCond]),
+        condition: new ConditionAnd([
+            new ConditionBoolean({ name: 'allowed_lunarcharged', invert: 1 }),
+            chargedCond,
+        ]),
     }),
     new FeatureReactionLunarCharged({
         name: 'lunarcharged_contrubution',
