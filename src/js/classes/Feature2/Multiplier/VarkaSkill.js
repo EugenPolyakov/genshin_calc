@@ -3,8 +3,16 @@ import { CConst } from "../Compile/Types/Item";
 import { CDivide, CNumberFloor, CValueCap } from "../Compile/Types/Block";
 import { FeatureMultiplier } from "../Multiplier";
 import { makeStatTotalItem } from "../Compile/Helpers";
-import { VarkaSturmUndDrangScalingMultiplier } from "../../../db/Char/Varka";
 import { charTalentTables } from "../../../db/generated/CharTalentTables";
+
+export function VarkaSturmUndDrangScalingMultiplier(data) {
+    if (data.settings.varka_has_all)
+        return charTalentTables.Varka.passsive[0][3];
+    else if (data.settings.varka_has_one)
+        return charTalentTables.Varka.passsive[0][2];
+    else
+        return 1;
+}
 
 export class FeatureMultiplierVarkaSkill extends FeatureMultiplier {
     /**

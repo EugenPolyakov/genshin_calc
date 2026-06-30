@@ -26,7 +26,7 @@ import { ConditionHexCurrent } from "../../classes/Condition/HexCurrent";
 import { ConditionStacks } from "../../classes/Condition/Stacks";
 import { PostEffectStats } from "../../classes/PostEffect/Stats";
 import { ValueTable } from "../../classes/ValueTable";
-import { FeatureMultiplierVarkaSkill } from "../../classes/Feature2/Multiplier/VarkaSkill";
+import { FeatureMultiplierVarkaSkill, VarkaSturmUndDrangScalingMultiplier } from "../../classes/Feature2/Multiplier/VarkaSkill";
 import { ConditionConstellation } from "../../classes/Condition/Constellation";
 import { ConditionStacksHidden } from "../../classes/Condition/Stacks/Hidden";
 import { ConditionDropdownElement } from "../../classes/Condition/Dropdown/Element";
@@ -205,15 +205,6 @@ const Talents = new DbObjectTalents({
     },
     links: charTalentTables.Varka.links,
 });
-
-export function VarkaSturmUndDrangScalingMultiplier(data) {
-    if (data.settings.varka_has_all)
-        return charTalentTables.Varka.passsive[0][3];
-    else if (data.settings.varka_has_one)
-        return charTalentTables.Varka.passsive[0][2];
-    else
-        return 1;
-}
 
 export const Varka = new DbObjectChar({
     name: 'varka',

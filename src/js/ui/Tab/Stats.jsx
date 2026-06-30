@@ -14,7 +14,6 @@ import { FeatureReactionHyperBurgeon } from '../../classes/Feature2/Reaction/Tra
 import { FeatureReactionOverloaded } from '../../classes/Feature2/Reaction/Transformative/Overloaded';
 import { FeatureReactionRupture } from '../../classes/Feature2/Reaction/Transformative/Bloom/Rupture';
 import { FeatureReactionSuperConduct } from '../../classes/Feature2/Reaction/Transformative/SuperConduct';
-import { FeatureReactionSwirl } from '../../classes/Feature2/Reaction/Transformative/Swirl';
 import { FeatureReactionTransformative } from '../../classes/Feature2/Reaction/Transformative';
 import { FullHeight, FullHeightStatic, FullHeightFloatTitle, FloatTitleBlock } from '../Components/FullHeight';
 import { Lang } from '../Lang';

@@ -1,4 +1,4 @@
-import { FillIllugaSettingsStacks, FillIllugaStatsStacksFromSettings } from "../../../db/Char/Illuga";
+import { FillIllugaSettingsStacks, FillIllugaStatsStacksFromSettings } from "../Boolean/Illuga";
 import { ConditionStatic } from "../Static";
 
 export class ConditionStaticIlluga extends ConditionStatic {

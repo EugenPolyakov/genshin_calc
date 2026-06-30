@@ -1,4 +1,3 @@
-import { _ } from "core-js";
 import { makeStatItem, makeStatTotalItem } from "../Compile/Helpers";
 import { CBaseBonusReaction, CMulti, CSumPlusOne } from "../Compile/Types/Block";
 import { CConst } from "../Compile/Types/Item";

@@ -1,5 +1,4 @@
-import { FillYunJinSettingsStacks, FillYunJinStatsStacksFromSettings } from "../../../db/Char/YunJin";
-import { Stats } from "../../Stats";
+import { FillYunJinSettingsStacks, FillYunJinStatsStacksFromSettings } from "../Boolean/YunJin";
 import { ConditionStatic } from "../Static";
 
 export class ConditionStaticYunJin extends ConditionStatic {
