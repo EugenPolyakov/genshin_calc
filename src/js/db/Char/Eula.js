@@ -84,7 +84,7 @@ const Talents = new DbObjectTalents({
                 table: new StatTable('hold_dmg', charTalentTables.Eula.s2.p2),
             },
             {
-                table: new StatTable('eula_icewhirl_brand', charTalentTables.Eula.s2.p3),
+                table: new StatTable('eula_icewhirl_brand_dmg', charTalentTables.Eula.s2.p3),
             },
             {
                 unit: 'percent_per_stack',
@@ -92,17 +92,17 @@ const Talents = new DbObjectTalents({
             },
             {
                 unit: 'sec',
-                table: new StatTable('eula_heart_duration', charTalentTables.Eula.s2.p13),
+                table: new StatTable('eula_grimheart_duration', charTalentTables.Eula.s2.p13),
             },
             {
-                table: new StatTable('eula_phys_res_decrease', charTalentTables.Eula.s2.p4),
+                table: new StatTable('eula_physical_res_decrease', charTalentTables.Eula.s2.p4),
             },
             {
                 table: new StatTable('eula_cryo_res_decrease', charTalentTables.Eula.s2.p5),
             },
             {
                 unit: 'sec',
-                table: new StatTable('eula_res_duration', charTalentTables.Eula.s2.p6),
+                table: new StatTable('eula_res_decrease_duration', charTalentTables.Eula.s2.p6),
             },
             {
                 unit: 'sec',
@@ -123,14 +123,14 @@ const Talents = new DbObjectTalents({
                 table: new StatTable('burst_dmg', charTalentTables.Eula.s3.p1),
             },
             {
-                table: new StatTable('eula_lightfall_base_dmg', charTalentTables.Eula.s3.p2),
+                table: new StatTable('eula_lightfall_sword_base_dmg', charTalentTables.Eula.s3.p2),
             },
             {
-                table: new StatTable('eula_lightfall_stack_dmg', charTalentTables.Eula.s3.p3),
+                table: new StatTable('eula_dmg_per_stack', charTalentTables.Eula.s3.p3),
             },
             {
                 unit: '',
-                table: new StatTable('eula_lightsword_max_stacks', charTalentTables.Eula.s3.p4),
+                table: new StatTable('eula_maximum_stacks', charTalentTables.Eula.s3.p4),
             },
             {
                 unit: 'sec',
@@ -313,12 +313,12 @@ export const Eula = new DbObjectChar({
             ],
         }),
         new FeatureDamageSkill({
-            name: 'eula_icewhirl_brand',
+            name: 'eula_icewhirl_brand_dmg',
             element: 'cryo',
             multipliers: [
                 new FeatureMultiplier({
                     leveling: 'char_skill_elemental',
-                    values: Talents.get('skill.eula_icewhirl_brand'),
+                    values: Talents.get('skill.eula_icewhirl_brand_dmg'),
                 }),
             ],
         }),
@@ -338,13 +338,13 @@ export const Eula = new DbObjectChar({
             multipliers: [
                 new FeatureMultiplier({
                     leveling: 'char_skill_burst',
-                    values: Talents.get('burst.eula_lightfall_base_dmg'),
+                    values: Talents.get('burst.eula_lightfall_sword_base_dmg'),
                 }),
                 new FeatureMultiplier({
                     leveling: 'char_skill_burst',
                     stacksLeveling: 'eula_lightfall_stacks',
                     maxStacks: TalentValues.BurstMaxStacks,
-                    values: Talents.get('burst.eula_lightfall_stack_dmg'),
+                    values: Talents.get('burst.eula_dmg_per_stack'),
                     condition: new ConditionBoolean({name: 'eula_lightfall_stacks'}),
                 }),
             ],
@@ -357,7 +357,7 @@ export const Eula = new DbObjectChar({
                     leveling: 'char_skill_burst',
                     scalingSource: 'ascension1',
                     scalingMultiplier: TalentValues.A1Damage / 100,
-                    values: Talents.get('burst.eula_lightfall_base_dmg'),
+                    values: Talents.get('burst.eula_lightfall_sword_base_dmg'),
                 }),
             ],
             condition: new ConditionAscensionChar({ascension: 1}),
@@ -391,7 +391,7 @@ export const Eula = new DbObjectChar({
             stats: [
                 Talents.getMulti({
                     name: 'enemy_res_phys',
-                    from: 'skill.eula_phys_res_decrease',
+                    from: 'skill.eula_physical_res_decrease',
                     multi: -1,
                 }),
                 Talents.getMulti({
@@ -513,12 +513,12 @@ export const Eula = new DbObjectChar({
                 stats: [
                     Talents.getMulti({
                         name: 'enemy_res_phys',
-                        from: 'skill.eula_phys_res_decrease',
+                        from: 'skill.eula_physical_res_decrease',
                         multi: -1,
                     }),
                     Talents.getMulti({
                         name: 'enemy_res_cryo',
-                        from: 'skill.eula_cryo_res_decrease',
+                        from: 'skill.eula_physical_res_decrease',
                         multi: -1,
                     }),
                 ],

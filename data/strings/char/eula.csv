@@ -1,15 +1,6 @@
 category;name;rus;eng
-feature_skill;eula_def_bonus;Повышение защиты;DEF Bonus
-feature_skill;eula_heart_duration;Длительность Холодного сердца;Grimheart Duration
-feature_skill;eula_phys_res_decrease;Понижение физ. сопротивления;Physical RES Decrease
-feature_skill;eula_cryo_res_decrease;Понижение Крио сопротивления;Cryo RES Decrease
-feature_skill;eula_res_duration;Длительность понижения сопротивления;RES Decrease Duration
-feature_burst;eula_lightsword_max_stacks;Макс. единиц энергии Меча;Maximum Stacks
-feature_burst;eula_lightfall_base_dmg;Базовый урон Меча света;Lightfall Sword Base DMG
 feature_burst;eula_lightfall_dmg;Урон Меча света;Lightfall Sword DMG
-feature_burst;eula_lightfall_stack_dmg;Доп. урон за энергию;DMG Per Stack
 feature_burst;eula_roiling_rime;Дрожащий иней;Roiling Rime
-feature_skill;eula_icewhirl_brand;Урон Меча вихря;Icewhirl Brand DMG
 
 talent_name;eula_lightfall_stacks;Энергия Меча света;Lightfall Sword energy stacks
 talent_descr;eula_lightfall_stacks;Наносимый урон skill{burst:Меча света} зависит от количества накопленной энергии.;name{Lightfall Sword} DMG scales on the number of energy stacks the skill{burst:Lightfall Sword} has accumulated.

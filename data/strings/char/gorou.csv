@@ -1,7 +1,4 @@
 category;name;rus;eng
-feature_burst;gorou_crystal_collapse_dmg;Урон Кристального обвала;Crystal Collapse DMG
-feature_skill;gorou_def_bonus;Бонус к Защите;DEF Bonus
-feature_skill;gorou_geo_bonus;Бонус Гео урона;Geo DMG Bonus
 feature_skill;gorou_lapping_hound_heal;Лечение Нежности воды;Lapping Hound Heal
 
 talent_name;gorou_generals_war_banner;Боевой штандарт генерала;General's War Banner

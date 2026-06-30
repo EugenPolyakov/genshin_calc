@@ -1,18 +1,14 @@
 category;name;rus;eng
 talent_name;party_max_mastery;Макс. МС членов отряда;Party members Max EM
 
-feature_skill;nahida_trikarma_purification_dmg;Урон Очищения трикармы;Tri-Karma Purification DMG
 feature_skill;nahida_trikarma_purification_mastery;Урон Очищения трикармы;Tri-Karma Purification DMG
-feature_skill;nahida_trikarma_purification_interval;Интервал активации Очищения трикармы;Tri-Karma Purification Trigger Interval
-feature_skill;nahida_seed_duration;Длительность Семени скандхи;Seed of Skandha Duration
 
 feature_burst;nahida_heart_pyro_1;Пиро: Бонус урона (1 персонаж);Pyro: DMG Bonus (1 Character)
 feature_burst;nahida_heart_pyro_2;Пиро: Бонус урона (2 персонажа);Pyro: DMG Bonus (2 Characters)
-feature_burst;nahida_heart_electro_1;Электро: Уменьшение отката активации (1 персонаж);Electro: CD Decrease (1 Character)
-feature_burst;nahida_heart_electro_2;Электро: Уменьшение отката активации (2 персонажа);Electro: CD Decrease (2 Characters)
+feature_burst;nahida_heart_electro_1;Электро: Уменьшение отката активации (1 персонаж);Electro: Trigger Interval Decrease (1 Character)
+feature_burst;nahida_heart_electro_2;Электро: Уменьшение отката активации (2 персонажа);Electro: Trigger Interval Decrease (2 Characters)
 feature_burst;nahida_heart_hydro_1;Гидро: Продление Святилища (1 персонаж);Hydro: Duration Extension (1 Character)
 feature_burst;nahida_heart_hydro_2;Гидро: Продление Святилища (2 персонажа);Hydro: Duration Extension (2 Characters)
-feature_burst;nahida_base_duration;Базовая длительность;Base Duration
 feature_skill;nahida_trikarma_purification_karmic_dmg;Урон Очищения трикармы: Кармическое небытие;Tri-Karma Purification: Karmic Oblivion DMG
 feature_other;nahida_mastery_bonus;Бонус мастерства стихий;Mastery Bonus
 feature_other;nahida_crit_bonus;Бонус шанса крит. попадания Очищения трикармы;Tri-Karma Purification Crit Rate Bonus

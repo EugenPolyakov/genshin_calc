@@ -46,7 +46,6 @@ feature_burst;anemoskill_elemental_dmg;Доп. элементальный уро
 feature_burst;anemoskill_hydro_dmg;Доп. урон Гидро;Additional Hydro DMG
 feature_burst;anemoskill_pyro_dmg;Доп. урон Пиро;Additional Pyro DMG
 feature_burst;atk_bonus;Бонус cилы атаки;ATK Bonus
-feature_burst;atk_ratio;Отношение бонуса атаки;ATK Bonus Ratio
 feature_burst;burst_dmg;Урон взрыва стихий;Elemental Burst Dmg
 feature_burst;cd;Время отката;CD
 feature_burst;charged_hit;Заряженная;Charged
@@ -158,12 +157,12 @@ feature_skill;cd_hold;Откат долгого нажатия;Hold CD
 feature_skill;cd_press;Откат быстрого нажатия;Press CD
 feature_skill;cd;Время отката;CD
 feature_skill;nightsoul_point_limit;Максимум очков Ночного духа;Nightsoul Point Limit
-feature_skill;charge_level_1_1;Уровень заряда 1-1;Charge Level 1-1
-feature_skill;charge_level_1_2;Уровень заряда 1-2;Charge Level 1-2
-feature_skill;charge_level_1;Уровень заряда 1;Charge Level 1
-feature_skill;charge_level_2_1;Уровень заряда 2-1;Charge Level 2-1
-feature_skill;charge_level_2_2;Уровень заряда 2-2;Charge Level 2-2
-feature_skill;charge_level_2;Уровень заряда 2;Charge Level 2
+feature_skill;charge_level_1_1;Урон заряда 1-1;Charge Level 1-1 DMG
+feature_skill;charge_level_1_2;Урон заряда 1-2;Charge Level 1-2 DMG
+feature_skill;charge_level_1;Урон заряда 1;Charge Level 1 DMG
+feature_skill;charge_level_2_1;Урон заряда 2-1;Урон заряда 2;Charge Level 2-1 DMG
+feature_skill;charge_level_2_2;Урон заряда 2-2;Charge Level 2-2 DMG
+feature_skill;charge_level_2;Урон заряда 2;Charge Level 2 DMG
 feature_skill;charged_hit_total;Заряженная (всего);Charged Total
 feature_skill;dmg_reduction;Снижение входящего урона;Damage taken reduction
 feature_skill;dot_dmg;Периодический урон;DMG over time

@@ -77,7 +77,7 @@ const Talents = new DbObjectTalents({
                 table: new StatTable('dori_troubleshooter_shot_dmg', charTalentTables.Dori.s2.p1),
             },
             {
-                table: new StatTable('dori_aftersales_service_round_dmg', charTalentTables.Dori.s2.p2),
+                table: new StatTable('dori_after_sales_service_round_dmg', charTalentTables.Dori.s2.p2),
             },
             {
                 unit: 'sec',
@@ -258,12 +258,12 @@ export const Dori = new DbObjectChar({
             ],
         }),
         new FeatureDamageSkill({
-            name: 'dori_aftersales_service_round_dmg',
+            name: 'dori_after_sales_service_round_dmg',
             element: 'electro',
             multipliers: [
                 new FeatureMultiplier({
                     leveling: 'char_skill_elemental',
-                    values: Talents.get('skill.dori_aftersales_service_round_dmg'),
+                    values: Talents.get('skill.dori_after_sales_service_round_dmg'),
                 }),
             ],
         }),

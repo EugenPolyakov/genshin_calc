@@ -105,6 +105,8 @@ names_mapping = {
     'Charged Attack Cyclic DMG': 'charged_spin',
     'Charged Attack Loop DMG': 'charged_spin',
     'Charged Attack Final DMG': 'charged_final',
+    'Charge Level 1 DMG': 'charge_level_1',
+    'Charge Level 2 DMG': 'charge_level_2',
     'Max Duration': 'max_duration',
     'CD': 'cd',
     'Skill CD': 'cd',
@@ -125,15 +127,19 @@ names_mapping = {
     'Regeneration': 'heal_dot',
     'Continuous Healing': 'heal_dot',
     'Continuous Regeneration': 'heal_dot',
+    'HP Regeneration Over Time': 'heal_dot',
+    'Continuous Regeneration Per Sec': 'heal_dot',
     'Shield Duration': 'shield_duration',
     'HP Cost': 'hp_cost',
     'Shield DMG Absorption': 'shield_absorption',
+    'Max Shield DMG Absorption': 'shield_max_absorption',
     'Max CD': 'max_cd',
     'Explosion DMG': 'explosion_dmg',
     'Activation Stamina Consumption': 'sprint_activation_cost',
     'Stamina Drain': 'sprint_stamina_drain',
     'DoT': 'dot_dmg',
     'DMG Reduction': 'dmg_reduction',
+    'Continuous Field DMG': 'field_dmg',
 
     'Spiritbreath Thorn DMG': 'spiritbreath_thorn_dmg',
     'Surging Blade DMG': 'surging_blade_dmg',
@@ -148,6 +154,12 @@ names_mapping = {
     'Spiritbreath Thorn/Surging Blade DMG': 'spiritbreath_thorn_surging_blade_dmg_interval',
     'Fiery Passion Low/High Plunge DMG': 'fiery_passion_low_high_plunge_dmg',
     '0/1/2/3 Void Rift Absorption DMG Bonus': '0_1_2_3_void_rift_absorption_dmg_bonus',
+    'Shield Base Absorption': 'shield_base_absorption',
+    'Additional Shield Absorption': 'additional_shield_absorption',
+    'Stone Stele/Resonance DMG': 'stone_stele_resonance_dmg',
+    'Pyro: DMG Bonus': 'pyro_dmg_bonus',
+    'Electro: Trigger Interval Decrease': 'electro_trigger_interval_decrease',
+    'Hydro: Duration Extension': 'hydro_duration_extension',
 }
 
 skiped_features = set([
@@ -155,7 +167,9 @@ skiped_features = set([
     'spiritbreath_thorn_interval', 'hp_cost', 'stamina_cost', 'max_duration',
     'shield_duration', 'duration', 'spiritbreath_thorn_surging_blade_dmg_interval',
     'spiritbreath_thorn_surging_blade_dmg', 'fiery_passion_low_high_plunge_dmg',
-    '0_1_2_3_void_rift_absorption_dmg_bonus',
+    '0_1_2_3_void_rift_absorption_dmg_bonus', 'shield_base_absorption',
+    'additional_shield_absorption', 'stone_stele_resonance_dmg',
+    'pyro_dmg_bonus', 'electro_trigger_interval_decrease', 'hydro_duration_extension',
 ])
 
 def outwrite(s):
@@ -350,7 +364,7 @@ def scales_and_proud(skillId, proudId, index, generate):
 
 out_dir = os.path.join(dirname, '../src/js/db/generated/')
 if not do_single:
-    updated_values = open(dirname + '/new_values.py', 'w', encoding='utf-8')
+    updated_values = open(dirname + '/old_values.py', 'w', encoding='utf-8')
     updated_values.write('old_values = {\n')
 
 

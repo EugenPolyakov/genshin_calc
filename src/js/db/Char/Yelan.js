@@ -75,7 +75,7 @@ const Talents = new DbObjectTalents({
             },
             {
                 unit: 'sec',
-                table: new StatTable('yelan_duration', charTalentTables.Yelan.s2.p3),
+                table: new StatTable('yelan_max_duration_hold', charTalentTables.Yelan.s2.p3),
             },
             {
                 unit: 'sec',

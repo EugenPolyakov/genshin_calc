@@ -126,7 +126,7 @@ const Talents = new DbObjectTalents({
                 ],
             },
             {
-                table: new StatTable('atk_ratio', charTalentTables.Bennett.s3.p4),
+                table: new StatTable('bennett_atk_bonus_ratio', charTalentTables.Bennett.s3.p4),
             },
             {
                 unit: 'sec',
@@ -158,7 +158,7 @@ const selfBuffPost = new PostEffectStats({
     levelSetting: 'char_skill_burst',
     percent: Talents.getMulti({
         name: 'atk',
-        from: 'burst.atk_ratio',
+        from: 'burst.bennett_atk_bonus_ratio',
         multi: 0.01,
     }),
     percentBonus: new ValueTable([TalentValues.C1BuffBonus / 100]),
@@ -692,7 +692,7 @@ export const Bennet = new DbObjectChar({
                 maxLevelSetting: 10,
                 percent: Talents.getMulti({
                     name: 'atk',
-                    from: 'burst.atk_ratio',
+                    from: 'burst.bennett_atk_bonus_ratio',
                     multi: 0.01,
                 }),
                 percentBonus: new ValueTable([TalentValues.C1BuffBonus / 100]),

@@ -336,15 +336,15 @@ old_values = {
     #passion_overload
     (10322, 3232): {
         863936614: "press_dmg",
-        4139474798: "charge_level_1_dmg",
-        2527832911: "charge_level_2_dmg",
+        4139474798: "charge_level_1",
+        2527832911: "charge_level_2",
         304909463: "explosion_dmg",
         1144923614: "cd",
     },
     #fantastic_voyage
     (10323, 3239): {
         684762582: "skill_dmg",
-        2952364998: "continuous_regeneration_per_sec",
+        2952364998: "heal_dot",
         4188295551: "atk_bonus_ratio",
         877360071: "duration",
         1359731470: "cd",
@@ -462,7 +462,7 @@ old_values = {
         1963997030: "press_dmg",
         361604854: "hold_dmg",
         3170079631: "overcharged_ball_dmg",
-        3687781967: "hp_regeneration_over_time",
+        3687781967: "heal_dot",
         3160446494: "healing_duration",
         2919700034: "surging_blade_dmg",
         4156034479: "surging_blade_interval",
@@ -794,8 +794,8 @@ old_values = {
     #signature_mix
     (10395, 3939): {
         1383890318: "skill_dmg",
-        2951391726: "continuous_field_dmg",
-        1870839735: "hp_regeneration_over_time",
+        2951391726: "field_dmg",
+        1870839735: "heal_dot",
         350143711: "duration",
         3966317718: "cd",
         262960034: "energy_cost",
@@ -968,16 +968,16 @@ old_values = {
     (10762, 7632): {
         212724046: "skill_dmg",
         840578486: "pressurized_collapse_vortex_dmg",
-        3566362335: "manifest_gale_duration",
+        3566362335: "duration",
         2578042831: "cd",
     },
     #the_winds_secret_ways
     (10765, 7639): {
         3080749022: "skill_dmg",
         1432504430: "anemo_dmg_bonus",
-        1039700375: "prayerful_winds_benefit_duration",
+        1039700375: "duration_1",
         1222887239: "anemo_res_decrease",
-        326109750: "perfidious_winds_bale_duration",
+        326109750: "duration_2",
         3585247978: "duration",
         2042089039: "cd",
         1515752717: "energy_cost",
@@ -1189,8 +1189,8 @@ old_values = {
     #inuzaka_all_round_defense
     (10552, 5532): {
         428270334: "skill_dmg",
-        321417222: "def_increase",
-        535096239: "geo_dmg_bonus",
+        321417222: "def_bonus",
+        535096239: "geo_bonus",
         3384878487: "duration",
         4056872806: "cd",
     },
@@ -1637,20 +1637,20 @@ old_values = {
     },
     #meow_teor_kick
     (10612, 6132): {
-        2103542566: "tail_flicking_flying_kick_dmg",
+        2103542566: "flying_kick_dmg",
         2425310446: "shield_absorption",
-        203248527: "max_shield_dmg_absorption",
+        203248527: "shield_max_absorption",
         816896831: "shield_duration",
-        89195638: "urgent_neko_parcel_hit_dmg",
-        4204223506: "max_urgent_neko_parcel_duration",
+        89195638: "urgent_neko_parcel_dmg",
+        4204223506: "urgent_neko_parcel_duration",
         3553113695: "flipclaw_strike_dmg",
         2650920053: "cd",
     },
     #surprise_dispatch
     (10615, 6139): {
         2516927614: "skill_dmg",
-        4268589174: "cat_grass_cardamom_explosion_dmg",
-        2621908343: "cat_grass_cardamom_duration",
+        4268589174: "cat_grass_explosion_dmg",
+        2621908343: "cat_grass_duration",
         2066895023: "cd",
         3855899558: "energy_cost",
     },
@@ -1723,16 +1723,16 @@ old_values = {
     #sanctifying_ring
     (10652, 6532): {
         3342266878: "skill_dmg",
-        3841003742: "grass_ring_of_sanctification_healing",
-        3052553367: "grass_ring_of_sanctification_dmg",
+        3841003742: "ring_healing",
+        3052553367: "ring_dmg",
         64153375: "activation_cost",
         3731551174: "duration",
         1042785754: "cd",
     },
     #gyoei_narukami_kariyama_rite
     (10655, 6539): {
-        4130003526: "single_instance_dmg",
-        4074500286: "total_dmg",
+        4130003526: "burst_dmg",
+        4074500286: "burst_total_dmg",
         1195956679: "duration",
         1437885527: "cd",
         2928217230: "energy_cost",
@@ -1983,9 +1983,9 @@ old_values = {
     #skyfeather_song
     (10805, 8039): {
         343216622: "heal",
-        1878022510: "eagleplume_healing",
-        3461123831: "eagleplume_healing_interval",
-        2154991559: "eagleplume_duration",
+        1878022510: "heal_dot",
+        3461123831: "eagleplume_regen_interval",
+        2154991559: "duration",
         3087836134: "cd",
         1517717986: "energy_cost",
     },
@@ -2091,20 +2091,20 @@ old_values = {
     (10732, 7332): {
         3958987478: "press_dmg",
         3483527462: "hold_dmg",
-        3475736919: "tri_karma_purification_dmg",
-        2158365911: "tri_karma_purification_trigger_interval",
-        4128257182: "seed_of_skandha_duration",
+        3475736919: "trikarma_purification_dmg",
+        2158365911: "trikarma_purification_interval",
+        4128257182: "seed_duration",
         71034186: "cd_press",
         3006847855: "cd_hold",
     },
     #illusory_heart
     (10735, 7339): {
-        1460136182: "dmg_bonus",
-        879849430: "dmg_bonus_1",
-        4176380655: "trigger_interval_decrease",
-        1713897671: "trigger_interval_decrease_1",
-        1834379214: "duration_extension",
-        4150674578: "duration_extension_1",
+        1460136182: "pyro_dmg_bonus",
+        879849430: "pyro_dmg_bonus",
+        4176380655: "electro_trigger_interval_decrease",
+        1713897671: "electro_trigger_interval_decrease",
+        1834379214: "hydro_duration_extension",
+        4150674578: "hydro_duration_extension",
         2266773511: "base_duration",
         3039830045: "cd",
         3397176268: "energy_cost",
@@ -2706,7 +2706,7 @@ old_values = {
         3324683662: "skill_dmg",
         2364314750: "shield_absorption",
         3418099463: "shield_duration",
-        856869575: "max_shield_dmg_absorption",
+        856869575: "shield_max_absorption",
         3802686342: "cd",
     },
     #crimson_ooyoroi
@@ -3279,19 +3279,19 @@ old_values = {
     },
     #raphanus_sky_cluster
     (10772, 7732): {
-        436187310: "white_jade_radish_dmg",
-        1884197006: "white_jade_radish_healing",
-        3538385423: "throwing_mode_duration",
-        4045134335: "white_jade_radish_duration",
+        436187310: "radish_dmg",
+        1884197006: "radish_heal",
+        3538385423: "throw_duration",
+        4045134335: "radish_duration",
         2784888678: "cd",
     },
     #moonjade_descent
     (10775, 7739): {
         1064692622: "skill_dmg",
-        1357787958: "adeptal_legacy_white_jade_radish_dmg",
-        2361662927: "adeptal_legacy_white_jade_radish_healing",
+        1357787958: "white_radish_dmg",
+        2361662927: "white_radish_heal",
         3847583991: "dendro_res_bonus",
-        30325606: "adeptal_legacy_duration",
+        30325606: "adept_duration",
         712994258: "cd",
         2706611655: "energy_cost",
     },
@@ -3345,7 +3345,7 @@ old_values = {
     #ryuukin_saxifrage
     (10495, 4939): {
         1638977742: "skill_dmg",
-        3128081310: "aurous_blaze_explosion_dmg",
+        3128081310: "aurous_blaze_dmg",
         3536123463: "duration",
         440339383: "cd",
         2043376342: "energy_cost",
@@ -3366,8 +3366,8 @@ old_values = {
     #opening_flourish
     (10642, 6432): {
         2057967790: "press_dmg",
-        877537286: "charge_level_1_dmg",
-        1274741887: "charge_level_2_dmg",
+        877537286: "charge_level_1",
+        1274741887: "charge_level_2",
         2152917191: "shield_absorption",
         2179964254: "cd",
     },

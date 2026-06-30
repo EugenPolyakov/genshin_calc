@@ -66,7 +66,7 @@ const Talents = new DbObjectTalents({
         description: 'talent_descr.diona_icy_paws',
         items: [
             {
-                table: new StatTable('diona_claw_dmg', charTalentTables.Diona.s2.p1),
+                table: new StatTable('diona_icy_paw_dmg', charTalentTables.Diona.s2.p1),
             },
             {
                 type: 'shield',
@@ -240,13 +240,13 @@ export const Diona = new DbObjectChar({
             ],
         }),
         new FeatureDamageSkill({
-            name: 'diona_claw_dmg',
+            name: 'diona_icy_paw_dmg',
             element: 'cryo',
             damageBonuses: ['dmg_skill_diona'],
             multipliers: [
                 new FeatureMultiplier({
                     leveling: 'char_skill_elemental',
-                    values: Talents.get('skill.diona_claw_dmg'),
+                    values: Talents.get('skill.diona_icy_paw_dmg'),
                 }),
             ],
         }),
