@@ -31,30 +31,24 @@ export class ArtifactWidgetSimilar extends ArtifactWidget {
     }
 
     getSubstats(art, opts) {
-        let html = '';
+        let html = new Array(Object.keys(art.subStats).length);
 
-        for (let i = 0; i < art.subStats.length; ++i) {
-            const substat = art.subStats[i];
-
+        for (let substat in art.subStats) {
             let selected = false;
 
             if (opts.sample) {
-                let ss = opts.sample.subStats[i];
+                let ss = opts.sample.subStats[substat];
 
-                if (ss && ss.stat == substat.stat && ss.value > substat.value) {
+                if (ss && ss.stat == substat && ss.value > art.subStats[substat].value) {
                     selected = true;
                 } else if (!ss) {
                     selected = true;
                 }
             }
 
-            const stat = UI.Lang.get('stat_mini.'+ substat.stat.replace('_percent', ''));
-
-            html += '<div class="artifact-list-box-substat"><span class="stat">'+ stat +'</span> ';
-            html += '<span class="value '+ (selected ? 'selected' : '') +'">';
-            html += Stats.format(substat.stat, substat.value, {signed: false}) +'</span></div>';
+            html[art.subStats[substat].index] = this.getOneSubStat(art.subStats[substat].value, substat, selected);
         }
 
-        return html;
+        return html.reduce((r, v) => r += v, '');
     }
 }

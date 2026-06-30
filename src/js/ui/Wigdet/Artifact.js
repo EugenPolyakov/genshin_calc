@@ -72,16 +72,22 @@ export class ArtifactWidget {
         return html;
     }
 
-    getSubstats(art, opts) {
+    getOneSubStat(value, substat, selected) {
         let html = '';
-
-        for (const substat of art.subStats) {
-            let stat = UI.Lang.get('stat_mini.'+ substat.stat.replace('_percent', ''));
-            html += '<div class="artifact-list-box-substat"><span class="stat">'+ stat +'</span> ';
-            html += '<span class="value '+ (substat.stat == opts.selectedStat ? 'selected' : '') +'">';
-            html += Stats.format(substat.stat, substat.value, {signed: false}) +'</span></div>';
-        }
+        let stat = UI.Lang.get('stat_mini.' + substat.replace('_percent', ''));
+        html += '<div class="artifact-list-box-substat"><span class="stat">' + stat + '</span> ';
+        html += '<span class="value ' + (selected ? 'selected' : '') + '">';
+        html += Stats.format(substat, value, { signed: false }) + '</span></div>';
 
         return html;
+    }
+
+    getSubstats(art, opts) {
+        let html = new Array(Object.keys(art.subStats).length);
+
+        for (let substat in art.subStats)
+            html[art.subStats[substat].index] = this.getOneSubStat(art.subStats[substat].value, substat, substat == opts.selectedStat);
+
+        return html.reduce((r, v) => r += v, '');
     }
 }

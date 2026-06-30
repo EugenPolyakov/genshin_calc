@@ -156,8 +156,8 @@ export class Scanner {
         result.bounds.dots = {
             filterFunc: this.palette.getMatcherWhite(),
             coords : [
-                Math.round(30 * scale), top + Math.round(296 * scale),
-                Math.round(48 * scale), top + Math.min(height, Math.round(452 * scale)),
+                Math.round(30 * scale), top + Math.round(291 * scale),
+                Math.round(48 * scale), top + Math.min(height, Math.round(447 * scale)),
             ],
         };
 
@@ -167,24 +167,48 @@ export class Scanner {
         result.bounds.stats = {
             // filterFunc: this.palette.getMatcherWhite(),
             coords : [
-                Math.round(45 * scale), top + Math.round(297 * scale),
-                width - 10*scale,       top + Math.min(height, Math.round((297 + (39* result.numStats)) * scale)),
+                Math.round(45 * scale), top + Math.round(291 * scale),
+                width - 10*scale,       top + Math.min(height, Math.round((291 + (39* (result.numStats))) * scale)),
+            ],
+        };
+
+        result.bounds.statsLastLine = {
+            // filterFunc: this.palette.getMatcherWhite(),
+            coords: [
+                Math.round(15 * scale), top + Math.min(height, Math.round((291 + (39 * (result.numStats))) * scale)),
+                width - 10 * scale,     top + Math.min(height, Math.round((291 + (39 * (result.numStats + 1))) * scale)),
             ],
         };
 
         result.bounds.set = {
             // filterFunc: this.palette.getMatcherWhite(),
             coords : [
-                Math.round(15 * scale), top + Math.round((297 + (39* result.numStats)) * scale),
-                width - 10*scale,       top + Math.min(height, Math.round((297 + (39*( result.numStats+1)+2)) * scale)),
+                Math.round(15 * scale), top + Math.round((291 + (39* result.numStats)) * scale),
+                width - 10 * scale,     top + Math.min(height, Math.round((291 + (39*( result.numStats+1)+2)) * scale)),
             ],
         };
 
         result.bounds.set2 = {
             // filterFunc: this.palette.getMatcherWhite(),
             coords : [
-                Math.round(15 * scale), top + Math.round((297 + (39* result.numStats)) * scale),
-                width - 10*scale,       top + Math.min(height, Math.round((297 + (39*( result.numStats+1.7)+2)) * scale)),
+                Math.round(15 * scale), top + Math.round((291 + (39* result.numStats)) * scale),
+                width - 10 * scale,     top + Math.min(height, Math.round((291 + (39*( result.numStats+1.7)+2)) * scale)),
+            ],
+        };
+
+        result.bounds.set3 = {
+            // filterFunc: this.palette.getMatcherWhite(),
+            coords: [
+                Math.round(15 * scale), top + Math.round((291 + (39 * (result.numStats + 1))) * scale),
+                width - 10 * scale, top + Math.min(height, Math.round((291 + (39 * (result.numStats + 2) + 2)) * scale)),
+            ],
+        };
+
+        result.bounds.set4 = {
+            // filterFunc: this.palette.getMatcherWhite(),
+            coords: [
+                Math.round(15 * scale), top + Math.round((291 + (39 * (result.numStats + 1))) * scale),
+                width - 10 * scale, top + Math.min(height, Math.round((291 + (39 * (result.numStats + 2.7) + 2)) * scale)),
             ],
         };
 

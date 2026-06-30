@@ -81,7 +81,7 @@ export class ArtifactsSuggest {
                 let setId = artSetIds.pop();
                 if (!setId) break;
 
-                let art = new Artifact(5, 20, slot, setId, '', []);
+                let art = new Artifact(5, 20, slot, setId, '');
                 vBuild.setArtifact(art);
             }
 
@@ -220,7 +220,7 @@ export class ArtifactsSuggest {
                     curArt.calcCache(this.usedStats);
                     this.slots[slot].push(curArt);
                 } else {
-                    let emptyArtifact = new Artifact(5, 0, slot, 'none', 'none', []);
+                    let emptyArtifact = new Artifact(5, 0, slot, 'none', 'none');
                     emptyArtifact.isEmpty = true;
                     emptyArtifact.calculated = new Stats();
                     emptyArtifact.concatFunc = emptyArtifact.calculated.getConcatFunc();

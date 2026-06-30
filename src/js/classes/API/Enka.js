@@ -202,14 +202,12 @@ function listArtifacts(data) {
         let rarity = item.flat.rankLevel;
         let level = item.reliquary.level - 1;
 
-        let subStats = [];
+        let subStats = {};
+        let pos = 0;
         for (let ss of item.flat.reliquarySubstats) {
             let stat = DB.Artifacts.Substats.getKeyIdGame(ss.appendPropId);
             if (stat) {
-                subStats.push({
-                    stat: stat,
-                    value: ss.statValue,
-                });
+                subStats[stat] = { index: pos++, value: ss.statValue };
             }
         }
 

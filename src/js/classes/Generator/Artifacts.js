@@ -96,7 +96,7 @@ export class ArtifactGenerator {
         let stats = ['hp', 'atk'];
 
         for (let slot of DB.Artifacts.Slots.getKeys()) {
-            let art = new Artifact(5, 20, slot, sets.shift() || '', stats.shift() || '', []);
+            let art = new Artifact(5, 20, slot, sets.shift() || '', stats.shift() || '');
             this.build.setArtifact(art);
         }
 
@@ -375,7 +375,7 @@ export class StatsObject {
         dist.fillUselessStats(this.uselessStats, this.statValues);
 
         for (let slot of Object.keys(this.mainStats)) {
-            let art = new Artifact(5, 20, slot, setsList.shift(), this.mainStats[slot], []);
+            let art = new Artifact(5, 20, slot, setsList.shift(), this.mainStats[slot]);
             for (let [stat, rolls] of Object.entries(dist.result[slot])) {
                 let value = rolls.reduce((s, i) => {return s + i});
 

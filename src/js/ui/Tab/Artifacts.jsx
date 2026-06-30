@@ -255,13 +255,13 @@ function ArtifactBlock(props) {
     }
 
     let setData = DB.Artifacts.Sets.get(art.set);
-    let substats = [];
+    let substats = new Array( Object.keys( art.getSubStats() ).length );
 
-    for (let subStat of art.getSubStats()) {
-        substats.push(
-            <div key={subStat.stat} className="value">
-                <span className="stat-name">{lang.get('stat.'+ subStat.stat)} </span>
-                {Stats.format(subStat.stat, subStat.value, {signed: true})}
+    for (let subStat in art.getSubStats()) {
+        substats[art.getSubStats()[subStat].index] = (
+            <div key={subStat} className="value">
+                <span className="stat-name">{lang.get('stat.'+ subStat)} </span>
+                { Stats.format( subStat, art.getSubStats()[subStat].value, {signed: true})}
             </div>
         );
     }

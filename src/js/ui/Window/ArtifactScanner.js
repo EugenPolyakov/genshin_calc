@@ -337,7 +337,7 @@ export class ArtifactScanner extends Window {
     }
 
     processSetName(result) {
-        for (let text of [result.set, result.set2]) {
+        for (let text of [result.set, result.set2, result.set3, result.set4]) {
             text = text.replace(/\d+\s*(предме|piec)/ig, '');
             text = text.replace(/^[^\wа-я]+/ig, '');
             text = text.replace(/[^\wа-я]+$/ig, '').toLowerCase();
@@ -356,16 +356,21 @@ export class ArtifactScanner extends Window {
     }
 
     processStats(data) {
-        let lines = data.stats.split("\n");
-        let result = [];
+        let lines = (data.stats + data.statsLastLine).split("\n");
+        let result = {};
 
         let parser = new ScannerTextSubstat();
-
+        let pos = 0;
+        let lastStat = '';
         for (let line of lines) {
             let item = parser.process(line);
 
             if (item) {
-                result.push(item);
+                result[item.stat] = { index: pos, value: item.value, unactivated: item.unactivated };
+                lastStat = item.stat;
+                pos++;
+            } else if (line.toLowerCase().includes(UI.Lang.get('stat_artifact.unactivated').toLowerCase())) {
+                result[lastStat].unactivated = true;
             }
         }
 

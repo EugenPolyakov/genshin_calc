@@ -59,6 +59,8 @@ export class ScannerImageInventory {
 
                     if (colorMatcher(r, g, b)) {
                         if (lastY > 0 && y - lastY > 60) {
+                            lastY = -1;
+                            topY = -1;
                             count = 0;
                             continue;
                         }
@@ -75,18 +77,27 @@ export class ScannerImageInventory {
                                 x: x,
                                 topY: topY,
                             });
-                            break;
+
+                            if (matchedCols.lenght > 1 && matchedCols[matchedCols.lenght - 2].topY > topY) {
+                                topY = -1;
+                                lastY = -1;
+                                y = matchedCols[matchedCols.lenght - 2].topY - 1;
+                            } else
+                                break;
                         }
                     }
                 }
             }
 
-            let topY = -1, start = -1, end = -1;
+            let topY = {}, start = -1, end = -1;
 
             for (const item of matchedCols) {
                 let x = item.x;
 
-                topY = topY >= 0 ? Math.min(topY, item.topY) : item.topY;
+                if (topY[item.topY] == undefined)
+                    topY[item.topY] = 1;
+                else
+                    topY[item.topY]++;
 
                 if (start <= 0) {
                     start = x;
@@ -99,21 +110,23 @@ export class ScannerImageInventory {
                         break;
                     }
 
-                    topY = -1, start = -1, end = -1;
+                    topY = {}, start = -1, end = -1;
                     continue;
                 }
 
-                end = x;
+                if (Math.abs(Object.keys(topY).reduce((r, i) => topY[r] > topY[i] ? r : i, Object.keys(topY)[0]) - item.topY) <= 50)
+                    end = x;
             }
 
             let width = Math.abs(start - end) + 1;
 
-            if (topY >= 0 && width >= MIN_BLOCK_WIDTH) {
+            if (width >= MIN_BLOCK_WIDTH) {
+                let l = Object.keys(topY).reduce((r, i) => topY[r] > topY[i] ? r : i, Object.keys(topY)[0]);
                 return {
                     rarity: rarity,
                     bounds: {
                         left: Math.min(start, end),
-                        top: topY,
+                        top: l,
                         width: width,
                         height: 0,
                     },

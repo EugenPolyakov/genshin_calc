@@ -76,7 +76,7 @@ export class ArtifactListItem extends React.Component {
 
     render() {
         let art = this.props.art;
-        let substats = [];
+        let substats = new Array( Object.keys( art.getSubStats() ).length);
         let classes = ['artifact-list-box', 'border-rarity-' + art.getRarity()];
 
         if (this.props.equipped) {
@@ -89,12 +89,14 @@ export class ArtifactListItem extends React.Component {
             classes.push('hidden');
         }
 
-        for (let item of art.getSubStats()) {
-            let stat = item.stat.replace('_percent', '');
-            substats.push(
-                <div key={item.stat} className={'substat'+ (item.stat == this.props.highlightStat ? ' highlight' : '')}>
+        for ( let item in art.getSubStats() )
+        {
+            let value = art.getSubStats()[item];
+            let stat = item.replace('_percent', '');
+            substats[value.index] = (
+                <div key={item} className={'substat'+ (item == this.props.highlightStat ? ' highlight' : '')}>
                     <span className="stat">{lang.get('stat_mini.'+ stat)}</span>
-                    <span className="value">{Stats.format(item.stat, item.value, {signed: false})}</span>
+                    <span className="value">{Stats.format(item, value.value, {signed: false})}</span>
                 </div>
             );
         }

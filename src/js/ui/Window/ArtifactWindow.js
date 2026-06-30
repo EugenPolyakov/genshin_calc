@@ -600,14 +600,12 @@ export class ArtifactWindow extends Window{
                 this.lockedSlot = true;
             }
 
-            let slot = 1;
-            for (let stats of artifact.subStats) {
-                this.setSubstatStat(slot, stats.stat);
-                this.setSubstatValue(slot, stats.value);
-                ++slot;
+            for (let stat in artifact.subStats) {
+                this.setSubstatStat(artifact.subStats[stat].index + 1, stat);
+                this.setSubstatValue(artifact.subStats[stat].index + 1, artifact.subStats[stat].value);
             }
 
-            for (let i = slot; i <= 4; ++i) {
+            for (let i = Object.keys(artifact.subStats).length + 1; i <= 4; ++i) {
                 this.setSubstatStat(i, '');
                 this.setSubstatValue(i, 0);
             }

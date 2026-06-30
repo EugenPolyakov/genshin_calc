@@ -75,7 +75,7 @@ export class ArtifactsSuggestSort {
 
 function emptyArtifacts(build, setId) {
     for (let slot of DB.Artifacts.Slots.getKeys()) {
-        let art = new Artifact(5, 20, slot, setId, '', []);
+        let art = new Artifact(5, 20, slot, setId, '');
         build.setArtifact(art);
     }
 }
