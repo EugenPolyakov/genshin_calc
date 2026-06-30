@@ -8,6 +8,7 @@ import { Checkbox, NumberInput } from "./Inputs/Input";
 import { Dropdown } from "./Inputs/Dropdown";
 import { GroupBox } from "./Inputs/GroupBox";
 import { Stats } from "../../classes/Stats";
+import { UI } from "../../ui";
 
 let lang = new Lang();
 

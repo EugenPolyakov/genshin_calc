@@ -9,6 +9,8 @@ import { ArtifactIcon, CharIcon, WeaponIcon } from '../Icons';
 import { TitledButton } from '../Inputs/Buttons';
 import { GroupBox } from '../Inputs/GroupBox';
 import { getLevelData, levelItemsChar } from '../ObjectBlock';
+import { DB } from '../../../db/DB';
+import { UI } from '../../../ui';
 
 let lang = new Lang();
 

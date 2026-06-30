@@ -4,7 +4,7 @@ export class DbObjectWeapon extends DbObject {
     constructor(data) {
         super(data);
         this.gameId = data.gameId;
-        this.refineTable = data.refineTable || [];
+        this.refineTable = data.refineTable || []; //всегда работающие статы
         this.weapon = data.weapon;
         this.settingsSets = data.settingsSets || [];
     }

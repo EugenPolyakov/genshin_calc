@@ -9,6 +9,8 @@ import { RotationList } from "./List";
 import { Rotation } from "../../../classes/Rotation";
 import { RotationStorageModal } from "./StorageModal";
 import { RotationBlockModal } from "./BlockModal";
+import { DB } from "../../../db/DB";
+import { UI } from "../../../ui";
 
 const lang = new Lang();
 

@@ -12,6 +12,8 @@ import { CharIcon } from "../Icons";
 import { ResultTableButton } from "../Inputs/Buttons";
 import { Serializer } from "../../../classes/Serializer";
 import { makeShareUrl } from "../../../Utils";
+import { DB } from "../../../db/DB";
+import { UI } from "../../../ui";
 
 let lang = new Lang();
 

@@ -1,4 +1,5 @@
 import { REAL_TOTAL } from "../db/Constants";
+import { DB } from "../db/DB";
 import { Artifact } from "./Artifact";
 import { filterPostEffectTreeByStats } from "./Build/Data";
 import { Condition } from "./Condition";

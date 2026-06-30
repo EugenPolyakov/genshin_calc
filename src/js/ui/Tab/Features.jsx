@@ -14,6 +14,7 @@ import { Tab } from "../Tab";
 import { Feature2 } from '../../classes/Feature2';
 import { TitledButton } from '../Components/Inputs/Buttons';
 import { BlockRemark } from '../Components/TextBlocks';
+import { UI } from '../../ui';
 
 let lang = new Lang();
 

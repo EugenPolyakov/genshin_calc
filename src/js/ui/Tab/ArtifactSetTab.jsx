@@ -14,6 +14,7 @@ import { Tab } from "../Tab";
 import { WorkerFactorySuggestSet } from '../../classes/WorkerFactory/SuggestSet';
 import { ArtifactSetIcon } from '../Components/Icons';
 import { Feature2 } from '../../classes/Feature2';
+import { DB } from '../../db/DB';
 
 let lang = new Lang();
 

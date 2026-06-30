@@ -13,6 +13,7 @@ import { Checkbox, CheckboxList, FileInput } from '../Components/Inputs/Input';
 import { Backup } from '../../classes/Backup';
 import { ImporterGood } from '../../classes/Importer/Good';
 import * as FileSaver from 'file-saver';
+import { UI } from '../../ui';
 
 let lang = new Lang();
 

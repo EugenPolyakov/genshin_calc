@@ -10,6 +10,7 @@ import { ModalSelectBase, SearchInput } from "../Select";
 import { ControlsBar } from "../../Components/ControlsBar";
 import { DialogContainer } from "../../Components/Dialog/Container";
 import { ConditionList } from "../../Components/ConditionList";
+import { DB } from "../../../db/DB";
 
 let lang = new Lang();
 

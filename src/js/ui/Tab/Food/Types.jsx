@@ -3,6 +3,7 @@ import "../../../../css/Components/Tab/Food/FoodTypes.css"
 
 import { Stats } from '../../../classes/Stats';
 import { Lang } from '../../Lang';
+import { DB } from '../../../db/DB';
 
 let lang = new Lang();
 

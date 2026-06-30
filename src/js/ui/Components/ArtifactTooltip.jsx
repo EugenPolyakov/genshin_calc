@@ -8,6 +8,8 @@ import { Lang } from '../Lang';
 import { Modal } from '../Modal';
 import { waitForCondition } from '../../Utils';
 import { Stats } from '../../classes/Stats';
+import { DB } from '../../db/DB';
+import { UI } from '../../ui';
 
 let lang = new Lang();
 

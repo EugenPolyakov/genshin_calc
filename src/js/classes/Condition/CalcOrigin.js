@@ -1,5 +1,6 @@
 import { Stats } from "../Stats";
 import { Condition } from "../Condition";
+import { DB } from "../../db/DB";
 
 export class ConditionCalcOrigin extends Condition {
     getSettings(settings) {

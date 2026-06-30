@@ -18,6 +18,8 @@ import { WeaponSuggestResult } from './WeaponSuggest/Result';
 import { WeaponSuggestSettingsModal } from './WeaponSuggest/Settings';
 import { WorkerFactorySuggestArtifacts } from '../../classes/WorkerFactory/SuggestArtifacts';
 import { WorkerFactorySuggestWeapons } from '../../classes/WorkerFactory/SuggestWeapons';
+import { DB } from '../../db/DB';
+import { UI } from '../../ui';
 
 
 let lang = new Lang();

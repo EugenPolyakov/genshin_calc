@@ -27,6 +27,8 @@ import { TitledButton } from '../Components/Inputs/Buttons';
 import { WorkerFactorySuggestArtifacts } from '../../classes/WorkerFactory/SuggestArtifacts';
 import { FeatureCompiler } from '../../classes/Feature2/Compiler';
 import { isPercent } from '../../classes/Stats';
+import { DB } from '../../db/DB';
+import { UI } from '../../ui';
 
 const MIN_THREADS = 1;
 const MAX_THREADS = 16;

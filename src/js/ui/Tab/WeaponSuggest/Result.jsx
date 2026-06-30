@@ -5,6 +5,7 @@ import { ArtifactList } from '../../Components/Artifact';
 import { FeatureTableValues } from '../../Components/FeatureTable';
 import { ResultTableButton } from '../../Components/Inputs/Buttons';
 import { Lang } from '../../Lang';
+import { DB } from '../../../db/DB';
 
 let lang = new Lang();
 

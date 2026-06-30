@@ -10,6 +10,7 @@ import { ReactTab } from '../Components/Tab';
 import { Lang } from '../Lang';
 import { Tab } from "../Tab";
 import { CustomEnemy } from './Enemy/Custom';
+import { UI } from '../../ui';
 
 export class EnemyTab extends Tab {
     constructor(params) {

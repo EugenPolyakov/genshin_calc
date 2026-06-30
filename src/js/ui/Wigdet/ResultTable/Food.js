@@ -3,6 +3,8 @@ import "../../../../css/ui/Widget/ResultTable/Food.css"
 import { ResultTableSuggester } from "./Suggester";
 import { Stats } from "../../../classes/Stats";
 import { WidgetFoodStats } from "../Food/Stats";
+import { DB } from "../../../db/DB";
+import { UI } from "../../../ui";
 
 const statWidget = new WidgetFoodStats({});
 

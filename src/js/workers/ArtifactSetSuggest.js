@@ -1,7 +1,6 @@
 import { CalcSet } from "../classes/CalcSet";
 import { Condition } from "../classes/Condition";
-
-importScripts('db.js?'+ __VERSION__);
+import { DB } from "../db/DB";
 
 self.onmessage = function(input) {
     let original = CalcSet.deserialize(input.data.calcset);

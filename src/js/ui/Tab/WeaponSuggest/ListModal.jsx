@@ -8,6 +8,8 @@ import { WeaponIcon } from "../../Components/Icons";
 import { TitledButton, ToggleRoundButton } from "../../Components/Inputs/Buttons";
 import { Checkbox } from "../../Components/Inputs/Input";
 import { Lang } from "../../Lang";
+import { DB } from "../../../db/DB";
+import { UI } from "../../../ui";
 
 let lang = new Lang();
 

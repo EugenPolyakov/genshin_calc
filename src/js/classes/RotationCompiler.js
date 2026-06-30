@@ -1,3 +1,4 @@
+import { DB } from "../db/DB";
 import { objectsNames } from "./CalcSet";
 import { FeatureRotation } from "./Feature2/Rotation";
 import { Rotation, reactionFeatures } from "./Rotation";

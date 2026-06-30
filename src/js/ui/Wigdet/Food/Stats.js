@@ -1,6 +1,7 @@
 import "../../../../css/ui/Widget/Food/Stats.css"
 
 import { Stats } from "../../../classes/Stats";
+import { UI } from "../../../ui";
 
 const defaultOpts = {};
 

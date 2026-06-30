@@ -1,4 +1,5 @@
 import { Stats } from "../../../classes/Stats";
+import { UI } from "../../../ui";
 import { ArtifactWidget } from "../Artifact";
 
 export class ArtifactWidgetSimilar extends ArtifactWidget {

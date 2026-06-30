@@ -15,6 +15,7 @@ import { ReactTab } from '../Components/Tab';
 import { RoundButton } from '../Components/Inputs/Buttons';
 import { Tab } from "../Tab";
 import { WorkerFactoryArtifactsGenerator } from '../../classes/WorkerFactory/ArtifactsGenerator';
+import { UI } from '../../ui';
 
 let lang = new Lang();
 

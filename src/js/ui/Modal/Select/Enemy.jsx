@@ -7,6 +7,7 @@ import { Lang } from "../../Lang";
 import { Modal } from "../../Modal";
 import { ModalSelectBase, SearchInput } from "../Select";
 import { ResistanceBlockMini } from "../../Components/ResistanceBlock";
+import { DB } from "../../../db/DB";
 
 let lang = new Lang();
 

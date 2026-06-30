@@ -18,3 +18,4 @@ __pycache__/
 node_modules
 data/raw/
 obj/
+src/js/generated/

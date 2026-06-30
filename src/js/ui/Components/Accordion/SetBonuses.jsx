@@ -8,6 +8,7 @@ import { ControlsBar } from '../ControlsBar';
 import { GroupBox } from '../Inputs/GroupBox';
 import { Lang } from '../../Lang';
 import { TitledButton } from '../Inputs/Buttons';
+import { DB } from '../../../db/DB';
 
 export class AccordionSetBonuses extends React.Component {
     constructor(props) {

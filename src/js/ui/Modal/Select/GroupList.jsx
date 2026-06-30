@@ -10,6 +10,7 @@ import { Lang } from "../../Lang";
 import { Modal } from "../../Modal";
 import { MiniButton, TitledButton } from "../../Components/Inputs/Buttons";
 import { BlockRemark } from "../../Components/TextBlocks";
+import { UI } from "../../../ui";
 
 let lang = new Lang();
 

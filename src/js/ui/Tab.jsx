@@ -2,6 +2,7 @@ import $ from "jquery";
 import ReactDOM from 'react-dom/client'
 
 import "../../css/ui/Tab.css"
+import { UI } from "../ui";
 
 export class Tab {
     constructor() {

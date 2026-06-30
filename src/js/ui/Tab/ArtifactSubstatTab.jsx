@@ -11,6 +11,7 @@ import { Tab } from "../Tab";
 import { Stats, isPercent } from '../../classes/Stats';
 import { FeatureTableHeader, FeatureTableValues } from '../Components/FeatureTable';
 import { Feature2 } from '../../classes/Feature2';
+import { DB } from '../../db/DB';
 
 let lang = new Lang();
 

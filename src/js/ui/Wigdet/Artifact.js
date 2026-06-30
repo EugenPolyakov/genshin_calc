@@ -1,6 +1,8 @@
 import $ from "jquery";
 import "../../../css/ui/Widget/Artifact.css"
 import { Stats } from "../../classes/Stats";
+import { DB } from "../../db/DB";
+import { UI } from "../../ui";
 
 const defaultOpts = {
     showWeapon: true,

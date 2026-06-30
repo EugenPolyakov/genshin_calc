@@ -223,6 +223,7 @@ export const Linnea = new DbObjectChar({
                     hits: 2,
                     multipliers: [
                         new FeatureMultiplier({
+                            scaling: 'def*',
                             leveling: 'char_skill_elemental',
                             values: Talents.get('skill.linnea_lumi_pound_pound_pummeler_dmg'),
                         }),
@@ -237,6 +238,7 @@ export const Linnea = new DbObjectChar({
             hits: 2,
             multipliers: [
                 new FeatureMultiplier({
+                    scaling: 'def*',
                     leveling: 'char_skill_elemental',
                     values: Talents.get('skill.linnea_lumi_pound_pound_pummeler_dmg'),
                 }),
@@ -247,6 +249,7 @@ export const Linnea = new DbObjectChar({
             category: 'skill',
             multipliers: [
                 new FeatureMultiplier({
+                    scaling: 'def*',
                     leveling: 'char_skill_elemental',
                     values: Talents.get('skill.linnea_lumi_heavy_overdrive_hammer_dmg'),
                 }),
@@ -259,6 +262,7 @@ export const Linnea = new DbObjectChar({
             critDamageBonuses: ['crit_dmg_c2_lumi'],
             multipliers: [
                 new FeatureMultiplier({
+                    scaling: 'def*',
                     leveling: 'char_skill_elemental',
                     values: Talents.get('skill.linnea_lumi_million_ton_crush_dmg'),
                 }),
@@ -268,6 +272,7 @@ export const Linnea = new DbObjectChar({
             category: 'burst',
             multipliers: [
                 new FeatureMultiplierList({
+                    scaling: 'def*',
                     leveling: 'char_skill_burst',
                     values: Talents.get('burst.linnea_initial_healing_amount'),
                 }),
@@ -277,6 +282,7 @@ export const Linnea = new DbObjectChar({
             category: 'burst',
             multipliers: [
                 new FeatureMultiplierList({
+                    scaling: 'def*',
                     leveling: 'char_skill_burst',
                     values: Talents.getList('burst.heal_dot'),
                 }),
@@ -560,6 +566,7 @@ export const Linnea = new DbObjectChar({
             }),
             new ConditionBoolean({
                 name: 'party.linnea_constellation6',
+                serializeId: 7,
                 title: 'talent_name.linnea_golden_beagles_dream',
                 description: 'talent_descr.linnea_golden_beagles_dream_1',
                 info: { constellation: 6 },

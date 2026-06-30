@@ -2,6 +2,7 @@ import $ from "jquery";
 import SimpleBar from 'simplebar';
 
 import "../../css/ui/Dropdown.css"
+import { UI } from "../ui";
 
 var methods = {
     init: function() {

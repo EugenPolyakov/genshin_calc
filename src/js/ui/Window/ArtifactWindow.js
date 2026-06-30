@@ -6,6 +6,8 @@ import {Window} from "../Window"
 import "../../../css/modal/ArtifactWindow.css"
 import { substatCheck, substatListValid } from "../../classes/SubstatCheck";
 import { Stats } from "../../classes/Stats";
+import { DB } from "../../db/DB";
+import { UI } from "../../ui";
 
 export class ArtifactWindow extends Window{
     constructor() {

@@ -3,6 +3,7 @@ import $ from "jquery";
 import 'simplebar/dist/simplebar.css';
 import "../../css/ui/Layout.css"
 import "../../css/ui/LayoutTouch.css"
+import { UI } from "../ui";
 
 const beforeUnloadHandler = (event) => {
     event.preventDefault();

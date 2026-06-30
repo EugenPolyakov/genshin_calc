@@ -1,3 +1,4 @@
+import { DB } from "../../db/DB";
 import {CalcObject} from "../CalcObject";
 
 export class CalcObjectWeapon extends CalcObject {

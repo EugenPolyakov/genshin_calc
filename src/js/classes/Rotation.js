@@ -1,3 +1,4 @@
+import { DB } from "../db/DB";
 import { Condition } from "./Condition";
 import { Serializer } from "./Serializer";
 import { Stats } from "./Stats";

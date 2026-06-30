@@ -72,7 +72,7 @@ import { WeaponSuggestTab } from './ui/Tab/WeaponSuggest';
 import { WeaponTab } from './ui/Tab/Weapon';
 import { GoodImportModal } from './ui/Modal/GoodImport.jsx';
 
-window.UI = {
+export var UI = {
     Layout: new Layout(),
     Lang: new Lang(),
 
@@ -125,6 +125,8 @@ window.UI = {
 
     debug: (text) => {if (isDevel()) { console.log(text) }}
 };
+
+window.UI = UI;
 
 function isDevel() {
     return typeof __DEVEL__ !== 'undefined' && __DEVEL__;

@@ -4,6 +4,7 @@ import "../../../css/Components/Artifact.css"
 import { Stats } from "../../classes/Stats";
 import { Lang } from "../Lang";
 import { ArtifactSetIcon } from "./Icons";
+import { UI } from "../../ui";
 
 const lang = new Lang();
 

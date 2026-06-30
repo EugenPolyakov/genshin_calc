@@ -1,4 +1,4 @@
-﻿const http = require('http');
+const http = require('http');
 const fs = require('fs');
 const path = require('path');
 const url = require('url');
@@ -40,7 +40,8 @@ const server = http.createServer((req, res) => {
         if (err) {
             if (err.code === 'ENOENT') {
                 // Файл не найден - пробуем отдать index.html (для SPA)
-                serveIndexHtml(res);
+                //serveIndexHtml(res);
+                serveError(res, 404, 'Not found');
             } else {
                 // Другая ошибка
                 serveError(res, 500, 'Server Error');

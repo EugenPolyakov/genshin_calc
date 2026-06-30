@@ -4,8 +4,7 @@ import { Condition } from "../classes/Condition";
 import { ArtifactGenerator, getMainStatCombinations } from "../classes/Generator/Artifacts";
 import { ArtifactGeneratorKQM } from "../classes/Generator/ArtifactsKQM";
 import { sendWorkerProgeressInc, sendWorkerProgeressTotal } from "../classes/WorkerFactory";
-
-importScripts('db.js?'+ __VERSION__);
+import { DB } from "../db/DB";
 
 self.onmessage = function(input) {
     let buildBase = CalcSet.deserialize(input.data.build);

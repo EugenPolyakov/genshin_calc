@@ -12,6 +12,7 @@ import { Stats } from "../../classes/Stats";
 import { FullHeight, FullHeightScrollable, FullHeightStatic } from "./FullHeight";
 import { TabDisclaimer } from "./Tab";
 import { FeatureTableValues } from "./FeatureTable";
+import { DB } from "../../db/DB";
 
 export function SuggestResult(props) {
     let lang = new Lang();

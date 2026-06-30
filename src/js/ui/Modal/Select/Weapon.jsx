@@ -9,6 +9,7 @@ import { ModalSelectBase, SearchInput } from "../Select";
 import { Stats } from "../../../classes/Stats";
 import { ToggleRoundButton } from "../../Components/Inputs/Buttons";
 import { WeaponIcon } from "../../Components/Icons";
+import { DB } from "../../../db/DB";
 
 let lang = new Lang();
 

@@ -5,6 +5,7 @@ import { DialogContainer } from "../Components/Dialog/Container";
 import { EnkaApp } from "../Components/Enka";
 import { Lang } from "../Lang";
 import { Modal } from "../Modal";
+import { UI } from "../../ui";
 
 let lang = new Lang();
 

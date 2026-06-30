@@ -2,6 +2,7 @@ import $ from "jquery";
 
 import "../../css/modal.css"
 import "../../css/modal/WindowZIndex.css"
+import { UI } from "../ui";
 
 export class Window {
     constructor() {

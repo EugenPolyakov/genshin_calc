@@ -6,6 +6,8 @@ import { CharIcon } from "../../Components/Icons";
 import { Lang } from "../../Lang";
 import { Modal } from "../../Modal";
 import { ModalSelectBase } from "../Select";
+import { DB } from "../../../db/DB";
+import { UI } from "../../../ui";
 
 let lang = new Lang();
 

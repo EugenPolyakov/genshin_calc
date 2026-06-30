@@ -8,6 +8,7 @@ import { TitledButton } from "../Inputs/Buttons";
 import { Rotation } from "../../../classes/Rotation";
 import { ConditionList } from "../ConditionList";
 import { Condition } from "../../../classes/Condition";
+import { DB } from "../../../db/DB";
 
 let lang = new Lang();
 

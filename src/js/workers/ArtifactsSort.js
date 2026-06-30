@@ -3,8 +3,6 @@ import { CalcSet } from "../classes/CalcSet";
 import { Condition } from "../classes/Condition";
 import { Serializer } from "../classes/Serializer";
 
-importScripts('db.js?'+ __VERSION__);
-
 const slotOrders = {
     flower: 1,
     plume: 2,

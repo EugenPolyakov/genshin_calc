@@ -2414,7 +2414,7 @@ sky_piercing_fang_eng = Template(
 
 slingshot = Template(
     sentences=[
-        ['0.3:ignore', '36:text_percent'],
+        ['0.3:ignore', '36:dmg_normal'],
         ['10:'],
     ],
 )

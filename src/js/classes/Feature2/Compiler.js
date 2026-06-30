@@ -1,4 +1,3 @@
-import { BuildData } from "../Build/Data";
 import { baseStatName, getUsedStats } from "./Compile/Stats";
 import { CBlock } from "./Compile/Types";
 import { CBlockPost, CIsolatedBlock, CStatDecrease, CStatIncrease, CStatSet, CVar } from "./Compile/Types/Block";
@@ -24,7 +23,7 @@ export class FeatureCompiler {
     }
 
     /**
-     * @param {BuildData} data
+     * @param {import('../Build/Data').BuildData} data
      * @param {Object} opts
      */
     prepare(data, opts) {
@@ -182,7 +181,7 @@ export class FeatureCompiler {
     }
 
     /**
-     * @param {BuildData} data
+     * @param {import('../Build/Data').BuildData} data
      */
     execute(data) {
         return this.compiled(data.stats);

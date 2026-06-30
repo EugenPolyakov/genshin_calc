@@ -3,6 +3,7 @@ import "../../../../css/Components/Accordion/SuggesterStats.css";
 
 import { GroupBox } from '../Inputs/GroupBox';
 import { TextInput } from '../Inputs/Input';
+import { UI } from '../../../ui';
 
 
 const STATS_FOR_RANGE = ['recharge', 'crit_rate', 'crit_dmg', 'atk', 'def', 'hp', 'mastery'];

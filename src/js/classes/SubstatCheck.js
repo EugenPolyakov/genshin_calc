@@ -1,3 +1,4 @@
+import { DB } from "../db/DB";
 import { Stats } from "./Stats";
 
 export function substatListValid(stat, value, values, rarity) {

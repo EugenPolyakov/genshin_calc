@@ -1,5 +1,6 @@
 import React from 'react';
 import "../../../css/Components/Icons.css"
+import { DB } from '../../db/DB';
 
 export function CharIcon(props) {
     let size = props.size || 80;

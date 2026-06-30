@@ -1,4 +1,5 @@
 import { Feature } from "../../../classes/Feature";
+import { UI } from "../../../ui";
 import { formatNumber } from "../../../Utils";
 import { ResultTable } from "../ResultTable";
 

@@ -8,6 +8,7 @@ import { CharObjectBlock } from '../Components/ObjectBlock';
 import { ReactTab } from '../Components/Tab';
 import { Lang } from '../Lang';
 import { Tab } from "../Tab";
+import { UI } from '../../ui';
 
 export class CharTab extends Tab {
     constructor(params) {

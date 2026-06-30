@@ -1,3 +1,4 @@
+import { DB } from '../../db/DB';
 import { Artifact } from '../Artifact';
 import { CalcObject } from '../CalcObject';
 import { Stats } from '../Stats';

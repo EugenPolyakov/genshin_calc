@@ -2,8 +2,6 @@ import { Artifact } from "../classes/Artifact";
 import { ArtifactsSuggest } from "../classes/ArtifactsSuggest";
 import { CalcSet } from "../classes/CalcSet";
 
-importScripts('db.js?'+ __VERSION__);
-
 self.onmessage = function(input) {
     let artifactsList = [];
     for (let data of input.data.artifacts) {

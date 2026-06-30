@@ -1,16 +1,18 @@
 import $ from "jquery";
 import SimpleBar from 'simplebar';
 import "../../../css/ui/Window/ArtifactScanner.css"
-import * as levenshtein from "js-levenshtein";
+import levenshtein from "js-levenshtein-esm";
 
 import { Artifact } from "../../classes/Artifact";
 import { ArtifactWidget } from "../Wigdet/Artifact";
 import { ArtifactWidgetSimilar } from "../Wigdet/Artifact/Similar";
-import { Scanner } from "../../classes/Scanner";
+import { Scanner } from "./ArtifactScaner/Scanner";
 import { Window } from "../Window"
 import { Serializer } from "../../classes/Serializer";
-import { ScannerTextSubstat } from "../../classes/Scanner/Text/Substat";
-import { ScannerImageInventory } from "../../classes/Scanner/Image/Inventory";
+import { ScannerTextSubstat } from "./ArtifactScaner/Text/Substat";
+import { ScannerImageInventory } from "./ArtifactScaner/Image/Inventory";
+import { DB } from "../../db/DB";
+import { UI } from "../../ui";
 
 export class ArtifactScanner extends Window {
     constructor() {

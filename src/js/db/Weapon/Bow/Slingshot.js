@@ -1,3 +1,6 @@
+import { Condition } from "../../../classes/Condition";
+import { ConditionAnd } from "../../../classes/Condition/And";
+import { ConditionBoolean } from "../../../classes/Condition/Boolean";
 import { ConditionBooleanRefine } from "../../../classes/Condition/Boolean/Refine";
 import { DbObjectWeapon } from "../../../classes/DbObject/Weapon";
 import { StatTable } from "../../../classes/StatTable";
@@ -11,10 +14,7 @@ export const Slingshot = new DbObjectWeapon({
     rarity: 3,
     weapon: 'bow',
     statTable: weaponStatTables.Slingshot,
-    refineTable: [
-        new StatTable('dmg_normal', [-10]),
-        new StatTable('dmg_charged', [-10]),
-    ],
+    //refineTable: [],
     conditions: [
         new ConditionBooleanRefine({
             name: 'weapon_slingshot',
@@ -22,10 +22,21 @@ export const Slingshot = new DbObjectWeapon({
             title: 'talent_name.weapon_slingshot',
             description: 'talent_descr.weapon_slingshot',
             stats: [
-                new StatTable('text_percent', [36, 42, 48, 54, 60]),
-                new StatTable('dmg_normal', [46, 52, 58, 64, 70]),
-                new StatTable('dmg_charged', [46, 52, 58, 64, 70]),
+                new StatTable('dmg_normal', [36, 42, 48, 54, 60]),
+                new StatTable('dmg_charged', [36, 42, 48, 54, 60]),
             ],
-        })
+            condition: new ConditionBoolean({ name: 'tartaglia_raging_tide', invert: 1 }),
+        }),
+        new Condition({
+            isHidden: true,
+            stats: {
+                dmg_normal: -10,
+                dmg_charged: -10,
+            },
+            condition: new ConditionAnd([
+                new ConditionBoolean({ name: 'weapon_slingshot', invert: 1 }),
+                new ConditionBoolean({ name: 'tartaglia_raging_tide', invert: 1 }),
+            ]),
+        }),
     ],
 });

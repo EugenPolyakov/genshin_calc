@@ -1,3 +1,4 @@
+import { DB } from "../../db/DB";
 import { ArtifactGenerator, StatDistributor, StatsObject } from "./Artifacts";
 
 const ALL_SUBSTATS_ROLLS = 2;

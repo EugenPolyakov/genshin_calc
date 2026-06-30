@@ -7,6 +7,8 @@ import { TitledButton } from '../Inputs/Buttons';
 import { GroupBox } from '../Inputs/GroupBox';
 import { ControlsBar } from '../ControlsBar';
 import { Condition } from '../../../classes/Condition';
+import { DB } from '../../../db/DB';
+import { UI } from '../../../ui';
 
 export class AccordionRequredSets extends React.Component {
     constructor(props) {

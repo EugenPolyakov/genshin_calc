@@ -1,3 +1,4 @@
+import { DB } from "../../db/DB";
 import { Artifact } from "../Artifact";
 import { Condition } from "../Condition";
 import { FeatureCompiler } from "../Feature2/Compiler";

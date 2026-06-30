@@ -1,3 +1,4 @@
+import { DB } from "../../db/DB";
 import { WorkerFactory } from "../WorkerFactory";
 
 let setsOrders;

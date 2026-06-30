@@ -1,3 +1,4 @@
+import { DB } from "../../db/DB";
 import { Condition } from "../Condition";
 
 export class ConditionNonLunarElement extends Condition {

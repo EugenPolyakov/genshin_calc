@@ -1,3 +1,4 @@
+import { UI } from "../../../../ui";
 import { ResultTableSuggester } from "../Suggester";
 
 export class ResultTableSuggesterArtifactStat extends ResultTableSuggester {

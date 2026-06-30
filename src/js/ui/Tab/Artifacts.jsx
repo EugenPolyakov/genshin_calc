@@ -12,6 +12,8 @@ import { Lang } from '../Lang';
 import { Tab } from "../Tab";
 import { StatsInfo } from './Artifacts/StatsInfo';
 import { RollsInfo } from './Artifacts/RollsInfo';
+import { DB } from '../../db/DB';
+import { UI } from '../../ui';
 
 let lang = new Lang();
 

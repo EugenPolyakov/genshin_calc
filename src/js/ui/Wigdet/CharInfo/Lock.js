@@ -1,4 +1,5 @@
 import { Serializer } from "../../../classes/Serializer";
+import { DB } from "../../../db/DB";
 import { CharInfo } from "../CharInfo";
 
 export class CharInfoLock extends CharInfo {

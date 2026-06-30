@@ -8,6 +8,8 @@ import { Lang } from '../Lang';
 import { ReactTab } from '../Components/Tab';
 import { Tab } from "../Tab";
 import { WorkerFactoryArtifactsSort } from '../../classes/WorkerFactory/ArtifactsSort';
+import { DB } from '../../db/DB';
+import { UI } from '../../ui';
 
 let lang = new Lang();
 

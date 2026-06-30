@@ -11,6 +11,7 @@ import { Modal } from "../Modal";
 import { BetaWarning } from "../Components/TextBlocks";
 import { GroupBox } from "../Components/Inputs/GroupBox";
 import { FullHeight, FullHeightScrollable, FullHeightStatic } from "../Components/FullHeight";
+import { DB } from "../../db/DB";
 
 let lang = new Lang();
 const maxLevels = {

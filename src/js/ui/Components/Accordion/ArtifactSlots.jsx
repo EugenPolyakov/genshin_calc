@@ -2,6 +2,7 @@ import React from 'react';
 
 import { GroupBox } from '../Inputs/GroupBox';
 import { Checkbox } from '../Inputs/Input';
+import { UI } from '../../../ui';
 
 export function AccordionArtifactSlots(props) {
     let items = [];

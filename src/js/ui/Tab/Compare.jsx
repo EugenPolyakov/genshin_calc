@@ -13,6 +13,7 @@ import { ReactTab } from '../Components/Tab';
 import { RoundButton, TitledButton, ToggleRoundButton } from '../Components/Inputs/Buttons';
 import { Serializer } from '../../classes/Serializer';
 import { Tab } from "../Tab";
+import { UI } from '../../ui';
 
 let lang = new Lang();
 

@@ -1,4 +1,5 @@
 import { GroupToSubstats } from "../../db/Artifacts/Substats";
+import { DB } from "../../db/DB";
 import { Artifact } from "../Artifact";
 import { CalcSet } from "../CalcSet";
 import { prepareUid } from "./Uid";

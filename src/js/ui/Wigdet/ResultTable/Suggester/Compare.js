@@ -1,4 +1,5 @@
 import "../../../../../css/ui/Widget/ResultTable/Compare.css"
+import { UI } from "../../../../ui";
 
 import { ResultTableSuggester } from "../Suggester";
 

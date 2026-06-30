@@ -1,5 +1,5 @@
 import { createWorker } from 'tesseract.js';
-import { ScannerImagePalette } from './Scanner/Image/Palette';
+import { ScannerImagePalette } from './Image/Palette';
 
 const DEFAULT_WIDTH = 491;
 const DEFAULT_HEARER_HEIGHT = 58;

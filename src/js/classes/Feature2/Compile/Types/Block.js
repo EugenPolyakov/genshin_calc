@@ -31,34 +31,35 @@ export class CSum extends CBlock {
         let staticItems = this.items.filter((i) => {return i instanceof CConst});
         let nonStaticItems = this.items.filter((i) => {return !(i instanceof CConst)});
 
-        if (staticItems.length > 1 || nonStaticItems.length == 0) {
-            let newItems = [];
-            let value = 0;
+        if (!opts.dontProcessStaticValues) {
+            if (staticItems.length > 1 || nonStaticItems.length == 0) {
+                let newItems = [];
+                let value = 0;
 
-            for (let item of staticItems) {
-                value += item.value;
+                for (let item of staticItems) {
+                    value += item.value;
+                }
+
+                let constItem = new CConst({ value: value, comment: 'processed' });
+                if (nonStaticItems.length == 0 && !this.dontShrink()) {
+                    return constItem;
+                }
+
+                newItems.push(constItem);
+                for (let item of nonStaticItems) {
+                    newItems.push(item);
+                }
+
+                this.items = newItems;
             }
-
-            let constItem = new CConst({ value: value, comment: 'processed' });
-            if (nonStaticItems.length == 0 && !this.dontShrink() && !opts.dontProcessStaticValues) {
-                return constItem;
+        } else {
+            let filtered = staticItems.filter(i => i.value != 0);
+            if (filtered.length + nonStaticItems.length > 0) {
+                this.items = filtered.concat(nonStaticItems);
+            } else {
+                this.items = [staticItems[0]];
             }
-
-            newItems.push(constItem);
-            for (let item of nonStaticItems) {
-                newItems.push(item);
-            }
-
-            this.items = newItems;
         }
-
-        if (this.items.length == 0) { // CHECK
-            this.items = [new CConst({value: 0})];
-        }
-
-        // if (this.items.length == 1 && this.getType() == 'block_sum') {
-        //     return this.items[0];
-        // }
 
         return super.process(opts);
     }
@@ -181,25 +182,34 @@ export class CMulti extends CBlock {
         let staticItems = this.items.filter((i) => {return i instanceof CConst });
         let nonStaticItems = this.items.filter((i) => {return !(i instanceof CConst)});
 
-        if (staticItems.length > 1) {
-            let newItems = [];
-            let value = 1;
+        if (!opts.dontProcessStaticValues) {
+            if (staticItems.length > 1 || nonStaticItems.length == 0) {
+                let newItems = [];
+                let value = 1;
 
-            for (let item of staticItems) {
-                value *= item.value;
+                for (let item of staticItems) {
+                    value *= item.value;
+                }
+
+                let constItem = new CConst({ value: value, comment: 'processed' });
+                if (nonStaticItems.length == 0 && this.getType() != 'block_multi') {
+                    return constItem;
+                }
+
+                newItems.push(constItem);
+                for (let item of nonStaticItems) {
+                    newItems.push(item);
+                }
+
+                this.items = newItems;
             }
-
-            let constItem = new CConst({ value: value, comment: 'processed' });
-            if (nonStaticItems.length == 0 && !opts.dontProcessStaticValues) {
-                return constItem;
+        } else {
+            let filtered = staticItems.filter(i => i.value != 1);
+            if (filtered.length + nonStaticItems.length > 0) {
+                this.items = filtered.concat(nonStaticItems);
+            } else {
+                this.items = [staticItems[0]];
             }
-
-            newItems.push(constItem);
-            for (let item of nonStaticItems) {
-                newItems.push(item);
-            }
-
-            this.items = newItems;
         }
 
         // Do not replace inherited blocks

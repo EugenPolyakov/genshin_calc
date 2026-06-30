@@ -13,6 +13,8 @@ import { Lang } from '../Lang';
 import { Tab } from "../Tab";
 import { CustomStats } from './Buffs/CustomStats';
 import { PartyList } from './Buffs/PartyList';
+import { DB } from '../../db/DB';
+import { UI } from '../../ui';
 
 export class BuffsTab extends Tab {
     constructor(params) {

@@ -11,6 +11,7 @@ import { FullHeight, FullHeightScrollable, FullHeightStatic } from '../Component
 import { Lang } from '../Lang';
 import { ReactTab } from '../Components/Tab';
 import { Tab } from "../Tab";
+import { DB } from '../../db/DB';
 
 let lang = new Lang();
 

@@ -12,6 +12,7 @@ import { ReactTab } from '../Components/Tab';
 import { Lang } from '../Lang';
 import { SearchInput } from '../Modal/Select';
 import { Tab } from "../Tab";
+import { UI } from '../../ui';
 
 let lang = new Lang();
 

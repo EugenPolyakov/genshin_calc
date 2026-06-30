@@ -4,6 +4,7 @@ import { Stats } from '../../../classes/Stats';
 
 import { FeatureTableValues } from '../../Components/FeatureTable';
 import { Lang } from '../../Lang';
+import { DB } from '../../../db/DB';
 
 const lang = new Lang();
 

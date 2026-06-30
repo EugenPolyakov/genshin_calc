@@ -1,3 +1,4 @@
+import { DB } from '../db/DB';
 import { Serializer } from './Serializer';
 import { Stats } from './Stats';
 import { substatCheck, substatListValid } from './SubstatCheck';

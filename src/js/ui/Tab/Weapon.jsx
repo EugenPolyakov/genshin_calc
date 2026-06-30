@@ -8,6 +8,7 @@ import { WeaponObjectBlock } from '../Components/ObjectBlock';
 import { ReactTab } from '../Components/Tab';
 import { Lang } from '../Lang';
 import { Tab } from "../Tab";
+import { UI } from '../../ui';
 
 export class WeaponTab extends Tab {
     constructor(params) {

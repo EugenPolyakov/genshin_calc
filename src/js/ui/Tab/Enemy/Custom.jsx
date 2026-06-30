@@ -2,6 +2,7 @@ import React from 'react';
 
 import { Lang } from '../../Lang';
 import { EnemyLevelLine } from '../../Components/ObjectBlock';
+import { DB } from '../../../db/DB';
 
 export class CustomEnemy extends React.Component {
     constructor(props) {
