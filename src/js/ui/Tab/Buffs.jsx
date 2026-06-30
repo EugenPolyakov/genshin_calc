@@ -106,8 +106,8 @@ export class Buffs extends React.Component {
         let settings = this.props.app.getStats().settings;
 
         let charItems = [];
-        for (let i = 1; i <= 3; ++i) {
-            let char = DB.Chars.getById(settings['party_char_'+ i]);
+        for (let name of ['party_char_1', 'party_char_2', 'party_char_3']) {
+            let char = DB.Chars.getById(settings[name]);
             if (!char) {
                 continue;
             }

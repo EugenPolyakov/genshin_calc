@@ -16,8 +16,8 @@ export class CustomOrigin extends Condition {
             ++stacks;
         }
 
-        for (let i = 1; i <= 3; ++i) {
-            let charId = settings['party_char_'+ i];
+        for (let name of ['party_char_1', 'party_char_2', 'party_char_3']) {
+            let charId = settings[name];
             if (!charId) {
                 continue;
             }

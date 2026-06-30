@@ -616,6 +616,37 @@ old_values = {
         2130256911: "cd",
         1449014926: "energy_cost",
     },
+#columbina
+    #moondew_cascade
+    (11251, 12531): {
+        3101266766: "normal_hit_1",
+        930785414: "normal_hit_2",
+        490831039: "normal_hit_3",
+        3360117007: "charged_hit",
+        2018193734: "stamina_cost",
+        231559234: "moondew_cleanse_dmg",
+        2565313367: "plunge",
+        3024991053: "plunge_low/plunge_high",
+    },
+    #eternal_tides
+    (11252, 12532): {
+        1090385646: "skill_dmg",
+        2777429254: "continuous_dmg",
+        427352247: "lunar_charged_dmg",
+        1848125031: "lunar_bloom_dmg",
+        3099018942: "lunar_crystallize_dmg",
+        4010349722: "gravity_limit",
+        2481463663: "gravity_ripple_duration",
+        1512529957: "cd",
+    },
+    #moonlit_melancholy
+    (11255, 12539): {
+        2470454142: "skill_dmg",
+        1803861446: "lunar_reaction_dmg_bonus",
+        4276947303: "lunar_domain_duration",
+        2629130751: "cd",
+        2545554550: "energy_cost",
+    },
 #cyno
     #invokers_spear
     (10711, 7131): {
@@ -796,6 +827,36 @@ old_values = {
         690715015: "duration",
         1441660478: "cd",
         3063346938: "energy_cost",
+    },
+#durin
+    #radiant_wingslash
+    (11231, 12331): {
+        2127828078: "normal_hit_1",
+        1623585638: "normal_hit_2",
+        1023243327: "normal_hit_3",
+        926243631: "normal_hit_4",
+        3832120414: "charged_hit",
+        994627594: "stamina_cost",
+        1280769807: "plunge",
+        3542361125: "plunge_low/plunge_high",
+    },
+    #convergence_and_division
+    (11232, 12332): {
+        3629362566: "confirmation_of_purity_dmg",
+        804834046: "denial_of_darkness_dmg",
+        899300535: "energy_regeneration",
+        3277487631: "cd",
+    },
+    #as_the_light_shifts
+    (11235, 12339): {
+        354352174: "as_the_light_shifts_dmg",
+        2584265502: "as_the_stars_smolder_dmg",
+        2268051343: "dragon_of_white_flame_dmg",
+        657944623: "dragon_of_dark_decay_dmg",
+        2035660758: "dragon_of_white_flame_duration",
+        2499693994: "dragon_of_dark_decay_duration",
+        3654496095: "cd",
+        2561865773: "energy_cost",
     },
 #emilie
     #shadow_hunting_spear_custom
@@ -1255,6 +1316,35 @@ old_values = {
         2201157575: "cd",
         1094852935: "energy_cost",
     },
+#illuga
+    #oathkeepers_spear
+    (11271, 12731): {
+        2299867790: "normal_hit_1",
+        1975623662: "normal_hit_2",
+        3554677655: "normal_hit_3",
+        4085811839: "normal_hit_4",
+        2728143862: "charged_hit",
+        1642958754: "stamina_cost",
+        1551805031: "plunge",
+        3092575781: "plunge_low/plunge_high",
+    },
+    #dawnbearing_songbird
+    (11272, 12732): {
+        2982710982: "press_dmg",
+        3151718462: "hold_dmg",
+        2935823703: "cd",
+    },
+    #shadowless_reflection
+    (11275, 12739): {
+        2597597542: "skill_dmg",
+        921007950: "geo_dmg_bonus",
+        1962277479: "lunar_crystallize_reaction_dmg_bonus",
+        3904008767: "nightingales_song_stacks_gained_from_elemental_burst",
+        3195808054: "nightingales_song_stacks_gained_from_geo_constructs",
+        3131551082: "duration",
+        3064902431: "cd",
+        2432281989: "energy_cost",
+    },
 #ineffa
     #cyclonic_duster
     (11161, 11631): {
@@ -1311,6 +1401,36 @@ old_values = {
         748341935: "duration",
         2083554031: "cd",
         1407717246: "energy_cost",
+    },
+#jahoda
+    #strike_while_the_arrows_hot
+    (11241, 12431): {
+        1852931366: "normal_hit_1",
+        2094596334: "normal_hit_2",
+        1883845079: "normal_hit_3",
+        2247736183: "aimed",
+        932228878: "charged_aimed",
+        1639767418: "plunge",
+        739713023: "plunge_low/plunge_high",
+    },
+    #splitting_the_spoils
+    (11242, 12432): {
+        479607214: "smoke_bomb_dmg",
+        2358101334: "unfilled_treasure_flask_dmg",
+        2013440295: "filled_treasure_flask_dmg",
+        1392062255: "treasure_flask_duration",
+        1977080446: "meowball_dmg",
+        3102093218: "cd",
+    },
+    #seven_tools_of_the_hunter
+    (11245, 12439): {
+        1273484046: "skill_dmg",
+        2271305854: "purrsonal_coordinated_assistance_robot_dmg",
+        1384486183: "purrsonal_coordinated_assistance_robot_duration",
+        2346107919: "purrsonal_coordinated_assistance_robot_healing",
+        792177982: "lowest_hp_character_additional_healing",
+        4286446650: "cd",
+        3343445999: "energy_cost",
     },
 #jean
     #favonius_bladework
@@ -2846,6 +2966,7 @@ old_values = {
         3182997357: "charged_aimed",
         2631505740: "plunge",
         1064586895: "plunge_low/plunge_high",
+        3987178868: "windsunder_arrow_dmg",
     },
     #skyward_sonnet
     (10224, 2232): {
@@ -3289,5 +3410,37 @@ old_values = {
         468423710: "petrification_duration",
         745477247: "cd",
         1447931871: "energy_cost",
+    },
+#zibai
+    #golden_blades_petaled_touch
+    (11261, 12631): {
+        2861018638: "normal_hit_1",
+        4082067726: "normal_hit_2",
+        1043094671: "normal_hit_3",
+        1145377399: "normal_hit_4",
+        1011804174: "charged_hit",
+        2026680746: "stamina_cost",
+        1617082727: "plunge",
+        3989670901: "plunge_low/plunge_high",
+    },
+    #heaven_and_earth_made_manifest
+    (11262, 12632): {
+        1064705310: "lunar_phase_shift_1_hit_dmg",
+        3336683502: "lunar_phase_shift_2_hit_dmg",
+        767820631: "lunar_phase_shift_3_hit_dmg",
+        602244143: "lunar_phase_shift_4_hit_dmg",
+        1946108934: "lunar_phase_shift_charged_attack_dmg",
+        2194483506: "spirit_steeds_stride_1_hit_dmg",
+        3067969623: "spirit_steeds_stride_2_hit_dmg",
+        2731431901: "lunar_phase_shift_4_hit_additional_dmg",
+        4261025316: "lunar_phase_shift_duration",
+        2248656727: "cd",
+    },
+    #tri_sphere_eminence
+    (11265, 12639): {
+        619832086: "skill_1_hit_dmg",
+        142223150: "skill_2_hit_dmg",
+        2953016831: "cd",
+        1925021487: "energy_cost",
     },
 }

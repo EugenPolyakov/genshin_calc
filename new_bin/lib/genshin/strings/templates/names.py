@@ -95,6 +95,7 @@ keywords_eng = Template(
     keywords=[
         ('Lunar-Bloom DMG', 'dendro'),
         ('Lunar-Bloom', 'dendro'),
+        ('Lunar-Crystallize', 'hydro'),
 
         ('Anemo DMG Bonus', 'anemo'),
         ('Cryo DMG Bonus', 'cryo'),
@@ -351,6 +352,7 @@ keywords_rus = Template(
         ('Лунная бутонизация', 'dendro'),
         ('Лунную бутонизацию', 'dendro'),
         ('Лунной бутонизации', 'dendro'),
+        ('Лунный кристалл', 'hydro'),
 
         ('Гео урона', 'geo'),
         ('Гео урону', 'geo'),

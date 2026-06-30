@@ -57,7 +57,7 @@ module.exports = (env, argv) => {
                     test: /\.css$/,
                     use: [
                         MiniCssExtractPlugin.loader,
-                        'css-loader'
+                        'css-loader',
                     ]
                 },
                 {
@@ -111,14 +111,13 @@ module.exports = (env, argv) => {
             extensions: ['', '.js', '.jsx'],
         },
         optimization: {
-            //minimize: false,
             minimizer: [
                 new CssMinimizerPlugin(),
                 new TerserPlugin({
                     terserOptions: env.min === 'false' ?
                     {
-                      compress: false, // отключаем сжатие
-                      mangle: false,   // отключаем переименование переменных
+                      compress: false, // РѕС‚РєР»СЋС‡Р°РµРј СЃР¶Р°С‚РёРµ
+                      mangle: false,   // РѕС‚РєР»СЋС‡Р°РµРј РїРµСЂРµРёРјРµРЅРѕРІР°РЅРёРµ РїРµСЂРµРјРµРЅРЅС‹С…
                       keep_classnames: true,
                       keep_fnames: true,
                       format: {

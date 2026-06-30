@@ -34,7 +34,6 @@ char_flins = TemplateList(
             [0, 1, 2, 3],
             [0, 1, 2],
         ],
-        prouds=[6, 7, 8],
     ),
     arcane_light_eng = Template(
         replace={'</p><p>': '</p>\n<p>'},
@@ -47,10 +46,6 @@ char_flins = TemplateList(
             [0, 1, 2],
             [0, 1],
         ],
-        prouds=[6, 7, 8],
-    ),
-    cometh_the_night = Template(
-        prouds=[1, 2, 5, 6, 7]
     ),
     symphony_of_winter=Template(
         sentences=[

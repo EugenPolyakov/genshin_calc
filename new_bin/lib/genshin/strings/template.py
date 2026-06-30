@@ -38,6 +38,7 @@ class TemplateSentence:
             logger.error(f'\n------------------------------\n{self.values}')
             logger.error(f'\n------------------------------\n{values}')
             logger.error(f'\n------------------------------\n')
+            raise Exception()
 
         index = 0
         result = self.formatted
@@ -91,7 +92,7 @@ class TemplateString:
             logger.error(f'{values}\n~~~~~~~~~~~~~~~~~~~~~~~\n')
             self.dump()
             logger.error('\n~~~~~~~~~~~~~~~~~~~~~~~\n')
-            return ''
+            raise Exception()
 
         result = []
         for (item, data) in zip(self.sentences, values):
@@ -99,7 +100,7 @@ class TemplateString:
                 result.append(item.apply(data))
             except SentenceMismatch as e:
                 logger.error(f'Template sentence value mismatch for {e.value} new value is {e.new_value} is source \n{self.source}')
-                return ''
+                raise Exception()
 
         if isinstance(res_index, list):
             res_list = []
@@ -122,7 +123,7 @@ class TemplateString:
 
 
 class Template:
-    def __init__(self, replace={}, names=[], sentences=[], patterns=[], keywords=[], skills={}, results=None, prouds=[], extracted_names=None):
+    def __init__(self, replace={}, names=[], sentences=[], patterns=[], keywords=[], skills={}, results=None, extracted_names=None):
         self.replace = replace
         self.names = names
         self.sentences = sentences
@@ -132,7 +133,6 @@ class Template:
         # если отсутсвует, то все последовательности будут объеденены в одну, нумерация сквозная
         self.results = results
         self.skills = skills
-        self.prouds = prouds
         self.extracted_names = extracted_names
 
     def process(self, string: str):
@@ -223,7 +223,7 @@ class Template:
         return result
 
 class TemplateList:
-    def __init__(self, prouds = [], **templates):
+    def __init__(self, **templates):
         self.templates = dict(**templates)
 
     def find(self, lang, name):

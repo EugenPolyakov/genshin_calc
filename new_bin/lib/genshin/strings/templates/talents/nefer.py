@@ -32,15 +32,6 @@ char_nefer = TemplateList(
             'burst': ["Sacred Vow: True Eye's Phantasm"],
         },
     ),
-    dance_of_a_thousand_nights = Template(
-        prouds=[1, 2, 3, 4, 5, 6, 7]
-    ),
-    true_eyes_phantasm = Template(
-        prouds=[0, 1, 2]
-    ),
-    striking_serpent = Template(
-        prouds=[5, 7]
-    ),
     dawnless_rest_of_karsikko_rus = Template(
         replace={
             '</p><p>': '</p>\n<p>',
@@ -59,7 +50,6 @@ char_nefer = TemplateList(
             list(range(0, 8)),
             [7],
         ],
-        prouds=[1, 2, 3, 4, 5, 6, 7],
     ),
     dawnless_rest_of_karsikko_eng = Template(
         replace={
@@ -78,7 +68,6 @@ char_nefer = TemplateList(
             list(range(0, 7)),
             [6],
         ],
-        prouds=[1, 2, 3, 4, 5, 6, 7],
     ),
     all_hearts_become_the_beating_moon = Template(
         replace={
@@ -104,7 +93,6 @@ char_nefer = TemplateList(
             [7, 8, 9, 10]
         ],
         extracted_names=[1],
-        prouds=[0, 1, 2, 3, 4],
     ),
     light_for_the_frosty_night_rus=Template(
         replace={'<br>': '\n<br>\n'},

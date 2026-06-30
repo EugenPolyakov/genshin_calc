@@ -32,9 +32,6 @@ char_lauma = TemplateList(
             'burst': ['Runo: All Hearts Become the Beating Moon'],
         },
     ),
-    peregrination_of_linnunrata = Template(
-        prouds=[3, 4, 5, 6, 7, 8]
-    ),
     dawnless_rest_of_karsikko_rus = Template(
         replace={
             '</p><p>': '</p>\n<p>',
@@ -53,7 +50,6 @@ char_lauma = TemplateList(
             list(range(0, 8)),
             [7],
         ],
-        prouds=[1, 2, 3, 4, 5, 6, 7],
     ),
     dawnless_rest_of_karsikko_eng = Template(
         replace={
@@ -72,7 +68,6 @@ char_lauma = TemplateList(
             list(range(0, 7)),
             [6],
         ],
-        prouds=[1, 2, 3, 4, 5, 6, 7],
     ),
     all_hearts_become_the_beating_moon = Template(
         replace={
@@ -98,7 +93,6 @@ char_lauma = TemplateList(
             [7, 8, 9, 10]
         ],
         extracted_names=[1],
-        prouds=[0, 1, 2, 3, 4],
     ),
     light_for_the_frosty_night_rus=Template(
         replace={'<br>': '\n<br>\n'},

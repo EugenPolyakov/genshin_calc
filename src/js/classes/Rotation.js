@@ -185,8 +185,8 @@ export class Rotation {
 
                 if (set) {
                     let settings = set.getSettings();
-                    for (let i = 1; i <= 3; ++i) {
-                        if (settings['party_char_'+ i] == item.itemId) {
+                    for (let name of ['party_char_1', 'party_char_2', 'party_char_3']) {
+                        if (settings[name] == item.itemId) {
                             validConditions = conditions;
                         }
                     }

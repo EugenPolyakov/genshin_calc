@@ -49,9 +49,7 @@ export class FeatureReaction extends FeatureDamage {
      * @returns {CItem}
      */
     getReactionBonuses(data) {
-        return new CSum([
-            ...this.getStatsReactionBonus().map((stat) => { return makeStatItem(stat, data.stats) })
-        ]);
+        return new CSum(this.getStatsReactionBonus().map((stat) => { return makeStatItem(stat, data.stats) }));
     }
 
     /**

@@ -20,9 +20,6 @@ char_aino = TemplateList(
             'burst': ['Precision Hydronic Cooler'],
         },
     ),
-    musecatcher = Template(
-        prouds=[1]
-    ),
     structured_power_booster=Template(
         sentences=[
             ['50:dmg_burst_bonus_percent'],

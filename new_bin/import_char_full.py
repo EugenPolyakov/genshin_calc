@@ -13,12 +13,16 @@ from lib.genshin.datafiles.hyperlinks import HyperLinkData
 from lib.genshin.datafiles.lang import LangData
 from lib.genshin.strings.templates.names import keywords_eng, keywords_rus, names_eng, names_rus, patterns_eng
 from lib.genshin.strings.templates import talents
+from lib.genshin.strings.template import SentenceMismatch
 from lib.genshin.utils import convert_id, add_array
 from lib.genshin.strings.csv import CsvDumper
 from lib.genshin.strings.text import TextDumper  # noqa
 import static
 from static import WEAPON_TYPES, shrink_table
 from old_values import old_values
+import logging
+
+logger = logging.getLogger(__name__)
 
 generate_char = ''
 do_single = False
@@ -402,6 +406,7 @@ def prepare_talents(talent_items, generate):
         descItems_hex = {}
         nameItems = {}
 
+        err = False
         for lang_name in lang_data:
             lang = lang_data[lang_name]['lang']
             skill_name = lang.get(talent['nameTextMapHash'])
@@ -412,18 +417,27 @@ def prepare_talents(talent_items, generate):
             tpl_talents = lang_data[lang_name]['talents']
 
             if talent['descTextMapHash']:
-                texts[eng_name].append(lang.get(talent['descTextMapHash']))
-                skill_descr = process_talent_desc(lang_name, lang.get(talent['descTextMapHash']), talent_short_id, tpl_talents, None, tpl_keywords)
-                descItems[lang_name] = skill_descr['descr']
-                nameItems[lang_name].extend(skill_descr['names'])
+                try:
+                    texts[eng_name].append(lang.get(talent['descTextMapHash']))
+                    skill_descr = process_talent_desc(lang_name, lang.get(talent['descTextMapHash']), talent_short_id, tpl_talents, None, tpl_keywords)
+                    descItems[lang_name] = skill_descr['descr']
+                    nameItems[lang_name].extend(skill_descr['names'])
+                except Exception:
+                    logger.error(f'error on talent {talent_id}')
+                    err = True
 
             if talent['descTextMapHash_hex'] and lang.get(talent['descTextMapHash_hex']):
-                texts[eng_name].append(lang.get(talent['descTextMapHash_hex']))
-                skill_descr = process_talent_desc(lang_name, lang.get(talent['descTextMapHash_hex']), talent_short_id, tpl_talents, talent_short_id + '_hex', tpl_keywords)
-                descItems_hex[lang_name] = skill_descr['descr']
-                nameItems[lang_name].extend(skill_descr['names'])
+                try:
+                    texts[eng_name].append(lang.get(talent['descTextMapHash_hex']))
+                    skill_descr = process_talent_desc(lang_name, lang.get(talent['descTextMapHash_hex']), talent_short_id, tpl_talents, talent_short_id + '_hex', tpl_keywords)
+                    descItems_hex[lang_name] = skill_descr['descr']
+                    nameItems[lang_name].extend(skill_descr['names'])
+                except Exception:
+                    logger.error(f'error on talent {talent_id}_hex')
+                    err = True
             #if not tpl_char: texts[eng_name].append('\n')
             texts[eng_name].append('\n')
+        if err: continue
 
         add_array(nameItems, result_hero_strings, talent_id, 'talent_name')
 
@@ -613,19 +627,26 @@ for charVarName in sorted(char_keys):
             descItems = {}
             descItems_hex = {}
             nameItems = {}
+            hex_descr = 'extraDescTextMapHash' #'IACNAENANDH'
+            err = False
             for lang_name in lang_data:
-                lang = lang_data[lang_name]['lang']
-                skill_name = lang.get(skill['nameTextMapHash'])
-                skill_name = re.sub(r'^Normal Attack:\s*', '', skill_name)
-                nameItems[lang_name] = [skill_name]
-                tpl_patterns = lang_data[lang_name]['patterns']
-                skill_descr = process_talent_desc(lang_name, lang.get(skill['descTextMapHash']), talent_short_id, tpl_patterns)
-                descItems[lang_name] = skill_descr['descr']
-                nameItems[lang_name].extend(skill_descr['names'])
-                if skill['IACNAENANDH'] and lang.get(skill['IACNAENANDH']):
-                    skill_descr = process_talent_desc(lang_name, lang.get(skill['IACNAENANDH']), talent_short_id, tpl_patterns, talent_short_id + '_hex')
-                    descItems_hex[lang_name] = skill_descr['descr']
+                try:
+                    lang = lang_data[lang_name]['lang']
+                    skill_name = lang.get(skill['nameTextMapHash'])
+                    skill_name = re.sub(r'^Normal Attack:\s*', '', skill_name)
+                    nameItems[lang_name] = [skill_name]
+                    tpl_patterns = lang_data[lang_name]['patterns']
+                    skill_descr = process_talent_desc(lang_name, lang.get(skill['descTextMapHash']), talent_short_id, tpl_patterns)
+                    descItems[lang_name] = skill_descr['descr']
                     nameItems[lang_name].extend(skill_descr['names'])
+                    if skill[hex_descr] and lang.get(skill[hex_descr]):
+                        skill_descr = process_talent_desc(lang_name, lang.get(skill[hex_descr]), talent_short_id, tpl_patterns, talent_short_id + '_hex')
+                        descItems_hex[lang_name] = skill_descr['descr']
+                        nameItems[lang_name].extend(skill_descr['names'])
+                except Exception:
+                    logger.error(f'error on {talent_short_id}')
+                    err = True
+            if err: continue
 
             if proud_params['customParams'].keys():
                 for param in proud_params['customParams']:
@@ -694,8 +715,8 @@ for charVarName in sorted(char_keys):
 
         outwrite('\t\tpasssive: [\n')
         passive_count = 0
-        inherentProudSkillOpens = 'FECDDOLDHBL' # 'inherentProudSkillOpens'
-        needAvatarPromoteLevel = 'LKJNHHPJKIA' #'needAvatarPromoteLevel'
+        inherentProudSkillOpens = 'LOAMPGAFLMA' # 'inherentProudSkillOpens'
+        needAvatarPromoteLevel = 'AMKLKEEBGPM' #'needAvatarPromoteLevel'
         for passive in depot.get(inherentProudSkillOpens, []):
             if (passive.get(needAvatarPromoteLevel) > 0 or char_id in NEED_PASSIVE_TALENTS) and passive.get('proudSkillGroupId') > 0:
                 passive_count += 1

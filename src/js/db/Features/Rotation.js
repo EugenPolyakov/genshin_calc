@@ -610,4 +610,10 @@ export const Rotation = new DbObjectRotation({
     "burst.durin_as_the_stars_smolder_dmg_1": 605,
     "burst.durin_as_the_stars_smolder_dmg_2": 606,
     "burst.durin_as_the_stars_smolder_dmg_3": 607,
+
+    "skill.jahoda_smoke_bomb_dmg": 608,
+    "skill.jahoda_unfilled_treasure_flask_dmg": 609,
+    "skill.jahoda_filled_treasure_flask_dmg": 610,
+    "skill.jahoda_meowball_dmg": 611,
+    "burst.jahoda_purrsonal_coordinated_assistance_robot_dmg": 612,
 });

@@ -6,7 +6,7 @@ export class FeatureReactionBurning extends FeatureReactionTransformative {
      */
     getStatsReactionBonus() {
         let result = super.getStatsReactionBonus();
-        result.push('dmg_reaction_bloom');
+        result.push('dmg_reaction_burning');
         return result;
     }
 
