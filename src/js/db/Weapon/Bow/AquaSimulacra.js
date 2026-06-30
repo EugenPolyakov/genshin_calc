@@ -18,7 +18,7 @@ export const AquaSimulacra = new DbObjectWeapon({
             title: 'talent_name.weapon_the_cleansing_form',
             description: 'talent_descr.weapon_the_cleansing_form_1',
             stats: [
-                new StatTable('hp_percent', weaponDataTable.AquaSimulacra.Weapon_Bow_Kirin.param1, 100),
+                new StatTable('hp_percent', weaponDataTable.AquaSimulacra.the_cleansing_form.param1, 100),
             ],
         }),
         new ConditionBooleanRefine({
@@ -27,7 +27,7 @@ export const AquaSimulacra = new DbObjectWeapon({
             title: 'talent_name.weapon_the_cleansing_form',
             description: 'talent_descr.weapon_the_cleansing_form_2',
             stats: [
-                new StatTable('dmg_all', weaponDataTable.AquaSimulacra.Weapon_Bow_Kirin.param1, 100),
+                new StatTable('dmg_all', weaponDataTable.AquaSimulacra.the_cleansing_form.param1, 100),
             ],
         }),
     ],

@@ -19,7 +19,7 @@ export const EndOfTheLine = new DbObjectWeapon({
             title: 'talent_name.weapon_net_snapper',
             description: 'talent_descr.weapon_net_snapper',
             stats: [
-                new StatTable('text_percent_dmg', weaponDataTable.EndOfTheLine.Weapon_Bow_Fin.param1, 100),
+                new StatTable('text_percent_dmg', weaponDataTable.EndOfTheLine.net_snapper.param1, 100),
             ]
         }),
     ],
@@ -29,7 +29,7 @@ export const EndOfTheLine = new DbObjectWeapon({
             multipliers: [
                 new FeatureMultiplier({
                     leveling: 'weapon_refine',
-                    values: new StatTable('trawler_dmg', weaponDataTable.EndOfTheLine.Weapon_Bow_Fin.param1, 100),
+                    values: new StatTable('trawler_dmg', weaponDataTable.EndOfTheLine.net_snapper.param1, 100),
                 }),
             ],
         }),

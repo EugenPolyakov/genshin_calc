@@ -21,7 +21,7 @@ export const Cloudforged = new DbObjectWeapon({
             maxStacks: 2,
             levelSetting: 'weapon_refine',
             stats: [
-                new StatTable('mastery', weaponDataTable.Cloudforged.Weapon_Bow_Ultimatum.param1),
+                new StatTable('mastery', weaponDataTable.Cloudforged.crag_chiseled_forge.param1),
             ],
         }),
     ],

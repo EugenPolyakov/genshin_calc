@@ -7,11 +7,6 @@ import { StatTable } from "../../../classes/StatTable";
 import { weaponStatTables } from "../../generated/WeaponStatTables";
 import { weaponDataTable } from "../../generated/WeaponStatTables";
 
-const charged_table_1 = weaponDataTable.AstralVulturesCrimsonPlumage.Weapon_Bow_Qoyllorsnova.param3.map(v => v * 100);//[20, 25, 30, 35, 40];
-const charged_table_2 = weaponDataTable.AstralVulturesCrimsonPlumage.Weapon_Bow_Qoyllorsnova.param4.map(v => v * 100);//[48, 60, 72, 84, 96];
-const burst_table_1 = weaponDataTable.AstralVulturesCrimsonPlumage.Weapon_Bow_Qoyllorsnova.param5.map(v => v * 100);//[10, 12.5, 15, 17.5, 20];
-const burst_table_2 = weaponDataTable.AstralVulturesCrimsonPlumage.Weapon_Bow_Qoyllorsnova.param6.map(v => v * 100);//[24, 30, 36, 42, 48];
-
 export const AstralVulturesCrimsonPlumage = new DbObjectWeapon({
     name: 'astral_vultures_crimson_plumage',
     serializeId: 190,
@@ -28,7 +23,7 @@ export const AstralVulturesCrimsonPlumage = new DbObjectWeapon({
             title: 'talent_name.weapon_the_moonring_sighted',
             description: 'talent_descr.weapon_the_moonring_sighted_1',
             stats: [
-                new StatTable('atk_percent', weaponDataTable.AstralVulturesCrimsonPlumage.Weapon_Bow_Qoyllorsnova.param1, 100),
+                new StatTable('atk_percent', weaponDataTable.AstralVulturesCrimsonPlumage.the_moonring_sighted.param1, 100),
             ],
         }),
         new ConditionStaticRefineCrimsonPlumage({
@@ -37,19 +32,19 @@ export const AstralVulturesCrimsonPlumage = new DbObjectWeapon({
             levelSetting: 'weapon_refine',
             effectLevelSetting: 'party_elements_different',
             stats: [
-                new StatTable('text_percent_1', charged_table_1),
-                new StatTable('text_percent_2', charged_table_2),
-                new StatTable('text_percent_3', burst_table_1),
-                new StatTable('text_percent_4', burst_table_2),
+                new StatTable('text_percent_1', weaponDataTable.AstralVulturesCrimsonPlumage.the_moonring_sighted.param3, 100),
+                new StatTable('text_percent_2', weaponDataTable.AstralVulturesCrimsonPlumage.the_moonring_sighted.param4, 100),
+                new StatTable('text_percent_3', weaponDataTable.AstralVulturesCrimsonPlumage.the_moonring_sighted.param5, 100),
+                new StatTable('text_percent_4', weaponDataTable.AstralVulturesCrimsonPlumage.the_moonring_sighted.param6, 100),
             ],
             realStats: [
                 new StatTable('', [
-                    new StatTable('dmg_charged', charged_table_1),
-                    new StatTable('dmg_charged', charged_table_2),
+                    new StatTable('dmg_charged', weaponDataTable.AstralVulturesCrimsonPlumage.the_moonring_sighted.param3, 100),
+                    new StatTable('dmg_charged', weaponDataTable.AstralVulturesCrimsonPlumage.the_moonring_sighted.param4, 100),
                 ]),
                 new StatTable('', [
-                    new StatTable('dmg_burst', burst_table_1),
-                    new StatTable('dmg_burst', burst_table_2),
+                    new StatTable('dmg_burst', weaponDataTable.AstralVulturesCrimsonPlumage.the_moonring_sighted.param5, 100),
+                    new StatTable('dmg_burst', weaponDataTable.AstralVulturesCrimsonPlumage.the_moonring_sighted.param6, 100),
                 ]),
             ],
             subConditions: [

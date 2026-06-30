@@ -18,8 +18,8 @@ export const AmosBow = new DbObjectWeapon({
             title: 'talent_name.weapon_strong_willed',
             description: 'talent_descr.weapon_strong_willed_2',
             stats: [
-                new StatTable('dmg_normal', weaponDataTable.AmosBow.Weapon_Bow_RiseDMGWithTime.param1, 100),
-                new StatTable('dmg_charged', weaponDataTable.AmosBow.Weapon_Bow_RiseDMGWithTime.param1, 100),
+                new StatTable('dmg_normal', weaponDataTable.AmosBow.strong_willed.param1, 100),
+                new StatTable('dmg_charged', weaponDataTable.AmosBow.strong_willed.param1, 100),
             ],
         }),
         new ConditionStacks({
@@ -30,8 +30,8 @@ export const AmosBow = new DbObjectWeapon({
             maxStacks: 5,
             levelSetting: 'weapon_refine',
             stats: [
-                new StatTable('dmg_normal', weaponDataTable.AmosBow.Weapon_Bow_RiseDMGWithTime.param2, 100),
-                new StatTable('dmg_charged', weaponDataTable.AmosBow.Weapon_Bow_RiseDMGWithTime.param2, 100),
+                new StatTable('dmg_normal', weaponDataTable.AmosBow.strong_willed.param2, 100),
+                new StatTable('dmg_charged', weaponDataTable.AmosBow.strong_willed.param2, 100),
             ],
         })
     ],

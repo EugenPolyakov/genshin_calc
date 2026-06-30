@@ -20,8 +20,7 @@ import { FeatureDamageSkill } from "../../classes/Feature2/Damage/Skill";
 import { FeatureMultiplier } from "../../classes/Feature2/Multiplier";
 import { FeatureMultiplierTarget } from "../../classes/Feature2/Multiplier/Target";
 import { FeaturePostEffectValue } from "../../classes/Feature2/PostEffectValue";
-import { PostEffectStats } from "../../classes/PostEffect/Stats";
-import { PostEffectStatsAtk } from "../../classes/PostEffect/Stats/Atk";
+import { PostEffectStatsTotal } from "../../classes/PostEffect/Stats/Total";
 import { StatTable } from "../../classes/StatTable";
 import { charTables } from "../generated/CharTables";
 import { charTalentTables } from "../generated/CharTalentTables";
@@ -266,7 +265,8 @@ export const Shenhe = new DbObjectChar({
         new FeaturePostEffectValue({
             category: 'skill',
             name: 'shenhe_dmg_bonus',
-            postEffect: new PostEffectStatsAtk({
+            postEffect: new PostEffectStatsTotal({
+                from: 'atk',
                 global: true,
                 levelSetting: 'char_skill_elemental',
                 percent: Talents.getMulti({

@@ -4,7 +4,6 @@ import { ConditionNot } from "../../classes/Condition/Not";
 import { ConditionPartyWeapon } from "../../classes/Condition/PartyWeapon";
 import { DbObjectBuff } from "../../classes/DbObject/Buff";
 import { PostEffectStats } from "../../classes/PostEffect/Stats";
-import { PostEffectStatsDef } from "../../classes/PostEffect/Stats/Def";
 import { StatTable } from "../../classes/StatTable";
 import { CHARACTER_MAX_POSSIBLE_HP } from "../Constants";
 

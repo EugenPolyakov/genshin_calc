@@ -35,7 +35,7 @@ export const BlackcliffWarbow = new DbObjectWeapon({
             maxStacks: 3,
             levelSetting: 'weapon_refine',
             stats: [
-                new StatTable('atk_percent', weaponDataTable.BlackcliffWarbow.Weapon_Bow_Blackrock.param1, 100),
+                new StatTable('atk_percent', weaponDataTable.BlackcliffWarbow.press_the_advantage.param1, 100),
             ],
         })
     ],

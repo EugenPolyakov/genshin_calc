@@ -45,6 +45,8 @@ import { PeakPatrolSong } from "./Sword/PeakPatrolSong";
 import { SturdyBone } from "./Sword/SturdyBone";
 import { CalamityOfEshu } from "./Sword/CalamityOfEshu";
 import { Azurelight } from "./Sword/Azurelight";
+import { serenitys_call } from "./Sword/serenitys_call";
+import { moonweavers_dawn } from "./Sword/moonweavers_dawn";
 
 export const Swords = new DbObjectListSerializeStats({
     AlleyFlash: AlleyFlash,
@@ -93,4 +95,6 @@ export const Swords = new DbObjectListSerializeStats({
     SturdyBone: SturdyBone, // 186
     CalamityOfEshu: CalamityOfEshu, // 191
     Azurelight: Azurelight, // 201
+    serenitys_call: serenitys_call, //224
+    moonweavers_dawn: moonweavers_dawn, //229
 });

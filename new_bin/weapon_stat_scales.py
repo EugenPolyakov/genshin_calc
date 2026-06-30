@@ -335,10 +335,13 @@ def parse_weapons():
         # print('%s: "%s",' % (item['Id'], lang.get(str(item['NameTextMapHash']))))
 
         # name = '%s_%s' % (re.sub(r'UI_EquipIcon_', '', item['Icon']), str(item['Id']))
+        wrong_name = False
         name = weapon_names.get(item['id'])
         if not name:
             name = convert_id(lang['eng'].get(item['nameTextMapHash']))
             print(f"weapon ID not found: {item['id']} used: {name}")
+            print(f"       icon name: {item['icon']}.png")
+            wrong_name = True
 
         resultItem = {
             'id': name,
@@ -412,6 +415,8 @@ def parse_weapons():
             else:
                 resultItem["refines"].append(elem)
 
+        if wrong_name:
+            print(resultItem["refines"])
         result.append(resultItem)
 
     ascTables = accumulator.get('enumAscensionTables')

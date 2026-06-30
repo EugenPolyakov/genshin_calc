@@ -21,8 +21,8 @@ export const CompoundBow = new DbObjectWeapon({
             maxStacks: 4,
             levelSetting: 'weapon_refine',
             stats: [
-                new StatTable('atk_percent', weaponDataTable.CompoundBow.Weapon_Bow_AttackGainAKTSPDBuff.param1, 100),
-                new StatTable('atk_speed_normal', weaponDataTable.CompoundBow.Weapon_Bow_AttackGainAKTSPDBuff.param2, 100),
+                new StatTable('atk_percent', weaponDataTable.CompoundBow.infusion_arrow.param1, 100),
+                new StatTable('atk_speed_normal', weaponDataTable.CompoundBow.infusion_arrow.param2, 100),
             ],
         })
     ],

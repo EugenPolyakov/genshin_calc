@@ -17,7 +17,7 @@ import { FeatureDamageSkill } from "../../classes/Feature2/Damage/Skill";
 import { FeatureMultiplier } from "../../classes/Feature2/Multiplier";
 import { FeatureMultiplierList } from "../../classes/Feature2/Multiplier/List";
 import { FeatureShield } from "../../classes/Feature2/Shield";
-import { PostEffectStatsDef } from "../../classes/PostEffect/Stats/Def";
+import { PostEffectStatsTotal } from "../../classes/PostEffect/Stats/Total";
 import { StatTable } from "../../classes/StatTable";
 import { charTables } from "../generated/CharTables";
 import { charTalentTables } from "../generated/CharTalentTables";
@@ -292,7 +292,8 @@ export const Xinyan = new DbObjectChar({
         }),
     ],
     postEffects: [
-        new PostEffectStatsDef({
+        new PostEffectStatsTotal({
+            from: 'def',
             percent: new StatTable('atk', [0.3]),
             condition: new ConditionAnd([
                 new ConditionBoolean({name: 'xinyan_rockin_in_a_flaming_world'}),

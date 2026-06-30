@@ -26,7 +26,6 @@ import { ValueTable } from "../../classes/ValueTable";
 import { charTables } from "../generated/CharTables";
 import { charTalentTables } from "../generated/CharTalentTables";
 import { PostEffectStats } from "../../classes/PostEffect/Stats";
-import { PostEffectStatsAtk } from "../../classes/PostEffect/Stats/Atk";
 import { PostEffectStatsMastery } from "../../classes/PostEffect/Stats/Mastery";
 import { ConditionAnd } from "../../classes/Condition/And";
 import { ConditionMoonPhaseCheck } from "../../classes/Condition/MoonPhaseCheck";
@@ -35,7 +34,6 @@ import { ConditionBooleanLevels } from "../../classes/Condition/Boolean/Levels";
 import { ConditionNumberTalent } from "../../classes/Condition/Number/Talent";
 import { ConditionNumber } from "../../classes/Condition/Number";
 import { ConditionStacks } from "../../classes/Condition/Stacks";
-import { PostEffectStatsPartyStat } from "../../classes/PostEffect/Stats/PartyStat";
 
 
 const Talents = new DbObjectTalents({
@@ -736,8 +734,8 @@ export const Lauma = new DbObjectChar({
             }),
         ],
         postEffects: [
-            new PostEffectStatsPartyStat({
-                partyStat: 'lauma_mastery_total',
+            new PostEffectStats({
+                from: 'lauma_mastery_total',
                 percent: new StatTable('lunarbloom_multi', [charTalentTables.Lauma.passsive[2][0] * 100]),
                 statCap: new ValueTable([charTalentTables.Lauma.passsive[2][1] * 100]),
             })

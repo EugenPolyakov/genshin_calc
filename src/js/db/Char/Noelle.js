@@ -17,7 +17,7 @@ import { FeatureHeal } from "../../classes/Feature2/Heal";
 import { FeatureMultiplier } from "../../classes/Feature2/Multiplier";
 import { FeatureMultiplierList } from "../../classes/Feature2/Multiplier/List";
 import { FeatureShield } from "../../classes/Feature2/Shield";
-import { PostEffectStatsDef } from "../../classes/PostEffect/Stats/Def";
+import { PostEffectStatsTotal } from "../../classes/PostEffect/Stats/Total";
 import { StatTable } from "../../classes/StatTable";
 import { ValueTable } from "../../classes/ValueTable";
 import { charTables } from "../generated/CharTables";
@@ -316,7 +316,8 @@ export const Noelle = new DbObjectChar({
         }),
     ],
     postEffects: [
-        new PostEffectStatsDef({
+        new PostEffectStatsTotal({
+            from: 'def',
             levelSetting: 'char_skill_burst',
             percent: Talents.getMulti({
                 name: 'atk',

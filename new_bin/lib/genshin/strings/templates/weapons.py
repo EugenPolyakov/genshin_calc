@@ -280,7 +280,7 @@ bane_of_flame_and_water = Template(
         ('opponents', 'tab{enemy:opponents}'),
     ],
     sentences=[
-        ['20:dmg_all'],
+        ['dmg_all'],
     ],
 )
 
@@ -2971,3 +2971,128 @@ radiance_of_the_deeps_eng = Template(
     ],
     extracted_names=[2,3,4],
 )
+
+serenitys_call = Template(
+    sentences=[
+        ['12:ignore'],
+        ['16:text_hp_percent_default'],
+        [],
+        ['16:format{text_number_f=2|{value}}:text_hp_percent'],
+        [],
+    ],
+)
+
+serenitys_call_eng = Template(
+    sentences=[
+        ['16:text_hp_percent_default', '12:ignore'],
+        ['16:format{text_number_f=2|{value}}:text_hp_percent'],
+        [],
+    ],
+)
+
+master_key = Template(
+    sentences=[
+        ['12:ignore', '60:text_mastery_default'],
+        ['60:format{text_number_f=2|{value}}:text_mastery'],
+        [],
+    ],
+)
+
+master_key_eng = Template(
+    sentences=[
+        ['60:text_mastery_default', '12:ignore'],
+        ['60:format{text_number_f=2|{value}}:text_mastery'],
+        [],
+    ],
+)
+
+prospectors_shovel = Template(
+    sentences=[
+        ['48:dmg_reaction_electrocharged', '12:text_dmg_reaction_lunarcharged_percent_default'],
+        ['12:format{text_number_f=2|{value}}:text_dmg_reaction_lunarcharged_percent'],
+    ],
+)
+
+blackmarrow_lantern = Template(
+    sentences=[
+        ['48:dmg_reaction_rupture', '12:text_dmg_reaction_lunarbloom_percent_default'],
+        ['12:format{text_number_f=2|{value}}:text_dmg_reaction_lunarbloom_percent'],
+    ],
+)
+
+snare_hook = Template(
+    sentences=[
+        ['12:ignore', '60:text_mastery_default'],
+        ['60:format{text_number_f=2|{value}}:text_mastery'],
+        [],
+    ],
+)
+
+snare_hook_eng = Template(
+    sentences=[
+        ['60:text_mastery_default', '12:ignore'],
+        ['60:format{text_number_f=2|{value}}:text_mastery'],
+        [],
+    ],
+)
+
+moonweavers_dawn = Template(
+    sentences=[
+        ['20:text_dmg_burst_percent'],
+        [
+            '60:format{text_number_f=1|{value}}:', '40:format{text_number_f=2|{value}}:',
+            '16:format{text_number_f=1|{value}}:text_dmg_burst_percent_1', '28:format{text_number_f=2|{value}}:text_dmg_burst_percent_2',
+        ],
+    ],
+)
+
+sacrificers_staff = Template(
+    sentences=[
+        ['6:ignore', '8:atk_percent', '6:recharge'],
+        ['3:'],
+    ],
+)
+
+sacrificers_staff_eng = Template(
+    sentences=[
+        ['6:ignore', '8:atk_percent', '6:recharge'],
+        ['3:'],
+        []
+    ],
+)
+
+dawning_frost = Template(
+    sentences=[
+        ['10:ignore', '72:mastery'],
+        ['10:ignore', '48:mastery'],
+    ],
+    results=[
+        [0],
+        [1],
+    ],
+)
+
+etherlight_spindlelute = Template(
+    sentences=[
+        ['100:mastery', '20:ignore'],
+    ],
+)
+
+etherlight_spindlelute_eng = Template(
+    sentences=[
+        ['20:ignore', '100:mastery'],
+    ],
+)
+
+rainbow_serpents_rain_bow = Template(
+    sentences=[
+        ['8:ignore', '28:atk_percent'],
+    ],
+)
+
+rainbow_serpents_rain_bow_eng = Template(
+    sentences=[
+        ['28:atk_percent', '8:ignore'],
+    ],
+)
+

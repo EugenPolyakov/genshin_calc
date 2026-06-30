@@ -94,6 +94,14 @@ export class CalcObjectCharacter extends CalcObject {
         return result;
     }
 
+    getStats() {
+        var result = super.getStats();
+
+        result.settings.char_burst_energy_cost = result.stats.get('burst_energy_cost');
+
+        return result;
+    }
+
     getSettings() {
         let result = super.getSettings();
         let maxSkillLevel = SKILL_LEVELS.getValue(this.levels.ascension || 1);

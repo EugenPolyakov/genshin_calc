@@ -26,7 +26,6 @@ import { ValueTable } from "../../classes/ValueTable";
 import { charTables } from "../generated/CharTables";
 import { charTalentTables } from "../generated/CharTalentTables";
 import { PostEffectStats } from "../../classes/PostEffect/Stats";
-import { PostEffectStatsAtk } from "../../classes/PostEffect/Stats/Atk";
 import { PostEffectStatsMastery } from "../../classes/PostEffect/Stats/Mastery";
 import { ConditionAnd } from "../../classes/Condition/And";
 import { ConditionMoonPhaseCheck } from "../../classes/Condition/MoonPhaseCheck";
@@ -36,7 +35,6 @@ import { ConditionNumberTalent } from "../../classes/Condition/Number/Talent";
 import { ConditionNumber } from "../../classes/Condition/Number";
 import { FeatureDamageMultihit } from "../../classes/Feature2/Damage/Multihit";
 import { ConditionStacks } from "../../classes/Condition/Stacks";
-import { PostEffectStatsPartyStat } from "../../classes/PostEffect/Stats/PartyStat";
 
 
 const Talents = new DbObjectTalents({
@@ -699,8 +697,8 @@ export const Nefer = new DbObjectChar({
             }),
         ],
         postEffects: [
-            new PostEffectStatsPartyStat({
-                partyStat: 'nefer_mastery_total',
+            new PostEffectStats({
+                from: 'nefer_mastery_total',
                 percent: new StatTable('lunarbloom_multi', [charTalentTables.Nefer.passsive[2][0] * 100]),
                 statCap: new ValueTable([charTalentTables.Nefer.passsive[2][1] * 100]),
             }),

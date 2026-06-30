@@ -22,9 +22,9 @@ export const AlleyHunter = new DbObjectWeapon({
             levelSetting: 'weapon_refine',
             dropdownClass: 'two-digits',
             stats: [
-                new StatTable('dmg_all', weaponDataTable.AlleyHunter.Weapon_Bow_Outlaw.param1, 100),
-                new StatTable('text_percent_max', weaponDataTable.AlleyHunter.Weapon_Bow_Outlaw.param1, 1000),
-                new StatTable('text_percent_reduce', weaponDataTable.AlleyHunter.Weapon_Bow_Outlaw.param1, 200),
+                new StatTable('dmg_all', weaponDataTable.AlleyHunter.oppidan_ambush.param1, 100),
+                new StatTable('text_percent_max', weaponDataTable.AlleyHunter.oppidan_ambush.param1, 1000),
+                new StatTable('text_percent_reduce', weaponDataTable.AlleyHunter.oppidan_ambush.param1, 200),
             ],
         })
     ],

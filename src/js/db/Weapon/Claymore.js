@@ -37,6 +37,7 @@ import { Earthshaker } from "./Claymore/Earthshaker";
 import { FruitfulHook } from "./Claymore/FruitfulHook";
 import { AThousandBlazingSuns } from "./Claymore/AThousandBlazingSuns";
 import { FlameForgedInsight } from "./Claymore/FlameForgedInsight";
+import { master_key } from "./Claymore/master_key";
 
 export const Claymore = new DbObjectListSerializeStats({
     Bell: Bell, // 71
@@ -77,4 +78,5 @@ export const Claymore = new DbObjectListSerializeStats({
     FruitfulHook: FruitfulHook, // 188
     AThousandBlazingSuns: AThousandBlazingSuns, // 193
     FlameForgedInsight: FlameForgedInsight, // 223 ??
+    master_key: master_key, // 225
 });

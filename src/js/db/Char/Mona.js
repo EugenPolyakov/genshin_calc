@@ -412,7 +412,6 @@ export const Mona = new DbObjectChar({
                 serializeId: 1,
                 title: 'talent_name.stats_level_burst',
                 partySetting: 'char_skill_burst',
-                serializeId: 1,
             }),
             new ConditionBoolean({
                 name: 'party.mona_constellation_5',

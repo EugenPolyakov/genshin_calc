@@ -14,8 +14,8 @@ import { FeatureDamageSkill } from "../../classes/Feature2/Damage/Skill";
 import { FeatureMultiplier } from "../../classes/Feature2/Multiplier";
 import { FeatureMultiplierTarget } from "../../classes/Feature2/Multiplier/Target";
 import { FeaturePostEffectValue } from "../../classes/Feature2/PostEffectValue";
-import { PostEffectStatsDef } from "../../classes/PostEffect/Stats/Def";
 import { PostEffectStatsHP } from "../../classes/PostEffect/Stats/HP";
+import { PostEffectStatsTotal } from "../../classes/PostEffect/Stats/Total";
 import { StatTable } from "../../classes/StatTable";
 import { ValueTable } from "../../classes/ValueTable";
 import { charTables } from "../generated/CharTables";
@@ -127,7 +127,8 @@ const TalentValues = {
     C6CritDmg: 70,
 };
 
-const atkBuffPost = new PostEffectStatsDef({
+const atkBuffPost = new PostEffectStatsTotal({
+    from: 'def',
     percent: Talents.getMulti({
         name: 'atk',
         from: 'burst.itto_atk_bonus',

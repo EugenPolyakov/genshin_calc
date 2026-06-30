@@ -375,6 +375,19 @@ export class CalcSet {
 
         let objects = objectsNames;
 
+        //глобальные параметры объектов расчета получаем до расчета условий
+        for (let i = 0; i < objects.length; ++i) {
+            let name = objects[i];
+            if (!this[name]) {
+                continue;
+            }
+
+            let data = this[name].getStats(result.settings);
+
+            result.stats.concat(data.stats);
+            result.settings.concat(result.settings, data.settings);
+        }
+
         for (let i = 0; i < objects.length; ++i) {
             let name = objects[i];
             if (!this[name]) {
@@ -388,18 +401,6 @@ export class CalcSet {
 
                 result.stats.concat(condStats);
             }
-        }
-
-        for (let i = 0; i < objects.length; ++i) {
-            let name = objects[i];
-            if (!this[name]) {
-                continue;
-            }
-
-            let data = this[name].getStats(result.settings);
-
-            result.stats.concat(data.stats);
-            result.settings.concat(result.settings, data.settings);
         }
 
         // TODO fix this

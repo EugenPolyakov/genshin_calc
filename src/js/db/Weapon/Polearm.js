@@ -34,6 +34,8 @@ import { MountainBracingBolt } from "./Polearm/MountainBracingBolt";
 import { BriefPavilionChatter } from "./Polearm/BriefPavilionChatter";
 import { SymphonistofScents } from "./Polearm/SymphonistofScents";
 import { FracturedHalo } from "./Polearm/FracturedHalo";
+import { prospectors_shovel } from "./Polearm/prospectors_shovel";
+import { sacrificers_staff } from "./Polearm/sacrificers_staff";
 
 export const Polearm = new DbObjectListSerializeStats({
     BlackcliffPole: BlackcliffPole, // 85
@@ -71,4 +73,6 @@ export const Polearm = new DbObjectListSerializeStats({
     BriefPavilionChatter: BriefPavilionChatter, // 197
     SymphonistofScents: SymphonistofScents, // 199
     FracturedHalo: FracturedHalo, // 222 ??
+    prospectors_shovel: prospectors_shovel, // 226
+    sacrificers_staff: sacrificers_staff, // 230
 });

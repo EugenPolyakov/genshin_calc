@@ -263,6 +263,23 @@ char_ids = {
     10000122: 'Nefer',
 }
 
+def shrink_table(data):
+    last = None
+    for index in reversed(range(len(data))):
+        val = data[index]
+
+        if last is None:
+            last = val
+            continue
+
+        if val == last:
+            data.pop()
+            continue
+
+        break
+
+    return data
+
 def trimValue(value):
     if not isinstance(value, str):
         value = '%.4f' % (value)

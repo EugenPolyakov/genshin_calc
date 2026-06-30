@@ -3,7 +3,7 @@ import { ConditionBooleanRefine } from "../../../classes/Condition/Boolean/Refin
 import { ConditionStacks } from "../../../classes/Condition/Stacks";
 import { DbObjectWeapon } from "../../../classes/DbObject/Weapon";
 import { FeaturePostEffectValue } from "../../../classes/Feature2/PostEffectValue";
-import { PostEffectStatsDef } from "../../../classes/PostEffect/Stats/Def";
+import { PostEffectStatsTotal } from "../../../classes/PostEffect/Stats/Total";
 import { StatTable } from "../../../classes/StatTable";
 import { weaponStatTables } from "../../generated/WeaponStatTables";
 
@@ -11,7 +11,8 @@ const elemBonus = [10, 12.5, 15, 17.5, 20];
 const elemBonus2 = [0.008, 0.01, 0.012, 0.014, 0.016];
 const elemBonusCap = [25.6, 32, 38.4, 44.8, 51.2];
 
-const weaponPost = new PostEffectStatsDef({
+const weaponPost = new PostEffectStatsTotal({
+    from: 'def',
     levelSetting: 'weapon_refine',
     percent: [
         new StatTable('dmg_anemo', elemBonus2),

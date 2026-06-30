@@ -26,10 +26,9 @@ import { ValueTable } from "../../classes/ValueTable";
 import { charTables } from "../generated/CharTables";
 import { charTalentTables } from "../generated/CharTalentTables";
 import { PostEffectStats } from "../../classes/PostEffect/Stats";
-import { PostEffectStatsAtk } from "../../classes/PostEffect/Stats/Atk";
 import { ConditionAnd } from "../../classes/Condition/And";
-import { PostEffectStatsPartyStat } from "../../classes/PostEffect/Stats/PartyStat";
 import { ConditionNumber } from "../../classes/Condition/Number";
+import { PostEffectStatsTotal } from "../../classes/PostEffect/Stats/Total";
 
 
 const Talents = new DbObjectTalents({
@@ -152,7 +151,8 @@ const Talents = new DbObjectTalents({
     links: charTalentTables.Flins.links,
 });
 
-const lunarPost = new PostEffectStatsAtk({
+const lunarPost = new PostEffectStatsTotal({
+    from: 'atk',
     percent: new StatTable('lunarcharged_multi', [charTalentTables.Flins.passsive[2][0]]),
     statCap: new ValueTable([charTalentTables.Flins.passsive[2][1] * 100]),
 });
@@ -488,7 +488,8 @@ export const Flins = new DbObjectChar({
     ],
     postEffects: [
         lunarPost,
-        new PostEffectStatsAtk({
+        new PostEffectStatsTotal({
+            from: 'atk',
             percent: new StatTable('mastery', [charTalentTables.Flins.passsive[1][0]]),
             condition: new ConditionAnd([
                 new ConditionAscensionChar({ ascension: 4 }),
@@ -496,7 +497,8 @@ export const Flins = new DbObjectChar({
             ]),
             statCap: new ValueTable([charTalentTables.Flins.passsive[1][1]]),
         }),
-        new PostEffectStatsAtk({
+        new PostEffectStatsTotal({
+            from: 'atk',
             percent: new StatTable('mastery', [charTalentTables.Flins.cons[3][1]]),
             condition: new ConditionAnd([
                 new ConditionAscensionChar({ ascension: 4 }),
@@ -614,8 +616,8 @@ export const Flins = new DbObjectChar({
             }),
         ],
         postEffects: [
-            new PostEffectStatsPartyStat({
-                partyStat: 'flins_atk_total',
+            new PostEffectStats({
+                from: 'flins_atk_total',
                 percent: new StatTable('lunarcharged_multi', [charTalentTables.Flins.passsive[2][0]]),
                 statCap: new ValueTable([charTalentTables.Flins.passsive[2][1] * 100]),
             }),

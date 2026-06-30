@@ -18,7 +18,7 @@ export const FlowerWreathedFeathers = new DbObjectWeapon({
             title: 'talent_name.weapon_inflorescence_unattainable',
             description: 'talent_descr.weapon_inflorescence_unattainable_1',
             stats: [
-                new StatTable('text_percent', weaponDataTable.FlowerWreathedFeathers.Weapon_Bow_Umpakati.param1, 100),
+                new StatTable('text_percent', weaponDataTable.FlowerWreathedFeathers.inflorescence_unattainable.param1, 100),
             ],
         }),
         new ConditionStacks({
@@ -29,7 +29,7 @@ export const FlowerWreathedFeathers = new DbObjectWeapon({
             maxStacks: 6,
             levelSetting: 'weapon_refine',
             stats: [
-                new StatTable('dmg_charged', weaponDataTable.FlowerWreathedFeathers.Weapon_Bow_Umpakati.param3, 100),
+                new StatTable('dmg_charged', weaponDataTable.FlowerWreathedFeathers.inflorescence_unattainable.param3, 100),
             ],
         }),
     ],

@@ -9,6 +9,7 @@ import { ConditionMoonPhaseSetting } from "../../classes/Condition/CustomOrigin/
 import { ConditionDropdownElement } from "../../classes/Condition/Dropdown/Element";
 import { ConditionMoonPhaseCheck } from "../../classes/Condition/MoonPhaseCheck";
 import { ConditionNonLunarElement } from "../../classes/Condition/NonLunarElement";
+import { ConditionNot } from "../../classes/Condition/Not";
 import { ConditionNumber } from "../../classes/Condition/Number";
 import { ConditionOr } from "../../classes/Condition/Or";
 import { ConditionResonance } from "../../classes/Condition/Resonance";
@@ -407,6 +408,11 @@ export const ElementalResonance = new DbObjectBuff({
                     new ConditionNonLunarElement({ element: 'electro' }),
                     new ConditionNonLunarElement({ element: 'cryo' }),
                 ]),
+                new ConditionNot([
+                    new ConditionBoolean({ name: 'buffs.ascendant_gleam_hydro' }),
+                    new ConditionBoolean({ name: 'buffs.ascendant_gleam_AD' }),
+                    new ConditionBoolean({ name: 'buffs.ascendant_gleam_geo' }),
+                ]),
             ]),
         }),
         new ConditionBoolean({
@@ -429,6 +435,10 @@ export const ElementalResonance = new DbObjectBuff({
                     new ConditionNonLunarElement({ element: 'anemo' }),
                     new ConditionNonLunarElement({ element: 'dendro' }),
                 ]),
+                new ConditionNot([
+                    new ConditionBoolean({ name: 'buffs.ascendant_gleam_hydro' }),
+                    new ConditionBoolean({ name: 'buffs.ascendant_gleam_geo' }),
+                ]),
             ]),
         }),
         new ConditionBoolean({
@@ -438,6 +448,11 @@ export const ElementalResonance = new DbObjectBuff({
             description: 'buffs_descr.ascendant_gleam_hydro',
             rotation: 'buffs',
             hideInactive: true,
+            settings: {
+                'buffs.ascendant_gleam_PEC': 0,
+                'buffs.ascendant_gleam_AD': 0,
+                'buffs.ascendant_gleam_geo': 0,
+            },
             customStats: [
                 new ConditionNumber({
                     name: 'ascendant_gleam_hp',
@@ -448,25 +463,9 @@ export const ElementalResonance = new DbObjectBuff({
             condition: new ConditionAnd([
                 new ConditionMoonPhaseCheck({ moonphase: 2 }),
                 new ConditionNonLunarElement({ element: 'hydro' }),
-            ]),
-        }),
-        new ConditionBoolean({
-            name: 'buffs.ascendant_gleam_geo',
-            serializeId: 65,
-            title: 'buffs_name.ascendant_gleam_geo',
-            description: 'buffs_descr.ascendant_gleam_geo',
-            rotation: 'buffs',
-            hideInactive: true,
-            customStats: [
-                new ConditionNumber({
-                    name: 'ascendant_gleam_def',
-                    serializeId: 69,
-                    title: 'pool_stat.def',
-                }),
-            ],
-            condition: new ConditionAnd([
-                new ConditionMoonPhaseCheck({ moonphase: 2 }),
-                new ConditionNonLunarElement({ element: 'geo' }),
+                new ConditionNot([
+                    new ConditionBoolean({ name: 'buffs.ascendant_gleam_geo' }),
+                ]),
             ]),
         }),
         new ConditionBoolean({
@@ -524,3 +523,16 @@ export const ElementalResonance = new DbObjectBuff({
         }),
     ],
 });
+
+//"1292621586": "Ползучая зелень",
+
+//"1163540020": "Зарождающееся сияние",
+//"1363705078": "Зарождающееся сияние",
+//"3355827977": "Зарождающееся сияние",
+
+//856180336 - высшее сияние
+//604954065 - "\\nКроме того, в течение
+//"180687871": "Лунное знамение - Высшее сияние",
+//"673034151": "Лунное знамение - Высшее сияние",
+//"815173912": "Высшее сияние",
+//"1561440071": "Лунное знамение - Высшее сияние",

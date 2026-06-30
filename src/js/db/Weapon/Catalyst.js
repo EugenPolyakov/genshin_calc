@@ -41,6 +41,9 @@ import { WaveridingWhirl } from "./Catalyst/WaveridingWhirl";
 import { StarcallersWatch } from "./Catalyst/StarcallersWatch";
 import { MorningHibernation } from "./Catalyst/MorningHibernation";
 import { VividNotions } from "./Catalyst/VividNotions";
+import { blackmarrow_lantern } from "./Catalyst/blackmarrow_lantern";
+import { dawning_frost } from "./Catalyst/dawning_frost";
+import { etherlight_spindlelute } from "./Catalyst/etherlight_spindlelute";
 
 export const Catalyst = new DbObjectListSerializeStats({
     SolarPearl: SolarPearl, // 43
@@ -85,4 +88,7 @@ export const Catalyst = new DbObjectListSerializeStats({
     StarcallersWatch: StarcallersWatch, // 195
     MorningHibernation: MorningHibernation, // 196
     VividNotions: VividNotions, // 198
+    blackmarrow_lantern: blackmarrow_lantern, // 227
+    dawning_frost: dawning_frost, // 231
+    etherlight_spindlelute: etherlight_spindlelute, // 232
 });

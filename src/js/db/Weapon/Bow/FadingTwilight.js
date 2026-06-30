@@ -35,7 +35,7 @@ export const FadingTwilight = new DbObjectWeapon({
             title: 'talent_name.weapon_radiance_of_the_deeps_2',
             description: 'talent_descr.weapon_radiance_of_the_deeps_2',
             stats: [
-                new StatTable('dmg_all', weaponDataTable.FadingTwilight.Weapon_Bow_FallenSun.param2, 100),
+                new StatTable('dmg_all', weaponDataTable.FadingTwilight.radiance_of_the_deeps.param2, 100),
             ],
             subConditions: [
                 new ConditionBooleanRefine({
@@ -54,7 +54,7 @@ export const FadingTwilight = new DbObjectWeapon({
             title: 'talent_name.weapon_radiance_of_the_deeps_3',
             description: 'talent_descr.weapon_radiance_of_the_deeps_2',
             stats: [
-                new StatTable('dmg_all', weaponDataTable.FadingTwilight.Weapon_Bow_FallenSun.param3, 100),
+                new StatTable('dmg_all', weaponDataTable.FadingTwilight.radiance_of_the_deeps.param3, 100),
             ],
             subConditions: [
                 new ConditionBooleanRefine({
@@ -73,7 +73,7 @@ export const FadingTwilight = new DbObjectWeapon({
             title: 'talent_name.weapon_radiance_of_the_deeps_4',
             description: 'talent_descr.weapon_radiance_of_the_deeps_2',
             stats: [
-                new StatTable('dmg_all', weaponDataTable.FadingTwilight.Weapon_Bow_FallenSun.param4),
+                new StatTable('dmg_all', weaponDataTable.FadingTwilight.radiance_of_the_deeps.param4),
             ],
             subConditions: [
                 new ConditionBooleanRefine({

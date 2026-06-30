@@ -17,7 +17,7 @@ import { FeatureDamageSkill } from "../../classes/Feature2/Damage/Skill";
 import { FeatureMultiplier } from "../../classes/Feature2/Multiplier";
 import { FeatureMultiplierTarget } from "../../classes/Feature2/Multiplier/Target";
 import { FeaturePostEffectValue } from "../../classes/Feature2/PostEffectValue";
-import { PostEffectStatsAtk } from "../../classes/PostEffect/Stats/Atk";
+import { PostEffectStatsTotal } from "../../classes/PostEffect/Stats/Total";
 import { StatTable } from "../../classes/StatTable";
 import { ValueTable } from "../../classes/ValueTable";
 import { charTables } from "../generated/CharTables";
@@ -126,7 +126,8 @@ const TalentValues = {
     C6DamageBonus: 300,
 };
 
-const atkBuffPost = new PostEffectStatsAtk({
+const atkBuffPost = new PostEffectStatsTotal({
+    from: 'atk',
     global: 1,
     percent: new StatTable('dmg_all', [TalentValues.A4DamageBonus / 1000]),
     statCap: new ValueTable([TalentValues.A4DamageBonusMax]),

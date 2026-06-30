@@ -17,7 +17,7 @@ from lib.genshin.utils import convert_id, add_array
 from lib.genshin.strings.csv import CsvDumper
 from lib.genshin.strings.text import TextDumper  # noqa
 import static
-from static import WEAPON_TYPES
+from static import WEAPON_TYPES, shrink_table
 from old_values import old_values
 
 generate_char = ''
@@ -157,23 +157,6 @@ skiped_features = set([
 def outwrite(s):
     if not do_single:
         out.write(s)
-
-def shrink_table(data):
-    last = None
-    for index in reversed(range(len(data))):
-        val = data[index]
-
-        if last is None:
-            last = val
-            continue
-
-        if val == last:
-            data.pop()
-            continue
-
-        break
-
-    return data
 
 def format_table(data, fmt):
     isPercent = fmt.find('P') >= 0

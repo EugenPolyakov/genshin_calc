@@ -391,9 +391,7 @@ function RotationListCondition(props) {
         <div className={classes.join(' ')}>
             {mainIcon ? <div className={'icon sprite sprite-24 '+ mainIcon}></div> : null}
             {items}
-            <div className="condition-text">
-                {valueHtml}
-            </div>
+            <div className="condition-text" dangerouslySetInnerHTML={ { __html: valueHtml } } />
         </div>
     );
 }

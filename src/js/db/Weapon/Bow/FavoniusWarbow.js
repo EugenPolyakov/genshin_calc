@@ -17,8 +17,8 @@ export const FavoniusWarbow = new DbObjectWeapon({
             title: 'talent_name.weapon_windfall',
             description: 'talent_descr.weapon_windfall',
             stats: [
-                new StatTable('text_percent', weaponDataTable.FavoniusWarbow.Weapon_Bow_GenerateBallWhenCritic.param1, 100),
-                new StatTable('text_cooldown', weaponDataTable.FavoniusWarbow.Weapon_Bow_GenerateBallWhenCritic.param2),
+                new StatTable('text_percent', weaponDataTable.FavoniusWarbow.windfall.param1, 100),
+                new StatTable('text_cooldown', weaponDataTable.FavoniusWarbow.windfall.param2),
             ],
         }),
     ],

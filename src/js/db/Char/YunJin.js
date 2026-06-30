@@ -7,7 +7,6 @@ import { ConditionCalcElements } from "../../classes/Condition/CalcElements";
 import { DbObjectChar } from "../../classes/DbObject/Char";
 import { DbObjectConstellation } from "../../classes/DbObject/Constellation";
 import { DbObjectTalents } from "../../classes/DbObject/Talents";
-import { PostEffectStatsDef } from "../../classes/PostEffect/Stats/Def";
 import { StatTable } from "../../classes/StatTable";
 import { charTables } from "../generated/CharTables";
 import { charTalentTables } from "../generated/CharTalentTables";
@@ -28,6 +27,7 @@ import { FeatureShield } from "../../classes/Feature2/Shield";
 import { FeatureMultiplierList } from "../../classes/Feature2/Multiplier/List";
 import { FeatureDamageBurst } from "../../classes/Feature2/Damage/Burst";
 import { FeaturePostEffectValue } from "../../classes/Feature2/PostEffectValue";
+import { PostEffectStatsTotal } from "../../classes/PostEffect/Stats/Total";
 
 const Talents = new DbObjectTalents({
     attack: {
@@ -367,7 +367,8 @@ export const YunJin = new DbObjectChar({
         new FeaturePostEffectValue({
             category: 'burst',
             name: 'yunjin_dmg_bonus',
-            postEffect: new PostEffectStatsDef({
+            postEffect: new PostEffectStatsTotal({
+                from: 'def',
                 percent: Talents.getMulti({
                     name: '',
                     from: 'burst.yunjin_dmg_bonus',

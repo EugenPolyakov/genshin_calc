@@ -18,8 +18,8 @@ export const Hamayumi = new DbObjectWeapon({
             title: 'talent_name.weapon_full_draw',
             description: 'talent_descr.weapon_full_draw_1',
             stats: [
-                new StatTable('dmg_normal', weaponDataTable.Hamayumi.Weapon_Bow_Bakufu.param1, 100),
-                new StatTable('dmg_charged', weaponDataTable.Hamayumi.Weapon_Bow_Bakufu.param2, 100),
+                new StatTable('dmg_normal', weaponDataTable.Hamayumi.full_draw.param1, 100),
+                new StatTable('dmg_charged', weaponDataTable.Hamayumi.full_draw.param2, 100),
             ],
         }),
         new ConditionBooleanRefine({
@@ -28,8 +28,8 @@ export const Hamayumi = new DbObjectWeapon({
             title: 'talent_name.weapon_full_draw',
             description: 'talent_descr.weapon_full_draw_2',
             stats: [
-                new StatTable('dmg_normal', weaponDataTable.Hamayumi.Weapon_Bow_Bakufu.param1, 100),
-                new StatTable('dmg_charged', weaponDataTable.Hamayumi.Weapon_Bow_Bakufu.param2, 100),
+                new StatTable('dmg_normal', weaponDataTable.Hamayumi.full_draw.param1, 100),
+                new StatTable('dmg_charged', weaponDataTable.Hamayumi.full_draw.param2, 100),
             ],
         }),
     ],

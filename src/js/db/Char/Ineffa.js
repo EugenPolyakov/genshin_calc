@@ -21,8 +21,7 @@ import { FeaturePostEffectValue } from "../../classes/Feature2/PostEffectValue";
 import { FeatureReactionLunarChargedLike } from "../../classes/Feature2/Reaction/Transformative/Lunar/ChargedLike";
 import { FeatureShield } from "../../classes/Feature2/Shield";
 import { PostEffectStats } from "../../classes/PostEffect/Stats";
-import { PostEffectStatsAtk } from "../../classes/PostEffect/Stats/Atk";
-import { PostEffectStatsPartyStat } from "../../classes/PostEffect/Stats/PartyStat";
+import { PostEffectStatsTotal } from "../../classes/PostEffect/Stats/Total";
 import { StatTable } from "../../classes/StatTable";
 import { ValueTable } from "../../classes/ValueTable";
 import { charTables } from "../generated/CharTables";
@@ -130,17 +129,20 @@ const C1AtkScaleCap = 50;
 const C2Dmg = 300;
 const C6Dmg = 135;
 
-const emBuffPost = new PostEffectStatsAtk({
+const emBuffPost = new PostEffectStatsTotal({
+    from: 'atk',
     percent: new StatTable('mastery', [A4EmScale / 100]),
     condition: new ConditionBoolean({name: 'ineffa_panoramic_permutation_protocol'}),
 });
 
-const lunarPost = new PostEffectStatsAtk({
+const lunarPost = new PostEffectStatsTotal({
+    from: 'atk',
     percent: new StatTable('lunarcharged_multi', [charTalentTables.Ineffa.passsive[2][0]]),
     statCap: new ValueTable([charTalentTables.Ineffa.passsive[2][1] * 100]),
 });
 
-const lunarPost2 = new PostEffectStatsAtk({
+const lunarPost2 = new PostEffectStatsTotal({
+    from: 'atk',
     percent: new StatTable('dmg_reaction_lunarcharged', [C1AtkScale / 100]),
     statCap: new ValueTable([C1AtkScaleCap]),
     condition: new ConditionAnd([
@@ -490,8 +492,8 @@ export const Ineffa = new DbObjectChar({
             }),
         ],
         postEffects: [
-            new PostEffectStatsPartyStat({
-                partyStat: 'ineffa_atk_total',
+            new PostEffectStats({
+                from: 'ineffa_atk_total',
                 percent: new StatTable('lunarcharged_multi', [charTalentTables.Ineffa.passsive[2][0]]),
                 statCap: new ValueTable([charTalentTables.Ineffa.passsive[2][1] * 100]),
             }),

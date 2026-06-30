@@ -18,7 +18,7 @@ export const ElegyfortheEnd = new DbObjectWeapon({
             title: 'talent_name.weapon_the_parting_refrain_1',
             description: 'talent_descr.weapon_the_parting_refrain_2',
             stats: [
-                new StatTable('mastery', weaponDataTable.ElegyfortheEnd.Weapon_Bow_Widsith.param1),
+                new StatTable('mastery', weaponDataTable.ElegyfortheEnd.the_parting_refrain.param1),
             ],
         }),
         new ConditionBooleanRefine({
@@ -27,8 +27,8 @@ export const ElegyfortheEnd = new DbObjectWeapon({
             title: 'talent_name.weapon_the_parting_refrain_2',
             description: 'talent_descr.weapon_the_parting_refrain_1',
             stats: [
-                new StatTable('text_value', weaponDataTable.ElegyfortheEnd.Weapon_Bow_Widsith.param4),
-                new StatTable('text_percent', weaponDataTable.ElegyfortheEnd.Weapon_Bow_Widsith.param5, 100),
+                new StatTable('text_value', weaponDataTable.ElegyfortheEnd.the_parting_refrain.param4),
+                new StatTable('text_percent', weaponDataTable.ElegyfortheEnd.the_parting_refrain.param5, 100),
             ],
         }),
     ],
