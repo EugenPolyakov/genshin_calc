@@ -92,6 +92,7 @@ goods_id = {
 }
 
 stats = {}
+rollsIds = {}
 
 for item in ArtifactSubstatData().data:
     rank = item.get('depotId')
@@ -104,10 +105,20 @@ for item in ArtifactSubstatData().data:
 
     stat = TYPES_TO_STATS.get(item['propType'])
     if stat not in stats:
-        stats[stat] = {'rolls': {1:[], 2:[], 3:[], 4:[], 5:[]}, 'rollsView': {1:[], 2:[], 3:[], 4:[], 5:[]}, 'values': []}
+        stats[stat] = {
+            'rolls': {1:[], 2:[], 3:[], 4:[], 5:[]},
+            'rollsView': {1:[], 2:[], 3:[], 4:[], 5:[]},
+            'values': [],
+            'groupId': str(item['groupId'])
+        }
 
     value = item['propValue']
     stats[stat]['rolls'][level].append(str(value))#to_float32(value)))
+    # rollsIds[str(item['id'])] = {
+    #     'rarity': level,
+    #     'roll': str(int(item['id']) % 10),
+    #     'stat': str(item['groupId']).zfill(2)
+    # }
     value = item['propValue']
     if stat not in NORMAL_STATS:
         value = str(custom_round2(value * 100))
@@ -289,3 +300,8 @@ for key, stat in TYPES_TO_STATS.items():
     print('        ],')
     print('    }),')
 print('});')
+print('')
+print('export const GroupToSubstats = {')
+for key, stat in TYPES_TO_STATS.items():
+    print('    ' + stats[stat]['groupId'] + ': "' + stat + '",')
+print('};')

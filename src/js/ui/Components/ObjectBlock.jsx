@@ -9,7 +9,7 @@ import { Slider } from './Inputs/Slider';
 import { BetaWarning } from './TextBlocks';
 import { getSkillLevelByName } from '../../classes/Build/Settings';
 
-const levelItems = [
+export const levelItemsChar = [
     {level: 1,  ascension: 0, maxLevel: 20},
     {level: 20, ascension: 0, maxLevel: 20},
     {level: 20, ascension: 1, maxLevel: 40},
@@ -24,6 +24,25 @@ const levelItems = [
     {level: 80, ascension: 5, maxLevel: 80},
     {level: 80, ascension: 6, maxLevel: 90},
     {level: 90, ascension: 6, maxLevel: 90},
+    {level: 95, ascension: 6, maxLevel: 95},
+    {level: 100, ascension: 6, maxLevel: 100},
+];
+
+const levelItemsWeapon = [
+    { level: 1, ascension: 0, maxLevel: 20 },
+    { level: 20, ascension: 0, maxLevel: 20 },
+    { level: 20, ascension: 1, maxLevel: 40 },
+    { level: 40, ascension: 1, maxLevel: 40 },
+    { level: 40, ascension: 2, maxLevel: 50 },
+    { level: 50, ascension: 2, maxLevel: 50 },
+    { level: 50, ascension: 3, maxLevel: 60 },
+    { level: 60, ascension: 3, maxLevel: 60 },
+    { level: 60, ascension: 4, maxLevel: 70 },
+    { level: 70, ascension: 4, maxLevel: 70 },
+    { level: 70, ascension: 5, maxLevel: 80 },
+    { level: 80, ascension: 5, maxLevel: 80 },
+    { level: 80, ascension: 6, maxLevel: 90 },
+    { level: 90, ascension: 6, maxLevel: 90 },
 ];
 
 export class CharObjectBlock extends React.Component {
@@ -50,6 +69,7 @@ export class CharObjectBlock extends React.Component {
                     />
                     <ObjectAscended
                         title={this.lang.get(this.props.char.getName())}
+                        levelItems={levelItemsChar}
                         level={this.props.settings.char_level}
                         ascension={this.props.settings.char_ascension}
                         onLevelChange={this.props.onLevelChange}
@@ -131,6 +151,7 @@ export class WeaponObjectBlock extends React.Component {
                     />
                     <ObjectAscended
                         title={this.lang.get(this.props.weapon.getName())}
+                        levelItems={levelItemsWeapon}
                         level={level}
                         ascension={ascension}
                         onLevelChange={this.props.onLevelChange}
@@ -229,8 +250,8 @@ class ObjectAscended extends React.Component {
             return;
         }
 
-        let index = getLevelIndex(level, this.props.ascension);
-        let data = levelItems[index];
+        let index = getLevelIndex(level, this.props.ascension, this.props.levelItems);
+        let data = this.props.levelItems[index];
 
         this.props.onLevelChange({
             level: level,
@@ -239,7 +260,7 @@ class ObjectAscended extends React.Component {
     }
 
     handleSliderChange(index) {
-        let item = levelItems[index];
+        let item = this.props.levelItems[index];
         this.props.onLevelChange({
             level: item.level,
             ascension: item.ascension,
@@ -252,8 +273,8 @@ class ObjectAscended extends React.Component {
             stars.push(<div key={'star'+ i} className={'star'+ (this.props.ascension >= i ? ' active' : '')}/>);
         }
 
-        let levelIndex = getLevelIndex(this.props.level, this.props.ascension);
-        let levelData = levelItems[levelIndex];
+        let levelIndex = getLevelIndex(this.props.level, this.props.ascension, this.props.levelItems);
+        let levelData = this.props.levelItems[levelIndex];
 
         return (
             <div className="info">
@@ -264,7 +285,7 @@ class ObjectAscended extends React.Component {
                     <div className="level-manual">
                         <NumberInput
                             minValue={1}
-                            maxValue={90}
+                            maxValue={this.props.levelItems[this.props.levelItems.length - 1].maxLevel}
                             nonEmpty={true}
                             value={this.props.level}
                             onChange={(value) => this.handleLevelChange(value)}
@@ -275,7 +296,7 @@ class ObjectAscended extends React.Component {
                     <div className="level-slider">
                         <Slider
                             min={0}
-                            max={levelItems.length - 1}
+                            max={this.props.levelItems.length - 1}
                             value={levelIndex}
                             onChange={(index) => this.handleSliderChange(index)}
                         />
@@ -387,7 +408,7 @@ export function EnemyLevelLine(props) {
     );
 }
 
-function getLevelIndex(level, ascension) {
+function getLevelIndex(level, ascension, levelItems) {
     let items = levelItems;
     let index = -1;
 
@@ -404,8 +425,8 @@ function getLevelIndex(level, ascension) {
     return index;
 }
 
-export function getLevelData(level, ascension) {
-    let levelIndex = getLevelIndex(level, ascension);
+export function getLevelData(level, ascension, levelItems) {
+    let levelIndex = getLevelIndex(level, ascension, levelItems);
     if (levelIndex < 0) {
         return;
     }

@@ -1,3 +1,4 @@
+import { GroupToSubstats } from "../../db/Artifacts/Substats";
 import { Artifact } from "../Artifact";
 import { CalcSet } from "../CalcSet";
 import { prepareUid } from "./Uid";
@@ -202,15 +203,34 @@ function listArtifacts(data) {
 
         let subStats = {};
         let pos = 0;
-        for (let ss of item.flat.reliquarySubstats) {
-            let stat = DB.Artifacts.Substats.getKeyIdGame(ss.appendPropId);
-            if (stat) {
-                subStats[stat] = { index: pos++, value: ss.statValue };
+        if (item.reliquary.appendPropIdList) {
+            for (let ss of item.reliquary.appendPropIdList) {
+                let roll = ss % 10;
+                let group = Math.floor((ss % 1000) / 10);
+                let statId = GroupToSubstats[group];
+                let stat = DB.Artifacts.Substats.get(statId);
+                if (stat) {
+                    if (!subStats[statId])
+                        subStats[statId] = { index: pos++, values: [roll - 1], initialValue: roll };
+                    else {
+                        subStats[statId].values.push(roll - 1);
+                        subStats[statId].values.sort();
+                    }
+                    subStats[statId].value = stat.rollsToValue[rarity - 1][subStats[statId].values.join('')];
+                }
+            }
+        } else {
+            for (let ss of item.flat.reliquarySubstats) {
+                let stat = DB.Artifacts.Substats.getKeyIdGame(ss.appendPropId);
+                if (stat) {
+                    subStats[stat] = { index: pos++, value: ss.statValue };
+                }
             }
         }
 
         let art = new Artifact(rarity, level, slot, setId, mainStat, subStats);
-        art.tryDoRightSubstats();
+        if (!item.reliquary.appendPropIdList)
+            art.tryDoRightSubstats();
         result.push(art);
     }
 

@@ -8,7 +8,7 @@ import { ControlsBar, ControlsBarDivider } from '../ControlsBar';
 import { ArtifactIcon, CharIcon, WeaponIcon } from '../Icons';
 import { TitledButton } from '../Inputs/Buttons';
 import { GroupBox } from '../Inputs/GroupBox';
-import { getLevelData } from '../ObjectBlock';
+import { getLevelData, levelItemsChar } from '../ObjectBlock';
 
 let lang = new Lang();
 
@@ -62,7 +62,7 @@ export class CharInfo extends React.Component {
         }
 
         let levels = charData.getLevels();
-        let levelData = getLevelData(levels.level, levels.ascension);
+        let levelData = getLevelData(levels.level, levels.ascension, levelItemsChar);
 
         if (levelData) {
             subtitle = (

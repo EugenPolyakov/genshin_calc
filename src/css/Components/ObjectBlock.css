@@ -82,7 +82,7 @@
 
 .calc-object-block .level-manual {
     width: 90px;
-    font-size: 20px;
+    font-size: 16px;
     display: flex;
     align-items: center;
 }
@@ -105,7 +105,7 @@
 
 .gi-enemy2-container .calc-object-block .level-manual {
     width: 65px;
-    font-size: 20px;
+    font-size: 16px;
     display: flex;
     align-items: center;
 }
@@ -116,7 +116,7 @@
 
 .calc-object-block .level-input {
     width: 40px;
-    font-size: 20px;
+    font-size: 16px;
 }
 
 .calc-object-block .level-input-3 {

@@ -9,7 +9,10 @@ export class Artifact {
         this.slot = slot;
         this.set = set;
         this.mainStat = mainStat;
-        this.subStats = subStats || {};
+        if (subStats)
+            this.subStats = subStats.splice();
+        else
+            this.subStats = {};
         this.locked = false;
         this.groups = [];
         this.calculated = null;

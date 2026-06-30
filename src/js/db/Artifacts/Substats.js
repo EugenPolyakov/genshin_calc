@@ -483,3 +483,16 @@ export const Substats = new DbObjectListSerializeStats({
         ],
     }),
 });
+
+export const GroupToSubstats = {
+    2: "hp",
+    5: "atk",
+    8: "def",
+    6: "atk_percent",
+    9: "def_percent",
+    3: "hp_percent",
+    24: "mastery",
+    23: "recharge",
+    20: "crit_rate",
+    22: "crit_dmg",
+};
