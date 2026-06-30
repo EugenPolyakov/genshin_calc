@@ -1,7 +1,7 @@
 import { Condition } from "../Condition";
 import { Stats } from "../Stats";
 
-export class CustomOrigin extends Condition {
+export class ConditionCustomOrigin extends Condition {
     getType() {
         return '';
     }

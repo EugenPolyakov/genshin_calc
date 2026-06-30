@@ -238,3 +238,20 @@ silken_moons_serenade_4 = Template(
         []
     ],
 )
+
+a_day_carved_from_rising_winds_4 = Template(
+    names=[
+        'Благословения пасторальных ветров',
+        "Уроки ведьм",
+        "Решительности пасторальных ветров",
+    ],
+    sentences=[
+        ['6:ignore', '25:atk_percent'],
+        ['20:crit_rate'],
+        [],
+    ],
+    results=[
+        [0, 2],
+        [1, 2],
+    ],
+)

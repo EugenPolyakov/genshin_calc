@@ -606,7 +606,8 @@ nighttime_whispers_in_the_echoing_woods_2 = Template(
 nighttime_whispers_in_the_echoing_woods_4 = Template(
     sentences=[
         ['20:dmg_geo', '10:ignore'],
-        ['150:ignore', '1:ignore'],
+        ['150:ignore'],
+        ['1:ignore'],
     ],
     results=[
         [0],
@@ -790,5 +791,46 @@ silken_moons_serenade_4 = Template(
         [],
         ['10:text_lunar_reaction_dmg_percent'],
         []
+    ],
+)
+
+a_day_carved_from_rising_winds_2 = Template(
+    sentences=[
+        ['18:atk_percent'],
+    ],
+)
+
+a_day_carved_from_rising_winds_4 = Template(
+    names=[
+        'Blessing of Pastoral Winds',
+        "Witch's Homework",
+        "Resolve of Pastoral Winds",
+    ],
+    sentences=[
+        ['6:ignore', '25:atk_percent'],
+        ['20:crit_rate'],
+        [],
+    ],
+    results=[
+        [0, 2],
+        [1, 2],
+    ],
+)
+
+aubade_of_morningstar_and_moon_2 = Template(
+    sentences=[
+        ['80:mastery'],
+    ],
+)
+
+aubade_of_morningstar_and_moon_4 = Template(
+    sentences=[
+        ['20:dmg_reaction_lunar'],
+        ['40:dmg_reaction_lunar'],
+        ['3:ignore'],
+    ],
+    results=[
+        [0, 2],
+        [1, 2],
     ],
 )

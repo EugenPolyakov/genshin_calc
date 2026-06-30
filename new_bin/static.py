@@ -261,6 +261,7 @@ char_ids = {
     10000120: 'Flins',
     10000121: 'Aino',
     10000122: 'Nefer',
+    10000124: 'Jahoda',
 }
 
 def shrink_table(data):
@@ -282,7 +283,7 @@ def shrink_table(data):
 
 def trimValue(value):
     if not isinstance(value, str):
-        value = '%.4f' % (value)
+        value = '%.10f' % (value)
     if value.find('.') >= 0:
         return re.sub(r"\.?0+$", '', value)
     return value

@@ -447,7 +447,6 @@ def prepare_talents(talent_items, generate):
             if descItems_hex:
                 add_array(descItems_hex, result_hero_strings, talent_id + '_hex', 'talent_descr')
 
-
 def print_skillmult(elem, name, vals, isChild):
     if vals > 1:
         print("        new FeatureDamageMultihit({")
@@ -557,6 +556,7 @@ for charVarName in sorted(char_keys):
     outwrite("\t" + charVarName + ': {\n')
     outwrite(f"\t\tchar_id:'{char['id']}',\n")
     outwrite(f"\t\tchar_weapon:'{char['weaponType']}',\n")
+    hex_descr = 'HCAOGPJPGLM' # 'IACNAENANDH'
 
     locallinks = set()
     if not do_single:
@@ -627,7 +627,7 @@ for charVarName in sorted(char_keys):
             descItems = {}
             descItems_hex = {}
             nameItems = {}
-            hex_descr = 'extraDescTextMapHash' #'IACNAENANDH'
+            extra_descr_fld = 'extraDescTextMapHash'
             err = False
             for lang_name in lang_data:
                 try:
@@ -636,11 +636,12 @@ for charVarName in sorted(char_keys):
                     skill_name = re.sub(r'^Normal Attack:\s*', '', skill_name)
                     nameItems[lang_name] = [skill_name]
                     tpl_patterns = lang_data[lang_name]['patterns']
-                    skill_descr = process_talent_desc(lang_name, lang.get(skill['descTextMapHash']), talent_short_id, tpl_patterns)
+                    extraDescr = lang.get(skill[extra_descr_fld]) or ''
+                    skill_descr = process_talent_desc(lang_name, lang.get(skill['descTextMapHash']) + extraDescr, talent_short_id, tpl_patterns)
                     descItems[lang_name] = skill_descr['descr']
                     nameItems[lang_name].extend(skill_descr['names'])
                     if skill[hex_descr] and lang.get(skill[hex_descr]):
-                        skill_descr = process_talent_desc(lang_name, lang.get(skill[hex_descr]), talent_short_id, tpl_patterns, talent_short_id + '_hex')
+                        skill_descr = process_talent_desc(lang_name, lang.get(skill[hex_descr]) + extraDescr, talent_short_id, tpl_patterns, talent_short_id + '_hex')
                         descItems_hex[lang_name] = skill_descr['descr']
                         nameItems[lang_name].extend(skill_descr['names'])
                 except Exception:
@@ -705,7 +706,7 @@ for charVarName in sorted(char_keys):
             talent_items.append({
                 'nameTextMapHash': talent.get('nameTextMapHash'),
                 'descTextMapHash': talent.get('descTextMapHash'),
-                'descTextMapHash_hex': talent.get('IACNAENANDH'),
+                'descTextMapHash_hex': talent.get(hex_descr),
                 'no_descr': const_num == 3 or const_num == 5,
             })
             outwrite('\t\t\t')
@@ -728,7 +729,7 @@ for charVarName in sorted(char_keys):
                 talent_items.append({
                     'nameTextMapHash': proud.get('nameTextMapHash'),
                     'descTextMapHash': proud.get('descTextMapHash'),
-                    'descTextMapHash_hex': proud.get('IACNAENANDH'),
+                    'descTextMapHash_hex': proud.get(hex_descr),
                 })
                 if generate_char == char_id:
                     talent_name = lang_default.get(proud.get('nameTextMapHash'))

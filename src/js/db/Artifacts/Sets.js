@@ -56,6 +56,8 @@ import { LongNightsOath } from "./Set/LongNightsOath.js"
 import { FinaleOfTheDeepGalleries } from "./Set/FinaleOfTheDeepGalleries.js"
 import { NightOfTheSkysUnveiling } from "./Set/NightOfTheSkysUnveiling.js"
 import { SilkenMoonsSerenade } from "./Set/SilkenMoonsSerenade.js"
+import { ADayCarvedFromRisingWinds } from "./Set/ADayCarvedFromRisingWinds.js"
+import { AubadeOfMorningstarAndMoon } from "./Set/AubadeOfMorningstarAndMoon.js"
 
 export const Sets = new DbObjectListArtifactSets({
     Adventurer: Adventurer, // 1
@@ -115,4 +117,6 @@ export const Sets = new DbObjectListArtifactSets({
     FinaleOfTheDeepGalleries: FinaleOfTheDeepGalleries, // 55
     NightOfTheSkysUnveiling: NightOfTheSkysUnveiling, // 56
     SilkenMoonsSerenade: SilkenMoonsSerenade, // 57
+    ADayCarvedFromRisingWinds: ADayCarvedFromRisingWinds, // 58
+    AubadeOfMorningstarAndMoon: AubadeOfMorningstarAndMoon, // 59
 });

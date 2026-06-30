@@ -1,6 +1,6 @@
-import { CustomOrigin } from "../CustomOrigin.js";
+import { ConditionCustomOrigin } from "../CustomOrigin.js";
 
-export class ConditionLithic extends CustomOrigin {
+export class ConditionLithic extends ConditionCustomOrigin {
     constructor (params) {
         super(params);
         this.params.origin = 'liyue';

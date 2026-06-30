@@ -1,69 +1,71 @@
 .sprite-artifact.sands.sprite-24 {
-	background-image: url("../../images/sprites/artifacts_33d5cca8d05f64a790442dbaf20a6866.png");
-	background-size: 120px 264px;
+	background-image: url("../../images/sprites/artifacts_f0993866a971c3a7b91530458d759ad2.png");
+	background-size: 144px 264px;
 }
 .sprite-artifact.sands.sprite-40 {
-	background-image: url("../../images/sprites/artifacts_4474a5c2f82ad5f1f31bc5a17eaa4521.png");
-	background-size: 200px 440px;
+	background-image: url("../../images/sprites/artifacts_6745fdae4f8f2b5de454323fbc43244c.png");
+	background-size: 240px 440px;
 }
 .sprite-artifact.sands.sprite-60 {
-	background-image: url("../../images/sprites/artifacts_ff6712a0eedcfc6209c413e9e864d7d7.png");
-	background-size: 300px 660px;
+	background-image: url("../../images/sprites/artifacts_298d6a45bafc777b7c25dbcf76986f9a.png");
+	background-size: 360px 660px;
 }
 .sprite.artifact-icon-unknown {background-position: 0% 0%}
-.sprite.artifact-icon-resolution-of-sojourner.sands {background-position: 25% 0%}
-.sprite.artifact-icon-brave-heart.sands {background-position: 50% 0%}
-.sprite.artifact-icon-defenders-will.sands {background-position: 75% 0%}
-.sprite.artifact-icon-tiny-miracle.sands {background-position: 100% 0%}
-.sprite.artifact-icon-berserker.sands {background-position: 0% 10%}
-.sprite.artifact-icon-martial-artist.sands {background-position: 25% 10%}
-.sprite.artifact-icon-instructor.sands {background-position: 50% 10%}
-.sprite.artifact-icon-gambler.sands {background-position: 75% 10%}
-.sprite.artifact-icon-the-exile.sands {background-position: 100% 10%}
-.sprite.artifact-icon-adventurer.sands {background-position: 0% 20%}
-.sprite.artifact-icon-lucky-dog.sands {background-position: 25% 20%}
-.sprite.artifact-icon-scholar.sands {background-position: 50% 20%}
-.sprite.artifact-icon-traveling-doctor.sands {background-position: 75% 20%}
-.sprite.artifact-icon-blizzard-strayer.sands {background-position: 100% 20%}
-.sprite.artifact-icon-thundersoother.sands {background-position: 0% 30%}
-.sprite.artifact-icon-lavawalker.sands {background-position: 25% 30%}
-.sprite.artifact-icon-maiden-beloved.sands {background-position: 50% 30%}
-.sprite.artifact-icon-gladiators-finale.sands {background-position: 75% 30%}
-.sprite.artifact-icon-viridescent-venerer.sands {background-position: 100% 30%}
-.sprite.artifact-icon-wanderers-troupe.sands {background-position: 0% 40%}
-.sprite.artifact-icon-thundering-fury.sands {background-position: 25% 40%}
-.sprite.artifact-icon-crimson-witch-of-flames.sands {background-position: 50% 40%}
-.sprite.artifact-icon-noblesse-oblige.sands {background-position: 75% 40%}
-.sprite.artifact-icon-bloodstained-chivalry.sands {background-position: 100% 40%}
-.sprite.artifact-icon-archaic-petra.sands {background-position: 0% 50%}
-.sprite.artifact-icon-retracing-bolide.sands {background-position: 25% 50%}
-.sprite.artifact-icon-heart-of-depth.sands {background-position: 50% 50%}
-.sprite.artifact-icon-tenacity-of-the-millelith.sands {background-position: 75% 50%}
-.sprite.artifact-icon-pale-flame.sands {background-position: 100% 50%}
-.sprite.artifact-icon-shimenawas-reminiscence.sands {background-position: 0% 60%}
-.sprite.artifact-icon-emblem-of-severed-fate.sands {background-position: 25% 60%}
-.sprite.artifact-icon-husk-of-opulent-dreams.sands {background-position: 50% 60%}
-.sprite.artifact-icon-ocean-hued-clam.sands {background-position: 75% 60%}
-.sprite.artifact-icon-vermillion-hereafter.sands {background-position: 100% 60%}
-.sprite.artifact-icon-echoes-of-an-offering.sands {background-position: 0% 70%}
-.sprite.artifact-icon-deepwood-memories.sands {background-position: 25% 70%}
-.sprite.artifact-icon-gilded-dreams.sands {background-position: 50% 70%}
-.sprite.artifact-icon-desert-pavilion-chronicle.sands {background-position: 75% 70%}
-.sprite.artifact-icon-flower-of-paradise-lost.sands {background-position: 100% 70%}
-.sprite.artifact-icon-nymphs-dream.sands {background-position: 0% 80%}
-.sprite.artifact-icon-vourukashas-glow.sands {background-position: 25% 80%}
-.sprite.artifact-icon-marechaussee-hunter.sands {background-position: 50% 80%}
-.sprite.artifact-icon-golden-troupe.sands {background-position: 75% 80%}
-.sprite.artifact-icon-song-of-days-past.sands {background-position: 100% 80%}
-.sprite.artifact-icon-nighttime-whispers-in-the-echoing-woods.sands {background-position: 0% 90%}
-.sprite.artifact-icon-fragment-of-harmonic-whimsy.sands {background-position: 25% 90%}
-.sprite.artifact-icon-unfinished-reverie.sands {background-position: 50% 90%}
-.sprite.artifact-icon-scroll-of-the-hero-of-cinder-city.sands {background-position: 75% 90%}
-.sprite.artifact-icon-obsidian-codex.sands {background-position: 100% 90%}
-.sprite.artifact-icon-long-nights-oath.sands {background-position: 0% 100%}
-.sprite.artifact-icon-finale-of-the-deep-galleries.sands {background-position: 25% 100%}
-.sprite.artifact-icon-night-of-the-skys-unveiling.sands {background-position: 50% 100%}
-.sprite.artifact-icon-silken-moons-serenade.sands {background-position: 75% 100%}
+.sprite.artifact-icon-resolution-of-sojourner.sands {background-position: 20% 0%}
+.sprite.artifact-icon-brave-heart.sands {background-position: 40% 0%}
+.sprite.artifact-icon-defenders-will.sands {background-position: 60% 0%}
+.sprite.artifact-icon-tiny-miracle.sands {background-position: 80% 0%}
+.sprite.artifact-icon-berserker.sands {background-position: 100% 0%}
+.sprite.artifact-icon-martial-artist.sands {background-position: 0% 10%}
+.sprite.artifact-icon-instructor.sands {background-position: 20% 10%}
+.sprite.artifact-icon-gambler.sands {background-position: 40% 10%}
+.sprite.artifact-icon-the-exile.sands {background-position: 60% 10%}
+.sprite.artifact-icon-adventurer.sands {background-position: 80% 10%}
+.sprite.artifact-icon-lucky-dog.sands {background-position: 100% 10%}
+.sprite.artifact-icon-scholar.sands {background-position: 0% 20%}
+.sprite.artifact-icon-traveling-doctor.sands {background-position: 20% 20%}
+.sprite.artifact-icon-blizzard-strayer.sands {background-position: 40% 20%}
+.sprite.artifact-icon-thundersoother.sands {background-position: 60% 20%}
+.sprite.artifact-icon-lavawalker.sands {background-position: 80% 20%}
+.sprite.artifact-icon-maiden-beloved.sands {background-position: 100% 20%}
+.sprite.artifact-icon-gladiators-finale.sands {background-position: 0% 30%}
+.sprite.artifact-icon-viridescent-venerer.sands {background-position: 20% 30%}
+.sprite.artifact-icon-wanderers-troupe.sands {background-position: 40% 30%}
+.sprite.artifact-icon-thundering-fury.sands {background-position: 60% 30%}
+.sprite.artifact-icon-crimson-witch-of-flames.sands {background-position: 80% 30%}
+.sprite.artifact-icon-noblesse-oblige.sands {background-position: 100% 30%}
+.sprite.artifact-icon-bloodstained-chivalry.sands {background-position: 0% 40%}
+.sprite.artifact-icon-archaic-petra.sands {background-position: 20% 40%}
+.sprite.artifact-icon-retracing-bolide.sands {background-position: 40% 40%}
+.sprite.artifact-icon-heart-of-depth.sands {background-position: 60% 40%}
+.sprite.artifact-icon-tenacity-of-the-millelith.sands {background-position: 80% 40%}
+.sprite.artifact-icon-pale-flame.sands {background-position: 100% 40%}
+.sprite.artifact-icon-shimenawas-reminiscence.sands {background-position: 0% 50%}
+.sprite.artifact-icon-emblem-of-severed-fate.sands {background-position: 20% 50%}
+.sprite.artifact-icon-husk-of-opulent-dreams.sands {background-position: 40% 50%}
+.sprite.artifact-icon-ocean-hued-clam.sands {background-position: 60% 50%}
+.sprite.artifact-icon-vermillion-hereafter.sands {background-position: 80% 50%}
+.sprite.artifact-icon-echoes-of-an-offering.sands {background-position: 100% 50%}
+.sprite.artifact-icon-deepwood-memories.sands {background-position: 0% 60%}
+.sprite.artifact-icon-gilded-dreams.sands {background-position: 20% 60%}
+.sprite.artifact-icon-desert-pavilion-chronicle.sands {background-position: 40% 60%}
+.sprite.artifact-icon-flower-of-paradise-lost.sands {background-position: 60% 60%}
+.sprite.artifact-icon-nymphs-dream.sands {background-position: 80% 60%}
+.sprite.artifact-icon-vourukashas-glow.sands {background-position: 100% 60%}
+.sprite.artifact-icon-marechaussee-hunter.sands {background-position: 0% 70%}
+.sprite.artifact-icon-golden-troupe.sands {background-position: 20% 70%}
+.sprite.artifact-icon-song-of-days-past.sands {background-position: 40% 70%}
+.sprite.artifact-icon-nighttime-whispers-in-the-echoing-woods.sands {background-position: 60% 70%}
+.sprite.artifact-icon-fragment-of-harmonic-whimsy.sands {background-position: 80% 70%}
+.sprite.artifact-icon-unfinished-reverie.sands {background-position: 100% 70%}
+.sprite.artifact-icon-scroll-of-the-hero-of-cinder-city.sands {background-position: 0% 80%}
+.sprite.artifact-icon-obsidian-codex.sands {background-position: 20% 80%}
+.sprite.artifact-icon-long-nights-oath.sands {background-position: 40% 80%}
+.sprite.artifact-icon-finale-of-the-deep-galleries.sands {background-position: 60% 80%}
+.sprite.artifact-icon-night-of-the-skys-unveiling.sands {background-position: 80% 80%}
+.sprite.artifact-icon-silken-moons-serenade.sands {background-position: 100% 80%}
+.sprite.artifact-icon-aubade-of-morningstar-and-moon.sands {background-position: 0% 90%}
+.sprite.artifact-icon-a-day-carved-from-rising-winds.sands {background-position: 20% 90%}
 
 @media
 only screen and (-webkit-min-device-pixel-ratio: 2),
@@ -72,7 +74,7 @@ only screen and (     -o-min-device-pixel-ratio: 2/1),
 only screen and (        min-device-pixel-ratio: 2),
 only screen and (                min-resolution: 192dpi),
 only screen and (                min-resolution: 2dppx) {
-	.sprite-artifact.sands.sprite-24 {background-image: url("../../images/sprites/artifacts_811fc9c60bbc877f7ac45ad30cab577b.png")}
-	.sprite-artifact.sands.sprite-40 {background-image: url("../../images/sprites/artifacts_fb5a83c18147bbe2a1c721b9eabe7a7c.png")}
-	.sprite-artifact.sands.sprite-60 {background-image: url("../../images/sprites/artifacts_b43565b7b141b4ef5d9cb4601617a18c.png")}
+	.sprite-artifact.sands.sprite-24 {background-image: url("../../images/sprites/artifacts_f58b650f8fa4e57be722858eb94558ea.png")}
+	.sprite-artifact.sands.sprite-40 {background-image: url("../../images/sprites/artifacts_fb17d8cd8e3bdb5055122a13c82d29f6.png")}
+	.sprite-artifact.sands.sprite-60 {background-image: url("../../images/sprites/artifacts_14398527bec15cb9b1b24e2052af29d4.png")}
 }

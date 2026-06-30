@@ -10,6 +10,9 @@ from lib.genshin.utils import convert_id, add_array
 from lib.genshin.strings.templates import artifacts_eng, artifacts_rus
 from lib.genshin.strings.templates.names import names_eng, names_rus, keywords_eng, keywords_rus
 from lib.genshin.strings.csv import CsvDumper
+import logging
+
+logger = logging.getLogger(__name__)
 
 IGNORED_SETS = [215004, 215012]
 
@@ -98,26 +101,31 @@ for set_id in sorted(set_data.keys()):
             'rus': [],
             'eng': [],
         }
+        err = False
         for lang_name in lang_data:
-            lang = lang_data[lang_name]['lang']
-            artifacts = lang_data[lang_name]['art_tpl']
+            try:
+                lang = lang_data[lang_name]['lang']
+                artifacts = lang_data[lang_name]['art_tpl']
 
-            tpl_name = f'{set_id}_{cnt}'
-            descr = lang.get(bonus['descTextMapHash'])
+                tpl_name = f'{set_id}_{cnt}'
+                descr = lang.get(bonus['descTextMapHash'])
 
-            tpl_art = getattr(artifacts, tpl_name, None) or getattr(lang_data['eng']['art_tpl'], tpl_name)
-            tpl_names = lang_data[lang_name]['names']
-            tpl_keywords = lang_data[lang_name]['keywords']
+                tpl_art = getattr(artifacts, tpl_name, None) or getattr(lang_data['eng']['art_tpl'], tpl_name)
+                tpl_names = lang_data[lang_name]['names']
+                tpl_keywords = lang_data[lang_name]['keywords']
 
-            tpl_result = tpl_art.process(descr)['descr']
+                tpl_result = tpl_art.process(descr)['descr']
 
-            for item in tpl_result:
-                if tpl_keywords:
-                    item = tpl_keywords.process(item)['descr'][0]
-                if tpl_names:
-                    item = tpl_names.process(item)['descr'][0]
-                res_lang[lang_name].append(item)
-
+                for item in tpl_result:
+                    if tpl_keywords:
+                        item = tpl_keywords.process(item)['descr'][0]
+                    if tpl_names:
+                        item = tpl_names.process(item)['descr'][0]
+                    res_lang[lang_name].append(item)
+            except Exception:
+                logger.error(f'error on {setnb}')
+                err = True
+        if err: continue
         add_array(res_lang, result, setnb, 'set_descr')
 
 CsvDumper().dump(result, 'artifact_set_bonuses.csv')

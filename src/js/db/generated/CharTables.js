@@ -101,7 +101,7 @@ export const charTables = {
 	Lisa: [
 		new StatTableAscensionScale({
 			stat: 'atk_base',
-			base: 19.4107,
+			base: 19.41072,
 			ascension: new StatTable('', [14.5011, 24.8046, 38.5425, 48.846, 59.1494, 69.4528]),
 			scale: charScales.s4atk,
 		}),
@@ -465,7 +465,7 @@ export const charTables = {
 	Xiangling: [
 		new StatTableAscensionScale({
 			stat: 'atk_base',
-			base: 18.8765,
+			base: 18.87648,
 			ascension: new StatTable('', [14.102, 24.1219, 37.4817, 47.5016, 57.5214, 67.5413]),
 			scale: charScales.s4atk,
 		}),
@@ -510,7 +510,7 @@ export const charTables = {
 	Beidou: [
 		new StatTableAscensionScale({
 			stat: 'atk_base',
-			base: 18.8765,
+			base: 18.87648,
 			ascension: new StatTable('', [14.102, 24.1219, 37.4817, 47.5016, 57.5214, 67.5413]),
 			scale: charScales.s4atk,
 		}),
@@ -532,7 +532,7 @@ export const charTables = {
 		}),
 		new StatTableAscensionScale({
 			stat: 'def_base',
-			base: 54.3638,
+			base: 54.36375,
 			ascension: new StatTable('', [40.6125, 69.4688, 107.9437, 136.8, 165.6562, 194.5125]),
 			scale: charScales.s4hp,
 		}),
@@ -586,13 +586,13 @@ export const charTables = {
 		}),
 		new StatTableAscensionScale({
 			stat: 'def_base',
-			base: 63.5198,
+			base: 63.51975,
 			ascension: new StatTable('', [47.4525, 81.1688, 126.1238, 159.84, 193.5562, 227.2725]),
 			scale: charScales.s4hp,
 		}),
 		new StatTableAscensionScale({
 			stat: 'hp_base',
-			base: 857.0836,
+			base: 857.08356,
 			ascension: new StatTable('', [640.2853, 1095.2249, 1701.8109, 2156.7505, 2611.69, 3066.6296]),
 			scale: charScales.s4hp,
 		}),
@@ -823,7 +823,7 @@ export const charTables = {
 		}),
 		new StatTableAscensionScale({
 			stat: 'def_base',
-			base: 49.7858,
+			base: 49.78575,
 			ascension: new StatTable('', [37.1925, 63.6187, 98.8538, 125.28, 151.7063, 178.1325]),
 			scale: charScales.s4hp,
 		}),
@@ -867,7 +867,7 @@ export const charTables = {
 		}),
 		new StatTableAscensionScale({
 			stat: 'def_base',
-			base: 64.6642,
+			base: 64.66425,
 			ascension: new StatTable('', [48.3075, 82.6312, 128.3963, 162.72, 197.0437, 231.3675]),
 			scale: charScales.s4hp,
 		}),
@@ -961,7 +961,7 @@ export const charTables = {
 		}),
 		new StatTableAscensionScale({
 			stat: 'def_base',
-			base: 66.9532,
+			base: 66.95325,
 			ascension: new StatTable('', [50.0175, 85.5563, 132.9412, 168.48, 204.0188, 239.5575]),
 			scale: charScales.s4hp,
 		}),
@@ -1064,13 +1064,13 @@ export const charTables = {
 		}),
 		new StatTableAscensionScale({
 			stat: 'def_base',
-			base: 54.3638,
+			base: 54.36375,
 			ascension: new StatTable('', [40.6125, 69.4688, 107.9437, 136.8, 165.6562, 194.5125]),
 			scale: charScales.s4hp,
 		}),
 		new StatTableAscensionScale({
 			stat: 'hp_base',
-			base: 920.9089,
+			base: 920.90894,
 			ascension: new StatTable('', [687.9661, 1176.7842, 1828.5415, 2317.3596, 2806.1775, 3294.9956]),
 			scale: charScales.s4hp,
 		}),
@@ -1333,7 +1333,7 @@ export const charTables = {
 		}),
 		new StatTableAscensionScale({
 			stat: 'def_base',
-			base: 58.9417,
+			base: 58.94175,
 			ascension: new StatTable('', [44.0325, 75.3187, 117.0337, 148.32, 179.6062, 210.8925]),
 			scale: charScales.s4hp,
 		}),
@@ -1344,7 +1344,7 @@ export const charTables = {
 		}),
 		new StatTableAscensionScale({
 			stat: 'hp_base',
-			base: 775.0223,
+			base: 775.02234,
 			ascension: new StatTable('', [578.9814, 990.3628, 1538.8716, 1950.253, 2361.6345, 2773.016]),
 			scale: charScales.s4hp,
 		}),
@@ -1360,7 +1360,7 @@ export const charTables = {
 	Xinyan: [
 		new StatTableAscensionScale({
 			stat: 'atk_base',
-			base: 20.8354,
+			base: 20.83536,
 			ascension: new StatTable('', [15.5654, 26.6251, 41.3713, 52.431, 63.4906, 74.5503]),
 			scale: charScales.s4atk,
 		}),
@@ -1387,7 +1387,7 @@ export const charTables = {
 		}),
 		new StatTableAscensionScale({
 			stat: 'def_base',
-			base: 66.9532,
+			base: 66.95325,
 			ascension: new StatTable('', [50.0175, 85.5563, 132.9412, 168.48, 204.0188, 239.5575]),
 			scale: charScales.s4hp,
 		}),
@@ -1409,7 +1409,7 @@ export const charTables = {
 	Rosaria: [
 		new StatTableAscensionScale({
 			stat: 'atk_base',
-			base: 20.123,
+			base: 20.12304,
 			ascension: new StatTable('', [15.0333, 25.7148, 39.9569, 50.6385, 61.32, 72.0016]),
 			scale: charScales.s4atk,
 		}),
@@ -1548,7 +1548,7 @@ export const charTables = {
 	YanFei: [
 		new StatTableAscensionScale({
 			stat: 'atk_base',
-			base: 20.123,
+			base: 20.12304,
 			ascension: new StatTable('', [15.0333, 25.7148, 39.9569, 50.6385, 61.32, 72.0016]),
 			scale: charScales.s4atk,
 		}),
@@ -1581,7 +1581,7 @@ export const charTables = {
 		}),
 		new StatTableAscensionScale({
 			stat: 'hp_base',
-			base: 784.1403,
+			base: 784.14026,
 			ascension: new StatTable('', [585.7929, 1002.0142, 1556.976, 1973.1973, 2389.4185, 2805.64]),
 			scale: charScales.s4hp,
 		}),
@@ -1710,7 +1710,7 @@ export const charTables = {
 		}),
 		new StatTableAscensionScale({
 			stat: 'def_base',
-			base: 58.4539,
+			base: 58.45391,
 			ascension: new StatTable('', [50.1201, 85.7318, 133.2139, 168.8256, 204.4373, 240.0489]),
 			scale: charScales.s5hp,
 		}),
@@ -1754,13 +1754,13 @@ export const charTables = {
 		}),
 		new StatTableAscensionScale({
 			stat: 'def_base',
-			base: 61.4454,
+			base: 61.44541,
 			ascension: new StatTable('', [52.6851, 90.1192, 140.0315, 177.4656, 214.8998, 252.3339]),
 			scale: charScales.s5hp,
 		}),
 		new StatTableAscensionScale({
 			stat: 'hp_base',
-			base: 1004.7993,
+			base: 1004.79926,
 			ascension: new StatTable('', [861.5245, 1473.6604, 2289.8416, 2901.9773, 3514.1133, 4126.249]),
 			scale: charScales.s5hp,
 		}),
@@ -1799,7 +1799,7 @@ export const charTables = {
 		}),
 		new StatTableAscensionScale({
 			stat: 'def_base',
-			base: 62.4325,
+			base: 62.432476,
 			ascension: new StatTable('', [46.6403, 79.7794, 123.9649, 157.104, 190.2431, 223.3822]),
 			scale: charScales.s4hp,
 		}),
@@ -1844,7 +1844,7 @@ export const charTables = {
 		}),
 		new StatTableAscensionScale({
 			stat: 'def_base',
-			base: 51.1546,
+			base: 51.15465,
 			ascension: new StatTable('', [43.8615, 75.0263, 116.5793, 147.744, 178.9087, 210.0735]),
 			scale: charScales.s5hp,
 		}),
@@ -1871,7 +1871,7 @@ export const charTables = {
 	Gorou: [
 		new StatTableAscensionScale({
 			stat: 'atk_base',
-			base: 15.3149,
+			base: 15.31488,
 			ascension: new StatTable('', [11.4413, 19.5706, 30.4097, 38.539, 46.6683, 54.7977]),
 			scale: charScales.s4atk,
 		}),
@@ -1889,7 +1889,7 @@ export const charTables = {
 		}),
 		new StatTableAscensionScale({
 			stat: 'def_base',
-			base: 54.3638,
+			base: 54.36375,
 			ascension: new StatTable('', [40.6125, 69.4688, 107.9437, 136.8, 165.6562, 194.5125]),
 			scale: charScales.s4hp,
 		}),
@@ -1916,7 +1916,7 @@ export const charTables = {
 	Sara: [
 		new StatTableAscensionScale({
 			stat: 'atk_base',
-			base: 16.3834,
+			base: 16.38336,
 			ascension: new StatTable('', [12.2395, 20.936, 32.5313, 41.2278, 49.9243, 58.6207]),
 			scale: charScales.s4atk,
 		}),
@@ -1984,7 +1984,7 @@ export const charTables = {
 		}),
 		new StatTableAscensionScale({
 			stat: 'def_base',
-			base: 74.6678,
+			base: 74.66784,
 			ascension: new StatTable('', [64.0224, 109.512, 170.1648, 215.6544, 261.144, 306.6336]),
 			scale: charScales.s5hp,
 		}),
@@ -2035,7 +2035,7 @@ export const charTables = {
 		}),
 		new StatTableAscensionScale({
 			stat: 'hp_base',
-			base: 807.462,
+			base: 807.46204,
 			ascension: new StatTable('', [692.3257, 1184.2413, 1840.1288, 2332.0444, 2823.96, 3315.8757]),
 			scale: charScales.s5hp,
 		}),
@@ -2051,7 +2051,7 @@ export const charTables = {
 	Heizou: [
 		new StatTableAscensionScale({
 			stat: 'atk_base',
-			base: 18.8765,
+			base: 18.87648,
 			ascension: new StatTable('', [14.102, 24.1219, 37.4817, 47.5016, 57.5214, 67.5413]),
 			scale: charScales.s4atk,
 		}),
@@ -2073,7 +2073,7 @@ export const charTables = {
 		}),
 		new StatTableAscensionScale({
 			stat: 'def_base',
-			base: 57.3394,
+			base: 57.33945,
 			ascension: new StatTable('', [42.8355, 73.2712, 113.8522, 144.288, 174.7237, 205.1595]),
 			scale: charScales.s4hp,
 		}),
@@ -2119,7 +2119,7 @@ export const charTables = {
 		}),
 		new StatTableAscensionScale({
 			stat: 'def_base',
-			base: 42.6588,
+			base: 42.65879,
 			ascension: new StatTable('', [36.5769, 62.5658, 97.2176, 123.2064, 149.1952, 175.1841]),
 			scale: charScales.s5hp,
 		}),
@@ -2169,7 +2169,7 @@ export const charTables = {
 		}),
 		new StatTableAscensionScale({
 			stat: 'hp_base',
-			base: 1021.2059,
+			base: 1021.20593,
 			ascension: new StatTable('', [762.8931, 1304.9487, 2027.6896, 2569.745, 3111.8008, 3653.8564]),
 			scale: charScales.s4hp,
 		}),
@@ -2190,7 +2190,7 @@ export const charTables = {
 	Aloy: [
 		new StatTableAscensionScale({
 			stat: 'atk_base',
-			base: 18.2104,
+			base: 18.21036,
 			ascension: new StatTable('', [15.6126, 26.7058, 41.4966, 52.5898, 63.683, 74.7761]),
 			scale: charScales.s5atk,
 		}),
@@ -2268,7 +2268,7 @@ export const charTables = {
 		}),
 		new StatTableAscensionScale({
 			stat: 'hp_base',
-			base: 1011.4725,
+			base: 1011.47253,
 			ascension: new StatTable('', [867.2462, 1483.4475, 2305.049, 2921.2505, 3537.4517, 4153.653]),
 			scale: charScales.s5hp,
 		}),
@@ -2423,7 +2423,7 @@ export const charTables = {
 	Collei: [
 		new StatTableAscensionScale({
 			stat: 'atk_base',
-			base: 16.7395,
+			base: 16.73952,
 			ascension: new StatTable('', [12.5056, 21.3911, 33.2385, 42.124, 51.0096, 59.8951]),
 			scale: charScales.s4atk,
 		}),
@@ -2546,7 +2546,7 @@ export const charTables = {
 		}),
 		new StatTableAscensionScale({
 			stat: 'hp_base',
-			base: 844.6415,
+			base: 844.64154,
 			ascension: new StatTable('', [724.2037, 1238.7695, 1924.8573, 2439.423, 2953.989, 3468.5547]),
 			scale: charScales.s5hp,
 		}),
@@ -2584,7 +2584,7 @@ export const charTables = {
 		}),
 		new StatTableAscensionScale({
 			stat: 'def_base',
-			base: 56.7188,
+			base: 56.71884,
 			ascension: new StatTable('', [48.6324, 83.187, 129.2598, 163.8144, 198.369, 232.9236]),
 			scale: charScales.s5hp,
 		}),
@@ -2634,7 +2634,7 @@ export const charTables = {
 		}),
 		new StatTableAscensionScale({
 			stat: 'def_base',
-			base: 66.8899,
+			base: 66.88994,
 			ascension: new StatTable('', [57.3534, 98.1045, 152.4393, 193.1904, 233.9415, 274.6926]),
 			scale: charScales.s5hp,
 		}),
@@ -2750,7 +2750,7 @@ export const charTables = {
 	Layla: [
 		new StatTableAscensionScale({
 			stat: 'atk_base',
-			base: 18.1642,
+			base: 18.16416,
 			ascension: new StatTable('', [13.5699, 23.2116, 36.0673, 45.7091, 55.3508, 64.9926]),
 			scale: charScales.s4atk,
 		}),
@@ -2960,7 +2960,7 @@ export const charTables = {
 		}),
 		new StatTableAscensionScale({
 			stat: 'def_base',
-			base: 60.8471,
+			base: 60.84711,
 			ascension: new StatTable('', [52.1721, 89.2417, 138.6679, 175.7376, 212.8073, 249.8769]),
 			scale: charScales.s5hp,
 		}),
@@ -3009,7 +3009,7 @@ export const charTables = {
 		}),
 		new StatTableAscensionScale({
 			stat: 'def_base',
-			base: 48.8811,
+			base: 48.88111,
 			ascension: new StatTable('', [41.9121, 71.6917, 111.3979, 141.1776, 170.9572, 200.7369]),
 			scale: charScales.s5hp,
 		}),
@@ -3058,7 +3058,7 @@ export const charTables = {
 		}),
 		new StatTableAscensionScale({
 			stat: 'def_base',
-			base: 59.8001,
+			base: 59.800125,
 			ascension: new StatTable('', [44.6737, 76.4156, 118.7381, 150.48, 182.2219, 213.9638]),
 			scale: charScales.s4hp,
 		}),
@@ -3179,7 +3179,7 @@ export const charTables = {
 	Lynette: [
 		new StatTableAscensionScale({
 			stat: 'atk_base',
-			base: 19.4107,
+			base: 19.41072,
 			ascension: new StatTable('', [14.5011, 24.8046, 38.5425, 48.846, 59.1494, 69.4528]),
 			scale: charScales.s4atk,
 		}),
@@ -3201,7 +3201,7 @@ export const charTables = {
 		}),
 		new StatTableAscensionScale({
 			stat: 'def_base',
-			base: 59.6857,
+			base: 59.685677,
 			ascension: new StatTable('', [44.5883, 76.2694, 118.5109, 150.192, 181.8731, 213.5542]),
 			scale: charScales.s4hp,
 		}),
@@ -3296,7 +3296,7 @@ export const charTables = {
 		}),
 		new StatTableAscensionScale({
 			stat: 'def_base',
-			base: 59.3995,
+			base: 59.39955,
 			ascension: new StatTable('', [44.3745, 75.9038, 117.9428, 149.472, 181.0012, 212.5305]),
 			scale: charScales.s4hp,
 		}),
@@ -3341,7 +3341,7 @@ export const charTables = {
 		}),
 		new StatTableAscensionScale({
 			stat: 'def_base',
-			base: 59.4112,
+			base: 59.41119,
 			ascension: new StatTable('', [50.9409, 87.1358, 135.3955, 171.5904, 207.7852, 243.9801]),
 			scale: charScales.s5hp,
 		}),
@@ -3363,7 +3363,7 @@ export const charTables = {
 	Neuvillette: [
 		new StatTableAscensionScale({
 			stat: 'atk_base',
-			base: 16.218,
+			base: 16.21802,
 			ascension: new StatTable('', [13.9045, 23.784, 36.9566, 46.8361, 56.7156, 66.5951]),
 			scale: charScales.s5atk,
 		}),
@@ -3408,7 +3408,7 @@ export const charTables = {
 	Charlotte: [
 		new StatTableAscensionScale({
 			stat: 'atk_base',
-			base: 14.5135,
+			base: 14.51352,
 			ascension: new StatTable('', [10.8426, 18.5465, 28.8185, 36.5224, 44.2264, 51.9303]),
 			scale: charScales.s4atk,
 		}),
@@ -3480,7 +3480,7 @@ export const charTables = {
 		}),
 		new StatTableAscensionScale({
 			stat: 'def_base',
-			base: 54.1461,
+			base: 54.14615,
 			ascension: new StatTable('', [46.4265, 79.4137, 123.3967, 156.384, 189.3713, 222.3585]),
 			scale: charScales.s5hp,
 		}),
@@ -3502,7 +3502,7 @@ export const charTables = {
 	Chevreuse: [
 		new StatTableAscensionScale({
 			stat: 'atk_base',
-			base: 16.2053,
+			base: 16.20528,
 			ascension: new StatTable('', [12.1065, 20.7084, 32.1777, 40.7796, 49.3816, 57.9836]),
 			scale: charScales.s4atk,
 		}),
@@ -3524,7 +3524,7 @@ export const charTables = {
 		}),
 		new StatTableAscensionScale({
 			stat: 'def_base',
-			base: 50.7013,
+			base: 50.70135,
 			ascension: new StatTable('', [37.8765, 64.7887, 100.6718, 127.584, 154.4963, 181.4085]),
 			scale: charScales.s4hp,
 		}),
@@ -3574,13 +3574,13 @@ export const charTables = {
 		}),
 		new StatTableAscensionScale({
 			stat: 'def_base',
-			base: 61.7446,
+			base: 61.74456,
 			ascension: new StatTable('', [52.9416, 90.558, 140.7132, 178.3296, 215.946, 253.5624]),
 			scale: charScales.s5hp,
 		}),
 		new StatTableAscensionScale({
 			stat: 'hp_base',
-			base: 984.7795,
+			base: 984.77954,
 			ascension: new StatTable('', [844.3594, 1444.2991, 2244.2185, 2844.158, 3444.0977, 4044.0374]),
 			scale: charScales.s5hp,
 		}),
@@ -3596,7 +3596,7 @@ export const charTables = {
 	Gaming: [
 		new StatTableAscensionScale({
 			stat: 'atk_base',
-			base: 25.2874,
+			base: 25.28736,
 			ascension: new StatTable('', [18.8914, 32.3142, 50.2113, 63.6342, 77.057, 90.4798]),
 			scale: charScales.s4atk,
 		}),
@@ -3623,13 +3623,13 @@ export const charTables = {
 		}),
 		new StatTableAscensionScale({
 			stat: 'def_base',
-			base: 58.9417,
+			base: 58.94175,
 			ascension: new StatTable('', [44.0325, 75.3187, 117.0337, 148.32, 179.6062, 210.8925]),
 			scale: charScales.s4hp,
 		}),
 		new StatTableAscensionScale({
 			stat: 'hp_base',
-			base: 957.3805,
+			base: 957.38055,
 			ascension: new StatTable('', [715.2123, 1223.3894, 1900.959, 2409.1362, 2917.3132, 3425.4905]),
 			scale: charScales.s4hp,
 		}),
@@ -3672,7 +3672,7 @@ export const charTables = {
 		}),
 		new StatTableAscensionScale({
 			stat: 'def_base',
-			base: 44.5733,
+			base: 44.57335,
 			ascension: new StatTable('', [38.2185, 65.3738, 101.5807, 128.736, 155.8913, 183.0465]),
 			scale: charScales.s5hp,
 		}),
@@ -3807,7 +3807,7 @@ export const charTables = {
 		}),
 		new StatTableAscensionScale({
 			stat: 'def_base',
-			base: 59.5309,
+			base: 59.53085,
 			ascension: new StatTable('', [51.0435, 87.3113, 135.6682, 171.936, 208.2038, 244.4715]),
 			scale: charScales.s5hp,
 		}),
@@ -3829,7 +3829,7 @@ export const charTables = {
 	Sethos: [
 		new StatTableAscensionScale({
 			stat: 'atk_base',
-			base: 19.0546,
+			base: 19.05456,
 			ascension: new StatTable('', [14.2351, 24.3495, 37.8353, 47.9497, 58.0641, 68.1785]),
 			scale: charScales.s4atk,
 		}),
@@ -3899,7 +3899,7 @@ export const charTables = {
 		}),
 		new StatTableAscensionScale({
 			stat: 'hp_base',
-			base: 1008.6126,
+			base: 1008.61255,
 			ascension: new StatTable('', [864.7941, 1479.253, 2298.5315, 2912.9905, 3527.4495, 4141.908]),
 			scale: charScales.s5hp,
 		}),
@@ -3960,7 +3960,7 @@ export const charTables = {
 	Kachina: [
 		new StatTableAscensionScale({
 			stat: 'atk_base',
-			base: 18.1642,
+			base: 18.16416,
 			ascension: new StatTable('', [13.5699, 23.2116, 36.0673, 45.7091, 55.3508, 64.9926]),
 			scale: charScales.s4atk,
 		}),
@@ -3982,7 +3982,7 @@ export const charTables = {
 		}),
 		new StatTableAscensionScale({
 			stat: 'def_base',
-			base: 66.4382,
+			base: 66.438225,
 			ascension: new StatTable('', [49.6328, 84.8981, 131.9186, 167.184, 202.4494, 237.7148]),
 			scale: charScales.s4hp,
 		}),
@@ -4032,7 +4032,7 @@ export const charTables = {
 		}),
 		new StatTableAscensionScale({
 			stat: 'def_base',
-			base: 62.4027,
+			base: 62.40269,
 			ascension: new StatTable('', [53.5059, 91.5233, 142.213, 180.2304, 218.2478, 256.2651]),
 			scale: charScales.s5hp,
 		}),
@@ -4077,7 +4077,7 @@ export const charTables = {
 		}),
 		new StatTableAscensionScale({
 			stat: 'def_base',
-			base: 44.3939,
+			base: 44.39386,
 			ascension: new StatTable('', [38.0646, 65.1105, 101.1717, 128.2176, 155.2635, 182.3094]),
 			scale: charScales.s5hp,
 		}),
@@ -4132,7 +4132,7 @@ export const charTables = {
 		}),
 		new StatTableAscensionScale({
 			stat: 'hp_base',
-			base: 965.7131,
+			base: 965.71313,
 			ascension: new StatTable('', [828.0117, 1416.3358, 2200.768, 2789.092, 3377.4163, 3965.7402]),
 			scale: charScales.s5hp,
 		}),
@@ -4218,7 +4218,7 @@ export const charTables = {
 		}),
 		new StatTableAscensionScale({
 			stat: 'hp_base',
-			base: 775.0223,
+			base: 775.02234,
 			ascension: new StatTable('', [578.9814, 990.3628, 1538.8716, 1950.253, 2361.6345, 2773.016]),
 			scale: charScales.s4hp,
 		}),
@@ -4297,7 +4297,7 @@ export const charTables = {
 		}),
 		new StatTableAscensionScale({
 			stat: 'def_base',
-			base: 59.4112,
+			base: 59.41119,
 			ascension: new StatTable('', [50.9409, 87.1358, 135.3955, 171.5904, 207.7852, 243.9801]),
 			scale: charScales.s5hp,
 		}),
@@ -4320,7 +4320,7 @@ export const charTables = {
 	LanYan: [
 		new StatTableAscensionScale({
 			stat: 'atk_base',
-			base: 21.0134,
+			base: 21.01344,
 			ascension: new StatTable('', [15.6985, 26.8527, 41.7249, 52.8791, 64.0333, 75.1875]),
 			scale: charScales.s4atk,
 		}),
@@ -4347,13 +4347,13 @@ export const charTables = {
 		}),
 		new StatTableAscensionScale({
 			stat: 'def_base',
-			base: 48.6412,
+			base: 48.64125,
 			ascension: new StatTable('', [36.3375, 62.1562, 96.5812, 122.4, 148.2188, 174.0375]),
 			scale: charScales.s4hp,
 		}),
 		new StatTableAscensionScale({
 			stat: 'hp_base',
-			base: 775.0223,
+			base: 775.02234,
 			ascension: new StatTable('', [578.9814, 990.3628, 1538.8716, 1950.253, 2361.6345, 2773.016]),
 			scale: charScales.s4hp,
 		}),
@@ -4391,7 +4391,7 @@ export const charTables = {
 		}),
 		new StatTableAscensionScale({
 			stat: 'def_base',
-			base: 58.9325,
+			base: 58.93255,
 			ascension: new StatTable('', [50.5305, 86.4338, 134.3048, 170.208, 206.1113, 242.0145]),
 			scale: charScales.s5hp,
 		}),
@@ -4414,7 +4414,7 @@ export const charTables = {
 	Iansan: [
 		new StatTableAscensionScale({
 			stat: 'atk_base',
-			base: 21.5477,
+			base: 21.54768,
 			ascension: new StatTable('', [16.0976, 27.5354, 42.7857, 54.2235, 65.6613, 77.099]),
 			scale: charScales.s4atk,
 		}),
@@ -4437,7 +4437,7 @@ export const charTables = {
 		}),
 		new StatTableAscensionScale({
 			stat: 'def_base',
-			base: 53.5054,
+			base: 53.505375,
 			ascension: new StatTable('', [39.9712, 68.3719, 106.2394, 134.64, 163.0406, 191.4412]),
 			scale: charScales.s4hp,
 		}),
@@ -4482,13 +4482,13 @@ export const charTables = {
 		}),
 		new StatTableAscensionScale({
 			stat: 'def_base',
-			base: 60.8471,
+			base: 60.84711,
 			ascension: new StatTable('', [52.1721, 89.2417, 138.6679, 175.7376, 212.8073, 249.8769]),
 			scale: charScales.s5hp,
 		}),
 		new StatTableAscensionScale({
 			stat: 'hp_base',
-			base: 988.5928,
+			base: 988.59283,
 			ascension: new StatTable('', [847.629, 1449.8916, 2252.9087, 2855.1714, 3457.434, 4059.6965]),
 			scale: charScales.s5hp,
 		}),
@@ -4527,7 +4527,7 @@ export const charTables = {
 		}),
 		new StatTableAscensionScale({
 			stat: 'def_base',
-			base: 56.9582,
+			base: 56.95816,
 			ascension: new StatTable('', [48.8376, 83.538, 129.8052, 164.5056, 199.206, 233.9064]),
 			scale: charScales.s5hp,
 		}),
@@ -4549,7 +4549,7 @@ export const charTables = {
 	Ifa: [
 		new StatTableAscensionScale({
 			stat: 'atk_base',
-			base: 14.9587,
+			base: 14.95872,
 			ascension: new StatTable('', [11.1752, 19.1155, 29.7025, 37.6428, 45.583, 53.5233]),
 			scale: charScales.s4atk,
 		}),
@@ -4571,7 +4571,7 @@ export const charTables = {
 		}),
 		new StatTableAscensionScale({
 			stat: 'def_base',
-			base: 50.7586,
+			base: 50.758575,
 			ascension: new StatTable('', [37.9192, 64.8619, 100.7854, 127.728, 154.6706, 181.6132]),
 			scale: charScales.s4hp,
 		}),
@@ -4613,7 +4613,7 @@ export const charTables = {
 		}),
 		new StatTableAscensionScale({
 			stat: 'def_base',
-			base: 62.7617,
+			base: 62.76167,
 			ascension: new StatTable('', [53.8137, 92.0498, 143.0311, 181.2672, 219.5033, 257.7393]),
 			scale: charScales.s5hp,
 		}),
@@ -4635,7 +4635,7 @@ export const charTables = {
 	Dahlia: [
 		new StatTableAscensionScale({
 			stat: 'atk_base',
-			base: 15.8491,
+			base: 15.84912,
 			ascension: new StatTable('', [11.8404, 20.2533, 31.4705, 39.8834, 48.2963, 56.7092]),
 			scale: charScales.s4atk,
 		}),
@@ -4707,7 +4707,7 @@ export const charTables = {
 		}),
 		new StatTableAscensionScale({
 			stat: 'def_base',
-			base: 64.4369,
+			base: 64.43691,
 			ascension: new StatTable('', [55.2501, 94.5067, 146.849, 186.1056, 225.3622, 264.6189]),
 			scale: charScales.s5hp,
 		}),
@@ -4819,7 +4819,7 @@ export const charTables = {
 	Lauma: [
 		new StatTableAscensionScale({
 			stat: 'atk_base',
-			base: 19.8489,
+			base: 19.84892,
 			ascension: new StatTable('', [17.0174, 29.1087, 45.2305, 57.3218, 69.4131, 81.5044]),
 			scale: charScales.s5atk,
 		}),
@@ -4883,7 +4883,7 @@ export const charTables = {
 		}),
 		new StatTableAscensionScale({
 			stat: 'def_base',
-			base: 62.9412,
+			base: 62.94116,
 			ascension: new StatTable('', [53.9676, 92.313, 143.4402, 181.7856, 220.131, 258.4764]),
 			scale: charScales.s5hp,
 		}),
@@ -4905,7 +4905,7 @@ export const charTables = {
 	Aino: [
 		new StatTableAscensionScale({
 			stat: 'atk_base',
-			base: 20.3011,
+			base: 20.30112,
 			ascension: new StatTable('', [15.1663, 25.9424, 40.3105, 51.0866, 61.8627, 72.6388]),
 			scale: charScales.s4atk,
 		}),
@@ -4927,7 +4927,7 @@ export const charTables = {
 		}),
 		new StatTableAscensionScale({
 			stat: 'def_base',
-			base: 50.9303,
+			base: 50.93025,
 			ascension: new StatTable('', [38.0475, 65.0812, 101.1262, 128.16, 155.1938, 182.2275]),
 			scale: charScales.s4hp,
 		}),
@@ -4986,6 +4986,51 @@ export const charTables = {
 		new StatTableAscensionScale({
 			stat: 'mastery_base',
 			base: 100,
+		}),
+		new StatTableAscensionScale({
+			stat: 'recharge_base',
+			base: 100,
+		}),
+	],
+	Jahoda: [
+		new StatTableAscensionScale({
+			stat: 'atk_base',
+			base: 18.6984,
+			ascension: new StatTable('', [13.969, 23.8943, 37.1281, 47.0534, 56.9788, 66.9041]),
+			scale: charScales.s4atk,
+		}),
+		new StatTableAscensionScale({
+			stat: 'burst_energy_cost',
+			base: 70,
+		}),
+		new StatTableAscensionScale({
+			stat: 'crit_dmg_base',
+			base: 50,
+		}),
+		new StatTableAscensionScale({
+			stat: 'crit_rate_base',
+			base: 5,
+		}),
+		new StatTableAscensionScale({
+			stat: 'def_base',
+			base: 48.64125,
+			ascension: new StatTable('', [36.3375, 62.1562, 96.5812, 122.4, 148.2188, 174.0375]),
+			scale: charScales.s4hp,
+		}),
+		new StatTableAscensionScale({
+			stat: 'healing_base',
+			base: 0,
+			ascension: new StatTable('', [0, 4.62, 9.23, 9.23, 13.85, 18.46]),
+		}),
+		new StatTableAscensionScale({
+			stat: 'hp_base',
+			base: 808.7586,
+			ascension: new StatTable('', [604.1841, 1033.4728, 1605.8577, 2035.1465, 2464.435, 2893.7239]),
+			scale: charScales.s4hp,
+		}),
+		new StatTableAscensionScale({
+			stat: 'mastery_base',
+			base: 0,
 		}),
 		new StatTableAscensionScale({
 			stat: 'recharge_base',

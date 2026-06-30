@@ -29,9 +29,10 @@ char_flins = TemplateList(
             [],
             [],
             ['ignore', 'ignore'],
+            [],
         ],
         results=[
-            [0, 1, 2, 3],
+            [0, 1, 2, 3, 4],
             [0, 1, 2],
         ],
     ),
@@ -41,9 +42,10 @@ char_flins = TemplateList(
             [],
             [],
             ['ignore', 'ignore'],
+            [],
         ],
         results=[
-            [0, 1, 2],
+            [0, 1, 2, 3],
             [0, 1],
         ],
     ),

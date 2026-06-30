@@ -9,8 +9,8 @@ import static  # noqa
 from char_common import parse_scales, parse_skills
 
 dirname = os.path.dirname(__file__)
-data_dir = os.path.join(dirname, '../../../AnimeGameData/ExcelBinOutput/')
-out_dir = os.path.join(dirname, '../../src/js/db/generated/')
+data_dir = os.path.join(dirname, '../../AnimeGameData/ExcelBinOutput/')
+out_dir = os.path.join(dirname, '../src/js/db/generated/')
 
 
 def parse_curves():
@@ -121,7 +121,7 @@ def parse_chars():
 
     for item in json.load(file):
         charId = item['id']
-        charName = static.getCharById(charId)
+        charName = static.getCharById(charId, '')#lang_default.get(char['nameTextMapHash']))
         if not charName:
             continue
 

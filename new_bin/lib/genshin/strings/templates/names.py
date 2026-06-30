@@ -12,6 +12,7 @@ names_eng = Template(
         'Nightsoul Bursts',
 
         'Moonsign',
+        'Moondrifts',
         'Nascent Gleam',
         'Ascendant Gleam',
         'Lunar Reactions',
@@ -238,6 +239,7 @@ names_rus = Template(
         'элементальные сферы',
         'частицы',
         'Лунное знамение',
+        'Лунная пелена',
         'Зарождающееся сияние',
         'Высшее сияние',
         'Лунные реакции',

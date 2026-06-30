@@ -1,13 +1,13 @@
 .sprite-artifact.circlet.sprite-24 {
-	background-image: url("../../images/sprites/artifacts_9364873980ab25479bd20544fe77227a.png");
+	background-image: url("../../images/sprites/artifacts_2ff7d1667279cec8ba9bc093feb35659.png");
 	background-size: 144px 264px;
 }
 .sprite-artifact.circlet.sprite-40 {
-	background-image: url("../../images/sprites/artifacts_8226f034752b7c8ec1dbc1f82e380c88.png");
+	background-image: url("../../images/sprites/artifacts_4a9e5223ae7382b848a7fdd46727cca5.png");
 	background-size: 240px 440px;
 }
 .sprite-artifact.circlet.sprite-60 {
-	background-image: url("../../images/sprites/artifacts_19848f108b9e32dd8bc0d83d3f58bcc4.png");
+	background-image: url("../../images/sprites/artifacts_560ed66466a2e61e8a19d87d05602093.png");
 	background-size: 360px 660px;
 }
 .sprite.artifact-icon-unknown {background-position: 0% 0%}
@@ -68,6 +68,8 @@
 .sprite.artifact-icon-finale-of-the-deep-galleries.circlet {background-position: 20% 90%}
 .sprite.artifact-icon-night-of-the-skys-unveiling.circlet {background-position: 40% 90%}
 .sprite.artifact-icon-silken-moons-serenade.circlet {background-position: 60% 90%}
+.sprite.artifact-icon-aubade-of-morningstar-and-moon.circlet {background-position: 80% 90%}
+.sprite.artifact-icon-a-day-carved-from-rising-winds.circlet {background-position: 100% 90%}
 
 @media
 only screen and (-webkit-min-device-pixel-ratio: 2),
@@ -76,7 +78,7 @@ only screen and (     -o-min-device-pixel-ratio: 2/1),
 only screen and (        min-device-pixel-ratio: 2),
 only screen and (                min-resolution: 192dpi),
 only screen and (                min-resolution: 2dppx) {
-	.sprite-artifact.circlet.sprite-24 {background-image: url("../../images/sprites/artifacts_58c01dc5719291a69387b985601a19aa.png")}
-	.sprite-artifact.circlet.sprite-40 {background-image: url("../../images/sprites/artifacts_f5ad98292deaf5cacd283b003f6f08d3.png")}
-	.sprite-artifact.circlet.sprite-60 {background-image: url("../../images/sprites/artifacts_8b801b34e75618fa55c9a302ed089f26.png")}
+	.sprite-artifact.circlet.sprite-24 {background-image: url("../../images/sprites/artifacts_da4a25bb8083814f050b58a2dcd48a3d.png")}
+	.sprite-artifact.circlet.sprite-40 {background-image: url("../../images/sprites/artifacts_97f3491404ef1b3d9fbcfb3f52db0353.png")}
+	.sprite-artifact.circlet.sprite-60 {background-image: url("../../images/sprites/artifacts_011bbe6276a1884f932919faa0faf974.png")}
 }
