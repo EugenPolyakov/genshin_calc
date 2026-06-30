@@ -2,8 +2,14 @@ export class ValueTable {
     /**
      * @param {Array.<number>} values
      */
-    constructor(values) {
-        this.values = values;
+    constructor (values, multi) {
+        if (multi != undefined) {
+            this.values = [];
+            for (var val of values) {
+                this.values.push(parseFloat((parseFloat(val).toFixed(4) * multi).toFixed(4)));
+            }
+        } else
+            this.values = values.map(x => parseFloat(parseFloat(x).toFixed(4)));
     }
 
      /**
@@ -19,5 +25,9 @@ export class ValueTable {
         }
 
         return 0;
+    }
+
+    multiply(multi) {
+        return new ValueTable(this.values, multi)
     }
 }

@@ -109,21 +109,18 @@
 .char-icon-flins {background-image: url("../../images/chars/flins.png")}
 .char-icon-aino {background-image: url("../../images/chars/aino.png")}
 .char-icon-nefer {background-image: url("../../images/chars/nefer.png")}
-.char-icon-ineffa {background-image: url("../../images/chars/ineffa.png")}
-.char-icon-ugc-official-male {background-image: url("../../images/chars/playerboy.png")}
-.char-icon-ugc-official-female {background-image: url("../../images/chars/playergirl.png")}
-.char-icon-ugc-test-character-prototype-male {background-image: url("../../images/chars/playerboy.png")}
-.char-icon-ugc-test-character-prototype-female {background-image: url("../../images/chars/playergirl.png")}
+.char-icon-durin {background-image: url("../../images/chars/durin.png")}
+.char-icon-jahoda {background-image: url("../../images/chars/jahoda.png")}
 .sprite-char.sprite-24 {
-	background-image: url("../../images/sprites/char_89bd3518929d8808373bfbcdb24b1411.png");
+	background-image: url("../../images/sprites/char_b0f1e2de94a7a1cb3d961a6c8d30fe3d.png");
 	background-size: 264px 264px;
 }
 .sprite-char.sprite-40 {
-	background-image: url("../../images/sprites/char_cbd0c9dc824579a9dac56e2a73a63b64.png");
+	background-image: url("../../images/sprites/char_911461f958d4f12d520867d6996e08bb.png");
 	background-size: 440px 440px;
 }
 .sprite-char.sprite-60 {
-	background-image: url("../../images/sprites/char_ece2df0865fd131398273315418a24ce.png");
+	background-image: url("../../images/sprites/char_35b15a2d8677aed0838889624be123a9.png");
 	background-size: 660px 660px;
 }
 .sprite.char-icon-unknown {background-position: 0% 0%}
@@ -237,11 +234,8 @@
 .sprite.char-icon-flins {background-position: 90% 90%}
 .sprite.char-icon-aino {background-position: 100% 90%}
 .sprite.char-icon-nefer {background-position: 0% 100%}
-.sprite.char-icon-ineffa {background-position: 10% 100%}
-.sprite.char-icon-ugc-official-male {background-position: 20% 100%}
-.sprite.char-icon-ugc-official-female {background-position: 30% 100%}
-.sprite.char-icon-ugc-test-character-prototype-male {background-position: 40% 100%}
-.sprite.char-icon-ugc-test-character-prototype-female {background-position: 50% 100%}
+.sprite.char-icon-durin {background-position: 10% 100%}
+.sprite.char-icon-jahoda {background-position: 20% 100%}
 
 @media
 only screen and (-webkit-min-device-pixel-ratio: 2),
@@ -361,12 +355,9 @@ only screen and (                min-resolution: 2dppx) {
 	.char-icon-flins {background-image: url("../../images/chars/flins_2x.png")}
 	.char-icon-aino {background-image: url("../../images/chars/aino_2x.png")}
 	.char-icon-nefer {background-image: url("../../images/chars/nefer_2x.png")}
-	.char-icon-ineffa {background-image: url("../../images/chars/ineffa_2x.png")}
-	.char-icon-ugc-official-male {background-image: url("../../images/chars/playerboy_2x.png")}
-	.char-icon-ugc-official-female {background-image: url("../../images/chars/playergirl_2x.png")}
-	.char-icon-ugc-test-character-prototype-male {background-image: url("../../images/chars/playerboy_2x.png")}
-	.char-icon-ugc-test-character-prototype-female {background-image: url("../../images/chars/playergirl_2x.png")}
-	.sprite-char.sprite-24 {background-image: url("../../images/sprites/char_2bace3636d399ebf47a02e74524a9b0f.png")}
-	.sprite-char.sprite-40 {background-image: url("../../images/sprites/char_3b219b5c440266ad6afe1ba95ee64905.png")}
-	.sprite-char.sprite-60 {background-image: url("../../images/sprites/char_18a787ec9c5bcd9cd757d8fe7857bc14.png")}
+	.char-icon-durin {background-image: url("../../images/chars/durin_2x.png")}
+	.char-icon-jahoda {background-image: url("../../images/chars/jahoda_2x.png")}
+	.sprite-char.sprite-24 {background-image: url("../../images/sprites/char_525c15e8743ca767d22202eb467e274d.png")}
+	.sprite-char.sprite-40 {background-image: url("../../images/sprites/char_bc56bb8ff51356a544c60c4804be8ec4.png")}
+	.sprite-char.sprite-60 {background-image: url("../../images/sprites/char_f42df8337e6cf2ae15fd9f4ecac9b5cc.png")}
 }

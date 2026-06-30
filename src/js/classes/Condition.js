@@ -122,7 +122,12 @@ export class Condition {
     }
 
     getDefaultStats(settings) {
-        return new Stats(this.params.stats || new Stats());
+        let stat = new Stats(this.params.stats || new Stats());
+        let list = this.getCondtitionList();
+        if (list)
+            for (let c of list)
+                stat.concat(c.getActualStats(settings));
+        return stat;
     }
 
     getAllStats(settings) {
@@ -144,6 +149,13 @@ export class Condition {
 
     getBuffRotationSection(settings) {
         return this.params.rotation || '';
+    }
+
+    getCondtitionList() {
+        if (this.params.customStats)
+            return this.params.customStats;
+
+        return null;
     }
 
     static allConditionsOn(conditions, buildSettings) {
@@ -203,15 +215,17 @@ export class Condition {
         let result = [];
 
         for (let item of items) {
-            if (item.getCondtitionList) {
-                for (let subItem of item.getCondtitionList()) {
+            let list = item.getCondtitionList();
+            if (list) {
+                for (let subItem of list) {
                     if (!settings || subItem.isActive(settings)) {
                         result.push(subItem);
                     }
                 }
-            } else {
+                if (item.params.serializeId)
+                    result.push(item);
+            } else
                 result.push(item);
-            }
         }
 
         return result;

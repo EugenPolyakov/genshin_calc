@@ -90,21 +90,22 @@ function ConditionItem(props) {
     }
 
     let stats = cond.getDisplayStats(props.settings);
+    let list = cond.getCondtitionList()
     let result = (
         <div
             className="condition-list-item"
             data-char={props.charId}
         >
             <div className="top-line">
-                {props.hideControls ? '' : <div className="control">
+                { props.hideControls ? '' : <div className="control">
                     <ConditionControl
-                        item={cond}
-                        type={type}
-                        settings={props.settings}
-                        onChange={props.onChange}
-                        subcond={subcond}
+                        item={ cond }
+                        type={ type }
+                        settings={ props.settings }
+                        onChange={ props.onChange }
+                        subcond={ subcond }
                     />
-                </div>}
+                </div> }
                 <div className="title" dangerouslySetInnerHTML={{ __html: cond.getTitle(stats) }} />
                 <ConditionLoadStat
                     stat={cond.params.loadPartyStat}
@@ -113,6 +114,19 @@ function ConditionItem(props) {
                 />
                 <ConditionInfo item={cond} />
             </div>
+            { !props.hideControls && list ? list.map(a =>
+                a.isHidden(props.settings) ? '' :
+                <div className="top-line">
+                    <div className="control">
+                        <ConditionControl
+                            item={ a }
+                            type={ a.getType() }
+                            settings={ props.settings }
+                            onChange={ props.onChange }
+                        />
+                    </div>
+                    <div className="title" dangerouslySetInnerHTML={ { __html: a.getTitle(stats) } } />
+                </div>) : '' }
             <ConditionDescription item={cond} stats={stats} />
         </div>
     );

@@ -302,7 +302,7 @@ export const Weapons = new DbObjectBuff({
                 new ConditionBoolean({name: 'symphonist_of_scents_3'}),
             ]),
         }),
-        new ConditionPartyWeapon({
+        /*new ConditionPartyWeapon({
             name: 'weapon_other.weapon_fractured_halo',
             serializeIds: [59],
             beta: true,
@@ -318,7 +318,7 @@ export const Weapons = new DbObjectBuff({
             condition: new ConditionNot([
                 new ConditionBoolean({name: 'weapon_fractured_halo_2'}),
             ]),
-        }),
+        }),*/
     ],
     postEffects: [
         new PostEffectStats({

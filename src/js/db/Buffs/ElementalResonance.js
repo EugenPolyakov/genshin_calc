@@ -1,13 +1,22 @@
+import { ConditionAnd } from "../../classes/Condition/And";
 import { ConditionBoolean } from "../../classes/Condition/Boolean";
 import { ConditionEnemyStatus } from "../../classes/Condition/Boolean/EnemyStatus";
 import { ConditionBooleanResonanceEnabled } from "../../classes/Condition/Boolean/ResonanceEnabled";
 import { ConditionBooleanValue } from "../../classes/Condition/Boolean/Value";
 import { ConditionChars } from "../../classes/Condition/Chars";
 import { ConditionCustomBuffs } from "../../classes/Condition/CustomBuffs";
+import { ConditionMoonPhaseSetting } from "../../classes/Condition/CustomOrigin/MoonPhaseSetting";
 import { ConditionDropdownElement } from "../../classes/Condition/Dropdown/Element";
+import { ConditionMoonPhaseCheck } from "../../classes/Condition/MoonPhaseCheck";
+import { ConditionNonLunarElement } from "../../classes/Condition/NonLunarElement";
+import { ConditionNumber } from "../../classes/Condition/Number";
+import { ConditionOr } from "../../classes/Condition/Or";
 import { ConditionResonance } from "../../classes/Condition/Resonance";
 import { ConditionStatic } from "../../classes/Condition/Static";
 import { DbObjectBuff } from "../../classes/DbObject/Buff";
+import { PostEffectStats } from "../../classes/PostEffect/Stats";
+import { StatTable } from "../../classes/StatTable";
+import { ValueTable } from "../../classes/ValueTable";
 
 const elementValues = [
     {
@@ -371,12 +380,127 @@ export const ElementalResonance = new DbObjectBuff({
             title: 'buffs_name.only_full_party_resonance',
             description: 'buffs_descr.only_full_party_resonances',
             hideInactive: true,
-            subConditions: [
-                new ConditionBooleanValue({
-                    setting: 'party_size',
-                    cond: 'lt',
-                    value: 4,
+            condition: new ConditionBooleanValue({
+                setting: 'party_size',
+                cond: 'lt',
+                value: 4,
+            }),
+        }),
+        new ConditionMoonPhaseSetting(),
+        new ConditionBoolean({
+            name: 'bufs.ascendant_gleam_PEC',
+            serializeId: 62,
+            title: 'buffs_name.ascendant_gleam_PEC',
+            description: 'buffs_descr.ascendant_gleam_PEC',
+            hideInactive: true,
+            customStats: [
+                new ConditionNumber({
+                    name: 'ascendant_gleam_atk',
+                    serializeId: 66,
+                    title: 'pool_stat.atk',
                 }),
+            ],
+            condition: new ConditionAnd([
+                new ConditionMoonPhaseCheck({ moonphase: 2 }),
+                new ConditionOr([
+                    new ConditionNonLunarElement({ element: 'pyro' }),
+                    new ConditionNonLunarElement({ element: 'electro' }),
+                    new ConditionNonLunarElement({ element: 'cryo' }),
+                ]),
+            ]),
+        }),
+        new ConditionBoolean({
+            name: 'bufs.ascendant_gleam_AD',
+            serializeId: 63,
+            title: 'buffs_name.ascendant_gleam_AD',
+            description: 'buffs_descr.ascendant_gleam_AD',
+            rotation: 'buffs',
+            hideInactive: true,
+            customStats: [
+                new ConditionNumber({
+                    name: 'ascendant_gleam_mastery',
+                    serializeId: 67,
+                    title: 'pool_stat.mastery',
+                }),
+            ],
+            condition: new ConditionAnd([
+                new ConditionMoonPhaseCheck({ moonphase: 2 }),
+                new ConditionOr([
+                    new ConditionNonLunarElement({ element: 'anemo' }),
+                    new ConditionNonLunarElement({ element: 'dendro' }),
+                ]),
+            ]),
+        }),
+        new ConditionBoolean({
+            name: 'bufs.ascendant_gleam_hydro',
+            serializeId: 64,
+            title: 'buffs_name.ascendant_gleam_hydro',
+            description: 'buffs_descr.ascendant_gleam_hydro',
+            rotation: 'buffs',
+            hideInactive: true,
+            customStats: [
+                new ConditionNumber({
+                    name: 'ascendant_gleam_hp',
+                    serializeId: 68,
+                    title: 'pool_stat.hp',
+                }),
+            ],
+            condition: new ConditionAnd([
+                new ConditionMoonPhaseCheck({ moonphase: 2 }),
+                new ConditionNonLunarElement({ element: 'hydro' }),
+            ]),
+        }),
+        new ConditionBoolean({
+            name: 'bufs.ascendant_gleam_geo',
+            serializeId: 65,
+            title: 'buffs_name.ascendant_gleam_geo',
+            description: 'buffs_descr.ascendant_gleam_geo',
+            rotation: 'buffs',
+            hideInactive: true,
+            customStats: [
+                new ConditionNumber({
+                    name: 'ascendant_gleam_def',
+                    serializeId: 69,
+                    title: 'pool_stat.def',
+                }),
+            ],
+            condition: new ConditionAnd([
+                new ConditionMoonPhaseCheck({ moonphase: 2 }),
+                new ConditionNonLunarElement({ element: 'geo' }),
+            ]),
+        }),
+    ],
+    postEffects: [
+        new PostEffectStats({
+            from: 'ascendant_gleam_mastery',
+            percent: new StatTable('dmg_reaction_lunar', [2.25 / 100.0]),
+            statCap: new ValueTable([36]),
+            conditions: [
+                new ConditionBoolean({ name: 'bufs.ascendant_gleam_AD' }),
+            ],
+        }),
+        new PostEffectStats({
+            from: 'ascendant_gleam_def',
+            percent: new StatTable('dmg_reaction_lunar', [1 / 100.0]),
+            statCap: new ValueTable([36]),
+            conditions: [
+                new ConditionBoolean({ name: 'bufs.ascendant_gleam_geo' }),
+            ],
+        }),
+        new PostEffectStats({
+            from: 'ascendant_gleam_hp',
+            percent: new StatTable('dmg_reaction_lunar', [6 / 1000.0]),
+            statCap: new ValueTable([36]),
+            conditions: [
+                new ConditionBoolean({ name: 'bufs.ascendant_gleam_hydro' }),
+            ],
+        }),
+        new PostEffectStats({
+            from: 'ascendant_gleam_atk',
+            percent: new StatTable('dmg_reaction_lunar', [9 / 100.0]),
+            statCap: new ValueTable([36]),
+            conditions: [
+                new ConditionBoolean({ name: 'bufs.ascendant_gleam_PEC' }),
             ],
         }),
     ],

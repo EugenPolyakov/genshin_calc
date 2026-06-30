@@ -267,7 +267,6 @@ export const Nefer = new DbObjectChar({
             name: 'normal_hit_3_1',
             element: 'dendro',
             isChild: true,
-            hits: 2,
             multipliers: [
                 new FeatureMultiplier({
                     leveling: 'char_skill_attack',

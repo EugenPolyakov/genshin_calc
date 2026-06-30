@@ -158,7 +158,7 @@ function BuildDetails(props) {
 
     let charData = build.getChar();
     let skills = charData.getSkills();
-    let data = build.getStats().stats;
+    let data = build.getBaseStats().stats;
 
     let items = [];
 

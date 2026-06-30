@@ -110,6 +110,7 @@ import { Yoimiya } from "./Char/Yoimiya"
 import { YunJin } from "./Char/YunJin"
 import { Zhongli } from "./Char/Zhongli"
 import { Nefer } from "./Char/Nefer"
+import { Durin } from "./Char/Durin"
 
 export const Chars = new DbObjectListSerializeChars({
     Albedo: Albedo, // 1
@@ -223,4 +224,5 @@ export const Chars = new DbObjectListSerializeChars({
     Flins: Flins, // 110
     Aino: Aino, // 111
     Nefer: Nefer, //112
+    Durin: Durin, //113
 });

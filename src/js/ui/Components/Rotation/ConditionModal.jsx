@@ -43,7 +43,7 @@ export class RotationConditionModal extends React.PureComponent {
             this.state.selected = '';
         }
 
-        this.settings = this.props.build.getStats().settings;
+        this.settings = this.props.build.getAllSettings();
         this.conditionItems = this.buildConditionsList();
         this.saveCallback = saveCallback;
 

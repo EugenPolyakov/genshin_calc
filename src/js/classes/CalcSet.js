@@ -1,4 +1,5 @@
 import { BuildData } from "./Build/Data";
+import { BuildSettings } from "./Build/Settings";
 import { CalcObjectArtifacts } from "./CalcObject/Artifacts";
 import { CalcObjectBuffs } from "./CalcObject/Buffs";
 import { CalcObjectCharacter } from "./CalcObject/Character"
@@ -337,14 +338,9 @@ export class CalcSet {
         return result;
     }
 
-    /* deprecated */
-    getBaseStats(bonus, addSettings) {
-        let result = new BuildData();
-        if (bonus) {
-            result.stats.concat(bonus);
-        }
-
-        result.settings.concat(this.getSettings(), addSettings);
+    getAllSettings(addSettings) {
+        let result = new BuildSettings(addSettings);
+        result.concat(this.getSettings());
 
         let objects = objectsNames;
 
@@ -358,11 +354,26 @@ export class CalcSet {
             let conditions = this[name].getConditions();
             for (let j = 0; j < conditions.length; ++j) {
                 let cond = conditions[j];
-                let condSettings = cond.getSettings(result.settings);
+                let condSettings = cond.getSettings(result);
 
-                result.settings.concat(result.settings, condSettings);
+                result.concat(condSettings);
             }
         }
+
+        return result;
+    }
+
+    /* deprecated */
+    getBaseStats(bonus, addSettings) {
+        let result = new BuildData();
+        if (bonus) {
+            result.stats.concat(bonus);
+        }
+
+        //сначала обновляем все настройки (предположительно они не должны зависеть от stats)
+        result.settings.concat(this.getAllSettings(addSettings));
+
+        let objects = objectsNames;
 
         for (let i = 0; i < objects.length; ++i) {
             let name = objects[i];

@@ -600,4 +600,14 @@ export const Rotation = new DbObjectRotation({
     "burst.normal_hit_5": 596,
     "burst.normal_hit_6": 597,
     "attack.kinich_mid_air_normal_attack_dmg": 598,
+
+    "skill.durin_denial_of_darkness_dmg_1": 599,
+    "skill.durin_denial_of_darkness_dmg_2": 600,
+    "skill.durin_denial_of_darkness_dmg_3": 601,
+    "burst.durin_as_the_light_shifts_dmg_1": 602,
+    "burst.durin_as_the_light_shifts_dmg_2": 603,
+    "burst.durin_as_the_light_shifts_dmg_3": 604,
+    "burst.durin_as_the_stars_smolder_dmg_1": 605,
+    "burst.durin_as_the_stars_smolder_dmg_2": 606,
+    "burst.durin_as_the_stars_smolder_dmg_3": 607,
 });
