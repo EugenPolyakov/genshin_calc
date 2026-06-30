@@ -6,7 +6,7 @@ from lib.genshin.datafiles.weapons import IGNORED_WEAPONS, WeaponData
 from lib.genshin.datafiles.lang import LangData
 from lib.genshin.utils import convert_id
 from lib.genshin.sprite import ImageGenerator
-from static import WEAPON_TYPES as weapon_types
+from lib.static import WEAPON_TYPES as weapon_types
 
 dirname = os.path.dirname(__file__)
 img_path = os.path.join(dirname, '../data/images/')

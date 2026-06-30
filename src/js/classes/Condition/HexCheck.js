@@ -1,5 +1,4 @@
 import { Condition } from "../Condition";
-import { Stats } from "../Stats";
 
 export class ConditionHexCheck extends Condition {
     isActive(settings) {
@@ -7,10 +6,11 @@ export class ConditionHexCheck extends Condition {
         let stacks = 0;
 
         for (let key of Object.keys(settings).filter(x => x.startsWith('char_hex_'))) {
+
             if (settings[key])
                 ++stacks;
         }
 
-        return stacks == val;
+        return stacks >= val;
     }
 }

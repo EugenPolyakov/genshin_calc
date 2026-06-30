@@ -1,3 +1,6 @@
+import { Lang } from "../ui/Lang";
+
+const lang = new Lang();
 export class Stats {
     constructor(data) {
         if (data) {
@@ -260,12 +263,11 @@ export class Stats {
 
         if (isDecimal(stat)) {
             result += 0.00000001;
-            result = result.toFixed(opts.decimal_digits || 1);
+            let opt = { maximumFractionDigits: opts.decimal_digits || 1 };
+            if (!opts.no_decimal_zero)
+                opt.minimumFractionDigits = opt.maximumFractionDigits;
 
-            if (opts.no_decimal_zero) {
-                result = result.replace(/(\.\d*?)0+$/, "$1");
-                result = result.replace(/\.$/, "");
-            }
+            result = result.toLocaleString(lang.getLocale(), opt);
 
             if (percent) {
                 result = result + '%';
@@ -275,14 +277,13 @@ export class Stats {
 
             if (opts.minimize) {
                 if (result > 10000000) {
-                    result = (result / 1000000).toFixed(2) +'m'
+                    result = (result / 1000000).toLocaleString(lang.getLocale(), { maximumFractionDigits: 2 }) + 'm'
                 } else if (result > 1000000) {
-                    result = (result / 1000000).toFixed(3) +'m'
+                    result = (result / 1000000).toLocaleString(lang.getLocale(), { maximumFractionDigits: 3 }) + 'm'
                 }
-            }
+            } else
+                result = result.toLocaleString(lang.getLocale());
         }
-
-        result = result.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ");
 
         if (opts.signed) {
             if (value < 0) {

@@ -14,6 +14,30 @@ const DAMAGE_BONUS_STATS = [
     'dmg_normal', 'dmg_charged', 'dmg_plunge', 'dmg_skill', 'dmg_burst',
     'enemy_def_reduce', 'enemy_def_ignore',
 ];
+const REACTION_BONUS_STATS = [
+    'dmg_reaction_lunarcrystallize_bonus',
+    'dmg_reaction_lunarbloom_bonus',
+    'dmg_reaction_lunarcharged_bonus',
+    'dmg_reaction_vaporize',
+    'dmg_reaction_melt',
+    'dmg_reaction_swirl_pyro',
+    'dmg_reaction_swirl_hydro',
+    'dmg_reaction_swirl_electro',
+    'dmg_reaction_swirl_cryo',
+    'dmg_reaction_overloaded',
+    'dmg_reaction_burning',
+    'dmg_reaction_electrocharged',
+    'dmg_reaction_superconduct',
+    'dmg_reaction_burgeon',
+    'dmg_reaction_hyperbloom',
+    'dmg_reaction_rupture',
+    'dmg_reaction_aggravate',
+    'dmg_reaction_spread',
+    'dmg_reaction_lunarcrystallize',
+    'dmg_reaction_lunarcharged',
+    'dmg_reaction_lunarbloom',
+    //'dmg_reaction_crystalize',
+];
 
 export class CustomStats extends React.Component {
     constructor(props) {
@@ -24,12 +48,14 @@ export class CustomStats extends React.Component {
         this.strings = {
             primary: this.lang.get('stat_view.base_stats'),
             damage_bonus: this.lang.get('stat_view.damage_bonus'),
+            reaction_bonus: this.lang.get('stat_view.reaction_bonus'),
         };
     }
 
     render() {
         let items = [];
         let items2 = [];
+        let items3 = [];
 
         for (let stat of PRIMARY_STATS) {
             items.push(
@@ -86,13 +112,30 @@ export class CustomStats extends React.Component {
             );
         }
 
+        for (let stat of REACTION_BONUS_STATS) {
+            items3.push(
+                <CustomStat
+                    key={ stat }
+                    stat={ stat }
+                    value={ this.props.settings['custom_buffs.' + stat] }
+                    title={ this.lang.get('stat.' + stat) }
+                    isDecimal={ true }
+                    maxValue={ 999 }
+                    onChange={ this.props.onChange }
+                />
+            );
+        }
+
         return (
             <>
                 <GroupBox addClass="buff-custom-stats" title={this.strings.primary}>
                     {items}
                 </GroupBox>
-                <GroupBox addClass="buff-custom-stats" title={this.strings.damage_bonus}>
+                <GroupBox addClass="buff-custom-stats" title={ this.strings.damage_bonus }>
                     {items2}
+                </GroupBox>
+                <GroupBox addClass="buff-custom-stats" title={ this.strings.reaction_bonus }>
+                    {items3}
                 </GroupBox>
             </>
         );

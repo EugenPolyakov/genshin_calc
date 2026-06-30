@@ -569,9 +569,7 @@ export const Bosses = new DbObjectListSerialize({
                     enemy_res_geo: 300,
                 },
                 condition: new ConditionBooleanValue({setting: 'enemy_chess_type', cond: 'le', value: 1}),
-                hideCondition: [
-                    new ConditionBooleanValue({setting: 'enemy_chess_type', cond: 'gt', value: 1}),
-                ],
+                hideCondition: new ConditionBooleanValue({setting: 'enemy_chess_type', cond: 'gt', value: 1}),
             }),
             new ConditionBoolean({
                 name: 'enemy_queen_defeated',
@@ -589,9 +587,7 @@ export const Bosses = new DbObjectListSerialize({
                     enemy_res_geo: -80,
                 },
                 condition: new ConditionBooleanValue({setting: 'enemy_chess_type', cond: 'le', value: 1}),
-                hideCondition: [
-                    new ConditionBooleanValue({setting: 'enemy_chess_type', cond: 'gt', value: 1}),
-                ],
+                hideCondition: new ConditionBooleanValue({setting: 'enemy_chess_type', cond: 'gt', value: 1}),
             }),
             new ConditionBoolean({
                 name: 'enemy_king_reviving',
@@ -609,9 +605,7 @@ export const Bosses = new DbObjectListSerialize({
                     enemy_res_geo: 300,
                 },
                 condition: new ConditionBooleanValue({setting: 'enemy_chess_type', cond: 'ge', value: 3}),
-                hideCondition: [
-                    new ConditionBooleanValue({setting: 'enemy_chess_type', cond: 'lt', value: 3}),
-                ],
+                hideCondition: new ConditionBooleanValue({setting: 'enemy_chess_type', cond: 'lt', value: 3}),
             }),
             new ConditionBoolean({
                 name: 'enemy_king_berserk',
@@ -629,9 +623,7 @@ export const Bosses = new DbObjectListSerialize({
                     enemy_res_geo: -80,
                 },
                 condition: new ConditionBooleanValue({setting: 'enemy_chess_type', cond: 'ge', value: 3}),
-                hideCondition: [
-                    new ConditionBooleanValue({setting: 'enemy_chess_type', cond: 'lt', value: 3}),
-                ],
+                hideCondition: new ConditionBooleanValue({setting: 'enemy_chess_type', cond: 'lt', value: 3}),
             }),
         ],
     }),

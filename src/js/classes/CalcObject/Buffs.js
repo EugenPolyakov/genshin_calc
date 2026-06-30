@@ -216,6 +216,7 @@ export class CalcObjectBuffs extends CalcObject {
                 this.partyCharIds.push(id);
             }
         }
+        this.removeInvalidSettings();
     }
 
     getPartyChars() {

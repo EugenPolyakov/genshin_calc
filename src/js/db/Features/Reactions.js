@@ -16,6 +16,10 @@ import { FeatureReactionLunarCharged } from "../../classes/Feature2/Reaction/Tra
 import { FeatureMultiplierReaction } from "../../classes/Feature2/Multiplier/Reaction";
 import { reactionDamageValues, reactionShieldValues } from "../generated/ElementScale";
 import { FeatureReactionLunarCrystallize } from "../../classes/Feature2/Reaction/Transformative/Lunar/Crystallize";
+import { FeatureReactionSwirlHydro } from "../../classes/Feature2/Reaction/Transformative/Swirl/Hydro";
+import { FeatureReactionSwirlPyro } from "../../classes/Feature2/Reaction/Transformative/Swirl/Pyro";
+import { FeatureReactionSwirlElectro } from "../../classes/Feature2/Reaction/Transformative/Swirl/Electro";
+import { FeatureReactionSwirlCryo } from "../../classes/Feature2/Reaction/Transformative/Swirl/Cryo";
 
 const chargedCond = new ConditionOr([
     new ConditionBooleanCharElement({ element: ['hydro', 'electro', 'anemo'] }),
@@ -40,61 +44,36 @@ const lunarcrystallizeCond = new ConditionAnd([
 ]);
 
 export const Reactions = [
-    new FeatureReactionSwirl({
+    new FeatureReactionSwirlPyro({
         name: 'swirl_pyro',
-        element: 'pyro',
-        multipliers: [
-            new FeatureMultiplierReaction({
-                reactionRate: 0.6,
-                reactionValue: reactionDamageValues,
-            })
-        ],
         condition: new ConditionOr([
-            new ConditionBooleanCharElement({element: ['anemo']}),
-            new ConditionBoolean({name: 'allowed_infusion_anemo'}),
+            new ConditionBooleanCharElement({element: ['anemo', 'pyro']}),
+            new ConditionBoolean({ name: 'allowed_infusion_anemo' }),
+            new ConditionBoolean({ name: 'allowed_infusion_pyro' }),
         ]),
     }),
-    new FeatureReactionSwirl({
+    new FeatureReactionSwirlHydro({
         name: 'swirl_hydro',
-        cannotReact: true,
-        element: 'hydro',
-        multipliers: [
-            new FeatureMultiplierReaction({
-                reactionRate: 0.6,
-                reactionValue: reactionDamageValues,
-            })
-        ],
         condition: new ConditionOr([
-            new ConditionBooleanCharElement({element: ['anemo']}),
-            new ConditionBoolean({name: 'allowed_infusion_anemo'}),
+            new ConditionBooleanCharElement({element: ['anemo', 'hydro']}),
+            new ConditionBoolean({ name: 'allowed_infusion_anemo' }),
+            new ConditionBoolean({ name: 'allowed_infusion_hydro' }),
         ]),
     }),
-    new FeatureReactionSwirl({
+    new FeatureReactionSwirlElectro({
         name: 'swirl_electro',
-        element: 'electro',
-        multipliers: [
-            new FeatureMultiplierReaction({
-                reactionRate: 0.6,
-                reactionValue: reactionDamageValues,
-            })
-        ],
         condition: new ConditionOr([
-            new ConditionBooleanCharElement({element: ['anemo']}),
-            new ConditionBoolean({name: 'allowed_infusion_anemo'}),
+            new ConditionBooleanCharElement({element: ['anemo', 'electro']}),
+            new ConditionBoolean({ name: 'allowed_infusion_anemo' }),
+            new ConditionBoolean({ name: 'allowed_infusion_electro' }),
         ]),
     }),
-    new FeatureReactionSwirl({
+    new FeatureReactionSwirlCryo({
         name: 'swirl_cryo',
-        element: 'cryo',
-        multipliers: [
-            new FeatureMultiplierReaction({
-                reactionRate: 0.6,
-                reactionValue: reactionDamageValues,
-            })
-        ],
         condition: new ConditionOr([
-            new ConditionBooleanCharElement({element: ['anemo']}),
-            new ConditionBoolean({name: 'allowed_infusion_anemo'}),
+            new ConditionBooleanCharElement({element: ['anemo', 'cryo']}),
+            new ConditionBoolean({ name: 'allowed_infusion_anemo' }),
+            new ConditionBoolean({ name: 'allowed_infusion_cryo' }),
         ]),
     }),
     new FeatureReactionBurning({

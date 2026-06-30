@@ -48,7 +48,62 @@ char_sucrose = TemplateList(
     ),
     chaotic_entropy=Template(
         sentences=[
-            ['ignore', None],
+            ['ignore', '20:'],
+        ],
+    ),
+    chaotic_entropy_hex=Template(
+        sentences=[
+            ['ignore', '20:', '8.57142:'],
+        ],
+    ),
+    sevenfold_transmutation_rus=Template(
+        replace={
+            '· ': '· \n',
+            '<br>': '\n<br>\n',
+        },
+        sentences=[
+            [],
+            ['2:ignore'],
+            [],
+            [],
+            [],
+            [],
+            [],
+            [],
+            ['15:ignore', '5.71428:dmg_normal||5'],
+            [],
+            [],
+            ['20:ignore', '7.14285:dmg_normal||5'],
+        ],
+        results=[
+            [0, 1],
+            [5, 6, 8],
+            [5, 6, 11]
+        ],
+    ),
+    sevenfold_transmutation_eng=Template(
+        replace={
+            '· ': '· \n',
+            '<br>': '\n<br>\n',
+        },
+        sentences=[
+            [],
+            ['2:ignore'],
+            [],
+            [],
+            [],
+            [],
+            [],
+            [],
+            ['5.71428:text_percent||5', '15:ignore'],
+            [],
+            [],
+            ['7.14285:text_percent||5', '20:ignore'],
+        ],
+        results=[
+            [0, 1],
+            [5, 6, 8],
+            [5, 6, 11]
         ],
     ),
 )

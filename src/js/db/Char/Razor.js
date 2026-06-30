@@ -1,7 +1,11 @@
+import { Condition } from "../../classes/Condition";
+import { ConditionAnd } from "../../classes/Condition/And";
 import { ConditionAscensionChar } from "../../classes/Condition/Ascension/Char";
 import { ConditionBoolean } from "../../classes/Condition/Boolean";
 import { ConditionBooleanLevels } from "../../classes/Condition/Boolean/Levels";
 import { ConditionConstellation } from "../../classes/Condition/Constellation";
+import { ConditionHexCheck } from "../../classes/Condition/HexCheck";
+import { ConditionHexCurrent } from "../../classes/Condition/HexCurrent";
 import { ConditionNot } from "../../classes/Condition/Not";
 import { ConditionStacks } from "../../classes/Condition/Stacks";
 import { ConditionStatic } from "../../classes/Condition/Static";
@@ -68,7 +72,7 @@ const Talents = new DbObjectTalents({
     skill: {
         gameId: charTalentTables.Razor.s2_id,
         title: 'talent_name.razor_claw_and_thunder',
-        description: 'talent_descr.razor_claw_and_thunder',
+        description: 'talent_descr.razor_claw_and_thunder_1',
         items: [
             {
                 table: new StatTable('press_dmg', charTalentTables.Razor.s2.p1),
@@ -100,7 +104,7 @@ const Talents = new DbObjectTalents({
     burst: {
         gameId: charTalentTables.Razor.s3_id,
         title: 'talent_name.razor_lightning_fang',
-        description: 'talent_descr.razor_lightning_fang',
+        description: 'talent_descr.razor_lightning_fang_1',
         items: [
             {
                 table: new StatTable('burst_dmg', charTalentTables.Razor.s3.p1),
@@ -189,6 +193,11 @@ export const Razor = new DbObjectChar({
                     values: Talents.get('attack.normal_hit_1'),
                     burstValues: Talents.get('burst.razor_companion_dmg'),
                 }),
+                new FeatureMultiplier({
+                    source: 'hex',
+                    values: new ValueTable([charTalentTables.Razor.passsive[2][0] * 100]),
+                    condition: new ConditionHexCurrent(),
+                }),
             ],
             condition: new ConditionBoolean({name: 'razor_wolf_within'}),
         }),
@@ -201,6 +210,11 @@ export const Razor = new DbObjectChar({
                     leveling: 'char_skill_attack',
                     values: Talents.get('attack.normal_hit_2'),
                     burstValues: Talents.get('burst.razor_companion_dmg'),
+                }),
+                new FeatureMultiplier({
+                    source: 'hex',
+                    values: new ValueTable([charTalentTables.Razor.passsive[2][0] * 100]),
+                    condition: new ConditionHexCurrent(),
                 }),
             ],
             condition: new ConditionBoolean({name: 'razor_wolf_within'}),
@@ -215,6 +229,11 @@ export const Razor = new DbObjectChar({
                     values: Talents.get('attack.normal_hit_3'),
                     burstValues: Talents.get('burst.razor_companion_dmg'),
                 }),
+                new FeatureMultiplier({
+                    source: 'hex',
+                    values: new ValueTable([charTalentTables.Razor.passsive[2][0] * 100]),
+                    condition: new ConditionHexCurrent(),
+                }),
             ],
             condition: new ConditionBoolean({name: 'razor_wolf_within'}),
         }),
@@ -227,6 +246,11 @@ export const Razor = new DbObjectChar({
                     leveling: 'char_skill_attack',
                     values: Talents.get('attack.normal_hit_4'),
                     burstValues: Talents.get('burst.razor_companion_dmg'),
+                }),
+                new FeatureMultiplier({
+                    source: 'hex',
+                    values: new ValueTable([charTalentTables.Razor.passsive[2][0] * 100]),
+                    condition: new ConditionHexCurrent(),
                 }),
             ],
             condition: new ConditionBoolean({name: 'razor_wolf_within'}),
@@ -313,6 +337,22 @@ export const Razor = new DbObjectChar({
             ],
         }),
         new FeatureDamage({
+            name: 'razor_thunder_dmg',
+            category: 'other',
+            element: 'electro',
+            multipliers: [
+                new FeatureMultiplier({
+                    source: 'hex',
+                    values: new ValueTable([charTalentTables.Razor.passsive[2][1] * 100]),
+                }),
+            ],
+            condition: new ConditionAnd([
+                new ConditionHexCheck({ hex: 2 }),
+                new ConditionBoolean({ name: 'razor_wolf_within' }),
+                new ConditionHexCurrent(),
+            ]),
+        }),
+        new FeatureDamage({
             name: 'razor_lupus_fulguris',
             category: 'other',
             element: 'electro',
@@ -326,16 +366,25 @@ export const Razor = new DbObjectChar({
         }),
     ],
     conditions: [
-        new ConditionConstellation({
-            constellation: 3,
-            settings: {
-                char_skill_burst_bonus: 3,
+        new ConditionBoolean({
+            name: 'char_hex_razor',
+            serializeId: 7,
+            title: 'talent_name.razor_surge_of_lightning',
+            description: 'talent_descr.razor_surge_of_lightning_1',
+            stats: {
+                text_percent: charTalentTables.Razor.passsive[2][0] * 100,
             }
         }),
-        new ConditionConstellation({
-            constellation: 5,
-            settings: {
-                char_skill_elemental_bonus: 3,
+        new ConditionStatic({
+            title: 'talent_name.razor_surge_of_lightning',
+            description: 'talent_descr.razor_surge_of_lightning_2',
+            condition: new ConditionAnd([
+                new ConditionHexCheck({ hex: 2 }),
+                new ConditionBoolean({ name: 'razor_wolf_within' }),
+                new ConditionHexCurrent(),
+            ]),
+            stats: {
+                text_percent: charTalentTables.Razor.passsive[2][1] * 100,
             }
         }),
         new ConditionStacks({
@@ -345,14 +394,14 @@ export const Razor = new DbObjectChar({
             description: 'talent_descr.razor_claw_and_thunder_talent',
             maxStacks: 3,
             stats: [
-                new StatTable('recharge', [20]),
+                new StatTable('recharge', charTalentTables.Razor.s2.p3),
             ],
         }),
         new ConditionBooleanLevels({
             name: 'razor_wolf_within',
             serializeId: 2,
             title: 'talent_name.razor_wolf_within',
-            description: 'talent_descr.razor_wolf_within',
+            description: 'talent_descr.razor_lightning_fang_2',
             levelSetting: 'char_skill_burst',
             stats: [
                 Talents.getAlias('burst.razor_atk_speed_bonus', 'atk_speed_normal'),
@@ -413,7 +462,15 @@ export const Razor = new DbObjectChar({
                 }),
             ],
         },
-        {},
+        {
+            conditions: [
+                new Condition({
+                    settings: {
+                        char_skill_burst_bonus: 3,
+                    }
+                }),
+            ],
+        },
         {
             conditions: [
                 new ConditionBoolean({
@@ -427,14 +484,37 @@ export const Razor = new DbObjectChar({
                 }),
             ],
         },
-        {},
+        {
+            conditions: [
+                new Condition({
+                    settings: {
+                        char_skill_elemental_bonus: 3,
+                    },
+                }),
+            ],
+        },
         {
             conditions: [
                 new ConditionStatic({
                     title: 'talent_name.razor_lupus_fulguris',
                     description: 'talent_descr.razor_lupus_fulguris',
+                    hideCondition: new ConditionHexCurrent(),
+                    condition: new ConditionHexCurrent({ invert: 1 }),
                     stats: {
                         text_percent_dmg: 100,
+                    },
+                }),
+                new ConditionBoolean({
+                    name: 'razor_lupus_fulguris',
+                    serializeId: 8,
+                    title: 'talent_name.razor_lupus_fulguris',
+                    description: 'talent_descr.razor_lupus_fulguris_hex',
+                    hideCondition: new ConditionHexCurrent({ invert: 1 }),
+                    condition: new ConditionHexCurrent(),
+                    stats: {
+                        text_percent_dmg: 100,
+                        crit_rate: charTalentTables.Razor.cons[5][0] * 100,
+                        crit_dmg: charTalentTables.Razor.cons[5][1] * 100,
                     },
                 }),
             ],
@@ -442,6 +522,12 @@ export const Razor = new DbObjectChar({
     ]),
     partyData: {
         conditions: [
+            new ConditionBoolean({
+                name: 'char_hex_razor',
+                serializeId: 2,
+                title: 'talent_name.razor_surge_of_lightning',
+                description: 'talent_descr.razor_surge_of_lightning_3',
+            }),
             new ConditionBoolean({
                 name: 'party.razor_bite',
                 serializeId: 1,

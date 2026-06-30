@@ -41,14 +41,14 @@ old_values = {
     #solar_isotoma
     (10387, 3832): {
         1761933302: "skill_dmg", #Default
-        3684046326: "transient_blossom_dmg",
+        3684046326: "blossom", #WasChanged from transient_blossom_dmg
         2932049335: "duration", #Default
         3330067767: "cd", #Default
     },
     #tectonic_tide
     (10388, 3839): {
         1567315894: "burst_dmg", #Default
-        195488910: "fatal_blossom_dmg",
+        195488910: "fatal_blossom", #WasChanged from fatal_blossom_dmg
         2330024623: "cd", #Default
         2251254895: "energy_cost", #Default
     },
@@ -764,8 +764,8 @@ old_values = {
     #dawn
     (10165, 1639): {
         439659606: "burst_slash", #WasChanged from slashing_dmg
-        1139931606: "burst_dot", #WasChanged from dot
-        3948865119: "burst_explosion", #WasChanged from explosion_dmg
+        1139931606: "burst_dot", #ManualFromDefault dot_dmg: dot
+        3948865119: "burst_explosion", #ManualFromDefault explosion_dmg: explosion_dmg
         1921212383: "cd", #Default
         1217496542: "infusion_duration",
         2494530890: "energy_cost", #Default
@@ -997,14 +997,14 @@ old_values = {
     },
     #nightrider
     (10312, 3132): {
-        4266245582: "ozs_atk_dmg",
-        3296925094: "summoning_dmg",
-        570057383: "ozs_duration",
+        4266245582: "oz_dmg", #WasChanged from ozs_atk_dmg
+        3296925094: "skill_dmg", #ManualToDefault summoning_dmg
+        570057383: "oz_duration", #WasChanged from ozs_duration
         3702089687: "cd", #Default
     },
     #midnight_phantasmagoria
     (10313, 3139): {
-        161225782: "falling_thunder_dmg",
+        161225782: "burst_dmg", #ManualToDefault falling_thunder_dmg
         3711118614: "cd", #Default
         1844544399: "energy_cost", #Default
     },
@@ -1286,7 +1286,7 @@ old_values = {
         3865075350: "conversion_high", #WasChanged from high_nightsoul_points_atk_conversion_rate
         3715173087: "conversion_low", #WasChanged from low_nightsoul_points_atk_conversion_rate
         1024075903: "bonus_max", #WasChanged from max_atk_bonus
-        1184972150: "iansan_duration_combat", #WasChanged from duration
+        1184972150: "iansan_duration_combat", #ManualFromDefault duration: duration
         822855506: "iansan_duration", #WasChanged from non_combat_state_duration
         3033115887: "cd", #Default
         823498189: "energy_cost", #Default
@@ -1563,7 +1563,7 @@ old_values = {
     (10475, 4739): {
         661216414: "slashing_dmg",
         3607426334: "dot_dmg", #Default
-        290567527: "additional_elemental_dmg",
+        290567527: "additional_elemental_dmg", #ManualFromDefault anemoskill_dmg: additional_elemental_dmg
         2054764119: "duration", #Default
         851414054: "cd", #Default
         2434270330: "energy_cost", #Default
@@ -1897,7 +1897,7 @@ old_values = {
         2204864447: "aimed", #Default
         2858779685: "aimed_shot_charge_level_1",
         845050484: "prop_arrow_dmg",
-        1266041863: "lyney_hp_cost",
+        1266041863: "lyney_hp_cost", #ManualFromDefault hp_cost: hp_cost
         3955351580: "grin_malkin_hat_inherited_hp",
         1849172955: "grin_malkin_hat_duration",
         2906656535: "pyrotechnic_strike_dmg",
@@ -2042,8 +2042,8 @@ old_values = {
     },
     #stellaris_phantasm
     (10415, 4139): {
-        3463518830: "illusory_bubble_duration",
-        1052398806: "illusory_bubble_explosion_dmg",
+        3463518830: "buble_duration", #WasChanged from illusory_bubble_duration
+        1052398806: "buble_dmg", #WasChanged from illusory_bubble_explosion_dmg
         218699055: "dmg_bonus",
         648374079: "omen_duration",
         2047734134: "cd", #Default
@@ -2398,18 +2398,18 @@ old_values = {
     (10202, 2032): {
         2112665910: "press_dmg", #Default
         2376355910: "hold_dmg", #Default
-        2645625543: "energy_recharge_bonus",
-        126693887: "energy_regenerated",
-        2966456022: "electro_sigil_duration",
+        2645625543: "recharge_bonus", #WasChanged from energy_recharge_bonus
+        126693887: "enregy_per_sigil", #WasChanged from energy_regenerated
+        2966456022: "sigil_duration", #WasChanged from electro_sigil_duration
         518185898: "cd_press", #Default
         1642913807: "cd_hold", #Default
     },
     #lightning_fang
     (10203, 2039): {
         4160120342: "burst_dmg", #Default
-        4185302822: "soul_companion_dmg",
-        3438457087: "normal_atk_spd_bonus",
-        1231769359: "electro_res_bonus",
+        4185302822: "companion_dmg", #WasChanged from soul_companion_dmg
+        3438457087: "atk_speed_bonus", #WasChanged from normal_atk_spd_bonus
+        1231769359: "res_bonus", #WasChanged from electro_res_bonus
         2981378046: "duration", #Default
         1668946498: "cd", #Default
         909622199: "energy_cost", #Default
@@ -2642,7 +2642,7 @@ old_values = {
     #forbidden_creation_isomer_75_type_ii
     (10435, 4339): {
         2566197742: "dot_dmg", #Default
-        3385401214: "additional_elemental_dmg",
+        3385401214: "anemoskill_dmg", #Default
         3738162727: "duration", #Default
         1574649295: "cd", #Default
         1509745566: "energy_cost", #Default
@@ -2772,7 +2772,7 @@ old_values = {
     #gust_surge
     (10068, 739): {
         2279916518: "tornado_dmg",
-        3435842966: "additional_elemental_dmg",
+        3435842966: "anemoskill_dmg", #Default
         3745286575: "duration", #Default
         3999478399: "cd", #Default
         2786978854: "energy_cost", #Default
@@ -2798,7 +2798,7 @@ old_values = {
     #surgent_manifestation
     (10118, 1139): {
         2215980550: "lea_lotus_lamp_attack_dmg",
-        1963189310: "traveler_explosion_dmg",
+        1963189310: "traveler_explosion_dmg", #ManualFromDefault explosion_dmg: explosion_dmg
         2743377127: "traveler_duration", #WasChanged from lea_lotus_lamp_duration
         742925023: "cd", #Default
         1116082966: "energy_cost", #Default
@@ -3014,7 +3014,7 @@ old_values = {
     #winds_grand_ode
     (10225, 2239): {
         3398478670: "dot_dmg", #Default
-        1232628478: "additional_elemental_dmg",
+        1232628478: "anemoskill_dmg", #Default
         3426748255: "duration", #Default
         2322725191: "cd", #Default
         879217390: "energy_cost", #Default

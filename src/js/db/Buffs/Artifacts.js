@@ -18,6 +18,11 @@ import { FeatureMultiplier } from "../../classes/Feature2/Multiplier";
 import { FeatureMultiplierTarget } from "../../classes/Feature2/Multiplier/Target";
 import { ValueTable } from "../../classes/ValueTable";
 
+//let x = DB.Buffs.getList().reduce((acc, val) => acc.concat(val.getConditions()), []).reduce(
+//    (amax, val) => val.params.serializeIds!= null && Array.isArray(val.params.serializeIds) ?
+//        (amax >= Math.max(...val.params.serializeIds) ? amax : Math.max(...val.params.serializeIds)) :
+//        (amax >= (val.getId()) ? amax : val.getId()), 0)
+
 export const Artifacts = new DbObjectBuff({
     name: 'artifacts',
     conditions: [
@@ -361,7 +366,6 @@ export const Artifacts = new DbObjectBuff({
             ]),
         }),
         new ConditionMoonPhaseSetting(),
-        //max SerializeId = DB.Buffs.getList().reduce((acc, val)=> acc.concat(val.getConditions()), []).reduce((amax, val)=>Array.isArray(val.params.serializeIds)?(amax>=Math.max(val.params.serializeIds)?amax:Math.max(val.params.serializeIds)):amax>=(val.params.serializeId|0)?amax:val.params.serializeId, 0)
         new ConditionMoonPhaseBoolean({
             name: 'set_other.silken_moons_serenade_4',
             serializeId: 60,

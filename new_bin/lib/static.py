@@ -166,6 +166,7 @@ names_mapping = {
     'Charged Attack Final DMG': 'charged_final',
     'Charge Level 1 DMG': 'charge_level_1',
     'Charge Level 2 DMG': 'charge_level_2',
+    'Additional Elemental DMG': 'anemoskill_dmg',
     'Max Duration': 'max_duration',
     'CD': 'cd',
     'Skill CD': 'cd',

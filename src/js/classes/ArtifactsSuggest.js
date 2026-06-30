@@ -46,6 +46,7 @@ export class ArtifactsSuggest {
         };
 
         this.featureVariants = {};
+        this.initSetFuncVariants = {};
         this.usedStats = [];
         let variationData = [];
 
@@ -123,6 +124,7 @@ export class ArtifactsSuggest {
             compiler.checkFunc = makeStatCheckFunc(this.settings.stats, activePostTree);
 
             this.featureVariants[item.variandId] = compiler;
+            this.initSetFuncVariants[item.variandId] = item.buildData.stats.getSetFunc();
         }
 
         this.buildData.stats.truncate(this.usedStats);
@@ -413,7 +415,6 @@ export class ArtifactsSuggest {
         let value;
         let featureIndex = FEATURE_TYPE_INDEX[this.featureType];
 
-        let initialStatFunc = this.buildData.stats.getSetFunc();
         let generator = artifactCombinations(this.settings, this.setNames, this.slots, (val) => {
             this.currentCombinations += val;
             this.skippedCombinations += val;
@@ -433,7 +434,6 @@ export class ArtifactsSuggest {
             artSets = {};
             artifacts = combination.value;
             artStats = new Stats();
-            initialStatFunc(artStats);
 
             for (let item of artifacts) {
                 if (item) {
@@ -457,6 +457,7 @@ export class ArtifactsSuggest {
             }
 
             variation = variation.sort().join('-') || 'default';
+            this.initSetFuncVariants[variation](artStats);
             let compiler = this.featureVariants[variation];
 
             // check for stat requirements

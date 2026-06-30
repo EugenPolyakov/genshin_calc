@@ -4,6 +4,7 @@ names_eng = Template(
     names=[
         'Bond of Life',
         'Life Bond',
+        'Hexerei',
 
         'Nightsoul\'s Blessing',
         'Nightsoul point',
@@ -228,6 +229,7 @@ names_rus = Template(
         'Долг жизни',
         'Долгом жизни',
         'Долга жизни',
+        'Ведьмовски[хме]',
 
         'Вспышку Ночного духа',
         'Вспышке Ночного духа',

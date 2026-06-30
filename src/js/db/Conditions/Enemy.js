@@ -76,10 +76,8 @@ export const Enemy = [
         serializeId: 18,
         title: 'talent_name.enemy_weak_shot',
         description: 'talent_descr.enemy_weak_shot',
-        hideCondition: [
-            new ConditionBooleanWeaponType({
-                types: ['sword', 'claymore', 'polearm', 'catalyst'],
-            }),
-        ],
+        hideCondition: new ConditionBooleanWeaponType({
+            types: ['sword', 'claymore', 'polearm', 'catalyst'],
+        }),
     }),
 ];

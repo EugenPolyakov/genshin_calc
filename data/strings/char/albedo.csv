@@ -1,3 +1,4 @@
 category;name;rus;eng
-feature_skill;albedo_blossom;Урон Цветков мимолётности;Transient Blossom DMG
-feature_burst;albedo_fatal_blossom;Урон Цветков неизбежности;Fatal Blossom DMG
+feature_other;albedo_solar_isotoma;Бонус урона от Цветка солнца;DMG bonus Solar Isotoma
+feature_other;albedo_silver_isotoma;Бонус урона от Цветка серебра;DMG bonus Silver Isotoma
+feature_burst;albedo_fatal_blossom_c2;Урон дополнительных Цветков неизбежности;Additional Fatal Blossom DMG

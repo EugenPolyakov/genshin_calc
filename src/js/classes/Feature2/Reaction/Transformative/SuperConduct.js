@@ -6,7 +6,7 @@ export class FeatureReactionSuperConduct extends FeatureReactionTransformative {
      */
     getStatsReactionBonus() {
         let result = super.getStatsReactionBonus();
-        result.push('dmg_reaction_overloaded');
+        result.push('dmg_reaction_superconduct');
         return result;
     }
 }

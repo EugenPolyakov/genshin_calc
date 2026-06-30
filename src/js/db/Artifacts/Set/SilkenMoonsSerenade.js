@@ -31,6 +31,7 @@ export const SilkenMoonsSerenade = new ArtifactSet({
                 new ConditionMoonPhaseSetting(),
                 new ConditionMoonPhaseBoolean({
                     name: 'set.silken_moons_serenade_4',
+                    serializeId: 50,
                     title: 'set_bonus.silken_moons_serenade_4',
                     description: 'set_descr.silken_moons_serenade_4',
                     stats: {

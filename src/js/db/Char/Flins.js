@@ -380,7 +380,6 @@ export const Flins = new DbObjectChar({
                     values: Talents.get('burst.flins_initial_skill_dmg'),
                 }),
             ],
-            condition: new ConditionBoolean({ name: 'flins_arcane_light', invert: true, }),
         }),
         new FeatureReactionLunarChargedLike({
             name: 'flins_middle_phase_lunar_charged_dmg',
@@ -392,7 +391,6 @@ export const Flins = new DbObjectChar({
                     values: Talents.get('burst.flins_middle_phase_lunar_charged_dmg'),
                 }),
             ],
-            condition: new ConditionBoolean({ name: 'flins_arcane_light', invert: true, }),
         }),
         new FeatureReactionLunarChargedLike({
             name: 'flins_final_phase_lunar_charged_dmg',
@@ -404,7 +402,6 @@ export const Flins = new DbObjectChar({
                     values: Talents.get('burst.flins_final_phase_lunar_charged_dmg'),
                 }),
             ],
-            condition: new ConditionBoolean({ name: 'flins_arcane_light', invert: true, }),
         }),
         new FeatureReactionLunarChargedLike({
             name: 'flins_thunderous_symphony_dmg',

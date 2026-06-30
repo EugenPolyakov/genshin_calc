@@ -69,15 +69,8 @@ export class Condition {
         }
 
         let subcond = this.params.hideCondition;
-        if (subcond) {
-            for (let i = 0; i < subcond.length; ++i) {
-                const cond = subcond[i];
-
-                if (cond.isActive(settings)) {
-                    return true;
-                }
-            }
-        }
+        if (subcond)
+            return subcond.isActive(settings);
 
         return false;
     }

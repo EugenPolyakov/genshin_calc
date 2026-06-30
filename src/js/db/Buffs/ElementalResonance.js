@@ -89,12 +89,10 @@ export const ElementalResonance = new DbObjectBuff({
             stats: {
                 text_percent: 40,
             },
-            hideCondition: [
-                new ConditionResonance({
-                    element: 'cryo',
-                    invert: true,
-                }),
-            ],
+            hideCondition: new ConditionResonance({
+                element: 'cryo',
+                invert: true,
+            }),
             subConditions: [
                 new ConditionResonance({
                     element: 'cryo',
@@ -109,12 +107,10 @@ export const ElementalResonance = new DbObjectBuff({
             stats: {
                 crit_rate_enemy: 15,
             },
-            hideCondition: [
-                new ConditionResonance({
-                    element: 'cryo',
-                    invert: true,
-                }),
-            ],
+            hideCondition: new ConditionResonance({
+                element: 'cryo',
+                invert: true,
+            }),
             subConditions: [
                 new ConditionResonance({
                     element: 'cryo',
@@ -132,12 +128,10 @@ export const ElementalResonance = new DbObjectBuff({
                 text_percent_1: 40,
                 text_percent_2: 100,
             },
-            hideCondition: [
-                new ConditionResonance({
-                    element: 'electro',
-                    invert: true,
-                }),
-            ],
+            hideCondition: new ConditionResonance({
+                element: 'electro',
+                invert: true,
+            }),
             subConditions: [
                 new ConditionResonance({
                     element: 'electro',
@@ -152,12 +146,10 @@ export const ElementalResonance = new DbObjectBuff({
                 text_percent: 40,
                 hp_percent: 25,
             },
-            hideCondition: [
-                new ConditionResonance({
-                    element: 'hydro',
-                    invert: true,
-                }),
-            ],
+            hideCondition: new ConditionResonance({
+                element: 'hydro',
+                invert: true,
+            }),
             subConditions: [
                 new ConditionResonance({
                     element: 'hydro',
@@ -172,12 +164,10 @@ export const ElementalResonance = new DbObjectBuff({
                 text_percent: 40,
                 atk_percent: 25,
             },
-            hideCondition: [
-                new ConditionResonance({
-                    element: 'pyro',
-                    invert: true,
-                }),
-            ],
+            hideCondition: new ConditionResonance({
+                element: 'pyro',
+                invert: true,
+            }),
             subConditions: [
                 new ConditionResonance({
                     element: 'pyro',
@@ -193,12 +183,10 @@ export const ElementalResonance = new DbObjectBuff({
                 move_speed: 10,
                 recovery: 5,
             },
-            hideCondition: [
-                new ConditionResonance({
-                    element: 'anemo',
-                    invert: true,
-                }),
-            ],
+            hideCondition: new ConditionResonance({
+                element: 'anemo',
+                invert: true,
+            }),
             subConditions: [
                 new ConditionResonance({
                     element: 'anemo',
@@ -212,12 +200,10 @@ export const ElementalResonance = new DbObjectBuff({
             stats: {
                 shield: 15,
             },
-            hideCondition: [
-                new ConditionResonance({
-                    element: 'geo',
-                    invert: true,
-                }),
-            ],
+            hideCondition: new ConditionResonance({
+                element: 'geo',
+                invert: true,
+            }),
             subConditions: [
                 new ConditionResonance({
                     element: 'geo',
@@ -237,12 +223,10 @@ export const ElementalResonance = new DbObjectBuff({
             icon: {
                 name: 'icon-cover element-geo',
             },
-            hideCondition: [
-                new ConditionResonance({
-                    element: 'geo',
-                    invert: true,
-                }),
-            ],
+            hideCondition: new ConditionResonance({
+                element: 'geo',
+                invert: true,
+            }),
             subConditions: [
                 new ConditionResonance({
                     element: 'geo',
@@ -263,12 +247,10 @@ export const ElementalResonance = new DbObjectBuff({
             icon: {
                 name: 'icon-cover element-geo',
             },
-            hideCondition: [
-                new ConditionResonance({
-                    element: 'geo',
-                    invert: true,
-                }),
-            ],
+            hideCondition: new ConditionResonance({
+                element: 'geo',
+                invert: true,
+            }),
             subConditions: [
                 new ConditionResonance({
                     element: 'geo',
@@ -287,12 +269,10 @@ export const ElementalResonance = new DbObjectBuff({
             icon: {
                 name: 'icon-cover element-dendro',
             },
-            hideCondition: [
-                new ConditionResonance({
-                    element: 'dendro',
-                    invert: true,
-                }),
-            ],
+            hideCondition: new ConditionResonance({
+                element: 'dendro',
+                invert: true,
+            }),
             subConditions: [
                 new ConditionResonance({
                     element: 'dendro',
@@ -312,12 +292,10 @@ export const ElementalResonance = new DbObjectBuff({
             icon: {
                 name: 'icon-cover element-dendro',
             },
-            hideCondition: [
-                new ConditionResonance({
-                    element: 'dendro',
-                    invert: true,
-                }),
-            ],
+            hideCondition: new ConditionResonance({
+                element: 'dendro',
+                invert: true,
+            }),
             subConditions: [
                 new ConditionResonance({
                     element: 'dendro',
@@ -337,12 +315,10 @@ export const ElementalResonance = new DbObjectBuff({
             icon: {
                 name: 'icon-cover element-dendro',
             },
-            hideCondition: [
-                new ConditionResonance({
-                    element: 'dendro',
-                    invert: true,
-                }),
-            ],
+            hideCondition: new ConditionResonance({
+                element: 'dendro',
+                invert: true,
+            }),
             subConditions: [
                 new ConditionResonance({
                     element: 'dendro',
@@ -363,12 +339,10 @@ export const ElementalResonance = new DbObjectBuff({
                 res_cryo: 15,
                 res_dendro: 15,
             },
-            hideCondition: [
-                new ConditionResonance({
-                    element: '',
-                    invert: true,
-                }),
-            ],
+            hideCondition: new ConditionResonance({
+                element: '',
+                invert: true,
+            }),
             subConditions: [
                 new ConditionResonance({
                     element: '',

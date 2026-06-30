@@ -122,6 +122,7 @@ export const charTalentTables = {
 		passsive: [
 			[0.5, 0.25, 2.4, 0],
 			[125, 10, 0],
+			[0.04, 0.12, 0.1, 0.3, 20, 20, 0],
 		],
 		links: [],
 	},
@@ -2416,6 +2417,7 @@ export const charTalentTables = {
 		passsive: [
 			[1.527, 0],
 			[0.8, 0],
+			[10, 0.225, 10, 90, 0],
 		],
 		links: [],
 	},
@@ -4880,6 +4882,7 @@ export const charTalentTables = {
 		passsive: [
 			[2, 2, 0.5, 0],
 			[1, 0.2, 0],
+			[8, 3, 0.05, 2, 4, 0.5, 0],
 		],
 		links: [],
 	},
@@ -5747,6 +5750,7 @@ export const charTalentTables = {
 		passsive: [
 			[0],
 			[0],
+			[0.7, 1.5, 7, 1, 0],
 		],
 		links: [],
 	},
@@ -6313,11 +6317,12 @@ export const charTalentTables = {
 			[0],
 			[0],
 			[0],
-			[0.2, 0.085714, 0],
+			[0.2, 0.0857142, 0],
 		],
 		passsive: [
 			[50, 8, 0],
 			[0.2, 8, 0],
+			[15, 0.0571428, 20, 0.0714285, 0],
 		],
 		links: [],
 	},

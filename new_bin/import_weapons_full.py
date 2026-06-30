@@ -13,8 +13,8 @@ from lib.genshin.strings.templates.talents import templates as common_tpl
 from lib.genshin.strings.templates.names import names_eng, names_rus, keywords_eng, keywords_rus, color_patterns
 from lib.genshin.strings.csv import CsvDumper
 from lib.genshin.strings.text import TextDumper
-import static
-from static import WEAPON_TYPES, shrink_table
+import lib.static as static
+from lib.static import WEAPON_TYPES, shrink_table
 import accumulator
 
 dirname  = os.path.dirname(__file__)

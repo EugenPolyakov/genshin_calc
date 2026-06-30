@@ -1,8 +1,11 @@
 import { Condition } from "../../classes/Condition";
+import { ConditionAnd } from "../../classes/Condition/And";
 import { ConditionAscensionChar } from "../../classes/Condition/Ascension/Char";
 import { ConditionBoolean } from "../../classes/Condition/Boolean";
 import { ConditionBooleanLevels } from "../../classes/Condition/Boolean/Levels";
 import { ConditionConstellation } from "../../classes/Condition/Constellation";
+import { ConditionHexCheck } from "../../classes/Condition/HexCheck";
+import { ConditionHexCurrent } from "../../classes/Condition/HexCurrent";
 import { ConditionNumberTalent } from "../../classes/Condition/Number/Talent";
 import { ConditionStacks } from "../../classes/Condition/Stacks";
 import { ConditionStatic } from "../../classes/Condition/Static";
@@ -131,9 +134,7 @@ const C6ChargedDmg = 60;
 
 const hydroDmgPost = new PostEffectStatsRecharge({
     percent: new StatTable('dmg_hydro', [A4HydroDmgRatio]),
-    conditions: [
-        new ConditionAscensionChar({ascension: 4}),
-    ],
+    condition: new ConditionAscensionChar({ascension: 4}),
 });
 
 export const Mona = new DbObjectChar({
@@ -194,6 +195,13 @@ export const Mona = new DbObjectChar({
             multipliers: [
                 new FeatureMultiplier({
                     leveling: 'char_skill_attack',
+                    scalingMultiplier: 2,
+                    scalingMultiplierCondition: new ConditionAnd([
+                        new ConditionHexCurrent(),
+                        new ConditionConstellation({ constellation: 6 }),
+                        new ConditionBoolean({ name: 'mona_omen' }),
+                    ]),
+                    scalingSource: 'constellation6',
                     values: Talents.get('attack.charged_hit'),
                 }),
             ],
@@ -206,6 +214,13 @@ export const Mona = new DbObjectChar({
             multipliers: [
                 new FeatureMultiplier({
                     leveling: 'char_skill_attack',
+                    scalingMultiplier: 2,
+                    scalingMultiplierCondition: new ConditionAnd([
+                        new ConditionHexCurrent(),
+                        new ConditionConstellation({ constellation: 6 }),
+                        new ConditionBoolean({ name: 'mona_omen' }),
+                    ]),
+                    scalingSource: 'constellation6',
                     values: Talents.get('attack.charged_hit'),
                 }),
             ],
@@ -293,11 +308,33 @@ export const Mona = new DbObjectChar({
         }),
     ],
     conditions: [
-        new ConditionConstellation({
-            constellation: 3,
-            settings: {
-                char_skill_burst_bonus: 3,
-            },
+        new ConditionBoolean({
+            name: 'char_hex_mona',
+            serializeId: 5,
+            title: 'talent_name.mona_genesis_of_starsigns_1',
+            description: 'talent_descr.mona_genesis_of_starsigns_1',
+        }),
+        new ConditionStatic({
+            title: 'talent_name.mona_genesis_of_starsigns_1',
+            description: 'talent_descr.mona_genesis_of_starsigns_3',
+            condition: new ConditionAnd([
+                new ConditionHexCurrent(),
+                new ConditionHexCheck({ hex: 2 }),
+            ]),
+        }),
+        new ConditionStacks({
+            name: 'astral_glow_of_mercury',
+            serializeId: 6,
+            title: 'talent_name.mona_genesis_of_starsigns_2',
+            description: 'talent_descr.mona_genesis_of_starsigns_2',
+            maxStacks: 3,
+            stats: [
+                new StatTable('dmg_reaction_vaporize', [charTalentTables.Mona.passsive[2][2]], 100),
+            ],
+            condition: new ConditionAnd([
+                new ConditionHexCurrent(),
+                new ConditionHexCheck({ hex: 2 }),
+            ]),
         }),
         new ConditionBooleanLevels({
             name: 'mona_omen',
@@ -343,12 +380,51 @@ export const Mona = new DbObjectChar({
                     serializeId: 4,
                     title: 'talent_name.mona_prophecy_of_submersion',
                     description: 'talent_descr.mona_prophecy_of_submersion',
+                    hideCondition: new ConditionHexCurrent(),
+                    condition: new ConditionHexCurrent({ invert: 1 }),
                     stats: {
                         dmg_reaction_electrocharged: C1ReactionBonus,
                         dmg_reaction_vaporize: C1ReactionBonus,
                         dmg_reaction_swirl_hydro: C1ReactionBonus,
                         duration_frozen: C1ReactionBonus,
                         dmg_reaction_lunarcharged: C1ReactionBonus,
+                        dmg_reaction_lunarcrystallize: C1ReactionBonus,
+                    },
+                }),
+                new ConditionBoolean({
+                    name: 'mona_prophecy_of_submersion',
+                    serializeId: 4,
+                    title: 'talent_name.mona_prophecy_of_submersion',
+                    description: 'talent_descr.mona_prophecy_of_submersion_hex_1',
+                    hideCondition: new ConditionHexCurrent({ invert: 1 }),
+                    condition: new ConditionHexCurrent(),
+                    stats: {
+                        dmg_reaction_electrocharged: C1ReactionBonus,
+                        dmg_reaction_vaporize: C1ReactionBonus,
+                        dmg_reaction_swirl_hydro: C1ReactionBonus,
+                        duration_frozen: C1ReactionBonus,
+                        dmg_reaction_lunarcharged: C1ReactionBonus,
+                        dmg_reaction_lunarcrystallize: C1ReactionBonus,
+                    },
+                }),
+                new ConditionBoolean({
+                    name: 'mona_prophecy_of_submersion_offield',
+                    serializeId: 7,
+                    title: 'talent_name.mona_prophecy_of_submersion',
+                    description: 'talent_descr.mona_prophecy_of_submersion_hex_2',
+                    hideCondition: new ConditionHexCurrent({ invert: 1 }),
+                    condition: new ConditionAnd([
+                        new ConditionBoolean({ name: 'mona_prophecy_of_submersion' }),
+                        new ConditionHexCurrent(),
+                    ]),
+                    stats: {
+                        text_percent: charTalentTables.Mona.cons[0][6] * 100 + 100,
+                        dmg_reaction_electrocharged: C1ReactionBonus * charTalentTables.Mona.cons[0][6],
+                        dmg_reaction_vaporize: C1ReactionBonus * charTalentTables.Mona.cons[0][6],
+                        dmg_reaction_swirl_hydro: C1ReactionBonus * charTalentTables.Mona.cons[0][6],
+                        duration_frozen: C1ReactionBonus * charTalentTables.Mona.cons[0][6],
+                        dmg_reaction_lunarcharged: C1ReactionBonus * charTalentTables.Mona.cons[0][6],
+                        dmg_reaction_lunarcrystallize: C1ReactionBonus * charTalentTables.Mona.cons[0][6],
                     },
                 }),
             ],
@@ -358,22 +434,68 @@ export const Mona = new DbObjectChar({
                 new ConditionStatic({
                     title: 'talent_name.mona_lunar_chain',
                     description: 'talent_descr.mona_lunar_chain',
+                    hideCondition: new ConditionHexCurrent(),
+                    condition: new ConditionHexCurrent({ invert: 1 }),
                     stats: {
                         text_percent_chance: C2ChargedProb,
                     },
                 }),
+                new ConditionStatic({
+                    title: 'talent_name.mona_lunar_chain',
+                    description: 'talent_descr.mona_lunar_chain_hex_1',
+                    hideCondition: new ConditionHexCurrent({ invert: 1 }),
+                    condition: new ConditionHexCurrent(),
+                    stats: {
+                        text_percent_chance: C2ChargedProb,
+                    },
+                }),
+                new ConditionBoolean({
+                    name: 'mona_charged',
+                    serializeId: 8,
+                    title: 'talent_name.mona_lunar_chain',
+                    description: 'talent_descr.mona_lunar_chain_hex_2',
+                    hideCondition: new ConditionHexCurrent({ invert: 1 }),
+                    condition: new ConditionHexCurrent(),
+                    stats: {
+                        mastery: charTalentTables.Mona.cons[1][4],
+                    },
+                }),
             ],
         },
-        {},
         {
             conditions: [
-                new ConditionBoolean({
-                    name: 'mona_prophecy_of_oblivion',
-                    serializeId: 2,
+                new Condition({
+                    settings: {
+                        char_skill_burst_bonus: 3,
+                    },
+                }),
+            ],
+        },
+        {
+            conditions: [
+                new ConditionStatic({
                     title: 'talent_name.mona_prophecy_of_oblivion',
                     description: 'talent_descr.mona_prophecy_of_oblivion',
+                    hideCondition: new ConditionHexCurrent(),
+                    condition: new ConditionAnd([
+                        new ConditionHexCurrent({ invert: 1 }),
+                        new ConditionBoolean({ name: 'mona_omen' }),
+                    ]),
                     stats: {
                         crit_rate: C4CritRate,
+                    },
+                }),
+                new ConditionStatic({
+                    title: 'talent_name.mona_prophecy_of_oblivion',
+                    description: 'talent_descr.mona_prophecy_of_oblivion_hex_1',
+                    hideCondition: new ConditionHexCurrent({ invert: 1 }),
+                    condition: new ConditionAnd([
+                        new ConditionHexCurrent(),
+                        new ConditionBoolean({ name: 'mona_omen' }),
+                    ]),
+                    stats: {
+                        crit_rate: C4CritRate,
+                        crit_dmg: C4CritRate,
                     },
                 }),
             ]
@@ -394,10 +516,33 @@ export const Mona = new DbObjectChar({
                     serializeId: 3,
                     title: 'talent_name.mona_rhetorics_of_calamitas',
                     description: 'talent_descr.mona_rhetorics_of_calamitas',
+                    hideCondition: new ConditionHexCurrent(),
+                    condition: new ConditionHexCurrent({ invert: 1 }),
                     maxStacks: 3,
                     stats: [
                         new StatTable('dmg_charged', [C6ChargedDmg]),
                     ],
+                }),
+                new ConditionStacks({
+                    name: 'mona_rhetorics_of_calamitas',
+                    serializeId: 3,
+                    title: 'talent_name.mona_rhetorics_of_calamitas',
+                    description: 'talent_descr.mona_rhetorics_of_calamitas_hex_1',
+                    hideCondition: new ConditionHexCurrent({ invert: 1 }),
+                    condition: new ConditionHexCurrent(),
+                    maxStacks: 3,
+                    stats: [
+                        new StatTable('dmg_charged', [C6ChargedDmg]),
+                    ],
+                }),
+                new ConditionStatic({
+                    title: 'talent_name.mona_rhetorics_of_calamitas',
+                    description: 'talent_descr.mona_rhetorics_of_calamitas_hex_2',
+                    hideCondition: new ConditionHexCurrent({ invert: 1 }),
+                    condition: new ConditionAnd([
+                        new ConditionHexCurrent(),
+                        new ConditionBoolean({ name: 'mona_omen' }),
+                    ]),
                 })
             ],
         },
@@ -423,6 +568,27 @@ export const Mona = new DbObjectChar({
                     mona_char_skill_burst_bonus: 3,
                 },
             }),
+            new ConditionBoolean({
+                name: 'char_hex_mona',
+                serializeId: 7,
+                title: 'talent_name.mona_genesis_of_starsigns_1',
+                description: 'talent_descr.mona_genesis_of_starsigns_1',
+            }),
+            new ConditionStacks({
+                name: 'party.mona_astral_glow_of_mercury',
+                serializeId: 8,
+                title: 'talent_name.mona_genesis_of_starsigns_2',
+                description: 'talent_descr.mona_genesis_of_starsigns_2',
+                rotation: 'party',
+                maxStacks: 3,
+                stats: [
+                    new StatTable('dmg_reaction_vaporize', [charTalentTables.Mona.passsive[2][2]], 100),
+                ],
+                condition: new ConditionAnd([
+                    new ConditionBoolean({ name: 'char_hex_mona' }),
+                    new ConditionHexCheck({ hex: 2 }),
+                ]),
+            }),
             new ConditionBooleanLevels({
                 name: 'party.mona_omen',
                 serializeId: 3,
@@ -439,12 +605,68 @@ export const Mona = new DbObjectChar({
                 serializeId: 4,
                 title: 'talent_name.mona_prophecy_of_submersion',
                 description: 'talent_descr.mona_prophecy_of_submersion',
-                info: {constellation: 1},
+                hideCondition: new ConditionBoolean({ name: 'char_hex_mona' }),
+                condition: new ConditionBoolean({ name: 'char_hex_mona', invert: 1 }),
+                rotation: 'party',
+                info: { constellation: 1 },
                 stats: {
                     dmg_reaction_electrocharged: C1ReactionBonus,
                     dmg_reaction_vaporize: C1ReactionBonus,
                     dmg_reaction_swirl_hydro: C1ReactionBonus,
+                    dmg_reaction_lunarcharged: C1ReactionBonus,
+                    dmg_reaction_lunarcrystallize: C1ReactionBonus,
                     duration_frozen: C1ReactionBonus,
+                },
+            }),
+            new ConditionBoolean({
+                name: 'party.mona_prophecy_of_submersion',
+                serializeId: 4,
+                title: 'talent_name.mona_prophecy_of_submersion',
+                description: 'talent_descr.mona_prophecy_of_submersion_hex_1',
+                hideCondition: new ConditionBoolean({ name: 'char_hex_mona', invert: 1 }),
+                condition: new ConditionBoolean({ name: 'char_hex_mona' }),
+                rotation: 'party',
+                info: { constellation: 1 },
+                stats: {
+                    dmg_reaction_electrocharged: C1ReactionBonus,
+                    dmg_reaction_vaporize: C1ReactionBonus,
+                    dmg_reaction_swirl_hydro: C1ReactionBonus,
+                    dmg_reaction_lunarcharged: C1ReactionBonus,
+                    dmg_reaction_lunarcrystallize: C1ReactionBonus,
+                    duration_frozen: C1ReactionBonus,
+                },
+            }),
+            new ConditionBoolean({
+                name: 'party.mona_prophecy_of_submersion_offield',
+                serializeId: 6,
+                title: 'talent_name.mona_prophecy_of_submersion',
+                description: 'talent_descr.mona_prophecy_of_submersion_hex_2',
+                hideCondition: new ConditionBoolean({ name: 'char_hex_mona', invert: 1 }),
+                condition: new ConditionAnd([
+                    new ConditionBoolean({ name: 'char_hex_mona' }),
+                    new ConditionBoolean({ name: 'party.mona_prophecy_of_submersion' }),
+                ]),
+                info: { constellation: 1 },
+                stats: {
+                    text_percent: charTalentTables.Mona.cons[0][6] * 100 + 100,
+                    dmg_reaction_electrocharged: C1ReactionBonus * charTalentTables.Mona.cons[0][6],
+                    dmg_reaction_vaporize: C1ReactionBonus * charTalentTables.Mona.cons[0][6],
+                    dmg_reaction_swirl_hydro: C1ReactionBonus * charTalentTables.Mona.cons[0][6],
+                    dmg_reaction_lunarcharged: C1ReactionBonus * charTalentTables.Mona.cons[0][6],
+                    dmg_reaction_lunarcrystallize: C1ReactionBonus * charTalentTables.Mona.cons[0][6],
+                    duration_frozen: C1ReactionBonus * charTalentTables.Mona.cons[0][6],
+                },
+            }),
+            new ConditionBoolean({
+                name: 'party.mona_charged',
+                serializeId: 9,
+                title: 'talent_name.mona_lunar_chain',
+                description: 'talent_descr.mona_lunar_chain_hex_2',
+                condition: new ConditionBoolean({ name: 'char_hex_mona' }),
+                rotation: 'party',
+                info: { constellation: 2 },
+                stats: {
+                    mastery: charTalentTables.Mona.cons[1][4],
                 },
             }),
             new ConditionBoolean({
@@ -455,10 +677,42 @@ export const Mona = new DbObjectChar({
                 stats: {
                     crit_rate: C4CritRate,
                 },
-                info: {constellation: 4},
-                subConditions: [
-                    new ConditionBoolean({name: 'party.mona_omen'}),
-                ],
+                info: { constellation: 4 },
+                hideCondition: new ConditionBoolean({ name: 'char_hex_mona' }),
+                condition: new ConditionAnd([
+                    new ConditionBoolean({ name: 'char_hex_mona', invert: 1 }),
+                    new ConditionBoolean({ name: 'party.mona_omen' }),
+                ]),
+            }),
+            new ConditionBoolean({
+                name: 'party.mona_prophecy_of_oblivion',
+                serializeId: 5,
+                title: 'talent_name.mona_prophecy_of_oblivion',
+                description: 'talent_descr.mona_prophecy_of_oblivion_hex_2',
+                stats: {
+                    crit_rate: C4CritRate,
+                },
+                info: { constellation: 4 },
+                hideCondition: new ConditionBoolean({ name: 'char_hex_mona', invert: 1 }),
+                condition: new ConditionAnd([
+                    new ConditionBoolean({ name: 'char_hex_mona' }),
+                    new ConditionBoolean({ name: 'party.mona_omen' }),
+                ]),
+            }),
+            new ConditionStatic({
+                title: 'talent_name.mona_prophecy_of_oblivion',
+                description: 'talent_descr.mona_prophecy_of_oblivion_hex_3',
+                stats: {
+                    crit_dmg: C4CritRate,
+                },
+                info: { constellation: 4 },
+                hideCondition: new ConditionBoolean({ name: 'char_hex_mona', invert: 1 }),
+                condition: new ConditionAnd([
+                    new ConditionBoolean({ name: 'char_hex_mona' }),
+                    new ConditionBoolean({ name: 'party.mona_prophecy_of_oblivion' }),
+                    new ConditionHexCurrent(),
+                    new ConditionBoolean({ name: 'party.mona_omen' }),
+                ]),
             }),
         ],
     },

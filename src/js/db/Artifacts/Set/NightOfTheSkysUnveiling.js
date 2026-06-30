@@ -31,6 +31,7 @@ export const NightOfTheSkysUnveiling = new ArtifactSet({
                 new ConditionMoonPhaseSetting(),
                 new ConditionMoonPhaseBoolean({
                     name: 'set.night_of_the_skys_unveiling_4',
+                    serializeId: 51,
                     title: 'set_bonus.night_of_the_skys_unveiling_4',
                     description: 'set_descr.night_of_the_skys_unveiling_4',
                     stats: {

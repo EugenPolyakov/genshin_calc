@@ -442,6 +442,7 @@ export const Escoffier = new DbObjectChar({
                 stats: [
                     new StatTable('enemy_res_cryo', A4ResShred),
                     new StatTable('enemy_res_hydro', A4ResShred),
+                    new StatTable('text_number', [1, 2, 3, 4]),
                 ],
             }),
             new ConditionBoolean({

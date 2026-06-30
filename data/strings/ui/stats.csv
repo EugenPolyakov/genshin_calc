@@ -60,6 +60,10 @@ stat;burst_energy_cost;Энергия взрыва стихии;Burst Energy Cos
 stat;move_speed;Cкорость передвижения;Movement SPD
 
 stat;dmg_reaction_swirl;Урон Рассеивания;Swirl DMG
+stat;dmg_reaction_swirl_pyro;Урон Пиро Рассеивания;Swirl DMG
+stat;dmg_reaction_swirl_hydro;Урон Гидро Рассеивания;Swirl DMG
+stat;dmg_reaction_swirl_electro;Урон Электро Рассеивания;Swirl DMG
+stat;dmg_reaction_swirl_cryo;Урон Крио Рассеивания;Swirl DMG
 stat;dmg_reaction_rupture;Урон Бутонизации;Bloom DMG
 stat;lunarcharged_multi;Бонус Базового урона Лунного заряда;Lunar-Charged Base Bonus
 stat;lunarbloom_multi;Бонус Базового урона Лунной бутонизации;Lunar-Bloom Base Bonus
@@ -68,6 +72,23 @@ stat;dmg_reaction_lunar_bonus;Возвышение Лунных реакций;L
 stat;dmg_reaction_lunarbloom_bonus;Возвышение Лунной бутонизации;Lunar-Bloom Elevation
 stat;dmg_reaction_lunarcharged_bonus;Возвышение Лунного заряда;Lunar-Charged Elevation
 stat;dmg_reaction_lunarcrystallize_bonus;Возвышение Лунной кристаллизации;Lunar-Crystallize Elevation
+
+stat;dmg_reaction_electrocharged;Урон Заряжен;Electro-Charged DMG
+stat;dmg_reaction_vaporize;Урон Пара;Vaporize DMG
+stat;dmg_reaction_melt;Урон Таяния;Melt DMG
+stat;dmg_reaction_burning;Урон Горения;Burning DMG
+stat;dmg_reaction_overloaded;Урон Перегрузки;Overloaded DMG
+stat;dmg_reaction_shatter;Урон Разбит;Shattered DMG
+stat;dmg_reaction_quicken;Урон Стимуляции;Quicken DMG
+stat;dmg_reaction_spread;Урон Разрастания;Spread DMG
+stat;dmg_reaction_aggravate;Урон Обострения;Aggravate DMG
+stat;dmg_reaction_superconduct;Урон Сверхпроводника;Superconduct DMG
+stat;dmg_reaction_burgeon;Урон Цветения;Burgeon DMG
+stat;dmg_reaction_hyperbloom;Урон Вегетации;Hyperbloom DMG
+stat;dmg_reaction_lunarbloom;Урон Лунной бутонизации;Lunar-Bloom DMG
+stat;dmg_reaction_lunarcharged;Урон Лунного заряда;Lunar-Charged DMG
+stat;dmg_reaction_lunarcrystallize;Урон Лунного кристалла;Lunar-Crystallize DMG
+stat;dmg_reaction_crystalize;Кристаллизация;Crystallize
 
 stat_short;mastery;М. стихий;EM
 stat_short;hp;HP;HP

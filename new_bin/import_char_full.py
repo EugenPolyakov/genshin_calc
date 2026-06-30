@@ -233,9 +233,12 @@ def scales_and_proud(skillId, proudId, index, char_id):
                         if (skillId, proudId) in old_values and cur_desc in old_values[(skillId, proudId)]:
                             name_idx = old_values[(skillId, proudId)][cur_desc]
                             if not name_idx in names_mapping.values():
-                                name = convert_id(name, True)
-                                if name != name_idx and f'{char_id}_{name}' != name_idx:
-                                    comments = f' #WasChanged from {name}'
+                                if name in names_mapping.keys():
+                                    comments = f' #ManualFromDefault {names_mapping[name]}: {convert_id(name, True)}'
+                                else:
+                                    name = convert_id(name, True)
+                                    if name != name_idx and f'{char_id}_{name}' != name_idx:
+                                        comments = f' #WasChanged from {name}'
                                 scaleData['customParams'][name_idx] = str(cur_desc)
                             else:
                                 if not name in names_mapping.keys():
@@ -405,7 +408,27 @@ def extractPramList(proud):
             paramList.append(prop.get('value', 0))
     return paramList
 
+def processPassiveTalent(proud, paramList):
+    talenttable('\t\t\t')
+
+    paramList.extend(proud.get('paramList'))
+    talenttable(repr(shrink_table(paramList)))
+    talenttable(',\n')
+    talent_name = lang_default.get(proud.get('nameTextMapHash'))
+    if not talent_name:
+        return
+    talent_items.append({
+        'nameTextMapHash': proud.get('nameTextMapHash'),
+        'descTextMapHash': proud.get('descTextMapHash'),
+        'descTextMapHash_hex': proud.get(hex_descr_fld),
+        'no_descr': False
+    })
+    talent_short_id = convert_id(talent_name, removeSemicolon=True)
+    talent_id = char_id + '_' + talent_short_id
+    generator.condition(char_id, talent_id, passive.get(needAvatarPromoteLevel_fld) or 0)
+
 inherentProudSkillOpens_fld = 'BKHEBEGJIAO'#'LOAMPGAFLMA' # 'inherentProudSkillOpens'
+hexProudSkillOpens_fld = 'GPDJAHEANHE'
 needAvatarPromoteLevel_fld = 'AEELKPGFNEA'# 'AMKLKEEBGPM' #'needAvatarPromoteLevel'
 hex_descr_fld = 'JDKOMPNCEMO'#'HCAOGPJPGLM' # 'IACNAENANDH'
 extra_descr_fld = 'extraDescTextMapHash'
@@ -568,27 +591,17 @@ for charVarName in sorted(char_keys):
             paramList = extractPramList(proud)
             if passive[needAvatarPromoteLevel_fld] > 0 or needed or len(paramList) > 0:
                 passive_count += 1
-                talenttable('\t\t\t')
-
-                paramList.extend(proud.get('paramList'))
-                talenttable(repr(shrink_table(paramList)))
-                talenttable(',\n')
-                talent_name = lang_default.get(proud.get('nameTextMapHash'))
-                if not talent_name:
-                    continue
-                talent_items.append({
-                    'nameTextMapHash': proud.get('nameTextMapHash'),
-                    'descTextMapHash': proud.get('descTextMapHash'),
-                    'descTextMapHash_hex': proud.get(hex_descr_fld),
-                    'no_descr': False
-                })
-                talent_short_id = convert_id(talent_name, removeSemicolon=True)
-                talent_id = char_id + '_' + talent_short_id
-                generator.condition(char_id, talent_id, passive[needAvatarPromoteLevel_fld])
+                processPassiveTalent(proud, paramList)
             elif needed: break
             else: continue
         elif needed: break
         else: continue
+    for passive in depot.get(hexProudSkillOpens_fld, []):
+        passive_id = passive.get('proudSkillGroupId')
+        if passive_id > 0:
+            proud = proud_data.get_item_by_field('proudSkillGroupId', passive_id)
+            passive_count += 1
+            processPassiveTalent(proud, [])
     talenttable('\t\t],\n')
 
     generator.begin_constellation(char_id)

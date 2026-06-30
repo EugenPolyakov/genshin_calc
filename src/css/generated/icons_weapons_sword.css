@@ -48,16 +48,17 @@
 .weapon-icon-sword-peak-patrol-song {background-image: url("../../images/weapons/sword/sword_xochitlstube.png")}
 .weapon-icon-sword-azurelight {background-image: url("../../images/weapons/sword/sword_outersword.png")}
 .weapon-icon-sword-athame-artis {background-image: url("../../images/weapons/sword/sword_motsognir.png")}
+.weapon-icon-sword-lightbearing-moonshard {background-image: url("../../images/weapons/sword/sword_silverwaresaw.png")}
 .sprite-weapon-sword.sprite-24 {
-	background-image: url("../../images/sprites/weapon_sword_bee9e3e05177988e753967f4f55ef818.png");
+	background-image: url("../../images/sprites/weapon_sword_c4b5aa55e7a63023bd1c4bb7fc2b9254.png");
 	background-size: 120px 264px;
 }
 .sprite-weapon-sword.sprite-40 {
-	background-image: url("../../images/sprites/weapon_sword_e9b5f285b69b312e7e78ba16bbfc6d36.png");
+	background-image: url("../../images/sprites/weapon_sword_180e7c48e3aad37d423a180cff3415ed.png");
 	background-size: 200px 440px;
 }
 .sprite-weapon-sword.sprite-60 {
-	background-image: url("../../images/sprites/weapon_sword_dd69307fd5faef26c40b7d23028f8952.png");
+	background-image: url("../../images/sprites/weapon_sword_e56e941a55842e5e7682b9424572c32b.png");
 	background-size: 300px 660px;
 }
 .sprite.weapon-icon-sword-unknown {background-position: 0% 0%}
@@ -110,6 +111,7 @@
 .sprite.weapon-icon-sword-peak-patrol-song {background-position: 50% 90%}
 .sprite.weapon-icon-sword-azurelight {background-position: 75% 90%}
 .sprite.weapon-icon-sword-athame-artis {background-position: 100% 90%}
+.sprite.weapon-icon-sword-lightbearing-moonshard {background-position: 0% 100%}
 
 @media
 only screen and (-webkit-min-device-pixel-ratio: 2),
@@ -168,7 +170,8 @@ only screen and (                min-resolution: 2dppx) {
 	.weapon-icon-sword-peak-patrol-song {background-image: url("../../images/weapons/sword/sword_xochitlstube_2x.png")}
 	.weapon-icon-sword-azurelight {background-image: url("../../images/weapons/sword/sword_outersword_2x.png")}
 	.weapon-icon-sword-athame-artis {background-image: url("../../images/weapons/sword/sword_motsognir_2x.png")}
-	.sprite-weapon-sword.sprite-24 {background-image: url("../../images/sprites/weapon_sword_4a45c420702adfede8ca67504f82756b.png")}
-	.sprite-weapon-sword.sprite-40 {background-image: url("../../images/sprites/weapon_sword_baf4139a22a1700c7e2dd71671cd770a.png")}
-	.sprite-weapon-sword.sprite-60 {background-image: url("../../images/sprites/weapon_sword_320650558de686383cdb655fa3ae8c6d.png")}
+	.weapon-icon-sword-lightbearing-moonshard {background-image: url("../../images/weapons/sword/sword_silverwaresaw_2x.png")}
+	.sprite-weapon-sword.sprite-24 {background-image: url("../../images/sprites/weapon_sword_c008754af651de280621df4bf3299e5b.png")}
+	.sprite-weapon-sword.sprite-40 {background-image: url("../../images/sprites/weapon_sword_1dc1e198ebcf63d6f0b048bbf117eeac.png")}
+	.sprite-weapon-sword.sprite-60 {background-image: url("../../images/sprites/weapon_sword_1b9e00a1b06a7aaa97d62f4f12a8ac85.png")}
 }

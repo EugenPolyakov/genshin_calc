@@ -1,6 +1,10 @@
 import { Condition } from "../../classes/Condition";
+import { ConditionAnd } from "../../classes/Condition/And";
 import { ConditionAscensionChar } from "../../classes/Condition/Ascension/Char";
+import { ConditionBoolean } from "../../classes/Condition/Boolean";
 import { ConditionConstellation } from "../../classes/Condition/Constellation";
+import { ConditionHexCheck } from "../../classes/Condition/HexCheck";
+import { ConditionHexCurrent } from "../../classes/Condition/HexCurrent";
 import { ConditionStatic } from "../../classes/Condition/Static";
 import { DbObjectChar } from "../../classes/DbObject/Char";
 import { DbObjectConstellation } from "../../classes/DbObject/Constellation";
@@ -319,6 +323,38 @@ export const Fischl = new DbObjectChar({
         }),
     ],
     conditions: [
+        new ConditionBoolean({
+            name: 'char_hex_fischl',
+            serializeId: 1,
+            title: 'talent_name.fischl_phantasmal_nocturne_1',
+            description: 'talent_descr.fischl_phantasmal_nocturne_1',
+        }),
+        new ConditionBoolean({
+            name: 'fischl_hex_overloaded',
+            serializeId: 2,
+            title: 'talent_name.fischl_phantasmal_nocturne_2',
+            description: 'talent_descr.fischl_phantasmal_nocturne_2',
+            stats: {
+                atk_percent: charTalentTables.Fischl.passsive[2][1] * 100,
+            },
+            condition: new ConditionAnd([
+                new ConditionHexCheck({ hex: 2 }),
+                new ConditionHexCurrent(),
+            ]),
+        }),
+        new ConditionBoolean({
+            name: 'fischl_hex_charged',
+            serializeId: 3,
+            title: 'talent_name.fischl_phantasmal_nocturne_3',
+            description: 'talent_descr.fischl_phantasmal_nocturne_3',
+            stats: {
+                mastery: charTalentTables.Fischl.passsive[2][3],
+            },
+            condition: new ConditionAnd([
+                new ConditionHexCheck({ hex: 2 }),
+                new ConditionHexCurrent(),
+            ]),
+        }),
         new ConditionStatic({
             title: 'talent_name.fischl_stellar_predator',
             description: 'talent_descr.fischl_stellar_predator',
@@ -400,11 +436,120 @@ export const Fischl = new DbObjectChar({
                 new ConditionStatic({
                     title: 'talent_name.fischl_evernight_raven',
                     description: 'talent_descr.fischl_evernight_raven',
+                    hideCondition: new ConditionHexCurrent(),
+                    condition: new ConditionHexCurrent({ invert: 1 }),
                     stats: {
                         text_percent_dmg: TalentValues.C6OzDmg,
                     },
                 }),
+                new ConditionStatic({
+                    title: 'talent_name.fischl_evernight_raven',
+                    description: 'talent_descr.fischl_evernight_raven_hex_1',
+                    hideCondition: new ConditionHexCurrent({ invert: 1 }),
+                    condition: new ConditionHexCurrent(),
+                    stats: {
+                        text_percent_dmg: TalentValues.C6OzDmg,
+                    },
+                }),
+                new ConditionBoolean({
+                    name: 'fischl_evernight_raven',
+                    serializeId: 4,
+                    title: 'talent_name.fischl_evernight_raven',
+                    description: 'talent_descr.fischl_evernight_raven_hex_2',
+                    hideCondition: new ConditionHexCurrent({ invert: 1 }),
+                    condition: new ConditionHexCurrent(),
+                }),
+                new Condition({
+                    stats: {
+                        atk_percent: charTalentTables.Fischl.passsive[2][1] * 100,
+                    },
+                    condition: new ConditionAnd([
+                        new ConditionBoolean({ name: 'fischl_evernight_raven' }),
+                        new ConditionBoolean({ name: 'fischl_hex_overloaded' }),
+                        new ConditionHexCheck({ hex: 2 }),
+                        new ConditionHexCurrent(),
+                    ]),
+                }),
+                new Condition({
+                    stats: {
+                        mastery: charTalentTables.Fischl.passsive[2][3],
+                    },
+                    condition: new ConditionAnd([
+                        new ConditionBoolean({ name: 'fischl_evernight_raven' }),
+                        new ConditionBoolean({ name: 'fischl_hex_charged' }),
+                        new ConditionHexCheck({ hex: 2 }),
+                        new ConditionHexCurrent(),
+                    ]),
+                }),
             ],
         },
     ]),
+    partyData: {
+        conditions: [
+            new ConditionBoolean({
+                name: 'char_hex_fischl',
+                serializeId: 1,
+                title: 'talent_name.fischl_phantasmal_nocturne_1',
+                description: 'talent_descr.fischl_phantasmal_nocturne_1',
+            }),
+            new ConditionBoolean({
+                name: 'party.fischl_hex_overloaded',
+                serializeId: 2,
+                rotation: 'party',
+                title: 'talent_name.fischl_phantasmal_nocturne_2',
+                description: 'talent_descr.fischl_phantasmal_nocturne_2',
+                stats: {
+                    atk_percent: charTalentTables.Fischl.passsive[2][1] * 100,
+                },
+                condition: new ConditionAnd([
+                    new ConditionHexCheck({ hex: 2 }),
+                    new ConditionBoolean({ name: 'char_hex_fischl' }),
+                ]),
+            }),
+            new ConditionBoolean({
+                name: 'party.fischl_hex_charged',
+                serializeId: 3,
+                rotation: 'party',
+                title: 'talent_name.fischl_phantasmal_nocturne_3',
+                description: 'talent_descr.fischl_phantasmal_nocturne_3',
+                stats: {
+                    mastery: charTalentTables.Fischl.passsive[2][3],
+                },
+                condition: new ConditionAnd([
+                    new ConditionHexCheck({ hex: 2 }),
+                    new ConditionBoolean({ name: 'char_hex_fischl' }),
+                ]),
+            }),
+            new ConditionBoolean({
+                name: 'party.fischl_evernight_raven',
+                serializeId: 4,
+                title: 'talent_name.fischl_evernight_raven',
+                description: 'talent_descr.fischl_evernight_raven_hex_2',
+                info: { constellation: 6 },
+                condition: new ConditionBoolean({ name: 'char_hex_fischl' }),
+            }),
+            new Condition({
+                stats: {
+                    atk_percent: charTalentTables.Fischl.passsive[2][1] * 100,
+                },
+                condition: new ConditionAnd([
+                    new ConditionBoolean({ name: 'party.fischl_evernight_raven' }),
+                    new ConditionBoolean({ name: 'party.fischl_hex_overloaded' }),
+                    new ConditionHexCheck({ hex: 2 }),
+                    new ConditionBoolean({ name: 'char_hex_fischl' }),
+                ]),
+            }),
+            new Condition({
+                stats: {
+                    mastery: charTalentTables.Fischl.passsive[2][3],
+                },
+                condition: new ConditionAnd([
+                    new ConditionBoolean({ name: 'party.fischl_evernight_raven' }),
+                    new ConditionBoolean({ name: 'party.fischl_hex_charged' }),
+                    new ConditionHexCheck({ hex: 2 }),
+                    new ConditionBoolean({ name: 'char_hex_fischl' }),
+                ]),
+            }),
+        ],
+    },
 });

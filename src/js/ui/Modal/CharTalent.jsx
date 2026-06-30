@@ -392,10 +392,9 @@ function formatValue(value, formatOpts) {
     if (isFloat(value)) {
         result += 0.00000001;
         if (formatOpts.integer) {
-            result = Math.round(result);
+            result = Math.round(result).toLocaleString(lang.getLocale());
         } else {
-            result = result.toFixed(formatOpts.digits || 1);
-            result = result.replace(/.0+^/, '');
+            result = result.toLocaleString(lang.getLocale(), { maximumFractionDigits: formatOpts.digits || 1 });
         }
     }
 

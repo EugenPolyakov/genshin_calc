@@ -178,7 +178,7 @@ class CharGenerator(EmptyCharGenerator):
             print(f"                    title: 'talent_name.{talent_id}',")
             print(f"                    description: 'talent_descr.{talent_id}',")
         if hasHex:
-            print(f"                    condition: new ConditionBoolean({{ name: 'char_hex_{generate_char}', invert: 1}}),")
+            print("                    condition: new ConditionHexCurrent({ invert: 1}),")
             print("                }),")
             if noDescr:
                 print("                new Condition({")
@@ -190,7 +190,7 @@ class CharGenerator(EmptyCharGenerator):
                 print(f"                    name: '{talent_id}',")
                 print(f"                    title: 'talent_name.{talent_id}',")
                 print(f"                    description: 'talent_descr.{talent_id}_hex',")
-            print(f"                    condition: new ConditionBoolean({{ name: 'char_hex_{generate_char}'}}),")
+            print("                    condition: new ConditionHexCurrent(),")
         print("                }),")
         print("            ],")
         print("        },")

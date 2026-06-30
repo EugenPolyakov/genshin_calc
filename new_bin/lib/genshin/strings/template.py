@@ -12,9 +12,9 @@ class SentenceMismatch(Exception):
 
 
 def clean_number(text: str):
-    text = re.sub(r',(\d\d\d)', '\\1', text)
+    text = re.sub(r'[^\d\.,]', '', text)
+    text = re.sub(r',(\d\d\d)(?=,|$)', '\\1', text)
     text = re.sub(r',', '.', text)
-    text = re.sub(r'[^\d\.]', '', text)
     return text
 
 

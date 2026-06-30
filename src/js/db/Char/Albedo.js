@@ -3,6 +3,8 @@ import { ConditionAnd } from "../../classes/Condition/And";
 import { ConditionAscensionChar } from "../../classes/Condition/Ascension/Char";
 import { ConditionBoolean } from "../../classes/Condition/Boolean";
 import { ConditionConstellation } from "../../classes/Condition/Constellation";
+import { ConditionHexCheck } from "../../classes/Condition/HexCheck";
+import { ConditionHexCurrent } from "../../classes/Condition/HexCurrent";
 import { ConditionStacks } from "../../classes/Condition/Stacks";
 import { ConditionStatic } from "../../classes/Condition/Static";
 import { DbObjectChar } from "../../classes/DbObject/Char";
@@ -17,6 +19,8 @@ import { FeatureDamagePlungeShockWave } from "../../classes/Feature2/Damage/Plun
 import { FeatureDamageSkill } from "../../classes/Feature2/Damage/Skill";
 import { FeatureMultiplier } from "../../classes/Feature2/Multiplier";
 import { FeatureMultiplierTarget } from "../../classes/Feature2/Multiplier/Target";
+import { FeaturePostEffectValue } from "../../classes/Feature2/PostEffectValue";
+import { PostEffectStats } from "../../classes/PostEffect/Stats";
 import { StatTable } from "../../classes/StatTable";
 import { ValueTable } from "../../classes/ValueTable";
 import { charTables } from "../generated/CharTables";
@@ -117,10 +121,30 @@ const TalentValues = {
     A1SkillBonus: 25,
     A4Mastery: 125,
     C1Energy: 1.2,
-    C2DefBonus: 30,
-    C4PlungeDmg: 30,
     C6ShieldDmg: 17,
 };
+
+const normalDmgPostSolar = new PostEffectStats({
+    from: 'def*',
+    percent: new StatTable('dmg_normal', [charTalentTables.Albedo.passsive[2][0]], 0.1),
+    statCap: new StatTable('dmg_normal', [charTalentTables.Albedo.passsive[2][1]], 100),
+    condition: new ConditionAnd([
+        new ConditionBoolean({ name: 'albedo_solar_isotoma' }),
+        new ConditionBoolean({ name: 'char_hex_albedo' }),
+        new ConditionHexCheck({ hex: 2 }),
+    ]),
+});
+
+const normalDmgPostSilver = new PostEffectStats({
+    from: 'def*',
+    percent: new StatTable('dmg_normal', [charTalentTables.Albedo.passsive[2][2]], 0.1),
+    statCap: new StatTable('dmg_normal', [charTalentTables.Albedo.passsive[2][3]], 100),
+    condition: new ConditionAnd([
+        new ConditionBoolean({ name: 'albedo_silver_isotoma' }),
+        new ConditionBoolean({ name: 'char_hex_albedo' }),
+        new ConditionHexCheck({ hex: 2 }),
+    ]),
+});
 
 export const Albedo = new DbObjectChar({
     name: 'albedo',
@@ -270,6 +294,17 @@ export const Albedo = new DbObjectChar({
                     leveling: 'char_skill_elemental',
                     values: Talents.get('skill.albedo_blossom'),
                 }),
+                new FeatureMultiplier({
+                    scaling: 'def*',
+                    source: 'ascension1',
+                    values: new ValueTable([charTalentTables.Albedo.passsive[0][2]], 100),
+                    condition: new ConditionAnd([
+                        new ConditionHexCurrent(),
+                        new ConditionHexCheck({ hex: 2 }),
+                        new ConditionBoolean({ name: 'albedo_calcite_might_original' }),
+                        new ConditionAscensionChar({ ascension: 1 }),
+                    ]),
+                }),
             ],
         }),
         new FeatureDamageBurst({
@@ -290,10 +325,177 @@ export const Albedo = new DbObjectChar({
                     leveling: 'char_skill_burst',
                     values: Talents.get('burst.albedo_fatal_blossom'),
                 }),
+                new FeatureMultiplier({
+                    scaling: 'def*',
+                    source: 'constellation6',
+                    values: new ValueTable([charTalentTables.Albedo.cons[5][1]], 100),
+                    condition: new ConditionAnd([
+                        new ConditionHexCheck({ hex: 2 }),
+                        new ConditionHexCurrent(),
+                        new ConditionBoolean({ name: 'albedo_dust_of_purification_2' }),
+                    ])
+                }),
             ],
+        }),
+        new FeatureDamageBurst({
+            name: 'albedo_fatal_blossom_c2',
+            element: 'geo',
+            tags: ['albedo_opening_of_hanerozoic'],
+            multipliers: [
+                new FeatureMultiplier({
+                    scaling: 'def*',
+                    source: 'constellation2',
+                    values: new ValueTable([charTalentTables.Albedo.cons[1][1]], 100),
+                }),
+            ],
+            condition: new ConditionAnd([
+                new ConditionConstellation({ constellation: 2 }),
+                new ConditionHexCheck({ hex: 2 }),
+                new ConditionHexCurrent(),
+            ]),
+        }),
+        new FeaturePostEffectValue({
+            category: 'other',
+            name: 'albedo_solar_isotoma',
+            postEffect: normalDmgPostSolar,
+            format: 'percent',
+            condition: new ConditionHexCurrent(),
+        }),
+        new FeaturePostEffectValue({
+            category: 'other',
+            name: 'albedo_silver_isotoma',
+            postEffect: normalDmgPostSilver,
+            format: 'percent',
+            condition: new ConditionHexCurrent(),
+        }),
+    ],
+    postEffects: [
+        normalDmgPostSolar,
+        new PostEffectStats({
+            from: 'def*',
+            percent: new StatTable('dmg_charged', [charTalentTables.Albedo.passsive[2][0]], 0.1),
+            statCap: new StatTable('dmg_charged', [charTalentTables.Albedo.passsive[2][1]], 100),
+            condition: new ConditionAnd([
+                new ConditionBoolean({ name: 'albedo_solar_isotoma' }),
+                new ConditionBoolean({ name: 'char_hex_albedo' }),
+                new ConditionHexCheck({ hex: 2 }),
+            ]),
+        }),
+        new PostEffectStats({
+            from: 'def*',
+            percent: new StatTable('dmg_plunge', [charTalentTables.Albedo.passsive[2][0]], 0.1),
+            statCap: new StatTable('dmg_plunge', [charTalentTables.Albedo.passsive[2][1]], 100),
+            condition: new ConditionAnd([
+                new ConditionBoolean({ name: 'albedo_solar_isotoma' }),
+                new ConditionBoolean({ name: 'char_hex_albedo' }),
+                new ConditionHexCheck({ hex: 2 }),
+            ]),
+        }),
+        new PostEffectStats({
+            from: 'def*',
+            percent: new StatTable('dmg_skill', [charTalentTables.Albedo.passsive[2][0]], 0.1),
+            statCap: new StatTable('dmg_skill', [charTalentTables.Albedo.passsive[2][1]], 100),
+            condition: new ConditionAnd([
+                new ConditionBoolean({ name: 'albedo_solar_isotoma' }),
+                new ConditionBoolean({ name: 'char_hex_albedo' }),
+                new ConditionHexCheck({ hex: 2 }),
+            ]),
+        }),
+        new PostEffectStats({
+            from: 'def*',
+            percent: new StatTable('dmg_burst', [charTalentTables.Albedo.passsive[2][0]], 0.1),
+            statCap: new StatTable('dmg_burst', [charTalentTables.Albedo.passsive[2][1]], 100),
+            condition: new ConditionAnd([
+                new ConditionBoolean({ name: 'albedo_solar_isotoma' }),
+                new ConditionBoolean({ name: 'char_hex_albedo' }),
+                new ConditionHexCheck({ hex: 2 }),
+            ]),
+        }),
+        normalDmgPostSilver,
+        new PostEffectStats({
+            from: 'def*',
+            percent: new StatTable('dmg_charged', [charTalentTables.Albedo.passsive[2][2]], 0.1),
+            statCap: new StatTable('dmg_charged', [charTalentTables.Albedo.passsive[2][3]], 100),
+            condition: new ConditionAnd([
+                new ConditionBoolean({ name: 'albedo_silver_isotoma' }),
+                new ConditionBoolean({ name: 'char_hex_albedo' }),
+                new ConditionHexCheck({ hex: 2 }),
+            ]),
+        }),
+        new PostEffectStats({
+            from: 'def*',
+            percent: new StatTable('dmg_plunge', [charTalentTables.Albedo.passsive[2][2]], 0.1),
+            statCap: new StatTable('dmg_plunge', [charTalentTables.Albedo.passsive[2][3]], 100),
+            condition: new ConditionAnd([
+                new ConditionBoolean({ name: 'albedo_silver_isotoma' }),
+                new ConditionBoolean({ name: 'char_hex_albedo' }),
+                new ConditionHexCheck({ hex: 2 }),
+            ]),
+        }),
+        new PostEffectStats({
+            from: 'def*',
+            percent: new StatTable('dmg_skill', [charTalentTables.Albedo.passsive[2][2]], 0.1),
+            statCap: new StatTable('dmg_skill', [charTalentTables.Albedo.passsive[2][3]], 100),
+            condition: new ConditionAnd([
+                new ConditionBoolean({ name: 'albedo_silver_isotoma' }),
+                new ConditionBoolean({ name: 'char_hex_albedo' }),
+                new ConditionHexCheck({ hex: 2 }),
+            ]),
+        }),
+        new PostEffectStats({
+            from: 'def*',
+            percent: new StatTable('dmg_burst', [charTalentTables.Albedo.passsive[2][0]], 0.1),
+            statCap: new StatTable('dmg_burst', [charTalentTables.Albedo.passsive[2][1]], 100),
+            condition: new ConditionAnd([
+                new ConditionBoolean({ name: 'albedo_silver_isotoma' }),
+                new ConditionBoolean({ name: 'char_hex_albedo' }),
+                new ConditionHexCheck({ hex: 2 }),
+            ]),
         }),
     ],
     conditions: [
+        new ConditionBoolean({
+            name: 'char_hex_albedo',
+            serializeId: 6,
+            title: 'talent_name.albedo_book_of_blinding_light_1',
+            description: 'talent_descr.albedo_book_of_blinding_light_1',
+        }),
+        new ConditionStatic({
+            title: 'talent_name.albedo_book_of_blinding_light_1',
+            description: 'talent_descr.albedo_book_of_blinding_light_2',
+            condition: new ConditionAnd([
+                new ConditionBoolean({ name: 'char_hex_albedo' }),
+                new ConditionHexCheck({ hex: 2 }),
+            ]),
+        }),
+        new ConditionBoolean({
+            name: 'albedo_solar_isotoma',
+            serializeId: 7,
+            title: 'talent_name.albedo_book_of_blinding_light_2',
+            description: 'talent_descr.albedo_book_of_blinding_light_3',
+            condition: new ConditionAnd([
+                new ConditionBoolean({ name: 'char_hex_albedo' }),
+                new ConditionHexCheck({ hex: 2 }),
+            ]),
+            stats: {
+                text_percent: charTalentTables.Albedo.passsive[2][0] * 100,
+                text_percent_max: charTalentTables.Albedo.passsive[2][1] * 100,
+            },
+        }),
+        new ConditionBoolean({
+            name: 'albedo_silver_isotoma',
+            serializeId: 8,
+            title: 'talent_name.albedo_book_of_blinding_light_3',
+            description: 'talent_descr.albedo_book_of_blinding_light_4',
+            condition: new ConditionAnd([
+                new ConditionBoolean({ name: 'char_hex_albedo' }),
+                new ConditionHexCheck({ hex: 2 }),
+            ]),
+            stats: {
+                text_percent: charTalentTables.Albedo.passsive[2][2] * 100,
+                text_percent_max: charTalentTables.Albedo.passsive[2][3] * 100,
+            },
+        }),
         new ConditionBoolean({
             name: 'albedo_calcite_might',
             serializeId: 1,
@@ -304,9 +506,43 @@ export const Albedo = new DbObjectChar({
                 dmg_skill_albedo: TalentValues.A1SkillBonus,
             },
             info: {ascension: 1},
-            subConditions: [
-                new ConditionAscensionChar({ascension: 1}),
-            ],
+            hideCondition: new ConditionBoolean({ name: 'char_hex_albedo' }),
+            condition: new ConditionAnd([
+                new ConditionBoolean({ name: 'char_hex_albedo', invert: 1 }),
+                new ConditionAscensionChar({ ascension: 1 }),
+            ]),
+        }),
+        new ConditionBoolean({
+            name: 'albedo_calcite_might',
+            serializeId: 1,
+            title: 'talent_name.albedo_calcite_might',
+            description: 'talent_descr.albedo_calcite_might_hex_1',
+            stats: {
+                text_percent_hp: TalentValues.A1HpThreshold,
+                dmg_skill_albedo: TalentValues.A1SkillBonus,
+            },
+            info: { ascension: 1 },
+            hideCondition: new ConditionBoolean({ name: 'char_hex_albedo', invert: 1 }),
+            condition: new ConditionAnd([
+                new ConditionBoolean({ name: 'char_hex_albedo' }),
+                new ConditionAscensionChar({ ascension: 1 }),
+            ]),
+        }),
+        new ConditionBoolean({
+            name: 'albedo_calcite_might_original',
+            serializeId: 9,
+            title: 'talent_name.albedo_calcite_might',
+            description: 'talent_descr.albedo_calcite_might_hex_2',
+            stats: {
+                text_percent: charTalentTables.Albedo.passsive[0][2] * 100,
+            },
+            info: { ascension: 1 },
+            hideCondition: new ConditionBoolean({ name: 'char_hex_albedo', invert: 1 }),
+            condition: new ConditionAnd([
+                new ConditionBoolean({ name: 'char_hex_albedo' }),
+                new ConditionHexCheck({ hex: 2 }),
+                new ConditionAscensionChar({ ascension: 1 }),
+            ]),
         }),
         new ConditionBoolean({
             name: 'albedo_homuncular_nature',
@@ -328,17 +564,18 @@ export const Albedo = new DbObjectChar({
             source: 'constellation2',
             leveling: 'albedo_opening_of_hanerozoic',
             values: new ValueTable([
-                TalentValues.C2DefBonus,
-                TalentValues.C2DefBonus * 2,
-                TalentValues.C2DefBonus * 3,
-                TalentValues.C2DefBonus * 4,
-            ]),
+                charTalentTables.Albedo.cons[1][0],
+                charTalentTables.Albedo.cons[1][0] * 2,
+                charTalentTables.Albedo.cons[1][0] * 3,
+                charTalentTables.Albedo.cons[1][0] * 4,
+            ], 100),
             condition: new ConditionAnd([
                 new ConditionConstellation({constellation: 2}),
                 new ConditionBoolean({name: 'albedo_opening_of_hanerozoic'}),
             ]),
             target: new FeatureMultiplierTarget({
                 damageTypes: ['burst'],
+                tagsExclude: ['albedo_opening_of_hanerozoic'],
             }),
         }),
     ],
@@ -348,10 +585,26 @@ export const Albedo = new DbObjectChar({
                 new ConditionStatic({
                     title: 'talent_name.albedo_flower_of_eden',
                     description: 'talent_descr.albedo_flower_of_eden',
+                    hideCondition: new ConditionBoolean({ name: 'char_hex_albedo' }),
+                    condition: new ConditionBoolean({ name: 'char_hex_albedo', invert: 1 }),
+                }),
+                new ConditionStatic({
+                    title: 'talent_name.albedo_flower_of_eden',
+                    description: 'talent_descr.albedo_flower_of_eden_hex_1',
+                    hideCondition: new ConditionBoolean({ name: 'char_hex_albedo', invert: 1 }),
+                    condition: new ConditionBoolean({ name: 'char_hex_albedo' }),
+                }),
+                new ConditionBoolean({
+                    name: 'albedo_flower_of_eden',
+                    serializeId: 10,
+                    title: 'talent_name.albedo_flower_of_eden',
+                    description: 'talent_descr.albedo_flower_of_eden_hex_2',
+                    hideCondition: new ConditionBoolean({ name: 'char_hex_albedo', invert: 1 }),
+                    condition: new ConditionBoolean({ name: 'char_hex_albedo' }),
                     stats: {
-                        text_decimal_energy: TalentValues.C1Energy,
+                        def_percent: charTalentTables.Albedo.cons[0][1] * 100,
                     },
-                })
+                }),
             ],
         },
         {
@@ -361,11 +614,25 @@ export const Albedo = new DbObjectChar({
                     serializeId: 3,
                     title: 'talent_name.albedo_opening_of_phanerozoic',
                     description: 'talent_descr.albedo_opening_of_phanerozoic',
+                    hideCondition: new ConditionHexCurrent(),
+                    condition: new ConditionHexCurrent({ invert: 1 }),
                     maxStacks: 4,
                     stats: [
-                        new StatTable('text_percent_dmg', [TalentValues.C2DefBonus]),
+                        new StatTable('text_percent_dmg', [charTalentTables.Albedo.cons[1][0]], 100),
                     ],
-                })
+                }),
+                new ConditionStacks({
+                    name: 'albedo_opening_of_hanerozoic',
+                    serializeId: 3,
+                    title: 'talent_name.albedo_opening_of_phanerozoic',
+                    description: 'talent_descr.albedo_opening_of_phanerozoic_hex',
+                    hideCondition: new ConditionHexCurrent({ invert: 1 }),
+                    condition: new ConditionHexCurrent(),
+                    maxStacks: 4,
+                    stats: [
+                        new StatTable('text_percent_dmg', [charTalentTables.Albedo.cons[1][0]], 100),
+                    ],
+                }),
             ],
         },
         {
@@ -384,8 +651,39 @@ export const Albedo = new DbObjectChar({
                     serializeId: 4,
                     title: 'talent_name.albedo_descent_of_divinity',
                     description: 'talent_descr.albedo_descent_of_divinity',
+                    hideCondition: new ConditionBoolean({ name: 'char_hex_albedo' }),
+                    condition: new ConditionAnd([
+                        new ConditionBoolean({ name: 'char_hex_albedo', invert: 1 }),
+                    ]),
                     stats: {
-                        dmg_plunge: TalentValues.C4PlungeDmg,
+                        dmg_plunge: charTalentTables.Albedo.cons[3][0] * 100,
+                    },
+                }),
+                new ConditionBoolean({
+                    name: 'albedo_descent_of_divinity',
+                    serializeId: 4,
+                    title: 'talent_name.albedo_descent_of_divinity',
+                    description: 'talent_descr.albedo_descent_of_divinity_hex_1',
+                    hideCondition: new ConditionBoolean({ name: 'char_hex_albedo', invert: 1 }),
+                    condition: new ConditionAnd([
+                        new ConditionBoolean({ name: 'char_hex_albedo' }),
+                    ]),
+                    stats: {
+                        dmg_plunge: charTalentTables.Albedo.cons[3][0] * 100,
+                    },
+                }),
+                new ConditionBoolean({
+                    name: 'albedo_descent_of_divinity_2',
+                    serializeId: 11,
+                    title: 'talent_name.albedo_descent_of_divinity',
+                    description: 'talent_descr.albedo_descent_of_divinity_hex_2',
+                    hideCondition: new ConditionBoolean({ name: 'char_hex_albedo', invert: 1 }),
+                    condition: new ConditionAnd([
+                        new ConditionBoolean({ name: 'char_hex_albedo' }),
+                        new ConditionHexCheck({ hex: 2 }),
+                    ]),
+                    stats: {
+                        dmg_plunge: charTalentTables.Albedo.cons[3][2] * 100,
                     },
                 }),
             ]
@@ -406,15 +704,45 @@ export const Albedo = new DbObjectChar({
                     serializeId: 5,
                     title: 'talent_name.albedo_dust_of_purification',
                     description: 'talent_descr.albedo_dust_of_purification',
+                    hideCondition: new ConditionHexCurrent(),
+                    condition: new ConditionHexCurrent({ invert: 1 }),
                     stats: {
                         dmg_all: TalentValues.C6ShieldDmg,
                     },
+                }),
+                new ConditionBoolean({
+                    name: 'albedo_dust_of_purification',
+                    serializeId: 5,
+                    title: 'talent_name.albedo_dust_of_purification',
+                    description: 'talent_descr.albedo_dust_of_purification_hex_1',
+                    hideCondition: new ConditionHexCurrent({ invert: 1 }),
+                    condition: new ConditionHexCurrent(),
+                    stats: {
+                        dmg_all: TalentValues.C6ShieldDmg,
+                    },
+                }),
+                new ConditionBoolean({
+                    name: 'albedo_dust_of_purification_2',
+                    serializeId: 12,
+                    title: 'talent_name.albedo_dust_of_purification',
+                    description: 'talent_descr.albedo_dust_of_purification_hex_2',
+                    hideCondition: new ConditionHexCurrent({ invert: 1 }),
+                    condition: new ConditionHexCurrent(),
+                    stats: {
+                        text_percent_dmg: charTalentTables.Albedo.cons[5][1] * 100,
+                    }
                 }),
             ]
         },
     ]),
     partyData: {
         conditions: [
+            new ConditionBoolean({
+                name: 'char_hex_albedo',
+                serializeId: 4,
+                title: 'talent_name.albedo_book_of_blinding_light_1',
+                description: 'talent_descr.albedo_book_of_blinding_light_1',
+            }),
             new ConditionBoolean({
                 name: 'party.albedo_homuncular_nature',
                 serializeId: 1,
@@ -434,12 +762,45 @@ export const Albedo = new DbObjectChar({
                 rotation: 'party',
                 title: 'talent_name.albedo_descent_of_divinity',
                 description: 'talent_descr.albedo_descent_of_divinity',
+                hideCondition: new ConditionBoolean({ name: 'char_hex_albedo' }),
+                condition: new ConditionAnd([
+                    new ConditionBoolean({ name: 'char_hex_albedo', invert: 1 }),
+                ]),
                 stats: {
-                    dmg_plunge: TalentValues.C4PlungeDmg,
+                    dmg_plunge: charTalentTables.Albedo.cons[3][0] * 100,
                 },
                 info: {
                     constellation: 4,
                 },
+            }),
+            new ConditionBoolean({
+                name: 'party.albedo_descent_of_divinity',
+                serializeId: 2,
+                title: 'talent_name.albedo_descent_of_divinity',
+                description: 'talent_descr.albedo_descent_of_divinity_hex_1',
+                hideCondition: new ConditionBoolean({ name: 'char_hex_albedo', invert: 1 }),
+                condition: new ConditionAnd([
+                    new ConditionBoolean({ name: 'char_hex_albedo' }),
+                ]),
+                stats: {
+                    dmg_plunge: charTalentTables.Albedo.cons[3][0] * 100,
+                },
+                info: { constellation: 4, },
+            }),
+            new ConditionBoolean({
+                name: 'party.albedo_descent_of_divinity_2',
+                serializeId: 5,
+                title: 'talent_name.albedo_descent_of_divinity',
+                description: 'talent_descr.albedo_descent_of_divinity_hex_2',
+                hideCondition: new ConditionBoolean({ name: 'char_hex_albedo', invert: 1 }),
+                condition: new ConditionAnd([
+                    new ConditionBoolean({ name: 'char_hex_albedo' }),
+                    new ConditionHexCheck({ hex: 2 }),
+                ]),
+                stats: {
+                    dmg_plunge: charTalentTables.Albedo.cons[3][2] * 100,
+                },
+                info: { constellation: 4, },
             }),
             new ConditionBoolean({
                 name: 'party.albedo_dust_of_purification',

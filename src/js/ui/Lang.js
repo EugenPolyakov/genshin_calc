@@ -1,13 +1,24 @@
 import { Stats } from "../classes/Stats";
 
 export class Lang {
-    constructor() {
-        this.name = window.lang_name;
-        this.current = window.lang_strings;
+    constructor () {
+        if (typeof window != "undefined") {
+            this.name = window.lang_name;
+            this.current = window.lang_strings;
+        } else {
+            this.name = 'eng';
+            this.current = {
+                'layout.locale': 'en-GB',
+            }
+        }
     }
 
     getLang() {
         return this.name;
+    }
+
+    getLocale() {
+        return this.get('layout.locale');
     }
 
     getStat(id) {
@@ -23,7 +34,7 @@ export class Lang {
 
         stats ||= new Stats();
 
-        result = result.replace(/skill\{(\w+):(.*?)\}/g, '<span class="text-name gi-skill-info" data-skill="$1">$2</span>');
+        result = result.replace(/skill\{([a-z0-9_]+):(.*?)\}/g, '<span class="text-name gi-skill-info" data-skill="$1">$2</span>');
         result = result.replace(/tab\{([\w\-]+):(.*?)\}/g, '<span class="text-name gi-tab-change" data-tab="$1">$2</span>');
 
         result = result.replace(/format\{(\w+)(=|<|>)(\w+)\|([\w\.\%\{\}]+)\}/g, function(all_str, stat, cmp, value, str) {
@@ -38,7 +49,7 @@ export class Lang {
 
         result = result.replace(/(\w+)\{(.*?)\}/g, '<span class="text-$1">$2</span>');
 
-        result = result.replace(/(\+)?\%\{(\w+)(?:\|([\d\.]+))?(?:\|(\d+))?\}/g, function(str, signed, stat, def, digits) {
+        result = result.replace(/(\+)?\%\{(\w+)(?:\|([\d\.]*))?(?:\|(\d+))?\}/g, function(str, signed, stat, def, digits) {
             let value = Math.abs(stats.get(stat));
             value ||= def - 0;
             if (!value) {

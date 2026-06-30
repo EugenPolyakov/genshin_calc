@@ -1,6 +1,7 @@
 import { ArtifactSet } from "../../../classes/ArtifactSet";
 import { ConditionAnd } from "../../../classes/Condition/And";
 import { ConditionBoolean } from "../../../classes/Condition/Boolean";
+import { ConditionHexCurrent } from "../../../classes/Condition/HexCurrent";
 import { ConditionStatic } from "../../../classes/Condition/Static";
 
 export const ADayCarvedFromRisingWinds = new ArtifactSet({
@@ -45,7 +46,7 @@ export const ADayCarvedFromRisingWinds = new ArtifactSet({
                     },
                     condition: new ConditionAnd([
                         new ConditionBoolean({ name: 'set.a_day_carved_from_rising_winds_4_1' }),
-                        new ConditionBoolean({ name: 'char_hex_current' }),
+                        new ConditionHexCurrent(),
                     ]),
                 })
             ],

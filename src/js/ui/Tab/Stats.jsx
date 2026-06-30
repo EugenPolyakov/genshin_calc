@@ -27,6 +27,10 @@ import { FeatureReactionLunarCharged } from '../../classes/Feature2/Reaction/Tra
 import { FeatureReactionLunarBloom } from '../../classes/Feature2/Reaction/Transformative/Lunar/Bloom';
 import { FeatureReactionLunar } from '../../classes/Feature2/Reaction/Transformative/Lunar';
 import { FeatureReactionLunarCrystallize } from '../../classes/Feature2/Reaction/Transformative/Lunar/Crystallize';
+import { FeatureReactionSwirlPyro } from '../../classes/Feature2/Reaction/Transformative/Swirl/Pyro';
+import { FeatureReactionSwirlHydro } from '../../classes/Feature2/Reaction/Transformative/Swirl/Hydro';
+import { FeatureReactionSwirlElectro } from '../../classes/Feature2/Reaction/Transformative/Swirl/Electro';
+import { FeatureReactionSwirlCryo } from '../../classes/Feature2/Reaction/Transformative/Swirl/Cryo';
 
 let lang = new Lang();
 
@@ -77,10 +81,10 @@ const reactionStatList = {
     '!dmg_reaction_melt': FeatureMultiplierReactionMelt,
 
     'dmg_reaction_transformative': FeatureReactionTransformative,
-    '!dmg_reaction_swirl_pyro': FeatureReactionSwirl,
-    '!dmg_reaction_swirl_hydro': FeatureReactionSwirl,
-    '!dmg_reaction_swirl_electro': FeatureReactionSwirl,
-    '!dmg_reaction_swirl_cryo': FeatureReactionSwirl,
+    '!dmg_reaction_swirl_pyro': FeatureReactionSwirlPyro,
+    '!dmg_reaction_swirl_hydro': FeatureReactionSwirlHydro,
+    '!dmg_reaction_swirl_electro': FeatureReactionSwirlElectro,
+    '!dmg_reaction_swirl_cryo': FeatureReactionSwirlCryo,
     '!dmg_reaction_overloaded': FeatureReactionOverloaded,
     '!dmg_reaction_burning': FeatureReactionBurning,
     '!dmg_reaction_electrocharged': FeatureReactionElectroCharged,
