@@ -32,6 +32,7 @@ export class Layout {
         UI.WeaponTab.init(app);
         UI.ArtifactsTab.init(app);
         UI.BestArtifactTab.init(app);
+        UI.RankArtifactTab.init(app);
         UI.EnemyTab.init(app);
         UI.BuffsTab.init(app);
         UI.FoodTab.init(app);

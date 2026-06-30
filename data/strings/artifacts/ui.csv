@@ -4,6 +4,7 @@ artifacts_ui;pick_reset;Сбросить;Reset
 artifacts_ui;set_not_selected;Комплект не выбран;Set do not selected
 artifacts_ui;set_or;Доступные бонусы комплектов;Allowed set bonuses
 artifacts_ui;no_artifacts;В tab{artifacts-pool:хранилище} отсутствуют артефакты.;There are no artifacts in the tab{artifacts-pool:Storage}.
+artifacts_ui;no_suitable_artifacts;В tab{artifacts-pool:хранилище} отсутствуют подходящие артефакты.;There are no suitable artifacts in the tab{artifacts-pool:Storage}.
 artifacts_ui;total_arts;Артефактов в Хранилище;Artifacts in Storage
 artifacts_ui;total_locked;Заблокировано;Locked
 artifacts_ui;total_filtered;Отфильтровано;Filtered
@@ -30,3 +31,5 @@ artifacts_ui;all_stats;Все хар-ки;All main stats
 artifacts_ui;calculation_progress;Расчёт: ;Calculation progress: 
 artifacts_ui;maximum_possible_values;Максимально возможные значения;Maximum possible values
 artifacts_ui;chance;Шанс;Chance
+
+artifacts_ui;data_out_of_date;<b style="color:red">Настройки изменились, рассчитанные данные устарели</b>;<b style="color:red">Settings have changed, calculated data is out of date</b>

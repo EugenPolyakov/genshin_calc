@@ -1,0 +1,25 @@
+
+table.rank-result {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+.rank-result-item .artifact-list-box {
+    max-width: 280px;
+    border: none;
+    background: none;
+}
+
+.rank-result-item .sorted, .rank-result-item .sorted {
+    color: #32af00;
+}
+
+.rank-result-item .values {
+    min-width: 80px;
+    text-align: right;
+}
+
+.rank-result-item:nth-child(even) {
+    background-color: rgba(23, 17, 16, 0.5);
+}
+

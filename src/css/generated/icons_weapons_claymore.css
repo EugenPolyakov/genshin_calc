@@ -39,16 +39,17 @@
 .weapon-icon-claymore-fang-of-the-mountain-king {background-image: url("../../images/weapons/claymore/claymore_emeraldsword.png")}
 .weapon-icon-claymore-a-thousand-blazing-suns {background-image: url("../../images/weapons/claymore/claymore_radiancesword.png")}
 .weapon-icon-claymore-gest-of-the-mighty-wolf {background-image: url("../../images/weapons/claymore/claymore_ensisaquilonis.png")}
+.weapon-icon-claymore-a-teaspoon-of-transcendence {background-image: url("../../images/weapons/claymore/claymore_crystallinesword.png")}
 .sprite-weapon-claymore.sprite-24 {
-	background-image: url("../../images/sprites/weapon_claymore_d865bde261c01bcfdb88fcd527312ac3.png");
+	background-image: url("../../images/sprites/weapon_claymore_45af27155e64770790e707e6b60d0f5c.png");
 	background-size: 120px 264px;
 }
 .sprite-weapon-claymore.sprite-40 {
-	background-image: url("../../images/sprites/weapon_claymore_69a25348efbd0eaf37a2b10f37fcccb5.png");
+	background-image: url("../../images/sprites/weapon_claymore_98de05fb7b2dd07c8b047312a4d5f507.png");
 	background-size: 200px 440px;
 }
 .sprite-weapon-claymore.sprite-60 {
-	background-image: url("../../images/sprites/weapon_claymore_80ccc020577d01ad4277e99a878ca3ab.png");
+	background-image: url("../../images/sprites/weapon_claymore_34ce3e0ec23c8b5fac8d0d1c811b5209.png");
 	background-size: 300px 660px;
 }
 .sprite.weapon-icon-claymore-unknown {background-position: 0% 0%}
@@ -92,6 +93,7 @@
 .sprite.weapon-icon-claymore-fang-of-the-mountain-king {background-position: 75% 70%}
 .sprite.weapon-icon-claymore-a-thousand-blazing-suns {background-position: 100% 70%}
 .sprite.weapon-icon-claymore-gest-of-the-mighty-wolf {background-position: 0% 80%}
+.sprite.weapon-icon-claymore-a-teaspoon-of-transcendence {background-position: 25% 80%}
 
 @media
 only screen and (-webkit-min-device-pixel-ratio: 2),
@@ -141,7 +143,8 @@ only screen and (                min-resolution: 2dppx) {
 	.weapon-icon-claymore-fang-of-the-mountain-king {background-image: url("../../images/weapons/claymore/claymore_emeraldsword_2x.png")}
 	.weapon-icon-claymore-a-thousand-blazing-suns {background-image: url("../../images/weapons/claymore/claymore_radiancesword_2x.png")}
 	.weapon-icon-claymore-gest-of-the-mighty-wolf {background-image: url("../../images/weapons/claymore/claymore_ensisaquilonis_2x.png")}
-	.sprite-weapon-claymore.sprite-24 {background-image: url("../../images/sprites/weapon_claymore_0f61e51f9f2e9958b910cce6d77f843d.png")}
-	.sprite-weapon-claymore.sprite-40 {background-image: url("../../images/sprites/weapon_claymore_2a6fd02176dc05c0e24521623c6228a7.png")}
-	.sprite-weapon-claymore.sprite-60 {background-image: url("../../images/sprites/weapon_claymore_fe9e7e4b64894c7f1c8f96b3a5aae0a7.png")}
+	.weapon-icon-claymore-a-teaspoon-of-transcendence {background-image: url("../../images/weapons/claymore/claymore_crystallinesword_2x.png")}
+	.sprite-weapon-claymore.sprite-24 {background-image: url("../../images/sprites/weapon_claymore_122dd1b03f61dcfbb780f861f3431cc3.png")}
+	.sprite-weapon-claymore.sprite-40 {background-image: url("../../images/sprites/weapon_claymore_a0aee8ed2f803852a45a9fa15365b036.png")}
+	.sprite-weapon-claymore.sprite-60 {background-image: url("../../images/sprites/weapon_claymore_f7edded33c05366c8843755ecb1aa355.png")}
 }

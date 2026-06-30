@@ -122,6 +122,10 @@ export class CalcSet {
         this.profitArtsSet.set(hash, result);
     }
 
+    removeProfitArtifact(hash) {
+        this.profitArtsSet.delete(hash);
+    }
+
     setArtifact(data) {
         this.artifacts.set(data);
     }

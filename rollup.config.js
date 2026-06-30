@@ -363,7 +363,7 @@ function workerInput(fileName) {
         input: './src/js/workers/' + fileName + '.js',
         output: {
             dir: 'dist/js',
-            entryFileNames: fileName + '-[hash].js',
+            entryFileNames: fileName + (process.env.mode === 'development' ? '' : '-[hash].js'),
             format: 'iife',
             banner: "importScripts('db.js?' + " + JSON.stringify(pkg.version) + ");",
             globals: {

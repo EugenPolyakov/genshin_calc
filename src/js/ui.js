@@ -71,6 +71,7 @@ import { Sync } from './ui/Components/Sync.jsx';
 import { WeaponSuggestTab } from './ui/Tab/WeaponSuggest';
 import { WeaponTab } from './ui/Tab/Weapon';
 import { GoodImportModal } from './ui/Modal/GoodImport.jsx';
+import { RankArtifactTab } from './ui/Tab/RankArtifacts';
 
 export var UI = {
     Layout: new Layout(),
@@ -83,7 +84,8 @@ export var UI = {
     ArtifactsGeneratorTab: new ArtifactsGeneratorTab(),
     SettingsTab: new SettingsTab(),
     ArtifactSubstatTab: new ArtifactSubstatTab(),
-    BestArtifactTab: new BestArtifactTab({position: 'right'}),
+    BestArtifactTab: new BestArtifactTab({ position: 'right' }),
+    RankArtifactTab: new RankArtifactTab({ position: 'right' }),
     BuffsTab: new BuffsTab({position: 'right'}),
     CharTab: new CharTab({position: 'right'}),
     WeaponTab: new WeaponTab({position: 'right'}),

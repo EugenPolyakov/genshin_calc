@@ -123,6 +123,15 @@ export class Stats {
         return Function('stats', code.join(';'))
     }
 
+    getSubstractFunc() {
+        let code = [];
+        for (let stat of Object.keys(this)) {
+            code.push(`stats.${ stat } -= ${ this[stat] }`);
+        }
+
+        return Function('stats', code.join(';'))
+    }
+
     truncate(stats) {
         for (let name of Object.keys(this)) {
             if (!stats.includes(name) || this[name] == 0) {
@@ -276,7 +285,7 @@ export class Stats {
         let percent = isPercent(stat);
 
         if (Math.abs(value) < 0.0000001) {
-            return opts.zero ? '0' : '';
+            return opts.zero ? (percent ? '0%' : '0') : '';
         }
 
         if (isDecimal(stat)) {

@@ -59,6 +59,9 @@ tab_header;artifact_pool_suggest;Подбор артефактов;Artifact sugg
 pool_view;type_normal;Обычный;Normal
 pool_view;type_crit;Критический;Critical
 pool_view;type_average;Среднее;Average
+pool_view;type_normal_chance;Шанс Обычный;Normal Chance
+pool_view;type_crit_chance;Шанс Критический;Critical Chance
+pool_view;type_average_chance;Шанс Среднее;Average Chance
 
 pool_view;disable_sets;Запретить все;Disable all
 pool_view;enable_sets;Разрешить все;Enable all

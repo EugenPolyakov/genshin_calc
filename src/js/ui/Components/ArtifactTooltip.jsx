@@ -11,37 +11,49 @@ import { DB } from '../../db/DB';
 import { UI } from '../../ui';
 import { ArtifactSet } from '../../classes/ArtifactSet';
 import { Artifact } from '../../classes/Artifact';
-import { WorkerFactoryPotentialArtifactUsefulness } from '../../classes/WorkerFactory/PotentialArtifactUsefulness';
+import { WorkerFactoryByOnePotentialArtifactUsefulness } from '../../classes/WorkerFactory/PotentialArtifactUsefulness/ByOne';
 import { Serializer } from '../../classes/Serializer';
 
 export class ArtifactTooltip extends Modal {
     constructor () {
         super();
 
-        this.factory = new WorkerFactoryPotentialArtifactUsefulness({
+        this.factory = new WorkerFactoryByOnePotentialArtifactUsefulness({
             maxThreads: 6,
             callback: (data) => this.generateCompleteCallback(data),
             progressCallback: (data) => this.generateProgressCallback(data),
+            terminateCallback: (list) => this.terminateCallback(list),
         });
+    }
+
+    terminateCallback(list) {
+        for (let art of list) {
+            let artProfit = UI.Layout.app.currentSet().getProfitArtifact(art);
+            if (artProfit && !artProfit.calculated)
+                UI.Layout.app.currentSet().removeProfitArtifact(art);
+        }
     }
 
     generateCompleteCallback(data) {
         let artProfit = {
             calculated: true,
             actualValues: data.actualValues,
-            profitValues: data.profitValues,
-            goodCount: data.goodCount,
-            combCount: data.combCount,
+            profitValues: data.profitValues[0].values,
+            goodCount: data.profitValues[0].goodCount,
+            combCount: data.profitValues[0].combCount,
         };
-        UI.Layout.app.currentSet().setProfitArtifact(data.currentArtifact, artProfit);
-        if (this.modal && Serializer.pack(this.modal.state.artifact) == data.currentArtifact)
+        let artHash = data.profitValues[0].currentArtifact;
+        UI.Layout.app.currentSet().setProfitArtifact(artHash, artProfit);
+        if (this.modal && Serializer.pack(this.modal.state.artifact) == artHash)
             this.modal.forceUpdate();
     }
 
     generateProgressCallback(data) {
+        if (typeof data.value === "undefined")
+            return;
         let artProfit = {
             calculated: false,
-            progress: data.progress,
+            progress: data.value,
         };
         UI.Layout.app.currentSet().setProfitArtifact(data.currentArtifact, artProfit);
         if (this.modal && Serializer.pack(this.modal.state.artifact) == data.currentArtifact)
@@ -227,33 +239,9 @@ class ArtifactTooltipWindow extends React.PureComponent {
                     };
                     UI.Layout.app.currentSet().setProfitArtifact(packed, artProfit);
 
-                    let subStatsRollsCount = DB.Artifacts.Substats.get('hp').rolls[art.getRarity() - 1].length;
-                    let customStats = Math.floor((rarity.maxLevel - art.getLevel() + 3) / 4);
-                    let combCount = 0;
-                    let supportedStats = Array.from(new Set([
-                        'atk', 'atk_percent', 'def', 'def_percent', 'hp', 'hp_percent',
-                        'crit_rate', 'crit_dmg', 'mastery', 'recharge'
-                    ]).delete(mainStat));
-                    let factor = function (z, skip) { let r = 1; for (let i = skip + 1; i <= z; i++) r *= i; return r; }
-                    let newStatsCount = rarity.maxSubstats - Object.keys(art.getSubStats()).length;
-                    customStats -= newStatsCount + (art.getLevel() < 4 ? Object.entries(art.getSubStats()).reduce((a, x) => x[1].unactivated ? a + 1: a, 0): 0);
-                    let newStatsCombCount = factor(supportedStats.length, supportedStats.length - newStatsCount) * Math.pow(subStatsRollsCount, newStatsCount);
-                    if (art.getRarity() == 5 && Object.values(art.getSubStats()).some(x => x.unactivated)) {
-                        combCount = factor(customStats + 16 - 1, 16 - 1) / factor(customStats, 1);
-                    } else {
-                        combCount = factor(customStats + subStatsRollsCount * rarity.maxSubstats - 1, subStatsRollsCount * rarity.maxSubstats - 1) /
-                            factor(customStats, 1);
-                    }
-                    let workerData = {
-                        currentArtifact: packed,
-                        combCount,
-                        newStatsCombCount,
-                        subStatsRollsCount,
-                        newStatsCount,
-                        supportedStats,
-                        customStats,
-                        rarity: art.getRarity(),
-                        artSettings: this.state.artSettings,
+                    UI.TooltipArtifact.factory.run({
+                        arts: [art],
+                        returnProgress: true,
                         feature: this.state.feature,
                         build: UI.Layout.app.currentSet().serialize(),
                         actualValues: {
@@ -261,9 +249,7 @@ class ArtifactTooltipWindow extends React.PureComponent {
                             crit: feat1.crit,
                             average: feat1.average,
                         },
-                    }
-
-                    UI.TooltipArtifact.factory.run(workerData);
+                    });
                 }
 
                 featureBlock = this.generateProfitBlock(artProfit);

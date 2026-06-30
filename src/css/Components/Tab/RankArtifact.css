@@ -1,0 +1,7 @@
+.gi-rankart-tab .gi-tab-item-inner {
+    background-image: url("../../../images/icons/tab_artifact_percent_light.png");
+}
+
+.gi-rankart-tab.active .gi-tab-item-inner {
+    background-image: url("../../../images/icons/tab_artifact_percent_dark.png");
+}

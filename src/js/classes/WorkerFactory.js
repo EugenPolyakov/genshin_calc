@@ -44,7 +44,7 @@ export class WorkerFactory {
         } else {
             this.workers[index].isCompleted = true;
             this.workers[index].result = data;
-            this.checkCompleted();
+            this.checkCompleted(index, data);
         }
     }
 
@@ -52,7 +52,7 @@ export class WorkerFactory {
         if (this.workers[index]) {
             this.workers[index].isError = true;
         }
-        this.checkCompleted();
+        this.checkCompleted(index, data);
     }
 
     getResult() {

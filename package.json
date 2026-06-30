@@ -6,7 +6,7 @@
         "dev": "npm run build:lang && rollup -c --environment mode:development,min:false",
         "start": "node server.js --port 52216",
         "build": "npm run build:lang && rollup -c --environment mode:production",
-        "build:lang": "pythonw bin/gen_string_table.py base",
+        "build:lang": "pythonw new_bin/gen_string_table.py base",
         "test": "jest"
     },
     "jest": {
