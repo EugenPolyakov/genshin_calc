@@ -4,7 +4,7 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
 import requests
 import re
-from static import WEAPON_TYPES
+from lib.static import WEAPON_TYPES
 
 PROPS = {
     'FIGHT_PROP_BASE_HP': 'hp_base',

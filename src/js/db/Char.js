@@ -117,6 +117,8 @@ import { Illuga } from "./Char/Illuga"
 import { Zibai } from "./Char/Zibai"
 import { Varka } from "./Char/Varka"
 import { Linnea } from "./Char/Linnea"
+import { Prune } from "./Char/Prune"
+import { Nicole } from "./Char/Nicole"
 
 export const Chars = new DbObjectListSerializeChars({
     Albedo: Albedo, // 1
@@ -237,4 +239,6 @@ export const Chars = new DbObjectListSerializeChars({
     Zibai: Zibai, //117
     Varka: Varka, //118
     Linnea: Linnea, //119
+    Prune: Prune, //120
+    Nicole: Nicole, //121
 });

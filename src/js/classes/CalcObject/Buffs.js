@@ -131,7 +131,17 @@ export class CalcObjectBuffs extends CalcObject {
     }
 
     getFeatures() {
-        return [];
+        let result = [];
+        let charIds = this.getPartyChars();
+        for (let charId of charIds) {
+            const char = DB.Chars.getById(charId);
+
+            if (char) {
+                result = result.concat(char.getPartyFeatures());
+            }
+        }
+
+        return result;
     }
 
     isBeta() {

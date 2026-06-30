@@ -58,6 +58,8 @@ import { NightOfTheSkysUnveiling } from "./Set/NightOfTheSkysUnveiling.js"
 import { SilkenMoonsSerenade } from "./Set/SilkenMoonsSerenade.js"
 import { ADayCarvedFromRisingWinds } from "./Set/ADayCarvedFromRisingWinds.js"
 import { AubadeOfMorningstarAndMoon } from "./Set/AubadeOfMorningstarAndMoon.js"
+import { CelestialGift } from "./Set/CelestialGift.js"
+import { DisenchantmentInDeepShadow } from "./Set/DisenchantmentInDeepShadow.js"
 
 export const Sets = new DbObjectListArtifactSets({
     Adventurer: Adventurer, // 1
@@ -119,4 +121,6 @@ export const Sets = new DbObjectListArtifactSets({
     SilkenMoonsSerenade: SilkenMoonsSerenade, // 57
     ADayCarvedFromRisingWinds: ADayCarvedFromRisingWinds, // 58
     AubadeOfMorningstarAndMoon: AubadeOfMorningstarAndMoon, // 59
+    CelestialGift: CelestialGift, //60
+    DisenchantmentInDeepShadow: DisenchantmentInDeepShadow, //61
 });

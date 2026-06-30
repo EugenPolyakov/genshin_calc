@@ -1,0 +1,14 @@
+category;name;rus;eng
+feature_skill;prune_clang_clang_witch_tribution_comes_dmg_pyro;Пиро Урон навыка Бом-цзынь-цзынь: Грядёт ведьмина кара;Clang Clang! Witch-tribution Comes! Pyro DMG
+feature_skill;prune_clang_clang_witch_tribution_comes_dmg_hydro;Гидро Урон навыка Бом-цзынь-цзынь: Грядёт ведьмина кара;Clang Clang! Witch-tribution Comes! Hydro DMG
+feature_skill;prune_clang_clang_witch_tribution_comes_dmg_cryo;Крио Урон навыка Бом-цзынь-цзынь: Грядёт ведьмина кара;Clang Clang! Witch-tribution Comes! Cryo DMG
+feature_skill;prune_clang_clang_witch_tribution_comes_dmg_electro;Электро Урон навыка Бом-цзынь-цзынь: Грядёт ведьмина кара;Clang Clang! Witch-tribution Comes! Electro DMG
+feature_skill;prune_banehunter_oathhammer_pyro;Пиро Урон отскока Клятвенного молота истребителя бедствий;Banehunter Oathhammer ricochet Pyro DMG
+feature_skill;prune_banehunter_oathhammer_hydro;Гидро Урон отскока Клятвенного молота истребителя бедствий;Banehunter Oathhammer ricochet Hydro DMG
+feature_skill;prune_banehunter_oathhammer_cryo;Крио Урон отскока Клятвенного молота истребителя бедствий;Banehunter Oathhammer ricochet Cryo DMG
+feature_skill;prune_banehunter_oathhammer_electro;Электро Урон отскока Клятвенного молота истребителя бедствий;Banehunter Oathhammer ricochet Electro DMG
+feature_other;prune_tolling_synchronicity;Бонус Звонкого единодушия;Tolling Synchronicity Bonus
+feature_burst;prune_verdict_and_punishment_pyro;Пиро Урон Вердикт и наказание;Verdict and Punishment Pyro DMG
+feature_burst;prune_verdict_and_punishment_hydro;Гидро Урон Вердикт и наказание;Verdict and Punishment Hydro DMG
+feature_burst;prune_verdict_and_punishment_cryo;Крио Урон Вердикт и наказание;Verdict and Punishment Cryo DMG
+feature_burst;prune_verdict_and_punishment_electro;Электро Урон Вердикт и наказание;Verdict and Punishment Electro DMG

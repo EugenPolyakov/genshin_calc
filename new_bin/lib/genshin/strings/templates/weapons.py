@@ -2131,7 +2131,7 @@ purifying_crown = Template(
     names=['Электризующего эдикта', 'Electrifying Edict'],
     sentences=[
         ['24:atk_percent', '20:ignore'],
-        ['20:ignore', '40:dmg_reaction_lunarcharged|40'],
+        ['20:ignore', '40:dmg_reaction_lunarcharged_percent|40'],
     ],
     results=[
         [0],
@@ -2343,7 +2343,7 @@ seasoned_symphony = Template(
     sentences=[
         ['12:atk_percent'],
         ['12:atk_percent'],
-        ['32:atk_percent|32', '3:ignore'],
+        ['32:text_atk_percent|32', '3:ignore'],
         [],
     ],
     results=[
@@ -3030,7 +3030,7 @@ athame_artis_rus = Template(
         '<br>': '\n<br>\n',
     },
     sentences=[
-        ['16:atk_percent'],
+        ['16:crit_dmg_burst'],
         ['20:text_percent2|20', '16:text_percent|16', '3:ignore'],
         [],
         ['75:ignore'],
@@ -3240,5 +3240,51 @@ golden_frostbound_oath_eng = Template(
         ['Frost Fae\'s Mischief'],
     ],
     extracted_names=[3, 4],
+)
+
+angelos_heptades_rus = Template(
+    names=['Ведьмовство: Тайный обряд'],
+    sentences=[
+        ['12:atk_percent|12'],
+        ['20:ignore', '10:text_dmg_percent|10', '1000:'],
+        ['26:text_dmg_percent_max|26'],
+        ['14:energy'],
+        ['14:ignore'],
+        [],
+        [],
+        [],
+        ['50:'],
+    ],
+    results=[
+        [0],
+        [1, 2, 6, 7, 8],
+        [3, 4, 5, 6],
+        ['$$$name$$$ (Атака)'],
+        ['$$$name$$$ (Вне поля)'],
+        ['$$$name$$$ (Атака вне поля)'],
+    ],
+    extracted_names=[3, 4, 5],
+)
+
+angelos_heptades_eng = Template(
+    names=['Hexerei: Secret Rite'],
+    sentences=[
+        ['12:atk_percent|12'],
+        ['20:ignore', '10:text_dmg_percent|10', '1000:', '26:text_dmg_percent_max|26'],
+        ['14:energy'],
+        ['14:ignore'],
+        [],
+        [],
+        ['50:'],
+    ],
+    results=[
+        [0],
+        [1, 2, 4, 5, 6],
+        [3, 4],
+        ['$$$name$$$ (ATK)'],
+        ['$$$name$$$ (off-field)'],
+        ['$$$name$$$ (ATK off-field)'],
+    ],
+    extracted_names=[3, 4, 5],
 )
 

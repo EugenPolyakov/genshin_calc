@@ -22,7 +22,7 @@ export const athame_artis = new DbObjectWeapon({
             title: 'talent_name.weapon_athame_artis',
             description: 'talent_descr.weapon_athame_artis_1',
             stats: [
-                new StatTable('atk_percent', weaponDataTable.athame_artis.athame_artis.param1, 100),
+                new StatTable('crit_dmg_burst', weaponDataTable.athame_artis.athame_artis.param1, 100),
             ],
         }),
         new ConditionBooleanRefine({

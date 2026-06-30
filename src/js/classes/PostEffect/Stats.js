@@ -14,7 +14,12 @@ export class PostEffectStats extends PostEffect {
     }
 
     getBaseValueTree(data, opts) {
-        return makeStatItem(this.params.from, data.stats);
+        let from;
+        if (typeof this.params.from == "function")
+            from = this.params.from(data);
+        else
+            from = this.params.from;
+        return makeStatItem(from, data.stats);
     }
 
     getPercents(data) {

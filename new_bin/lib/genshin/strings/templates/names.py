@@ -210,6 +210,13 @@ postprocess = Template(
     ]
 )
 
+postprocess_art = Template(
+    patterns=[
+        (r'((<>)+)$', ''),
+        (r'<> ?', '<br>'),
+    ]
+)
+
 color_patterns = Template(
     patterns=[
         (r'<color=\#99FFFFFF>(.*?)<\/color>', 'name{\\1}'),

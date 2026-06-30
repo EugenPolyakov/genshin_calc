@@ -193,7 +193,8 @@ export class ArtifactGenerator {
                 return false;
             let base = statsCnt.reduce((a, v) => a + v, 0);
             for (let i of Object.keys(result))
-                base -= Math.min(result[i], preparedData.mainStatCnt[i]);
+                if (result[i])
+                    base -= Math.min(result[i], preparedData.mainStatCnt[i]);
             return max - base >= actualCnt;
         }
 
@@ -276,7 +277,7 @@ export class ArtifactGenerator {
             maxVal: {},
             mainStats: ['hp', 'atk'].concat(Object.values(combination)),
             min: {},
-            actualList: Object.keys(result).filter(x => !this.usefulStats.includes(x)).concat(this.usefulStats),
+            actualList: Object.keys(result).filter(x => !this.usefulStats.includes(x) && result[x]).concat(this.usefulStats),
         };
 
         preparedData.actualList.forEach(x => preparedData.canBeIn[x] = preparedData.mainStats.map(a => a != x));
@@ -291,7 +292,7 @@ export class ArtifactGenerator {
             }
         });
 
-        yield* this.generateBase(preparedData, this.settings.count + (this.usefulStats.includes("recharge") ? 0 : preparedData.min.recharge));
+        yield* this.generateBase(preparedData, this.settings.count + ((this.usefulStats.includes("recharge") ? 0 : preparedData.min.recharge) | 0));
 
         this.log(preparedData);
     }

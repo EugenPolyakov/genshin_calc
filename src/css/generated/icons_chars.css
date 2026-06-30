@@ -115,17 +115,20 @@
 .char-icon-zibai {background-image: url("../../images/chars/zibai.png")}
 .char-icon-illuga {background-image: url("../../images/chars/illuga.png")}
 .char-icon-varka {background-image: url("../../images/chars/varka.png")}
+.char-icon-lohen {background-image: url("../../images/chars/lohen.png")}
 .char-icon-linnea {background-image: url("../../images/chars/linnea.png")}
+.char-icon-nicole {background-image: url("../../images/chars/nicole.png")}
+.char-icon-prune {background-image: url("../../images/chars/prune.png")}
 .sprite-char.sprite-24 {
-	background-image: url("../../images/sprites/char_aca4f85ba0862420adfca7f5308a6322.png");
+	background-image: url("../../images/sprites/char_4b7bef65fe2b7908ff522073176fe530.png");
 	background-size: 264px 264px;
 }
 .sprite-char.sprite-40 {
-	background-image: url("../../images/sprites/char_c21213fbf759359d29cc5b9a1076548a.png");
+	background-image: url("../../images/sprites/char_df464a2a2195bcda8812987aae15ba9c.png");
 	background-size: 440px 440px;
 }
 .sprite-char.sprite-60 {
-	background-image: url("../../images/sprites/char_4209735b00ee008c798ab338a865fa92.png");
+	background-image: url("../../images/sprites/char_ccf40cd087c5671ae2331c98f7fd5d9e.png");
 	background-size: 660px 660px;
 }
 .sprite.char-icon-unknown {background-position: 0% 0%}
@@ -245,7 +248,10 @@
 .sprite.char-icon-zibai {background-position: 40% 100%}
 .sprite.char-icon-illuga {background-position: 50% 100%}
 .sprite.char-icon-varka {background-position: 60% 100%}
-.sprite.char-icon-linnea {background-position: 70% 100%}
+.sprite.char-icon-lohen {background-position: 70% 100%}
+.sprite.char-icon-linnea {background-position: 80% 100%}
+.sprite.char-icon-nicole {background-position: 90% 100%}
+.sprite.char-icon-prune {background-position: 100% 100%}
 
 @media
 only screen and (-webkit-min-device-pixel-ratio: 2),
@@ -371,8 +377,11 @@ only screen and (                min-resolution: 2dppx) {
 	.char-icon-zibai {background-image: url("../../images/chars/zibai_2x.png")}
 	.char-icon-illuga {background-image: url("../../images/chars/illuga_2x.png")}
 	.char-icon-varka {background-image: url("../../images/chars/varka_2x.png")}
+	.char-icon-lohen {background-image: url("../../images/chars/lohen_2x.png")}
 	.char-icon-linnea {background-image: url("../../images/chars/linnea_2x.png")}
-	.sprite-char.sprite-24 {background-image: url("../../images/sprites/char_4d21903d8a52668e512a1a662044d05a.png")}
-	.sprite-char.sprite-40 {background-image: url("../../images/sprites/char_f7619dce522d427e6c46040b2ebfee2b.png")}
-	.sprite-char.sprite-60 {background-image: url("../../images/sprites/char_9f35831722d401f4dfc638817dcd5bd7.png")}
+	.char-icon-nicole {background-image: url("../../images/chars/nicole_2x.png")}
+	.char-icon-prune {background-image: url("../../images/chars/prune_2x.png")}
+	.sprite-char.sprite-24 {background-image: url("../../images/sprites/char_3f44b7fbeef206cd9d550ae22c1cb8e4.png")}
+	.sprite-char.sprite-40 {background-image: url("../../images/sprites/char_8dbcfe1a7a26aa8912d4fb8a5e29fd53.png")}
+	.sprite-char.sprite-60 {background-image: url("../../images/sprites/char_e23a8aff6be2f9b83963859704df6d1b.png")}
 }

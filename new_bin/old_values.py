@@ -2229,6 +2229,36 @@ old_values = {
         2: "cd", #Default
         3: "energy_cost", #Default
     },
+#nicole
+    #allegoria
+    (11311, 13131): {
+        0: "normal_hit_1", #Default
+        1: "normal_hit_2", #Default
+        2: "normal_hit_3", #Default
+        3: "charged_hit", #Default
+        4: "stamina_cost", #Default
+        5: "plunge", #Default
+        6: "plunge_low/plunge_high", #Default
+    },
+    #uncreated_light
+    (11312, 13132): {
+        0: "skill_dmg", #Default
+        1: "shield_absorption", #Default
+        2: "shield_duration", #Default
+        3: "grace_of_kenosis_atk_bonus_ratio",
+        4: "grace_of_kenosis_max_atk_bonus",
+        5: "grace_of_kenosis_duration",
+        6: "cd", #Default
+    },
+    #ladder_of_divine_ascent
+    (11315, 13139): {
+        0: "skill_dmg", #Default
+        1: "arcane_projection_dmg",
+        2: "arcane_projection_attack_count",
+        3: "silent_contemplation_duration",
+        4: "cd", #Default
+        5: "energy_cost", #Default
+    },
 #nilou
     #dance_of_samser
     (10701, 7031): {
@@ -2334,6 +2364,31 @@ old_values = {
         0: "ritual_dmg",
         1: "soundwave_collision_dmg",
         2: "duration", #Default
+        3: "cd", #Default
+        4: "energy_cost", #Default
+    },
+#prune
+    #badaboom_hexbuster_hammer
+    (11321, 13231): {
+        0: "normal_hit_1", #Default
+        1: "normal_hit_2", #Default
+        2: "normal_hit_3", #Default
+        3: "charged_hit", #Default
+        4: "stamina_cost", #Default
+        5: "plunge", #Default
+        6: "plunge_low/plunge_high", #Default
+    },
+    #ring_a_ding_ding_hexhunter_chime
+    (11322, 13232): {
+        0: "ring_a_ding_ding_hexhunter_chime_dmg",
+        1: "clang_clang_witch_tribution_comes_dmg",
+        2: "cd", #Default
+    },
+    #the_bell_tolls_the_hunt_is_on
+    (11325, 13239): {
+        0: "skill_dmg", #Default
+        1: "witchlure_bell_dmg",
+        2: "hunter_seeker_mode_duration",
         3: "cd", #Default
         4: "energy_cost", #Default
     },

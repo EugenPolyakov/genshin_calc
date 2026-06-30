@@ -247,6 +247,7 @@ weapon_names = {
     14520: 'nightweavers_looking_glass',
     14521: 'reliquary_of_truth',
     14522: 'nocturnes_curtain_call',
+    14523: "angelos_heptades",
 
     #BOWS
     15301: "RavenBow",
@@ -297,6 +298,7 @@ weapon_names = {
     15513: "SilvershowerHeartstrings",
     15514: "AstralVulturesCrimsonPlumage",
     15515: 'the_daybreak_chronicles',
+    15516: "golden_frostbound_oath",
     # 20001: "",
 }
 

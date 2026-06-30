@@ -1,8 +1,8 @@
 import { ConditionAnd } from "../../classes/Condition/And";
 import { ConditionBoolean } from "../../classes/Condition/Boolean";
 import { ConditionHexCheck } from "../../classes/Condition/HexCheck";
+import { ConditionHexCurrent } from "../../classes/Condition/HexCurrent";
 import { ConditionLevelSelect } from "../../classes/Condition/LevelSelect";
-import { ConditionLevelSelectSingleWeapon } from "../../classes/Condition/LevelSelect/SingleWeapon";
 import { ConditionNot } from "../../classes/Condition/Not";
 import { ConditionPartyWeapon } from "../../classes/Condition/PartyWeapon";
 import { DbObjectBuff } from "../../classes/DbObject/Buff";
@@ -290,41 +290,43 @@ export const Weapons = new DbObjectBuff({
                 ]),
             ],
         }),
-        new ConditionPartyWeapon({
+        new ConditionLevelSelect({
             name: 'weapon_other.weapon_symphonist_of_scents',
-            serializeIds: [58, 76, 77],
+            serializeId: 58,
             title: 'talent_name.weapon_seasoned_symphony',
             description: 'talent_descr.weapon_seasoned_symphony_3',
+            rotation: 'buffs',
+            maxStacks: 5,
             icon: {
                 rarity: 5,
                 name: 'sprite-weapon-polearm weapon-icon-polearm-symphonist-of-scents',
             },
             stats: [
-                new StatTable('atk_percent', [32, 40, 48, 56, 64]),
+                new StatTable('text_atk_percent', [32, 40, 48, 56, 64]),
             ],
-            condition: new ConditionNot([
-                new ConditionBoolean({name: 'symphonist_of_scents_3'}),
-            ]),
         }),
-        new ConditionPartyWeapon({
+        new ConditionLevelSelect({
             name: 'weapon_other.weapon_fractured_halo',
-            activeWeapon: 'weapon_fractured_halo_2',
-            serializeIds: [59, 74, 75],
+            serializeId: 59,
             title: 'talent_name.weapon_purifying_crown',
             description: 'talent_descr.weapon_purifying_crown_2',
+            rotation: 'buffs',
+            maxStacks: 5,
             icon: {
                 rarity: 5,
                 name: 'sprite-weapon-polearm weapon-icon-polearm-fractured-halo',
             },
             stats: [
-                new StatTable('dmg_reaction_lunarcharged', [40, 50, 60, 70, 80]),
+                new StatTable('dmg_reaction_lunarcharged_percent', [40, 50, 60, 70, 80]),
             ],
         }),
-        new ConditionLevelSelectSingleWeapon({
+        new ConditionLevelSelect({
             name: 'weapon_other.weapon_nightweavers_looking_glass',
             serializeId: 64,
             title: 'talent_name.weapon_nightweavers_looking_glass',
             description: 'talent_descr.weapon_nightweavers_looking_glass_3',
+            rotation: 'buffs',
+            maxStacks: 5,
             icon: {
                 rarity: weaponDataTable.athame_artis.rarity,
                 name: 'sprite-weapon-catalyst weapon-icon-catalyst-nightweavers-looking-glass',
@@ -337,15 +339,11 @@ export const Weapons = new DbObjectBuff({
                 new StatTable('text_percent_1', weaponDataTable.nightweavers_looking_glass.nightweavers_looking_glass.param5, 100),
                 new StatTable('text_percent_2', weaponDataTable.nightweavers_looking_glass.nightweavers_looking_glass.param6, 100),
                 new StatTable('text_percent_3', weaponDataTable.nightweavers_looking_glass.nightweavers_looking_glass.param7, 100),
-                new StatTable('dmg_reaction_rupture', weaponDataTable.nightweavers_looking_glass.nightweavers_looking_glass.param5, 100),
-                new StatTable('dmg_reaction_burgeon', weaponDataTable.nightweavers_looking_glass.nightweavers_looking_glass.param6, 100),
-                new StatTable('dmg_reaction_hyperbloom', weaponDataTable.nightweavers_looking_glass.nightweavers_looking_glass.param6, 100),
-                new StatTable('dmg_reaction_lunarbloom', weaponDataTable.nightweavers_looking_glass.nightweavers_looking_glass.param7, 100),
             ],
         }),
-        new ConditionPartyWeapon({
+        new ConditionLevelSelect({
             name: 'weapon_other.weapon_athame_artis',
-            serializeIds: [63, 72, 73],
+            serializeId: 63,
             title: 'talent_name.weapon_athame_artis',
             description: 'talent_descr.weapon_athame_artis_4',
             icon: {
@@ -359,20 +357,70 @@ export const Weapons = new DbObjectBuff({
                 new StatTableConditions('atk_percent', weaponDataTable.athame_artis.athame_artis.param4, new ConditionHexCheck({ hex: 2 }), 75),
             ],
         }),
-        new ConditionPartyWeapon({
+        new ConditionLevelSelect({
             name: 'weapon_other.weapon_golden_frostbound_oath',
-            serializeIds: [70, 71, 78],
+            serializeId: 70,
             title: 'talent_name.weapon_golden_frostbound_oath_3',
             description: 'talent_descr.weapon_golden_frostbound_oath_3',
+            rotation: 'buffs',
+            maxStacks: 5,
             icon: {
                 rarity: weaponDataTable.golden_frostbound_oath.rarity,
-                name: 'sprite-weapon-sword weapon-icon-bow-golden-frostbound-oath',
+                name: 'sprite-weapon-bow weapon-icon-bow-golden-frostbound-oath',
             },
             stats: [
                 new StatTable('text_dmg_geo_percent', weaponDataTable.golden_frostbound_oath.golden_frostbound_oath.param3, 50),
                 new StatTable('text_dmg_reaction_lunarcrystallize_percent', weaponDataTable.golden_frostbound_oath.golden_frostbound_oath.param3, 50),
                 new StatTable('dmg_geo', weaponDataTable.golden_frostbound_oath.golden_frostbound_oath.param3, 50),
                 new StatTable('dmg_reaction_lunarcrystallize', weaponDataTable.golden_frostbound_oath.golden_frostbound_oath.param3, 50),
+            ],
+        }),
+        new ConditionPartyWeapon({
+            name: 'weapon_other.weapon_angelos_heptades',
+            serializeIds: [71],
+            title: 'talent_name.weapon_angelos_heptades_1',
+            statTitle: 'talent_name.weapon_angelos_heptades_2',
+            description: 'talent_descr.weapon_angelos_heptades_2',
+            statName: 'angelos_heptades_atk',
+            statSerializeIds: [72],
+            rotation: 'buffs',
+            maxStacks: 5,
+
+            statClass: 'inputs-6digit',
+            partyStat: 'atk',
+            statMax: 20000,
+
+            icon: {
+                rarity: weaponDataTable.angelos_heptades.rarity,
+                name: 'sprite-weapon-catalyst weapon-icon-catalyst-angelos-heptades',
+            },
+            stats: [
+                new StatTable('text_dmg_percent', weaponDataTable.angelos_heptades.angelos_heptades.param3, 100),
+                new StatTable('text_dmg_percent_max', weaponDataTable.angelos_heptades.angelos_heptades.param4, 100),
+            ],
+        }),
+        new ConditionPartyWeapon({
+            name: 'weapon_other.weapon_angelos_heptades_off',
+            serializeIds: [73],
+            title: 'talent_name.weapon_angelos_heptades_3',
+            statTitle: 'talent_name.weapon_angelos_heptades_4',
+            description: 'talent_descr.weapon_angelos_heptades_2',
+            statName: 'angelos_heptades_atk_off',
+            statSerializeIds: [74],
+            rotation: 'buffs',
+            maxStacks: 5,
+
+            statClass: 'inputs-6digit',
+            partyStat: 'atk',
+            statMax: 20000,
+
+            icon: {
+                rarity: weaponDataTable.angelos_heptades.rarity,
+                name: 'sprite-weapon-catalyst weapon-icon-catalyst-angelos-heptades',
+            },
+            stats: [
+                new StatTable('text_dmg_percent', weaponDataTable.angelos_heptades.angelos_heptades.param3, 100),
+                new StatTable('text_dmg_percent_max', weaponDataTable.angelos_heptades.angelos_heptades.param4, 100),
             ],
         }),
     ],
@@ -444,6 +492,17 @@ export const Weapons = new DbObjectBuff({
                     new ConditionBoolean({name: 'weapon_peak_patrol_song_2'}),
                 ]),
             ],
+        }),
+        new PostEffectStats({
+            from: 'angelos_heptades_atk_off',
+            levelSetting: 'weapon_other.weapon_angelos_heptades_off',
+            percent: new StatTable('dmg_all', weaponDataTable.angelos_heptades.angelos_heptades.param3, 0.05),
+            statCap: new StatTable('dmg_all', weaponDataTable.angelos_heptades.angelos_heptades.param4, 50),
+            condition: new ConditionAnd([
+                new ConditionHexCheck({ hex: 2 }),
+                new ConditionHexCurrent(),
+                new ConditionBoolean({ name: 'weapon_angelos_heptades_1', invert: 1 }),
+            ]),
         }),
     ]
 });

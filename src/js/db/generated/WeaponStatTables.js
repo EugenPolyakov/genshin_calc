@@ -1094,6 +1094,10 @@ export const weaponStatTables = {
 		enumStatTables.atk44_2,
 		enumStatTables.cdmg19,
 	],
+	angelos_heptades: [
+		enumStatTables.atk49,
+		enumStatTables.atkp4,
+	],
 	RavenBow: [
 		enumStatTables.atk40,
 		enumStatTables.mastery20,
@@ -3128,6 +3132,22 @@ export const weaponDataTable = {
 			param4: [14, 15, 16, 17, 18],
 			param5: [18],
 			hp_percent: [10.0, 12.0, 14.0, 16.0, 18.0],
+		},
+	},
+	angelos_heptades: {
+		rarity: 5,
+		weapon: "catalyst",
+		gameId: 14523,
+		angelos_heptades: {
+			param1: [0.12, 0.15, 0.18, 0.21, 0.24],
+			param2: [1000],
+			param3: [0.1, 0.13, 0.16, 0.19, 0.22],
+			param4: [0.26, 0.34, 0.42, 0.5, 0.58],
+			param5: [20],
+			param6: [14, 15, 16, 17, 18],
+			param7: [14],
+			param8: [0.5],
+			atk_percent: [12.0, 15.000000953674316, 18.0, 21.0, 24.0],
 		},
 	},
 	RavenBow: {

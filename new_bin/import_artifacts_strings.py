@@ -8,7 +8,7 @@ from lib.genshin.datafiles.lang import LangData
 from lib.genshin.datafiles.artifacts import ArtifactPieceBonusesData, ArtifactSetData
 from lib.genshin.utils import convert_id, add_array
 from lib.genshin.strings.templates import artifacts_eng, artifacts_rus
-from lib.genshin.strings.templates.names import names_eng, names_rus, keywords_eng, keywords_rus
+from lib.genshin.strings.templates.names import names_eng, names_rus, keywords_eng, keywords_rus, patterns_eng, postprocess_art
 from lib.genshin.strings.csv import CsvDumper
 import logging
 
@@ -27,6 +27,7 @@ lang_data = {
         },
         'names': names_rus,
         'keywords': keywords_rus,
+        'patterns': patterns_eng,
     },
     'eng': {
         'lang': LangData('EN'),
@@ -38,6 +39,7 @@ lang_data = {
         },
         'names': names_eng,
         'keywords': keywords_eng,
+        'patterns': patterns_eng,
     },
 }
 
@@ -114,16 +116,18 @@ for set_id in sorted(set_data.keys()):
                 tpl_names = lang_data[lang_name]['names']
                 tpl_keywords = lang_data[lang_name]['keywords']
 
-                tpl_result = tpl_art.process(descr)['descr']
+                tpl_result = tpl_art.process(lang_data[lang_name]['patterns'].process(descr)['descr'][0])['descr']
 
                 for item in tpl_result:
                     if tpl_keywords:
                         item = tpl_keywords.process(item)['descr'][0]
                     if tpl_names:
                         item = tpl_names.process(item)['descr'][0]
+                    item = postprocess_art.process(item)['descr'][0]
                     res_lang[lang_name].append(item)
-            except Exception:
+            except Exception as e:
                 logger.error(f'error on {setnb}')
+                logger.error(e)
                 err = True
         if err: continue
         add_array(res_lang, result, setnb, 'set_descr')

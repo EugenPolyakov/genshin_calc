@@ -676,4 +676,23 @@ export const Rotation = new DbObjectRotation({
     'skill.linnea_lumi_pound_pound_pummeler_dmg_1': 663,
     'skill.linnea_lumi_heavy_overdrive_hammer_dmg': 664,
     'skill.linnea_lumi_million_ton_crush_dmg': 665,
+
+    'skill.prune_ring_a_ding_ding_hexhunter_chime_dmg': 666,
+    'skill.prune_clang_clang_witch_tribution_comes_dmg_pyro': 667,
+    'skill.prune_clang_clang_witch_tribution_comes_dmg_hydro': 668,
+    'skill.prune_clang_clang_witch_tribution_comes_dmg_cryo': 669,
+    'skill.prune_clang_clang_witch_tribution_comes_dmg_electro': 670,
+    'burst.prune_witchlure_bell_dmg': 671,
+    'burst.prune_verdict_and_punishment_pyro': 672,
+    'burst.prune_verdict_and_punishment_hydro': 673,
+    'burst.prune_verdict_and_punishment_cryo': 674,
+    'burst.prune_verdict_and_punishment_electro': 675,
+    'skill.prune_banehunter_oathhammer_pyro': 676,
+    'skill.prune_banehunter_oathhammer_hydro': 677,
+    'skill.prune_banehunter_oathhammer_cryo': 678,
+    'skill.prune_banehunter_oathhammer_electro': 679,
+
+    'skill.nicole_grace_of_kenosis_atk_bonus_ratio': 680,
+    'burst.nicole_arcane_projection_dmg': 681,
+    'other.nicole_arcane_projection_unity': 682,
 });

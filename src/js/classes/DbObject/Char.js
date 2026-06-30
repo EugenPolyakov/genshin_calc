@@ -99,6 +99,10 @@ export class DbObjectChar extends DbObject {
         return this.partyData && this.partyData.multipliers || [];
     }
 
+    getPartyFeatures() {
+        return this.partyData && this.partyData.features || [];
+    }
+
     getTalentTable(name) {
         let result;
 

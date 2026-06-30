@@ -73,10 +73,12 @@ from .navia import char_navia  # noqa
 from .nahida import char_nahida  # noqa
 from .nefer import char_nefer  # noqa
 from .neuvillette import char_neuvillette  # noqa
+from .nicole import char_nicole  # noqa
 from .nilou import char_nilou  # noqa
 from .ningguang import char_ningguang  # noqa
 from .noelle import char_noelle  # noqa
 from .ororon import char_ororon  # noqa
+from .prune import char_prune  # noqa
 from .qiqi import char_qiqi  # noqa
 from .raiden_shogun import char_raiden_shogun  # noqa
 from .razor import char_razor  # noqa

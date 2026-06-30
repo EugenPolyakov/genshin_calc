@@ -17,6 +17,8 @@ import { DbObjectBuff } from "../../classes/DbObject/Buff";
 import { FeatureMultiplier } from "../../classes/Feature2/Multiplier";
 import { FeatureMultiplierTarget } from "../../classes/Feature2/Multiplier/Target";
 import { ValueTable } from "../../classes/ValueTable";
+import { ConditionHexCheck } from "../../classes/Condition/HexCheck";
+import { ConditionHexCurrent } from "../../classes/Condition/HexCurrent";
 
 export const Artifacts = new DbObjectBuff({
     name: 'artifacts',
@@ -419,6 +421,91 @@ export const Artifacts = new DbObjectBuff({
                 ]),
                 new ConditionBoolean({ name: 'set_other.night_of_the_skys_unveiling_4' }),
             ]),
+        }),
+        new ConditionDropdownElement({
+            name: 'set_other.celestial_gift_4',
+            serializeId: 80,
+            multiple: true,
+            hideEmpty: true,
+            dropdownClass: 'select-element-multiple big',
+            rotation: 'buffs',
+            title: 'set_bonus.celestial_gift_4',
+            description: 'set_descr.celestial_gift_4_3',
+            icon: {
+                rarity: 5,
+                name: 'sprite-artifact artifact-icon-celestial-gift flower',
+            },
+            values: [
+                {
+                    value: 'pyro',
+                    serializeId: 1,
+                },
+                {
+                    value: 'cryo',
+                    serializeId: 2,
+                },
+                {
+                    value: 'electro',
+                    serializeId: 3,
+                },
+                {
+                    value: 'hydro',
+                    serializeId: 4,
+                },
+                {
+                    value: 'anemo',
+                    serializeId: 5,
+                },
+                {
+                    value: 'geo',
+                    serializeId: 6,
+                },
+                {
+                    value: 'dendro',
+                    serializeId: 7,
+                },
+            ],
+        }),
+        ...['pyro', 'hydro', 'electro', 'cryo', 'anemo', 'geo', 'dendro'].map((elem) => {
+            return new Condition({
+                stats: {
+                    ['dmg_' + elem]: 20,
+                },
+                condition: new ConditionOr([
+                    new ConditionBooleanDropdownValue({ name: 'set_other.celestial_gift_4', value: elem }),
+                    new ConditionAnd([
+                        new ConditionBoolean({ name: 'set.celestial_gift_4' }),
+                        new ConditionBooleanPiecesCount({
+                            setName: 'CelestialGift',
+                            count: 4,
+                        }),
+                        new ConditionBooleanCharElement({ element: [elem] }),
+                        new ConditionHexCurrent(),
+                    ]),
+                ]),
+            })
+        }),
+        ...['pyro', 'hydro', 'electro', 'cryo', 'anemo', 'geo', 'dendro'].map((elem) => {
+            return new Condition({
+                stats: {
+                    ['dmg_' + elem]: 20,
+                },
+                condition: new ConditionAnd([
+                    new ConditionOr([
+                        new ConditionBooleanDropdownValue({ name: 'set_other.celestial_gift_4', value: elem }),
+                        new ConditionAnd([
+                            new ConditionBoolean({ name: 'set.celestial_gift_4' }),
+                            new ConditionBooleanPiecesCount({
+                                setName: 'CelestialGift',
+                                count: 4,
+                            }),
+                            new ConditionBooleanCharElement({ element: [elem] }),
+                            new ConditionHexCurrent(),
+                        ]),
+                    ]),
+                    new ConditionHexCheck({ hex: 2 }),
+                ]),
+            })
         }),
     ],
     postEffects: [],

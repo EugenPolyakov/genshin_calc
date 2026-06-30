@@ -47,16 +47,17 @@
 .weapon-icon-catalyst-nightweavers-looking-glass {background-image: url("../../images/weapons/catalyst/catalyst_menulisring.png")}
 .weapon-icon-catalyst-reliquary-of-truth {background-image: url("../../images/weapons/catalyst/catalyst_sistrum.png")}
 .weapon-icon-catalyst-nocturnes-curtain-call {background-image: url("../../images/weapons/catalyst/catalyst_brisingamen.png")}
+.weapon-icon-catalyst-angelos-heptades {background-image: url("../../images/weapons/catalyst/catalyst_fairygarden.png")}
 .sprite-weapon-catalyst.sprite-24 {
-	background-image: url("../../images/sprites/weapon_catalyst_f8c2702b234e5975f5bcc2a579a9f3fc.png");
+	background-image: url("../../images/sprites/weapon_catalyst_a7c26f1da63b2480427aa3044703aeb7.png");
 	background-size: 120px 264px;
 }
 .sprite-weapon-catalyst.sprite-40 {
-	background-image: url("../../images/sprites/weapon_catalyst_f6bd87ab59a56300fedc905b7cd5bec4.png");
+	background-image: url("../../images/sprites/weapon_catalyst_e4607a47683ed66da7e184dc85aa586f.png");
 	background-size: 200px 440px;
 }
 .sprite-weapon-catalyst.sprite-60 {
-	background-image: url("../../images/sprites/weapon_catalyst_3bcb4245bc30dd2f08d7d0ef447f7fa9.png");
+	background-image: url("../../images/sprites/weapon_catalyst_d4e847bcf3dd38f936040a443706b06a.png");
 	background-size: 300px 660px;
 }
 .sprite.weapon-icon-catalyst-unknown {background-position: 0% 0%}
@@ -108,6 +109,7 @@
 .sprite.weapon-icon-catalyst-nightweavers-looking-glass {background-position: 25% 90%}
 .sprite.weapon-icon-catalyst-reliquary-of-truth {background-position: 50% 90%}
 .sprite.weapon-icon-catalyst-nocturnes-curtain-call {background-position: 75% 90%}
+.sprite.weapon-icon-catalyst-angelos-heptades {background-position: 100% 90%}
 
 @media
 only screen and (-webkit-min-device-pixel-ratio: 2),
@@ -165,7 +167,8 @@ only screen and (                min-resolution: 2dppx) {
 	.weapon-icon-catalyst-nightweavers-looking-glass {background-image: url("../../images/weapons/catalyst/catalyst_menulisring_2x.png")}
 	.weapon-icon-catalyst-reliquary-of-truth {background-image: url("../../images/weapons/catalyst/catalyst_sistrum_2x.png")}
 	.weapon-icon-catalyst-nocturnes-curtain-call {background-image: url("../../images/weapons/catalyst/catalyst_brisingamen_2x.png")}
-	.sprite-weapon-catalyst.sprite-24 {background-image: url("../../images/sprites/weapon_catalyst_855d1e393f517c86a73300ffc91ec37d.png")}
-	.sprite-weapon-catalyst.sprite-40 {background-image: url("../../images/sprites/weapon_catalyst_ae59322ac0168da553fc48fd25e85df5.png")}
-	.sprite-weapon-catalyst.sprite-60 {background-image: url("../../images/sprites/weapon_catalyst_4953086026ebc987a7e0e7a8c15fe95d.png")}
+	.weapon-icon-catalyst-angelos-heptades {background-image: url("../../images/weapons/catalyst/catalyst_fairygarden_2x.png")}
+	.sprite-weapon-catalyst.sprite-24 {background-image: url("../../images/sprites/weapon_catalyst_26725defca00fc4c843a44fa78b527b3.png")}
+	.sprite-weapon-catalyst.sprite-40 {background-image: url("../../images/sprites/weapon_catalyst_c56173367fd1e07e3cacabe839d008ec.png")}
+	.sprite-weapon-catalyst.sprite-60 {background-image: url("../../images/sprites/weapon_catalyst_89f1d0015d1001c9dab2dbf4a68e44ea.png")}
 }

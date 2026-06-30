@@ -44,8 +44,12 @@ export class PostEffect {
     }
 
     getLevel(settings) {
-        let settingName = this.params.levelSetting;
+        if (typeof this.params.levelSetting == "function") {
+            return this.params.levelSetting(settings);
+        } else {
+            let settingName = this.params.levelSetting;
 
-        return getSkillLevelByName(settingName, settings, this.params.maxLevelSetting);
+            return getSkillLevelByName(settingName, settings, this.params.maxLevelSetting);
+        }
     }
 }

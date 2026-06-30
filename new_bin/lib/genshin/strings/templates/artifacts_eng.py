@@ -834,3 +834,44 @@ aubade_of_morningstar_and_moon_4 = Template(
         [1, 2],
     ],
 )
+
+celestial_gift_2 = Template(
+    sentences=[
+        ['20:recharge'],
+    ],
+)
+
+celestial_gift_4 = Template(
+    sentences=[
+        ['20:ignore', '20:'],
+        [],
+        [],
+        [],
+        ['40:'],
+        [],
+    ],
+    results=[
+        [0, 1, 2],
+        [4, 5],
+        [0, 1, 2, 3, 4, 5],
+    ],
+)
+
+disenchantment_in_deep_shadow_2 = Template(
+    sentences=[
+        ['18:atk_percent'],
+    ],
+)
+
+disenchantment_in_deep_shadow_4 = Template(
+    sentences=[
+        ['80:dmg_reaction_superconduct'],
+        ['16:'],
+        [],
+    ],
+    results=[
+        [0],
+        [1, 2],
+    ],
+)
+

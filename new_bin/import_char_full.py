@@ -422,10 +422,10 @@ def processPassiveTalent(proud, paramList):
     talent_id = char_id + '_' + talent_short_id
     generator.condition(char_id, talent_id, passive.get(needAvatarPromoteLevel_fld) or 0)
 
-inherentProudSkillOpens_fld = 'inherentProudSkillOpens'
-hexProudSkillOpens_fld = 'DAEIJGCFNLL'
-needAvatarPromoteLevel_fld = 'needAvatarPromoteLevel'
-hex_descr_fld = 'POMMPOECOFA'#'JDKOMPNCEMO'#'HCAOGPJPGLM' # 'IACNAENANDH'
+inherentProudSkillOpens_fld = 'LHNAJLJNBAH'#'inherentProudSkillOpens'
+hexProudSkillOpens_fld = 'NMKACHALCPO'
+needAvatarPromoteLevel_fld = 'KGGNNMEALJM'#'needAvatarPromoteLevel'
+hex_descr_fld = 'BDLFGGJDHLI'#'JDKOMPNCEMO'#'HCAOGPJPGLM' # 'IACNAENANDH'
 extra_descr_fld = 'extraDescTextMapHash'
 
 for charVarName in sorted(char_keys):
@@ -454,8 +454,8 @@ for charVarName in sorted(char_keys):
     texts[eng_name] = []
 
     talenttable("\t" + charVarName + ': {\n')
-    talenttable(f"\t\tchar_id:'{char['id']}',\n")
-    talenttable(f"\t\tchar_weapon:'{char['weaponType']}',\n")
+    talenttable(f"\t\tchar_id: {char['id']},\n")
+    talenttable(f"\t\tchar_weapon: '{char['weaponType']}',\n")
 
     locallinks = set()
     if not do_single:

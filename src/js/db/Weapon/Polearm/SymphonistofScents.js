@@ -51,7 +51,7 @@ export const SymphonistofScents = new DbObjectWeapon({
             title: 'talent_name.weapon_seasoned_symphony',
             description: 'talent_descr.weapon_seasoned_symphony_3',
             stats: [
-                new StatTable('atk_percent', [32, 40, 48, 56, 64]),
+                new StatTable('text_atk_percent', [32, 40, 48, 56, 64]),
             ],
         }),
     ],

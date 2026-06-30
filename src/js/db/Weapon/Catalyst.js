@@ -47,6 +47,7 @@ import { etherlight_spindlelute } from "./Catalyst/etherlight_spindlelute";
 import { reliquary_of_truth } from "./Catalyst/reliquary_of_truth";
 import { nightweavers_looking_glass } from "./Catalyst/nightweavers_looking_glass";
 import { nocturnes_curtain_call } from "./Catalyst/nocturnes_curtain_call";
+import { angelos_heptades } from "./Catalyst/angelos_heptades";
 
 export const Catalyst = new DbObjectListSerializeStats({
     SolarPearl: SolarPearl, // 43
@@ -97,4 +98,5 @@ export const Catalyst = new DbObjectListSerializeStats({
     reliquary_of_truth: reliquary_of_truth, // 237
     nightweavers_looking_glass: nightweavers_looking_glass, // 239
     nocturnes_curtain_call: nocturnes_curtain_call, // 240
+    angelos_heptades: angelos_heptades, // 243
 });

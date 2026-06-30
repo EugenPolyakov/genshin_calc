@@ -27,7 +27,7 @@ export const FracturedHalo = new DbObjectWeapon({
             title: 'talent_name.weapon_purifying_crown',
             description: 'talent_descr.weapon_purifying_crown_2',
             stats: [
-                new StatTable('dmg_reaction_lunarcharged', [40, 50, 60, 70, 80]),
+                new StatTable('dmg_reaction_lunarcharged_percent', [40, 50, 60, 70, 80]),
             ],
         }),
     ],
