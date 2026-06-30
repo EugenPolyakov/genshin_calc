@@ -26,7 +26,7 @@ jobs:
     - name: Build
       run: |
         npm install
-        npm run build
+        npm run build-ci
 
     - name: Deploy to GitHub Pages
       run: |
