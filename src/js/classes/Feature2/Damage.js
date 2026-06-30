@@ -265,15 +265,53 @@ export class FeatureDamage extends Feature2 {
 
     /**
      * @param {BuildData} data
+     * @returns {Array}
+     */
+    getCustomMultipliers(data) {
+        return [];
+    }
+
+    /**
+     * @param {BuildData} data
+     * @returns {Array.<FeatureMultiplier>}
+     */
+    getBaseMultiplier(data) {
+        return this.getMultipliers(data);
+    }
+
+    /**
+     * @param {BuildData} data
      * @returns {Function}
      */
     getTree(data) {
-        let multipliers = this.getMultipliers(data);
+        /* 
+base * [mult] * ResistanceMultiplier * {defence} * {{react} * masteryCoef}
+base - список показателей навыка + дополнительные множители от талантов и созвездий, для реакции обычно просто RR и уровень
+mult - сумма всех увеличений урона (бафы по типу и элементам)
+defence - есть если это прямой урон
+react - коэф. пара и таяния для атак
+masteryCoef - коэф. для реакций в том числе пара и таяния
+
+base => список показателей навыка + дополнительные множители от талантов и созвездий
+mult => сумма всех увеличений урона (бафы по типу и элементам)
+react => (1 + бонус(пар/таяние)) * (1 + masteryCoef + flatReact)
+реакция:
+(base * (1 + masteryCoef + flatReact)) * ResistanceMultiplier
+masteryCoef => x*MC/(MC + B)
+base => RR*level, для лунного заряда так же может применяться коэф. 1/2 и 1/12
+
+нужно добавлять бонус в базу как + (сейчас добавляются все кроме isReactionFlatBonus)
+нужно добавлять бонус в mult как +
+нужно добавлять бонус в masteryCoef как + (сейчас добавляются все isReactionFlatBonus)
+нужна возможность просто добавлять дополнительный множитель в это выражение (не нужно, просто для реакций сделать доп. множитель возвышения)
+*/
+        let multipliers = this.getBaseMultiplier(data);
 
         let items = [
             new CBaseDamage(
                 multipliers.map((i) => {return i.getTree(data)})
             ),
+            ...this.getCustomMultipliers(data),
             new CMultiplierBonus(
                 this.getStatsDmgBonus(data).map((stat) => { return makeStatItem(stat, data.stats) })
             ),

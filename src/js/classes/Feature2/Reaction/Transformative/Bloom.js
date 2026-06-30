@@ -1,3 +1,7 @@
+import { makeStatItem } from "../../Compile/Helpers";
+import { CMin, CSum } from "../../Compile/Types/Block";
+import { CCritDmg } from "../../Compile/Types/Damage";
+import { CConst } from "../../Compile/Types/Item";
 import { FeatureReactionTransformative } from "../Transformative";
 
 export class FeatureReactionBloom extends FeatureReactionTransformative {
@@ -7,8 +11,6 @@ export class FeatureReactionBloom extends FeatureReactionTransformative {
         params.tags.push('bloom');
         super(params);
     }
-
-    getReactionRate() { return 2 }
 
     /**
      * @returns {Array.<string>}
@@ -35,5 +37,13 @@ export class FeatureReactionBloom extends FeatureReactionTransformative {
         let result = super.getStatsCritDamage();
         result.push('crit_dmg_bloom');
         return result;
+    }
+
+    getCritDmgBlock(data) {
+        let items = this.getStatsCritDamage(data).map((stat) => { return makeStatItem(stat, data.stats) });
+        if (items.length == 0) {
+            return new CCritDmg([new CConst({ value: 0 })]);
+        }
+        return new CCritDmg([new CMin([new CSum(items), new CConst({ value: 1 })])]);
     }
 }

@@ -8,10 +8,6 @@ export class FeatureReactionLunarBloom extends FeatureReactionLunar {
         super(params);
     }
 
-    getReactionRate() { return 1.8 }
-    getReactionPenalty() { return this.penalty }
-    getScalingStat(data) { return 'lunarbloom_multi' }
-
     /**
      * @returns {Array.<string>}
      */

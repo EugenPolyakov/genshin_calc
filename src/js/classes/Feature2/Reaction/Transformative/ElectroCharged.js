@@ -1,8 +1,6 @@
 import { FeatureReactionTransformative } from "../Transformative";
 
 export class FeatureReactionElectroCharged extends FeatureReactionTransformative {
-    getReactionRate() { return 2 }
-
     /**
      * @returns {Array.<string>}
      */

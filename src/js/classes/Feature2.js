@@ -9,7 +9,7 @@ if (process.env.NODE_ENV !== 'production') {
     var FIELD_NAMES = [
         'name', 'category', 'element', 'damageType', 'multipliers', 'condition', 'tags',
         'cannotReact', 'format', 'digits', 'postEffect', 'items', 'isChild', 'hits',
-        'allowInfusion', 'icon', 'stat', 'penalty',
+        'allowInfusion', 'icon', 'stat',
         'damageBonuses', 'critRateBonuses', 'critDamageBonuses',
         'subtractBoL', 'partyHeal', 'noSelfHeal',
         'rotationHitCount', 'rotationHitDescription',
@@ -108,6 +108,17 @@ export class Feature2 {
         return;
     }
 
+    getGlobalNotFlatMultipliers(data) {
+        let multipliers = [];
+        for (let item of data.multipliers) {
+            if (item.isReactionFlatBonus()) continue;
+            if (!item.isActive(data)) continue;
+            if (!item.isMatchFeature(this, data)) continue;
+            multipliers.push(item);
+        }
+        return multipliers;
+    }
+
     /**
      * @param {BuildData} data
      * @returns {Array.<FeatureMultiplier>}
@@ -119,14 +130,7 @@ export class Feature2 {
             multipliers.push(item);
         }
 
-        for (let item of data.multipliers) {
-            if (item.isMatchOption('reaction_flat', false)) continue;
-            if (!item.isActive(data)) continue;
-            if (!item.isMatchFeature(this, data)) continue;
-            multipliers.push(item);
-        }
-
-        return multipliers;
+        return multipliers.concat(this.getGlobalNotFlatMultipliers(data));
     }
 
     getActivePostEffectsTree(data) {
@@ -296,7 +300,7 @@ export class Feature2 {
                 let title = 'feature_'+ value;
 
                 if (featureData.title) {
-                    title = featureData.title;
+                    title = 'feature_' + featureData.title;
                 }
 
                 title = UI.Lang.get(title)

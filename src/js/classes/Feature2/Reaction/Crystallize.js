@@ -6,27 +6,9 @@ import { FeatureMultiplierReactionCrystallize } from "../Multiplier/Reaction/Cry
 import { FeatureShield } from "../Shield";
 
 export class FeatureReactionCrystallize extends FeatureShield {
-    getReactionRate() { return 1 }
-
-    getBaseMultiplier(data) {
-        return
-    }
 
     getReactionMasteryBonus(data) {
         return FeatureMultiplierReactionCrystallize.masteryMultiplier(data);
-    }
-
-    /**
-     * @param {BuildData} data
-     * @returns {Array.<FeatureMultiplier>}
-     */
-    getMultipliers(data) {
-        return [
-            new FeatureMultiplierReaction({
-                reactionRate: this.getReactionRate(),
-                reactionValue: reactionShieldValues.getValue(data.settings.char_level),
-            }),
-        ];
     }
 
     getBaseTree(data) {

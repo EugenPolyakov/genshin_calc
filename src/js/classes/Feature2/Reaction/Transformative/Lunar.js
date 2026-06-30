@@ -2,7 +2,7 @@ import { BuildData } from "../../../Build/Data";
 import { FeatureMultiplierReactionLunarCharged } from "../../Multiplier/Reaction/LunarCharged";
 import { FeatureReactionTransformative } from "../Transformative";
 import { makeStatItem } from "../../Compile/Helpers";
-import { CSumPlusOne } from "../../Compile/Types/Block";
+import { CElevationReaction, CMultiplierReaction, CSumPlusOne } from "../../Compile/Types/Block";
 
 export class FeatureReactionLunar extends FeatureReactionTransformative {
     constructor(params) {
@@ -44,7 +44,7 @@ export class FeatureReactionLunar extends FeatureReactionTransformative {
         //для лунных реакций доп. множитель только статический и пока так, т.к. если он через Feature,
         //то для прямых реакций лунных героев он попадёт в базовый множитель
         //если нужен будет меняющийся множитель, то придётся переделывать определение базы для прямых лунных реакций от лунных героев
-        items.push(...this.getStatsReactionBonus().map(x => new CSumPlusOne([makeStatItem(x + '_bonus', data.stats)])));
+        items.push(new CElevationReaction(this.getStatsReactionBonus().map(x => makeStatItem(x + '_bonus', data.stats)), { percent: true }));
 
         return items;
     }

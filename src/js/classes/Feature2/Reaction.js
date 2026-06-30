@@ -31,15 +31,11 @@ export class FeatureReaction extends FeatureDamage {
         throw `Define getReactionMasteryBonus method for reaction feature!`;
     }
 
-    getBaseMultiplier(data) {
-        throw `Define getBaseMultiplier method for reaction feature!`;
-    }
-
     getReactionBonusMultipliers(data) {
         let result = [];
 
         for (let item of data.multipliers) {
-            if (!item.isMatchOption('reaction_flat')) continue;
+            if (!item.isReactionFlatBonus()) continue;
             if (!item.isActive(data)) continue;
             if (!item.isMatchFeature(this, data)) continue;
             result.push(item);
@@ -73,25 +69,10 @@ export class FeatureReaction extends FeatureDamage {
 
     /**
      * @param {BuildData} data
-     * @returns {Array.<FeatureMultiplier>}
-     */
-    getReactionBaseMultipliers(data) {
-        return [this.getBaseMultiplier(data)];
-    }
-
-    /**
-     * @param {BuildData} data
      * @returns {CItem}
      */
-     getTree(data) {
-        let multipliers = this.getReactionBaseMultipliers(data);
-
-        for (let item of data.multipliers) {
-            if (item.isMatchOption('reaction_flat', false)) continue;
-            if (!item.isActive(data)) continue;
-            if (!item.isMatchFeature(this, data)) continue;
-            multipliers.push(item);
-        }
+    getTree(data) {
+        let multipliers = this.getBaseMultiplier(data);//база урона реакции (обычно - FeatureMultiplierReaction в общем сводится к ReactionRate*level)
 
         let base = new CReactionBase([
             new CBaseDamage(

@@ -12,7 +12,7 @@ export const Multipliers = [
         }),
         target: new FeatureMultiplierTarget({
             damageElements: ['dendro'],
-            options: ['reaction_flat'],
+            isReactionFlatBonus: true,
         }),
     }),
     new FeatureMultiplierReactionAggravate({
@@ -23,7 +23,7 @@ export const Multipliers = [
         }),
         target: new FeatureMultiplierTarget({
             damageElements: ['electro'],
-            options: ['reaction_flat'],
+            isReactionFlatBonus: true,
         }),
     }),
 ];

@@ -132,16 +132,15 @@ export class FeatureMultiplier {
      */
     isMatchFeature(feature, data, def) {
         def = def == undefined ? true : def;
+        if (!this.target) throw Error("target empty!");
         return this.target ? this.target.isMatchFeature(feature, data) : def;
     }
 
     /**
-     * @param {string} option
      * @returns {boolean}
      */
-    isMatchOption(option, def) {
-        def = def == undefined ? true : def;
-        return this.target ? this.target.isMatchOption(option, def) : def;
+    isReactionFlatBonus() {
+        return this.target ? this.target.isReactionFlatBonus : false;
     }
 
     /**

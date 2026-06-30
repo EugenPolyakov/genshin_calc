@@ -1,8 +1,6 @@
 import { FeatureReactionBloom } from "../Bloom";
 
 export class FeatureReactionHyperBurgeon extends FeatureReactionBloom {
-    getReactionRate() { return 3 }
-
     /**
      * @returns {Array.<string>}
      */

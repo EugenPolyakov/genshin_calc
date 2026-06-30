@@ -202,13 +202,13 @@ const lunarPost = new PostEffectStatsMastery({
 });
 
 const bloomTarget = new FeatureMultiplierTarget({
-    options: 'reaction_flat',
+    isReactionFlatBonus: true,
     damageTypesExclude: 'nefer_frostgrove_sanctuary',
     tags: 'bloom',
 });
 
 const lunarbloomTarget = new FeatureMultiplierTarget({
-    options: 'reaction_flat',
+    isReactionFlatBonus: true,
     damageTypesExclude: 'nefer_frostgrove_sanctuary',
     tags: 'lunarbloom',
 });
@@ -224,6 +224,7 @@ export const Nefer = new DbObjectChar({
     originList: ['nodkrai', 'lunar'],
     talents: Talents,
     statTable: charTables.Nefer,
+    beta: true,
     features: [
         new FeatureDamageNormal({
             name: 'normal_hit_1',
@@ -324,6 +325,11 @@ export const Nefer = new DbObjectChar({
                     leveling: 'char_skill_elemental',
                     values: Talents.get('skill.nefer_phantasm_performance_2_hit_dmg_nefer_mastery'),
                 }),
+                new FeatureMultiplier({
+                    scaling: 'mastery*',
+                    values: new ValueTable([charTalentTables.Nefer.cons[5][0]]),
+                    condition: new ConditionConstellation({ constellation: 6 }),
+                }),
             ],
             condition: new ConditionBoolean({ name: 'nefer_dance_of_a_thousand_nights' }),
         }),
@@ -378,13 +384,9 @@ export const Nefer = new DbObjectChar({
             category: 'skill',
             multipliers: [
                 new FeatureMultiplier({
-                    leveling: 'char_skill_elemental',
-                    values: Talents.get('skill.nefer_phantasm_performance_1_hit_dmg_shades'),
-                }),
-                new FeatureMultiplier({
                     scaling: 'mastery*',
                     leveling: 'char_skill_elemental',
-                    values: Talents.get('skill.nefer_phantasm_performance_1_hit_dmg_shades_mastery'),
+                    values: Talents.get('skill.nefer_phantasm_performance_1_hit_dmg_shades'),
                 }),
             ],
             condition: new ConditionBoolean({ name: 'nefer_dance_of_a_thousand_nights' }),
@@ -395,14 +397,10 @@ export const Nefer = new DbObjectChar({
             category: 'skill',
             multipliers: [
                 new FeatureMultiplier({
+                    scaling: 'mastery*',
                     leveling: 'char_skill_elemental',
                     values: Talents.get('skill.nefer_phantasm_performance_2_hit_dmg_shades'),
                 }),
-                new FeatureMultiplier({
-                    scaling: 'mastery*',
-                    leveling: 'char_skill_elemental',
-                    values: Talents.get('skill.nefer_phantasm_performance_2_hit_dmg_shades_mastery'),
-                }),
             ],
             condition: new ConditionBoolean({ name: 'nefer_dance_of_a_thousand_nights' }),
         }),
@@ -412,30 +410,21 @@ export const Nefer = new DbObjectChar({
             category: 'skill',
             multipliers: [
                 new FeatureMultiplier({
-                    leveling: 'char_skill_elemental',
-                    values: Talents.get('skill.nefer_phantasm_performance_3_hit_dmg_shades'),
-                }),
-                new FeatureMultiplier({
                     scaling: 'mastery*',
                     leveling: 'char_skill_elemental',
-                    values: Talents.get('skill.nefer_phantasm_performance_3_hit_dmg_shades_mastery'),
+                    values: Talents.get('skill.nefer_phantasm_performance_3_hit_dmg_shades'),
                 }),
             ],
             condition: new ConditionBoolean({ name: 'nefer_dance_of_a_thousand_nights' }),
         }),
         new FeatureReactionLunarBloomLike({
-            name: 'nefer_phantasm_performance_3_hit_dmg_shades',
+            name: 'nefer_phantasm_performance_final_dmg_shades',
             element: 'dendro',
             category: 'skill',
             multipliers: [
                 new FeatureMultiplier({
-                    leveling: 'char_skill_elemental',
-                    values: Talents.get('skill.nefer_phantasm_performance_3_hit_dmg_shades'),
-                }),
-                new FeatureMultiplier({
                     scaling: 'mastery*',
-                    leveling: 'char_skill_elemental',
-                    values: Talents.get('skill.nefer_phantasm_performance_3_hit_dmg_shades_mastery'),
+                    values: new ValueTable([charTalentTables.Nefer.cons[5][2]]),
                 }),
             ],
             condition: new ConditionAnd([
@@ -576,15 +565,15 @@ export const Nefer = new DbObjectChar({
                 ]),
             ]),
         }),
-        /*new FeatureMultiplier({
+        new FeatureMultiplier({
             scaling: 'hp*',
             leveling: 'char_skill_burst',
             stacksLeveling: 'nefer_n11220003',
             values: Talents.get('burst.nefer_dmg_bonus'),
             target: new FeatureMultiplierTarget({
-                tags: ['shark_byte'],
+                tags: ['nefer_dance_of_a_thousand_nights'],
             }),
-        }),*/
+        }),
     ],
     postEffects: [
         lunarPost,

@@ -178,13 +178,13 @@ const lunarPost = new PostEffectStatsMastery({
 });
 
 const bloomTarget = new FeatureMultiplierTarget({
-    options: 'reaction_flat',
+    isReactionFlatBonus: true,
     damageTypesExclude: 'lauma_frostgrove_sanctuary',
     tags: 'bloom',
 });
 
 const lunarbloomTarget = new FeatureMultiplierTarget({
-    options: 'reaction_flat',
+    isReactionFlatBonus: true,
     damageTypesExclude: 'lauma_frostgrove_sanctuary',
     tags: 'lunarbloom',
 });

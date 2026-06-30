@@ -337,7 +337,7 @@ export const Mizuki = new DbObjectChar({
             ]),
             target: new FeatureMultiplierTarget({
                 tags: ['swirl'],
-                options: ['reaction_flat'],
+                isReactionFlatBonus: true,
             }),
         }),
     ],
@@ -511,7 +511,7 @@ export const Mizuki = new DbObjectChar({
                 ]),
                 target: new FeatureMultiplierTarget({
                     tags: ['swirl'],
-                    options: ['reaction_flat'],
+                    isReactionFlatBonus: true,
                 }),
             }),
         ],

@@ -58,7 +58,7 @@ export class FeatureMultiplierReaction extends FeatureMultiplier  {
      */
     getTreeLevelMultiplier(data) {
         return new CConst({
-            value: this.reactionValue,
+            value: this.reactionValue.getValue(data.settings.char_level),
             comment: 'reaction_base',
         });
     }

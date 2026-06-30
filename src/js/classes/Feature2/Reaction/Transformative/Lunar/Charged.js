@@ -9,9 +9,6 @@ export class FeatureReactionLunarCharged extends FeatureReactionLunar {
         params.tags.push('lunarcharged');
         super(params);
     }
-    getReactionRate() { return 1.8 }
-    getReactionPenalty() { return this.penalty }
-    getScalingStat(data) { return 'lunarcharged_multi' }
 
     /**
      * @returns {Array.<string>}

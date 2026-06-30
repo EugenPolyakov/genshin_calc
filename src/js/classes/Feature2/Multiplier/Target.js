@@ -1,12 +1,12 @@
 import { Feature2 } from "../../Feature2";
 
-const FIELD_NAMES = ['damageTypes', 'damageTypesExclude', 'damageElements', 'tags', 'options'];
+const FIELD_NAMES = ['damageTypes', 'damageTypesExclude', 'damageElements', 'tags'];
 
 export class FeatureMultiplierTarget {
     constructor(params) {
         if (process.env.NODE_ENV !== 'production') {
             for (let name of Object.keys(params)) {
-                if (!FIELD_NAMES.includes(name)) {
+                if (!FIELD_NAMES.includes(name) && name != 'isReactionFlatBonus') {
                     console.error(`Unknown param '${name} in FeatureMultiplierTarget contructor`);
                 }
             }
@@ -18,6 +18,7 @@ export class FeatureMultiplierTarget {
                 this[name] = [this[name]];
             }
         }
+        this.isReactionFlatBonus = params.isReactionFlatBonus || false;
     }
 
     /**
@@ -53,10 +54,5 @@ export class FeatureMultiplierTarget {
         }
 
         return true;
-    }
-
-    isMatchOption(option, def) {
-        if (this.options.length == 0) return def;
-        return this.options.includes(option);
     }
 }

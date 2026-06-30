@@ -144,6 +144,7 @@ export const Durin = new DbObjectChar({
     origin: 'mondstadt',
     talents: Talents,
     statTable: charTables.Durin,
+    beta: true,
     features: [
         new FeatureDamageNormal({
             multipliers: [

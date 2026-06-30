@@ -7,8 +7,6 @@ export class FeatureReactionSwirl extends FeatureReactionTransformative {
         params.tags.push('swirl');
         super(params);
     }
-    getReactionRate() { return 0.6 }
-
     /**
      * @returns {Array.<string>}
      */
