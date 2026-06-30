@@ -123,7 +123,7 @@ export class ArtifactGeneratorSettings extends React.Component {
                             <div className="control">
                                 <Slider
                                     min={5}
-                                    max={40}
+                                    max={45}
                                     value={settings.rolls}
                                     onChange={(value) => this.handleRollChange(value)}
                                 />

@@ -139,8 +139,11 @@ export class Artifact {
 
     tryGetSubstatValues(subStat, stat) {
         let data = DB.Artifacts.Substats.get(stat);
-        if (subStat.values && subStat.values.length > 0 && subStat.value.toFixed(1) == data.rollsToValue[this.rarity - 1][subStat.values.join('')].toFixed(1))
-            return;
+        if (subStat.values && subStat.values.length > 0) {
+            let key = subStat.values.join('');
+            if (data.rollsToValue[this.rarity - 1][key] && subStat.value.toFixed(1) == data.rollsToValue[this.rarity - 1][key].toFixed(1))
+                return;
+        }
         let result = substatCheck(stat, this.rarity, subStat.value, subStat.values, subStat.initialValue);
         if (result.last == 0) {
             subStat.values = result.steps.map(x => x.rarity - 2);
