@@ -291,7 +291,7 @@ function ArtifactBlock(props) {
                             <ArtifactButton
                                 icon="delete"
                                 onClick={props.onDeleteClick}
-                                tooltip={lang.get('tooltip.artifact_delete')}
+                                tooltip={lang.get('tooltip.artifact_pulloff')}
                             />
                             {props.showStorage ? <ArtifactButton
                                 icon="storage"

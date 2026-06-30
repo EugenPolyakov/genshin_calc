@@ -23,10 +23,6 @@ char_traveler_electro = TemplateList(
         },
     ),
     lightning_blade_rus=Template(
-        replace={
-            '<br>': '\n<br>\n',
-            '</p><p>': '\n</p><p>\n'
-        },
         sentences=[
             [],
             [],
@@ -51,10 +47,6 @@ char_traveler_electro = TemplateList(
         extracted_names=[1],
     ),
     lightning_blade_eng=Template(
-        replace={
-            '<br>': '\n<br>\n',
-            '</p><p>': '\n</p><p>\n'
-        },
         sentences=[
             [],
             [],
@@ -101,6 +93,45 @@ char_traveler_electro = TemplateList(
     world_shaker_eng=Template(
         sentences=[
             ['2:ignore', '200:text_percent_dmg', '1:ignore'],
+        ],
+    ),
+    foreign_thundertrail_rus=Template(
+        sentences=[
+            [],
+            [],
+            [],
+            ['1:ignore'],
+            ['3:ignore'],
+            ['3:ignore'],
+            [],
+            [],
+            [],
+            [],
+            ['100:'],
+            [],
+            ['3:ignore', '200:', '1:ignore'],
+            [],
+            [],
+            ['1:ignore', '15:ignore'],
+        ],
+    ),
+    foreign_thundertrail_eng=Template(
+        sentences=[
+            [],
+            [],
+            [],
+            ['1:ignore', '3:ignore'],
+            ['3:ignore'],
+            [],
+            [],
+            [],
+            [],
+            ['100:'],
+            [],
+            ['3:ignore', '1:ignore', '200:', '1:ignore'],
+            [],
+            [],
+            ['15:ignore'],
         ],
     ),
 )

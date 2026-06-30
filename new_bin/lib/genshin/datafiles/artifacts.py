@@ -21,3 +21,6 @@ class ArtifactData(ListParser):
 
 class ArtifactMainstatData(Parser):
     filename = 'ReliquaryLevelExcelConfigData.json'
+
+class ArtifactSubstatData(Parser):
+    filename = 'ReliquaryAffixExcelConfigData.json'

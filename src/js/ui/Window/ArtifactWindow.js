@@ -4,7 +4,7 @@ import {Artifact} from "../../classes/Artifact"
 import {Window} from "../Window"
 
 import "../../../css/modal/ArtifactWindow.css"
-import { substatCheck } from "../../classes/SubstatCheck";
+import { substatCheck, substatListValid } from "../../classes/SubstatCheck";
 import { Stats } from "../../classes/Stats";
 
 export class ArtifactWindow extends Window{
@@ -17,10 +17,10 @@ export class ArtifactWindow extends Window{
         this.mainStat = '';
         this.setName = '';
         this.substats = [
-            {stat: '', value: 0},
-            {stat: '', value: 0},
-            {stat: '', value: 0},
-            {stat: '', value: 0},
+            { stat: '', value: 0, values: [] },
+            { stat: '', value: 0, values: [] },
+            { stat: '', value: 0, values: [] },
+            { stat: '', value: 0, values: [] },
         ];
         this.groups = [];
         this.groupsList = [];
@@ -100,10 +100,10 @@ export class ArtifactWindow extends Window{
             }
             html += '</div>';
 
-            html += '<div class="gi-modal-substat-value-wrapper">'
+            html += '<div class="gi-modal-substat-value-wrapper">';
             html += '<div class="gi-modal-substat-value"><input type="text" value="" class="gi-inputs-number-input">';
-            html += '<div class="gi-modal-substat-value-slider"><input class="gi-artifact-substat-slider" type="range"></div></div>';
-            html += '<div class="gi-modal-substat-value-rolls"></div>'
+            html += '<div class="gi-modal-substat-add-rolls"></div></div>';
+            html += '<div class="gi-modal-substat-value-rolls"></div>';
 
             html += '</div></div>';
         }
@@ -263,21 +263,81 @@ export class ArtifactWindow extends Window{
                 const db = DB.Artifacts.Substats.get(stat);
                 const rarityInfo = DB.Artifacts.Rarity[this.rarity-1];
 
-                let step = db.type == 'percent' ? 0.1 : 1;
                 let rolls = db.rolls[this.rarity-1]
                 let min = Stats.roundStatValue(stat, rolls[0])
-                let max = Stats.roundStatValue(stat, rolls[rolls.length - 1] * rarityInfo.maxUpgrades);
-
-                this.root.find('.gi-modal-substat-line.slot-'+ slot +' .gi-artifact-substat-slider').giSlider('range', min, max, step);
 
                 this.setSubstatValue(slot, substat.value || min);
             }
         }
     }
 
-    setSubstatValue(slot, value) {
-        const that = this;
+    appendRoll(slot, roll) {
+        if (slot >= 1 && slot <= 4) {
+            this.substats[slot - 1].values.push(roll);
+            this.substats[slot - 1].values = this.substats[slot - 1].values.sort((a, b) => a - b);
+            let subStat = DB.Artifacts.Substats.get(this.substats[slot - 1].stat);
+            this.substats[slot - 1].value = subStat.rollsToValue[this.rarity - 1][this.substats[slot - 1].values.join('')].toFixed(subStat.type == "percent" ? 1 : 0);
+            this.refreshSubstatsValue(slot);
+        }
 
+        this.refreshError();
+    }
+
+    removeRoll(slot, roll) {
+        if (slot >= 1 && slot <= 4) {
+            let index = this.substats[slot - 1].values.indexOf(roll);
+            if (index >= 0) {
+                this.substats[slot - 1].values.splice(index, 1);
+                let subStat = DB.Artifacts.Substats.get(this.substats[slot - 1].stat);
+                this.substats[slot - 1].value = subStat.rollsToValue[this.rarity - 1][this.substats[slot - 1].values.join('')].toFixed(subStat.type == "percent" ? 1 : 0);
+                this.refreshSubstatsValue(slot);
+            }
+        }
+
+        this.refreshError();
+    }
+
+    refreshSubstatsValue(slot) {
+        let that = this;
+        let stat = this.substats[slot - 1].stat;
+        let divRolls = this.root.find('.gi-modal-substat-line.slot-' + slot + ' .gi-modal-substat-value-rolls');
+        divRolls.empty();
+
+        let value = this.substats[slot - 1].value;
+        if (stat) {
+            let data = substatCheck(stat, this.rarity, value, this.substats[slot - 1].values);
+            this.substats[slot - 1].values = data.steps.map(x => x.rarity - 2);
+            let remove = UI.Lang.get('tooltip.remove_roll');
+
+            let classRef;
+            if (data.last > 0 || data.steps.length == 1)
+                classRef = "good";
+            else
+                classRef = "good active";
+            for (const roll of data.steps) {
+                divRolls.append('<div class="gi-modal-substat-value-roll ' + classRef + ' border-rarity-' + roll.rarity + '" data-tooltip="' + remove + '" data-roll="' + (roll.rarity - 2) + '">' + roll.value + '</div>');
+            }
+
+            if (data.last > 0) {
+                divRolls.append('<div class="gi-modal-substat-value-roll last" data-tooltip="' + remove + '" data-value="' + data.last + '">' + data.last + '</div>');
+            }
+        }
+
+        this.root.find('.gi-modal-substat-line.slot-' + slot + ' .gi-inputs-number-input').val(value);
+
+        divRolls.find('.gi-modal-substat-value-roll.last').on('click', function () {
+            that.setSubstatValue(slot, value - $(this).data('value'));
+            $('.tooltip-wrapper').hide();
+        });
+        divRolls.find('.gi-modal-substat-value-roll.good.active').on('click', function () {
+            that.removeRoll(slot, $(this).data('roll'));
+            $('.tooltip-wrapper').hide();
+        });
+
+        this.refreshRollsForStat(slot);
+    }
+
+    setSubstatValue(slot, value, values) {
         if (slot >= 1 && slot <= 4) {
             if (value < 0) {
                 value = 0;
@@ -285,7 +345,8 @@ export class ArtifactWindow extends Window{
 
             let stat = this.substats[slot-1].stat;
             if (stat) {
-                let type = DB.Artifacts.Substats.get(stat).type;
+                let subStat = DB.Artifacts.Substats.get(stat);
+                let type = subStat.type;
 
                 if (type == 'percent') {
                     value = value + '';
@@ -294,42 +355,21 @@ export class ArtifactWindow extends Window{
                     value = value.toFixed(1);
 
                     if (!/^\d+(\.\d)?$/.test(value)) {
-                        value = 0;
+                        value = "0";
                     }
                 } else {
                     value = parseInt(value);
                     if (! /^\d+$/.test(value)) {
-                        value = 0;
+                        value = "0";
                     }
                 }
             } else {
-                value = 0;
+                value = "0";
             }
 
-            let divRolls = this.root.find('.gi-modal-substat-line.slot-'+ slot +' .gi-modal-substat-value-rolls');
-            divRolls.empty();
-
-            if (stat) {
-                let data = substatCheck(stat, this.rarity, value);
-
-                for (const roll of data.steps) {
-                    divRolls.append('<div class="gi-modal-substat-value-roll border-rarity-'+ roll.rarity +'">'+ roll.value +'</div>');
-                }
-
-                if (data.last > 0) {
-                    divRolls.append('<div class="gi-modal-substat-value-roll last" data-tooltip="'+ UI.Lang.get('tooltip.remove_roll') +'" data-value="'+ data.last  +'">'+ data.last +'</div>');
-                }
-            }
-
-            this.substats[slot-1].value = value;
-
-            this.root.find('.gi-modal-substat-line.slot-'+ slot +' .gi-inputs-number-input').val(value);
-            this.root.find('.gi-modal-substat-line.slot-'+ slot +' .gi-artifact-substat-slider').giSlider('set value', value);
-
-            divRolls.find('.gi-modal-substat-value-roll.last').on('click', function() {
-                that.setSubstatValue(slot, value - $(this).data('value'));
-                $('.tooltip-wrapper').hide();
-            });
+            this.substats[slot - 1].value = value;
+            this.substats[slot - 1].values = values;
+            this.refreshSubstatsValue(slot);
         }
 
         this.refreshError();
@@ -393,8 +433,12 @@ export class ArtifactWindow extends Window{
         let maxSubstats = DB.Artifacts.Rarity[this.rarity-1].maxSubstats;
 
         for (let i = 0; i < maxSubstats; ++i) {
-            if (this.substats[i].stat && this.substats[i].value) {
-                result.addStat(this.substats[i].stat, this.substats[i].value - 0);
+            if (this.substats[i].stat) {
+                if (substatListValid(this.substats[i].stat, parseFloat(this.substats[i].value), this.substats[i].values, this.rarity)) {
+                    result.addStatByProcs(this.substats[i].stat, this.substats[i].values);
+                } else if (this.substats[i].value) {
+                    result.addStat(this.substats[i].stat, this.substats[i].value - 0);
+                }
             }
         }
 
@@ -527,21 +571,6 @@ export class ArtifactWindow extends Window{
             }
         });
 
-        this.root.find('.gi-artifact-substat-slider').each(function() {
-            let slot = $(this).closest('.gi-modal-substat-line').data('slot');
-            $(this).giSlider({
-                min: 1,
-                max: 20,
-                value: 3,
-                showButtons: true,
-                showSelected: false,
-                showValues: false,
-                change: function(value) {
-                    that.setSubstatValue(slot, value);
-                }
-            });
-        });
-
         this.root.find('.gi-artifact-window-group-add-button').on('click', function() {
             UI.PromptWindow.show('artifact_group.add_new_title', '', function(text) {
                 that.refreshGroups(text);
@@ -551,6 +580,28 @@ export class ArtifactWindow extends Window{
         this.root.on('change', '.gi-artifact-window-group-dropdown', function() {
             that.groups = Artifact.trimGroupNames(that.root.find('.gi-artifact-window-group-dropdown').val());
         });
+    }
+
+    refreshRollsForStat(slot) {
+        let divRolls = this.root.find('.gi-modal-substat-line.slot-' + slot + ' .gi-modal-substat-add-rolls');
+        divRolls.empty();
+        let stat = this.substats[slot - 1].stat;
+        if (stat && this.substats[slot - 1].values.length < DB.Artifacts.Rarity[this.rarity - 1].maxUpgrades) {
+            let rolls = DB.Artifacts.Substats.get(stat).rolls;
+            let percent = DB.Artifacts.Substats.get(stat).type == 'percent';
+            let that = this;
+
+            let addRoll = UI.Lang.get('tooltip.add_roll');
+            let rarity = 1;
+            for (let roll of rolls[this.rarity - 1]) {
+                rarity++;
+                divRolls.append('<div class="gi-modal-substat-value-roll active border-rarity-' + rarity + '" data-roll="' + (rarity - 2) + '" data-tooltip="' + addRoll + '">+' + Stats.roundStatValue('', roll, percent) + '</div>');
+            }
+            divRolls.find('.gi-modal-substat-value-roll').on('click', function () {
+                that.appendRoll(slot, $(this).data('roll'));
+                $('.tooltip-wrapper').hide();
+            });
+        }
     }
 
     refreshGroups(newGroupName) {
@@ -602,12 +653,12 @@ export class ArtifactWindow extends Window{
 
             for (let stat in artifact.subStats) {
                 this.setSubstatStat(artifact.subStats[stat].index + 1, stat);
-                this.setSubstatValue(artifact.subStats[stat].index + 1, artifact.subStats[stat].value);
+                this.setSubstatValue(artifact.subStats[stat].index + 1, artifact.subStats[stat].value, artifact.subStats[stat].values);
             }
 
             for (let i = Object.keys(artifact.subStats).length + 1; i <= 4; ++i) {
                 this.setSubstatStat(i, '');
-                this.setSubstatValue(i, 0);
+                this.setSubstatValue(i, 0, []);
             }
 
             this.root.find('.gi-artifact-slider-level').giSlider('set value', this.level);

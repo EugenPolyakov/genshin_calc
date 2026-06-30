@@ -6,12 +6,6 @@ char_nefer = TemplateList(
         names=[
             'Нефер',
         ],
-        keywords=[
-            ('Лунная бутонизация', 'dendro'),
-            ('Бутонизация', 'dendro'),
-            ('Вегетация', 'dendro'),
-            ('Цветение', 'dendro'),
-        ],
         skills={
             'skill': ['Стратегия сенета: Танец тысячи ночей'],
             'burst': ['Священная клятва: Химера истинного взора'],
@@ -21,169 +15,103 @@ char_nefer = TemplateList(
         names=[
             'Nefer',
         ],
-        keywords=[
-            ('Lunar-Bloom DMG', 'dendro'),
-            ('Bloom', 'dendro'),
-            ('Hyperbloom', 'dendro'),
-            ('Burgeon', 'dendro'),
-        ],
         skills={
             'skill': ['Senet Strategy: Dance of a Thousand Nights'],
             'burst': ["Sacred Vow: True Eye's Phantasm"],
         },
     ),
-    dawnless_rest_of_karsikko_rus = Template(
-        sentences=[
+    a_wager_of_moonlight_rus = Template(
+        sentences= [
             [],
             [],
-            [],
-            ['1:ignore'],
-            [],
-            [],
-            ['3:ignore'],
-            ['10:ignore'],
-        ],
-        results=[
-            list(range(0, 8)),
-            [7],
-        ],
-    ),
-    dawnless_rest_of_karsikko_eng = Template(
-        sentences=[
-            [],
-            [],
-            ['1:ignore'],
-            [],
-            [],
-            ['3:ignore'],
-            ['10:ignore'],
-        ],
-        results=[
-            list(range(0, 7)),
-            [6],
-        ],
-    ),
-    all_hearts_become_the_beating_moon = Template(
-        sentences=[
-            [],
-            ['18:'],
-            [],
-            ['15:ignore', '6:'],
             ['15:ignore'],
             [],
             [],
-            ['1:'],
             [],
-            [],
-            [],
-        ],
-        results=[
-            [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
-            [5],
-            [7, 8, 9, 10]
-        ],
-        extracted_names=[1],
-    ),
-    light_for_the_frosty_night_rus=Template(
-        sentences=[
-            ['20:ignore'],
-            [],
-            [],
-            [],
-            [],
-            [],
-            [],
-            [],
-            ['15:format{text_number_f=1|{value}}:text_crit_rate_bloom', '100:format{text_number_f=1|{value}}:text_crit_dmg_bloom'],
-            [],
-            [],
-            [],
-            [],
-            [],
-            [],
-            ['10:format{text_number_f=2|{value}}:text_crit_rate_lunarbloom', '20:format{text_number_f=2|{value}}:text_crit_dmg_lunarbloom'],
-        ],
-        results=[
-            [0, 1],
-            [5],
-            [7, 8, 9],
-            [13],
-            [15],
-            [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15],
-        ],
-        extracted_names=[1, 3],
-    ),
-    light_for_the_frosty_night_eng=Template(
-        sentences=[
-            ['20:ignore'],
-            [],
-            [],
-            [],
-            [],
-            [],
-            [],
-            ['15:format{text_number_f=1|{value}}:text_crit_rate_bloom', '100:format{text_number_f=1|{value}}:text_crit_dmg_bloom'],
-            [],
-            [],
-            [],
-            [],
-            [],
-            [],
-            ['10:format{text_number_f=2|{value}}:text_crit_rate_lunarbloom', '20:format{text_number_f=2|{value}}:text_crit_dmg_lunarbloom'],
-        ],
-        results=[
-            [0, 1],
-            [5],
-            [7, 8],
-            [12],
-            [14],
-            [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14],
-        ],
-        extracted_names=[1, 3],
-    ),
-    i_offer_blood_and_tears_to_the_moonlight_rus=Template(
-        sentences=[
-            ['185:text_percent_skill_dmg'],
-            ['2:'],
-            [],
-            ['8:'],
-            [],
-            [],
-            [],
-            [],
-            ['1:ignore', '150:text_percent_atk_dmg'],
-            [],
-            [],
-            [],
-            [],
-            ['25:text_percent_lunarbloom_bonus'],
-        ],
-        results=[
-            [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13],
-            [13],
+            ['1:ignore'],
+            ['3:ignore', '3:ignore', '100:', '8:ignore'],
         ],
     ),
-    i_offer_blood_and_tears_to_the_moonlight_eng=Template(
-        sentences=[
-            ['1:ignore', '185:text_percent_skill_dmg'],
-            [],
-            ['2:'],
-            [],
-            ['8:'],
+    a_wager_of_moonlight_eng = Template(
+        sentences= [
             [],
             [],
+            ['15:ignore'],
             [],
             [],
-            ['1:ignore', '150:text_percent_atk_dmg'],
-            [],
-            [],
-            [],
-            [],
-            ['25:text_percent_lunarbloom_bonus'],
+            ['1:ignore'],
+            ['3:ignore', '100:', '8:ignore'],
         ],
-        results=[
-            [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14],
-            [14],
+    ),
+    daughter_of_the_dust_and_sand_rus = Template(
+        sentences= [
+            ['5:ignore'],
+            ['100:', '500:', '10:ignore', '50:ignore'],
+        ],
+    ),
+    daughter_of_the_dust_and_sand_eng = Template(
+        sentences= [
+            ['5:ignore'],
+            ['100:', '500:', '10:ignore'],
+            ['50:ignore'],
+        ],
+    ),
+    dusklit_eaves_rus = Template(
+        sentences= [
+            ['0.0175:'],
+            ['14:'],
+            [],
+            ['1:ignore'],
+        ],
+    ),
+    dusklit_eaves_eng = Template(
+        sentences= [
+            ['0.0175:', '14:'],
+            [],
+            ['1:ignore'],
+        ],
+    ),
+    planning_breeds_success = Template(
+        sentences= [
+            ['60:'],
+            [],
+        ],
+    ),
+    observation_feeds_strategy_rus = Template(
+        sentences= [
+            ['5:ignore', '5:ignore', '140:'],
+            ['2:ignore'],
+            ['5:ignore', '5:ignore', '200:', '8:ignore'],
+            [],
+            [],
+        ],
+    ),
+    observation_feeds_strategy_eng = Template(
+        sentences= [
+            ['5:ignore', '5:ignore', '140:'],
+            ['2:ignore'],
+            ['5:ignore', '200:', '8:ignore'],
+            [],
+            [],
+        ],
+    ),
+    delusion_ensnares_reason = Template(
+        sentences= [
+            ['25:ignore'],
+            [],
+            ['20:enemy_res_dendro'],
+            ['4.5:ignore'],
+        ],
+    ),
+    victory_flows_from_the_turning_of_tides = Template(
+        sentences= [
+            ['85:'],
+            ['120:'],
+            [],
+            [],
+            [],
+            [],
+            ['15:'],
         ],
     ),
 )

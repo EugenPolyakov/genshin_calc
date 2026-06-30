@@ -12,6 +12,7 @@ names_eng = Template(
         'Nightsoul points',
         'Nightsoul Burst',
         'Nightsoul Bursts',
+        'Verdant Dew',
 
         'Moonsign',
         'Moondrifts',
@@ -244,6 +245,7 @@ names_rus = Template(
         'Благословение Ночного духа',
         'Благословения Ночного духа',
         'Ночного духа',
+        'Зелён(ая|ую|ых) рос[а|у]?',
 
         'элементальной сферы',
         'частицы',

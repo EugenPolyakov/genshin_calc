@@ -1,4 +1,5 @@
 import re
+from .genshin.utils import to_float32
 
 weapon_stamina_cost = {
     'WEAPON_CLAYMORE': 40,
@@ -374,12 +375,20 @@ def shrink_table(data):
 
     return data
 
-def trimValue(value):
-    if not isinstance(value, str):
-        value = '%.10f' % (value)
+def trimValue(value, scale = None):
+    value = to_float32(float(value))
+    if scale: value *= scale
+    #value = '%.8f' % value
+    value = str(value)
     if value.find('.') >= 0:
         return re.sub(r"\.?0+$", '', value)
     return value
+
+def trimToVal(value, scale = None):
+    val = float(trimValue(value, scale))
+    if val.is_integer():
+        return int(val)
+    return val
 
 def getStaminaCost(weapon_type):
     return weapon_stamina_cost.get(weapon_type, 0);
@@ -396,7 +405,7 @@ def getStatValue(name, value):
         return 0
 
     scale = stat_info[name].get('scale', 1)
-    return trimValue('%.10f' % (value * scale))
+    return trimValue('%.10f' % (to_float32(value) * scale))
 
 def getCurveName(type):
     name = curve_names_to_stat.get(type)
@@ -425,6 +434,6 @@ def extractPramList(proud):
     for prop in proud['addProps']:
         type = prop.get('propType')
         if type != "FIGHT_PROP_NONE" and prop.get('value', 0):
-            paramList.append(prop.get('value', 0))
+            paramList.append(trimToVal(prop.get('value', 0)))
     return paramList
 

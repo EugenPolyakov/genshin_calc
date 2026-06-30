@@ -19,8 +19,10 @@ import { FeaturePostEffectValue } from "../../classes/Feature2/PostEffectValue";
 import { PostEffectStatsMastery } from "../../classes/PostEffect/Stats/Mastery";
 import { StatTable } from "../../classes/StatTable";
 import { StatTableAscensionScale } from "../../classes/StatTable/Ascension/Scale";
+import { ValueTable } from "../../classes/ValueTable";
 import { charTables } from "../generated/CharTables";
 import { charTalentTables } from "../generated/CharTalentTables";
+import { travelerElevation } from "./TravelerPyro";
 
 const Talents = new DbObjectTalents({
     attack: {
@@ -105,6 +107,7 @@ const Talents = new DbObjectTalents({
             },
         ],
     },
+    links: charTalentTables.TravelerPyro.links,
 });
 
 const skillDmgPost = new PostEffectStatsMastery({
@@ -180,6 +183,7 @@ export const TravelerDendro = new DbObjectChar({
             category: 'attack',
             damageType: 'charged',
             name: 'charged_hit_total',
+            element: (settings) => (settings && settings.traveler_foreign_verdalume) ? 'dendro' : 'phys',
             allowInfusion: true,
             items: [
                 {
@@ -187,6 +191,11 @@ export const TravelerDendro = new DbObjectChar({
                         new FeatureMultiplier({
                             leveling: 'char_skill_attack',
                             values: Talents.get('attack.charged_hit_1'),
+                        }),
+                        new FeatureMultiplier({
+                            source: 'traveler_elevation',
+                            values: new ValueTable([80]),
+                            condition: new ConditionBoolean({ name: 'traveler_foreign_verdalume' }),
                         }),
                     ],
                 },
@@ -196,27 +205,55 @@ export const TravelerDendro = new DbObjectChar({
                             leveling: 'char_skill_attack',
                             values: Talents.get('attack.charged_hit_2'),
                         }),
+                        new FeatureMultiplier({
+                            source: 'traveler_elevation',
+                            values: new ValueTable([80]),
+                            condition: new ConditionBoolean({ name: 'traveler_foreign_verdalume' }),
+                        }),
                     ],
                 },
             ],
         }),
         new FeatureDamageCharged({
+            element: (settings) => (settings && settings.traveler_foreign_verdalume) ? 'dendro' : 'phys',
             isChild: true,
             multipliers: [
                 new FeatureMultiplier({
                     leveling: 'char_skill_attack',
                     values: Talents.get('attack.charged_hit_1'),
                 }),
+                new FeatureMultiplier({
+                    source: 'traveler_elevation',
+                    values: new ValueTable([80]),
+                    condition: new ConditionBoolean({ name: 'traveler_foreign_verdalume' }),
+                }),
             ],
         }),
         new FeatureDamageCharged({
+            element: (settings) => (settings && settings.traveler_foreign_verdalume) ? 'dendro' : 'phys',
             isChild: true,
             multipliers: [
                 new FeatureMultiplier({
                     leveling: 'char_skill_attack',
                     values: Talents.get('attack.charged_hit_2'),
                 }),
+                new FeatureMultiplier({
+                    source: 'traveler_elevation',
+                    values: new ValueTable([80]),
+                    condition: new ConditionBoolean({ name: 'traveler_foreign_verdalume' }),
+                }),
             ],
+        }),
+        new FeatureDamageCharged({
+            name: 'traveler_vinecore',
+            element: 'dendro',
+            multipliers: [
+                new FeatureMultiplier({
+                    source: 'traveler_elevation',
+                    values: new ValueTable([120]),
+                }),
+            ],
+            condition: new ConditionBoolean({ name: 'traveler_foreign_verdalume' }),
         }),
         new FeatureDamagePlungeCollision({
             name: 'plunge',
@@ -331,6 +368,13 @@ export const TravelerDendro = new DbObjectChar({
                 mastery: 15,
                 hp_base: 50,
             },
+        }),
+        travelerElevation,
+        new ConditionBoolean({
+            name: 'traveler_foreign_verdalume',
+            serializeId: 6,
+            title: 'talent_name.traveler_foreign_verdalume',
+            description: 'talent_descr.traveler_foreign_verdalume',
         }),
     ],
     postEffects: [

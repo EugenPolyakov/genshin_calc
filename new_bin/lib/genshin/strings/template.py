@@ -157,7 +157,6 @@ class Template:
         sen_result = self.apply_sentences(result)
         out = {'names': [], 'descr': []}
         if isinstance(sen_result, list):
-            ret = []
             if isinstance(self.extracted_names, list):
                 for idx, v in enumerate(sen_result):
                     if idx in self.extracted_names:
@@ -165,10 +164,11 @@ class Template:
                     else:
                         out['descr'].append(v)
 
-                if len(out['names']) > 0:
-                    for sent in out['descr']:
-                        ret.append(self.apply_custom_names(sent, out['names']))
-                    out['descr'] = []
+            ret = []
+            if len(out['names']) > 0:
+                for sent in out['descr']:
+                    ret.append(self.apply_custom_names(sent, out['names']))
+                out['descr'] = []
             else:
                 ret = sen_result
 

@@ -15,8 +15,10 @@ import { FeatureDamageSkill } from "../../classes/Feature2/Damage/Skill";
 import { FeatureMultiplier } from "../../classes/Feature2/Multiplier";
 import { StatTable } from "../../classes/StatTable";
 import { StatTableAscensionScale } from "../../classes/StatTable/Ascension/Scale";
+import { ValueTable } from "../../classes/ValueTable";
 import { charTables } from "../generated/CharTables";
 import { charTalentTables } from "../generated/CharTalentTables";
+import { travelerElevation } from "./TravelerPyro";
 
 const Talents = new DbObjectTalents({
     attack: {
@@ -102,6 +104,7 @@ const Talents = new DbObjectTalents({
             },
         ],
     },
+    links: charTalentTables.TravelerPyro.links,
 });
 
 export const TravelerGeo = new DbObjectChar({
@@ -171,6 +174,7 @@ export const TravelerGeo = new DbObjectChar({
             category: 'attack',
             damageType: 'charged',
             name: 'charged_hit_total',
+            element: (settings) => (settings && settings.traveler_foreign_adamantine) ? 'geo' : 'phys',
             allowInfusion: true,
             items: [
                 {
@@ -178,6 +182,11 @@ export const TravelerGeo = new DbObjectChar({
                         new FeatureMultiplier({
                             leveling: 'char_skill_attack',
                             values: Talents.get('attack.charged_hit_1'),
+                        }),
+                        new FeatureMultiplier({
+                            source: 'traveler_elevation',
+                            values: new ValueTable([120]),
+                            condition: new ConditionBoolean({ name: 'traveler_foreign_adamantine' }),
                         }),
                     ],
                 },
@@ -187,25 +196,42 @@ export const TravelerGeo = new DbObjectChar({
                             leveling: 'char_skill_attack',
                             values: Talents.get('attack.charged_hit_2'),
                         }),
+                        new FeatureMultiplier({
+                            source: 'traveler_elevation',
+                            values: new ValueTable([120]),
+                            condition: new ConditionBoolean({ name: 'traveler_foreign_adamantine' }),
+                        }),
                     ],
                 },
             ],
         }),
         new FeatureDamageCharged({
             isChild: true,
+            element: (settings) => (settings && settings.traveler_foreign_adamantine) ? 'geo' : 'phys',
             multipliers: [
                 new FeatureMultiplier({
                     leveling: 'char_skill_attack',
                     values: Talents.get('attack.charged_hit_1'),
                 }),
+                new FeatureMultiplier({
+                    source: 'traveler_elevation',
+                    values: new ValueTable([120]),
+                    condition: new ConditionBoolean({ name: 'traveler_foreign_adamantine' }),
+                }),
             ],
         }),
         new FeatureDamageCharged({
             isChild: true,
+            element: (settings) => (settings && settings.traveler_foreign_adamantine) ? 'geo' : 'phys',
             multipliers: [
                 new FeatureMultiplier({
                     leveling: 'char_skill_attack',
                     values: Talents.get('attack.charged_hit_2'),
+                }),
+                new FeatureMultiplier({
+                    source: 'traveler_elevation',
+                    values: new ValueTable([120]),
+                    condition: new ConditionBoolean({ name: 'traveler_foreign_adamantine' }),
                 }),
             ],
         }),
@@ -259,9 +285,9 @@ export const TravelerGeo = new DbObjectChar({
         new ConditionStatic({
             title: 'talent_name.traveler_shattered_darkrock',
             description: 'talent_descr.traveler_shattered_darkrock',
-            info: {ascension: 1},
+            info: { ascension: 1 },
             subConditions: [
-                new ConditionAscensionChar({ascension: 1}),
+                new ConditionAscensionChar({ ascension: 1 }),
             ],
         }),
         new ConditionStatic({
@@ -270,9 +296,9 @@ export const TravelerGeo = new DbObjectChar({
             stats: {
                 text_percent_dmg: 60,
             },
-            info: {ascension: 4},
+            info: { ascension: 4 },
             subConditions: [
-                new ConditionAscensionChar({ascension: 4}),
+                new ConditionAscensionChar({ ascension: 4 }),
             ],
         }),
         new ConditionBoolean({
@@ -294,6 +320,16 @@ export const TravelerGeo = new DbObjectChar({
                 mastery: 15,
                 hp_base: 50,
             },
+        }),
+        travelerElevation,
+        new ConditionBoolean({
+            name: 'traveler_foreign_adamantine',
+            serializeId: 4,
+            title: 'talent_name.traveler_foreign_adamantine',
+            description: 'talent_descr.traveler_foreign_adamantine_1',
+            stats: {
+                shield: 20,
+            }
         }),
     ],
     constellation: new DbObjectConstellation([
@@ -355,6 +391,16 @@ export const TravelerGeo = new DbObjectChar({
     ]),
     partyData: {
         conditions: [
+            new ConditionBoolean({
+                name: 'party.traveler_foreign_adamantine',
+                serializeId: 2,
+                rotation: 'party',
+                title: 'talent_name.traveler_foreign_adamantine',
+                description: 'talent_descr.traveler_foreign_adamantine_2',
+                stats: {
+                    shield: 20,
+                }
+            }),
             new ConditionBoolean({
                 name: 'party.traveler_invincible_stonewall',
                 serializeId: 1,

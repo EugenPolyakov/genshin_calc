@@ -25,6 +25,7 @@ import { StatTableAscensionScale } from "../../classes/StatTable/Ascension/Scale
 import { ValueTable } from "../../classes/ValueTable";
 import { charTables } from "../generated/CharTables";
 import { charTalentTables } from "../generated/CharTalentTables";
+import { travelerElevation } from "./TravelerPyro";
 
 const Talents = new DbObjectTalents({
     attack: {
@@ -128,6 +129,7 @@ const Talents = new DbObjectTalents({
             },
         ],
     },
+    links: charTalentTables.TravelerPyro.links,
 });
 
 const rechargePreA4Post = new PostEffectStatsStatic({
@@ -206,6 +208,7 @@ export const TravelerElectro = new DbObjectChar({
             category: 'attack',
             damageType: 'charged',
             name: 'charged_hit_total',
+            element: (settings) => (settings && settings.traveler_foreign_thundertrail) ? 'electro' : 'phys',
             allowInfusion: true,
             items: [
                 {
@@ -213,6 +216,11 @@ export const TravelerElectro = new DbObjectChar({
                         new FeatureMultiplier({
                             leveling: 'char_skill_attack',
                             values: Talents.get('attack.charged_hit_1'),
+                        }),
+                        new FeatureMultiplier({
+                            source: 'traveler_elevation',
+                            values: new ValueTable([100]),
+                            condition: new ConditionBoolean({ name: 'traveler_foreign_thundertrail' }),
                         }),
                     ],
                 },
@@ -222,25 +230,52 @@ export const TravelerElectro = new DbObjectChar({
                             leveling: 'char_skill_attack',
                             values: Talents.get('attack.charged_hit_2'),
                         }),
+                        new FeatureMultiplier({
+                            source: 'traveler_elevation',
+                            values: new ValueTable([100]),
+                            condition: new ConditionBoolean({ name: 'traveler_foreign_thundertrail' }),
+                        }),
                     ],
                 },
             ],
         }),
         new FeatureDamageCharged({
             isChild: true,
+            element: (settings) => (settings && settings.traveler_foreign_thundertrail) ? 'electro' : 'phys',
             multipliers: [
                 new FeatureMultiplier({
                     leveling: 'char_skill_attack',
                     values: Talents.get('attack.charged_hit_1'),
                 }),
+                new FeatureMultiplier({
+                    source: 'traveler_elevation',
+                    values: new ValueTable([100]),
+                    condition: new ConditionBoolean({ name: 'traveler_foreign_thundertrail' }),
+                }),
             ],
         }),
         new FeatureDamageCharged({
             isChild: true,
+            element: (settings) => (settings && settings.traveler_foreign_thundertrail) ? 'electro' : 'phys',
             multipliers: [
                 new FeatureMultiplier({
                     leveling: 'char_skill_attack',
                     values: Talents.get('attack.charged_hit_2'),
+                }),
+                new FeatureMultiplier({
+                    source: 'traveler_elevation',
+                    values: new ValueTable([100]),
+                    condition: new ConditionBoolean({ name: 'traveler_foreign_thundertrail' }),
+                }),
+            ],
+        }),
+        new FeatureDamageCharged({
+            name: 'traveler_lightning_strike',
+            element: 'electro',
+            multipliers: [
+                new FeatureMultiplier({
+                    source: 'traveler_elevation',
+                    values: new ValueTable([200]),
                 }),
             ],
         }),
@@ -373,6 +408,13 @@ export const TravelerElectro = new DbObjectChar({
                 mastery: 15,
                 hp_base: 50,
             },
+        }),
+        travelerElevation,
+        new ConditionBoolean({
+            name: 'traveler_foreign_thundertrail',
+            serializeId: 5,
+            title: 'talent_name.traveler_foreign_thundertrail',
+            description: 'talent_descr.traveler_foreign_thundertrail',
         }),
     ],
     postEffects: [

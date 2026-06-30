@@ -415,7 +415,7 @@ def prepare_data():
             }
 
             if stat in ascension:
-                ascList = list(map(lambda x: static.trimValue(x), ascension[stat]))
+                ascList = [static.trimValue(x) for x in ascension[stat]]
                 ascId = accumulator.storeList('enumAscensionTables', ascList)
                 resStat['ascension'] = ascId
 

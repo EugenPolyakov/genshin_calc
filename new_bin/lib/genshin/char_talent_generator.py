@@ -29,9 +29,9 @@ def parse_ascension():
             for level in range(1, 7):
                 item = table[id].get(level)
                 if item:
-                    result[id][stat].append(item.get(stat))
+                    result[id][stat].append(static.trimValue(item.get(stat)))
                 else:
-                    result[id][stat].append(0)
+                    result[id][stat].append("0")
 
     return result
 
@@ -46,9 +46,9 @@ class StatGenerator:
         self.values['atk_base'] = static.trimValue(jsonData["attackBase"])
         self.values['def_base'] = static.trimValue(jsonData["defenseBase"])
         self.values['mastery_base'] = static.trimValue(jsonData["elementMastery"])
-        self.values['crit_rate_base'] = static.trimValue(jsonData["critical"] * 100)
-        self.values['crit_dmg_base'] = static.trimValue(jsonData["criticalHurt"] * 100)
-        self.values['recharge_base'] = static.trimValue(jsonData["chargeEfficiency"] * 100)
+        self.values['crit_rate_base'] = static.trimValue(jsonData["critical"], 100)
+        self.values['crit_dmg_base'] = static.trimValue(jsonData["criticalHurt"], 100)
+        self.values['recharge_base'] = static.trimValue(jsonData["chargeEfficiency"], 100)
         self.grows = {}
         for grow in jsonData.get('propGrowCurves', []):
             stat = static.getStatByName(grow.get('type'))

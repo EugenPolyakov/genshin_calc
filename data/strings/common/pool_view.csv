@@ -11,6 +11,7 @@ tooltip;pool_settings;Настройки;Settings
 tooltip;pool_groups;Группы артефактов;Artifact groups
 tooltip;scan_artifact;Сканирование скриншота;Screenshot scan
 tooltip;remove_roll;Удалить лишнее значение;Remove excess value
+tooltip;add_roll;Добавить значение;Add value
 pool_view;all_sets;Все наборы;All sets
 pool_view;upgrade_level;Уровень;Level
 pool_stat;atk;Сила атаки;ATK

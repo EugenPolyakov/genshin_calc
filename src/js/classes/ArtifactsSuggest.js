@@ -208,6 +208,28 @@ export class ArtifactsSuggest {
         return result;
     }
 
+    logExcluded(expluded, because, key, setStats) {
+        if (typeof __DEVEL__ !== 'undefined' && __DEVEL__) {
+            console.log('--------');
+            console.log('excluded by key: ' + key);
+            console.log("art: " + JSON.stringify(expluded.calculated) + "set: " + JSON.stringify(setStats));
+            console.log('because:');
+            console.log(JSON.stringify(because.calculated));
+        }
+    }
+
+    tryExcludeArtifacts(list, baseArt, base, cmp, setDataStats) {
+        let skiped = 0;
+        for (let l = list.length - 1; l >= 0; l--) {
+            if (cmp(baseArt.calculated, list[l].calculated, setDataStats[list[l].set])) {
+                this.logExcluded(list[l], baseArt, base, setDataStats[list[l].set]);
+                list.splice(l, 1);
+                skiped++;
+            }
+        }
+        return skiped;
+    }
+
     prepareArtifacts() {
         this.slots = {
             flower: [],
@@ -237,33 +259,24 @@ export class ArtifactsSuggest {
 
         for (let setId in this.setData) {
             setDataStats[setId] = new Stats(this.setData[setId][Math.max(...Object.keys(this.setData[setId]))].stats);
-            //.includesAny = Object.values(this.setData[setId]).some((x) => x.stats.includesAny(this.usedStats));
         }
 
-        let canEmblem4 = Math.max(...Object.keys(this.setData['EmblemofSeveredFate'])) >= 4;
+        let canEmblem4 = this.setData['EmblemofSeveredFate'] && Math.max(...Object.keys(this.setData['EmblemofSeveredFate'])) >= 4;
         let arr = Array.from(this.usedStats);
         for (let art of this.artifacts) {
             art.calcCache(arr);
 
             //фильтрация работает пока нет артефакта с пост-эффектами которые увеличивают обычные хар-ки
             //если появится такой набор артефактов, то все эти оптимизации идут нафиг, т.к. любой кусок может зарешать
-            /*if (this.setData[art.set] && this.setData[art.set].includesAny) {
-                art.concatFunc = art.calculated.getConcatFunc();
-                this.setNames[art.set] = 1;
-                this.slots[art.slot].push(art);
-            } else if (!art.calculated.isEmpty()) {
-                if (this.usedStats.intersection(new Set(Object.keys(art.calculated))).size == 5) {
-                    art.concatFunc = art.calculated.getConcatFunc();
-                    this.setNames[art.set] = 1;
-                    this.slots[art.slot].push(art);
-                } else {
-                    filteredSlots[art.slot].push(art);
-                }*/
             //Эмблема всегда добавляется если учитывается урон Взрыва стихии, т.к. на данном этапе невозможно просчитать насколько артефакт будет полезен
-            if (canEmblem4 && this.usedStats.has("dmg_burst") && art.set == "EmblemofSeveredFate") {
+            //подобный механизм нужно делать для всех артефактов с постэффектами
+            //так же добавляем все артефакты из наборов которые требует пользователь, чтобы можно было хоть что-то подобрать
+            if ((canEmblem4 && this.usedStats.has("dmg_burst") && art.set == "EmblemofSeveredFate") || this.settings.setMinValues[art.set]) {
                 art.concatFunc = art.calculated.getConcatFunc();
                 this.setNames[art.set] = 1;
                 this.slots[art.slot].push(art);
+                if (!setDataStats[art.set])
+                    setDataStats[art.set] = new Stats();
             } else if (!art.calculated.isEmpty() || (setDataStats[art.set] && setDataStats[art.set].includesAny(this.usedStats))) {
                 filteredSlots[art.slot].push(art);
                 if (!setDataStats[art.set])
@@ -281,55 +294,32 @@ export class ArtifactsSuggest {
         let mapComparer = new Map();
         for (let slot of Object.keys(this.slots)) {
             let artsParams = new Map();
-            for (let art of filteredSlots[slot]) {
-                let prm = this.usedStats.intersection(new Set(Object.keys(art.calculated).map(x => x.endsWith('_percent') ? x.slice(0, -8) : x)));
-                let arrPrm = [...prm].sort().join(';');
-                if (!artsParams.has(arrPrm)) {
-                    artsParams.set(arrPrm, []);
-                    if (!mapComparer.has(arrPrm)) {
-                        let code = [];
-                        //бонус набора учитываем только у исключаемого артефакта, что бы не выкинуть потенциального кандидата для набора
-                        for (let st of prm)
-                            if (base_params[st])
-                                code.push(`(a.get('${st}') /*+ aSet.get('${st}')*/ + (a.get('${st}_percent') /*+ aSet.get('${st}_percent')*/) * ${base_params[st]} >= b.get('${st}') + bSet.get('${st}') + (b.get('${st}_percent') + bSet.get('${st}_percent')) * ${base_params[st]})`);
-                            else
-                                code.push(`(a.${st} /*+ aSet.get('${st}')*/ >= b.${st} + bSet.get('${st}'))`);
-                        mapComparer.set(arrPrm, Function('a', 'aSet', 'b', 'bSet', "return " + code.join('&&') + ";"));
+            prepareArtList(mapComparer, artsParams, this.slots[slot], setDataStats, base_params, this.usedStats);
+            let keyList = Array.from(artsParams.keys()).sort((a, b) => b.split(';').length - a.split(';').length);
+            truncateArtList(mapComparer, artsParams, setDataStats, keyList, this.logExcluded, skiped, slot);
+            this.slots[slot] = Array.from(artsParams.values()).flat();
+
+            artsParams = new Map();
+            prepareArtList(mapComparer, artsParams, filteredSlots[slot], setDataStats, base_params, this.usedStats);
+
+            keyList = Array.from(artsParams.keys()).sort((a, b) => b.split(';').length - a.split(';').length);
+            //исключим все арты которые хуже тех что мы по любому взяли в поиск
+            for (let art of this.slots[slot]) {
+                /**
+                 * @type {Set}
+                */
+                let baseSet = this.usedStats.intersection(new Set(Object.keys(art.calculated).concat(Object.keys(setDataStats[art.set])).map(x => x.endsWith('_percent') ? x.slice(0, -8) : x)));
+                let base = [...baseSet].sort().join(';');
+                for (let j = 0, len = keyList.length; j < len; j++)
+                    if (baseSet.isSupersetOf(new Set(keyList[j].split(';')))) {
+                        let cmp = mapComparer.get(keyList[j]);
+                        let list = artsParams.get(keyList[j]);
+                        skiped[slot] += this.tryExcludeArtifacts(list, art, base, cmp, setDataStats);
                     }
-                }
-                artsParams.get(arrPrm).push(art);
             }
 
-            let keyList = Array.from(artsParams.keys()).sort((a, b) => b.split(';').length - a.split(';').length);
-            for (let i = 0, len = keyList.length; i < len; i++) {
-                let base = keyList[i];
-                let cmp = mapComparer.get(base);
-                let list = artsParams.get(base);
-                for (let k = 0; k < list.length - 1; k++) {
-                    for (let l = k + 1; l < list.length; l++) {
-                        if (cmp(list[k].calculated, setDataStats[list[k].set], list[l].calculated, setDataStats[list[l].set])) {
-                            /*this.log('--------');
-                            this.log('excluded:');
-                            this.log(list[l].calculated, true);
-                            this.log('because:');
-                            this.log(list[k].calculated, true);*/
-                            list.splice(l, 1);
-                            l--;
-                            skiped[slot]++;
-                        } else if (cmp(list[l].calculated, setDataStats[list[l].set], list[k].calculated, setDataStats[list[k].set])) {
-                            /*this.log('--------');
-                            this.log('excluded:');
-                            this.log(list[k].calculated, true);
-                            this.log('because:');
-                            this.log(list[l].calculated, true);*/
-                            list.splice(k, 1);
-                            k--;
-                            skiped[slot]++;
-                            break;
-                        }
-                    }
-                }
-            }
+            truncateArtList(mapComparer, artsParams, setDataStats, keyList, this.logExcluded, skiped, slot);
+
             for (let i = 0, len = keyList.length; i < len; i++) {
                 let base = keyList[i];
                 let baseSet = new Set(base.split(';'));
@@ -340,17 +330,7 @@ export class ArtifactsSuggest {
                             let list = artsParams.get(keyList[j]);
                             let superset = artsParams.get(base);
                             for (let k = 0, lenSup = superset.length; k < lenSup; k++) {
-                                for (let l = list.length - 1; l >= 0 ; l--) {
-                                    if (cmp(superset[k].calculated, setDataStats[superset[k].set], list[l].calculated, setDataStats[list[l].set])) {
-                                        /*this.log('--------');
-                                        this.log('excluded:');
-                                        this.log(list[l].calculated, true);
-                                        this.log('because:');
-                                        this.log(superset[k].calculated, true);*/
-                                        list.splice(l, 1);
-                                        skiped[slot]++;
-                                    }
-                                }
+                                skiped[slot] += this.tryExcludeArtifacts(list, superset[k], base, cmp, setDataStats);
                             }
                         }
             }
@@ -403,10 +383,9 @@ export class ArtifactsSuggest {
         for (let setName of Object.keys(setPieces)) {
             if ((this.settings.setMinValues[setName] && Object.keys(setPieces[setName]).length >= this.settings.setMinValues[setName])
                     || !this.settings.setMinValues[setName]) {
+                setMaxPieces[setName] = Math.min(Object.keys(setPieces[setName]).length, 5 - blockedSlots + (this.settings.setMinValues[setName] || 0));
                 if (this.settings.setMaxValues[setName])
-                    setMaxPieces[setName] = Math.min(Object.keys(setPieces[setName]).length, 5 - blockedSlots, this.settings.setMaxValues[setName] - 1);
-                else
-                    setMaxPieces[setName] = Math.min(Object.keys(setPieces[setName]).length, 5 - blockedSlots);
+                    setMaxPieces[setName] = Math.min(setMaxPieces[setName], this.settings.setMaxValues[setName] - 1);
             } else
                 setMaxPieces[setName] = 0;
         }
@@ -730,6 +709,57 @@ function* artifactCombinations(checkFunc, requireFunc, setNames, slots, skipCall
     }
 }
 
+function prepareArtList(mapComparer, artsParams, artList, setDataStats, base_params, usedStats) {
+    for (let art of artList) {
+        /**
+         * @type {Set}
+        */
+        let prm = usedStats.intersection(new Set(Object.keys(art.calculated).concat(Object.keys(setDataStats[art.set])).map(x => x.endsWith('_percent') ? x.slice(0, -8) : x)));
+        //добавляем параметры набора, таким образом бонус от знати на урон взрыва, если он нужен будет сравниваться только между знатью, т.к. в такой ускоренной проверке мы не можем его отсеять
+        let arrPrm = [...prm].sort().join(';');
+        if (!artsParams.has(arrPrm)) {
+            artsParams.set(arrPrm, []);
+            if (!mapComparer.has(arrPrm)) {
+                let code = [];
+                //бонус набора учитываем только у исключаемого артефакта, что бы не выкинуть потенциального кандидата для набора
+                //т.е. проверяем что A лучше B даже с учётом набора к которому относится B
+                for (let st of prm)
+                    if (base_params[st])
+                        //code.push(`(a.get('${st}') + aSet.get('${st}') + (a.get('${st}_percent') + aSet.get('${st}_percent')) * ${base_params[st]} >= b.get('${st}') + bSet.get('${st}') + (b.get('${st}_percent') + bSet.get('${st}_percent')) * ${base_params[st]})`);
+                        code.push(`(a.get('${ st }') + a.get('${ st }_percent') * ${ base_params[st] } >= b.get('${ st }') + bSet.get('${ st }') + (b.get('${ st }_percent') + bSet.get('${ st }_percent')) * ${ base_params[st] })`);
+                    else
+                        //code.push(`(a.${st} + aSet.get('${st}') >= b.${st} + bSet.get('${st}'))`);
+                        code.push(`(a.${ st } >= b.${ st } + bSet.get('${ st }'))`);
+                mapComparer.set(arrPrm, Function('a', 'b', 'bSet', "return " + code.join('&&') + ";"));
+            }
+        }
+        artsParams.get(arrPrm).push(art);
+    }
+}
+
+function truncateArtList(mapComparer, artsParams, setDataStats, keyList, logExcluded, skiped, slot) {
+    for (let i = 0, len = keyList.length; i < len; i++) {
+        let base = keyList[i];
+        let cmp = mapComparer.get(base);
+        let list = artsParams.get(base);
+        for (let k = 0; k < list.length - 1; k++) {
+            for (let l = k + 1; l < list.length; l++) {
+                if (cmp(list[k].calculated, list[l].calculated, setDataStats[list[l].set])) {
+                    logExcluded(list[l], list[k], base, setDataStats[list[l].set]);
+                    list.splice(l, 1);
+                    l--;
+                    skiped[slot]++;
+                } else if (cmp(list[l].calculated, list[k].calculated, setDataStats[list[k].set])) {
+                    logExcluded(list[k], list[l], base, setDataStats[list[k].set]);
+                    list.splice(k, 1);
+                    k--;
+                    skiped[slot]++;
+                    break;
+                }
+            }
+        }
+    }
+}
 
 function truncateResults(results, limit) {
     results = results.sort(function(a,b) {

@@ -31,30 +31,32 @@ export class CSum extends CBlock {
         let staticItems = this.items.filter((i) => {return i instanceof CConst && i.value != 0});
         let nonStaticItems = this.items.filter((i) => {return !(i instanceof CConst)});
 
-        if ((staticItems.length > 1 || nonStaticItems.length == 0) && !opts.dontProcessStaticValues) {
-            let newItems = [];
-            let value = 0;
+        if (!opts.dontProcessStaticValues) {
+            if (staticItems.length > 1 || nonStaticItems.length == 0) {
+                let newItems = [];
+                let value = 0;
 
-            for (let item of staticItems) {
-                value += item.value;
+                for (let item of staticItems) {
+                    value += item.value;
+                }
+
+                let constItem = new CConst({ value: value, comment: 'processed' });
+                if (nonStaticItems.length == 0 && !this.dontShrink()) {
+                    return constItem;
+                }
+
+                newItems.push(constItem);
+                for (let item of nonStaticItems) {
+                    newItems.push(item);
+                }
+
+                this.items = newItems;
+            } else {
+                this.items = [
+                    ...staticItems,
+                    ...nonStaticItems,
+                ];
             }
-
-            let constItem = new CConst({value: value, comment: 'processed'});
-            if (nonStaticItems.length == 0 && !this.dontShrink()) {
-                return constItem;
-            }
-
-            newItems.push(constItem);
-            for (let item of nonStaticItems) {
-                newItems.push(item);
-            }
-
-            this.items = newItems;
-        } else {
-            this.items = [
-                ...staticItems,
-                ...nonStaticItems,
-            ];
         }
 
         if (this.items.length == 0) { // CHECK
@@ -186,30 +188,32 @@ export class CMulti extends CBlock {
         let staticItems = this.items.filter((i) => {return i instanceof CConst && i.value != 1});
         let nonStaticItems = this.items.filter((i) => {return !(i instanceof CConst)});
 
-        if ((staticItems.length > 1 || nonStaticItems.length == 0) && !opts.dontProcessStaticValues) {
-            let newItems = [];
-            let value = 1;
+        if (!opts.dontProcessStaticValues) {
+            if (staticItems.length > 1 || nonStaticItems.length == 0) {
+                let newItems = [];
+                let value = 1;
 
-            for (let item of staticItems) {
-                value *= item.value;
+                for (let item of staticItems) {
+                    value *= item.value;
+                }
+
+                let constItem = new CConst({ value: value, comment: 'processed' });
+                if (nonStaticItems.length == 0) {
+                    return constItem;
+                }
+
+                newItems.push(constItem);
+                for (let item of nonStaticItems) {
+                    newItems.push(item);
+                }
+
+                this.items = newItems;
+            } else {
+                this.items = [
+                    ...staticItems,
+                    ...nonStaticItems,
+                ];
             }
-
-            let constItem = new CConst({value: value, comment: 'processed'});
-            if (nonStaticItems.length == 0) {
-                return constItem;
-            }
-
-            newItems.push(constItem);
-            for (let item of nonStaticItems) {
-                newItems.push(item);
-            }
-
-            this.items = newItems;
-        } else {
-            this.items = [
-                ...staticItems,
-                ...nonStaticItems,
-            ];
         }
 
         // Do not replace inherited blocks

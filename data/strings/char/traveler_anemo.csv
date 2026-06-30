@@ -18,7 +18,13 @@ feature_skill;traveler_max_cutting_electro_dmg;Электро макс. режу
 feature_skill;traveler_initial_storm_electro_dmg;Электро начальный урон вихря;Electro initial Storm DMG
 feature_skill;traveler_max_storm_electro_dmg;Электро макс. урон вихря;Electro max Storm DMG
 
+feature_attack;traveler_blade_wind_pyro;Пиро урон Ветра клинков;Pyro Blade Wind DMG
+feature_attack;traveler_blade_wind_cryo;Крио урон Ветра клинков;Cryo Blade Wind DMG
+feature_attack;traveler_blade_wind_electro;Электро урон Ветра клинков;Electro Blade Wind DMG
+feature_attack;traveler_blade_wind_hydro;Гидро урон Ветра клинков;Hydro Blade Wind DMG
+
 talent_name;traveler_swordfighting_techniques;Техника фехтования на мечах VIII;Swordfighting Techniques VIII
 talent_descr;traveler_swordfighting_techniques;name{Базовая сила атаки} увеличивается на %{atk_base}.;name{Base ATK} increased by %{atk_base}.
 talent_name;traveler_special_training;Особая тренировка Скирк;Skirk's Special Training
 talent_descr;traveler_special_training;name{Базовая сила атаки} увеличивается на %{atk_base}, name{мастрество стихий} на %{mastery} и базовое name{HP} на %{hp_base}.;name{Base ATK} increased by %{atk_base}, name{elemental mastery} by %{mastery} and name{base HP} by %{hp_base}.
+features_view;stat_traveler_elevation;Дополнительное<br>усиление;Additional<br>Buff Effect

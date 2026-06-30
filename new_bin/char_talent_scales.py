@@ -59,9 +59,7 @@ def format_table(data, fmt):
     isPercent = fmt.find('P') >= 0
 
     def foramt_value(val):
-        if isPercent:
-            val *= 100
-        return static.trimValue(val)
+        return static.trimValue(val, 100 if isPercent else None)
 
     # data = list(map(foramt_value, data))
     data = [foramt_value(x) for x in data]

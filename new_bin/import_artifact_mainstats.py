@@ -3,6 +3,7 @@ import os
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
 from lib.genshin.datafiles.artifacts import ArtifactMainstatData
+from lib.static import trimValue
 
 TYPES_TO_STATS = {
     'FIGHT_PROP_HP': 'hp',
@@ -63,6 +64,27 @@ goods_id = {
     'dmg_dendro':  'dendro_dmg_',
 }
 
+actualSlots = {
+    "hp": "['flower']",
+    "atk": "['plume']",
+    "atk_percent": "['sands', 'goblet', 'circlet']",
+    "def_percent": "['sands', 'goblet', 'circlet']",
+    "hp_percent": "['sands', 'goblet', 'circlet']",
+    "mastery": "['sands', 'goblet', 'circlet']",
+    "recharge": "['sands']",
+    "healing": "['circlet']",
+    "crit_rate": "['circlet']",
+    "crit_dmg": "['circlet']",
+    "dmg_phys": "['goblet']",
+    "dmg_electro": "['goblet']",
+    "dmg_anemo":  "['goblet']",
+    "dmg_geo": "['goblet']",
+    "dmg_pyro": "['goblet']",
+    "dmg_cryo": "['goblet']",
+    "dmg_hydro": "['goblet']",
+    "dmg_dendro": "['goblet']",
+}
+
 for item in ArtifactMainstatData().data:
     rank = item.get('rank')
     if not rank:
@@ -78,9 +100,7 @@ for item in ArtifactMainstatData().data:
         if stat not in stats[rank]:
             stats[rank][stat] = []
         value = data['value']
-        if stat not in NORMAL_STATS:
-            value = round(value * 1000) / 10
-        stats[rank][stat].append(str(value))
+        stats[rank][stat].append(str(value))#trimValue(value, None if stat in NORMAL_STATS else 100))
 
 print('import { DbObjectListSerializeStats } from "../../classes/DbObject/List/Serialize/Stats";')
 print('import { StatTableArtifact } from "../../classes/StatTable/Artifact";')
@@ -88,17 +108,17 @@ print('')
 print('export const Mainstats = new DbObjectListSerializeStats({')
 idx=0
 for key, stat in TYPES_TO_STATS.items():
-    print('    "', stat, '": {')
+    print('    "' + stat + '": {')
     idx+=1
-    print('        serializeId: ', idx, ',')
-    print("        goodId: '", goods_id[stat], "',")
-    print("        gameId: '", key, "',")
-    #print('        type: "', decimal",
-    #print('        slots: ['flower'],
+    print('        serializeId: ' + str(idx) + ',')
+    print("        goodId: '" + goods_id[stat] + "',")
+    print("        gameId: '" + key + "',")
+    print('        type: "' + ('decimal' if stat in NORMAL_STATS else 'percent') + '",')
+    print("        slots: " + actualSlots[stat] + ",")
     print('        values: [')
     for rank in stats.keys():
         data = stats[rank][stat]
-        print('            new StatTableArtifact([' + ', '.join(data) + ']),')
+        print('            new StatTableArtifact([' + ', '.join(data) + '], ' + ('1' if stat in NORMAL_STATS else '100') + '),')
     print('        ],')
     print('    },')
 print('});')

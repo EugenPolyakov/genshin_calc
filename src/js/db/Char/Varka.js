@@ -835,7 +835,7 @@ export const Varka = new DbObjectChar({
             name: 'varka_sturm_und_drang',
             serializeId: 1,
             title: 'talent_name.n11280001',
-            description: 'talent_descr.n11280001_2',
+            description: 'talent_descr.n11280001_1',
         }),
         new ConditionBoolean({
             name: 'char_hex_varka',

@@ -14,15 +14,16 @@ from lib.genshin.datafiles.lang import LangData
 from lib.genshin.strings.templates.names import keywords_eng, keywords_rus, names_eng, names_rus, patterns_eng, postprocess
 from lib.genshin.strings.templates import talents
 from lib.genshin.strings.template import SentenceMismatch
-from lib.genshin.utils import convert_id, add_array
+from lib.genshin.utils import convert_id, add_array, to_float32
 from lib.genshin.strings.csv import CsvDumper
 from lib.genshin.strings.text import TextDumper  # noqa
 from lib.genshin import char_generator
 from lib.genshin.char_generator import CharGenerator, EmptyCharGenerator
 from lib.genshin.char_talent_generator import StatGenerator
 from lib import static
-from lib.static import WEAPON_TYPES, shrink_table, names_mapping, fix_name, extractPramList
+from lib.static import WEAPON_TYPES, shrink_table, names_mapping, fix_name, extractPramList, trimToVal, trimValue
 from old_values import old_values
+from lib.genshin.strings.templates import hyperlink
 import logging
 
 logger = logging.getLogger(__name__)
@@ -118,9 +119,7 @@ def format_table(data, fmt):
     isPercent = fmt.find('P') >= 0
 
     def foramt_value(val):
-        if isPercent:
-            val *= 100
-        return static.trimValue(val)
+        return static.trimValue(val, 100 if isPercent else None)
 
     # data = list(map(foramt_value, data))
     data = [foramt_value(x) for x in data]
@@ -407,7 +406,7 @@ generator.header()
 def processPassiveTalent(proud, paramList):
     talenttable('\t\t\t')
 
-    paramList.extend(proud.get('paramList'))
+    paramList.extend([trimToVal(x) for x in proud.get('paramList')])
     talenttable(repr(shrink_table(paramList)))
     talenttable(',\n')
     talent_name = lang_default.get(proud.get('nameTextMapHash'))
@@ -628,8 +627,9 @@ for charVarName in sorted(char_keys):
                     logger.error(e)
                     err = True
             if err: continue
-            n_idx = add_array(nameItems, result_hero_strings, skill_id, 'talent_name', hyperlinks[hl_id] + 1)
-            d_idx = add_array(descItems, result_hero_strings, skill_id, 'talent_descr', hyperlinks[hl_id] + 1)
+            n_idx = add_array(nameItems, result_hero_strings, skill_id, 'talent_name', hyperlinks[hl_id])
+            d_idx = add_array(descItems, result_hero_strings, skill_id, 'talent_descr', hyperlinks[hl_id])
+
             hyperlinks[hl_id] = max(n_idx, d_idx)
 
 
@@ -664,8 +664,12 @@ if not do_single:
                 skill_descr = lang.get(hl_item['descTextMapHash'])
 
                 tpl_patterns = lang_data[lang_name]['patterns']
+                tpl_names = lang_data[lang_name]['names']
                 skill_descr = tpl_patterns.process(skill_descr)['descr'][0]
-
+                skill_descr = tpl_names.process(skill_descr)['descr'][0]
+                tpl_hyper = getattr(hyperlink, f"{skill_id}_{lang_name}", None) or getattr(hyperlink, skill_id, None)
+                if tpl_hyper:
+                    skill_descr = tpl_hyper.process(skill_descr)['descr'][0]
                 res_item1[lang_name] = skill_name
                 res_item2[lang_name] = postprocess.process(skill_descr)['descr'][0]
 

@@ -556,7 +556,7 @@ export const Zibai = new DbObjectChar({
             serializeId: 1,
             name: 'zibai_lunar_phase_shift',
             title: 'talent_name.n11260001',
-            description: 'talent_descr.n11260001_2',
+            description: 'talent_descr.n11260001_1',
             settings: {
                 attack_infusion: 'geo',
             },

@@ -17,8 +17,10 @@ import { FeatureHeal } from "../../classes/Feature2/Heal";
 import { FeatureMultiplier } from "../../classes/Feature2/Multiplier";
 import { StatTable } from "../../classes/StatTable";
 import { StatTableAscensionScale } from "../../classes/StatTable/Ascension/Scale";
+import { ValueTable } from "../../classes/ValueTable";
 import { charTables } from "../generated/CharTables";
 import { charTalentTables } from "../generated/CharTalentTables";
+import { travelerElevation } from "./TravelerPyro";
 
 const Talents = new DbObjectTalents({
     attack: {
@@ -116,6 +118,7 @@ const Talents = new DbObjectTalents({
             },
         ],
     },
+    links: charTalentTables.TravelerPyro.links,
 });
 
 const SkillNames = ['traveler_initial_cutting_dmg', 'traveler_max_cutting_dmg', 'traveler_initial_storm_dmg', 'traveler_max_storm_dmg'];
@@ -187,6 +190,7 @@ export const TravelerAnemo = new DbObjectChar({
             category: 'attack',
             damageType: 'charged',
             name: 'charged_hit_total',
+            element: (settings) => (settings && settings.traveler_foreign_windwrath) ? 'anemo' : 'phys',
             allowInfusion: true,
             items: [
                 {
@@ -194,6 +198,11 @@ export const TravelerAnemo = new DbObjectChar({
                         new FeatureMultiplier({
                             leveling: 'char_skill_attack',
                             values: Talents.get('attack.charged_hit_1'),
+                        }),
+                        new FeatureMultiplier({
+                            source: 'traveler_elevation',
+                            values: new ValueTable([60]),
+                            condition: new ConditionBoolean({ name: 'traveler_foreign_windwrath' }),
                         }),
                     ],
                 },
@@ -203,27 +212,88 @@ export const TravelerAnemo = new DbObjectChar({
                             leveling: 'char_skill_attack',
                             values: Talents.get('attack.charged_hit_2'),
                         }),
+                        new FeatureMultiplier({
+                            source: 'traveler_elevation',
+                            values: new ValueTable([60]),
+                            condition: new ConditionBoolean({ name: 'traveler_foreign_windwrath' }),
+                        }),
                     ],
                 },
             ],
         }),
         new FeatureDamageCharged({
+            element: (settings) => (settings && settings.traveler_foreign_windwrath) ? 'anemo' : 'phys',
             isChild: true,
             multipliers: [
                 new FeatureMultiplier({
                     leveling: 'char_skill_attack',
                     values: Talents.get('attack.charged_hit_1'),
                 }),
+                new FeatureMultiplier({
+                    source: 'traveler_elevation',
+                    values: new ValueTable([60]),
+                    condition: new ConditionBoolean({ name: 'traveler_foreign_windwrath' }),
+                }),
             ],
         }),
         new FeatureDamageCharged({
+            element: (settings) => (settings && settings.traveler_foreign_windwrath) ? 'anemo' : 'phys',
             isChild: true,
             multipliers: [
                 new FeatureMultiplier({
                     leveling: 'char_skill_attack',
                     values: Talents.get('attack.charged_hit_2'),
                 }),
+                new FeatureMultiplier({
+                    source: 'traveler_elevation',
+                    values: new ValueTable([60]),
+                    condition: new ConditionBoolean({ name: 'traveler_foreign_windwrath' }),
+                }),
             ],
+        }),
+        new FeatureDamageCharged({
+            element: 'pyro',
+            name: 'traveler_blade_wind_pyro',
+            multipliers: [
+                new FeatureMultiplier({
+                    source: 'traveler_elevation',
+                    values: new ValueTable([50]),
+                }),
+            ],
+            condition: new ConditionBoolean({ name: 'traveler_foreign_windwrath' }),
+        }),
+        new FeatureDamageCharged({
+            element: 'hydro',
+            name: 'traveler_blade_wind_hydro',
+            multipliers: [
+                new FeatureMultiplier({
+                    source: 'traveler_elevation',
+                    values: new ValueTable([50]),
+                }),
+            ],
+            condition: new ConditionBoolean({ name: 'traveler_foreign_windwrath' }),
+        }),
+        new FeatureDamageCharged({
+            element: 'cryo',
+            name: 'traveler_blade_wind_cryo',
+            multipliers: [
+                new FeatureMultiplier({
+                    source: 'traveler_elevation',
+                    values: new ValueTable([50]),
+                }),
+            ],
+            condition: new ConditionBoolean({ name: 'traveler_foreign_windwrath' }),
+        }),
+        new FeatureDamageCharged({
+            element: 'electro',
+            name: 'traveler_blade_wind_electro',
+            multipliers: [
+                new FeatureMultiplier({
+                    source: 'traveler_elevation',
+                    values: new ValueTable([50]),
+                }),
+            ],
+            condition: new ConditionBoolean({ name: 'traveler_foreign_windwrath' }),
         }),
         new FeatureDamagePlungeCollision({
             name: 'plunge',
@@ -390,6 +460,13 @@ export const TravelerAnemo = new DbObjectChar({
                 mastery: 15,
                 hp_base: 50,
             },
+        }),
+        travelerElevation,
+        new ConditionBoolean({
+            name: 'traveler_foreign_windwrath',
+            serializeId: 5,
+            title: 'talent_name.traveler_foreign_windwrath',
+            description: 'talent_descr.traveler_foreign_windwrath',
         }),
     ],
     constellation: new DbObjectConstellation([

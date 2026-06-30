@@ -608,7 +608,6 @@ export const Lauma = new DbObjectChar({
             stats: ['mastery_total'],
         },
         conditions: [
-            new Condition({ settings: { allowed_lunarbloom: 1 } }),
             new ConditionMoonPhaseSetting(),
             new ConditionNumber({
                 name: 'lauma_mastery_total',
@@ -625,6 +624,7 @@ export const Lauma = new DbObjectChar({
                     text_percent: charTalentTables.Lauma.passsive[2][0] * 100,
                     text_percent_max: charTalentTables.Lauma.passsive[2][1] * 100,
                 },
+                settings: { allowed_lunarbloom: 1 }
             }),
             new ConditionNumberTalent({
                 name: 'lauma_char_skill_elemental',
@@ -705,6 +705,11 @@ export const Lauma = new DbObjectChar({
                 serializeId: 9,
                 title: 'talent_name.lauma_twine_warnings_and_tales_from_the_north',
                 description: 'talent_descr.lauma_twine_warnings_and_tales_from_the_north',
+                stats: {
+                    text_bloom_percent: charTalentTables.Lauma.cons[1][0] * 100,
+                    text_lunarbloom_percent: charTalentTables.Lauma.cons[1][1] * 100,
+                    text_dmg_reaction_lunarbloom: charTalentTables.Lauma.cons[1][2] * 100,
+                },
                 realStats: {
                     dmg_reaction_lunarbloom: [0, 0, charTalentTables.Lauma.cons[1][2] * 100],
                 },

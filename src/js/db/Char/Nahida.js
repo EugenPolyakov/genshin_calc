@@ -526,7 +526,11 @@ export const Nahida = new DbObjectChar({
                 rotation: 'party',
                 title: 'talent_name.nahida_compassion_illuminated',
                 description: 'talent_descr.nahida_compassion_illuminated',
-                info: {ascension: 1},
+                info: { ascension: 1 },
+                stats: {
+                    text_percent: A1MasteryRatio,
+                    text_value_max: A1MasteryCap,
+                },
             }),
             new ConditionBoolean({
                 name: 'party.nahida_the_root_of_all_fullness_1',

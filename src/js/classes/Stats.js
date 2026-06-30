@@ -125,7 +125,7 @@ export class Stats {
 
     truncate(stats) {
         for (let name of Object.keys(this)) {
-            if (!stats.includes(name)) {
+            if (!stats.includes(name) || this[name] == 0) {
                 delete this[name];
             }
         }

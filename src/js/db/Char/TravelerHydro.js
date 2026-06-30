@@ -1,4 +1,5 @@
 import { Condition } from "../../classes/Condition";
+import { ConditionAnd } from "../../classes/Condition/And";
 import { ConditionAscensionChar } from "../../classes/Condition/Ascension/Char";
 import { ConditionBoolean } from "../../classes/Condition/Boolean";
 import { ConditionConstellation } from "../../classes/Condition/Constellation";
@@ -23,6 +24,7 @@ import { StatTableAscensionScale } from "../../classes/StatTable/Ascension/Scale
 import { ValueTable } from "../../classes/ValueTable";
 import { charTables } from "../generated/CharTables";
 import { charTalentTables } from "../generated/CharTalentTables";
+import { travelerElevation } from "./TravelerPyro";
 
 
 const Talents = new DbObjectTalents({
@@ -127,6 +129,7 @@ const Talents = new DbObjectTalents({
             },
         ],
     },
+    links: charTalentTables.TravelerPyro.links,
 });
 
 const shield_hp_scale = 10;
@@ -191,6 +194,7 @@ export const TravelerHydro = new DbObjectChar({
             category: 'attack',
             damageType: 'charged',
             name: 'charged_hit_total',
+            element: (settings) => (settings && settings.traveler_foreign_aqualis) ? 'hydro' : 'phys',
             allowInfusion: true,
             items: [
                 {
@@ -198,6 +202,19 @@ export const TravelerHydro = new DbObjectChar({
                         new FeatureMultiplier({
                             leveling: 'char_skill_attack',
                             values: Talents.get('attack.charged_hit_1'),
+                        }),
+                        new FeatureMultiplier({
+                            source: 'traveler_elevation',
+                            values: new ValueTable([150]),
+                            condition: new ConditionBoolean({ name: 'traveler_foreign_aqualis' }),
+                        }),
+                        new FeatureMultiplier({
+                            source: 'traveler_elevation',
+                            values: new ValueTable([100]),
+                            condition: new ConditionAnd([
+                                new ConditionBoolean({ name: 'traveler_foreign_aqualis' }),
+                                new ConditionBoolean({ name: 'traveler_suffusion' }),
+                            ]),
                         }),
                     ],
                 },
@@ -207,27 +224,80 @@ export const TravelerHydro = new DbObjectChar({
                             leveling: 'char_skill_attack',
                             values: Talents.get('attack.charged_hit_2'),
                         }),
+                        new FeatureMultiplier({
+                            source: 'traveler_elevation',
+                            values: new ValueTable([150]),
+                            condition: new ConditionBoolean({ name: 'traveler_foreign_aqualis' }),
+                        }),
+                        new FeatureMultiplier({
+                            source: 'traveler_elevation',
+                            values: new ValueTable([100]),
+                            condition: new ConditionAnd([
+                                new ConditionBoolean({ name: 'traveler_foreign_aqualis' }),
+                                new ConditionBoolean({ name: 'traveler_suffusion' }),
+                            ]),
+                        }),
                     ],
                 },
             ],
         }),
         new FeatureDamageCharged({
             isChild: true,
+            element: (settings) => (settings && settings.traveler_foreign_aqualis) ? 'hydro' : 'phys',
             multipliers: [
                 new FeatureMultiplier({
                     leveling: 'char_skill_attack',
                     values: Talents.get('attack.charged_hit_1'),
                 }),
+                new FeatureMultiplier({
+                    source: 'traveler_elevation',
+                    values: new ValueTable([150]),
+                    condition: new ConditionBoolean({ name: 'traveler_foreign_aqualis' }),
+                }),
+                new FeatureMultiplier({
+                    source: 'traveler_elevation',
+                    values: new ValueTable([100]),
+                    condition: new ConditionAnd([
+                        new ConditionBoolean({ name: 'traveler_foreign_aqualis' }),
+                        new ConditionBoolean({ name: 'traveler_suffusion' }),
+                    ]),
+                }),
             ],
         }),
         new FeatureDamageCharged({
             isChild: true,
+            element: (settings) => (settings && settings.traveler_foreign_aqualis) ? 'hydro' : 'phys',
             multipliers: [
                 new FeatureMultiplier({
                     leveling: 'char_skill_attack',
                     values: Talents.get('attack.charged_hit_2'),
                 }),
+                new FeatureMultiplier({
+                    source: 'traveler_elevation',
+                    values: new ValueTable([150]),
+                    condition: new ConditionBoolean({ name: 'traveler_foreign_aqualis' }),
+                }),
+                new FeatureMultiplier({
+                    source: 'traveler_elevation',
+                    values: new ValueTable([100]),
+                    condition: new ConditionAnd([
+                        new ConditionBoolean({ name: 'traveler_foreign_aqualis' }),
+                        new ConditionBoolean({ name: 'traveler_suffusion' }),
+                    ]),
+                }),
             ],
+        }),
+        new FeatureHeal({
+            category: 'attack',
+            name: 'traveler_foreign_aqualis',
+            multipliers: [
+                new FeatureMultiplier({
+                    scaling: 'hp*',
+                    source: 'traveler_elevation',
+                    values: new ValueTable([25]),
+                }),
+            ],
+            condition: new ConditionBoolean({ name: 'traveler_foreign_aqualis' }),
         }),
         new FeatureDamagePlungeCollision({
             name: 'plunge',
@@ -389,6 +459,13 @@ export const TravelerHydro = new DbObjectChar({
                 mastery: 15,
                 hp_base: 50,
             },
+        }),
+        travelerElevation,
+        new ConditionBoolean({
+            name: 'traveler_foreign_aqualis',
+            serializeId: 5,
+            title: 'talent_name.traveler_foreign_aqualis',
+            description: 'talent_descr.traveler_foreign_aqualis',
         }),
     ],
     constellation: new DbObjectConstellation([

@@ -195,20 +195,8 @@ const Talents = new DbObjectTalents({
 });
 
 const lunarPost = new PostEffectStatsMastery({
-    percent: new StatTable('lunarbloom_multi', [charTalentTables.Nefer.passsive[2][0] * 100]),
-    statCap: new ValueTable([charTalentTables.Nefer.passsive[2][1] * 100]),
-});
-
-const bloomTarget = new FeatureMultiplierTarget({
-    isReactionFlatBonus: true,
-    damageTypesExclude: 'nefer_frostgrove_sanctuary',
-    tags: 'bloom',
-});
-
-const lunarbloomTarget = new FeatureMultiplierTarget({
-    isReactionFlatBonus: true,
-    damageTypesExclude: 'nefer_frostgrove_sanctuary',
-    tags: 'lunarbloom',
+    percent: new StatTable('lunarbloom_multi', [charTalentTables.Nefer.passsive[2][0]], 100),
+    statCap: new ValueTable([charTalentTables.Nefer.passsive[2][1]], 100),
 });
 
 export const Nefer = new DbObjectChar({
@@ -222,7 +210,6 @@ export const Nefer = new DbObjectChar({
     originList: ['nodkrai', 'lunar'],
     talents: Talents,
     statTable: charTables.Nefer,
-    beta: true,
     features: [
         new FeatureDamageNormal({
             name: 'normal_hit_1',
@@ -298,11 +285,25 @@ export const Nefer = new DbObjectChar({
             multipliers: [
                 new FeatureMultiplier({
                     leveling: 'char_skill_elemental',
+                    scalingMultiplier: (data) => (data && data.settings) ? (data.settings['nefer_n11220003'] || 0) * charTalentTables.Nefer.passsive[0][5] + 1 : 1,
+                    scalingMultiplierCondition: new ConditionAnd([
+                        new ConditionAscensionChar({ ascension: 1 }),
+                        new ConditionMoonPhaseCheck({ moonphase: 2 }),
+                        new ConditionBoolean({ name: 'nefer_dance_of_a_thousand_nights' }),
+                    ]),
+                    scalingSource: 'ascension1',
                     values: Talents.get('skill.nefer_phantasm_performance_1_hit_dmg_nefer'),
                 }),
                 new FeatureMultiplier({
                     scaling: 'mastery*',
                     leveling: 'char_skill_elemental',
+                    scalingMultiplier: (data) => (data && data.settings) ? (data.settings['nefer_n11220003'] || 0) * charTalentTables.Nefer.passsive[0][5] + 1 : 1,
+                    scalingMultiplierCondition: new ConditionAnd([
+                        new ConditionAscensionChar({ ascension: 1 }),
+                        new ConditionMoonPhaseCheck({ moonphase: 2 }),
+                        new ConditionBoolean({ name: 'nefer_dance_of_a_thousand_nights' }),
+                    ]),
+                    scalingSource: 'ascension1',
                     values: Talents.get('skill.nefer_phantasm_performance_1_hit_dmg_nefer_mastery'),
                 }),
             ],
@@ -314,16 +315,38 @@ export const Nefer = new DbObjectChar({
             multipliers: [
                 new FeatureMultiplier({
                     leveling: 'char_skill_elemental',
+                    scalingMultiplier: (data) => (data && data.settings) ? (data.settings['nefer_n11220003'] || 0) * charTalentTables.Nefer.passsive[0][5] + 1 : 1,
+                    scalingMultiplierCondition: new ConditionAnd([
+                        new ConditionAscensionChar({ ascension: 1 }),
+                        new ConditionMoonPhaseCheck({ moonphase: 2 }),
+                        new ConditionBoolean({ name: 'nefer_dance_of_a_thousand_nights' }),
+                    ]),
+                    scalingSource: 'ascension1',
                     values: Talents.get('skill.nefer_phantasm_performance_2_hit_dmg_nefer'),
                 }),
                 new FeatureMultiplier({
                     scaling: 'mastery*',
                     leveling: 'char_skill_elemental',
+                    scalingMultiplier: (data) => (data && data.settings) ? (data.settings['nefer_n11220003'] || 0) * charTalentTables.Nefer.passsive[0][5] + 1 : 1,
+                    scalingMultiplierCondition: new ConditionAnd([
+                        new ConditionAscensionChar({ ascension: 1 }),
+                        new ConditionMoonPhaseCheck({ moonphase: 2 }),
+                        new ConditionBoolean({ name: 'nefer_dance_of_a_thousand_nights' }),
+                    ]),
+                    scalingSource: 'ascension1',
                     values: Talents.get('skill.nefer_phantasm_performance_2_hit_dmg_nefer_mastery'),
                 }),
                 new FeatureMultiplier({
                     scaling: 'mastery*',
-                    values: new ValueTable([charTalentTables.Nefer.cons[5][0]]),
+                    values: new ValueTable([charTalentTables.Nefer.cons[5][0]], 100),
+                    scalingMultiplier: (data) => (data && data.settings) ? (data.settings['nefer_n11220003'] || 0) * charTalentTables.Nefer.passsive[0][5] + 1 : 1,
+                    scalingMultiplierCondition: new ConditionAnd([
+                        new ConditionAscensionChar({ ascension: 1 }),
+                        new ConditionMoonPhaseCheck({ moonphase: 2 }),
+                        new ConditionBoolean({ name: 'nefer_dance_of_a_thousand_nights' }),
+                    ]),
+                    scalingSource: 'ascension1',
+                    source: 'constellation6',
                     condition: new ConditionConstellation({ constellation: 6 }),
                 }),
             ],
@@ -382,7 +405,27 @@ export const Nefer = new DbObjectChar({
                 new FeatureMultiplier({
                     scaling: 'mastery*',
                     leveling: 'char_skill_elemental',
+                    scalingMultiplier: (data) => (data && data.settings) ? (data.settings['nefer_n11220003'] || 0) * charTalentTables.Nefer.passsive[0][5] + 1 : 1,
+                    scalingMultiplierCondition: new ConditionAnd([
+                        new ConditionAscensionChar({ ascension: 1 }),
+                        new ConditionMoonPhaseCheck({ moonphase: 2 }),
+                        new ConditionBoolean({ name: 'nefer_dance_of_a_thousand_nights' }),
+                    ]),
+                    scalingSource: 'ascension1',
                     values: Talents.get('skill.nefer_phantasm_performance_1_hit_dmg_shades'),
+                }),
+                new FeatureMultiplier({
+                    scaling: 'mastery*',
+                    values: new ValueTable([charTalentTables.Nefer.cons[0][0]], 100),
+                    scalingMultiplier: (data) => (data && data.settings) ? (data.settings['nefer_n11220003'] || 0) * charTalentTables.Nefer.passsive[0][5] + 1 : 1,
+                    scalingMultiplierCondition: new ConditionAnd([
+                        new ConditionAscensionChar({ ascension: 1 }),
+                        new ConditionMoonPhaseCheck({ moonphase: 2 }),
+                        new ConditionBoolean({ name: 'nefer_dance_of_a_thousand_nights' }),
+                    ]),
+                    scalingSource: 'ascension1',
+                    source: 'constellation1',
+                    condition: new ConditionConstellation({ constellation: 1 }),
                 }),
             ],
             condition: new ConditionBoolean({ name: 'nefer_dance_of_a_thousand_nights' }),
@@ -395,7 +438,27 @@ export const Nefer = new DbObjectChar({
                 new FeatureMultiplier({
                     scaling: 'mastery*',
                     leveling: 'char_skill_elemental',
+                    scalingMultiplier: (data) => (data && data.settings) ? (data.settings['nefer_n11220003'] || 0) * charTalentTables.Nefer.passsive[0][5] + 1 : 1,
+                    scalingMultiplierCondition: new ConditionAnd([
+                        new ConditionAscensionChar({ ascension: 1 }),
+                        new ConditionMoonPhaseCheck({ moonphase: 2 }),
+                        new ConditionBoolean({ name: 'nefer_dance_of_a_thousand_nights' }),
+                    ]),
+                    scalingSource: 'ascension1',
                     values: Talents.get('skill.nefer_phantasm_performance_2_hit_dmg_shades'),
+                }),
+                new FeatureMultiplier({
+                    scaling: 'mastery*',
+                    values: new ValueTable([charTalentTables.Nefer.cons[0][0]], 100),
+                    scalingMultiplier: (data) => (data && data.settings) ? (data.settings['nefer_n11220003'] || 0) * charTalentTables.Nefer.passsive[0][5] + 1 : 1,
+                    scalingMultiplierCondition: new ConditionAnd([
+                        new ConditionAscensionChar({ ascension: 1 }),
+                        new ConditionMoonPhaseCheck({ moonphase: 2 }),
+                        new ConditionBoolean({ name: 'nefer_dance_of_a_thousand_nights' }),
+                    ]),
+                    scalingSource: 'ascension1',
+                    source: 'constellation1',
+                    condition: new ConditionConstellation({ constellation: 1 }),
                 }),
             ],
             condition: new ConditionBoolean({ name: 'nefer_dance_of_a_thousand_nights' }),
@@ -408,19 +471,40 @@ export const Nefer = new DbObjectChar({
                 new FeatureMultiplier({
                     scaling: 'mastery*',
                     leveling: 'char_skill_elemental',
+                    scalingMultiplier: (data) => (data && data.settings) ? (data.settings['nefer_n11220003'] || 0) * charTalentTables.Nefer.passsive[0][5] + 1 : 1,
+                    scalingMultiplierCondition: new ConditionAnd([
+                        new ConditionAscensionChar({ ascension: 1 }),
+                        new ConditionMoonPhaseCheck({ moonphase: 2 }),
+                        new ConditionBoolean({ name: 'nefer_dance_of_a_thousand_nights' }),
+                    ]),
+                    scalingSource: 'ascension1',
                     values: Talents.get('skill.nefer_phantasm_performance_3_hit_dmg_shades'),
+                }),
+                new FeatureMultiplier({
+                    scaling: 'mastery*',
+                    values: new ValueTable([charTalentTables.Nefer.cons[0][0]], 100),
+                    scalingMultiplier: (data) => (data && data.settings) ? (data.settings['nefer_n11220003'] || 0) * charTalentTables.Nefer.passsive[0][5] + 1 : 1,
+                    scalingMultiplierCondition: new ConditionAnd([
+                        new ConditionAscensionChar({ ascension: 1 }),
+                        new ConditionMoonPhaseCheck({ moonphase: 2 }),
+                        new ConditionBoolean({ name: 'nefer_dance_of_a_thousand_nights' }),
+                    ]),
+                    scalingSource: 'ascension1',
+                    source: 'constellation1',
+                    condition: new ConditionConstellation({ constellation: 1 }),
                 }),
             ],
             condition: new ConditionBoolean({ name: 'nefer_dance_of_a_thousand_nights' }),
         }),
         new FeatureReactionLunarBloomLike({
-            name: 'nefer_phantasm_performance_final_dmg_shades',
+            name: 'nefer_phantasm_performance_final_dmg',
             element: 'dendro',
             category: 'skill',
             multipliers: [
                 new FeatureMultiplier({
                     scaling: 'mastery*',
-                    values: new ValueTable([charTalentTables.Nefer.cons[5][2]]),
+                    values: new ValueTable([charTalentTables.Nefer.cons[5][1]], 100),
+                    source: 'constellation6',
                 }),
             ],
             condition: new ConditionAnd([
@@ -432,7 +516,6 @@ export const Nefer = new DbObjectChar({
             name: 'normal_hit_1',
             element: 'dendro',
             category: 'burst',
-            tags: ['nefer_burst'],
             multipliers: [
                 new FeatureMultiplier({
                     leveling: 'char_skill_burst',
@@ -449,7 +532,6 @@ export const Nefer = new DbObjectChar({
             name: 'normal_hit_2',
             element: 'dendro',
             category: 'burst',
-            tags: ['nefer_burst'],
             multipliers: [
                 new FeatureMultiplier({
                     leveling: 'char_skill_burst',
@@ -506,7 +588,11 @@ export const Nefer = new DbObjectChar({
             stats: [
                 Talents.getAlias('burst.nefer_dmg_bonus', 'dmg_burst'),
             ],
-            condition: new ConditionAscensionChar({ ascension: 1 }),
+            condition: new ConditionAnd([
+                new ConditionAscensionChar({ ascension: 1 }),
+                new ConditionMoonPhaseCheck({ moonphase: 2 }),
+                new ConditionBoolean({ name: 'nefer_dance_of_a_thousand_nights' }),
+            ]),
         }),
         new ConditionStatic({
             title: 'talent_name.nefer_daughter_of_the_dust_and_sand',
@@ -523,53 +609,6 @@ export const Nefer = new DbObjectChar({
         }),
     ],
     multipliers: [
-        new FeatureMultiplier({
-            scaling: 'mastery*',
-            leveling: 'char_skill_burst',
-            values: Talents.get('burst.nefer_all_hearts_become_the_beating_moon_3'),
-            target: bloomTarget,
-            condition: new ConditionBoolean({ name: 'nefer_all_hearts_become_the_beating_moon' }),
-        }),
-        new FeatureMultiplier({
-            scaling: 'mastery*',
-            leveling: 'char_skill_burst',
-            values: Talents.get('burst.nefer_all_hearts_become_the_beating_moon_4'),
-            target: lunarbloomTarget,
-            condition: new ConditionBoolean({ name: 'nefer_all_hearts_become_the_beating_moon' }),
-        }),
-        new FeatureMultiplier({
-            scaling: 'mastery*',
-            values: new StatTable('', [charTalentTables.Nefer.cons[1][0]], 100),
-            target: bloomTarget,
-            condition: new ConditionAnd([
-                new ConditionBoolean({ name: 'nefer_all_hearts_become_the_beating_moon' }),
-                new ConditionAnd([
-                    new ConditionBoolean({ name: 'nefer_twine_warnings_and_tales_from_the_north' }),
-                    new ConditionConstellation({ constellation: 2 }),
-                ]),
-            ]),
-        }),
-        new FeatureMultiplier({
-            scaling: 'mastery*',
-            values: new StatTable('', [charTalentTables.Nefer.cons[1][1]], 100),
-            target: lunarbloomTarget,
-            condition: new ConditionAnd([
-                new ConditionBoolean({ name: 'nefer_all_hearts_become_the_beating_moon' }),
-                new ConditionAnd([
-                    new ConditionBoolean({ name: 'nefer_twine_warnings_and_tales_from_the_north' }),
-                    new ConditionConstellation({ constellation: 2 }),
-                ]),
-            ]),
-        }),
-        new FeatureMultiplier({
-            scaling: 'hp*',
-            leveling: 'char_skill_burst',
-            stacksLeveling: 'nefer_n11220003',
-            values: Talents.get('burst.nefer_dmg_bonus'),
-            target: new FeatureMultiplierTarget({
-                tags: ['nefer_dance_of_a_thousand_nights'],
-            }),
-        }),
     ],
     postEffects: [
         lunarPost,
@@ -585,16 +624,22 @@ export const Nefer = new DbObjectChar({
         },
         {
             conditions: [
-                new ConditionMoonPhaseSetting(),
-                new ConditionBoolean({
+                new ConditionStatic({
                     name: 'nefer_observation_feeds_strategy',
-                    serializeId: 4,
                     title: 'talent_name.nefer_observation_feeds_strategy',
                     description: 'talent_descr.nefer_observation_feeds_strategy',
-                    stats: {
-                        mastery: charTalentTables.Nefer.cons[1][2],
-                    }
                 }),
+                new Condition({
+                    stats: {
+                        mastery: charTalentTables.Nefer.cons[1][2] - charTalentTables.Nefer.passsive[0][2],
+                    },
+                    condition: new ConditionAnd([
+                        new ConditionAscensionChar({ ascension: 1 }),
+                        new ConditionMoonPhaseCheck({ moonphase: 2 }),
+                        new ConditionBoolean({ name: 'nefer_dance_of_a_thousand_nights' }),
+                        new ConditionBoolean({ name: 'nefer_a_wager_of_moonlight' }),
+                    ]),
+                })
             ],
         },
         {
@@ -648,7 +693,6 @@ export const Nefer = new DbObjectChar({
             stats: ['mastery_total'],
         },
         conditions: [
-            new Condition({ settings: { allowed_lunarbloom: 1 } }),
             new ConditionMoonPhaseSetting(),
             new ConditionNumber({
                 name: 'nefer_mastery_total',
@@ -665,6 +709,9 @@ export const Nefer = new DbObjectChar({
                     text_percent: charTalentTables.Nefer.passsive[2][0] * 100,
                     text_percent_max: charTalentTables.Nefer.passsive[2][1] * 100,
                 },
+                settings: {
+                    allowed_lunarcharged: 1,
+                },
             }),
             new ConditionBoolean({
                 name: 'nefer_delusion_ensnares_reason',
@@ -674,8 +721,6 @@ export const Nefer = new DbObjectChar({
                 stats: {
                     enemy_res_dendro: -charTalentTables.Nefer.cons[3][2] * 100,
                 },
-                //считаем отдельно от танца теней т.к. эффект сохраняется после выхода
-                //condition: new ConditionBoolean({ name: 'nefer_dance_of_a_thousand_nights' }),
                 info: {
                     constellation: 4,
                 },
@@ -684,8 +729,8 @@ export const Nefer = new DbObjectChar({
         postEffects: [
             new PostEffectStats({
                 from: 'nefer_mastery_total',
-                percent: new StatTable('lunarbloom_multi', [charTalentTables.Nefer.passsive[2][0] * 100]),
-                statCap: new ValueTable([charTalentTables.Nefer.passsive[2][1] * 100]),
+                percent: new StatTable('lunarbloom_multi', [charTalentTables.Nefer.passsive[2][0]], 100),
+                statCap: new ValueTable([charTalentTables.Nefer.passsive[2][1]], 100),
             }),
         ]
     }

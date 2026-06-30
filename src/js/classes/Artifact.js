@@ -1,6 +1,6 @@
 import { Serializer } from './Serializer';
 import { Stats } from './Stats';
-import { substatCheck } from './SubstatCheck';
+import { substatCheck, substatListValid } from './SubstatCheck';
 
 export class Artifact {
     constructor(rarity, level, slot, set, mainStat, subStats) {
@@ -25,6 +25,41 @@ export class Artifact {
         this.calculated = null;
     }
 
+    addStatByProcs(stat, values, unactivated) {
+        let substat = DB.Artifacts.Substats.get(stat);
+        if (!substat) {
+            this.subStats[stat] = {
+                index: Object.keys(this.subStats).length,
+                value: 0,
+                values: [],
+                unactivated: unactivated,
+            };
+        } else {
+            values = values.sort((a, b) => a - b);
+
+            this.subStats[stat] = {
+                index: Object.keys(this.subStats).length,
+                value: substat.rollsToValue[this.rarity - 1][values.join('')],
+                values: values,
+                unactivated: unactivated,
+            };
+        }
+
+        this.calculated = null;
+    }
+
+    tryGetSubstatValues(subStat, stat) {
+        let data = DB.Artifacts.Substats.get(stat);
+        if (subStat.values && subStat.values.length > 0 && subStat.value.toFixed(1) == data.rollsToValue[this.rarity - 1][subStat.values.join('')].toFixed(1))
+            return;
+        let result = substatCheck(stat, this.rarity, subStat.value, subStat.values);
+        if (result.last == 0) {
+            subStat.values = result.steps.map(x => x.rarity - 2);
+        } else {
+            delete subStat.values;
+        }
+    }
+
     /**
      * @returns {Stats}
      */
@@ -41,8 +76,11 @@ export class Artifact {
         {
             let item = this.subStats[i];
             let substatData = DB.Artifacts.Substats.get(i);
-
-            result.add(i, substatData.getPreciseValue(item.value, this.rarity));
+            this.tryGetSubstatValues(item, i);
+            if (item.values)
+                result.add(i, substatData.getPreciseValueByStacks(item.values, this.rarity));
+            else
+                result.add(i, substatData.getPreciseValue(item.value, this.rarity));
         });
 
         result.add('crit_value', result.get('crit_rate') * 2 + result.get('crit_dmg'));
@@ -200,20 +238,30 @@ export class Artifact {
             if (allSubstats.includes(sub)) {
                 isSubstatDuplicate = true;
             }
+            let statData = DB.Artifacts.Substats.get(sub);
+            if (!statData) return;
             allSubstats.push(sub);
 
-            let rollData = substatCheck(sub, this.rarity, this.subStats[sub].value);
-
-            if (rollData.last > 0) {
-                if (rollData.steps.length < rollData.maxUpgrades) {
-                    isSubstatValueRolls = true;
+            if (substatListValid(sub, this.subStats[sub].value, this.subStats[sub].values, this.rarity)) {
+                upgradesCnt += this.subStats[sub].values.length - 1;
+            } else {
+                if (statData.stacks[this.rarity - 1][this.subStats[sub].value]) {
+                    upgradesCnt += statData.stacks[this.rarity - 1][this.subStats[sub].value].length - 1;
                 } else {
-                    isSubstatValueRange = true;
-                }
-            }
+                    let rollData = substatCheck(sub, this.rarity, this.subStats[sub].value);
 
-            if (rollData.steps.length > 1) {
-                upgradesCnt += rollData.steps.length - 1;
+                    if (rollData.last > 0) {
+                        if (rollData.steps.length < rollData.maxUpgrades) {
+                            isSubstatValueRolls = true;
+                        } else {
+                            isSubstatValueRange = true;
+                        }
+                    }
+
+                    if (rollData.steps.length > 1) {
+                        upgradesCnt += rollData.steps.length - 1;
+                    }
+                }
             }
         });
 
@@ -296,7 +344,7 @@ export class Artifact {
     }
 
     serialize() {
-        let result = [1];
+        let result = [2];
 
         result.push(DB.Artifacts.Sets.getId(this.set));
         result.push(this.rarity);
@@ -311,13 +359,22 @@ export class Artifact {
             result.push(DB.Artifacts.Substats.getId(stat));
 
             let substat = DB.Artifacts.Substats.get(stat);
-            let value = this.subStats[stat].value;
+            let statData = this.subStats[stat];
+            let value = statData.value;
+            this.tryGetSubstatValues(statData, stat);
 
-            if (substat.type == 'percent') {
-                value = Math.floor(value * 10);
+            if (statData.values && statData.values.length > 0 && value.toFixed(1) == substat.rollsToValue[this.rarity - 1][statData.values.join('')].toFixed(1)) {
+                value = statData.values[statData.values.length - 1] + 1;
+                for (let i = statData.values.length - 2; i >= 0; i--) {
+                    value = (value << 3) + statData.values[i] + 1;
+                }
+                result.push((value << 1) + 1);
+            } else {
+                if (substat.type == 'percent') {
+                    value = Math.floor(value * 10) << 1;
+                }
+                result.push(value << 1);
             }
-
-            result.push(value);
         });
 
         return result;
@@ -331,7 +388,7 @@ export class Artifact {
         let version = input.shift();
         let result = null;
 
-        if (version == 1) {
+        if (version >= 1) {
             let set = DB.Artifacts.Sets.getKeyId(input.shift());
             if (!set) return null;
 
@@ -352,29 +409,68 @@ export class Artifact {
 
             result = new Artifact(rarity, level, slot, set, mainStat);
 
-            for (let i = 1; i <= substatCnt; ++i) {
-                let key = input.shift();
-                let unactivated;
-                if (key == 25) {
-                    key = input.shift();
-                    unactivated = true;
+            if (version >= 2) {
+                for (let i = 1; i <= substatCnt; ++i) {
+                    let key = input.shift();
+                    let unactivated;
+                    if (key == 25) {
+                        key = input.shift();
+                        unactivated = true;
+                    }
+                    let statKey = DB.Artifacts.Substats.getKeyId(key);
+                    if (!statKey) return null;
+
+                    let value = input.shift();
+                    if (value < 1) return null;
+
+                    let substat = DB.Artifacts.Substats.get(statKey);
+                    if (!substat) return null;
+
+                    let isStacks = value % 2;
+                    value = value >> 1;
+                    if (isStacks) {
+                        let values = [];
+                        do {
+                            values.push((value % 8) - 1);
+                            value = value >> 3;
+                        } while (value > 0);
+
+                        result.addStatByProcs(statKey, values, unactivated);
+                    } else {
+                        if (substat.type == 'percent') {
+                            value = parseFloat(value) / 10;
+                        } else {
+                            value = parseInt(value)
+                        }
+
+                        result.addStat(statKey, value, unactivated);
+                    }
                 }
-                let statKey = DB.Artifacts.Substats.getKeyId(key);
-                if (!statKey) return null;
+            } else {
+                for (let i = 1; i <= substatCnt; ++i) {
+                    let key = input.shift();
+                    let unactivated;
+                    if (key == 25) {
+                        key = input.shift();
+                        unactivated = true;
+                    }
+                    let statKey = DB.Artifacts.Substats.getKeyId(key);
+                    if (!statKey) return null;
 
-                let value = input.shift();
-                if (value < 1) return null;
+                    let value = input.shift();
+                    if (value < 1) return null;
 
-                let substat = DB.Artifacts.Substats.get(statKey);
-                if (!substat) return null;
+                    let substat = DB.Artifacts.Substats.get(statKey);
+                    if (!substat) return null;
 
-                if (substat.type == 'percent') {
-                    value = parseFloat(value) / 10;
-                } else {
-                    value = parseInt(value)
+                    if (substat.type == 'percent') {
+                        value = parseFloat(value) / 10;
+                    } else {
+                        value = parseInt(value)
+                    }
+
+                    result.addStat(statKey, value, unactivated);
                 }
-
-                result.addStat(statKey, value, unactivated);
             }
         }
 

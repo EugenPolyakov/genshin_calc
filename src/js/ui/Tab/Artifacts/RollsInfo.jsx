@@ -50,7 +50,7 @@ export class RollsInfo extends React.Component {
                     continue;
                 }
 
-                let data = substatCheck( item, art.getRarity(), art.getSubStats()[item].value);
+                let data = substatCheck(item, art.getRarity(), art.getSubStats()[item].value, art.getSubStats()[item].values);
                 let statData = DB.Artifacts.Substats.get(item)
 
                 if (data && data.steps) {

@@ -45,7 +45,7 @@ export const ViridescentVenerer = new ArtifactSet({
                     serializeId: 17,
                     multiple: true,
                     hideEmpty: true,
-                    dropdownClass: 'small select-element-multiple',
+                    dropdownClass: 'select-element-multiple',
                     title: 'set_bonus.viridescent_venerer_4',
                     description: 'set_descr.viridescent_venerer_4_2',
                     values: [

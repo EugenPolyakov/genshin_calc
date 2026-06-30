@@ -28,7 +28,7 @@ export class ConditionCustomOrigin extends Condition {
             }
         }
 
-        var result = { };
+        var result = super.getSettings(settings);
         result[this.params.name] = stacks;
 
         return result;

@@ -1,6 +1,6 @@
 export class StatTableArtifact {
-  constructor(values) {
-    this.values = values;
+  constructor(values, multy) {
+      this.values = values.map(x => Math.fround(x) * multy);
   }
 
   getValue(level) {

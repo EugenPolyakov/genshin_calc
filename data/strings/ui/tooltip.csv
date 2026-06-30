@@ -4,6 +4,7 @@ tooltip;share_overwite;Перезаписать сохранение;Overwrite s
 tooltip;share_delete;Удалить сохранение;Delete saved character
 tooltip;share_save;Сохранить персонажа;Save character
 tooltip;artifact_delete;Удалить;Delete
+tooltip;artifact_pulloff;Снять;Pull off
 tooltip;artifact_edit;Редактировать;Edit
 tooltip;artifact_unlock;Разрешить использовать артефакт для автоподбора;Enable artifact for optimizer
 tooltip;artifact_lock;Запретить использовать артефакт для автоподбора;Disable artifact for optimizer

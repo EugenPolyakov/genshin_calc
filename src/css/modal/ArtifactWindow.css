@@ -144,7 +144,7 @@
     flex-grow: 1;
 }
 
-.gi-modal-substat-value-rolls {
+.gi-modal-substat-value-rolls, .gi-modal-substat-add-rolls {
     height: 28px;
     width: 100%;
     box-sizing: border-box;
@@ -304,6 +304,10 @@
 
 }
 
+.gi-modal-substat-value-roll.active {
+    cursor: pointer;
+}
+
 .gi-modal-substat-value-roll.last {
     color: red;
     cursor: pointer;
@@ -341,6 +345,11 @@
 .narrow .gi-modal-substat-value-wrapper {
     display: flex;
     margin-top: 7px;
+}
+
+.narrow .gi-modal-substat-add-rolls {
+    flex-shrink: 0;
+    width: 200px;
 }
 
 .narrow .gi-modal-substat-value-rolls {

@@ -152,6 +152,11 @@
     min-width: 57px;
 }
 
+.dropdown-wrapper.select-element-multiple.big {
+    width: 180px;
+    min-width: 180px;
+}
+
 .dropdown-wrapper.select-element-multiple {
     width: 115px;
     min-width: 115px;

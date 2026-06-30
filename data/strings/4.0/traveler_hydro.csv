@@ -1,5 +1,6 @@
 category;name;rus;eng
 feature_skill;traveler_pouring_descent_shield;Щит водной эмблемы;Aquacrest Aegis
-feature_skill;traveler_spotless_waters_heal;Незапятанные воды;Spotless Waters
+feature_skill;traveler_spotless_waters_heal;Чистые воды;Spotless Waters
+feature_attack;traveler_foreign_aqualis;Чужеземные чистые воды;Foreign Aqualis
 
 talent_name;traveler_clear_waters_full;Прозрачные воды (% Макс. HP);Clear Waters (Max HP %)

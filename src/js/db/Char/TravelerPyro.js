@@ -2,6 +2,7 @@ import { Condition } from "../../classes/Condition";
 import { ConditionAscensionChar } from "../../classes/Condition/Ascension/Char";
 import { ConditionBoolean } from "../../classes/Condition/Boolean";
 import { ConditionBooleanNightSoul } from "../../classes/Condition/Boolean/NightSoul";
+import { ConditionDropdownElement } from "../../classes/Condition/Dropdown/Element";
 import { ConditionStatic } from "../../classes/Condition/Static";
 import { DbObjectChar } from "../../classes/DbObject/Char";
 import { DbObjectConstellation } from "../../classes/DbObject/Constellation";
@@ -16,6 +17,7 @@ import { FeatureDamageSkill } from "../../classes/Feature2/Damage/Skill";
 import { FeatureMultiplier } from "../../classes/Feature2/Multiplier";
 import { StatTable } from "../../classes/StatTable";
 import { StatTableAscensionScale } from "../../classes/StatTable/Ascension/Scale";
+import { ValueTable } from "../../classes/ValueTable";
 import { charTables } from "../generated/CharTables";
 import { charTalentTables } from "../generated/CharTalentTables";
 
@@ -105,12 +107,102 @@ const Talents = new DbObjectTalents({
             },
         ],
     },
+    links: charTalentTables.TravelerPyro.links,
 });
 
 const C1DmgBonus = 6;
 const C1DmgBonusNightsoul = 9;
 const C4PyroDmg = 20;
 const C6CritDmg = 40;
+
+export let travelerElevation = new ConditionDropdownElement({
+    name: 'n10050001',
+    serializeId: 20,
+    multiple: true,
+    hideEmpty: true,
+    dropdownClass: 'big select-element-multiple',
+    title: 'talent_name.n10050001',
+    description: 'talent_descr.n10050001',
+    values: [
+        {
+            value: 'anemo',
+            serializeId: 1,
+            conditions: [
+                new Condition({
+                    stats: {
+                        crit_rate_base: 10,
+                    }
+                }),
+            ],
+        },
+        {
+            value: 'geo',
+            serializeId: 2,
+            conditions: [
+                new Condition({
+                    stats: {
+                        def_percent: 20,
+                    }
+                }),
+            ],
+        },
+        {
+            value: 'electro',
+            serializeId: 3,
+            conditions: [
+                new Condition({
+                    stats: {
+                        recharge_base: 20,
+                    }
+                }),
+            ],
+        },
+        {
+            value: 'dendro',
+            serializeId: 4,
+            conditions: [
+                new Condition({
+                    stats: {
+                        mastery: 60,
+                    }
+                }),
+            ],
+        },
+        {
+            value: 'hydro',
+            serializeId: 5,
+            conditions: [
+                new Condition({
+                    stats: {
+                        hp_percent: 20,
+                    }
+                }),
+            ],
+        },
+        {
+            value: 'pyro',
+            serializeId: 6,
+            conditions: [
+                new Condition({
+                    stats: {
+                        atk_percent: 20,
+                    }
+                }),
+            ],
+        },
+        {
+            value: 'cryo',
+            serializeId: 7,
+            conditions: [
+                new Condition({
+                    stats: {
+                        crit_dmg_base: 20,
+                    }
+                }),
+            ],
+        },
+    ],
+});
 
 export const TravelerPyro = new DbObjectChar({
     name: 'traveler_pyro',
@@ -169,6 +261,7 @@ export const TravelerPyro = new DbObjectChar({
             category: 'attack',
             damageType: 'charged',
             name: 'charged_hit_total',
+            element: (settings) => (settings && settings.traveler_foreign_starfire) ? 'pyro' : 'phys',
             allowInfusion: true,
             items: [
                 {
@@ -176,6 +269,11 @@ export const TravelerPyro = new DbObjectChar({
                         new FeatureMultiplier({
                             leveling: 'char_skill_attack',
                             values: Talents.get('attack.charged_hit_1'),
+                        }),
+                        new FeatureMultiplier({
+                            source: 'traveler_elevation',
+                            values: new ValueTable([200]),
+                            condition: new ConditionBoolean({ name: 'traveler_foreign_starfire' }),
                         }),
                     ],
                 },
@@ -185,25 +283,42 @@ export const TravelerPyro = new DbObjectChar({
                             leveling: 'char_skill_attack',
                             values: Talents.get('attack.charged_hit_2'),
                         }),
+                        new FeatureMultiplier({
+                            source: 'traveler_elevation',
+                            values: new ValueTable([200]),
+                            condition: new ConditionBoolean({ name: 'traveler_foreign_starfire' }),
+                        }),
                     ],
                 },
             ],
         }),
         new FeatureDamageCharged({
             isChild: true,
+            element: (settings) => (settings && settings.traveler_foreign_starfire) ? 'pyro' : 'phys',
             multipliers: [
                 new FeatureMultiplier({
                     leveling: 'char_skill_attack',
                     values: Talents.get('attack.charged_hit_1'),
                 }),
+                new FeatureMultiplier({
+                    source: 'traveler_elevation',
+                    values: new ValueTable([200]),
+                    condition: new ConditionBoolean({ name: 'traveler_foreign_starfire' }),
+                }),
             ],
         }),
         new FeatureDamageCharged({
             isChild: true,
+            element: (settings) => (settings && settings.traveler_foreign_starfire) ? 'pyro' : 'phys',
             multipliers: [
                 new FeatureMultiplier({
                     leveling: 'char_skill_attack',
                     values: Talents.get('attack.charged_hit_2'),
+                }),
+                new FeatureMultiplier({
+                    source: 'traveler_elevation',
+                    values: new ValueTable([200]),
+                    condition: new ConditionBoolean({ name: 'traveler_foreign_starfire' }),
                 }),
             ],
         }),
@@ -312,6 +427,13 @@ export const TravelerPyro = new DbObjectChar({
                 mastery: 15,
                 hp_base: 50,
             },
+        }),
+        travelerElevation,
+        new ConditionBoolean({
+            name: 'traveler_foreign_starfire',
+            serializeId: 8,
+            title: 'talent_name.traveler_foreign_starfire',
+            description: 'talent_descr.traveler_foreign_starfire',
         }),
     ],
     constellation: new DbObjectConstellation([

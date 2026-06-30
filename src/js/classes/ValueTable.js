@@ -4,9 +4,9 @@ export class ValueTable {
      */
     constructor (values, multi) {
         if (multi != undefined) {
-            this.values = values.map(x => x instanceof ValueTable ? x.multiply(multi) : parseFloat((parseFloat(x).toFixed(4) * multi).toFixed(4)));
+            this.values = values.map(x => x instanceof ValueTable ? x.multiply(multi) : multi * Math.fround(parseFloat(x)));
         } else
-            this.values = values.map(x => x instanceof ValueTable ? x : parseFloat(parseFloat(x).toFixed(4)));
+            this.values = values.map(x => x instanceof ValueTable ? x : Math.fround(parseFloat(x)));
     }
 
      /**

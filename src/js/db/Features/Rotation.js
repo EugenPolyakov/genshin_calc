@@ -621,7 +621,7 @@ export const Rotation = new DbObjectRotation({
     "skill.nefer_phantasm_performance_1_hit_dmg_shades": 615,
     "skill.nefer_phantasm_performance_2_hit_dmg_shades": 616,
     "skill.nefer_phantasm_performance_3_hit_dmg_shades": 617,
-    "skill.nefer_phantasm_performance_final_dmg_shades": 618,
+    "skill.nefer_phantasm_performance_final_dmg": 618,
 
     "attack.columbina_moondew_cleanse_dmg": 619,
     "skill.columbina_continuous_dmg": 620,
@@ -664,4 +664,11 @@ export const Rotation = new DbObjectRotation({
     'burst.varka_skill_1_hit_dmg': 652,
     'burst.varka_skill_2_hit_dmg': 653,
     'other.varka_constellation2': 654,
+
+    'attack.traveler_lightning_strike': 656,
+    'attack.traveler_blade_wind_pyro': 657,
+    'attack.traveler_blade_wind_hydro': 658,
+    'attack.traveler_blade_wind_cryo': 659,
+    'attack.traveler_blade_wind_electro': 660,
+    'attack.traveler_vinecore': 661,
 });
