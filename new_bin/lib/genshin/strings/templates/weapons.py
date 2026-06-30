@@ -1851,10 +1851,11 @@ many_oaths_of_dawn_and_dusk = Template(
         ['15:ignore'],
         ['2:ignore'],
         ['0.2:ignore'],
+        ['1:ignore', '1:ignore'],
     ],
     results=[
         [0],
-        [1, 2, 3, 4],
+        [1, 2, 3, 4, 5],
     ],
 )
 
@@ -1865,10 +1866,11 @@ many_oaths_of_dawn_and_dusk_eng = Template(
         ['1:ignore', '18:dmg_skill'],
         ['15:ignore', '2:ignore'],
         ['0.2:ignore'],
+        ['1:ignore'],
     ],
     results=[
         [0],
-        [1, 2, 3],
+        [1, 2, 3, 4],
     ],
 )
 
@@ -2412,7 +2414,7 @@ seasoned_symphony = Template(
     sentences=[
         ['12:atk_percent'],
         ['12:atk_percent'],
-        ['32:atk_percent', '3:ignore'],
+        ['32:atk_percent|32', '3:ignore'],
         [],
     ],
     results=[
@@ -3096,3 +3098,41 @@ rainbow_serpents_rain_bow_eng = Template(
     ],
 )
 
+athame_artis_rus = Template(
+    replace={
+        '<br>': '\n<br>\n',
+    },
+    sentences=[
+        ['16:atk_percent'],
+        ['20:text_percent2|20', '16:text_percent|16', '3:ignore'],
+        [],
+        ['75:ignore'],
+        [],
+    ],
+    results=[
+        [0],
+        [1, 4],
+        [3],
+        [1, 2, 3],
+    ],
+)
+
+athame_artis_eng = Template(
+    replace={
+        '<br>': '\n<br>\n',
+    },
+    sentences=[
+        ['16:atk_percent'],
+        ['20:text_percent2|20'],
+        ['16:text_percent|16', '3:ignore'],
+        [],
+        ['75:ignore'],
+        [],
+    ],
+    results=[
+        [0],
+        [1, 2, 4],
+        [4],
+        [2, 3, 4],
+    ],
+)

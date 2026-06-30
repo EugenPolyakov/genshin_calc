@@ -48,6 +48,7 @@ texts = {}
 lang_eng = lang_data['eng']['lang']
 
 weapon_names = {
+    #SWORDS
     11301: 'CoolSteel',
     11302: 'HarbingerofDawn',
     11303: 'TravelersHandySword',
@@ -81,6 +82,8 @@ weapon_names = {
     11430: 'SturdyBone',
     11431: 'FlamebreathFlute',
     11432: 'CalamityOfEshu',
+    11433: 'serenitys_call',
+    11434: 'moonweavers_dawn',
     11501: "AquilaFavonia",
     11502: "SkywardBlade",
     11503: "FreedomSworn",
@@ -89,6 +92,7 @@ weapon_names = {
     # 11506: "PrimordialJadeCutter",
     # 11507: "One Side",
     # 11508: "",
+    11509: "MistsplitterReforged",
     11510: 'HaranGeppakuFutsu',
     11511: "KeyofKhajNisut",
     11512: "LightofFoliarIncision",
@@ -97,7 +101,9 @@ weapon_names = {
     11515: "Absolution",
     11516: "PeakPatrolSong",
     11517: "Azurelight",
-    11509: "MistsplitterReforged",
+    11518: "athame_artis",
+
+    #CLAYMORES
     12301: "FerrousShadow",
     12302: "BloodtaintedGreatsword",
     12303: "WhiteIronGreatsword",
@@ -128,6 +134,7 @@ weapon_names = {
     12430: 'FruitfulHook',
     12431: 'Earthshaker',
     12432: 'FlameForgedInsight',
+    12433: 'master_key',
     12501: "SkywardPride",
     12502: "WolfsGravestone",
     12503: "SongofBrokenPines",
@@ -141,6 +148,8 @@ weapon_names = {
     12512: 'Verdict',
     12513: 'MountainKingsFang',
     12514: 'AThousandBlazingSuns',
+
+    #POLEARMS
     13301: "WhiteTassel",
     13302: "Halberd",
     13303: "BlackTassel",
@@ -166,6 +175,8 @@ weapon_names = {
     13430: 'MountainBracingBolt',
     13431: 'RainbowsTrail',
     13432: 'BriefPavilionChatter',
+    13433: 'prospectors_shovel',
+    13434: 'sacrificers_staff',
     13501: "StaffofHoma",
     13502: "SkywardSpine",
     # 13503: "",
@@ -179,6 +190,8 @@ weapon_names = {
     13513: 'LumidouceElegy',
     13514: 'SymphonistofScents',
     13515: 'FracturedHalo',
+
+    #CATALYSTS
     14301: "MagicGuide",
     14302: "ThrillingTalesofDragonSlayers",
     14303: "OtherworldlyStory",
@@ -208,6 +221,9 @@ weapon_names = {
     14427: 'AshGravenDrinkingHorn',
     14430: 'WaveridingWhirl',
     14431: 'RingOfCeiba',
+    14432: 'etherlight_spindlelute',
+    14433: 'blackmarrow_lantern',
+    14434: 'dawning_frost',
     14501: "SkywardAtlas",
     14502: "LostPrayer",
     # 14503: "Lost Ballade",
@@ -225,6 +241,8 @@ weapon_names = {
     14517: 'StarcallersWatch',
     14518: 'MorningHibernation',
     14519: 'VividNotions',
+
+    #BOWS
     15301: "RavenBow",
     15302: "SharpshootersOath",
     15303: "RecurveBow",
@@ -257,6 +275,8 @@ weapon_names = {
     15430: 'FlowerWreathedFeathers',
     15431: 'ShatteredChains',
     15432: 'SequenceofSolitude',
+    15433: 'snare_hook',
+    15434: 'rainbow_serpents_rain_bow',
     15501: "SkywardHarp",
     15502: "AmosBow",
     15503: "ElegyfortheEnd",
@@ -390,46 +410,50 @@ def prepare_data():
         for id in weapon['skillAffix']:
             if not id: continue
             #if id in affixSet: continue
-            affixList = weapon_skill_data.get_list_by_field('id', id)
-            affixList = sorted(affixList, key=lambda d: d['level'])
+            try:
+                affixList = weapon_skill_data.get_list_by_field('id', id)
+                affixList = sorted(affixList, key=lambda d: d['level'])
 
-            skill_id = convert_id(lang_eng.get(affixList[0]['nameTextMapHash']))
+                skill_id = convert_id(lang_eng.get(affixList[0]['nameTextMapHash']))
 
-            elem = {
-                'skill_name': f'{name.lower()}',
-                'skill_title': skill_id,
-                'skillAffix': id,
-                'params': []
-            }
-            tpl_weapon = getattr(weapons_tpl, f'{skill_id}_eng', None) or getattr(weapons_tpl, skill_id, None)
-            if tpl_weapon:
-                # если есть описание навыка, то проверим совпадает ли оно с другими навыками
-                item_descr = lang_eng.get(affixList[0]['descTextMapHash'])
-                item_descr = tpl_keywords.process(item_descr)['descr'][0]
-                item_descr = tpl_names.process(item_descr)['descr'][0]
-                item_descr = common_tpl.process(item_descr)['descr'][0]
-                item_descr = tpl_weapon.process(item_descr)['descr'][0]
-                elem['descr'] = item_descr
-                if not skill_id in skills_byName:
-                    skills_byName[skill_id] = []
-                skills_byName[skill_id].append(elem)
-            else:
-                skills_byOpenConfig.append(elem)
+                elem = {
+                    'skill_name': f'{name.lower()}',
+                    'skill_title': skill_id,
+                    'skillAffix': id,
+                    'params': []
+                }
+                tpl_weapon = getattr(weapons_tpl, f'{skill_id}_eng', None) or getattr(weapons_tpl, skill_id, None)
+                if tpl_weapon:
+                    # если есть описание навыка, то проверим совпадает ли оно с другими навыками
+                    item_descr = lang_eng.get(affixList[0]['descTextMapHash'])
+                    item_descr = tpl_keywords.process(item_descr)['descr'][0]
+                    item_descr = tpl_names.process(item_descr)['descr'][0]
+                    item_descr = common_tpl.process(item_descr)['descr'][0]
+                    item_descr = tpl_weapon.process(item_descr)['descr'][0]
+                    elem['descr'] = item_descr
+                    if not skill_id in skills_byName:
+                        skills_byName[skill_id] = []
+                    skills_byName[skill_id].append(elem)
+                else:
+                    skills_byOpenConfig.append(elem)
 
-            valList = []
-            for i in affixList:
-                valList.append(i['paramList'])
-            for i in range(len(valList[0])):
-                l = []
-                for v in valList:
-                    l.append(v[i])
-                if all(x == 0 for x in l): continue
-                elem['params'].append(l)
+                valList = []
+                for i in affixList:
+                    valList.append(i['paramList'])
+                for i in range(len(valList[0])):
+                    l = []
+                    for v in valList:
+                        l.append(v[i])
+                    if all(x == 0 for x in l): continue
+                    elem['params'].append(l)
 
-            for (idx, x) in enumerate(elem['params']):
-                elem['params'][idx] = shrink_table(x)
+                for (idx, x) in enumerate(elem['params']):
+                    elem['params'][idx] = shrink_table(x)
 
-            resultItem["refines"].append(elem)
+                resultItem["refines"].append(elem)
+            except Exception as e:
+                print(f'error on talent {skill_id}')
+                print(e)
 
         # if wrong_name:
         #     print(resultItem["refines"])
@@ -440,6 +464,7 @@ def prepare_data():
 
     for obj in skills_byOpenConfig:
         obj['skill'] = obj['skill_name']
+        print(obj['skill'])
     print(f'not found skill name: {len(skills_byOpenConfig)}')
 
     for (key, lst) in skills_byName.items():
@@ -454,6 +479,7 @@ def prepare_data():
                 if len(prc.keys()) == len(lst):
                     for v in lst:
                         v['skill'] = v['skill_name']
+                        print(f"{v['skill_name']} -> {v['skill_title']}")
                 else:
                     k = max(prc.items(), key=lambda item: item[1])
                     print(f"{lst[0]['skill_title']} = {k[1]}")
@@ -551,74 +577,79 @@ def print_Texts(weapons):
             if not id:
                 continue
 
-            skill = weapon_skill_data.get_item_by_field('id', id)
-            # skill_id = convert_id(lang_eng.get(skill['nameTextMapHash']))
-            skill_id = v['skill']
+            try:
+                skill = weapon_skill_data.get_item_by_field('id', id)
+                # skill_id = convert_id(lang_eng.get(skill['nameTextMapHash']))
+                skill_id = v['skill']
+                skill_title = v['skill_title']
 
-            # print(f'["{weapon_id}", "{skill_id}"],')
-            texts[weapon_id].append(f'--{skill_id}--')
+                # print(f'["{weapon_id}", "{skill_id}"],')
+                texts[weapon_id].append(f'--{skill_id}--')
 
-            if existed_talents.get(skill_id):
-                continue
-            existed_talents[skill_id] = 1
+                if existed_talents.get(skill_id):
+                    continue
+                existed_talents[skill_id] = 1
 
-            talent_name = f'weapon_{skill_id}'
-            item_descr = {
-                'rus': '',
-                'eng': '',
-            }
-            item_name = {
-                'rus': [],
-                'eng': [],
-            }
+                talent_name = f'weapon_{skill_id}'
+                item_descr = {
+                    'rus': '',
+                    'eng': '',
+                }
+                item_name = {
+                    'rus': [],
+                    'eng': [],
+                }
 
-            has_tpl = False
+                has_tpl = False
 
-            for lang_name in lang_data:
-                lang = lang_data[lang_name]['lang']
-                item_name[lang_name] = [lang.get(skill['nameTextMapHash'])]
-                # item_name[lang_name] = lang.get(skill['nameTextMapHash'])
-                item_descr[lang_name] = lang.get(skill['descTextMapHash'])
+                for lang_name in lang_data:
+                    lang = lang_data[lang_name]['lang']
+                    item_name[lang_name] = [lang.get(skill['nameTextMapHash'])]
+                    # item_name[lang_name] = lang.get(skill['nameTextMapHash'])
+                    item_descr[lang_name] = lang.get(skill['descTextMapHash'])
 
-                texts[weapon_id].append(item_name[lang_name][0])
-                texts[weapon_id].append(item_descr[lang_name] + '\n')
+                    texts[weapon_id].append(item_name[lang_name][0])
+                    texts[weapon_id].append(item_descr[lang_name] + '\n')
 
-                tpl_names = lang_data[lang_name]['names']
-                tpl_keywords = lang_data[lang_name]['keywords']
-                # tpl_patterns = lang_data[lang_name]['patterns']
+                    tpl_names = lang_data[lang_name]['names']
+                    tpl_keywords = lang_data[lang_name]['keywords']
+                    # tpl_patterns = lang_data[lang_name]['patterns']
 
-                # item_descr[lang_name] = tpl_patterns.process(item_descr[lang_name])
-                item_descr[lang_name] = tpl_keywords.process(item_descr[lang_name])['descr'][0]
-                item_descr[lang_name] = tpl_names.process(item_descr[lang_name])['descr'][0]
-                item_descr[lang_name] = common_tpl.process(item_descr[lang_name])['descr'][0]
+                    # item_descr[lang_name] = tpl_patterns.process(item_descr[lang_name])
+                    item_descr[lang_name] = tpl_keywords.process(item_descr[lang_name])['descr'][0]
+                    item_descr[lang_name] = tpl_names.process(item_descr[lang_name])['descr'][0]
+                    item_descr[lang_name] = common_tpl.process(item_descr[lang_name])['descr'][0]
 
-                tpl_weapon = getattr(weapons_tpl, f'{weapon_id}_{lang_name}', None) or getattr(weapons_tpl, weapon_id, None) or \
-                    getattr(weapons_tpl, f'{skill_id}_{lang_name}', None) or getattr(weapons_tpl, skill_id, None)
-                if tpl_weapon:
-                    has_tpl = True
+                    tpl_weapon = getattr(weapons_tpl, f'{weapon_id}_{lang_name}', None) or getattr(weapons_tpl, weapon_id, None) or \
+                        getattr(weapons_tpl, f'{skill_title}_{lang_name}', None) or getattr(weapons_tpl, skill_title, None)
+                    if tpl_weapon:
+                        has_tpl = True
 
-                    values = tpl_weapon.process(item_descr[lang_name])
-                    item_descr[lang_name] = values['descr'];
-                    item_name[lang_name].extend(values['names']);
+                        values = tpl_weapon.process(item_descr[lang_name])
+                        item_descr[lang_name] = values['descr'];
+                        item_name[lang_name].extend(values['names']);
 
-                if not isinstance(item_descr[lang_name], list):
-                    item_descr[lang_name] = [item_descr[lang_name]]
+                    if not isinstance(item_descr[lang_name], list):
+                        item_descr[lang_name] = [item_descr[lang_name]]
 
-            add_array(item_name, result_talents, talent_name, 'talent_name')
+                add_array(item_name, result_talents, talent_name, 'talent_name')
 
-            if has_tpl or len(item_descr['rus']) == len(item_descr['eng']):
-                # result_talents.append(item_descr)
-                if item_descr:
-                    add_array(item_descr, result_talents, talent_name, 'talent_descr')
-            else:
-                result_talents.append(
-                    OrderedDict(
-                        category='talent_descr',
-                        name=talent_name,
-                        rus=item_descr['rus'][0],
-                        eng=item_descr['eng'][0],
+                if has_tpl or len(item_descr['rus']) == len(item_descr['eng']):
+                    # result_talents.append(item_descr)
+                    if item_descr:
+                        add_array(item_descr, result_talents, talent_name, 'talent_descr')
+                else:
+                    result_talents.append(
+                        OrderedDict(
+                            category='talent_descr',
+                            name=talent_name,
+                            rus=item_descr['rus'][0],
+                            eng=item_descr['eng'][0],
+                        )
                     )
-                )
+            except Exception as e:
+                print(f'error on talent {skill_id}')
+                print(e)
 
 
 

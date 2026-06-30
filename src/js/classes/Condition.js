@@ -165,6 +165,8 @@ export class Condition {
             let type = cond.getType();
             if (type == 'stacks') {
                 settings[cond.getName()] = cond.getMaxStacks();
+            } else if (type == 'groupbox') {
+                settings[cond.getName()] = cond.getGroupIndex();
             } else if (type == 'checkbox') {
                 settings[cond.getName()] = true;
             } else if (type == 'dropdown') {

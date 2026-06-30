@@ -35,8 +35,8 @@ export const BloodtaintedGreatsword = new DbObjectWeapon({
     conditions: [
         new ConditionStaticRefine({
             serializeId: 1,
-            title: 'talent_name.weapon_bane_of_fire_and_thunder',
-            description: 'talent_descr.weapon_bane_of_fire_and_thunder',
+            title: 'talent_name.weapon_bloodtaintedgreatsword',
+            description: 'talent_descr.weapon_bloodtaintedgreatsword',
             stats: [
                 new StatTable('dmg_all', [12, 15, 18, 21, 24]),
             ],

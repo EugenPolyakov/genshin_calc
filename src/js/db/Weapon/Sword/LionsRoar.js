@@ -35,8 +35,8 @@ export const LionsRoar = new DbObjectWeapon({
     conditions: [
         new ConditionStaticRefine({
             serializeId: 1,
-            title: 'talent_name.weapon_bane_of_fire_and_thunder',
-            description: 'talent_descr.weapon_bane_of_fire_and_thunder',
+            title: 'talent_name.weapon_lionsroar',
+            description: 'talent_descr.weapon_lionsroar',
             stats: [
                 new StatTable('dmg_all', [20, 24, 28, 32, 36]),
             ],

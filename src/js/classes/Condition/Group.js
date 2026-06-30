@@ -12,7 +12,7 @@ export class ConditionGroup extends Condition {
     isActive(settings) {
         let result = super.isActive(settings);
 
-        result = result && (settings[this.params.name] == this.params.group);
+        result = result && (settings[this.params.name] == this.getGroupIndex());
 
         return this.params.invert ? !result : result;
     }

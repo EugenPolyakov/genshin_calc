@@ -1,11 +1,17 @@
+import { ConditionAnd } from "../../classes/Condition/And";
 import { ConditionBoolean } from "../../classes/Condition/Boolean";
+import { ConditionHexCheck } from "../../classes/Condition/HexCheck";
 import { ConditionLevelSelect } from "../../classes/Condition/LevelSelect";
+import { ConditionLevelSelectSingleWeapon } from "../../classes/Condition/LevelSelect/SingleWeapon";
+import { ConditionLevels } from "../../classes/Condition/Levels";
 import { ConditionNot } from "../../classes/Condition/Not";
 import { ConditionPartyWeapon } from "../../classes/Condition/PartyWeapon";
 import { DbObjectBuff } from "../../classes/DbObject/Buff";
 import { PostEffectStats } from "../../classes/PostEffect/Stats";
 import { StatTable } from "../../classes/StatTable";
+import { StatTableConditions } from "../../classes/StatTable/Condition";
 import { CHARACTER_MAX_POSSIBLE_HP } from "../Constants";
+import { weaponDataTable } from "../generated/WeaponStatTables";
 
 export const Weapons = new DbObjectBuff({
     name: 'weapons',
@@ -285,11 +291,13 @@ export const Weapons = new DbObjectBuff({
                 ]),
             ],
         }),
-        new ConditionPartyWeapon({
+        new ConditionLevelSelect({
             name: 'weapon_other.weapon_symphonist_of_scents',
-            serializeIds: [58],
+            serializeId: 58,
             title: 'talent_name.weapon_seasoned_symphony',
             description: 'talent_descr.weapon_seasoned_symphony_3',
+            rotation: 'buffs',
+            maxStacks: 5,
             icon: {
                 rarity: 5,
                 name: 'sprite-weapon-polearm weapon-icon-polearm-symphonist-of-scents',
@@ -301,12 +309,14 @@ export const Weapons = new DbObjectBuff({
                 new ConditionBoolean({name: 'symphonist_of_scents_3'}),
             ]),
         }),
-        /*new ConditionPartyWeapon({
+        new ConditionLevelSelect({
             name: 'weapon_other.weapon_fractured_halo',
-            serializeIds: [59],
-            beta: true,
+            activeWeapon: 'weapon_fractured_halo_2',
+            serializeId: 59,
             title: 'talent_name.weapon_purifying_crown',
             description: 'talent_descr.weapon_purifying_crown_2',
+            rotation: 'buffs',
+            maxStacks: 5,
             icon: {
                 rarity: 5,
                 name: 'sprite-weapon-polearm weapon-icon-polearm-fractured-halo',
@@ -314,10 +324,25 @@ export const Weapons = new DbObjectBuff({
             stats: [
                 new StatTable('dmg_reaction_lunarcharged', [40, 50, 60, 70, 80]),
             ],
-            condition: new ConditionNot([
-                new ConditionBoolean({name: 'weapon_fractured_halo_2'}),
-            ]),
-        }),*/
+        }),
+        new ConditionLevelSelect({
+            name: 'weapon_other.weapon_athame_artis',
+            serializeId: 63,
+            title: 'talent_name.weapon_athame_artis',
+            description: 'talent_descr.weapon_athame_artis_4',
+            rotation: 'buffs',
+            maxStacks: 5,
+            icon: {
+                rarity: weaponDataTable.athame_artis.rarity,
+                name: 'sprite-weapon-sword weapon-icon-sword-athame-artis',
+            },
+            stats: [
+                new StatTable('atk_percent', weaponDataTable.athame_artis.athame_artis.param4, 100),
+                new StatTable('text_percent2', weaponDataTable.athame_artis.athame_artis.param3, 100),
+                new StatTable('text_percent', weaponDataTable.athame_artis.athame_artis.param4, 100),
+                new StatTableConditions('atk_percent', weaponDataTable.athame_artis.athame_artis.param4, new ConditionHexCheck({ hex: 2 }), 75),
+            ],
+        }),
     ],
     postEffects: [
         new PostEffectStats({

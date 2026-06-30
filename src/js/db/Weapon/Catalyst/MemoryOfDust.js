@@ -49,21 +49,17 @@ export const MemoryOfDust = new DbObjectWeapon({
                 new StatTableConditions(
                     'atk_percent',
                     [4, 5, 6, 7, 8],
-                    [
-                        new ConditionBoolean({
-                            name: 'common.char_status_shield',
-                            invert: true,
-                        }),
-                    ]
+                    new ConditionBoolean({
+                        name: 'common.char_status_shield',
+                        invert: true,
+                    }),
                 ),
                 new StatTableConditions(
                     'atk_percent',
                     [8, 10, 12, 14, 16],
-                    [
-                        new ConditionBoolean({
-                            name: 'common.char_status_shield',
-                        }),
-                    ]
+                    new ConditionBoolean({
+                        name: 'common.char_status_shield',
+                    }),
                 ),
             ],
         }),

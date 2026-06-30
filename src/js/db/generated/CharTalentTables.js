@@ -2073,6 +2073,7 @@ export const charTalentTables = {
 		passsive: [
 			[0.2, 6, 0.4, 0.4, 0],
 			[0.03, 0.75, 10, 0],
+			[0.75, 0],
 		],
 		links: [11230001],
 	},

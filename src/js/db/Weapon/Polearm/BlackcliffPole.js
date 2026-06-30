@@ -1,7 +1,7 @@
 import { ConditionStacks } from "../../../classes/Condition/Stacks";
 import { DbObjectWeapon } from "../../../classes/DbObject/Weapon";
 import { StatTable } from "../../../classes/StatTable";
-import { weaponStatTables } from "../../generated/WeaponStatTables";
+import { weaponDataTable, weaponStatTables } from "../../generated/WeaponStatTables";
 
 export const BlackcliffPole = new DbObjectWeapon({
     name: 'blackcliff_pole',
@@ -34,7 +34,7 @@ export const BlackcliffPole = new DbObjectWeapon({
             maxStacks: 3,
             levelSetting: 'weapon_refine',
             stats: [
-                new StatTable('atk_percent', [12, 15, 18, 21, 24]),
+                new StatTable('atk_percent', weaponDataTable.BlackcliffPole.press_the_advantage.param1, 100),
             ],
         })
     ],

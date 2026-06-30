@@ -8,3 +8,7 @@ feature_burst;durin_as_the_light_shifts_dmg_3;Урон Принципа чист
 feature_burst;durin_as_the_stars_smolder_dmg_1;Урон Принципа тьмы: Когда тлеют звёзды 1;Principle of Darkness: As the Stars Smolder DMG 1
 feature_burst;durin_as_the_stars_smolder_dmg_2;Урон Принципа тьмы: Когда тлеют звёзды 2;Principle of Darkness: As the Stars Smolder DMG 2
 feature_burst;durin_as_the_stars_smolder_dmg_3;Урон Принципа тьмы: Когда тлеют звёзды 3;Principle of Darkness: As the Stars Smolder DMG 3
+feature_other;durin_dmg_bonus;Бонус урона от Первозданного слияния;DMG Bonus by Primordial Fusion
+
+features_view;stat_dmg_primordial_fusion;Первозданное слияние;Primordial Fusion
+features_view;stat_durin_atk_total;Атака;ATK

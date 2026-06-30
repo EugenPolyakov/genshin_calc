@@ -27,6 +27,7 @@ from .dehya import char_dehya  # noqa
 from .diluc import char_diluc  # noqa
 from .diona import char_diona  # noqa
 from .dori import char_dori  # noqa
+from .durin import char_durin  # noqa
 from .emilie import char_emilie  # noqa
 from .escoffier import char_escoffier # noqa
 from .eula import char_eula  # noqa

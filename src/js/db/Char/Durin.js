@@ -1,5 +1,13 @@
 import { Condition } from "../../classes/Condition";
+import { ConditionAnd } from "../../classes/Condition/And";
 import { ConditionAscensionChar } from "../../classes/Condition/Ascension/Char";
+import { ConditionBoolean } from "../../classes/Condition/Boolean";
+import { ConditionBooleanValue } from "../../classes/Condition/Boolean/Value";
+import { ConditionConstellation } from "../../classes/Condition/Constellation";
+import { ConditionGroup } from "../../classes/Condition/Group";
+import { ConditionHexCheck } from "../../classes/Condition/HexCheck";
+import { ConditionHexCurrent } from "../../classes/Condition/HexCurrent";
+import { ConditionNumber } from "../../classes/Condition/Number";
 import { ConditionStatic } from "../../classes/Condition/Static";
 import { DbObjectChar } from "../../classes/DbObject/Char";
 import { DbObjectConstellation } from "../../classes/DbObject/Constellation";
@@ -12,7 +20,11 @@ import { FeatureDamagePlungeCollision } from "../../classes/Feature2/Damage/Plun
 import { FeatureDamagePlungeShockWave } from "../../classes/Feature2/Damage/Plunge/ShockWave";
 import { FeatureDamageSkill } from "../../classes/Feature2/Damage/Skill";
 import { FeatureMultiplier } from "../../classes/Feature2/Multiplier";
+import { FeatureMultiplierTarget } from "../../classes/Feature2/Multiplier/Target";
+import { FeaturePostEffectValue } from "../../classes/Feature2/PostEffectValue";
+import { PostEffectStats } from "../../classes/PostEffect/Stats";
 import { StatTable } from "../../classes/StatTable";
+import { ValueTable } from "../../classes/ValueTable";
 import { charTables } from "../generated/CharTables";
 import { charTalentTables } from "../generated/CharTalentTables";
 
@@ -58,7 +70,7 @@ const Talents = new DbObjectTalents({
     },
     skill: {
         gameId: charTalentTables.Durin.s2_id,
-        title: 'talent_name.durin_convergence_and_division',
+        title: 'talent_name.durin_convergence_and_division_1',
         description: 'talent_descr.durin_convergence_and_division',
         items: [
             {
@@ -133,6 +145,12 @@ const Talents = new DbObjectTalents({
     links: charTalentTables.Durin.links,
 });
 
+const durinDmgBuffPost = new PostEffectStats({
+    from: 'atk*',
+    percent: new StatTable('dmg_primordial_fusion', [charTalentTables.Durin.passsive[1][0]]),
+    statCap: new ValueTable([charTalentTables.Durin.passsive[1][1]], 100),
+});
+
 export const Durin = new DbObjectChar({
     name: 'durin',
     serializeId: 113,
@@ -144,7 +162,6 @@ export const Durin = new DbObjectChar({
     origin: 'mondstadt',
     talents: Talents,
     statTable: charTables.Durin,
-    beta: true,
     features: [
         new FeatureDamageNormal({
             multipliers: [
@@ -319,6 +336,7 @@ export const Durin = new DbObjectChar({
             category: 'burst',
             damageType: 'burst',
             name: 'durin_as_the_light_shifts_dmg',
+            condition: new ConditionBoolean({ name: 'durin_transmutation', invert: 1 }),
             element: 'pyro',
             items: [
                 {
@@ -350,6 +368,7 @@ export const Durin = new DbObjectChar({
         new FeatureDamageBurst({
             isChild: true,
             element: 'pyro',
+            condition: new ConditionBoolean({ name: 'durin_transmutation', invert: 1 }),
             multipliers: [
                 new FeatureMultiplier({
                     leveling: 'char_skill_burst',
@@ -360,6 +379,7 @@ export const Durin = new DbObjectChar({
         new FeatureDamageBurst({
             isChild: true,
             element: 'pyro',
+            condition: new ConditionBoolean({ name: 'durin_transmutation', invert: 1 }),
             multipliers: [
                 new FeatureMultiplier({
                     leveling: 'char_skill_burst',
@@ -370,6 +390,7 @@ export const Durin = new DbObjectChar({
         new FeatureDamageBurst({
             isChild: true,
             element: 'pyro',
+            condition: new ConditionBoolean({ name: 'durin_transmutation', invert: 1 }),
             multipliers: [
                 new FeatureMultiplier({
                     leveling: 'char_skill_burst',
@@ -381,6 +402,7 @@ export const Durin = new DbObjectChar({
             category: 'burst',
             damageType: 'burst',
             name: 'durin_as_the_stars_smolder_dmg',
+            condition: new ConditionBoolean({ name: 'durin_transmutation' }),
             element: 'pyro',
             items: [
                 {
@@ -412,6 +434,7 @@ export const Durin = new DbObjectChar({
         new FeatureDamageBurst({
             isChild: true,
             element: 'pyro',
+            condition: new ConditionBoolean({ name: 'durin_transmutation' }),
             multipliers: [
                 new FeatureMultiplier({
                     leveling: 'char_skill_burst',
@@ -422,6 +445,7 @@ export const Durin = new DbObjectChar({
         new FeatureDamageBurst({
             isChild: true,
             element: 'pyro',
+            condition: new ConditionBoolean({ name: 'durin_transmutation' }),
             multipliers: [
                 new FeatureMultiplier({
                     leveling: 'char_skill_burst',
@@ -432,6 +456,7 @@ export const Durin = new DbObjectChar({
         new FeatureDamageBurst({
             isChild: true,
             element: 'pyro',
+            condition: new ConditionBoolean({ name: 'durin_transmutation' }),
             multipliers: [
                 new FeatureMultiplier({
                     leveling: 'char_skill_burst',
@@ -441,59 +466,177 @@ export const Durin = new DbObjectChar({
         }),
         new FeatureDamageBurst({
             element: 'pyro',
+            condition: new ConditionBoolean({ name: 'durin_transmutation', invert: 1 }),
             multipliers: [
                 new FeatureMultiplier({
                     leveling: 'char_skill_burst',
                     values: Talents.get('burst.durin_dragon_of_white_flame_dmg'),
+                    scalingMultiplier: 'dmg_primordial_fusion',
+                    scalingSource: 'ascension4',
+                    scalingMultiplierCondition: new ConditionAnd([
+                        new ConditionBoolean({ name: 'durin_chaos_formed_like_the_night' }),
+                        new ConditionAscensionChar({ ascension: 4 }),
+                    ]),
                 }),
             ],
         }),
         new FeatureDamageBurst({
             element: 'pyro',
+            condition: new ConditionBoolean({ name: 'durin_transmutation' }),
             multipliers: [
                 new FeatureMultiplier({
                     leveling: 'char_skill_burst',
                     values: Talents.get('burst.durin_dragon_of_dark_decay_dmg'),
+                    scalingMultiplier: 'dmg_primordial_fusion',
+                    scalingSource: 'ascension4',
+                    scalingMultiplierCondition: new ConditionAnd([
+                        new ConditionBoolean({ name: 'durin_chaos_formed_like_the_night' }),
+                        new ConditionAscensionChar({ ascension: 4 }),
+                    ]),
                 }),
+                new FeatureMultiplier({
+                    values: new ValueTable([charTalentTables.Durin.cons[0][6]], 100),
+                    source: 'constellation1',
+                    scalingMultiplier: 'dmg_primordial_fusion',
+                    scalingSource: 'ascension4',
+                    scalingMultiplierCondition: new ConditionAnd([
+                        new ConditionBoolean({ name: 'durin_chaos_formed_like_the_night' }),
+                        new ConditionAscensionChar({ ascension: 4 }),
+                    ]),
+                    condition: new ConditionAnd([
+                        new ConditionConstellation({ constellation: 1 }),
+                        new ConditionBoolean({ name: 'durin_adamahs_redemption' }),
+                        new ConditionBoolean({ name: 'durin_transmutation' }),
+                    ]),
+                })
             ],
         }),
+        new FeaturePostEffectValue({
+            category: 'other',
+            name: 'durin_dmg_bonus',
+            postEffect: durinDmgBuffPost,
+            format: 'percent',
+            condition: new ConditionAscensionChar({ ascension: 4 }),
+        })
     ],
     conditions: [
-        new ConditionStatic({
-            name: 'durin_light_manifest_of_the_divine_calculus',
+        new ConditionBoolean({
+            name: 'char_hex_durin',
             serializeId: 1,
-            title: 'talent_name.durin_light_manifest_of_the_divine_calculus',
-            description: 'talent_descr.durin_light_manifest_of_the_divine_calculus',
-            info: {ascension: 1},
-            condition: new ConditionAscensionChar({ascension: 1}),
+            title: 'talent_name.durin_ode_to_ascension',
+            description: 'talent_descr.durin_ode_to_ascension_1',
+        }),
+        new ConditionBoolean({
+            name: 'durin_transmutation',
+            serializeId: 2,
+            title: 'talent_name.durin_convergence_and_division_2',
         }),
         new ConditionStatic({
+            title: 'talent_name.durin_ode_to_ascension',
+            description: 'talent_descr.durin_ode_to_ascension_2',
+            condition: new ConditionAnd([
+                new ConditionHexCheck({ hex: 2 }),
+                new ConditionHexCurrent(),
+            ]),
+        }),
+        new ConditionStatic({
+            title: 'talent_name.durin_light_manifest_of_the_divine_calculus',
+            description: 'talent_descr.durin_light_manifest_of_the_divine_calculus_1',
+            info: { ascension: 1 },
+            condition: new ConditionAnd([
+                new ConditionAscensionChar({ ascension: 1 }),
+                new ConditionBoolean({ name: 'durin_transmutation', invert: 1 }),
+            ]),
+            stats: {
+                enemy_res_pyro: - charTalentTables.Durin.passsive[0][0] * 100,
+                enemy_res_electro: - charTalentTables.Durin.passsive[0][0] * 100,
+                enemy_res_dendro: - charTalentTables.Durin.passsive[0][0] * 100,
+                enemy_res_geo: - charTalentTables.Durin.passsive[0][0] * 100,
+                enemy_res_anemo: - charTalentTables.Durin.passsive[0][0] * 100,
+            }
+        }),
+        new Condition({
+            condition: new ConditionAnd([
+                new ConditionBoolean({ name: 'durin_transmutation', invert: 1 }),
+                new ConditionAscensionChar({ ascension: 1 }),
+                new ConditionHexCheck({ hex: 2 }),
+                new ConditionBoolean({ name: 'char_hex_durin' }),
+            ]),
+            stats: {
+                enemy_res_pyro: - charTalentTables.Durin.passsive[0][0] * 75,
+                enemy_res_electro: - charTalentTables.Durin.passsive[0][0] * 75,
+                enemy_res_dendro: - charTalentTables.Durin.passsive[0][0] * 75,
+                enemy_res_geo: - charTalentTables.Durin.passsive[0][0] * 75,
+                enemy_res_anemo: - charTalentTables.Durin.passsive[0][0] * 75,
+            }
+        }),
+        new ConditionStatic({
+            title: 'talent_name.durin_light_manifest_of_the_divine_calculus',
+            description: 'talent_descr.durin_light_manifest_of_the_divine_calculus_2',
+            info: { ascension: 1 },
+            condition: new ConditionAnd([
+                new ConditionAscensionChar({ ascension: 1 }),
+                new ConditionBoolean({ name: 'durin_transmutation' }),
+            ]),
+            stats: {
+                dmg_reaction_vaporize: charTalentTables.Durin.passsive[0][2] * 100,
+                dmg_reaction_melt: charTalentTables.Durin.passsive[0][3] * 100,
+            }
+        }),
+        new Condition({
+            condition: new ConditionAnd([
+                new ConditionBoolean({ name: 'durin_transmutation' }),
+                new ConditionAscensionChar({ ascension: 1 }),
+                new ConditionHexCheck({ hex: 2 }),
+                new ConditionBoolean({ name: 'char_hex_durin' }),
+            ]),
+            stats: {
+                dmg_reaction_vaporize: charTalentTables.Durin.passsive[0][2] * 75,
+                dmg_reaction_melt: charTalentTables.Durin.passsive[0][3] * 75,
+            }
+        }),
+        new ConditionBoolean({
             name: 'durin_chaos_formed_like_the_night',
-            serializeId: 1,
+            serializeId: 3,
             title: 'talent_name.durin_chaos_formed_like_the_night',
             description: 'talent_descr.durin_chaos_formed_like_the_night',
             info: {ascension: 4},
-            condition: new ConditionAscensionChar({ascension: 4}),
+            condition: new ConditionAscensionChar({ ascension: 4 }),
         }),
+    ],
+    postEffects: [
+        durinDmgBuffPost,
     ],
     multipliers: [
     ],
     constellation: new DbObjectConstellation([
         {
             conditions: [
-                new ConditionStatic({
+                new ConditionBoolean({
                     name: 'durin_adamahs_redemption',
+                    serializeId: 4,
                     title: 'talent_name.durin_adamahs_redemption',
-                    description: 'talent_descr.durin_adamahs_redemption',
+                    description: 'talent_descr.durin_adamahs_redemption_1',
+                    condition: new ConditionBoolean({ name: 'durin_transmutation' }),
                 }),
             ],
         },
         {
             conditions: [
-                new ConditionStatic({
+                new ConditionBoolean({
                     name: 'durin_unground_visions',
+                    serializeId: 5,
                     title: 'talent_name.durin_unground_visions',
                     description: 'talent_descr.durin_unground_visions',
+                    stats: {
+                        dmg_pyro: charTalentTables.Durin.cons[1][2] * 100,
+                        dmg_electro: charTalentTables.Durin.cons[1][2] * 100,
+                        dmg_dendro: charTalentTables.Durin.cons[1][2] * 100,
+                        dmg_geo: charTalentTables.Durin.cons[1][2] * 100,
+                        dmg_anemo: charTalentTables.Durin.cons[1][2] * 100,
+                        dmg_cryo: charTalentTables.Durin.cons[1][2] * 100,
+                        dmg_hydro: charTalentTables.Durin.cons[1][2] * 100,
+                    },
                 }),
             ],
         },
@@ -501,7 +644,7 @@ export const Durin = new DbObjectChar({
             conditions: [
                 new Condition({
                     settings: {
-                        char_skill_burst_bonus: 3, char_skill_elemental_bonus: 3,
+                        char_skill_burst_bonus: 3,
                     },
                 }),
             ],
@@ -509,9 +652,11 @@ export const Durin = new DbObjectChar({
         {
             conditions: [
                 new ConditionStatic({
-                    name: 'durin_emanares_source',
                     title: 'talent_name.durin_emanares_source',
                     description: 'talent_descr.durin_emanares_source',
+                    stats: {
+                        dmg_burst: charTalentTables.Durin.cons[3][2] * 100,
+                    }
                 }),
             ],
         },
@@ -519,7 +664,7 @@ export const Durin = new DbObjectChar({
             conditions: [
                 new Condition({
                     settings: {
-                        char_skill_burst_bonus: 3, char_skill_elemental_bonus: 3,
+                        char_skill_elemental_bonus: 3,
                     },
                 }),
             ],
@@ -529,9 +674,128 @@ export const Durin = new DbObjectChar({
                 new ConditionStatic({
                     name: 'durin_dual_birth',
                     title: 'talent_name.durin_dual_birth',
-                    description: 'talent_descr.durin_dual_birth',
+                    description: 'talent_descr.durin_dual_birth_1',
+                    stats: {
+                        enemy_def_ignore_burst: charTalentTables.Durin.cons[5][0] * 100,
+                    },
+                }),
+                new Condition({
+                    condition: new ConditionBoolean({ name: 'durin_transmutation', invert: 1 }),
+                    stats: {
+                        enemy_def_reduce: charTalentTables.Durin.cons[5][1] * 100,
+                    }
+                }),
+                new Condition({
+                    condition: new ConditionBoolean({ name: 'durin_transmutation' }),
+                    stats: {
+                        enemy_def_ignore_burst: charTalentTables.Durin.cons[5][3] * 100,
+                    }
                 }),
             ],
         },
     ]),
+    partyData: {
+        loadStats: {
+            settings: ['atk_total'],
+        },
+        conditions: [
+            new ConditionNumber({
+                name: 'durin_atk_total',
+                title: 'talent_name.stats_total_atk',
+                partyStat: 'atk_total',
+                serializeId: 1,
+                rotation: 'party',
+                max: 10000,
+            }),
+            new ConditionBoolean({
+                name: 'char_hex_durin',
+                serializeId: 2,
+                title: 'talent_name.durin_ode_to_ascension',
+                description: 'talent_descr.durin_ode_to_ascension_1',
+            }),
+            new ConditionStatic({
+                title: 'talent_name.durin_ode_to_ascension',
+                description: 'talent_descr.durin_ode_to_ascension_2',
+                condition: new ConditionAnd([
+                    new ConditionHexCheck({ hex: 2 }),
+                    new ConditionBoolean({ name: 'char_hex_durin' }),
+                ]),
+            }),
+            new ConditionBoolean({
+                name: 'party.durin_light_manifest_of_the_divine_calculus',
+                serializeId: 3,
+                title: 'talent_name.durin_light_manifest_of_the_divine_calculus',
+                description: 'talent_descr.durin_light_manifest_of_the_divine_calculus_1',
+                info: { ascension: 1 },
+                stats: {
+                    enemy_res_pyro: - charTalentTables.Durin.passsive[0][0] * 100,
+                    enemy_res_electro: - charTalentTables.Durin.passsive[0][0] * 100,
+                    enemy_res_dendro: - charTalentTables.Durin.passsive[0][0] * 100,
+                    enemy_res_geo: - charTalentTables.Durin.passsive[0][0] * 100,
+                    enemy_res_anemo: - charTalentTables.Durin.passsive[0][0] * 100,
+                }
+            }),
+            new Condition({
+                condition: new ConditionAnd([
+                    new ConditionBoolean({ name: 'party.durin_light_manifest_of_the_divine_calculus' }),
+                    new ConditionHexCheck({ hex: 2 }),
+                    new ConditionBoolean({ name: 'char_hex_durin' }),
+                ]),
+                stats: {
+                    enemy_res_pyro: - charTalentTables.Durin.passsive[0][0] * 75,
+                    enemy_res_electro: - charTalentTables.Durin.passsive[0][0] * 75,
+                    enemy_res_dendro: - charTalentTables.Durin.passsive[0][0] * 75,
+                    enemy_res_geo: - charTalentTables.Durin.passsive[0][0] * 75,
+                    enemy_res_anemo: - charTalentTables.Durin.passsive[0][0] * 75,
+                }
+            }),
+            new ConditionBoolean({
+                name: 'party.durin_adamahs_redemption',
+                serializeId: 4,
+                title: 'talent_name.durin_adamahs_redemption',
+                description: 'talent_descr.durin_adamahs_redemption_2',
+                info: { constellation: 1 },
+            }),
+            new ConditionBoolean({
+                name: 'party.durin_unground_visions',
+                serializeId: 5,
+                title: 'talent_name.durin_unground_visions',
+                description: 'talent_descr.durin_unground_visions',
+                info: { constellation: 2 },
+                stats: {
+                    dmg_pyro: charTalentTables.Durin.cons[1][2] * 100,
+                    dmg_electro: charTalentTables.Durin.cons[1][2] * 100,
+                    dmg_dendro: charTalentTables.Durin.cons[1][2] * 100,
+                    dmg_geo: charTalentTables.Durin.cons[1][2] * 100,
+                    dmg_anemo: charTalentTables.Durin.cons[1][2] * 100,
+                    dmg_cryo: charTalentTables.Durin.cons[1][2] * 100,
+                    dmg_hydro: charTalentTables.Durin.cons[1][2] * 100,
+                },
+            }),
+            new ConditionBoolean({
+                name: 'party.durin_dual_birth',
+                serializeId: 6,
+                title: 'talent_name.durin_dual_birth',
+                description: 'talent_descr.durin_dual_birth_2',
+                info: { constellation: 6 },
+                stats: {
+                    enemy_def_reduce: charTalentTables.Durin.cons[5][1] * 100,
+                },
+            }),
+        ],
+        multipliers: [
+            new FeatureMultiplier({
+                scaling: 'durin_atk_total',
+                source: 'durin',
+                values: new ValueTable([charTalentTables.Durin.cons[0][4]], 100),
+                target: new FeatureMultiplierTarget({
+                    damageTypes: ['normal', 'charged', 'plunge', 'skill', 'burst'],
+                }),
+                condition: new ConditionAnd([
+                    new ConditionBoolean({ name: 'durin_atk_total' }),
+                    new ConditionBoolean({ name: 'party.durin_adamahs_redemption' }),
+                ]),
+            }),
+        ]
+    }
 });

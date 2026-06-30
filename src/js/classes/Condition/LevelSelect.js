@@ -8,8 +8,8 @@ export class ConditionLevelSelect extends Condition {
     }
 
     isActive(settings) {
-        let result = this.checkSubconditions(settings);
-        return result && settings[this.params.name] > 0 ? true : false;
+        let result = super.isActive(settings);
+        return result && (settings[this.params.name] > 0 ? true : false);
     }
 
     getLevel(settings) {

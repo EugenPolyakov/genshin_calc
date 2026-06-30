@@ -1,7 +1,7 @@
 import { ConditionStacks } from "../../../classes/Condition/Stacks";
 import { DbObjectWeapon } from "../../../classes/DbObject/Weapon";
 import { StatTable } from "../../../classes/StatTable";
-import { weaponStatTables } from "../../generated/WeaponStatTables";
+import { weaponDataTable, weaponStatTables } from "../../generated/WeaponStatTables";
 
 export const BlackcliffSlasher = new DbObjectWeapon({
     name: 'blackcliff_slasher',
@@ -29,12 +29,12 @@ export const BlackcliffSlasher = new DbObjectWeapon({
         new ConditionStacks({
             name: 'weapon_blackcliff_slasher',
             serializeId: 1,
-            title: 'talent_name.weapon_press_the_advantage',
-            description: 'talent_descr.weapon_press_the_advantage',
+            title: 'talent_name.weapon_blackcliffslasher',
+            description: 'talent_descr.weapon_blackcliffslasher',
             maxStacks: 3,
             levelSetting: 'weapon_refine',
             stats: [
-                new StatTable('atk_percent', [12, 15, 18, 21, 24]),
+                new StatTable('atk_percent', weaponDataTable.BlackcliffSlasher.blackcliffslasher.param1, 100),
             ],
         })
     ],

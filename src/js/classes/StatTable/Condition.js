@@ -1,18 +1,14 @@
 import { StatTable } from "../StatTable";
 
 export class StatTableConditions extends StatTable {
-    constructor(stat, values, conditions) {
-        super(stat, values);
-        this.conditions = conditions;
+    constructor(stat, values, condition, multi) {
+        super(stat, values, multi);
+        this.condition = condition;
     }
 
     isActive(settings) {
-        if (this.conditions) {
-            for (const cond of this.conditions) {
-                if (!cond.isActive(settings)) {
-                    return false;
-                }
-            }
+        if (this.condition) {
+            return this.condition.isActive(settings);
         }
 
         return true;
