@@ -24,11 +24,12 @@ char_arataki_itto = TemplateList(
         },
     ),
     behold_itto_the_evil=Template(
-        replace={
-            '</p><p>': '\n</p>\n<p>',
-            '<br>': '<br>\n',
-        },
         sentences=[
+            [],
+            [],
+            [],
+            [],
+            [],
             [],
             [],
             [],
@@ -42,18 +43,19 @@ char_arataki_itto = TemplateList(
             [],
             [],
             [],
+            [],
         ],
         results=[
-            list(range(0, 13)),
-            ['<p>', 1, 2, 3, 4, 5, 6, 7, 8, 9],
+            list(range(0, 19)),
+            [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14],
         ],
     ),
     behold_itto_the_evil_eng=Template(
-        replace={
-            '</p><p>': '\n</p>\n<p>',
-            '<br>': '<br>\n',
-        },
         sentences=[
+            [],
+            [],
+            [],
+            [],
             [],
             [],
             [],
@@ -61,7 +63,9 @@ char_arataki_itto = TemplateList(
             [],
             [],
             ['1:ignore', '3:ignore', '1:ignore'],
+            [],
             ['20:res_phys|20'],
+            [],
             [],
             [],
             [],
@@ -70,17 +74,20 @@ char_arataki_itto = TemplateList(
             [],
         ],
         results=[
-            list(range(0, 14)),
-            ['<p>', 1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+            list(range(0, 20)),
+            [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15],
         ],
     ),
     arataki_ichiban=Template(
-        patterns=[
-            (r'<br><br>', '<br>'),
-        ],
         sentences=[
+            [],
+            [],
             ['atk_speed_charged'],
             ['text_percent_max'],
+            [],
+            [],
+            [],
+            [],
         ],
     ),
     bloodline_of_the_crimson_oni=Template(
@@ -104,12 +111,16 @@ char_arataki_itto = TemplateList(
     ),
     gather_round_its_a_brawl_rus=Template(
         sentences=[
-            ['ignore', 'ignore', 'ignore', 'ignore'],
+            ['ignore', 'ignore'],
+            [],
+            ['ignore', 'ignore'],
         ],
     ),
     gather_round_its_a_brawl_eng=Template(
         sentences=[
-            ['ignore', 'ignore', 'ignore'],
+            ['ignore', 'ignore'],
+            [],
+            ['ignore'],
             ['ignore'],
         ],
     ),

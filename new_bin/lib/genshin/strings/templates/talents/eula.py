@@ -50,13 +50,17 @@ char_eula = TemplateList(
     ),
     tidal_illusion_rus=Template(
         sentences=[
-            ['dmg_phys', 'ignore', 'ignore'],
+            ['dmg_phys', 'ignore'],
+            [],
+            ['ignore'],
             ['ignore'],
         ],
     ),
     tidal_illusion_eng=Template(
         sentences=[
-            ['dmg_phys', 'ignore', 'ignore', 'ignore'],
+            ['dmg_phys', 'ignore'],
+            [],
+            ['ignore', 'ignore'],
         ],
     ),
     lady_of_seafoam=Template(

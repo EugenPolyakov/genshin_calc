@@ -277,14 +277,13 @@ export const Ororon = new DbObjectChar({
         {
             conditions: [
                 new ConditionStatic({
-                    name: 'ororon_king_bee_of_the_hidden_honeyed_wine',
-                    title: 'talent_name.ororon_king_bee_of_the_hidden_honeyed_wine',
+                    title: 'talent_name.ororon_king_bee_of_the_hidden_honeyed_wine_1',
                     description: 'talent_descr.ororon_king_bee_of_the_hidden_honeyed_wine_1',
                 }),
                 new ConditionStacks({
                     name: 'ororon_king_bee_of_the_hidden_honeyed_wine',
                     serializeId: 2,
-                    title: 'talent_name.ororon_spiritual_supersensee',
+                    title: 'talent_name.ororon_king_bee_of_the_hidden_honeyed_wine_2',
                     description: 'talent_descr.ororon_king_bee_of_the_hidden_honeyed_wine_2',
                     maxStacks: C2ElectroDmgStacks,
                     stats: [

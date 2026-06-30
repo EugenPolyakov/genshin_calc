@@ -58,7 +58,15 @@ char_sethos = TemplateList(
     ),
     the_sand_kings_boon=Template(
         sentences=[
-            ['700:text_percent', '5:ignore', '4:ignore', '15:ignore'],
+            ['700:text_percent'],
+            [],
+            [],
+            [],
+            ['5:ignore'],
+            [],
+            ['4:ignore'],
+            [],
+            ['15:ignore'],
         ],
     ),
     sealed_shrines_spiritsong=Template(
@@ -70,12 +78,24 @@ char_sethos = TemplateList(
         sentences=[
             ['10:ignore', '15:dmg_electro', '2:ignore'],
             [],
+            [],
+            [],
+            [],
+            [],
+            [],
+            [],
         ],
     ),
     papyrus_scripture_of_silent_secrets_eng=Template(
         sentences=[
             ['15:dmg_electro', '10:ignore'],
-            []
+            [],
+            [],
+            [],
+            [],
+            [],
+            [],
+            [],
         ],
     ),
     beneficent_plumage_rus=Template(

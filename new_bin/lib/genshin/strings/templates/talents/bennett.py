@@ -29,7 +29,11 @@ char_bennett = TemplateList(
     ),
     fearnaught=Template(
         sentences=[
-            ['text_percent_cd', 'ignore'],
+            [],
+            [],
+            ['text_percent_cd'],
+            [],
+            ['ignore'],
         ],
     ),
     grand_expectation=Template(
@@ -49,7 +53,9 @@ char_bennett = TemplateList(
     ),
     unexpected_odyssey=Template(
         sentences=[
-            ['ignore', 'text_percent_dmg'],
+            ['ignore'],
+            [],
+            ['text_percent_dmg'],
         ],
     ),
     fire_ventures_with_me=Template(

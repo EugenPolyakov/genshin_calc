@@ -28,10 +28,12 @@ char_lyney = TemplateList(
         },
     ),
     bewildering_lights_rus=Template(
-        replace={
-            '</p><p>': '\n</p><p>'
-        },
         sentences=[
+            [],
+            [],
+            [],
+            [],
+            [],
             [],
             [],
             [],
@@ -42,15 +44,18 @@ char_lyney = TemplateList(
             [],
         ],
         results=[
-            list(range(0, 8)),
-            [1, 2, 3],
+            list(range(0, 13)),
+            [3, 4, 5],
         ],
     ),
     bewildering_lights_eng=Template(
-        replace={
-            '</p><p>': '\n</p><p>'
-        },
         sentences=[
+            [],
+            [],
+            [],
+            [],
+            [],
+            [],
             [],
             [],
             [],
@@ -59,8 +64,8 @@ char_lyney = TemplateList(
             [],
         ],
         results=[
-            list(range(0, 6)),
-            [1],
+            list(range(0, 12)),
+            [3],
         ],
     ),
     perilous_performance=Template(
@@ -70,18 +75,28 @@ char_lyney = TemplateList(
     ),
     conclusive_ovation=Template(
         sentences=[
-            ['60:text_percent_dmg', '20:text_percent_bonus', '100:text_percent_max'],
+            [],
+            [],
+            ['60:text_percent_dmg'],
+            [],
+            ['20:text_percent_bonus'],
+            [],
+            ['100:text_percent_max'],
         ],
     ),
     whimsical_wonders_rus=Template(
         sentences=[
+            [],
+            [],
             ['2:ignore', '1:ignore'],
             ['15:ignore'],
         ],
     ),
     whimsical_wonders_eng=Template(
         sentences=[
-            ['2:ignore', '2:ignore', '1:ignore'],
+            ['2:ignore'],
+            [],
+            ['2:ignore', '1:ignore'],
             ['15:ignore'],
         ],
     ),

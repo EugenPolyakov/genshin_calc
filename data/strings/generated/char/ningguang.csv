@@ -10,16 +10,16 @@ feature_burst;ningguang_gem_dmg;Урон самоцвета;DMG Per Gem
 talent_name;ningguang_starshatter;Осколки звёзд;Starshatter
 talent_descr;ningguang_starshatter;<p>Собрав большое количество самоцветов, name{Нин Гуан} запускает их во врагов, нанося огромный geo{Гео урон}. Самоцветы сами находят свою цель.<br>Если поблизости находится Нефритовая ширма, то она также запускает дополнительные самоцветы.</p><p><i>Звёзды гаснут. Наступает тишина.</i></p>;<p>Gathering a great number of gems, name{Ningguang} scatters them all at once, sending homing projectiles at her opponents that deal massive geo{Geo DMG}.<br>If Starshatter is cast when a Jade Screen is nearby, the Jade Screen will fire additional gem projectiles at the same time.</p><p><i>Stars shatter. Silence falls.</i></p>
 talent_name;ningguang_backup_plan;Запасной план;Backup Plan
-talent_descr;ningguang_backup_plan;При наличии у name{Нин Гуан} name{Звёздного нефрита}, её name{заряженная атака} не потребляет выносливость.;When name{Ningguang} is in possession of name{Star Jades}, her name{Charged Attack} does not consume Stamina.
+talent_descr;ningguang_backup_plan;<p>При наличии у name{Нин Гуан} name{Звёздного нефрита}, её name{заряженная атака} не потребляет выносливость.</p>;<p>When name{Ningguang} is in possession of name{Star Jades}, her name{Charged Attack} does not consume Stamina.</p>
 talent_name;ningguang_strategic_reserve;Стратегические запасы;Strategic Reserve
-talent_descr;ningguang_strategic_reserve;Даёт %{dmg_geo} бонус geo{Гео урона} прошедшим сквозь skill{skill:Нефритовую ширму} персонажам на 10 сек.;A character that passes through the skill{skill:Jade Screen} will gain a %{dmg_geo} geo{Geo DMG Bonus} for 10s.
+talent_descr;ningguang_strategic_reserve;<p>Даёт %{dmg_geo} бонус geo{Гео урона} прошедшим сквозь skill{skill:Нефритовую ширму} персонажам на 10 сек.</p>;<p>A character that passes through the skill{skill:Jade Screen} will gain a %{dmg_geo} geo{Geo DMG Bonus} for 10s.</p>
 talent_name;ningguang_piercing_fragments;Пронзающие осколки;Piercing Fragments
-talent_descr;ningguang_piercing_fragments;При попадании name{обычная атака} наносит name{урон по площади}.;When a name{Normal Attack} hits, it deals name{AoE DMG}.
+talent_descr;ningguang_piercing_fragments;<p>При попадании name{обычная атака} наносит name{урон по площади}.</p>;<p>When a name{Normal Attack} hits, it deals name{AoE DMG}.</p>
 talent_name;ningguang_shock_effect;Шоковый эффект;Shock Effect
-talent_descr;ningguang_shock_effect;Разрушение skill{skill:Нефритовой ширмы} сбрасывает время её отката.<br>Может возникнуть раз в 6 сек.;When skill{skill:Jade Screen} is shattered, its CD will reset.<br>Can occur once every 6s.
+talent_descr;ningguang_shock_effect;<p>Разрушение skill{skill:Нефритовой ширмы} сбрасывает время её отката.<br>Может возникнуть раз в 6 сек.</p>;<p>When skill{skill:Jade Screen} is shattered, its CD will reset.<br>Can occur once every 6s.</p>
 talent_name;ningguang_majesty_be_the_array_of_stars;Величественная россыпь звёзд;Majesty Be the Array of Stars
 talent_name;ningguang_exquisite_be_the_jade_outshining_all_beneath;Изысканный блеск нефрита;Exquisite be the Jade, Outshining All Beneath
-talent_descr;ningguang_exquisite_be_the_jade_outshining_all_beneath;Навык skill{skill:Нефритовая ширма} повышает name{элементальное сопротивление} окружающих персонажей на %{res_anemo}.;skill{skill:Jade Screen} increases nearby characters' name{Elemental RES} by %{res_anemo}.
+talent_descr;ningguang_exquisite_be_the_jade_outshining_all_beneath;<p>Навык skill{skill:Нефритовая ширма} повышает name{элементальное сопротивление} окружающих персонажей на %{res_anemo}.</p>;<p>skill{skill:Jade Screen} increases nearby characters' name{Elemental RES} by %{res_anemo}.</p>
 talent_name;ningguang_invincible_be_the_jade_screen;Бессмертная нефритовая ширма;Invincible Be the Jade Screen
 talent_name;ningguang_grandeur_be_the_seven_stars;Грандиозность Цисин;Grandeur Be the Seven Stars
-talent_descr;ningguang_grandeur_be_the_seven_stars;Активация навыка skill{burst:Осколки звёзд} даёт name{Нин Гуан} 7 камней name{Звёздного нефрита}.;When skill{burst:Starshatter} is used, name{Ningguang} gains 7 name{Star Jades}.
+talent_descr;ningguang_grandeur_be_the_seven_stars;<p>Активация навыка skill{burst:Осколки звёзд} даёт name{Нин Гуан} 7 камней name{Звёздного нефрита}.</p>;<p>When skill{burst:Starshatter} is used, name{Ningguang} gains 7 name{Star Jades}.</p>

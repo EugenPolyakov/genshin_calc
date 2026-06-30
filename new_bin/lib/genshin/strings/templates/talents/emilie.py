@@ -56,6 +56,8 @@ char_emilie = TemplateList(
     light_fragrance_leaching_rus=Template(
         sentences=[
             ['20:dmg_skill_emilie'],
+            [],
+            [],
             ['1:ignore'],
             ['2.9:ignore'],
         ],
@@ -63,6 +65,8 @@ char_emilie = TemplateList(
     light_fragrance_leaching_eng=Template(
         sentences=[
             ['20:dmg_skill_emilie'],
+            [],
+            [],
             [],
             ['2.9:ignore'],
         ],
@@ -85,7 +89,11 @@ char_emilie = TemplateList(
     ),
     marcotte_sillage=Template(
         sentences=[
-            ['5:ignore', '1:ignore', '300:text_percent_dmg', '4:ignore'],
+            ['5:ignore'],
+            [],
+            ['1:ignore', '300:text_percent_dmg'],
+            [],
+            ['4:ignore'],
             ['12:ignore'],
         ],
     ),

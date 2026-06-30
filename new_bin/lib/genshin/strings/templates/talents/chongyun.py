@@ -53,17 +53,23 @@ char_chongyun = TemplateList(
     ),
     frozen_skies=Template(
         sentences=[
-            ['ignore', 'ignore'],
+            ['ignore'],
+            [],
+            ['ignore'],
         ],
     ),
     rally_of_four_blades_rus=Template(
         sentences=[
             ['dmg_burst_chongyun'],
+            [],
+            [],
         ],
     ),
     rally_of_four_blades_eng=Template(
         sentences=[
-            ['dmg_burst_chongyun', 'ignore'],
+            ['dmg_burst_chongyun'],
+            [],
+            ['ignore'],
         ],
     ),
 )

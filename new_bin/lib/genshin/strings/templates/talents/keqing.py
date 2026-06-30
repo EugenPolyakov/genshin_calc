@@ -46,7 +46,9 @@ char_keqing = TemplateList(
     ),
     keen_extraction=Template(
         sentences=[
-            ['ignore', 'ignore'],
+            ['ignore'],
+            [],
+            ['ignore'],
         ],
     ),
     attunement_rus=Template(
@@ -63,6 +65,8 @@ char_keqing = TemplateList(
         names=['обычной', 'элементным навыком'],
         sentences=[
             ['dmg_electro', 'ignore'],
+            [],
+            [],
         ],
     ),
 )

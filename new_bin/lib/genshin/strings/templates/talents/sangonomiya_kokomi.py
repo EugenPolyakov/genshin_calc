@@ -24,13 +24,7 @@ char_sangonomiya_kokomi = TemplateList(
         },
     ),
     nereids_ascension_rus=Template(
-        replace={
-            '</p><p>': '\n</p><p>\n',
-            '<br>': '\n<br>\n',
-        },
         sentences=[
-            [],
-            [],
             [],
             [],
             [],
@@ -47,17 +41,13 @@ char_sangonomiya_kokomi = TemplateList(
             [],
         ],
         results=[
-            list(range(0, 16)),
-            [4, 5, 6, 7, 8, 9, 10, 11, '<br>', 13],
+            list(range(0, 14)),
+            [4, 5, 6, 7, 8, 9, 10, 11, 12],
             [2],
         ],
         extracted_names=[2],
     ),
     nereids_ascension_eng=Template(
-        replace={
-            '</p><p>': '\n</p><p>\n',
-            '<br>': '\n<br>\n',
-        },
         sentences=[
             [],
             [],
@@ -85,14 +75,8 @@ char_sangonomiya_kokomi = TemplateList(
             [],
         ],
     ),
-    song_of_pearls_rus=Template(
+    song_of_pearls=Template(
         names=['обычной'],
-        sentences=[
-            [],
-            ['text_percent'],
-        ],
-    ),
-    song_of_pearls_eng=Template(
         sentences=[
             ['text_percent'],
         ],
@@ -102,37 +86,32 @@ char_sangonomiya_kokomi = TemplateList(
             ['25:healing', '100:crit_rate'],
         ],
     ),
-    at_waters_edge_rus=Template(
+    at_waters_edge=Template(
         sentences=[
             ['text_percent_dmg'],
             [],
+            [],
         ],
     ),
-    at_waters_edge_eng=Template(
+    the_clouds_like_waves_rippling=Template(
+        names=['Обычные'],
         sentences=[
-            ['text_percent_dmg'],
-        ],
-    ),
-    the_clouds_like_waves_rippling_rus=Template(
-        names=['Обычные', 'заряженные атаки'],
-        sentences=[
-            ['ignore', 'text_percent_1'],
+            ['ignore'],
+            [],
+            ['text_percent_1'],
+            [],
             ['text_percent_2'],
-            [],
-        ],
-    ),
-    the_clouds_like_waves_rippling_eng=Template(
-        sentences=[
-            ['ignore', 'text_percent_1', 'text_percent_2'],
         ],
     ),
     the_moon_overlooks_the_waters=Template(
         sentences=[
-            ['atk_speed_normal', 'ignore', 'ignore'],
+            ['atk_speed_normal', 'ignore'],
+            [],
+            ['ignore'],
         ],
     ),
     sango_isshin=Template(
-        names=['обычные', 'заряженные атаки'],
+        # names=['обычные', 'заряженные атаки'],
         sentences=[
             ['dmg_hydro', 'ignore', 'ignore'],
         ],

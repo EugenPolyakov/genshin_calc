@@ -23,11 +23,10 @@ char_xiao = TemplateList(
         },
     ),
     bane_of_all_evil_rus=Template(
-        replace={
-            '<br>': '\n<br>\n',
-            '</p><p>': '\n</p><p>',
-        },
         sentences=[
+            [],
+            [],
+            [],
             [],
             [],
             [],
@@ -45,16 +44,15 @@ char_xiao = TemplateList(
             [],
         ],
         results=[
-            list(range(0, 15)),
-            [3, 4, 5, 6, 7, 8],
+            list(range(0, 18)),
+            [4, 5, 6, 7, 8, 9],
         ],
     ),
     bane_of_all_evil_eng=Template(
-        replace={
-            '<br>': '\n<br>\n',
-            '</p><p>': '\n</p><p>',
-        },
         sentences=[
+            [],
+            [],
+            [],
             [],
             [],
             [],
@@ -71,25 +69,31 @@ char_xiao = TemplateList(
             [],
         ],
         results=[
-            list(range(0, 14)),
-            [3, 4, 5, 6, 7],
+            list(range(0, 17)),
+            [4, 5, 6, 7, 8],
         ],
     ),
     tamer_of_demons=Template(
         sentences=[
             ['dmg_all'],
-            ['dmg_all', 'ignore', 'ignore'],
+            ['dmg_all', 'ignore'],
+            [],
+            ['ignore'],
         ],
     ),
     heaven_fall_rus=Template(
         sentences=[
-            ['ignore', 'dmg_skill_xiao', 'ignore'],
+            ['ignore', 'dmg_skill_xiao'],
+            [],
+            ['ignore'],
             [],
         ],
     ),
     heaven_fall_eng=Template(
         sentences=[
-            ['dmg_skill_xiao', 'ignore', 'ignore'],
+            ['dmg_skill_xiao'],
+            [],
+            ['ignore', 'ignore'],
             [],
         ],
     ),

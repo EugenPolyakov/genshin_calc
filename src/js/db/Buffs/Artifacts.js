@@ -407,9 +407,8 @@ export const Artifacts = new DbObjectBuff({
                 name: 'sprite-artifact artifact-icon-night-of-the-skys-unveiling flower',
             },
         }),
-        new ConditionMoonPhaseBuff({
+        new Condition({
             stats: { dmg_reaction_lunar: 10 },
-            realStats: { crit_rate: [0, 15, 30], },
             condition: new ConditionOr([
                 new ConditionAnd([
                     new ConditionBoolean({ name: 'set.night_of_the_skys_unveiling_4' }),

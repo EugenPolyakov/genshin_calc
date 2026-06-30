@@ -27,12 +27,18 @@ char_nahida = TemplateList(
     ),
     compassion_illuminated=Template(
         sentences=[
-            ['25:text_percent', '250:text_value_max'],
+            [],
+            [],
+            ['25:text_percent'],
+            [],
+            ['250:text_value_max'],
         ],
     ),
     awakening_elucidated=Template(
         sentences=[
-            ['200:ignore', '0.1:text_percent_skill|0|2', '0.03:text_percent_crit|0|2', '80:text_percent_skill_max', '24:text_percent_crit_max'],
+            ['200:ignore', '0.1:text_percent_skill|0|2', '0.03:text_percent_crit|0|2'],
+            [],
+            ['80:text_percent_skill_max', '24:text_percent_crit_max'],
         ],
     ),
     the_seed_of_stored_knowledge=Template(
@@ -42,24 +48,31 @@ char_nahida = TemplateList(
     ),
     the_root_of_all_fullness=Template(
         patterns=[
-            (r'<br>· ', '<br>\\n '),
+            (r'· ', ''),
         ],
         sentences=[
+            [],
             [],
             [],
             ['crit_rate_bloom', 'crit_dmg_bloom'],
             [],
+            [],
             ['ignore', 'enemy_def_reduce'],
+            [],
             ['crit_rate_lunarbloom', 'crit_dmg_lunarbloom'],
         ],
         results=[
-            [1, 2, 3, 5],
-            [4],
+            [2, 3, 4, 7, 8],
+            [6],
         ],
     ),
     the_fruit_of_reasons_culmination=Template(
         sentences=[
-            ['text_percent_dmg', 'text_percent_dmg2', 'ignore', 'ignore', 'ignore'],
+            ['text_percent_dmg', 'text_percent_dmg2'],
+            [],
+            ['ignore'],
+            [],
+            ['ignore', 'ignore'],
         ],
     ),
 )

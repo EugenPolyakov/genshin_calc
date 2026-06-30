@@ -55,22 +55,32 @@ char_ifa = TemplateList(
     ),
     guiding_spirit_of_ballistic_prayer=Template(
         sentences=[
-            ['60:ignore', '4:ignore', '50:ignore'],
+            ['60:ignore', '4:ignore'],
+            [],
+            ['50:ignore'],
+            [],
+            [],
         ],
     ),
     decayed_vessels_permutation_rus=Template(
         sentences=[
-            ['3:ignore', '15:ignore', '100:mastery'],
+            ['3:ignore'],
+            [],
+            ['15:ignore', '100:mastery'],
         ],
     ),
     decayed_vessels_permutation_eng=Template(
         sentences=[
-            ['3:ignore', '100:mastery', '15:ignore'],
+            ['3:ignore'],
+            [],
+            ['100:mastery', '15:ignore'],
         ],
     ),
     oath_on_a_feathered_knot=Template(
         sentences=[
             ['50:ignore', '120:text_percent_dmg'],
+            [],
+            [],
             ['20:ignore'],
         ],
     ),

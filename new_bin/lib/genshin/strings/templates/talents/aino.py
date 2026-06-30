@@ -29,6 +29,8 @@ char_aino = TemplateList(
         sentences=[
             ['80:mastery'],
             ['80:mastery', '15:ignore'],
+            [],
+            [],
         ],
     ),
     butter_and_cats_and_the_law_of_energy_supply=Template(
@@ -52,7 +54,9 @@ char_aino = TemplateList(
     ),
     the_burden_of_creative_genius=Template(
         sentences=[
-            ['15:ignore', '15:text_number_percent_1', '20:format{text_number_f=2|{value}}:text_number_percent_2'],
+            ['15:ignore', '15:text_number_percent_1'],
+            [],
+            ['20:format{text_number_f=2|{value}}:text_number_percent_2'],
         ],
     ),
 )

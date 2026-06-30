@@ -114,6 +114,15 @@ stat_info = {
         'name': 'healing_base',
         'scale': 100,
     },
+
+    'FIGHT_PROP_ADD_HURT': {
+        'name': 'dmg_all',
+        'scale': 100,
+    },
+    'FIGHT_PROP_SHIELD_COST_MINUS_RATIO': {
+        'name': 'shield',
+        'scale': 100,
+    },
 }
 
 curve_names_to_stat = {
@@ -387,7 +396,7 @@ def getStatValue(name, value):
         return 0
 
     scale = stat_info[name].get('scale', 1)
-    return trimValue('%.4f' % (value * scale))
+    return trimValue('%.10f' % (value * scale))
 
 def getCurveName(type):
     name = curve_names_to_stat.get(type)
@@ -410,4 +419,12 @@ def fix_name(name):
     name = re.sub(r'\#?{LAYOUT_PC#(.*?)\}', '\g<1>', name)
     name = re.sub(r'\#?{.*?}', '', name)
     return name
+
+def extractPramList(proud):
+    paramList = []
+    for prop in proud['addProps']:
+        type = prop.get('propType')
+        if type != "FIGHT_PROP_NONE" and prop.get('value', 0):
+            paramList.append(prop.get('value', 0))
+    return paramList
 

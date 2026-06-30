@@ -31,7 +31,9 @@ char_tighnari = TemplateList(
     ),
     scholarly_blade=Template(
         sentences=[
-            [None, None],
+            [None],
+            [],
+            [None],
         ],
     ),
     beginnings_determined_at_the_roots=Template(
@@ -41,7 +43,9 @@ char_tighnari = TemplateList(
     ),
     origins_known_from_the_stem=Template(
         sentences=[
-            ['dmg_dendro', 'ignore'],
+            ['dmg_dendro'],
+            [],
+            ['ignore'],
         ],
     ),
     withering_glimpsed_in_the_leaves_eng=Template(

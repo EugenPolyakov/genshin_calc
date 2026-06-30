@@ -42,13 +42,21 @@ char_chasca = TemplateList(
     ),
     bullet_trick_rus=Template(
         sentences=[
-            ['33.3:ignore', '66.7:ignore', '100:ignore', '1:ignore', '15:text_percent_dmg_1', '35:text_percent_dmg_2', '65:text_percent_dmg_3'],
+            [],
+            [],
+            ['33.3:ignore', '66.7:ignore', '100:ignore'],
+            [],
+            ['1:ignore', '15:text_percent_dmg_1', '35:text_percent_dmg_2', '65:text_percent_dmg_3'],
             ['3:ignore'],
         ],
     ),
     bullet_trick_eng=Template(
         sentences=[
-            ['33.3:ignore', '66.7:ignore', '100:ignore', '3:ignore', '1:ignore', '15:text_percent_dmg_1', '35:text_percent_dmg_2', '65:text_percent_dmg_3'],
+            [],
+            [],
+            ['33.3:ignore', '66.7:ignore', '100:ignore', '3:ignore'],
+            [],
+            ['1:ignore', '15:text_percent_dmg_1', '35:text_percent_dmg_2', '65:text_percent_dmg_3'],
             [],
             ['3:ignore'],
         ],
@@ -57,24 +65,36 @@ char_chasca = TemplateList(
         sentences=[
             ['150:text_percent_anemo'],
             ['150:text_percent_elemental'],
+            [],
+            [],
         ],
     ),
     cylinder_the_restless_roulette_rus=Template(
         sentences=[
-            ['33.3:ignore', '100:ignore', '30:ignore'],
+            [],
+            [],
+            ['33.3:ignore', '100:ignore'],
+            [],
+            [],
+            [],
+            ['30:ignore'],
         ],
     ),
     cylinder_the_restless_roulette_eng=Template(
         sentences=[
-            ['2:ignore', '33.3:ignore', '100:ignore', '30:ignore'],
+            ['2:ignore'],
+            [],
+            ['33.3:ignore', '100:ignore'],
+            [],
+            [],
+            [],
+            ['30:ignore'],
         ],
     ),
     muzzle_the_searing_smoke_rus=Template(
-        patterns=[
-            ('<br>Кроме того', '\\nКроме того'),
-        ],
         sentences=[
             ['1:ignore'],
+            [],
             [],
             ['400:text_percent_dmg'],
             [],
@@ -82,27 +102,27 @@ char_chasca = TemplateList(
         ],
         results=[
             [0, 1],
-            [2, 3, 4],
+            [3, 4, 5],
         ],
     ),
     muzzle_the_searing_smoke_eng=Template(
-        patterns=[
-            ('<br>In addition', '\\nIn addition'),
-        ],
         sentences=[
             ['1:ignore'],
+            [],
             ['400:text_percent_dmg'],
             [],
             [],
         ],
         results=[
             [0],
-            [1, 2, 3],
+            [2, 3, 4],
         ],
     ),
     sparks_the_sudden_shot=Template(
         sentences=[
             ['1.5:ignore', '400:text_percent_dmg'],
+            [],
+            [],
             [],
         ],
     ),
@@ -111,11 +131,15 @@ char_chasca = TemplateList(
             [],
             ['3:ignore', '120:crit_dmg_chasca'],
             ['3:ignore'],
+            [],
+            [],
         ],
     ),
     showdown_the_glory_of_battle_eng=Template(
         sentences=[
             ['3:ignore', '120:crit_dmg_chasca', '1:ignore', '3:ignore'],
+            [],
+            [],
         ],
     ),
 )

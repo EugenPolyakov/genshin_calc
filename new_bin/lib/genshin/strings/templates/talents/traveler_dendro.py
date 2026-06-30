@@ -53,6 +53,8 @@ char_traveler_dendro = TemplateList(
     treacle_grass=Template(
         sentences=[
             ['ignore'],
+            [],
+            [],
         ],
     ),
     withering_aggregation=Template(

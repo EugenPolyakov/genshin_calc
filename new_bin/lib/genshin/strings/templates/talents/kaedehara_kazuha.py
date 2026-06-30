@@ -36,6 +36,8 @@ char_kaedehara_kazuha = TemplateList(
         sentences=[
             ['text_percent_dmg'],
             [],
+            [],
+            [],
         ],
     ),
     poetics_of_fuubutsu=Template(
@@ -44,22 +46,36 @@ char_kaedehara_kazuha = TemplateList(
             [],
         ],
     ),
-    scarlet_hills=Template(
+    scarlet_hills_rus=Template(
         sentences=[
             ['text_percent_cd'],
         ],
     ),
-    yamaarashi_tailwind=Template(
-        patterns=[
-            (r'<br><br>', '<br>'),
-        ],
+    scarlet_hills_eng=Template(
         sentences=[
-            ['mastery', 'mastery'],
+            ['text_percent_cd'],
+            [],
+            [],
+        ],
+    ),
+    yamaarashi_tailwind=Template(
+        sentences=[
+            [],
+            [],
+            ['mastery'],
+            [],
+            ['mastery'],
+            [],
+            [],
         ],
     ),
     oozora_genpou=Template(
         sentences=[
-            ['ignore', 'ignore', 'ignore', 'ignore'],
+            ['ignore'],
+            [],
+            ['ignore', 'ignore'],
+            [],
+            ['ignore'],
         ],
     ),
     crimson_momiji=Template(

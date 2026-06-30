@@ -40,7 +40,9 @@ char_ganyu = TemplateList(
     ),
     dew_drinker=Template(
         sentences=[
-            ['ignore', 'enemy_res_cryo', 'ignore', 'ignore'],
+            ['ignore', 'enemy_res_cryo', 'ignore'],
+            [],
+            ['ignore'],
             ['ignore'],
         ],
     ),
@@ -52,7 +54,11 @@ char_ganyu = TemplateList(
     westward_sojourn=Template(
         sentences=[
             [],
-            ['dmg_all', 'dmg_all', 'ignore', None, 'ignore'],
+            [],
+            [],
+            ['dmg_all', 'dmg_all', 'ignore', None],
+            [],
+            ['ignore'],
         ],
     ),
     the_clement=Template(

@@ -2,6 +2,8 @@ import { ArtifactSet } from "../../../classes/ArtifactSet";
 import { ConditionMoonPhaseBoolean } from "../../../classes/Condition/Boolean/MoonPhase";
 import { ConditionStatic } from "../../../classes/Condition/Static";
 import { ConditionMoonPhaseSetting } from "../../../classes/Condition/CustomOrigin/MoonPhaseSetting";
+import { ConditionMoonPhaseBuff } from "../../../classes/Condition/MoonPhaseBuff";
+import { ConditionBoolean } from "../../../classes/Condition/Boolean";
 
 export const NightOfTheSkysUnveiling = new ArtifactSet({
     serializeId: 56,
@@ -39,7 +41,11 @@ export const NightOfTheSkysUnveiling = new ArtifactSet({
                         text_crit_rate_2: 30,
                         text_lunar_reaction_dmg_percent: 10,
                     },
-                })
+                }),
+                new ConditionMoonPhaseBuff({
+                    realStats: { crit_rate: [0, 15, 30], },
+                    condition: new ConditionBoolean({ name: 'set.night_of_the_skys_unveiling_4' }),
+                }),
             ],
         },
     ],

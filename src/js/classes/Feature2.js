@@ -47,7 +47,9 @@ export class Feature2 {
         return this.damageType;
     }
 
-    getElement() {
+    getElement(data) {
+        if (typeof this.element == "function")
+            return this.element(data.settings);
         return this.element;
     }
 

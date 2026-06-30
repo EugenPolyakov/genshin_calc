@@ -28,24 +28,39 @@ char_beidou = TemplateList(
     ),
     lightning_storm=Template(
         sentences=[
-            ['ignore', 'dmg_normal', 'atk_speed'],
+            ['ignore'],
+            [],
+            ['dmg_normal', 'atk_speed'],
+            [],
+            [],
         ],
     ),
     lightning_storm_eng=Template(
         sentences=[
-            ['ignore', 'dmg_normal'],
+            ['ignore'],
+            [],
+            ['dmg_normal'],
             ['atk_speed'],
+            [],
+            [],
         ],
     ),
     sea_beasts_scourge_rus=Template(
         sentences=[
+            [],
+            [],
             ['ignore', 'text_percent_shield'],
+            [],
             ['ignore'],
         ],
     ),
     sea_beasts_scourge_eng=Template(
         sentences=[
-            ['text_percent_shield', 'ignore', 'ignore'],
+            [],
+            [],
+            ['text_percent_shield', 'ignore'],
+            [],
+            ['ignore'],
         ],
     ),
     upon_the_turbulent_sea_the_thunder_arises_rus=Template(

@@ -21,22 +21,16 @@ char_illuga = TemplateList(
         },
     ),
     torchforgers_covenant=Template(
-        replace={
-            '<br>': '\n<br>\n',
-        },
         sentences=[
             ['20:ignore', '5:crit_rate_geo', '10:crit_dmg_geo'],
-            [],
-            [],
             [],
             [],
             [],
             ['50:format{text_number_f=2|{value}}:text_mastery'],
         ],
         results=[
-            [0, 1, 2, 3, 4],
             [0],
-            [4, 5, 6],
+            [2, 3, 4],
         ],
     ),
     demonhunters_dusk_rus=Template(
@@ -52,13 +46,8 @@ char_illuga = TemplateList(
         ],
     ),
     nightmare_orioles=Template(
-        replace={
-            '<br>': '\n<br>\n',
-        },
         sentences=[
             ['10:text_crit_rate', '30:text_crit_dmg'],
-            [],
-            [],
             [],
             [],
             [],
@@ -67,18 +56,8 @@ char_illuga = TemplateList(
             [],
         ],
         results=[
-            [0, 1, 8],
-            [4, 5, 6, 7, 8],
+            [0, 1, 6],
+            [2, 3, 4, 5, 6],
         ],
     ),
-    # name=Template(
-    #     sentences=[
-    #         [],
-    #     ],
-    # ),
-    # name=Template(
-    #     sentences=[
-    #         [],
-    #     ],
-    # ),
 )

@@ -109,7 +109,7 @@ const enumStatTables = {
 	}),
 	mastery12: new StatTableAscensionScale({
 		stat: 'mastery_base',
-		base: 12,
+		base: 11.999988,
 		scale: weaponStatScales.crt_2_1,
 	}),
 	atk39_1: new StatTableAscensionScale({
@@ -586,6 +586,10 @@ export const weaponStatTables = {
 		enumStatTables.atk46,
 		enumStatTables.crit7,
 	],
+	lightbearing_moonshard: [
+		enumStatTables.atk44_2,
+		enumStatTables.cdmg19,
+	],
 	FerrousShadow: [
 		enumStatTables.atk39,
 		enumStatTables.hp8,
@@ -741,6 +745,10 @@ export const weaponStatTables = {
 	AThousandBlazingSuns: [
 		enumStatTables.atk49,
 		enumStatTables.crit2,
+	],
+	gest_of_the_mighty_wolf: [
+		enumStatTables.atk46,
+		enumStatTables.crit7,
 	],
 	WhiteTassel: [
 		enumStatTables.atk39,
@@ -1079,6 +1087,10 @@ export const weaponStatTables = {
 		enumStatTables.mastery58,
 	],
 	reliquary_of_truth: [
+		enumStatTables.atk44_2,
+		enumStatTables.cdmg19,
+	],
+	nocturnes_curtain_call: [
 		enumStatTables.atk44_2,
 		enumStatTables.cdmg19,
 	],
@@ -1606,6 +1618,7 @@ export const weaponDataTable = {
 			param2: [1, 1.15, 1.3, 1.45, 1.6],
 			param3: [2, 2.3, 2.6, 2.9, 3.2],
 			param4: [15],
+			atk_percent: [20.0, 25.0, 30.0, 35.0, 40.0],
 		},
 	},
 	SkywardBlade: {
@@ -1618,6 +1631,7 @@ export const weaponDataTable = {
 			param3: [0.1],
 			param4: [0.2, 0.25, 0.3, 0.35, 0.4],
 			param5: [12],
+			crit_rate_base: [4.0, 5.0, 6.0, 7.0, 8.0],
 		},
 	},
 	FreedomSworn: {
@@ -1631,6 +1645,7 @@ export const weaponDataTable = {
 			param4: [0.16, 0.2, 0.24, 0.28, 0.32],
 			param5: [0.2, 0.25, 0.3, 0.35, 0.4],
 			param6: [20],
+			dmg_all: [10.0, 12.5, 15.0, 17.5, 20.0],
 		},
 	},
 	SummitShaper: {
@@ -1641,6 +1656,7 @@ export const weaponDataTable = {
 			param1: [0.2, 0.25, 0.3, 0.35, 0.4],
 			param2: [0.04, 0.05, 0.06, 0.07, 0.08],
 			param3: [8],
+			shield: [20.0, 25.0, 30.0, 35.0, 40.0],
 		},
 	},
 	PrimordialJadeCutter: {
@@ -1650,6 +1666,7 @@ export const weaponDataTable = {
 		protectors_virtue: {
 			param1: [0.2, 0.25, 0.3, 0.35, 0.4],
 			param2: [0.012, 0.015, 0.018, 0.021, 0.024],
+			hp_percent: [20.0, 25.0, 30.0, 35.0, 40.0],
 		},
 	},
 	MistsplitterReforged: {
@@ -1688,6 +1705,7 @@ export const weaponDataTable = {
 			param4: [0.3],
 			param5: [0.002, 0.0025, 0.003, 0.0035, 0.004],
 			param6: [20],
+			hp_percent: [20.0, 25.0, 30.0, 35.0, 40.0],
 		},
 	},
 	LightofFoliarIncision: {
@@ -1700,6 +1718,7 @@ export const weaponDataTable = {
 			param3: [28],
 			param4: [12],
 			param5: [12],
+			crit_rate_base: [4.0, 5.0, 6.0, 7.0, 8.0],
 		},
 	},
 	SplendorOfStillWaters: {
@@ -1725,6 +1744,7 @@ export const weaponDataTable = {
 			param3: [0.24, 0.3, 0.36, 0.42, 0.48],
 			param4: [1],
 			param5: [15],
+			def_percent: [20.0, 25.0, 30.0, 35.0, 40.0],
 		},
 	},
 	Absolution: {
@@ -1735,6 +1755,7 @@ export const weaponDataTable = {
 			param1: [0.2, 0.25, 0.3, 0.35, 0.4],
 			param2: [0.16, 0.2, 0.24, 0.28, 0.32],
 			param3: [6],
+			crit_dmg_base: [20.0, 25.0, 30.0, 35.0, 40.0],
 		},
 	},
 	PeakPatrolSong: {
@@ -1772,6 +1793,16 @@ export const weaponDataTable = {
 			param3: [0.2, 0.25, 0.3, 0.35, 0.4],
 			param4: [0.16, 0.2, 0.24, 0.28, 0.32],
 			param5: [0.75],
+		},
+	},
+	lightbearing_moonshard: {
+		rarity: 5,
+		weapon: "sword",
+		gameId: 11519,
+		lightbearing_moonshard: {
+			param1: [0.64, 0.8, 0.96, 1.12, 1.28],
+			param2: [5],
+			def_percent: [20.0, 25.0, 30.0, 35.0, 40.0],
 		},
 	},
 	FerrousShadow: {
@@ -2012,6 +2043,7 @@ export const weaponDataTable = {
 			param1: [0.12, 0.15, 0.18, 0.21, 0.24],
 			param2: [0.02, 0.025, 0.03, 0.035, 0.04],
 			param3: [0.12, 0.15, 0.18, 0.21, 0.24],
+			atk_percent: [12.0, 15.0, 18.0, 21.0, 24.0],
 		},
 	},
 	PortablePowerSaw: {
@@ -2075,6 +2107,7 @@ export const weaponDataTable = {
 			param2: [0.8, 1, 1.2, 1.4, 1.6],
 			param3: [20],
 			param4: [8],
+			dmg_all: [8.0, 10.0, 12.0, 14.0, 16.0],
 		},
 	},
 	WolfsGravestone: {
@@ -2084,6 +2117,7 @@ export const weaponDataTable = {
 		wolfish_tracker: {
 			param1: [0.2, 0.25, 0.3, 0.35, 0.4],
 			param2: [0.4, 0.5, 0.6, 0.7, 0.8],
+			atk_percent: [20.0, 25.0, 30.0, 35.0, 40.0],
 		},
 	},
 	SongofBrokenPines: {
@@ -2097,6 +2131,7 @@ export const weaponDataTable = {
 			param4: [0.12, 0.15, 0.18, 0.21, 0.24],
 			param5: [0.2, 0.25, 0.3, 0.35, 0.4],
 			param6: [20],
+			atk_percent: [16.0, 20.0, 24.0, 28.0, 32.0],
 		},
 	},
 	Unforged: {
@@ -2107,6 +2142,7 @@ export const weaponDataTable = {
 			param1: [0.2, 0.25, 0.3, 0.35, 0.4],
 			param2: [0.04, 0.05, 0.06, 0.07, 0.08],
 			param3: [8],
+			shield: [20.0, 25.0, 30.0, 35.0, 40.0],
 		},
 	},
 	RedhornStonethresher: {
@@ -2117,6 +2153,7 @@ export const weaponDataTable = {
 			param1: [0.28, 0.35, 0.42, 0.49, 0.56],
 			param2: [0.4, 0.5, 0.6, 0.7, 0.8],
 			param3: [80000],
+			def_percent: [28.0, 35.0, 42.0, 49.0, 56.0],
 		},
 	},
 	BeaconOfTheReedSea: {
@@ -2138,6 +2175,8 @@ export const weaponDataTable = {
 		many_oaths_of_dawn_and_dusk: {
 			param1: [0.18, 0.225, 0.27, 0.315, 0.36],
 			param2: [15],
+			param3: [1],
+			atk_percent: [20.0, 25.0, 30.0, 35.0, 40.0],
 		},
 	},
 	MountainKingsFang: {
@@ -2165,6 +2204,19 @@ export const weaponDataTable = {
 			param6: [2],
 			param7: [1],
 			param8: [3],
+		},
+	},
+	gest_of_the_mighty_wolf: {
+		rarity: 5,
+		weapon: "claymore",
+		gameId: 12515,
+		gest_of_the_mighty_wolf: {
+			param1: [0.1],
+			param2: [0.075, 0.095, 0.115, 0.135, 0.155],
+			param3: [0.075, 0.095, 0.115, 0.135, 0.155],
+			param4: [4],
+			param5: [4],
+			param6: [0.01],
 		},
 	},
 	WhiteTassel: {
@@ -2422,6 +2474,7 @@ export const weaponDataTable = {
 			param1: [0.2, 0.25, 0.3, 0.35, 0.4],
 			param2: [0.008, 0.01, 0.012, 0.014, 0.016],
 			param3: [0.01, 0.012, 0.014, 0.016, 0.018],
+			hp_percent: [20.0, 25.0, 30.0, 35.0, 40.0],
 		},
 	},
 	SkywardSpine: {
@@ -2434,6 +2487,7 @@ export const weaponDataTable = {
 			param3: [0.5],
 			param4: [0.4, 0.55, 0.7, 0.85, 1],
 			param5: [2],
+			crit_rate_base: [8.0, 10.0, 12.0, 14.0, 16.0],
 		},
 	},
 	VortexVanquisher: {
@@ -2444,6 +2498,7 @@ export const weaponDataTable = {
 			param1: [0.2, 0.25, 0.3, 0.35, 0.4],
 			param2: [0.04, 0.05, 0.06, 0.07, 0.08],
 			param3: [8],
+			shield: [20.0, 25.0, 30.0, 35.0, 40.0],
 		},
 	},
 	PrimordialJadeWingedSpear: {
@@ -2512,6 +2567,7 @@ export const weaponDataTable = {
 			param3: [8],
 			param4: [12, 13, 14, 15, 16],
 			param5: [12],
+			atk_percent: [15.0, 19.0, 23.0, 27.0, 31.0],
 		},
 	},
 	SymphonistofScents: {
@@ -2523,6 +2579,7 @@ export const weaponDataTable = {
 			param2: [0.12, 0.15, 0.18, 0.21, 0.24],
 			param3: [0.32, 0.4, 0.48, 0.56, 0.64],
 			param4: [3],
+			atk_percent: [12.0, 15.0, 18.0, 21.0, 24.0],
 		},
 	},
 	FracturedHalo: {
@@ -2877,6 +2934,7 @@ export const weaponDataTable = {
 			param1: [0.2, 0.25, 0.3, 0.35, 0.4],
 			param2: [0.04, 0.05, 0.06, 0.07, 0.08],
 			param3: [8],
+			shield: [20.0, 25.0, 30.0, 35.0, 40.0],
 		},
 	},
 	JadefallsSplendor: {
@@ -2901,6 +2959,7 @@ export const weaponDataTable = {
 			param3: [12],
 			param4: [0.6],
 			param5: [0.1],
+			healing_base: [10.0, 12.5, 15.0, 17.5, 20.0],
 		},
 	},
 	KagurasVerity: {
@@ -2947,6 +3006,7 @@ export const weaponDataTable = {
 			param3: [0.16, 0.2, 0.24, 0.28, 0.32],
 			param4: [0.14, 0.175, 0.21, 0.245, 0.28],
 			param5: [0.08, 0.1, 0.12, 0.14, 0.16],
+			atk_percent: [16.0, 20.0, 24.0, 28.0, 32.0],
 		},
 	},
 	TomeoftheEternalFlow: {
@@ -2959,6 +3019,7 @@ export const weaponDataTable = {
 			param3: [0.14, 0.18, 0.22, 0.26, 0.3],
 			param4: [8, 9, 10, 11, 12],
 			param5: [12],
+			hp_percent: [16.0, 20.0, 24.0, 28.0, 32.0],
 		},
 	},
 	CranesEchoingCall: {
@@ -2985,6 +3046,7 @@ export const weaponDataTable = {
 			param6: [1.5],
 			param7: [1],
 			param8: [1.5],
+			hp_percent: [20.0, 25.0, 30.0, 35.0, 40.0],
 		},
 	},
 	StarcallersWatch: {
@@ -2995,6 +3057,7 @@ export const weaponDataTable = {
 			param1: [0.28, 0.35, 0.42, 0.49, 0.56],
 			param2: [15],
 			param3: [14],
+			mastery_base: [100.0, 125.0, 150.0, 175.0, 200.0],
 		},
 	},
 	MorningHibernation: {
@@ -3019,6 +3082,7 @@ export const weaponDataTable = {
 			param2: [15],
 			param3: [0.28, 0.35, 0.42, 0.49, 0.56],
 			param4: [0.4, 0.5, 0.6, 0.7, 0.8],
+			atk_percent: [28.0, 35.0, 42.0, 49.0, 56.0],
 		},
 	},
 	nightweavers_looking_glass: {
@@ -3046,6 +3110,20 @@ export const weaponDataTable = {
 			param4: [4],
 			param5: [0.5],
 			param6: [0.08, 0.1, 0.12, 0.14, 0.16],
+			crit_rate_base: [8.0, 10.0, 12.0, 14.0, 16.0],
+		},
+	},
+	nocturnes_curtain_call: {
+		rarity: 5,
+		weapon: "catalyst",
+		gameId: 14522,
+		nocturnes_curtain_call: {
+			param1: [0.14, 0.16, 0.18, 0.2, 0.22],
+			param2: [0.6, 0.8, 1, 1.2, 1.4],
+			param3: [12],
+			param4: [14, 15, 16, 17, 18],
+			param5: [18],
+			hp_percent: [10.0, 12.0, 14.0, 16.0, 18.0],
 		},
 	},
 	RavenBow: {
@@ -3376,6 +3454,7 @@ export const weaponDataTable = {
 			param2: [0.6, 0.7, 0.8, 0.9, 1],
 			param3: [1.25],
 			param4: [4, 3.5, 3, 2.5, 2],
+			crit_dmg_base: [20.0, 25.0, 30.0, 35.0, 40.0],
 		},
 	},
 	AmosBow: {
@@ -3398,6 +3477,7 @@ export const weaponDataTable = {
 			param4: [100, 125, 150, 175, 200],
 			param5: [0.2, 0.25, 0.3, 0.35, 0.4],
 			param6: [20],
+			mastery_base: [60.0, 75.0, 90.0, 105.0, 120.0],
 		},
 	},
 	PolarStar: {
@@ -3422,6 +3502,7 @@ export const weaponDataTable = {
 			param2: [0.2, 0.25, 0.3, 0.35, 0.4],
 			param3: [0.5],
 			param4: [1.2],
+			hp_percent: [16.0, 20.0, 24.0, 28.0, 32.0],
 		},
 	},
 	ThunderingPulse: {
@@ -3435,6 +3516,7 @@ export const weaponDataTable = {
 			param4: [0.4, 0.5, 0.6, 0.7, 0.8],
 			param5: [5],
 			param6: [10],
+			atk_percent: [20.0, 25.0, 30.0, 35.0, 40.0],
 		},
 	},
 	HuntersPath: {

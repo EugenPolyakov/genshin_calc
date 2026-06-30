@@ -43,12 +43,16 @@ char_ineffa = TemplateList(
     assemblage_hub_rus=Template(
         sentences=[
             ['0.7:text_percent', '100:ignore'],
-            ['14:text_percent_max', 'ignore'],
+            ['14:text_percent_max'],
+            [],
+            ['ignore'],
         ],
     ),
     assemblage_hub_eng=Template(
         sentences=[
-            ['100:ignore', '0.7:text_percent', '14:text_percent_max', 'ignore'],
+            ['100:ignore', '0.7:text_percent', '14:text_percent_max'],
+            [],
+            ['ignore'],
         ],
     ),
     rectifying_processor_rus=Template(
@@ -65,6 +69,8 @@ char_ineffa = TemplateList(
     support_cleaning_module=Template(
         sentences=[
             ['300:text_percent_dmg'],
+            [],
+            [],
             [],
         ],
     ),

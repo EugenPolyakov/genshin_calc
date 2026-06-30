@@ -235,14 +235,14 @@ export class StorageItemArtifacts extends StorageItem {
     getSimilar(sample) {
         let result = [];
 
-        if (!sample || !sample.set || !sample.mainStat) {
+        if (!sample || !sample.slot || /*!sample.set ||*/ !sample.mainStat) {
             return [];
         }
 
         for (let i in this.artifactsCache) {
             const art = this.artifactsCache[i];
 
-            if (sample.set != art.set || sample.mainStat != art.mainStat || sample.rarity != art.rarity || sample.level < art.level) {
+            if ( /*sample.set != art.set ||*/ sample.slot != art.slot || sample.mainStat != art.mainStat || sample.rarity != art.rarity || sample.level < art.level) {
                 continue;
             }
 

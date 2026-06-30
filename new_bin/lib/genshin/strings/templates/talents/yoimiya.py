@@ -24,10 +24,6 @@ char_yoimiya = TemplateList(
         },
     ),
     niwabi_fire_dance_rus=Template(
-        replace={
-            '</p><p>': '\n</p><p>\n',
-            '<br>': '\n<br>\n',
-        },
         sentences=[
             [],
             [],
@@ -45,16 +41,12 @@ char_yoimiya = TemplateList(
         ],
         results=[
             list(range(0, 13)),
-            [4, 5, '<br>', 7],
+            [4, 5, 6, 7],
             [2],
         ],
         extracted_names=[2],
     ),
     niwabi_fire_dance_eng=Template(
-        replace={
-            '</p><p>': '\n</p><p>\n',
-            '<br>': '\n<br>\n',
-        },
         sentences=[
             [],
             [],
@@ -72,7 +64,7 @@ char_yoimiya = TemplateList(
         ],
         results=[
             list(range(0, 13)),
-            [4, 5, '<br>', 7],
+            [4, 5, 6, 7],
             [2],
         ],
         extracted_names=[2],
@@ -97,12 +89,16 @@ char_yoimiya = TemplateList(
     ),
     agate_ryuukin=Template(
         sentences=[
-            ['ignore', 'atk_percent', 'ignore'],
+            ['ignore'],
+            [],
+            ['atk_percent', 'ignore'],
         ],
     ),
     a_procession_of_bonfires=Template(
         sentences=[
             ['dmg_pyro', 'ignore'],
+            [],
+            [],
         ],
     ),
     pyrotechnic_professional=Template(

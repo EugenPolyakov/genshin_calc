@@ -33,7 +33,9 @@ char_traveler_anemo = TemplateList(
     ),
     second_wind_eng=Template(
         sentences=[
-            ['2:text_percent_hp', '5:ignore', '5:ignore'],
+            ['2:text_percent_hp', '5:ignore'],
+            [],
+            ['5:ignore'],
         ],
     ),
     uprising_whirlwind=Template(
@@ -47,16 +49,14 @@ char_traveler_anemo = TemplateList(
         ],
     ),
     intertwined_winds=Template(
-        replace={
-            '<br>': '\n',
-        },
         sentences=[
             ['20:enemy_res_anemo'],
+            [],
             ['20:'],
         ],
         results=[
             [0],
-            [1],
+            [2],
         ],
     ),
 )

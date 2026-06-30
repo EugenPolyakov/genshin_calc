@@ -46,13 +46,7 @@ char_kirara = TemplateList(
             [],
         ],
     ),
-    pupillary_variance_rus=Template(
-        sentences=[
-            ['ignore'],
-            ['text_percent_skill', 'text_percent_burst'],
-        ],
-    ),
-    pupillary_variance_eng=Template(
+    pupillary_variance=Template(
         sentences=[
             ['ignore', 'text_percent_skill', 'text_percent_burst'],
         ],
@@ -60,7 +54,6 @@ char_kirara = TemplateList(
     material_circulation_rus=Template(
         sentences=[
             ['ignore', 'text_value_hp'],
-            [],
             ['ignore'],
         ],
     ),
@@ -72,13 +65,21 @@ char_kirara = TemplateList(
     ),
     perfectly_packaged=Template(
         sentences=[
-            ['text_percent_shield', 'ignore', 'ignore', 'ignore'],
+            [],
+            [],
+            ['text_percent_shield', 'ignore'],
+            [],
+            ['ignore', 'ignore'],
         ],
     ),
     perfectly_packaged_rus=Template(
         sentences=[
+            [],
+            [],
             ['text_percent_shield'],
-            ['ignore', 'ignore', 'ignore'],
+            ['ignore'],
+            [],
+            ['ignore', 'ignore'],
         ],
     ),
     steed_of_skanda=Template(

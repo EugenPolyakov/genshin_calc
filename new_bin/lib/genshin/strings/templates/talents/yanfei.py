@@ -24,10 +24,6 @@ char_yanfei = TemplateList(
         },
     ),
     done_deal_rus=Template(
-        replace={
-            '</p><p>': '\n</p><p>\n',
-            '<br>': '\n<br>\n',
-        },
         sentences=[
             [],
             [],
@@ -53,10 +49,6 @@ char_yanfei = TemplateList(
         extracted_names=[2],
     ),
     done_deal_eng=Template(
-        replace={
-            '</p><p>': '\n</p><p>\n',
-            '<br>': '\n<br>\n',
-        },
         sentences=[
             [],
             [],
@@ -110,13 +102,20 @@ char_yanfei = TemplateList(
     ),
     supreme_amnesty_rus=Template(
         sentences=[
+            [],
+            [],
             ['ignore', 'text_percent_hp'],
+            [],
             ['ignore'],
         ],
     ),
     supreme_amnesty_eng=Template(
         sentences=[
-            ['text_percent_hp', 'ignore', 'ignore'],
+            [],
+            [],
+            ['text_percent_hp', 'ignore'],
+            [],
+            ['ignore'],
         ],
     ),
     extra_clause=Template(

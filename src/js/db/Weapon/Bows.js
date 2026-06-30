@@ -42,6 +42,7 @@ import { AstralVulturesCrimsonPlumage } from "./Bow/AstralVulturesCrimsonPlumage
 import { SequenceofSolitude } from "./Bow/SequenceofSolitude";
 import { snare_hook } from "./Bow/snare_hook";
 import { rainbow_serpents_rain_bow } from "./Bow/rainbow_serpents_rain_bow";
+import { the_daybreak_chronicles } from "./Bow/the_daybreak_chronicles";
 
 export const Bows = new DbObjectListSerializeStats({
     AlleyHunter: AlleyHunter,
@@ -87,4 +88,5 @@ export const Bows = new DbObjectListSerializeStats({
     SequenceofSolitude: SequenceofSolitude, // 200
     snare_hook: snare_hook, // 228
     rainbow_serpents_rain_bow: rainbow_serpents_rain_bow, // 233
+    the_daybreak_chronicles: the_daybreak_chronicles, // 238
 });

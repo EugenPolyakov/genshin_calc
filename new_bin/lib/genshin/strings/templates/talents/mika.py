@@ -27,8 +27,14 @@ char_mika = TemplateList(
     ),
     suppressive_barrage_rus=Template(
         sentences=[
-            ['dmg_phys', 'ignore', 'ignore', 'ignore'],
+            ['dmg_phys'],
+            [],
             ['ignore', 'ignore'],
+            [],
+            ['ignore'],
+            ['ignore'],
+            [],
+            ['ignore'],
             [],
         ],
     ),
@@ -37,14 +43,24 @@ char_mika = TemplateList(
             (r'Starfrost anemo{Swirl}', 'name{Starfrost Swirl}'),
         ],
         sentences=[
-            ['dmg_phys', 'ignore', 'ignore'],
-            ['ignore', 'ignore'],
+            ['dmg_phys'],
+            [],
+            ['ignore'],
+            [],
+            ['ignore'],
+            ['ignore'],
+            [],
+            ['ignore'],
         ],
     ),
     topographical_mapping=Template(
         sentences=[
             ['ignore'],
-            ['ignore', 'ignore'],
+            ['ignore'],
+            [],
+            ['ignore'],
+            [],
+            [],
         ],
     ),
     factor_confluence=Template(
@@ -56,6 +72,8 @@ char_mika = TemplateList(
     companions_ingress=Template(
         sentences=[
             ['ignore'],
+            [],
+            [],
         ],
     ),
     sunfrost_encomium_rus=Template(
@@ -71,17 +89,15 @@ char_mika = TemplateList(
         ],
     ),
     companions_counsel=Template(
-        patterns=[
-            (r'<br>', '\\n'),
-        ],
         sentences=[
             ['ignore'],
+            [],
             [],
             ['crit_dmg_phys'],
         ],
         results=[
             [0, 1],
-            [2],
+            [3],
         ],
     ),
 )

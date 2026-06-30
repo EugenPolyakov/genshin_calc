@@ -46,7 +46,9 @@ char_fischl = TemplateList(
     ),
     her_pilgrimage_of_bleak=Template(
         sentences=[
-            ['text_percent_dmg', 'text_percent_hp'],
+            ['text_percent_dmg'],
+            [],
+            ['text_percent_hp'],
         ],
     ),
     evernight_raven=Template(
@@ -56,9 +58,6 @@ char_fischl = TemplateList(
         ],
     ),
     evernight_raven_hex=Template(
-        replace={
-            '<br>': '\n<br>\n',
-        },
         sentences=[
             ['ignore'],
             ['text_percent_dmg'],
@@ -73,13 +72,10 @@ char_fischl = TemplateList(
     phantasmal_nocturne_rus=Template(
         replace={
             '· ': '· \n',
-            '<br>': '\n<br>\n',
         },
         sentences=[
             [],
             ['2:ignore'],
-            [],
-            [],
             [],
             [],
             [],
@@ -95,8 +91,8 @@ char_fischl = TemplateList(
         ],
         results=[
             [0, 1],
-            [5, 6, 'Когда name{Оз} на поле.', 12],
-            [5, 6, 'Когда name{Оз} на поле.', 15],
+            [3, 4, 'Когда name{Оз} на поле.', 10],
+            [3, 4, 'Когда name{Оз} на поле.', 13],
             ['Ноктюрн иллюзий (pyro{Перегрузка})'],
             ['Ноктюрн иллюзий (electro{Заряжен})'],
         ],
@@ -105,13 +101,10 @@ char_fischl = TemplateList(
     phantasmal_nocturne_eng=Template(
         replace={
             '· ': '· \n',
-            '<br>': '\n<br>\n',
         },
         sentences=[
             [],
             ['2:ignore'],
-            [],
-            [],
             [],
             [],
             [],
@@ -128,8 +121,8 @@ char_fischl = TemplateList(
         ],
         results=[
             [0, 1],
-            [5, 6, 'When name{Oz} is on the field.', 13],
-            [5, 6, 'When name{Oz} is on the field.', 16],
+            [3, 4, 'When name{Oz} is on the field.', 11],
+            [3, 4, 'When name{Oz} is on the field.', 14],
             ['Phantasmal Nocturne (pyro{Overloaded})'],
             ['Phantasmal Nocturne (electro{Charged})'],
         ],

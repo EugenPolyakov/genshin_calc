@@ -23,11 +23,17 @@ char_shenhe = TemplateList(
         },
     ),
     spring_spirit_summoning_rus=Template(
-        replace={
-            '<br>': '<br>\n',
-            '</p><p>': '\n</p><p>',
-        },
         sentences=[
+            [],
+            [],
+            [],
+            [],
+            [],
+            [],
+            [],
+            [],
+            [],
+            [],
             [],
             [],
             [],
@@ -45,16 +51,22 @@ char_shenhe = TemplateList(
             [],
         ],
         results=[
-            list(range(0, 15)),
-            [7],
+            list(range(0, 25)),
+            [14],
         ],
     ),
     spring_spirit_summoning_eng=Template(
-        replace={
-            '<br>': '<br>\n',
-            '</p><p>': '\n</p><p>',
-        },
         sentences=[
+            [],
+            [],
+            [],
+            [],
+            [],
+            [],
+            [],
+            [],
+            [],
+            [],
             [],
             [],
             [],
@@ -71,8 +83,8 @@ char_shenhe = TemplateList(
             [],
         ],
         results=[
-            list(range(0, 14)),
-            [7],
+            list(range(0, 24)),
+            [14],
         ],
     ),
     deific_embrace=Template(
@@ -81,17 +93,16 @@ char_shenhe = TemplateList(
         ],
     ),
     spirit_communion_seal=Template(
-        patterns=(
-            ('<br>', '\\n<br>'),
-        ),
         sentences=[
             [],
+            [],
             ['dmg_skill', 'ignore'],
+            [],
             ['dmg_normal', 'ignore'],
         ],
         results=[
-            [0, 1],
-            [0, 2],
+            [0, 1, 2],
+            [0, 3, 4],
         ],
     ),
     clarity_of_heart=Template(
@@ -114,12 +125,20 @@ char_shenhe = TemplateList(
     ),
     insight_rus=Template(
         sentences=[
-            [None, 'ignore', 'ignore'],
+            [],
+            [],
+            [None],
+            [],
+            ['ignore', 'ignore'],
         ],
     ),
     insight_eng=Template(
         sentences=[
-            [None, 'ignore'],
+            [],
+            [],
+            [None],
+            [],
+            ['ignore'],
             ['ignore'],
         ],
     ),

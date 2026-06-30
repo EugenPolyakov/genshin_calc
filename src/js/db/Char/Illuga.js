@@ -390,7 +390,7 @@ export const Illuga = new DbObjectChar({
             name: 'illuga_torchforgers_covenant',
             serializeId: 2,
             title: 'talent_name.illuga_torchforgers_covenant',
-            description: 'talent_descr.illuga_torchforgers_covenant_2',
+            description: 'talent_descr.illuga_torchforgers_covenant_1',
             info: { ascension: 1 },
             condition: new ConditionAscensionChar({ ascension: 1 }),
             stats: {
@@ -400,7 +400,7 @@ export const Illuga = new DbObjectChar({
         }),
         new ConditionStatic({
             title: 'talent_name.illuga_torchforgers_covenant',
-            description: 'talent_descr.illuga_torchforgers_covenant_3',
+            description: 'talent_descr.illuga_torchforgers_covenant_2',
             info: { ascension: 1 },
             condition: new ConditionAnd([
                 new ConditionAscensionChar({ ascension: 1 }),
@@ -589,7 +589,7 @@ export const Illuga = new DbObjectChar({
                 name: 'party.illuga_torchforgers_covenant',
                 serializeId: 4,
                 title: 'talent_name.illuga_torchforgers_covenant',
-                description: 'talent_descr.illuga_torchforgers_covenant_2',
+                description: 'talent_descr.illuga_torchforgers_covenant_1',
                 rotation: 'party',
                 info: { ascension: 1 },
                 stats: {
@@ -599,7 +599,7 @@ export const Illuga = new DbObjectChar({
             }),
             new ConditionStatic({
                 title: 'talent_name.illuga_torchforgers_covenant',
-                description: 'talent_descr.illuga_torchforgers_covenant_3',
+                description: 'talent_descr.illuga_torchforgers_covenant_2',
                 info: { ascension: 1 },
                 condition: new ConditionAnd([
                     new ConditionBoolean({ name: 'party.illuga_torchforgers_covenant' }),

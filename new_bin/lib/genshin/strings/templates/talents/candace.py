@@ -23,18 +23,7 @@ char_candace = TemplateList(
         },
     ),
     wagtails_tide=Template(
-        replace={
-            '<p>': '\n<p>\n',
-            '</p>': '\n</p>',
-            '<br>': '\n<br>\n',
-        },
         sentences=[
-            [],
-            [],
-            [],
-            [],
-            [],
-            [],
             [],
             [],
             [],
@@ -52,46 +41,9 @@ char_candace = TemplateList(
             [],
         ],
         results=[
-            [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20],
-            [8, 9, 10, 11, 12, 13, 14, 15],
-            [6],
-        ],
-        extracted_names=[
-            2,
-        ],
-    ),
-    wagtails_tide_eng=Template(
-        replace={
-            '<p>': '\n<p>\n',
-            '</p>': '\n</p>',
-            '<br>': '\n<br>\n',
-        },
-        sentences=[
-            [],
-            [],
-            [],
-            [],
-            [],
-            [],
-            [],
-            [],
-            [],
-            [],
-            [],
-            [],
-            [],
-            [],
-            [],
-            [],
-            [],
-            [],
-            [],
-            [],
-        ],
-        results=[
-            [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19],
-            [7, 8, 9, 10, 11, 12, 13, 14],
-            [5],
+            list(range(0, 15)),
+            [4, 5, 6, 7, 8, 9, 10, 11],
+            [2],
         ],
         extracted_names=[
             2,
@@ -102,15 +54,9 @@ char_candace = TemplateList(
             [],
         ],
     ),
-    celestial_dome_of_sand_eng=Template(
+    celestial_dome_of_sand=Template(
         sentences=[
             ['ignore', 'ignore'],
-        ],
-    ),
-    celestial_dome_of_sand_rus=Template(
-        sentences=[
-            ['ignore', 'ignore'],
-            [],
         ],
     ),
     returning_heiress_of_the_scarlet_sands=Template(
@@ -118,13 +64,7 @@ char_candace = TemplateList(
             ['ignore'],
         ],
     ),
-    moon_piercing_brilliance_rus=Template(
-        sentences=[
-            [],
-            ['hp_percent', 'ignore'],
-        ],
-    ),
-    moon_piercing_brilliance_eng=Template(
+    moon_piercing_brilliance=Template(
         sentences=[
             ['hp_percent', 'ignore'],
         ],
@@ -137,6 +77,7 @@ char_candace = TemplateList(
     the_overflow_rus=Template(
         sentences=[
             ['text_percent_dmg'],
+            [],
             ['ignore', 'ignore'],
             [],
         ],
@@ -147,7 +88,9 @@ char_candace = TemplateList(
             (r'Hydro} DMG', 'Hydro DMG'),
         ],
         sentences=[
-            ['text_percent_dmg', 'ignore'],
+            ['text_percent_dmg'],
+            [],
+            ['ignore'],
         ],
     ),
 )

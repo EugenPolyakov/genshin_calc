@@ -30,9 +30,7 @@ char_dahlia = TemplateList(
     ),
     prayer_of_well_wrought_joy_rus=Template(
         sentences=[
-            [],
-            ['1000:ignore'],
-            ['0.5:text_percent'],
+            ['1000:ignore', '0.5:text_percent'],
             ['20:text_percent_max'],
         ],
     ),
@@ -58,7 +56,15 @@ char_dahlia = TemplateList(
     ),
     you_shall_go_out_with_joy=Template(
         sentences=[
-            ['10:atk_speed', '100:ignore', '15:ignore'],
+            ['10:atk_speed'],
+            [],
+            [],
+            [],
+            [],
+            [],
+            ['100:ignore'],
+            [],
+            ['15:ignore'],
         ],
     ),
 )

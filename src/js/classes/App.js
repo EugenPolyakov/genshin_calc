@@ -3,7 +3,7 @@ import { Rotation } from "./Rotation";
 import { Serializer } from "./Serializer";
 import { Storage } from "./Storage";
 
-const DEFAULT_CHAR_BUILD = 'bbbaabbbabbabaaabcbabrabadaaa'
+const DEFAULT_CHAR_BUILD = 'bbbaabbbabbabaaabcbabradaadaaa';
 
 export class App {
     constructor(version) {

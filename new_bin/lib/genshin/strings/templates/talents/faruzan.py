@@ -31,10 +31,13 @@ char_faruzan = TemplateList(
     the_winds_secret_ways=Template(
         replace={
             '· ': '· \n',
-            '<br>': '\n<br>',
-            '</p><p>': '\n</p><p>',
         },
         sentences=[
+            [],
+            [],
+            [],
+            [],
+            [],
             [],
             [],
             [],
@@ -46,18 +49,17 @@ char_faruzan = TemplateList(
             [],
         ],
         results=[
-            list(range(0, 9)),
-            [5],
-            [7],
+            list(range(0, 14)),
+            [8],
+            [11],
         ],
     ),
     the_winds_secret_ways_eng=Template(
         replace={
             '·': '·\n',
-            '<br>': '\n<br>',
-            '</p><p>': '\n</p><p>',
         },
         sentences=[
+            [],
             [],
             [],
             ['1:ignore'],
@@ -67,11 +69,15 @@ char_faruzan = TemplateList(
             [],
             [],
             [],
+            [],
+            [],
+            [],
+            [],
         ],
         results=[
-            list(range(0, 9)),
-            [5],
-            [7],
+            list(range(0, 14)),
+            [8],
+            [11],
         ],
     ),
     impetuous_flow=Template(
@@ -103,13 +109,17 @@ char_faruzan = TemplateList(
     ),
     divine_comprehension_rus=Template(
         sentences=[
-            ['ignore', 'ignore', 'ignore'],
+            ['ignore', 'ignore'],
+            [],
+            ['ignore'],
         ],
     ),
     divine_comprehension_eng=Template(
         sentences=[
             ['ignore', 'ignore'],
-            ['ignore', 'ignore'],
+            ['ignore'],
+            [],
+            ['ignore'],
         ],
     ),
     the_wondrous_path_of_truth_rus=Template(

@@ -29,14 +29,7 @@ char_yaoyao = TemplateList(
             ['ignore', 'ignore'],
         ],
     ),
-    in_others_shoes_rus=Template(
-        sentences=[
-            ['ignore', 'text_percent_hp'],
-            [],
-            ['ignore'],
-        ],
-    ),
-    in_others_shoes_eng=Template(
+    in_others_shoes=Template(
         sentences=[
             ['ignore', 'text_percent_hp'],
             ['ignore'],
@@ -66,14 +59,7 @@ char_yaoyao = TemplateList(
             ['ignore'],
         ],
     ),
-    winsome_rus=Template(
-        sentences=[
-            ['text_percent_hp'],
-            ['ignore'],
-            ['text_value_max'],
-        ],
-    ),
-    winsome_eng=Template(
+    winsome=Template(
         sentences=[
             ['text_percent_hp', 'ignore'],
             ['text_value_max'],
@@ -81,13 +67,24 @@ char_yaoyao = TemplateList(
     ),
     beneficent_rus=Template(
         sentences=[
-            ['ignore', 'text_percent_atk', 'text_percent_heal'],
+            ['ignore'],
+            [],
+            ['text_percent_atk'],
+            [],
+            ['text_percent_heal'],
+            [],
             ['ignore'],
         ],
     ),
     beneficent_eng=Template(
         sentences=[
-            ['ignore', 'text_percent_atk', 'text_percent_heal', 'ignore'],
+            ['ignore'],
+            [],
+            ['text_percent_atk'],
+            [],
+            ['text_percent_heal'],
+            [],
+            ['ignore'],
         ],
     ),
 )

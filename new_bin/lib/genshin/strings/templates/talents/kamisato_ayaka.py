@@ -31,11 +31,13 @@ char_kamisato_ayaka = TemplateList(
         ],
     ),
     senho=Template(
-        replace={
-            '<br>': '<br>\n',
-            '<p>': '\n<p>',
-        },
         sentences=[
+            [],
+            [],
+            [],
+            [],
+            [],
+            [],
             [],
             [],
             [],
@@ -47,16 +49,17 @@ char_kamisato_ayaka = TemplateList(
             [],
         ],
         results=[
-            [0, 1, 2, 3, 4, 5, 6, 7, 8,],
-            [4, 5, 6, ],
+            list(range(0, 15)),
+            [6, 7, 8, 9, 10],
         ],
     ),
     senho_eng=Template(
-        replace={
-            '<br>': '<br>\n',
-            '<p>': '\n<p>',
-        },
         sentences=[
+            [],
+            [],
+            [],
+            [],
+            [],
             [],
             [],
             [],
@@ -67,13 +70,17 @@ char_kamisato_ayaka = TemplateList(
             [],
         ],
         results=[
-            [0, 1, 2, 3, 4, 5, 6, 7,],
-            [4, 5, 6,],
+            list(range(0, 13)),
+            [6, 7, 8, 9, 10],
         ],
     ),
     kanten_senmyou_blessing=Template(
         sentences=[
-            ['ignore', 'dmg_cryo', 'ignore'],
+            [],
+            [],
+            ['ignore'],
+            [],
+            ['dmg_cryo', 'ignore'],
         ],
     ),
     snowswept_sakura=Template(

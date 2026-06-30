@@ -48,6 +48,7 @@ import { Azurelight } from "./Sword/Azurelight";
 import { serenitys_call } from "./Sword/serenitys_call";
 import { moonweavers_dawn } from "./Sword/moonweavers_dawn";
 import { athame_artis } from "./Sword/athame_artis";
+import { lightbearing_moonshard } from "./Sword/lightbearing_moonshard";
 
 export const Swords = new DbObjectListSerializeStats({
     AlleyFlash: AlleyFlash,
@@ -99,4 +100,5 @@ export const Swords = new DbObjectListSerializeStats({
     serenitys_call: serenitys_call, //224
     moonweavers_dawn: moonweavers_dawn, //229
     athame_artis: athame_artis, //234
+    lightbearing_moonshard: lightbearing_moonshard, //235
 });

@@ -11,7 +11,7 @@ from collections import OrderedDict
 from lib.genshin.datafiles.char import CharData, CharProudSkillData, CharSkillData, CharSkillDepotData, SKIP_CHARACTERS, CharTalentSkillData
 from lib.genshin.datafiles.hyperlinks import HyperLinkData
 from lib.genshin.datafiles.lang import LangData
-from lib.genshin.strings.templates.names import keywords_eng, keywords_rus, names_eng, names_rus, patterns_eng
+from lib.genshin.strings.templates.names import keywords_eng, keywords_rus, names_eng, names_rus, patterns_eng, postprocess
 from lib.genshin.strings.templates import talents
 from lib.genshin.strings.template import SentenceMismatch
 from lib.genshin.utils import convert_id, add_array
@@ -21,7 +21,7 @@ from lib.genshin import char_generator
 from lib.genshin.char_generator import CharGenerator, EmptyCharGenerator
 from lib.genshin.char_talent_generator import StatGenerator
 from lib import static
-from lib.static import WEAPON_TYPES, shrink_table, names_mapping, fix_name
+from lib.static import WEAPON_TYPES, shrink_table, names_mapping, fix_name, extractPramList
 from old_values import old_values
 import logging
 
@@ -395,18 +395,14 @@ def process_talent_desc(lang_name, skill_descr, talent_short_id, tpl_patterns, n
 
     if isinstance(skill_descr, str):
         skill_descr = {'descr': [skill_descr], 'names': []}
+
+    for i in range(0, len(skill_descr['descr'])):
+        if skill_descr['descr'][i]:
+            skill_descr['descr'][i] = postprocess.process(skill_descr['descr'][i])['descr'][0]
     return skill_descr
 
 hyperlinks = {}
 generator.header()
-
-def extractPramList(proud):
-    paramList = []
-    for prop in proud['addProps']:
-        type = prop.get('propType')
-        if type != "FIGHT_PROP_NONE" and prop.get('value', 0):
-            paramList.append(prop.get('value', 0))
-    return paramList
 
 def processPassiveTalent(proud, paramList):
     talenttable('\t\t\t')
@@ -532,7 +528,7 @@ for charVarName in sorted(char_keys):
                     descItems_hex[lang_name] = skill_descr['descr']
                     nameItems[lang_name].extend(skill_descr['names'])
             except Exception as e:
-                logger.error(f'error on {talent_short_id}')
+                logger.error(f'error on {skill_id}')
                 logger.error(e)
                 err = True
         if err: continue
@@ -628,7 +624,7 @@ for charVarName in sorted(char_keys):
                     descItems[lang_name] = skill_descr['descr']
                     nameItems[lang_name].extend(skill_descr['names'])
                 except Exception as e:
-                    logger.error(f'error on {skill_id}')
+                    logger.error(f'error on {char_id} {skill_id}')
                     logger.error(e)
                     err = True
             if err: continue
@@ -671,7 +667,7 @@ if not do_single:
                 skill_descr = tpl_patterns.process(skill_descr)['descr'][0]
 
                 res_item1[lang_name] = skill_name
-                res_item2[lang_name] = skill_descr
+                res_item2[lang_name] = postprocess.process(skill_descr)['descr'][0]
 
             result_talents.append(res_item1)
             result_talents.append(res_item2)

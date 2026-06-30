@@ -30,7 +30,9 @@ char_barbara = TemplateList(
     ),
     encore=Template(
         sentences=[
-            ['ignore', 'ignore'],
+            ['ignore'],
+            [],
+            ['ignore'],
         ],
     ),
     gleeful_songs=Template(
@@ -40,17 +42,27 @@ char_barbara = TemplateList(
     ),
     vitality_burst=Template(
         sentences=[
-            ['text_percent_cd', 'dmg_hydro'],
+            ['text_percent_cd'],
+            [],
+            ['dmg_hydro'],
         ],
     ),
     attentiveness_be_my_power=Template(
         sentences=[
-            ['ignore', 'ignore'],
+            ['ignore'],
+            [],
+            ['ignore'],
         ],
     ),
     dedicating_everything_to_you=Template(
         sentences=[
-            ['ignore', 'ignore'],
+            [],
+            [],
+            [],
+            [],
+            ['ignore'],
+            [],
+            ['ignore'],
         ],
     ),
 )

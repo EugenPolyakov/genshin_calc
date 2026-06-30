@@ -25,12 +25,7 @@ char_hu_tao = TemplateList(
         },
     ),
     guide_to_afterlife=Template(
-        replace={
-            '</p><p>': '\n</p><p>\n',
-            '<br>': '\n<br>\n',
-        },
         sentences=[
-            [],
             [],
             [],
             [],
@@ -57,15 +52,11 @@ char_hu_tao = TemplateList(
             [],
         ],
         results=[
-            list(range(0, 25)),
-            [6, 7, 8, 9, 10,],
+            list(range(0, 24)),
+            [5, 6, 7, 8, 9,],
         ],
     ),
     guide_to_afterlife_eng=Template(
-        replace={
-            '</p><p>': '\n</p><p>\n',
-            '<br>': '\n<br>\n',
-        },
         sentences=[
             [],
             [],
@@ -118,15 +109,11 @@ char_hu_tao = TemplateList(
             [],
         ],
     ),
-    ominous_rainfall_rus=Template(
+    ominous_rainfall=Template(
         sentences=[
             ['text_percent'],
             [],
-        ],
-    ),
-    ominous_rainfall_eng=Template(
-        sentences=[
-            ['text_percent'],
+            [],
         ],
     ),
     garden_of_eternal_rest=Template(
@@ -137,7 +124,13 @@ char_hu_tao = TemplateList(
     butterflys_embrace=Template(
         sentences=[
             ['ignore'],
-            ['ignore', 'res_phys', 'crit_rate', 'ignore', 'ignore'],
+            [],
+            [],
+            ['ignore', 'res_phys', 'crit_rate'],
+            [],
+            ['ignore'],
+            [],
+            ['ignore'],
         ],
     ),
 )

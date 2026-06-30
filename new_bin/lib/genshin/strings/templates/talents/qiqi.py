@@ -52,7 +52,9 @@ char_qiqi = TemplateList(
     ),
     rite_of_resurrection=Template(
         sentences=[
-            ['ignore', 'ignore'],
+            ['ignore'],
+            [],
+            ['ignore'],
         ],
     ),
 )

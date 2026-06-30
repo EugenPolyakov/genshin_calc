@@ -102,6 +102,7 @@ weapon_names = {
     11516: "PeakPatrolSong",
     11517: "Azurelight",
     11518: "athame_artis",
+    11519: "lightbearing_moonshard",
 
     #CLAYMORES
     12301: "FerrousShadow",
@@ -148,6 +149,7 @@ weapon_names = {
     12512: 'Verdict',
     12513: 'MountainKingsFang',
     12514: 'AThousandBlazingSuns',
+    12515: 'gest_of_the_mighty_wolf',
 
     #POLEARMS
     13301: "WhiteTassel",
@@ -190,6 +192,7 @@ weapon_names = {
     13513: 'LumidouceElegy',
     13514: 'SymphonistofScents',
     13515: 'FracturedHalo',
+    13516: 'bloodsoaked_ruins',
 
     #CATALYSTS
     14301: "MagicGuide",
@@ -241,6 +244,9 @@ weapon_names = {
     14517: 'StarcallersWatch',
     14518: 'MorningHibernation',
     14519: 'VividNotions',
+    14520: 'nightweavers_looking_glass',
+    14521: 'reliquary_of_truth',
+    14522: 'nocturnes_curtain_call',
 
     #BOWS
     15301: "RavenBow",
@@ -290,6 +296,7 @@ weapon_names = {
     15512: "TheFirstGreatMagic",
     15513: "SilvershowerHeartstrings",
     15514: "AstralVulturesCrimsonPlumage",
+    15515: 'the_daybreak_chronicles',
     # 20001: "",
 }
 
@@ -327,6 +334,17 @@ def parse_ascension():
                 del result[id][stat]
 
     return result
+
+def extractPramList(proud):
+    paramList = {}
+    for prop in proud['addProps']:
+        type = prop.get('propType')
+        if type != "FIGHT_PROP_NONE" and prop.get('value', 0):
+            tmp = static.getStatByName(type)
+            if tmp in paramList:
+                print(f'Param already exists <{tmp}>')
+            paramList[tmp]= float(static.getStatValue(type, prop.get('value', 0)))
+    return paramList
 
 def prepare_data():
     result = {}
@@ -420,7 +438,7 @@ def prepare_data():
                     'skill_name': f'{name.lower()}',
                     'skill_title': skill_id,
                     'skillAffix': id,
-                    'params': []
+                    'params': {}
                 }
                 tpl_weapon = getattr(weapons_tpl, f'{skill_id}_eng', None) or getattr(weapons_tpl, skill_id, None)
                 if tpl_weapon:
@@ -438,17 +456,28 @@ def prepare_data():
                     skills_byOpenConfig.append(elem)
 
                 valList = []
+                namedList = []
                 for i in affixList:
+                    namedList.append(extractPramList(i))
                     valList.append(i['paramList'])
+
+                tmpCount = 1
                 for i in range(len(valList[0])):
                     l = []
                     for v in valList:
                         l.append(v[i])
                     if all(x == 0 for x in l): continue
-                    elem['params'].append(l)
+                    elem['params'][f'param{tmpCount}'] = l
+                    tmpCount+= 1
+                for i in namedList[0]:
+                    l = []
+                    for v in namedList:
+                        l.append(v[i])
+                    if all(x == 0 for x in l): continue
+                    elem['params'][i] = l
 
-                for (idx, x) in enumerate(elem['params']):
-                    elem['params'][idx] = shrink_table(x)
+                for idx in elem['params']:
+                    elem['params'][idx] = shrink_table(elem['params'][idx])
 
                 resultItem["refines"].append(elem)
             except Exception as e:
@@ -552,8 +581,8 @@ def print_StatTables(result):
         out.write(f'\t\tgameId: {item["gameId"]},\n')
         for table in item['refines']:
             out.write(f"\t\t{table['skill']}: {{\n")
-            for idx, param in enumerate(table['params']):
-                out.write(f"\t\t\tparam{idx + 1}: {param},\n")
+            for idx in table['params']:
+                out.write(f"\t\t\t{idx}: {table['params'][idx]},\n")
             out.write("\t\t},\n")
         out.write("\t},\n")
     out.write("};\n")

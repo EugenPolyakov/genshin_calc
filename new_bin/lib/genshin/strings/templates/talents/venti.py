@@ -25,14 +25,9 @@ char_venti = TemplateList(
         },
     ),
     temporal_winds_eulogy=Template(
-        replace={
-            '<br>': '\n<br>\n',
-        },
         sentences=[
             [],
             ['2:ignore'],
-            [],
-            [],
             [],
             [],
             [],
@@ -40,7 +35,7 @@ char_venti = TemplateList(
         ],
         results=[
             [0, 1],
-            [5, 6, 7],
+            [3, 4, 5],
         ],
     ),
     embrace_of_winds=Template(
@@ -50,7 +45,9 @@ char_venti = TemplateList(
     ),
     stormeye=Template(
         sentences=[
-            ['ignore', 'ignore'],
+            ['ignore'],
+            [],
+            ['ignore'],
         ],
     ),
     splitting_gales_rus=Template(
@@ -65,26 +62,23 @@ char_venti = TemplateList(
         ],
     ),
     breeze_of_reminiscence=Template(
-        patterns=[
-            (r'<br>', '\\n'),
-        ],
         sentences=[
             ['enemy_res_anemo', 'ignore'],
+            [],
             ['enemy_res_anemo'],
         ],
         results=[
             [0],
-            [1],
+            [2],
         ],
     ),
     breeze_of_reminiscence_hex=Template(
-        patterns=[
-            (r'<br>', '\\n'),
-        ],
         sentences=[
             ['24:enemy_res_anemo', '10:ignore'],
             [],
+            [],
             ['25:'],
+            [],
             [],
             [],
             ['300:text_percent'],
@@ -92,8 +86,8 @@ char_venti = TemplateList(
         ],
         results=[
             [0],
-            [1, 2, '<br>', 5, 6],
-            [4],
+            [1, 2, 3, 4, 7, 8],
+            [5],
         ],
         extracted_names=[2],
     ),
@@ -113,30 +107,27 @@ char_venti = TemplateList(
         ],
     ),
     storm_of_defiance=Template(
-        patterns=[
-            (r'<br>', '\\n'),
-        ],
         sentences=[
             ['enemy_res_anemo'],
+            [],
             [None],
         ],
         results=[
             [0],
-            [1],
+            [2],
         ],
     ),
     storm_of_defiance_hex=Template(
-        patterns=[
-            (r'<br>', '\\n'),
-        ],
         sentences=[
             ['20:enemy_res_anemo'],
+            [],
             ['20:'],
+            [],
             ['100:crit_dmg'],
         ],
         results=[
-            [0, '<br>', 2],
-            [1],
+            [0, 3, 4],
+            [2],
         ],
     ),
 )

@@ -22,9 +22,16 @@ char_razor = TemplateList(
             'burst': ['Lightning Fang'],
         },
     ),
-    awakening=Template(
+    awakening_rus=Template(
         sentences=[
             ['text_percent_cd'],
+        ],
+    ),
+    awakening_eng=Template(
+        sentences=[
+            ['text_percent_cd'],
+            [],
+            [],
         ],
     ),
     hunger=Template(
@@ -50,19 +57,16 @@ char_razor = TemplateList(
     lupus_fulguris=Template(
         sentences=[
             ['ignore', 'text_percent_dmg'],
+            [],
+            [],
         ],
     ),
     surge_of_lightning_rus=Template(
-        replace={
-            '<br>': '\n<br>\n',
-        },
         sentences=[
             [],
             ['2:ignore'],
             [],
             ['70:text_percent'],
-            [],
-            [],
             [],
             [],
             [],
@@ -71,14 +75,11 @@ char_razor = TemplateList(
         ],
         results=[
             [0, 1, 2, 3],
-            [7, 8, 9, 10],
+            [5, 6, 7, 8],
             [0, 1],
         ],
     ),
     surge_of_lightning_eng=Template(
-        replace={
-            '<br>': '\n<br>\n',
-        },
         sentences=[
             [],
             ['2:ignore'],
@@ -87,22 +88,16 @@ char_razor = TemplateList(
             [],
             [],
             [],
-            [],
-            [],
             ['150:text_percent', '7:ignore'],
             ['1:ignore'],
         ],
         results=[
             [0, 1, 2, 3],
-            [7, 8, 9, 10],
+            [5, 6, 7, 8],
             [0, 1],
         ],
     ),
     lightning_fang_rus=Template(
-        replace={
-            '</p><p>': '\n</p><p>\n',
-            '<br>': '\n<br>\n',
-        },
         sentences=[
             [],
             [],
@@ -135,10 +130,6 @@ char_razor = TemplateList(
         ],
     ),
     lightning_fang_eng=Template(
-        replace={
-            '</p><p>': '\n</p><p>\n',
-            '<br>': '\n<br>\n',
-        },
         sentences=[
             [],
             [],
@@ -174,10 +165,6 @@ char_razor = TemplateList(
             'символ(ов)? Электро', 'восстановления его энергии',
             'Thunder Wolf Claw', 'Electro Sigils?',
         ],
-        replace={
-            '</p><p>': '\n</p><p>\n',
-            '<br>': '\n<br>\n',
-        },
         sentences=[
             [],
             [],

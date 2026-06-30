@@ -3,7 +3,7 @@ import { ConditionStacks } from "../../../classes/Condition/Stacks";
 import { ConditionStaticRefine } from "../../../classes/Condition/Static/Refine";
 import { DbObjectWeapon } from "../../../classes/DbObject/Weapon";
 import { StatTable } from "../../../classes/StatTable";
-import { weaponStatTables } from "../../generated/WeaponStatTables";
+import { weaponDataTable, weaponStatTables } from "../../generated/WeaponStatTables";
 
 export const TomeoftheEternalFlow = new DbObjectWeapon({
     name: 'tome_of_the_eternal_flow',
@@ -18,7 +18,7 @@ export const TomeoftheEternalFlow = new DbObjectWeapon({
             title: 'talent_name.weapon_aeon_wave',
             description: 'talent_descr.weapon_aeon_wave_1',
             stats: [
-                new StatTable('hp_percent', [16, 20, 24, 28, 32]),
+                new StatTable('hp_percent', weaponDataTable.TomeoftheEternalFlow.aeon_wave.hp_percent),
             ],
         }),
         new ConditionStacks({
@@ -29,14 +29,14 @@ export const TomeoftheEternalFlow = new DbObjectWeapon({
             maxStacks: 3,
             levelSetting: 'weapon_refine',
             stats: [
-                new StatTable('dmg_charged', [14, 18, 22, 26, 30]),
+                new StatTable('dmg_charged', weaponDataTable.TomeoftheEternalFlow.aeon_wave.param3, 100),
             ],
         }),
         new ConditionStaticRefine({
             title: 'talent_name.weapon_aeon_wave',
             description: 'talent_descr.weapon_aeon_wave_3',
             stats: [
-                new StatTable('text_value', [8, 9, 10, 11, 12]),
+                new StatTable('text_value', weaponDataTable.TomeoftheEternalFlow.aeon_wave.param4),
             ],
             subConditions: [
                 new ConditionBooleanValue({

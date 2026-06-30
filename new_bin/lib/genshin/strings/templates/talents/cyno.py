@@ -33,16 +33,24 @@ char_cyno = TemplateList(
         sentences=[
             [],
             ['dmg_skill_cyno', 'ignore', 'text_percent_dmg'],
+            [],
+            [],
         ],
     ),
     authority_over_the_nine_bows=Template(
         sentences=[
-            ['text_percent_dmg', 'text_percent_dmg2'],
+            [],
+            [],
+            ['text_percent_dmg'],
+            [],
+            ['text_percent_dmg2'],
         ],
     ),
     unceasing_vigil=Template(
         sentences=[
             ['atk_speed_normal', 'ignore'],
+            [],
+            [],
             [],
         ],
     ),
@@ -61,22 +69,36 @@ char_cyno = TemplateList(
     ),
     forbidding_guard=Template(
         sentences=[
-            ['ignore', 'ignore'],
+            ['ignore'],
+            [],
+            ['ignore'],
         ],
     ),
     just_scales_rus=Template(
         sentences=[
             ['ignore'],
-            ['ignore', 'ignore', 'ignore'],
             ['ignore'],
+            [],
+            ['ignore', 'ignore'],
+            [],
+            [],
+            ['ignore'],
+            [],
+            [],
         ],
     ),
     just_scales_eng=Template(
         sentences=[
             ['ignore'],
-            ['ignore', 'ignore'],
             ['ignore'],
+            [],
+            ['ignore'],
+            ['ignore'],
+            [],
+            [],
             ['ignore', 'ignore'],
+            [],
+            [],
         ],
     ),
 )

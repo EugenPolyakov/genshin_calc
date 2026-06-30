@@ -44,6 +44,9 @@ import { VividNotions } from "./Catalyst/VividNotions";
 import { blackmarrow_lantern } from "./Catalyst/blackmarrow_lantern";
 import { dawning_frost } from "./Catalyst/dawning_frost";
 import { etherlight_spindlelute } from "./Catalyst/etherlight_spindlelute";
+import { reliquary_of_truth } from "./Catalyst/reliquary_of_truth";
+import { nightweavers_looking_glass } from "./Catalyst/nightweavers_looking_glass";
+import { nocturnes_curtain_call } from "./Catalyst/nocturnes_curtain_call";
 
 export const Catalyst = new DbObjectListSerializeStats({
     SolarPearl: SolarPearl, // 43
@@ -91,4 +94,7 @@ export const Catalyst = new DbObjectListSerializeStats({
     blackmarrow_lantern: blackmarrow_lantern, // 227
     dawning_frost: dawning_frost, // 231
     etherlight_spindlelute: etherlight_spindlelute, // 232
+    reliquary_of_truth: reliquary_of_truth, // 237
+    nightweavers_looking_glass: nightweavers_looking_glass, // 239
+    nocturnes_curtain_call: nocturnes_curtain_call, // 240
 });

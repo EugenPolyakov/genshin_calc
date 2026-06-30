@@ -27,79 +27,61 @@ char_nilou = TemplateList(
             'burst': ['Dance of Abzendegi: Distant Dreams, Listening Spring'],
         },
     ),
-    court_of_dancing_petals_rus=Template(
-        patterns=[
-            (r'Если персонажи под воздействием', '\\nЕсли персонажи под воздействием'),
-        ],
+    court_of_dancing_petals=Template(
         sentences=[
+            [],
+            [],
             ['ignore'],
+            [],
             ['mastery', 'ignore'],
+            [],
+            [],
+            [],
+            [],
+            [],
+            [],
             [],
             [],
         ],
         results=[
-            [0, 2],
-            [1],
-        ],
-    ),
-    court_of_dancing_petals_eng=Template(
-        patterns=[
-            (r'Characters under the effect of ', '\\nCharacters under the effect of '),
-        ],
-        sentences=[
-            ['ignore'], 
-            ['mastery', 'ignore'],
-            [],
-            [],
-        ],
-        results=[
-            [0, 2],
-            [1],
+            [0, 1, 2, 3, 5, 6, 7, 8, 9],
+            [4],
         ],
     ),
     dreamy_dance_of_aeons_rus=Template(
         sentences=[
             ['ignore'],
-            ['ignore'],
-            [None, None],
+            ['ignore', None],
+            [],
+            [None],
         ],
     ),
     dreamy_dance_of_aeons_eng=Template(
         sentences=[
-            ['ignore', 'ignore', None, None],
+            ['ignore', 'ignore', None],
+            [],
+            [None],
         ],
     ),
     dance_of_the_waning_moon=Template(
         sentences=[
-            ['dmg_skill_nilou', 'ignore'],
+            [],
+            [],
+            ['dmg_skill_nilou'],
+            [],
+            ['ignore'],
         ],
     ),
-    the_starry_skies_their_flowers_rain_rus=Template(
-        patterns=[
-            (r'<br>', '\\n<br>'),
-        ],
+    the_starry_skies_their_flowers_rain=Template(
         sentences=[
             ['enemy_res_hydro', 'ignore'],
             ['enemy_res_dendro', 'ignore'],
             [],
-        ],
-        results=[
-            [0, 2],
-            [1, 2],
-        ],
-    ),
-    the_starry_skies_their_flowers_rain_eng=Template(
-        patterns=[
-            (r'<br>', '\\n<br>'),
-        ],
-        sentences=[
-            ['enemy_res_hydro', 'ignore'],
-            ['enemy_res_dendro', 'ignore'],
             [],
         ],
         results=[
-            [0, 2],
-            [1, 2],
+            [0, 2, 3],
+            [1, 2, 3],
         ],
     ),
     fricative_pulse_rus=Template(
@@ -112,15 +94,11 @@ char_nilou = TemplateList(
             ['ignore', 'dmg_burst', 'ignore'],
         ],
     ),
-    frostbreakers_melody_rus=Template(
+    frostbreakers_melody=Template(
         sentences=[
-            ['ignore'],
-            ['text_percent_rate', 'text_percent_dmg', 'text_percent_rate_max', 'text_percent_dmg_max'],
-        ],
-    ),
-    frostbreakers_melody_eng=Template(
-        sentences=[
-            ['ignore', 'text_percent_rate', 'text_percent_dmg', 'text_percent_rate_max', 'text_percent_dmg_max'],
+            ['ignore', 'text_percent_rate', 'text_percent_dmg'],
+            [],
+            ['text_percent_rate_max', 'text_percent_dmg_max'],
         ],
     ),
 )

@@ -27,18 +27,24 @@ char_dori = TemplateList(
     ),
     an_eye_for_gold=Template(
         sentences=[
-            ['ignore', 'ignore'],
+            ['ignore'],
+            [],
+            ['ignore'],
         ],
     ),
     compound_interest_rus=Template(
         sentences=[
             [None, 'ignore'],
+            [],
+            [],
             [None],
         ],
     ),
     compound_interest_eng=Template(
         sentences=[
-            [None, 'ignore', None],
+            [None, 'ignore'],
+            [],
+            [None],
         ],
     ),
     additional_investment=Template(
@@ -52,29 +58,25 @@ char_dori = TemplateList(
         ],
     ),
     discretionary_supplement=Template(
-        patterns=[
-            (r'<br>·\s*', '\\n<br>· '),
-        ],
         sentences=[
             [],
+            [],
             ['ignore', 'healing_recv'],
+            [],
             ['ignore', 'recharge'],
         ],
         results=[
-            [0, 1],
-            [0, 2],
+            [0, 1, 2],
+            [0, 3, 4],
         ],
     ),
-    sprinkling_weight_rus=Template(
+    sprinkling_weight=Template(
         sentences=[
-            ['ignore', 'text_percent'],
-            [],
             ['ignore'],
-        ],
-    ),
-    sprinkling_weight_eng=Template(
-        sentences=[
-            ['ignore', 'text_percent'],
+            [],
+            [],
+            [],
+            ['text_percent'],
             ['ignore'],
         ],
     ),

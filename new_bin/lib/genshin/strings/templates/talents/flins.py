@@ -23,34 +23,58 @@ char_flins = TemplateList(
         },
     ),
     arcane_light_rus = Template(
-        replace={'</p><p>': '</p>\n<p>'},
         sentences=[
             [],
             [],
             [],
-            ['ignore', 'ignore'],
+            [],
+            [],
+            [],
+            [],
+            [],
+            [],
+            [],
+            [],
+            [],
+            ['ignore'],
+            [],
+            ['ignore'],
+            [],
             [],
         ],
         results=[
-            [0, 1, 2, 3, 4],
-            [0, 1, 2],
+            list(range(0, 17)),
+            list(range(0, 10)),
         ],
     ),
     arcane_light_eng = Template(
-        replace={'</p><p>': '</p>\n<p>'},
         sentences=[
             [],
             [],
-            ['ignore', 'ignore'],
+            [],
+            [],
+            [],
+            [],
+            [],
+            [],
+            [],
+            [],
+            [],
+            ['ignore'],
+            [],
+            ['ignore'],
+            [],
             [],
         ],
         results=[
-            [0, 1, 2, 3],
-            [0, 1],
+            list(range(0, 16)),
+            list(range(0, 9)),
         ],
     ),
     symphony_of_winter=Template(
         sentences=[
+            [],
+            [],
             ['20:format{text_number_f=2|{value}}:text_percent_value'],
         ],
     ),
@@ -60,9 +84,6 @@ char_flins = TemplateList(
         ],
     ),
     the_devils_wall=Template(
-        replace={
-            '<br>': '\n<br>\n',
-        },
         sentences=[
             ['6:ignore', '50:text_percent'],
             [],
@@ -77,18 +98,19 @@ char_flins = TemplateList(
     old_world_secrets_rus=Template(
         sentences=[
             ['0,7:text_percent', '100:ignore'],
-            ['14:text_percent_max', '1:ignore'],
+            ['14:text_percent_max'],
+            [],
+            ['1:ignore'],
         ],
     ),
     old_world_secrets_eng=Template(
         sentences=[
-            ['100:ignore', '0.7:text_percent', '14:text_percent_max', '1:ignore'],
+            ['100:ignore', '0.7:text_percent', '14:text_percent_max'],
+            [],
+            ['1:ignore'],
         ],
     ),
     songs_and_dances_of_death=Template(
-        replace={
-            '<br>': '\n<br>\n',
-        },
         sentences=[
             ['35:text_1_percent'],
             [],

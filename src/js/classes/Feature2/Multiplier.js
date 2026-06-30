@@ -259,11 +259,11 @@ export class FeatureMultiplier {
      */
     getTreeBonusMultiplier(data) {
         let value = this.getScalingMultiplier(data);
-        if (value == 1) return;
-
         if (typeof value == "function") {
             value = value(data);
         }
+
+        if (value == 1) return;
 
         if (isNaN(value)) {
             return new CSumPlusOne([makeStatItem(value, data.stats)], {

@@ -29,20 +29,14 @@ char_dehya = TemplateList(
     unstinting_succor=Template(
         sentences=[
             ['ignore', 'ignore'],
-            ['ignore', 'ignore'],
+            ['ignore'],
+            [],
+            ['ignore'],
             [],
             ['ignore'],
         ],
     ),
-    stalwart_and_true_rus=Template(
-        sentences=[
-            ['ignore', None],
-            [None],
-            ['ignore', 'ignore'],
-            ['ignore'],
-        ],
-    ),
-    stalwart_and_true_eng=Template(
+    stalwart_and_true=Template(
         sentences=[
             ['ignore', None, None, 'ignore', 'ignore'],
             ['ignore'],
@@ -50,43 +44,40 @@ char_dehya = TemplateList(
     ),
     the_flame_incandescent_rus=Template(
         sentences=[
+            ['20:hp_percent'],
             [],
-            ['hp_percent'],
             [],
-            [None],
-            [None],
+            ['3.6:skill_base_hp_percent'],
             [],
+            ['6:burst_base_hp_percent'],
         ],
     ),
-    the_flame_incandescent_eng=Template(
+    the_flame_incandescent=Template(
         sentences=[
-            ['hp_percent', 'skill_base_hp_percent', 'burst_base_hp_percent'],
+            ['20:hp_percent'],
+            [],
+            ['3.6:skill_base_hp_percent'],
+            [],
+            ['6:burst_base_hp_percent'],
         ],
     ),
     the_sand_blades_glittering=Template(
         sentences=[
-            ['ignore', 'dmg_skill_dehya'],
-        ],
-    ),
-    an_oath_abiding_rus=Template(
-        sentences=[
-            ['ignore', 'text_percent_heal'],
-            [],
             ['ignore'],
+            [],
+            ['dmg_skill_dehya'],
         ],
     ),
-    an_oath_abiding_eng=Template(
+    an_oath_abiding=Template(
         sentences=[
             ['ignore', 'text_percent_heal'],
             ['ignore'],
         ],
     ),
     the_burning_claws_cleaving_rus=Template(
-        patterns=[
-            (r'<br>', '\\n'),
-        ],
         sentences=[
             ['crit_rate_burst'],
+            [],
             ['crit_dmg_burst', 'ignore'],
             ['ignore'],
             ['ignore'],
@@ -94,22 +85,20 @@ char_dehya = TemplateList(
         ],
         results=[
             [0],
-            [1, 2, 3, 4],
+            [2, 3, 4, 5],
         ],
     ),
     the_burning_claws_cleaving_eng=Template(
-        patterns=[
-            (r'<br>', '\\n'),
-        ],
         sentences=[
             ['crit_rate_burst'],
+            [],
             ['crit_dmg_burst', 'ignore'],
             ['ignore'],
             ['ignore', None],
         ],
         results=[
             [0],
-            [1, 2, 3],
+            [2, 3, 4],
         ],
     ),
 )

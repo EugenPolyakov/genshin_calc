@@ -34,6 +34,8 @@ char_kachina = TemplateList(
     ),
     shards_are_gems_too=Template(
         sentences=[
+            [],
+            [],
             ['3:ignore'],
             ['5:ignore'],
         ],

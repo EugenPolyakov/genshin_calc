@@ -47,6 +47,8 @@ char_amber = TemplateList(
     ),
     bunny_triggered=Template(
         sentences=[
+            [],
+            [],
             ['dmg_skill_amber'],
         ],
     ),

@@ -23,7 +23,6 @@ char_ningguang = TemplateList(
         },
     ),
     backup_plan=Template(
-        names=['заряженная атака'],
         sentences=[
             [],
         ],
@@ -34,13 +33,14 @@ char_ningguang = TemplateList(
         ],
     ),
     piercing_fragments=Template(
-        names=['обычная атака'],
         sentences=[
             [],
         ],
     ),
     shock_effect=Template(
         sentences=[
+            [],
+            [],
             ['ignore'],
         ],
     ),

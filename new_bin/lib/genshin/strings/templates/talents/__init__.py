@@ -66,7 +66,6 @@ from .lynette import char_lynette  # noqa
 from .lyney import char_lyney  # noqa
 from .mavuika import char_mavuika  # noqa
 from .mika import char_mika  # noqa
-from .mizuki import char_mizuki  # noqa
 from .mona import char_mona  # noqa
 from .mualani import char_mualani  # noqa
 from .navia import char_navia  # noqa
@@ -99,6 +98,7 @@ from .traveler_hydro import char_traveler_hydro  # noqa
 from .traveler_pyro import char_traveler_pyro  # noqa
 from .traveler_dendro import char_traveler_dendro  # noqa
 from .varesa import char_varesa  # noqa
+from .varka import char_varka  # noqa
 from .venti import char_venti  # noqa
 from .wanderer import char_wanderer  # noqa
 from .wriothesley import char_wriothesley  # noqa
@@ -139,7 +139,7 @@ templates = Template(
         (r'<color=\#FFD780FF>([^<]*?)<\/color>', 'skill{\\1}'),
         (r'<color=\#\w+>([^<]*?)<\/color>', '\\1'),
         (r"<color style='color:\#\w+;'>([^<]*?)<\/color>", '\\1'),
-        (r'\\n', '<br>'),
+        (r'\\n', '<>'),
         (r'{M#(.*?)}', '\\1'),
         (r'{F#(.*?)}', ''),
         (r'^#', ''),

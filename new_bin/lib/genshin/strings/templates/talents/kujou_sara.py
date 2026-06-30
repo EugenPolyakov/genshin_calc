@@ -32,7 +32,9 @@ char_kujou_sara = TemplateList(
     ),
     decorum_rus=Template(
         sentences=[
-            ['ignore', 'ignore', 'ignore', 'ignore'],
+            ['ignore', 'ignore'],
+            [],
+            ['ignore', 'ignore'],
         ],
     ),
     decorum_eng=Template(
@@ -43,12 +45,16 @@ char_kujou_sara = TemplateList(
     ),
     crows_eye_rus=Template(
         sentences=[
-            ['ignore', 'ignore', 'ignore'],
+            ['ignore'],
+            [],
+            ['ignore', 'ignore'],
         ],
     ),
     crows_eye_eng=Template(
         sentences=[
-            ['ignore', 'ignore'],
+            ['ignore'],
+            [],
+            ['ignore'],
         ],
     ),
     dark_wings=Template(

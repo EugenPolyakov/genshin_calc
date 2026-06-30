@@ -23,14 +23,9 @@ char_klee = TemplateList(
         },
     ),
     sparkborne_magic_rus=Template(
-        replace={
-            '<br>': '\n<br>\n',
-        },
         sentences=[
             [],
             ['2:ignore'],
-            [],
-            [],
             [],
             [],
             [],
@@ -41,18 +36,13 @@ char_klee = TemplateList(
         ],
         results=[
             [0, 1],
-            [5, 6, 7, 8, 9, 10],
+            [3, 4, 5, 6, 7, 8],
         ],
     ),
     sparkborne_magic_eng=Template(
-        replace={
-            '<br>': '\n<br>\n',
-        },
         sentences=[
             [],
             ['2:ignore'],
-            [],
-            [],
             [],
             [],
             [],
@@ -62,20 +52,19 @@ char_klee = TemplateList(
         ],
         results=[
             [0, 1],
-            [5, 6, 7, 8, 9],
+            [3, 4, 5, 6, 7],
         ],
     ),
     pounding_surprise=Template(
         names=['заряженной атаке'],
         sentences=[
-            ['ignore', 'dmg_charged'],
+            ['ignore'],
+            [],
+            ['dmg_charged'],
         ],
     ),
     pounding_surprise_hex_rus=Template(
         names=['заряженной атаке'],
-        replace={
-            '<br>': '\n<br>\n',
-        },
         sentences=[
             ['50:ignore'],
             ['1:ignore'],
@@ -87,19 +76,14 @@ char_klee = TemplateList(
             [],
             [],
             [],
-            [],
-            [],
         ],
         results=[
             [0, 1, 2, 3, 4],
-            [8, 9, 10, 11],
+            [6, 7, 8, 9],
         ],
     ),
     pounding_surprise_hex_eng=Template(
         names=['заряженной атаке'],
-        replace={
-            '<br>': '\n<br>\n',
-        },
         sentences=[
             ['50:ignore'],
             ['1:ignore'],
@@ -110,13 +94,11 @@ char_klee = TemplateList(
             [],
             [],
             [],
-            [],
-            [],
             ['1:ignore'],
         ],
         results=[
             [0, 1, 2, 3, 4],
-            [8, 9, 10, 11],
+            [6, 7, 8, 9],
         ],
     ),
     sparkling_burst=Template(
@@ -131,7 +113,9 @@ char_klee = TemplateList(
     ),
     chained_reactions_hex=Template(
         sentences=[
-            ['120:text_percent_dmg', '12:ignore', '60:atk_percent'],
+            ['120:text_percent_dmg'],
+            [],
+            ['12:ignore', '60:atk_percent'],
         ],
     ),
     explosive_frags=Template(
@@ -151,19 +135,16 @@ char_klee = TemplateList(
     ),
     blazing_delight=Template(
         sentences=[
-            ['ignore', 'ignore', 'dmg_pyro', 'ignore'],
+            ['ignore', 'ignore'],
+            [],
+            ['dmg_pyro', 'ignore'],
         ],
     ),
     blazing_delight_hex=Template(
-        replace={
-            '<br>': '\n<br>\n',
-        },
         sentences=[
             ['3:ignore', '3:ignore'],
             [],
             ['25:ignore', '10:', '50:dmg_pyro'],
-            [],
-            [],
             [],
             [],
             [],
@@ -172,7 +153,7 @@ char_klee = TemplateList(
         ],
         results=[
             [0, 1, 2],
-            [6, 7, 8, 9],
+            [4, 5, 6, 7],
         ],
     ),
 )

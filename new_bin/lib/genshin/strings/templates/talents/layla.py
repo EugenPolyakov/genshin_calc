@@ -28,34 +28,40 @@ char_layla = TemplateList(
     ),
     like_nascent_light_rus=Template(
         sentences=[
-            ['shield', 'ignore'],
+            [],
+            [],
+            ['shield'],
+            [],
+            ['ignore'],
         ],
     ),
     like_nascent_light_eng=Template(
         sentences=[
-            ['ignore', 'shield', 'ignore'],
-        ],
-    ),
-    sweet_slumber_undisturbed_rus=Template(
-        sentences=[
-            ['text_percent'],
+            ['ignore'],
             [],
+            ['shield'],
+            [],
+            ['ignore'],
         ],
     ),
-    sweet_slumber_undisturbed_eng=Template(
+    sweet_slumber_undisturbed=Template(
         sentences=[
             ['text_percent'],
         ],
     ),
     fortress_of_fantasy_rus=Template(
         sentences=[
-            ['text_percent_bonus', 'ignore', 'text_percent_shield'],
+            ['text_percent_bonus'],
+            [],
+            ['ignore', 'text_percent_shield'],
             ['ignore'],
         ],
     ),
     fortress_of_fantasy_eng=Template(
         sentences=[
             ['text_percent_bonus'],
+            [],
+            [],
             ['text_percent_shield', 'ignore', 'ignore'],
         ],
     ),
@@ -65,25 +71,25 @@ char_layla = TemplateList(
             [],
         ],
     ),
-    starry_illumination_rus=Template(
+    starry_illumination=Template(
         sentences=[
             ['text_percent_dmg'],
+            [],
             ['ignore', 'ignore'],
-        ],
-    ),
-    starry_illumination_eng=Template(
-        sentences=[
-            ['text_percent_dmg', 'ignore', 'ignore'],
         ],
     ),
     radiant_soulfire_rus=Template(
         sentences=[
-            ['dmg_skill_layla', 'ignore'],
+            ['dmg_skill_layla'],
+            [],
+            ['ignore'],
         ],
     ),
     radiant_soulfire_eng=Template(
         sentences=[
-            ['dmg_skill_layla', 'dmg_burst_layla', 'ignore'],
+            ['dmg_skill_layla', 'dmg_burst_layla'],
+            [],
+            ['ignore'],
         ],
     ),
 )

@@ -27,9 +27,7 @@ char_raiden_shogun = TemplateList(
     ),
     baleful_omen=Template(
         replace={
-            '</p><p>': '\n</p><p>\n',
             '· ': '· \n',
-            '<br>': '\n<br>',
         },
         sentences=[
             [],
@@ -40,24 +38,25 @@ char_raiden_shogun = TemplateList(
             [],
             [],
             [],
+            [],
+            [],
             ['0.9:ignore'],
+            [],
             ['20:ignore'],
             [],
             [],
             [],
         ],
         results=[
-            list(range(0, 13)),
-            [6],
+            list(range(0, 16)),
+            [8],
             [2],
         ],
         extracted_names=[2],
     ),
     baleful_omen_eng=Template(
         replace={
-            '</p><p>': '\n</p><p>\n',
             '·': '·\n',
-            '<br>': '\n<br>',
         },
         sentences=[
             [],
@@ -68,23 +67,22 @@ char_raiden_shogun = TemplateList(
             [],
             [],
             [],
+            [],
+            [],
             ['0.9:ignore'],
+            [],
             ['20:ignore'],
             [],
             [],
         ],
         results=[
-            list(range(0, 12)),
-            [6],
+            list(range(0, 15)),
+            [8],
             [2],
         ],
         extracted_names=[2],
     ),
     musou_shinsetsu_rus=Template(
-        replace={
-            '</p><p>': '\n</p><p>\n',
-            '<br>': '\n<br>\n',
-        },
         sentences=[
             [],
             [],
@@ -121,10 +119,6 @@ char_raiden_shogun = TemplateList(
         extracted_names=[2],
     ),
     musou_shinsetsu_eng=Template(
-        replace={
-            '</p><p>': '\n</p><p>\n',
-            '<br>': '\n<br>\n',
-        },
         sentences=[
             [],
             [],
@@ -155,7 +149,7 @@ char_raiden_shogun = TemplateList(
         ],
         results=[
             list(range(0, 26)),
-            [5, 6, 7, 8, 9, 10],
+            [5, 6, 7, 8, 9],
             [3],
             [1],
         ],
@@ -163,12 +157,18 @@ char_raiden_shogun = TemplateList(
     ),
     wishes_unnumbered=Template(
         sentences=[
-            ['ignore', 'ignore'],
+            ['ignore'],
+            [],
+            ['ignore'],
           ],
     ),
     enlightened_one=Template(
         sentences=[
-            ['ignore', 'ignore', None, None],
+            ['ignore', 'ignore'],
+            [],
+            [None],
+            [],
+            [None],
         ],
     ),
     ominous_inscription=Template(
@@ -190,7 +190,9 @@ char_raiden_shogun = TemplateList(
     ),
     wishbearer=Template(
         sentences=[
-            ['ignore', 'ignore', 'ignore'],
+            ['ignore'],
+            [],
+            ['ignore', 'ignore'],
         ],
     ),
 )

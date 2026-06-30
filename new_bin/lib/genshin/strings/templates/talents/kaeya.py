@@ -29,6 +29,8 @@ char_kaeya = TemplateList(
     ),
     glacial_heart=Template(
         sentences=[
+            [],
+            [],
             ['ignore'],
         ],
     ),
@@ -50,14 +52,25 @@ char_kaeya = TemplateList(
     ),
     frozen_kiss_rus=Template(
         sentences=[
-            ['ignore', 'ignore', 'text_percent'],
-            ['ignore', 'ignore'],
+            ['ignore'],
+            [],
+            ['ignore', 'text_percent'],
+            [],
+            ['ignore'],
+            [],
+            ['ignore'],
         ],
     ),
     frozen_kiss_eng=Template(
         sentences=[
-            ['ignore', 'text_percent'],
-            ['ignore', 'ignore', 'ignore'],
+            ['ignore'],
+            [],
+            ['text_percent'],
+            ['ignore'],
+            [],
+            ['ignore'],
+            [],
+            ['ignore'],
         ],
     ),
     glacial_whirlwind_rus=Template(

@@ -13,7 +13,9 @@
   <ItemGroup>
     <None Remove="dist\**" />
     <None Remove="dist_old\**" />
+    <None Remove="new_bin\lib\genshin\strings\templates\talents\__pycache__\**" />
     <TypeScriptConfiguration Remove="dist\**" />
     <TypeScriptConfiguration Remove="dist_old\**" />
+    <TypeScriptConfiguration Remove="new_bin\lib\genshin\strings\templates\talents\__pycache__\**" />
   </ItemGroup>
 </Project>

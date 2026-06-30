@@ -25,13 +25,7 @@ char_xingqiu = TemplateList(
             'burst': ['Guhua Sword: Raincutter'],
         },
     ),
-    hydropathic_rus=Template(
-        sentences=[
-            [None],
-            [],
-        ],
-    ),
-    hydropathic_eng=Template(
+    hydropathic=Template(
         sentences=[
             [None],
         ],
@@ -48,16 +42,16 @@ char_xingqiu = TemplateList(
     ),
     rainbow_upon_the_azure_sky=Template(
         patterns=[
-            ('на 3 сек;<br>', 'на 3 сек.\n'),
-            ('by 3s.<br>', 'by 3s.\n'),
+            ('на 3 сек;<>', 'на 3 сек.<>'),
         ],
         sentences=[
             ['ignore'],
+            [],
             ['enemy_res_hydro', 'ignore'],
         ],
         results=[
             [0],
-            [1],
+            [2],
         ],
     ),
     evilsoother=Template(

@@ -21,36 +21,33 @@ char_durin = TemplateList(
         },
     ),
     convergence_and_division_rus=Template(
-        replace={
-            '<br>': '\n<br>\n',
-            '</p><p>': '</p><p>\n',
-        },
         sentences=[
             [],
             [],
             [],
             [],
+            [],
             ['30:ignore'],
             [],
             [],
+            [],
             ['30:ignore'],
+            [],
             [],
             ['6:ignore'],
             [],
             [],
+            [],
         ],
         results=[
-            list(range(0, 12)),
-            [5],
+            list(range(0, 16)),
+            [7],
         ],
         extracted_names=[1],
     ),
     convergence_and_division_eng=Template(
-        replace={
-            '<br>': '\n<br>\n',
-            '</p><p>': '</p><p>\n',
-        },
         sentences=[
+            [],
             [],
             [],
             [],
@@ -58,28 +55,25 @@ char_durin = TemplateList(
             ['1:ignore', '30:ignore'],
             [],
             [],
+            [],
             ['3:ignore', '30:ignore'],
+            [],
             [],
             ['6:ignore'],
             [],
             [],
+            [],
         ],
         results=[
-            list(range(0, 12)),
-            [2],
-            [5],
+            list(range(0, 16)),
+            [7],
         ],
-        extracted_names=[1, 2],
+        extracted_names=[1],
     ),
     ode_to_ascension=Template(
-        replace={
-            '<br>': '\n<br>\n'
-        },
         sentences=[
             [],
             ['2:ignore'],
-            [],
-            [],
             [],
             [],
             [],
@@ -87,41 +81,29 @@ char_durin = TemplateList(
         ],
         results=[
             [0, 1],
-            [5, 6, 7],
+            [3, 4, 5],
         ],
     ),
     light_manifest_of_the_divine_calculus_rus=Template(
-        replace={
-            '<br>': '\n<br>\n'
-        },
         sentences=[
             [],
             [],
             [],
             [],
             [],
-            [],
-            [],
             ['20:enemy_res_pyro', '6:ignore'],
-            [],
-            [],
             [],
             [],
             [],
             ['40:dmg_reaction_vaporize'],
         ],
         results=[
-            [5, 6, 7],
-            [11, 12, 13],
+            [3, 4, 5],
+            [7, 8, 9],
         ],
     ),
     light_manifest_of_the_divine_calculus_eng=Template(
-        replace={
-            '<br>': '\n<br>\n'
-        },
         sentences=[
-            [],
-            [],
             [],
             [],
             [],
@@ -131,22 +113,14 @@ char_durin = TemplateList(
             [],
             [],
             [],
-            [],
-            [],
             ['40:dmg_reaction_vaporize', '40:dmg_reaction_melt'],
         ],
         results=[
-            [5],
-            [7],
-            [11],
-            [13],
+            [3, 4, 5],
+            [7, 8, 9],
         ],
-        extracted_names=[0, 2],
     ),
     adamahs_redemption=Template(
-        replace={
-            '<br>': '\n<br>\n'
-        },
         sentences=[
             [],
             [],
@@ -158,11 +132,9 @@ char_durin = TemplateList(
             ['2:ignore', '150:'],
             [],
             [],
-            [],
-            [],
         ],
         results=[
-            list(range(0, 12)),
+            list(range(0, 10)),
             list(range(0, 5)),
         ],
     ),
@@ -179,20 +151,22 @@ char_durin = TemplateList(
     ),
     dual_birth=Template(
         replace={
-            '<br>': '\n<br>',
             '· ': '· \n',
         },
         sentences=[
             ['30:enemy_def_ignore_burst'],
             [],
             [],
+            [],
+            [],
             ['30:', '6:ignore'],
+            [],
             [],
             ['40:'],
         ],
         results=[
-            list(range(0, 6)),
-            [3],
+            list(range(0, 9)),
+            [5],
         ],
     ),
 )

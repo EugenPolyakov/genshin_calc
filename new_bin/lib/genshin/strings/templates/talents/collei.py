@@ -30,17 +30,23 @@ char_collei = TemplateList(
             ['text_percent'],
             ['ignore'],
             [],
+            [],
+            [],
         ],
     ),
     floral_sidewinder_eng=Template(
         sentences=[
             ['text_percent', 'ignore'],
             [],
+            [],
+            [],
         ],
     ),
     the_languid_wood=Template(
         sentences=[
-            ['ignore', 'ignore'],
+            ['ignore'],
+            [],
+            ['ignore'],
         ],
     ),
     deepwood_patrol=Template(
@@ -48,16 +54,17 @@ char_collei = TemplateList(
             ['recharge'],
         ],
     ),
-    through_hill_and_copse_rus=Template(
+    through_hill_and_copse=Template(
         sentences=[
-            ['text_percent', 'ignore', 'ignore'],
             [],
             [],
-        ],
-    ),
-    through_hill_and_copse_eng=Template(
-        sentences=[
-            ['text_percent', 'ignore', 'ignore'],
+            ['text_percent', 'ignore'],
+            [],
+            ['ignore'],
+            [],
+            [],
+            [],
+            [],
             [],
             [],
         ],
@@ -70,6 +77,8 @@ char_collei = TemplateList(
     forest_of_falling_arrows=Template(
         sentences=[
             ['text_percent_dmg'],
+            [],
+            [],
         ],
     ),
 )

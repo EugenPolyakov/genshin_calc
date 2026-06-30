@@ -26,19 +26,17 @@ char_varesa = TemplateList(
         },
     ),
     tag_team_triple_jump=Template(
-        patterns=[
-            ('. Если', '.\\nЕсли'),
-            ('. If', '.\\nIf'),
-            ('<br><br>', '\\n'),
-        ],
         sentences=[
-            ['5:ignore', '50:text_percent'],
+            ['5:ignore'],
+            [],
+            ['50:text_percent'],
             ['180:text_percent'],
+            [],
             [],
         ],
         results=[
-            [0, 2],
-            [1],
+            [0, 1, 2, 4, 5],
+            [3],
         ],
     ),
     the_hero_twice_returned=Template(
@@ -49,55 +47,62 @@ char_varesa = TemplateList(
         ],
     ),
     undying_passion=Template(
-        patterns=[
-            ('<br><br>', '\\n<br>'),
-        ],
         sentences=[
-            ['5:ignore', '180:text_percent'],
+            [],
+            [],
+            ['5:ignore'],
+            [],
+            ['180:text_percent'],
+            [],
             [],
             ['30:ignore'],
         ],
     ),
     beyond_the_edge_of_light=Template(
         sentences=[
+            [],
+            [],
+            [],
+            [],
             ['11.5:ignore'],
         ],
     ),
     the_courage_to_press_on_rus=Template(
-        patterns=[
-            ('20 000', '20000'),
-            ('<br>', '\\n<br>'),
+        sentences=[
+            [],
+            [],
+            [],
+            ['15:ignore', '500:text_percent', '20000:text_value_max'],
+            [],
+            [],
+            ['100:dmg_burst_varesa'],
         ],
+        results=[
+            [0, 1, 2, 3, 4],
+            [0, 1, 5, 6],
+        ],
+    ),
+    the_courage_to_press_on_eng=Template(
         sentences=[
             [],
             [],
             ['15:ignore', '500:text_percent', '20000:text_value_max'],
+            [],
             [],
             ['100:dmg_burst_varesa'],
         ],
         results=[
             [0, 1, 2, 3],
-            [0, 1, 4],
-        ],
-    ),
-    the_courage_to_press_on_eng=Template(
-        patterns=[
-            ('<br>', '\\n<br>'),
-        ],
-        sentences=[
-            [],
-            ['15:ignore', '500:text_percent', '20000:text_value_max'],
-            [],
-            ['100:dmg_burst_varesa'],
-        ],
-        results=[
-            [0, 1, 2],
-            [0, 3],
+            [0, 4, 5],
         ],
     ),
     a_hero_of_justices_triumph=Template(
         sentences=[
-            ['30:ignore', '10:crit_rate_plunge', '100:crit_dmg_plunge'],
+            ['30:ignore'],
+            [],
+            ['10:crit_rate_plunge', '100:crit_dmg_plunge'],
+            [],
+            [],
         ],
     ),
 )

@@ -178,6 +178,18 @@ stat;crit_rate_burst_arlecchino;Восхождение роковой луны;B
 stat;crit_dmg_normal_arlecchino;Приглашение на казнь;Invitation to a Beheading
 stat;crit_dmg_burst_arlecchino;Восхождение роковой луны;Balemoon Rising
 
+stat;crit_rate_burning;Горение;Burning
+stat;crit_rate_bloom;Бутонизация;Bloom
+stat;crit_rate_lunar;Лунные реакции;Lunar Reactions
+stat;crit_rate_lunarcharged;Лунный заряд;Lunar-Charged
+stat;crit_rate_lunarbloom;Лунная бутонизация;Lunar-Bloom
+stat;crit_rate_lunarcrystallize;Лунный кристалл;Lunar-Crystallize
+
+stat;crit_dmg_lunar;Лунные реакции;Lunar Reactions
+stat;crit_dmg_lunarcharged;Лунный заряд;Lunar-Charged
+stat;crit_dmg_lunarbloom;Лунная бутонизация;Lunar-Bloom
+stat;crit_dmg_lunarcrystallize;Лунный кристалл;Lunar-Crystallize
+
 stat;dmg_normal_elemental;Элементальный урон;Elemental DMG
 stat;enemy_def_reduce;Снижение защиты противника;Enemy DEF reduce
 stat;enemy_def_ignore;Игнорирование защиты;Enemy DEF ignore

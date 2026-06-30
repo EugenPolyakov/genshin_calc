@@ -82,7 +82,13 @@ class TemplateString:
         self.source = source
         self.sentences = []
 
-        text = re.sub(r'\. (([a-zа-я]*\{)*[A-ZА-Я])', ".\n\\1", source)
+        text = source
+        rx = re.compile(r'((^[^\{]*?|}[^\{]*?|{[^\{]*?})+)\. (([a-zа-я]*\{)*[A-ZА-Я])')
+        while True:
+            (text, cnt) = rx.subn("\\1.\n\\3", text)
+            if cnt == 0:
+                break
+        text = re.sub(r'((<>)+)', "\n\\1\n", text)
         for item in re.split(r'\n', text):
             self.sentences.append(TemplateSentence(item))
 
@@ -108,13 +114,20 @@ class TemplateString:
                 r = ''
                 for index in indices:
                     v= index if isinstance(index, str) else result[index]
-                    if r == '' or r[-1] in '>{} ' or (v and v[0] in ' ,;:.<{}'):
+                    if r == '' or r[-1] in '>{} \\' or not v or v[0] in ' ,;:.<{}\\':
                         r+=v
                     else:
                         r+= ' ' + v
                 res_list.append(r)
             return res_list
-        return ' '.join(result)
+
+        r = ''
+        for v in result:
+            if r == '' or r[-1] in '>{} \\' or not v or v[0] in ' ,;:.<{}\\':
+                r+=v
+            else:
+                r+= ' ' + v
+        return r
 
     def dump(self):
         logger.error(self.source)

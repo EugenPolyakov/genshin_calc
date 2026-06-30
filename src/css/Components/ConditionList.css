@@ -51,6 +51,10 @@
     color: #BEAEA9;
 }
 
+.condition-list-item .description p {
+    margin: 0 0 10px 0;
+}
+
 .condition-list-item .description.with-icon {
     min-height: 45px;
 }

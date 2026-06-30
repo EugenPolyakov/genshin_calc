@@ -43,7 +43,9 @@ char_sucrose = TemplateList(
     ),
     alchemania=Template(
         sentences=[
-            ['ignore', 'ignore', 'ignore', 'ignore', 'ignore'],
+            ['ignore', 'ignore', 'ignore', 'ignore'],
+            [],
+            ['ignore'],
         ],
     ),
     chaotic_entropy=Template(
@@ -59,13 +61,10 @@ char_sucrose = TemplateList(
     sevenfold_transmutation_rus=Template(
         replace={
             '· ': '· \n',
-            '<br>': '\n<br>\n',
         },
         sentences=[
             [],
             ['2:ignore'],
-            [],
-            [],
             [],
             [],
             [],
@@ -77,20 +76,17 @@ char_sucrose = TemplateList(
         ],
         results=[
             [0, 1],
-            [5, 6, 8],
-            [5, 6, 11]
+            [3, 4, 6],
+            [3, 4, 9],
         ],
     ),
     sevenfold_transmutation_eng=Template(
         replace={
             '· ': '· \n',
-            '<br>': '\n<br>\n',
         },
         sentences=[
             [],
             ['2:ignore'],
-            [],
-            [],
             [],
             [],
             [],
@@ -102,8 +98,8 @@ char_sucrose = TemplateList(
         ],
         results=[
             [0, 1],
-            [5, 6, 8],
-            [5, 6, 11]
+            [3, 4, 6],
+            [3, 4, 9],
         ],
     ),
 )

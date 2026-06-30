@@ -37,17 +37,25 @@ char_gorou = TemplateList(
     ),
     a_favor_repaid=Template(
         sentences=[
-            ['text_percent_1', 'text_percent_2'],
+            [],
+            [],
+            ['text_percent_1'],
+            [],
+            ['text_percent_2'],
         ],
     ),
     swift_as_the_wind=Template(
         sentences=[
-            ['ignore', 'ignore'],
+            ['ignore'],
+            [],
+            ['ignore'],
         ],
     ),
     steady_as_a_clock=Template(
         sentences=[
-            ['ignore', 'ignore'],
+            ['ignore'],
+            [],
+            ['ignore'],
             ['ignore'],
         ],
     ),
@@ -63,13 +71,29 @@ char_gorou = TemplateList(
     ),
     mountainous_fealty=Template(
         sentences=[
-            ['ignore', None, None, None],
+            ['ignore'],
+            [],
+            [None],
+            [],
+            [None],
+            [],
+            [None],
+            [],
+            [],
         ],
     ),
     mountainous_fealty_rus=Template(
         sentences=[
             ['ignore'],
-            [None, None, None],
+            [],
+            [],
+            [None],
+            [],
+            [None],
+            [],
+            [None],
+            [],
+            [],
         ],
     ),
 )

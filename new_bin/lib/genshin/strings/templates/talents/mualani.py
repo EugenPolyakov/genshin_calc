@@ -29,10 +29,6 @@ char_mualani = TemplateList(
         },
     ),
     surfshark_wavebreaker_rus=Template(
-        replace={
-            '<br>': '\n<br>\n',
-            '</p><p>': '\n</p><p>',
-        },
         sentences=[
             [],
             [],
@@ -57,6 +53,7 @@ char_mualani = TemplateList(
             [],
             [],
             [],
+            [],
             ['3:ignore'],
             [],
             ['5:ignore'],
@@ -65,22 +62,20 @@ char_mualani = TemplateList(
             ['72:', '3:ignore'],
             [],
             [],
+            [],
         ],
         results=[
-            list(range(0, 31)),
-            [22, 23],
-            [25, 26, 27, 28],
+            list(range(0, 33)),
+            [23, 24],
+            [26, 27, 28, 29],
         ],
     ),
     surfshark_wavebreaker_eng=Template(
-        replace={
-            '<br>': '\n<br>\n',
-            '</p><p>': '\n</p><p>',
-        },
         sentences=[
             [],
             [],
             ['60:ignore'],
+            [],
             [],
             [],
             [],
@@ -99,17 +94,19 @@ char_mualani = TemplateList(
             [],
             [],
             [],
+            [],
             ['3:ignore'],
             [],
             ['5:ignore'],
             ['1:ignore', '72:', '3:ignore'],
             [],
             [],
+            [],
         ],
         results=[
-            list(range(0, 27)),
-            [20, 21],
-            [23, 24],
+            list(range(0, 30)),
+            [22, 23],
+            [25, 26],
         ],
     ),
     heat_resistant_freshwater_puffer_rus=Template(
@@ -125,50 +122,45 @@ char_mualani = TemplateList(
             ['2:ignore'],
         ],
     ),
-    natlans_greatest_guide_rus=Template(
-        sentences=[
-            ['1:ignore', '20:ignore'],
-            ['3:ignore'],
-            ['15:text_percent_1', '30:text_percent_2', '45:text_percent_3'],
-            [],
-        ],
-    ),
-    natlans_greatest_guide_eng=Template(
+    natlans_greatest_guide=Template(
         sentences=[
             ['1:ignore', '20:ignore'],
             ['3:ignore'],
             ['15:text_percent_1', '30:text_percent_2', '45:text_percent_3'],
         ],
     ),
-    the_leisurely_meztli_rus=Template(
+    the_leisurely_meztli=Template(
         sentences=[
             ['66:text_percent_dmg'],
             [],
-            ['30:ignore'],
-        ],
-    ),
-    the_leisurely_meztli_eng=Template(
-        sentences=[
-            ['66:text_percent_dmg'],
+            [],
             ['30:ignore'],
         ],
     ),
     mualani_going_all_out_rus=Template(
         sentences=[
             ['2:ignore'],
-            ['1:ignore', '12:ignore', '2:ignore', '2:ignore'],
+            ['1:ignore'],
+            [],
+            ['12:ignore', '2:ignore', '2:ignore'],
+            [],
+            [],
         ],
     ),
     mualani_going_all_out_eng=Template(
         sentences=[
             ['2:ignore'],
-            ['1:ignore', '2:ignore', '12:ignore', '2:ignore'],
+            ['1:ignore'],
+            [],
+            ['2:ignore', '12:ignore', '2:ignore'],
             [],
         ],
     ),
     sharky_eats_puffies=Template(
         sentences=[
             ['8:ignore'],
+            [],
+            [],
             ['75:dmg_burst_mualani'],
         ],
     ),

@@ -30,7 +30,7 @@ char_baizhu = TemplateList(
     ),
     five_fortunes_forever=Template(
         patterns=[
-            (r'<br>·', '\\n'),
+            (r'<>·', '\\n'),
         ],
         sentences=[
             [],
@@ -44,8 +44,7 @@ char_baizhu = TemplateList(
     ),
     all_things_are_of_the_earth_rus=Template(
         sentences=[
-            ['ignore'],
-            ['ignore', 'ignore', None, None, None],
+            ['ignore', 'ignore', 'ignore', None, None, None],
         ],
     ),
     all_things_are_of_the_earth_eng=Template(
@@ -61,13 +60,25 @@ char_baizhu = TemplateList(
     ),
     incisive_discernment_rus=Template(
         sentences=[
+            [],
+            [],
             ['ignore'],
-            ['ignore', None, 'ignore'],
+            ['ignore', None],
+            [],
+            [],
+            [],
+            ['ignore'],
         ],
     ),
     incisive_discernment_eng=Template(
         sentences=[
-            ['ignore', 'ignore', None, 'ignore'],
+            [],
+            [],
+            ['ignore', 'ignore', None],
+            [],
+            [],
+            [],
+            ['ignore'],
         ],
     ),
     ancient_art_of_perception=Template(
@@ -75,16 +86,11 @@ char_baizhu = TemplateList(
             ['ignore', 'mastery'],
         ],
     ),
-    elimination_of_malicious_qi_rus=Template(
+    elimination_of_malicious_qi=Template(
         sentences=[
             ['text_percent'],
-            ['ignore'],
             [],
-        ],
-    ),
-    elimination_of_malicious_qi_eng=Template(
-        sentences=[
-            ['text_percent', 'ignore'],
+            ['ignore'],
             [],
         ],
     ),

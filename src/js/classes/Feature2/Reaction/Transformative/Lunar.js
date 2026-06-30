@@ -23,7 +23,9 @@ export class FeatureReactionLunar extends FeatureReactionTransformative {
      * @returns {Array.<string>}
      */
     getStatsCritRate(data) {
-        return this.getDefaultStatsCritRate(data);
+        let result = this.getDefaultStatsCritRate(data);
+        result.push('crit_rate_lunar');
+        return result;
     }
 
     /**
@@ -31,7 +33,9 @@ export class FeatureReactionLunar extends FeatureReactionTransformative {
      * @returns {Array.<string>}
      */
     getStatsCritDamage(data) {
-        return this.getDefaultStatsCritDamage(data);
+        let result = this.getDefaultStatsCritDamage(data);
+        result.push('crit_dmg_lunar');
+        return result;
     }
 
     /**

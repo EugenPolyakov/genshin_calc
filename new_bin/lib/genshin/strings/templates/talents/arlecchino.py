@@ -30,14 +30,25 @@ char_arlecchino = TemplateList(
     ),
     agony_alone_may_be_repaid_rus=Template(
         sentences=[
+            [],
+            [],
             ['130:text_percent'],
+            [],
             ['5:ignore', '130:text_percent'],
+            [],
+            [],
         ],
     ),
     agony_alone_may_be_repaid_eng=Template(
         sentences=[
-            ['130:text_percent', '5:ignore'],
+            [],
+            [],
             ['130:text_percent'],
+            [],
+            ['5:ignore'],
+            ['130:text_percent'],
+            [],
+            [],
         ],
     ),
     strength_alone_can_defend_rus=Template(
@@ -61,14 +72,22 @@ char_arlecchino = TemplateList(
     ),
     all_rewards_and_retribution_mine_to_bestow_rus=Template(
         sentences=[
+            [],
+            [],
             ['900:text_percent_dmg', '15:ignore', '20:text_percent'],
             ['10:ignore'],
+            [],
+            [],
         ],
     ),
     all_rewards_and_retribution_mine_to_bestow_eng=Template(
         sentences=[
+            [],
+            [],
             ['900:text_percent_dmg', '20:text_percent', '15:ignore'],
             ['10:ignore'],
+            [],
+            [],
         ],
     ),
     you_shall_love_and_protect_each_other_henceforth=Template(
@@ -78,17 +97,15 @@ char_arlecchino = TemplateList(
         ],
     ),
     from_this_day_on_we_shall_delight_in_new_life_together=Template(
-        patterns=[
-            (r'<br>', '\\n'),
-        ],
         sentences=[
             ['700:text_percent_dmg'],
+            [],
             ['20:ignore', '10:crit_rate_normal_arlecchino', '70:crit_dmg_normal_arlecchino'],
             ['15:ignore'],
         ],
         results=[
             [0],
-            [1, 2],
+            [2, 3],
         ],
     ),
 )

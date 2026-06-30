@@ -1,0 +1,10 @@
+category;name;rus;eng
+feature_skill;varka_sturm_und_drang_2_hit_dmg_anemo;Урон 2-й атаки Бури и натиска (Анемо);Sturm und Drang 2-Hit DMG (Anemo)
+feature_skill;varka_sturm_und_drang_3_hit_dmg_anemo;Урон 3-й атаки Бури и натиска (Анемо);Sturm und Drang 3-Hit DMG (Anemo)
+feature_skill;varka_sturm_und_drang_4_hit_dmg_anemo;Урон 4-й атаки Бури и натиска (Анемо);Sturm und Drang 4-Hit DMG (Anemo)
+feature_skill;varka_sturm_und_drang_5_hit_dmg_anemo;Урон 5-й атаки Бури и натиска (Анемо);Sturm und Drang 5-Hit DMG (Anemo)
+feature_skill;varka_sturm_und_drang_charged_attack_dmg_anemo;Урон заряженной атаки Бури и натиска (Анемо);Sturm und Drang Charged Attack DMG (Anemo)
+feature_skill;varka_four_winds_ascension_dmg_anemo;Урон Восхождения четырёх ветров (Анемо);Four Winds' Ascension DMG (Anemo)
+feature_skill;varka_azure_devour_dmg_anemo;Урон Лазурного поглощения (Анемо);Azure Devour DMG (Anemo)
+feature_skill;varka_azure_devour_dmg_anemo_1;Урон Лазурного поглощения (Анемо) (2 удара);Azure Devour DMG (Anemo) (2 hits)
+feature_skill;varka_azure_devour_dmg_1;Урон Лазурного поглощения (2 удара);Azure Devour DMG (2 hits)

@@ -3,7 +3,6 @@ import { ConditionBoolean } from "../../classes/Condition/Boolean";
 import { ConditionHexCheck } from "../../classes/Condition/HexCheck";
 import { ConditionLevelSelect } from "../../classes/Condition/LevelSelect";
 import { ConditionLevelSelectSingleWeapon } from "../../classes/Condition/LevelSelect/SingleWeapon";
-import { ConditionLevels } from "../../classes/Condition/Levels";
 import { ConditionNot } from "../../classes/Condition/Not";
 import { ConditionPartyWeapon } from "../../classes/Condition/PartyWeapon";
 import { DbObjectBuff } from "../../classes/DbObject/Buff";
@@ -323,6 +322,29 @@ export const Weapons = new DbObjectBuff({
             },
             stats: [
                 new StatTable('dmg_reaction_lunarcharged', [40, 50, 60, 70, 80]),
+            ],
+        }),
+        new ConditionLevelSelectSingleWeapon({
+            name: 'weapon_other.weapon_nightweavers_looking_glass',
+            serializeId: 64,
+            title: 'talent_name.weapon_nightweavers_looking_glass',
+            description: 'talent_descr.weapon_nightweavers_looking_glass_3',
+            icon: {
+                rarity: weaponDataTable.athame_artis.rarity,
+                name: 'sprite-weapon-catalyst weapon-icon-catalyst-nightweavers-looking-glass',
+            },
+            weaponCondition: new ConditionAnd([
+                new ConditionBoolean({ name: 'weapon_nightweavers_looking_glass_1' }),
+                new ConditionBoolean({ name: 'weapon_nightweavers_looking_glass_2' }),
+            ]),
+            stats: [
+                new StatTable('text_percent_1', weaponDataTable.nightweavers_looking_glass.nightweavers_looking_glass.param5, 100),
+                new StatTable('text_percent_2', weaponDataTable.nightweavers_looking_glass.nightweavers_looking_glass.param6, 100),
+                new StatTable('text_percent_3', weaponDataTable.nightweavers_looking_glass.nightweavers_looking_glass.param7, 100),
+                new StatTable('dmg_reaction_rupture', weaponDataTable.nightweavers_looking_glass.nightweavers_looking_glass.param5, 100),
+                new StatTable('dmg_reaction_burgeon', weaponDataTable.nightweavers_looking_glass.nightweavers_looking_glass.param6, 100),
+                new StatTable('dmg_reaction_hyperbloom', weaponDataTable.nightweavers_looking_glass.nightweavers_looking_glass.param6, 100),
+                new StatTable('dmg_reaction_lunarbloom', weaponDataTable.nightweavers_looking_glass.nightweavers_looking_glass.param7, 100),
             ],
         }),
         new ConditionLevelSelect({

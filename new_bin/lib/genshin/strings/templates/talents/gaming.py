@@ -32,7 +32,6 @@ char_gaming = TemplateList(
     dance_of_amity_rus=Template(
         sentences=[
             ['0.2:ignore', '1.5:text_percent_heal'],
-            [],
             ['0.8:ignore'],
         ],
     ),

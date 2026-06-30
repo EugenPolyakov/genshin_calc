@@ -1575,7 +1575,7 @@ forest_sanctuary = Template(
     names=['Семя сознания', 'Семени сознания'],
     sentences=[
         ['10:ignore'],
-        ['60:mastery', '12:ignore'],
+        ['60:mastery|60', '12:ignore'],
         ['20:ignore'],
         [],
         [],
@@ -1586,7 +1586,7 @@ forest_sanctuary_eng = Template(
     names=['Leaf of Consciousness', 'Leaf'],
     sentences=[
         ['10:ignore'],
-        ['60:mastery', '12:ignore'],
+        ['60:mastery|60', '12:ignore'],
         ['1:ignore', '20:ignore'],
         [],
         [],
@@ -2528,7 +2528,7 @@ stillwood_moonshadow = Template(
     names=['Лист оживления'],
     sentences=[
         ['10:ignore'],
-        ['16:atk_percent', '12:ignore'],
+        ['16:atk_percent|16', '12:ignore'],
         ['20:ignore'],
         [],
     ],
@@ -2538,7 +2538,7 @@ stillwood_moonshadow_eng = Template(
     names=['Leaf of Revival', 'Leaf'],
     sentences=[
         ['10:ignore'],
-        ['16:atk_percent', '12:ignore'],
+        ['16:atk_percent|16', '12:ignore'],
         ['1:ignore', '20:ignore'],
         [],
     ],
@@ -2570,7 +2570,7 @@ sunken_song_of_the_sands = Template(
         ['20:ignore', '0.12:text_percent'],
         [],
         ['1:ignore', '0.3:ignore', '3:ignore'],
-        ['3:ignore', '3:ignore', '0.2:text_percent'],
+        ['3:ignore', '3:ignore', '0.2:text_percent|0.2'],
         ['20:ignore'],
     ],
     results=[
@@ -2588,7 +2588,7 @@ sunken_song_of_the_sands_eng = Template(
         ['0.12:text_percent'],
         ['0.3:ignore'],
         ['3:ignore'],
-        ['3:ignore', '0.2:text_percent', '20:ignore'],
+        ['3:ignore', '0.2:text_percent|0.2', '20:ignore'],
     ],
     results=[
         [0],
@@ -3136,3 +3136,151 @@ athame_artis_eng = Template(
         [2, 3, 4],
     ],
 )
+
+lightbearing_moonshard_rus = Template(
+    sentences=[
+        ['20:def_percent'],
+        ['5:ignore', '64:dmg_reaction_lunarcrystallize'],
+    ],
+    results=[
+        [0],
+        [1],
+    ],
+)
+
+lightbearing_moonshard_eng = Template(
+    sentences=[
+        ['20:def_percent'],
+        ['64:dmg_reaction_lunarcrystallize', '5:ignore', ],
+    ],
+    results=[
+        [0],
+        [1],
+    ],
+)
+
+bloodsoaked_ruins_rus = Template(
+    sentences=[
+        ['36:dmg_reaction_lunarcharged', '3,5:ignore'],
+        ['28:crit_dmg', '6:ignore', '12:text_energy'],
+        ['14:ignore'],
+    ],
+    results=[
+        [0],
+        [1, 2],
+    ],
+)
+
+bloodsoaked_ruins_eng = Template(
+    sentences=[
+        ['3,5:ignore', '36:dmg_reaction_lunarcharged'],
+        ['28:crit_dmg', '6:ignore'],
+        ['12:text_energy'],
+        ['14:ignore'],
+    ],
+    results=[
+        [0],
+        [1, 2, 3],
+    ],
+)
+
+reliquary_of_truth = Template(
+    sentences=[
+        ['8:crit_rate'],
+        ['80:mastery', '12:ignore'],
+        ['24:crit_dmg', '4:ignore'],
+        ['50:ignore'],
+    ],
+    results=[
+        [0],
+        [1],
+        [2],
+        [3],
+    ],
+)
+
+the_daybreak_chronicles_rus = Template(
+    sentences=[
+        ['3:ignore', '60:text_dmg_percent'],
+        ['10:text_lose_percent', '0:'],
+        ['10:dmg_normal', '60:text_dmg_percent'],
+        ['0.1:ignore', '20:text_restore_percent2'],
+    ],
+)
+
+the_daybreak_chronicles_eng = Template(
+    sentences=[
+        ['3:ignore', '60:text_dmg_percent'],
+        ['10:text_lose_percent', '0:'],
+        ['10:dmg_normal', '60:text_dmg_percent'],
+        ['0.1:ignore'],
+        ['20:text_restore_percent2'],
+    ],
+)
+
+nightweavers_looking_glass = Template(
+    sentences=[
+        ['60:mastery', '4.5:ignore'],
+        ['60:mastery', '10:ignore'],
+        ['120:text_percent_1|120', '80:text_percent_2|80', '40:text_percent_3|40'],
+        [],
+        [],
+    ],
+    results=[
+        [0],
+        [1],
+        [2, 3, 4],
+    ],
+)
+
+nocturnes_curtain_call_rus = Template(
+    sentences=[
+        [],
+        ['10:hp_percent'],
+        ['14:text_energy', '12:ignore'],
+        ['14:hp_percent', '60:crit_dmg_lunar'],
+        ['18:ignore'],
+    ],
+    results=[
+        [0, 1],
+        [2, 3, 4],
+    ],
+)
+
+nocturnes_curtain_call_eng = Template(
+    sentences=[
+        ['10:hp_percent'],
+        ['14:text_energy', '12:ignore', '14:hp_percent', '60:crit_dmg_lunar'],
+        ['18:ignore'],
+    ],
+    results=[
+        [0],
+        [1, 2],
+    ],
+)
+
+gest_of_the_mighty_wolf_rus = Template(
+    sentences=[
+        ['10:atk_speed_normal'],
+        ['1:ignore', '2:ignore', '2:ignore', '7.5:dmg_all'],
+        ['4:ignore', '4:ignore', '0.01:ignore', '7.5:format{text_number_f=1|{value}}:text_percent'],
+    ],
+    results=[
+        [0],
+        [1, 2],
+    ],
+)
+
+gest_of_the_mighty_wolf_eng = Template(
+    sentences=[
+        ['10:atk_speed_normal'],
+        ['1:ignore', '2:ignore', '2:ignore', '7.5:dmg_all', '4:ignore'],
+        ['4:ignore'],
+        ['0.01:ignore', '7.5:format{text_number_f=1|{value}}:text_percent'],
+    ],
+    results=[
+        [0],
+        [1, 2, 3],
+    ],
+)
+

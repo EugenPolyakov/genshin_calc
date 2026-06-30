@@ -37,37 +37,52 @@ char_citlali = TemplateList(
     itzpapalotls_star_garments=Template(
         sentences=[
             ['90:text_percent_1'],
-            ['1200:text_percent_2', '4:ignore'],
+            ['1200:text_percent_2'],
+            [],
+            ['4:ignore'],
         ],
     ),
     radiant_blades_of_centzon_mimixcoah_rus=Template(
         sentences=[
             ['10:ignore'],
-            ['1:ignore', '200:text_percent', '3:ignore'],
-            ['8:ignore', '45:ignore'],
+            ['1:ignore', '200:text_percent'],
+            [],
+            ['3:ignore'],
+            ['8:ignore'],
+            [],
+            [],
+            [],
+            ['45:ignore'],
         ],
     ),
     radiant_blades_of_centzon_mimixcoah_eng=Template(
         sentences=[
             [],
             ['10:ignore'],
-            ['1:ignore', '200:text_percent', '3:ignore'],
-            ['8:ignore', '45:ignore'],
+            ['1:ignore', '200:text_percent'],
+            [],
+            ['3:ignore'],
+            ['8:ignore'],
+            [],
+            [],
+            [],
+            ['45:ignore'],
         ],
     ),
     heart_devourers_travail=Template(
-        patterns=[
-            ('<br><br>Кроме того', '\\nКроме того'),
-            ('<br><br>Also', '\\nAlso'),
-        ],
         sentences=[
             ['125:text_value_self', '250:text_value_other'],
+            [],
+            [],
+            [],
+            [],
+            [],
             ['20:enemy_res_pyro', '12:ignore'],
             [],
         ],
         results=[
-            [0],
-            [1, 2],
+            [0, 1, 2],
+            [4, 5, 6, 7],
         ],
     ),
     death_defiers_spirit_skull=Template(
@@ -79,32 +94,36 @@ char_citlali = TemplateList(
         ],
     ),
     teoiztacs_secret_pact_rus=Template(
-        patterns=[
-            ('<br>Кроме того', '\\nКроме того'),
-        ],
         sentences=[
             [],
             [],
-            ['1:ignore', '40:ignore'],
+            [],
+            ['1:ignore'],
+            [],
+            ['40:ignore'],
             ['1.5:text_percent_1', '2.5:text_percent_2'],
+            [],
+            [],
         ],
         results=[
             [0],
-            [1, 2, 3],
+            [1, 2, 3, 4, 5, 6, 7, 8],
         ],
     ),
     teoiztacs_secret_pact_eng=Template(
-        patterns=[
-            ('<br>Additionally', '\\nAdditionally'),
-        ],
         sentences=[
             [],
             [],
-            ['1:ignore', '40:ignore', '1.5:text_percent_1', '2.5:text_percent_2'],
+            [],
+            ['1:ignore'],
+            [],
+            ['40:ignore', '1.5:text_percent_1', '2.5:text_percent_2'],
+            [],
+            [],
         ],
         results=[
             [0],
-            [1, 2],
+            [1, 2, 3, 4, 5, 6, 7],
         ],
     ),
 )

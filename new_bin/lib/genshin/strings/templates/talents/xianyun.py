@@ -33,6 +33,8 @@ char_xianyun = TemplateList(
         sentences=[
             ['20:ignore', '1:ignore'],
             ['4:ignore', '4:text_percent_1', '6:text_percent_2', '8:text_percent_3', '10:text_percent_4'],
+            [],
+            [],
         ],
     ),
     galefeather_pursuit_eng=Template(
@@ -40,12 +42,16 @@ char_xianyun = TemplateList(
             ['1:ignore', '20:ignore'],
             ['4:ignore'],
             ['4:text_percent_1', '6:text_percent_2', '8:text_percent_3', '10:text_percent_4'],
+            [],
+            [],
         ],
     ),
     consider_the_adeptus_in_her_realm=Template(
         sentences=[
             ['200:text_percent_atk'],
             ['9000:text_value_max'],
+            [],
+            [],
             ['0.4:ignore'],
         ],
     ),
@@ -55,20 +61,20 @@ char_xianyun = TemplateList(
         ],
     ),
     aloof_from_the_world=Template(
-        patterns=[
-            (r'<br>Кроме того', '\\nКроме того'),
-            (r'18 000', '18000'),
-            (r'<br>Additionally', '\\nAdditionally'),
-        ],
         sentences=[
             ['20:atk_percent', '15:ignore'],
+            [],
             ['400:text_percent_atk'],
             ['18000:text_value_max'],
+            [],
+            [],
             ['0.4:ignore'],
+            [],
+            [],
         ],
         results=[
             [0],
-            [1, 2, 3],
+            [2, 3, 4, 5, 6, 7, 8],
         ],
     ),
     mystery_millet_gourmet=Template(
@@ -79,7 +85,9 @@ char_xianyun = TemplateList(
     ),
     they_call_her_cloud_retainer=Template(
         sentences=[
-            ['1:ignore', '2:ignore', '3:ignore', '15:text_percent_1', '35:text_percent_2', '70:text_percent_3', '16:ignore'],
+            ['1:ignore', '2:ignore', '3:ignore', '15:text_percent_1', '35:text_percent_2', '70:text_percent_3'],
+            [],
+            ['16:ignore'],
             ['8:ignore'],
         ],
     ),

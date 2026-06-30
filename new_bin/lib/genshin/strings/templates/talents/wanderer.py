@@ -26,12 +26,10 @@ char_wanderer = TemplateList(
         },
     ),
     song_of_the_wind_rus=Template(
-        names=['уроном обычной', 'Обычные'],
-        replace={
-            '</p><p>': '</p><p>\n',
-            '<br>': '\n<br>\n',
-        },
         sentences=[
+            [],
+            [],
+            [],
             [],
             [],
             [],
@@ -57,18 +55,17 @@ char_wanderer = TemplateList(
             [],
         ],
         results=[
-            list(range(0, 23)),
-            [4, 5, 6],
-            [2],
+            list(range(0, 26)),
+            [5, 6, 7],
+            [3],
         ],
         extracted_names=[2],
     ),
     song_of_the_wind_eng=Template(
-        replace={
-            '</p><p>': '</p><p>\n',
-            '<br>': '\n<br>\n',
-        },
         sentences=[
+            [],
+            [],
+            [],
             [],
             [],
             [],
@@ -93,50 +90,74 @@ char_wanderer = TemplateList(
             [],
         ],
         results=[
-            list(range(0, 22)),
-            [3, 4],
-            [1],
+            list(range(0, 25)),
+            [4, 5],
+            [2],
         ],
         extracted_names=[2],
     ),
     jade_claimed_flower=Template(
         sentences=[
-            [None, None, None, 'ignore'],
-            ['ignore', 'ignore'],
+            [],
+            [],
+            ['20:'],
+            [],
+            ['30:'],
+            [],
+            ['20:'],
+            [],
+            ['0.8:ignore'],
+            ['0.2:ignore'],
+            [],
+            ['2:ignore'],
         ],
     ),
     gales_of_reverie=Template(
         sentences=[
-            ['ignore', 'ignore', 'text_percent_dmg', 'ignore'],
+            ['ignore', 'ignore', 'text_percent_dmg'],
+            [],
+            ['ignore'],
             ['ignore'],
         ],
     ),
     ostentatious_plumage=Template(
         sentences=[
-            ['atk_speed_normal', 'text_percent_dmg'],
+            ['atk_speed_normal'],
+            [],
+            ['text_percent_dmg'],
             [],
         ],
     ),
     isle_amidst_white_waves=Template(
         sentences=[
-            [None, None],
+            [None],
+            [],
+            [None],
         ],
     ),
     set_adrift_into_spring_rus=Template(
         sentences=[
             ['ignore'],
             ['ignore'],
+            [],
+            [],
         ],
     ),
     set_adrift_into_spring_eng=Template(
         sentences=[
             [],
             ['ignore'],
+            [],
+            [],
         ],
     ),
     the_curtains_melancholic_sway_rus=Template(
         sentences=[
+            [],
+            [],
             ['text_percent_dmg'],
+            [],
+            [],
             ['ignore', 'ignore'],
             ['ignore', 'ignore'],
             ['ignore'],
@@ -144,7 +165,11 @@ char_wanderer = TemplateList(
     ),
     the_curtains_melancholic_sway_eng=Template(
         sentences=[
+            [],
+            [],
             ['text_percent_dmg'],
+            [],
+            [],
             ['ignore', 'ignore'],
             ['ignore'],
             ['ignore'],

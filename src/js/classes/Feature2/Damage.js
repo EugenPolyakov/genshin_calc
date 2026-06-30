@@ -28,6 +28,7 @@ export class FeatureDamage extends Feature2 {
         this.cannotReact = !!params.cannotReact;
         this.damageBonuses = params.damageBonuses || [];
         this.allowInfusion = params.allowInfusion;
+        this.rotationAfterItems = params.rotationAfterItems;
     }
 
     /**
@@ -65,6 +66,16 @@ export class FeatureDamage extends Feature2 {
         return result;
     }
 
+    getRotationAfterItems(item, opts) {
+        if (this.rotationAfterItems)
+            if (typeof this.rotationAfterItems == "function")
+                return this.rotationAfterItems(item, opts);
+            else
+                return this.rotationAfterItems;
+        else
+            return [];
+    }
+
     /**
      * @param {BuildData} data
      * @returns {Array.<string>}
@@ -75,7 +86,7 @@ export class FeatureDamage extends Feature2 {
 
         if (damageType) {
             result.push('crit_rate_'+ damageType);
-            result.push('crit_rate_'+ this.element +'_'+  this.damageType);
+            result.push('crit_rate_'+ this.getElement(data) +'_'+  this.damageType);
         }
 
         if (this.critRateBonuses.length) {
@@ -103,7 +114,7 @@ export class FeatureDamage extends Feature2 {
 
         if (damageType) {
             result.push('crit_dmg_'+ damageType);
-            result.push('crit_dmg_'+ this.element + '_'+ this.damageType);
+            result.push('crit_dmg_'+ this.getElement(data) + '_'+ this.damageType);
         }
 
         if (this.critDamageBonuses.length) {

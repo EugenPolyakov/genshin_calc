@@ -25,21 +25,22 @@ char_zhongli = TemplateList(
     ),
     resonant_waves=Template(
         sentences=[
-            ['shield', 'ignore'],
+            [],
+            [],
+            ['shield'],
+            [],
+            ['ignore'],
         ],
     ),
-    dominance_of_earth_rus=Template(
+    dominance_of_earth=Template(
         sentences=[
             [],
-            ['normal_base_hp_percent|0|2'],
-            ['skill_base_hp_percent'],
-            ['burst_base_hp_percent'],
             [],
-        ],
-    ),
-    dominance_of_earth_eng=Template(
-        sentences=[
-            ['normal_base_hp_percent|0|2', 'skill_base_hp_percent', 'burst_base_hp_percent'],
+            ['1.39:normal_base_hp_percent|0|2'],
+            [],
+            ['1.9:skill_base_hp_percent'],
+            [],
+            ['33:burst_base_hp_percent'],
         ],
     ),
     rock_the_backbone_of_earth_rus=Template(
@@ -62,15 +63,11 @@ char_zhongli = TemplateList(
             ['ignore', 'ignore'],
         ],
     ),
-    chrysos_bounty_of_dominator_rus=Template(
+    chrysos_bounty_of_dominator=Template(
         sentences=[
-            ['text_percent_dmg', 'text_percent_hp'],
+            ['40:text_percent_dmg'],
             [],
-        ],
-    ),
-    chrysos_bounty_of_dominator_eng=Template(
-        sentences=[
-            ['text_percent_dmg', 'text_percent_hp'],
+            ['8:text_percent_hp'],
         ],
     ),
 )

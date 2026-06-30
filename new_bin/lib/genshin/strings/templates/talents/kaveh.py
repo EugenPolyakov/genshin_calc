@@ -25,8 +25,6 @@ char_kaveh = TemplateList(
     ),
     painted_dome_rus=Template(
         replace={
-            '</p><p>': '\n</p><p>\n',
-            '<br>': '\n<br>\n',
             '· ': '· \n',
         },
         keywords=keywords_rus.keywords,
@@ -55,8 +53,6 @@ char_kaveh = TemplateList(
     ),
     painted_dome_eng=Template(
         replace={
-            '</p><p>': '\n</p><p>\n',
-            '<br>': '\n<br>\n',
             '· ': '· \n',
         },
         keywords=keywords_eng.keywords,
@@ -92,6 +88,8 @@ char_kaveh = TemplateList(
         sentences=[
             ['mastery'],
             ['ignore', 'ignore'],
+            [],
+            [],
         ],
     ),
     a_craftsmans_curious_conceptions_eng=Template(
@@ -99,6 +97,8 @@ char_kaveh = TemplateList(
             ['mastery'],
             ['ignore'],
             ['ignore'],
+            [],
+            [],
         ],
     ),
     sublime_salutations=Template(

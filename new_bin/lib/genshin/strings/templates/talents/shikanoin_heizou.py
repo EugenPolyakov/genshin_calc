@@ -50,7 +50,9 @@ char_shikanoin_heizou = TemplateList(
     tome_of_lies=Template(
         sentences=[
             ['ignore'],
-            ['ignore', 'ignore'],
+            ['ignore'],
+            [],
+            ['ignore'],
         ],
     ),
     curious_casefiles=Template(

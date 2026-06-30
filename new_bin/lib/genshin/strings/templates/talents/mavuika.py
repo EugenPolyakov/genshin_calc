@@ -30,7 +30,6 @@ char_mavuika = TemplateList(
     the_named_moment_rus=Template(
         replace={
             'При этом урон ': 'При этом урон\nУрон\n',
-            '</p><p>': '\n</p><p>',
         },
         sentences=[
             [],
@@ -49,18 +48,46 @@ char_mavuika = TemplateList(
             [],
             [],
             [],
+            [],
+            [],
+            [],
+            [],
+            [],
+            [],
+            [],
+            [],
+            [],
+            [],
+            [],
+            [],
+            [],
+            [],
+            [],
+            [],
+            [],
+            [],
         ],
         results=[
-            [0, 1, 2, 3, 4, 5, 6, 8, 9, 10, 11, 12, 13, 14, 15],
-            [7, 8, 9],
+            [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 
+                19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33],
+            [18, 19, 20],
         ],
     ),
     the_named_moment_eng=Template(
-        replace={
-            '</p><p>': '\n</p><p>',
-            'name{Mavuika}': '\nname{Mavuika}',
-        },
         sentences=[
+            [],
+            [],
+            [],
+            [],
+            [],
+            [],
+            [],
+            [],
+            [],
+            [],
+            [],
+            [],
+            [],
             [],
             [],
             [],
@@ -82,16 +109,12 @@ char_mavuika = TemplateList(
             [],
         ],
         results=[
-            list(range(0, 19)),
-            [9, 10],
+            list(range(0, 32)),
+            [17, 18],
         ],
     ),
     hour_of_burning_skies=Template(
         names=['обычной'],
-        replace={
-            '</p><p>': '\n</p><p>\n',
-            '<br>': '\n<br>\n',
-        },
         sentences=[
             [],
             [],
@@ -129,10 +152,6 @@ char_mavuika = TemplateList(
         extracted_names=[2],
     ),
     hour_of_burning_skies_eng=Template(
-        replace={
-            '</p><p>': '\n</p><p>\n',
-            '<br>': '\n<br>\n',
-        },
         sentences=[
             [],
             [],
@@ -188,65 +207,77 @@ char_mavuika = TemplateList(
     ),
     the_night_lords_explication=Template(
         sentences=[
-            ['120:ignore', '25:ignore', '40:atk_percent', '8:ignore'],
+            ['120:ignore', '25:ignore'],
+            [],
+            ['40:atk_percent', '8:ignore'],
         ],
     ),
     the_ashen_price=Template(
         patterns=[
-            (r'<br>\s*·\s*', '\\n'),
+            (r'<>\s*·\s*', '<>'),
         ],
         sentences=[
             ['200:atk_base'],
+            [],
             ['20:text_percent_def'],
+            [],
             ['60:text_percent_dmg1', '90:text_percent_dmg2', '120:text_percent_dmg3'],
         ],
         results=[
             [0],
-            [1],
             [2],
+            [4],
         ],
     ),
     the_leaders_resolve=Template(
         sentences=[
+            [],
+            [],
             ['10:dmg_all'],
+            [],
+            [],
         ],
     ),
     humanitys_name_unfettered_rus=Template(
         patterns=[
-            (r'<br>\s*·\s*', '<br>\\n'),
-            (r'<br><br>Кроме того', '\\nКроме того'),
+            (r'<>\s*·\s*', '<>'),
         ],
         sentences=[
             [],
+            [],
             ['200:text_percent_dmg1'],
+            [],
             ['20:text_percent_def', '3:ignore', '500:text_percent_dmg2'],
+            [],
             [],
             ['5:ignore', '80:ignore'],
             ['15:ignore'],
         ],
         results=[
-            [1],
-            [2, 3],
+            [2],
             [4, 5],
+            [7, 8],
         ],
     ),
     humanitys_name_unfettered_eng=Template(
         patterns=[
-            (r'<br>\s*·\s*', '<br>\\n'),
-            (r'<br><br>Additionally', '\\nAdditionally'),
+            (r'<>\s*·\s*', '<>'),
         ],
         sentences=[
             [],
+            [],
             ['200:text_percent_dmg1'],
+            [],
             ['20:text_percent_def', '500:text_percent_dmg2', '3:ignore'],
+            [],
             [],
             ['5:ignore', '80:ignore'],
             ['15:ignore'],
         ],
         results=[
-            [1],
-            [2, 3],
+            [2],
             [4, 5],
+            [7, 8],
         ],
     ),
 )

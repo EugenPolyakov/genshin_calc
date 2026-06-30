@@ -38,6 +38,7 @@ import { FruitfulHook } from "./Claymore/FruitfulHook";
 import { AThousandBlazingSuns } from "./Claymore/AThousandBlazingSuns";
 import { FlameForgedInsight } from "./Claymore/FlameForgedInsight";
 import { master_key } from "./Claymore/master_key";
+import { gest_of_the_mighty_wolf } from "./Claymore/gest_of_the_mighty_wolf";
 
 export const Claymore = new DbObjectListSerializeStats({
     Bell: Bell, // 71
@@ -79,4 +80,5 @@ export const Claymore = new DbObjectListSerializeStats({
     AThousandBlazingSuns: AThousandBlazingSuns, // 193
     FlameForgedInsight: FlameForgedInsight, // 223 ??
     master_key: master_key, // 225
+    gest_of_the_mighty_wolf: gest_of_the_mighty_wolf, // 241
 });

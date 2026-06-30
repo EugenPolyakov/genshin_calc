@@ -23,31 +23,27 @@ char_yelan = TemplateList(
         },
     ),
     turn_control_rus=Template(
-        patterns=[
-            (r'1/2/3/4', 'format{text_number=1|1}/format{text_number=2|2}/format{text_number=3|3}/format{text_number=4|4}'),
-            (r'6%/12%/18%/30%', 'format{text_number=1|6}/format{text_number=2|12}/format{text_number=3|18}/format{text_number=4|30}%'),
-        ],
         sentences=[
-            ['ignore', 'ignore', 'ignore', 'ignore', 'ignore', 'ignore', 'ignore', 'ignore'],
-            ['ignore', 'ignore', 'ignore', 'ignore', 'ignore', 'ignore', 'ignore', 'ignore'],
+            ['1:format{text_number=1|{value}}:ignore', '2:format{text_number=2|{value}}:ignore', '3:format{text_number=3|{value}}:ignore',
+                '4:format{text_number=4|{value}}:ignore',
+                '6:format{text_number=1|{value}}:ignore', '12:format{text_number=2|{value}}:ignore', '18:format{text_number=3|{value}}:ignore',
+                '30:format{text_number=4|{value}}:ignore'],
         ],
     ),
     turn_control_eng=Template(
-        patterns=[
-            (r'1/2/3/4', 'format{text_number=1|1}/format{text_number=2|2}/format{text_number=3|3}/format{text_number=4|4}'),
-            (r'6%/12%/18%/30%', 'format{text_number=1|6}/format{text_number=2|12}/format{text_number=3|18}/format{text_number=4|30}%'),
-        ],
         sentences=[
-            [
-                'ignore', 'ignore', 'ignore', 'ignore', 'ignore', 'ignore', 'ignore', 'ignore',
-                'ignore', 'ignore', 'ignore', 'ignore', 'ignore', 'ignore', 'ignore', 'ignore',
-            ],
+            ['1:format{text_number=1|{value}}:ignore', '2:format{text_number=2|{value}}:ignore', '3:format{text_number=3|{value}}:ignore',
+                '4:format{text_number=4|{value}}:ignore',
+                '6:format{text_number=1|{value}}:ignore', '12:format{text_number=2|{value}}:ignore', '18:format{text_number=3|{value}}:ignore',
+                '30:format{text_number=4|{value}}:ignore'],
         ],
     ),
     adapt_with_ease_rus=Template(
         sentences=[
             [None, None],
             ['ignore'],
+            [],
+            [],
         ],
     ),
     adapt_with_ease_eng=Template(
@@ -55,6 +51,8 @@ char_yelan = TemplateList(
             [None],
             [None],
             ['ignore'],
+            [],
+            [],
         ],
     ),
     enter_the_plotters=Template(
@@ -62,21 +60,16 @@ char_yelan = TemplateList(
             ['ignore'],
         ],
     ),
-    taking_all_comers_rus=Template(
+    taking_all_comers=Template(
         sentences=[
             ['text_percent'],
+            [],
             ['ignore'],
-        ],
-    ),
-    taking_all_comers_eng=Template(
-        sentences=[
-            ['text_percent', 'ignore'],
         ],
     ),
     bait_and_switch_rus=Template(
         sentences=[
-            ['ignore'],
-            ['hp_percent'],
+            ['ignore', 'hp_percent'],
             ['text_percent_max'],
         ],
     ),
@@ -87,12 +80,13 @@ char_yelan = TemplateList(
         ],
     ),
     winner_takes_all=Template(
-        patterns=[
-            ('<br><br>', '<br>'),
-        ],
         sentences=[
             [],
-            ['text_percent', 'ignore', 'ignore'],
+            [],
+            [],
+            ['text_percent'],
+            [],
+            ['ignore', 'ignore'],
         ],
     ),
 )

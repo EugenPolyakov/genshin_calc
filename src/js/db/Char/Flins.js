@@ -477,6 +477,10 @@ export const Flins = new DbObjectChar({
         new ConditionStatic({
             title: 'talent_name.flins_old_world_secrets',
             description: 'talent_descr.flins_old_world_secrets',
+            stats: {
+                text_percent: charTalentTables.Flins.passsive[2][0] * 100,
+                text_percent_max: charTalentTables.Flins.passsive[2][1] * 100,
+            },
             settings: {
                 allowed_lunarcharged: 1,
             },

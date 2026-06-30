@@ -50,7 +50,9 @@ char_jean = TemplateList(
     ),
     lions_fang_fair_protector_of_mondstadt_rus=Template(
         sentences=[
-            ['dmg_reduction', 'ignore', 'ignore'],
+            ['dmg_reduction'],
+            [],
+            ['ignore', 'ignore'],
         ],
     ),
     lions_fang_fair_protector_of_mondstadt_eng=Template(

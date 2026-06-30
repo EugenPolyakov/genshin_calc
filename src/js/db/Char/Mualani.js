@@ -208,6 +208,25 @@ export const Mualani = new DbObjectChar({
                     values: Talents.get('skill.mualani_shark_base_dmg'),
                 }),
             ],
+            rotationAfterItems: (item, opts) => {
+                if (item.count > 1 || opts.insideBlock) {
+                    return [];
+                }
+
+                return [{
+                    type: 'condition',
+                    object: 'char',
+                    static: true,
+                    getSettings: (settings) => {
+                        if (settings.char_constellation < 6)
+                            return {
+                                'mualani_the_leisurely_meztli': false,
+                            };
+                        else
+                            return {};
+                    },
+                }];
+            },
         }),
         new FeatureDamageNormalMualani({
             name: 'mualani_shark_missile_dmg',

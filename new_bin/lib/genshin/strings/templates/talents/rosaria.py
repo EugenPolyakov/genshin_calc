@@ -29,7 +29,9 @@ char_rosaria = TemplateList(
     ),
     shadow_samaritan=Template(
         sentences=[
-            ['text_percent', 'ignore', 'text_percent'],
+            ['text_percent', 'ignore'],
+            [],
+            ['text_percent'],
         ],
     ),
     unholy_revelation_rus=Template(
@@ -49,12 +51,16 @@ char_rosaria = TemplateList(
     ),
     painful_grace_rus=Template(
         sentences=[
-            ['ignore', 'ignore'],
+            ['ignore'],
+            [],
+            ['ignore'],
         ],
     ),
     painful_grace_eng=Template(
         sentences=[
             ['ignore'],
+            [],
+            [],
         ],
     ),
     divine_retribution=Template(

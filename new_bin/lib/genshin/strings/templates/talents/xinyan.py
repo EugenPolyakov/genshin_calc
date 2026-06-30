@@ -26,12 +26,20 @@ char_xinyan = TemplateList(
     ),
     the_show_goes_on_even_without_an_audience_rus=Template(
         sentences=[
-            ['ignore', 'ignore'],
+            [],
+            [],
+            ['ignore'],
+            [],
+            ['ignore'],
         ],
     ),
     the_show_goes_on_even_without_an_audience_eng=Template(
         sentences=[
-            ['ignore', 'ignore', 'ignore', 'ignore'],
+            [],
+            [],
+            ['ignore', 'ignore'],
+            [],
+            ['ignore', 'ignore'],
         ],
     ),
     now_thats_rock_n_roll=Template(
@@ -41,7 +49,9 @@ char_xinyan = TemplateList(
     ),
     fatal_acceleration=Template(
         sentences=[
-            ['atk_speed_normal', 'ignore', 'ignore'],
+            ['atk_speed_normal', 'ignore'],
+            [],
+            ['ignore'],
         ],
     ),
     impromptu_opening=Template(

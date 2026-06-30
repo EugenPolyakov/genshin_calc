@@ -4,12 +4,14 @@ from ...template import Template, TemplateList
 char_neuvillette = TemplateList(
     default_rus=Template(
         patterns=[
-            ('name{заряженной атаки}', 'заряженной атаки'),
+            ('name{Заряженная атака}:', 'Заряженная атака:'),
+            ('name{заряженной атаки}:', 'заряженной атаки:'),
+            ('name{заряженную атаку}:', 'заряженную атаку:'),
         ],
         names=[
             'Нёвиллет', 'Нёвиллета',
             'Былой славы драконов', 'Наследник древнего моря', 'Облечение: Судебная оценка',
-            'заряженной атаки: Взвешенный вердикт', 'Капля источника', 'Капли источника', 'Капля',
+            '[зЗ]аряженн(ой|ая|ую) атак[иау]: Взвешенный вердикт', 'Капля источника', 'Капли источника', 'Капля',
         ],
         skills={
             'skill': ['О слёзы, я воздам'],
@@ -18,18 +20,18 @@ char_neuvillette = TemplateList(
     ),
     default_eng=Template(
         patterns=[
-            ('name{Charged Attack}', 'Charged Attack'),
+            ('name{Charged Attack}:', 'Charged Attack:'),
         ],
         names=[
             'Neuvillette',
             'Past Draconic Glories', 'Heir to the Ancient Sea\'s Authority', 'Sourcewater Droplets',
-            'Charged Attack Empowerment: Legal Evaluation',
+            'Empowerment: Legal Evaluation',
             'Charged Attack: Equitable Judgment', 'Legal Evaluation', 'Sourcewater Droplet', 'Droplet',
             'Equitable Judgment',
         ],
         skills={
-            'skill': [],
-            'burst': [],
+            'skill': ["O Tears, I Shall Repay"],
+            'burst': ["O Tides, I Have Returned"],
         },
     ),
     heir_to_the_ancient_seas_authority_rus=Template(
@@ -37,6 +39,8 @@ char_neuvillette = TemplateList(
             ['1:ignore'],
             ['30:ignore', '3:ignore'],
             ['110:text_percent_dmg_1', '125:text_percent_dmg_2', '160:text_percent_dmg_3'],
+            [],
+            [],
         ],
     ),
     heir_to_the_ancient_seas_authority_eng=Template(
@@ -44,16 +48,11 @@ char_neuvillette = TemplateList(
             ['1:ignore', '30:ignore'],
             ['3:ignore',],
             ['110:text_percent_dmg_1', '125:text_percent_dmg_2', '160:text_percent_dmg_3'],
+            [],
+            [],
         ],
     ),
-    discipline_of_the_supreme_arbitration_rus=Template(
-        sentences=[
-            ['1:ignore', '30:ignore'],
-            ['0.6:text_percent_dmg'],
-            ['30:text_percent_dmg_max'],
-         ],
-    ),
-    discipline_of_the_supreme_arbitration_eng=Template(
+    discipline_of_the_supreme_arbitration=Template(
         sentences=[
             ['1:ignore', '30:ignore', '0.6:text_percent_dmg'],
             ['30:text_percent_dmg_max'],
@@ -63,17 +62,23 @@ char_neuvillette = TemplateList(
         sentences=[
             ['1:ignore'],
             [],
+            [],
+            [],
         ],
     ),
     venerable_institution_eng=Template(
         sentences=[
             ['1:ignore'],
+            [],
+            [],
         ],
     ),
     juridical_exhortation=Template(
         sentences=[
             ['14:text_percent'],
             ['42:text_percent_max'],
+            [],
+            [],
         ],
     ),
     crown_of_commiseration=Template(
@@ -82,18 +87,12 @@ char_neuvillette = TemplateList(
             ['4:ignore'],
         ],
     ),
-    wrathful_recompense_rus=Template(
+    wrathful_recompense=Template(
         sentences=[
             [],
-            ['1:ignore', '2:ignore', '2:ignore', 'text_percent_dmg'],
+            ['1:ignore'],
             [],
-            [],
-        ],
-    ),
-    wrathful_recompense_eng=Template(
-        sentences=[
-            [],
-            ['1:ignore', '2:ignore', '2:ignore', 'text_percent_dmg'],
+            ['2:ignore', '2:ignore', 'text_percent_dmg'],
             [],
         ],
     ),

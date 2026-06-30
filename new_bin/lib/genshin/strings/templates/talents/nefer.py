@@ -33,9 +33,6 @@ char_nefer = TemplateList(
         },
     ),
     dawnless_rest_of_karsikko_rus = Template(
-        replace={
-            '</p><p>': '</p>\n<p>',
-        },
         sentences=[
             [],
             [],
@@ -52,9 +49,6 @@ char_nefer = TemplateList(
         ],
     ),
     dawnless_rest_of_karsikko_eng = Template(
-        replace={
-            '</p><p>': '</p>\n<p>',
-        },
         sentences=[
             [],
             [],
@@ -70,10 +64,6 @@ char_nefer = TemplateList(
         ],
     ),
     all_hearts_become_the_beating_moon = Template(
-        replace={
-            '<p>name': '<p>\nname',
-            '<br>': '\n<br>\n',
-        },
         sentences=[
             [],
             ['18:'],
@@ -95,7 +85,6 @@ char_nefer = TemplateList(
         extracted_names=[1],
     ),
     light_for_the_frosty_night_rus=Template(
-        replace={'<br>': '\n<br>\n'},
         sentences=[
             ['20:ignore'],
             [],
@@ -125,7 +114,6 @@ char_nefer = TemplateList(
         extracted_names=[1, 3],
     ),
     light_for_the_frosty_night_eng=Template(
-        replace={'<br>': '\n<br>\n'},
         sentences=[
             ['20:ignore'],
             [],
@@ -154,7 +142,6 @@ char_nefer = TemplateList(
         extracted_names=[1, 3],
     ),
     i_offer_blood_and_tears_to_the_moonlight_rus=Template(
-        replace={'<br>': '\n<br>\n'},
         sentences=[
             ['185:text_percent_skill_dmg'],
             ['2:'],
@@ -177,7 +164,6 @@ char_nefer = TemplateList(
         ],
     ),
     i_offer_blood_and_tears_to_the_moonlight_eng=Template(
-        replace={'<br>': '\n<br>\n'},
         sentences=[
             ['1:ignore', '185:text_percent_skill_dmg'],
             [],

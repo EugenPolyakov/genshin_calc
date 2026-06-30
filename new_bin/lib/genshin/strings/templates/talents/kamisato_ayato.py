@@ -26,12 +26,9 @@ char_kamisato_ayato = TemplateList(
     kyouka_rus=Template(
         names=['Клинки водных цветов', 'Такимэгури канка'],
         replace={
-            '</p><p>': '\n</p><p>\n',
-            '<br>': '\n<br>\n',
             ' увеличивает ': ' увеличивает \n',
         },
         sentences=[
-            [],
             [],
             [],
             [],
@@ -65,18 +62,16 @@ char_kamisato_ayato = TemplateList(
             [],
         ],
         results=[
-            list(range(0, 32)),
-            [7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, '<br>', 24],
+            list(range(0, 31)),
+            [7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23],
             [5],
-            ['Увеличивает', 14, 15],
+            ['Увеличивает', 14],
         ],
         extracted_names=[2],
     ),
     kyouka_eng=Template(
         names=['Takimeguri Kanka'],
         replace={
-            '</p><p>': '\n</p><p>\n',
-            '<br>': '\n<br>\n',
             'increasing': 'increasing\n',
         },
         sentences=[
@@ -111,7 +106,7 @@ char_kamisato_ayato = TemplateList(
         ],
         results=[
             list(range(0, 27)),
-            [7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, '<br>', 21],
+            [7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21],
             [5],
             ['Increase', 13],
         ],
@@ -119,11 +114,8 @@ char_kamisato_ayato = TemplateList(
     ),
     suiyuu=Template(
         names=['Клинки водных цветов', 'Bloomwater Blades'],
-        replace={
-            '<p>': '<p>\n',
-            '</p><p>': '\n</p><p>',
-        },
         sentences=[
+            [],
             [],
             [],
             [],
@@ -132,15 +124,25 @@ char_kamisato_ayato = TemplateList(
         ],
         results=[
             [0, 1, 2, 3, 4],
-            [1, 2],
+            [0, 1, 2],
         ],
     ),
     mine_wo_matoishi_kiyotaki_rus=Template(
-        sentences=[],
+        sentences=[
+            [],
+            [],
+            [],
+            [],
+            [],
+        ],
     ),
     mine_wo_matoishi_kiyotaki_eng=Template(
         sentences=[
+            [],
+            [],
             ['ignore'],
+            [],
+            [],
         ],
     ),
     michiyuku_hagetsu=Template(
@@ -153,18 +155,7 @@ char_kamisato_ayato = TemplateList(
             ['dmg_normal_ayato', 'ignore'],
         ],
     ),
-    world_source_rus=Template(
-        sentences=[
-            ['ignore'],
-            ['ignore'],
-            ['hp_percent'],
-        ],
-        results=[
-            [0],
-            [1, 2],
-        ]
-    ),
-    world_source_eng=Template(
+    world_source=Template(
         sentences=[
             ['ignore'],
             ['ignore', 'hp_percent'],
@@ -182,6 +173,8 @@ char_kamisato_ayato = TemplateList(
     boundless_origin=Template(
         sentences=[
             ['ignore', 'text_percent_dmg'],
+            [],
+            [],
         ],
     ),
 )

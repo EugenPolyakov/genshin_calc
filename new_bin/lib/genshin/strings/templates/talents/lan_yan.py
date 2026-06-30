@@ -26,7 +26,9 @@ char_lan_yan = TemplateList(
     ),
     four_sealing_divination_charms=Template(
         sentences=[
-            ['250:ignore', '50:text_percent_dmg'],
+            ['250:ignore'],
+            [],
+            ['50:text_percent_dmg'],
             [],
         ],
     ),
@@ -37,6 +39,8 @@ char_lan_yan = TemplateList(
     ),
     as_one_might_stride_betwixt_the_clouds=Template(
         sentences=[
+            [],
+            [],
             [],
         ],
     ),

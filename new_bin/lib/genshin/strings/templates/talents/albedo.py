@@ -25,14 +25,11 @@ char_albedo = TemplateList(
     ),
     book_of_blinding_light_rus=Template(
         replace={
-            '<br>': '\n<br>\n',
             '· ': '· \n',
         },
         sentences=[
             [],
             ['2:ignore'],
-            [],
-            [],
             [],
             [],
             [],
@@ -51,9 +48,9 @@ char_albedo = TemplateList(
         ],
         results=[
             [0, 1],
-            [5, 6, 8, 9, 10],
-            [5, 6, 13, 14],
-            [5, 6, 17, 18],
+            [3, 4, 6, 7, 8],
+            [3, 4, 11, 12],
+            [3, 4, 15, 16],
             ['Цветок солнца'],
             ['Цветок серебра'],
         ],
@@ -61,14 +58,11 @@ char_albedo = TemplateList(
     ),
     book_of_blinding_light_eng=Template(
         replace={
-            '<br>': '\n<br>\n',
             '· ': '· \n',
         },
         sentences=[
             [],
             ['2:ignore'],
-            [],
-            [],
             [],
             [],
             [],
@@ -87,9 +81,9 @@ char_albedo = TemplateList(
         ],
         results=[
             [0, 1],
-            [5, 6, 8, 9, 10],
-            [5, 6, 13, 14],
-            [5, 6, 17, 18],
+            [3, 4, 6, 7, 8],
+            [3, 4, 11, 12],
+            [3, 4, 15, 16],
             ['Solar Isotoma'],
             ['Silver Isotoma'],
         ],
@@ -106,9 +100,6 @@ char_albedo = TemplateList(
         ],
     ),
     calcite_might_hex_rus=Template(
-        replace={
-            '<br>': '\n<br>\n',
-        },
         sentences=[
             ['50:dmg_skill_albedo', '25:'],
             [],
@@ -120,9 +111,6 @@ char_albedo = TemplateList(
         ],
     ),
     flower_of_eden_hex_rus=Template(
-        replace={
-            '<br>': '\n<br>\n',
-        },
         sentences=[
             ['1.2:ignore'],
             [],
@@ -134,9 +122,6 @@ char_albedo = TemplateList(
         ],
     ),
     flower_of_eden_hex_eng=Template(
-        replace={
-            '<br>': '\n<br>\n',
-        },
         sentences=[
             ['1.2:ignore'],
             [],
@@ -148,9 +133,6 @@ char_albedo = TemplateList(
         ],
     ),
     calcite_might_hex_eng=Template(
-        replace={
-            '<br>': '\n<br>\n',
-        },
         sentences=[
             ['25:', '50:dmg_skill_albedo'],
             [],
@@ -173,18 +155,36 @@ char_albedo = TemplateList(
     ),
     opening_of_phanerozoic_rus=Template(
         sentences=[
-            ['ignore', 'text_percent_dmg', 'ignore'],
+            ['ignore'],
+            [],
+            [],
+            [],
+            ['text_percent_dmg'],
+            [],
+            ['ignore'],
         ],
     ),
     opening_of_phanerozoic_eng=Template(
         sentences=[
             ['ignore'],
-            ['text_percent_dmg', 'ignore'],
+            [],
+            [],
+            ['text_percent_dmg'],
+            [],
+            ['ignore'],
         ],
     ),
     opening_of_phanerozoic_hex_rus=Template(
         sentences=[
-            ['30:ignore', '30:text_percent_dmg', '4:ignore', '4:ignore', '3:ignore', '300:'],
+            ['30:ignore'],
+            [],
+            [],
+            [],
+            ['30:text_percent_dmg'],
+            [],
+            ['4:ignore'],
+            [],
+            ['4:ignore', '3:ignore', '300:'],
             [],
             ['10:ignore', '125:'],
         ],
@@ -192,7 +192,13 @@ char_albedo = TemplateList(
     opening_of_phanerozoic_hex_eng=Template(
         sentences=[
             ['30:ignore'],
-            ['30:text_percent_dmg', '4:ignore', '4:ignore'],
+            [],
+            [],
+            ['30:text_percent_dmg'],
+            [],
+            ['4:ignore'],
+            [],
+            ['4:ignore'],
             ['3:ignore', '300:'],
             ['125:', '10:ignore'],
         ],

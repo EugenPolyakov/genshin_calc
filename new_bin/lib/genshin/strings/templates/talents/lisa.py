@@ -35,13 +35,19 @@ char_lisa = TemplateList(
     ),
     infinite_circuit=Template(
         sentences=[
-            ['ignore', 'ignore'],
+            ['ignore'],
+            [],
+            ['ignore'],
         ],
     ),
     electromagnetic_field=Template(
         names=['защиту'],
         sentences=[
+            [],
+            [],
             ['def_percent'],
+            [],
+            [],
         ],
     ),
     plasma_eruption=Template(
@@ -51,7 +57,9 @@ char_lisa = TemplateList(
     ),
     pulsating_witch=Template(
         sentences=[
-            ['ignore', 'ignore'],
+            ['ignore'],
+            [],
+            ['ignore'],
         ],
     ),
 )

@@ -56,32 +56,35 @@ char_kinich= TemplateList(
     ),
     parrots_beak=Template(
         sentences=[
-            ['30:move_speed', '6:ignore', '100:crit_dmg_skill_kinich'],
+            ['30:move_speed', '6:ignore'],
+            [],
+            ['100:crit_dmg_skill_kinich'],
         ],
     ),
     tiger_beetles_palm=Template(
-        patterns=[
-            ('<br>Кроме того', '\\nКроме того'),
-            ('<br>Additionally', '\\nAdditionally'),
-        ],
         sentences=[
             ['30:enemy_res_dendro', '6:ignore'],
+            [],
             ['100:dmg_skill_kinich'],
         ],
         results=[
             [0],
-            [1],
+            [2],
         ],
     ),
     hummingbirds_feather=Template(
         sentences=[
             ['5:ignore'],
-            ['2.8:ignore', 'dmg_burst_kinich'],
+            ['2.8:ignore'],
+            [],
+            ['dmg_burst_kinich'],
         ],
     ),
     auspicious_beasts_shape=Template(
         sentences=[
             ['700:text_percent_dmg'],
+            [],
+            [],
         ],
     ),
 )

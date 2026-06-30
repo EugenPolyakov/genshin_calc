@@ -38,12 +38,16 @@ char_diona = TemplateList(
     ),
     shaken_not_purred_rus=Template(
         sentences=[
-            ['dmg_skill_diona', 'ignore', 'text_percent'],
+            ['dmg_skill_diona'],
+            [],
+            ['ignore', 'text_percent'],
         ],
     ),
     shaken_not_purred_eng=Template(
         sentences=[
-            ['dmg_skill_diona', 'diona_shield', 'text_percent', 'ignore'],
+            ['dmg_skill_diona', 'diona_shield'],
+            [],
+            ['text_percent', 'ignore'],
         ],
     ),
     wine_industry_slayer=Template(
@@ -52,31 +56,29 @@ char_diona = TemplateList(
         ],
     ),
     cats_tail_closing_time_rus=Template(
-        patterns=[
-            (r'<br>·', '\\n'),
-        ],
         sentences=[
             [],
+            [],
             ['ignore', 'healing_recv'],
+            [],
             ['ignore', 'mastery'],
         ],
         results=[
-            [0, 2],
-            [1],
+            [0, 1, 4],
+            [0, 1, 2],
         ],
     ),
     cats_tail_closing_time_eng=Template(
-        patterns=[
-            (r'<br>·', '\\n'),
-        ],
         sentences=[
             [],
+            [],
             ['healing_recv', 'ignore'],
+            [],
             ['mastery', 'ignore'],
         ],
         results=[
-            [0, 2],
-            [1],
+            [0, 1, 4],
+            [0, 1, 2],
         ],
     ),
 )

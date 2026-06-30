@@ -34,7 +34,11 @@ char_kuki_shinobu = TemplateList(
     ),
     hearts_repose=Template(
         sentences=[
-            ['text_percent_healing', 'text_percent_dmg'],
+            [],
+            [],
+            ['text_percent_healing'],
+            [],
+            ['text_percent_dmg'],
         ],
     ),
     to_cloister_compassion=Template(
@@ -47,30 +51,29 @@ char_kuki_shinobu = TemplateList(
             ['ignore'],
         ],
     ),
-    to_sever_sealing_rus=Template(
-        names=['обычные атаки', 'заряженные атаки'],
+    to_sever_sealing=Template(
         sentences=[
             ['text_percent'],
+            [],
             ['ignore'],
-        ],
-    ),
-    to_sever_sealing_eng=Template(
-        sentences=[
-            ['text_percent', 'ignore'],
         ],
     ),
     to_ward_weakness_rus=Template(
         sentences=[
             [],
             ['ignore'],
-            ['ignore', 'ignore', 'mastery', 'ignore'],
+            ['ignore'],
+            [],
+            ['ignore', 'mastery', 'ignore'],
             ['ignore'],
         ],
     ),
     to_ward_weakness_eng=Template(
         sentences=[
             [],
-            ['ignore', 'ignore', 'ignore', 'mastery', 'ignore'],
+            ['ignore', 'ignore'],
+            [],
+            ['ignore', 'mastery', 'ignore'],
             ['ignore'],
         ],
     ),

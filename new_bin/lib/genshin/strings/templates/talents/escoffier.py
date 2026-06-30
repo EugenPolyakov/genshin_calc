@@ -47,12 +47,16 @@ char_escoffier = TemplateList(
     pre_dinner_dance_for_your_taste_buds=Template(
         sentences=[
             ['4:ignore', '60:crit_dmg_cryo', '15:ignore'],
+            [],
+            [],
         ],
     ),
     fresh_fragrant_stew_is_an_art_rus=Template(
         sentences=[
             ['15:ignore', '5:ignore'],
             ['1:ignore', '240:text_percent_dmg'],
+            [],
+            [],
         ],
     ),
     fresh_fragrant_stew_is_an_art_eng=Template(
@@ -60,6 +64,8 @@ char_escoffier = TemplateList(
             ['15:ignore'],
             ['5:ignore'],
             ['1:ignore', '240:text_percent_dmg'],
+            [],
+            [],
         ],
     ),
     secret_rosemary_recipe=Template(
@@ -68,11 +74,17 @@ char_escoffier = TemplateList(
             ['100:crit_dmg_escofier_heal', '2:ignore'],
             [],
             ['7:ignore'],
+            [],
+            [],
         ],
     ),
     tea_parties_bursting_with_color=Template(
         sentences=[
+            [],
+            [],
             ['500:text_percent_dmg'],
+            [],
+            [],
             ['0.5:ignore', '6:ignore'],
         ],
     ),

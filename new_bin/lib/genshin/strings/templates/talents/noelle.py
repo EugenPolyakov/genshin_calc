@@ -22,9 +22,6 @@ char_noelle = TemplateList(
         },
     ),
     sweeping_time_rus=Template(
-        replace={
-            "</p><p>": "\n</p><p>",
-        },
         patterns=[
             (r'этого name\{', 'этого\nname{'),
         ],
@@ -32,16 +29,22 @@ char_noelle = TemplateList(
             [],
             [],
             [],
+            [],
+            [],
+            [],
+            [],
+            [],
+            [],
+            [],
+            [],
+            [],
         ],
         results=[
-            [0, 1, 2],
-            [1]
+            list(range(0, 12)),
+            [3, 4, 5, 6, 7, 8, 9]
         ],
     ),
     sweeping_time_eng=Template(
-        replace={
-            "</p><p>": "\n</p><p>",
-        },
         patterns=[
             (r', name\{', ',\nname{'),
         ],
@@ -50,20 +53,37 @@ char_noelle = TemplateList(
             [],
             [],
             [],
+            [],
+            [],
+            [],
+            [],
+            [],
+            [],
+            [],
+            [],
+            [],
         ],
         results=[
-            [0, 1, 2, 3],
-            [2]
+            list(range(0, 13)),
+            [4, 5, 6, 7, 8, 9, 10]
         ],
     ),
     devotion=Template(
         sentences=[
-            ['ignore', 'ignore', 'text_percent', 'ignore', 'ignore'],
+            ['ignore'],
+            [],
+            ['ignore', 'text_percent'],
+            [],
+            ['ignore'],
+            [],
+            ['ignore'],
         ],
     ),
     nice_and_clean=Template(
         sentences=[
-            ['ignore', 'ignore', 'ignore'],
+            ['ignore', 'ignore'],
+            [],
+            ['ignore'],
         ],
     ),
     i_got_your_back=Template(
@@ -83,13 +103,17 @@ char_noelle = TemplateList(
     ),
     must_be_spotless_rus=Template(
         sentences=[
-            ['text_percent_dmg', 'ignore'],
+            ['text_percent_dmg'],
+            [],
+            ['ignore'],
             ['ignore'],
         ],
     ),
     must_be_spotless_eng=Template(
         sentences=[
-            ['text_percent_dmg', 'ignore', 'ignore'],
+            ['text_percent_dmg'],
+            [],
+            ['ignore', 'ignore'],
         ],
     ),
 )

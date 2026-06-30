@@ -23,11 +23,8 @@ char_diluc = TemplateList(
         },
     ),
     dawn=Template(
-        replace={
-            '<br>': '\n<br>\n',
-            '</p><p>': '\n</p><p>',
-        },
         sentences=[
+            [],
             [],
             [],
             [],
@@ -37,7 +34,7 @@ char_diluc = TemplateList(
             [],
         ],
         results=[
-            list(range(0, 7)),
+            list(range(0, 8)),
             [4],
         ],
     ),
@@ -65,16 +62,22 @@ char_diluc = TemplateList(
     searing_ember=Template(
         sentences=[
             ['atk_percent', 'atk_speed_normal'],
-            ['ignore', 'ignore', 'ignore'],
+            ['ignore'],
+            [],
+            ['ignore', 'ignore'],
         ],
     ),
     flowing_flame_rus=Template(
         sentences=[
+            [],
+            [],
             ['ignore', 'dmg_skill_diluc_bonus', 'ignore'],
         ],
     ),
     flowing_flame_eng=Template(
         sentences=[
+            [],
+            [],
             ['ignore', 'dmg_skill_diluc_bonus'],
             ['ignore'],
         ],
@@ -82,11 +85,15 @@ char_diluc = TemplateList(
     flaming_sword_nemesis_of_the_dark_rus=Template(
         sentences=[
             ['ignore', 'atk_speed_normal'],
+            [],
+            [],
         ],
     ),
     flaming_sword_nemesis_of_the_dark_eng=Template(
         sentences=[
             ['ignore', 'ignore', 'atk_speed_normal'],
+            [],
+            [],
         ],
     ),
 )

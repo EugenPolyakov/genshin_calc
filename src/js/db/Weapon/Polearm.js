@@ -36,6 +36,7 @@ import { SymphonistofScents } from "./Polearm/SymphonistofScents";
 import { FracturedHalo } from "./Polearm/FracturedHalo";
 import { prospectors_shovel } from "./Polearm/prospectors_shovel";
 import { sacrificers_staff } from "./Polearm/sacrificers_staff";
+import { bloodsoaked_ruins } from "./Polearm/bloodsoaked_ruins";
 
 export const Polearm = new DbObjectListSerializeStats({
     BlackcliffPole: BlackcliffPole, // 85
@@ -75,4 +76,5 @@ export const Polearm = new DbObjectListSerializeStats({
     FracturedHalo: FracturedHalo, // 222 ??
     prospectors_shovel: prospectors_shovel, // 226
     sacrificers_staff: sacrificers_staff, // 230
+    bloodsoaked_ruins: bloodsoaked_ruins, // 236
 });

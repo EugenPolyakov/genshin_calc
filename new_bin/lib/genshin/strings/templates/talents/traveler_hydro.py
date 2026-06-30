@@ -26,9 +26,7 @@ char_traveler_hydro = TemplateList(
     ),
     aquacrest_saber_rus=Template(
         replace={
-            '<br>': '<br>\n',
             ':': '\n:\n',
-            '</p><p>': '\n</p><p>',
             'при долгом нажатии': 'при долгом нажатии\n',
         },
         sentences=[
@@ -41,7 +39,15 @@ char_traveler_hydro = TemplateList(
             [],
             [],
             [],
+            [],
+            [],
+            [],
+            [],
+            [],
+            [],
             ['50:ignore'],
+            [],
+            [],
             [],
             [],
             [],
@@ -50,17 +56,15 @@ char_traveler_hydro = TemplateList(
             [],
         ],
         results=[
-            list(range(0,16)),
-            ['При долгом нажатии', 9, 10],
-            [6],
+            list(range(0, 24)),
+            ['При долгом нажатии', 15, 16],
+            [12],
         ],
         extracted_names=[2],
     ),
     aquacrest_saber_eng=Template(
         replace={
-            '<br>': '<br>\n',
             ':': '\n:\n',
-            '</p><p>': '\n</p><p>',
         },
         sentences=[
             [],
@@ -71,7 +75,16 @@ char_traveler_hydro = TemplateList(
             [],
             [],
             [],
+            [],
+            [],
+            [],
+            [],
+            [],
+            [],
             ['50:ignore'],
+            [],
+            [],
+            [],
             [],
             [],
             [],
@@ -79,33 +92,41 @@ char_traveler_hydro = TemplateList(
             [],
         ],
         results=[
-            list(range(0,14)),
-            [8],
-            [6],
+            list(range(0,23)),
+            [14],
+            [12],
         ],
         extracted_names=[2],
     ),
     spotless_waters_rus=Template(
         sentences=[
             [],
-            ['7:text_percent_heal', '1:ignore'],
+            ['7:text_percent_heal'],
+            [],
+            ['1:ignore'],
             ['4:ignore'],
         ],
     ),
     spotless_waters_eng=Template(
         sentences=[
             [],
-            ['7:text_percent_heal', '1:ignore', '4:ignore'],
+            ['7:text_percent_heal'],
+            [],
+            ['1:ignore', '4:ignore'],
         ],
     ),
     clear_waters=Template(
         sentences=[
-            ['45:text_percent_dmg', '5000:text_value_max'],
+            ['45:text_percent_dmg'],
+            [],
+            ['5000:text_value_max'],
         ],
     ),
     swelling_lake=Template(
         sentences=[
             ['ignore'],
+            [],
+            [],
         ],
     ),
     trickling_purity=Template(
@@ -116,27 +137,23 @@ char_traveler_hydro = TemplateList(
     pouring_descent_rus=Template(
         sentences=[
             ['10:text_percent_hp'],
-            [],
             ['250:ignore'],
-            ['2:ignore', '10:text_percent_hp_2'],
             [],
+            [],
+            ['2:ignore', '10:text_percent_hp_2'],
             [],
         ],
     ),
     pouring_descent_eng=Template(
         sentences=[
             ['10:text_percent_hp', '250:ignore'],
+            [],
+            [],
             ['2:ignore', '10:text_percent_hp_2'],
             [],
         ],
     ),
-    tides_of_justice_rus=Template(
-        sentences=[
-            ['6:text_percent_hp'],
-            [],
-        ],
-    ),
-    tides_of_justice_eng=Template(
+    tides_of_justice=Template(
         sentences=[
             ['6:text_percent_hp'],
         ],

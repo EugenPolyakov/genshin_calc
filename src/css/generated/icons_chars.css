@@ -114,16 +114,17 @@
 .char-icon-columbina {background-image: url("../../images/chars/columbina.png")}
 .char-icon-zibai {background-image: url("../../images/chars/zibai.png")}
 .char-icon-illuga {background-image: url("../../images/chars/illuga.png")}
+.char-icon-varka {background-image: url("../../images/chars/varka.png")}
 .sprite-char.sprite-24 {
-	background-image: url("../../images/sprites/char_b9ace775ff52d84c651189d07586fcd4.png");
+	background-image: url("../../images/sprites/char_ae6d3259fa58eaa5d11429f04c5a0159.png");
 	background-size: 264px 264px;
 }
 .sprite-char.sprite-40 {
-	background-image: url("../../images/sprites/char_b5975f1b50e1fe08917d60e97aa9d533.png");
+	background-image: url("../../images/sprites/char_2e906c97b41c0b7073a888d098378b0e.png");
 	background-size: 440px 440px;
 }
 .sprite-char.sprite-60 {
-	background-image: url("../../images/sprites/char_177a5687a60cd5ed354ea3e2d5398104.png");
+	background-image: url("../../images/sprites/char_fb5c273d57636b6f276094b4d4a8da4a.png");
 	background-size: 660px 660px;
 }
 .sprite.char-icon-unknown {background-position: 0% 0%}
@@ -242,6 +243,7 @@
 .sprite.char-icon-columbina {background-position: 30% 100%}
 .sprite.char-icon-zibai {background-position: 40% 100%}
 .sprite.char-icon-illuga {background-position: 50% 100%}
+.sprite.char-icon-varka {background-position: 60% 100%}
 
 @media
 only screen and (-webkit-min-device-pixel-ratio: 2),
@@ -366,7 +368,8 @@ only screen and (                min-resolution: 2dppx) {
 	.char-icon-columbina {background-image: url("../../images/chars/columbina_2x.png")}
 	.char-icon-zibai {background-image: url("../../images/chars/zibai_2x.png")}
 	.char-icon-illuga {background-image: url("../../images/chars/illuga_2x.png")}
-	.sprite-char.sprite-24 {background-image: url("../../images/sprites/char_8c4b0822763504f4e230bbfaf1b0970f.png")}
-	.sprite-char.sprite-40 {background-image: url("../../images/sprites/char_384b7a04bd70fa915746bb0990c03171.png")}
-	.sprite-char.sprite-60 {background-image: url("../../images/sprites/char_4a3d1ebb824fa1b295cde4352f5f68c4.png")}
+	.char-icon-varka {background-image: url("../../images/chars/varka_2x.png")}
+	.sprite-char.sprite-24 {background-image: url("../../images/sprites/char_65ad5bbfa0481a3a7e05336276fb9cfa.png")}
+	.sprite-char.sprite-40 {background-image: url("../../images/sprites/char_1f67372b82f07de28c5e7cd557c15f79.png")}
+	.sprite-char.sprite-60 {background-image: url("../../images/sprites/char_67c0ccda33b289d0fc7ea7b958d59b94.png")}
 }

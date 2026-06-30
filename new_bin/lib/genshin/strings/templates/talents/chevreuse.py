@@ -31,13 +31,16 @@ char_chevreuse = TemplateList(
     ),
     vanguards_coordinated_tactics=Template(
         sentences=[
+            [],
+            [],
             ['enemy_res_pyro', 'ignore'],
+            [],
+            [],
         ],
     ),
     vertical_force_coordination_rus=Template(
         sentences=[
             ['ignore', 'text_percent', 'text_value'],
-            [],
             ['text_percent_max'],
         ],
     ),
@@ -51,6 +54,8 @@ char_chevreuse = TemplateList(
         sentences=[
             ['ignore'],
             ['ignore'],
+            [],
+            [],
         ],
     ),
     sniper_induced_explosion_rus=Template(
@@ -77,6 +82,7 @@ char_chevreuse = TemplateList(
     in_pursuit_of_ending_evil_rus=Template(
         sentences=[
             ['ignore', 'text_percent_heal'],
+            [],
             ['ignore', 'dmg_pyro'],
             ['ignore'],
             [],
@@ -84,8 +90,10 @@ char_chevreuse = TemplateList(
     ),
     in_pursuit_of_ending_evil_eng=Template(
         sentences=[
-            ['ignore', 'text_percent_heal', 'ignore', 'dmg_pyro'],
-            ['ignore'],
+            ['12:ignore', '10:text_percent_heal'],
+            [],
+            ['20:dmg_pyro', '8:ignore'],
+            ['3:ignore'],
             [],
         ],
     ),

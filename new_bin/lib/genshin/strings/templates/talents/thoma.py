@@ -24,34 +24,36 @@ char_thoma = TemplateList(
     ),
     imbricated_armor_rus=Template(
         sentences=[
-            ['shield', 'ignore', 'ignore', 'ignore'],
+            ['shield', 'ignore'],
+            [],
+            ['ignore', 'ignore'],
         ],
     ),
     imbricated_armor_eng=Template(
         sentences=[
-            ['shield', 'ignore', 'ignore'],
+            ['shield', 'ignore'],
+            [],
+            ['ignore'],
             ['ignore'],
         ],
     ),
-    flaming_assault_rus=Template(
-        sentences=[
-            ['text_percent'],
-            [],
-        ],
-    ),
-    flaming_assault_eng=Template(
+    flaming_assault=Template(
         sentences=[
             ['text_percent'],
         ],
     ),
     a_comrades_duty_rus=Template(
         sentences=[
-            ['ignore', 'ignore'],
+            ['ignore'],
+            [],
+            ['ignore'],
         ],
     ),
     a_comrades_duty_eng=Template(
         sentences=[
-            ['ignore', 'ignore', 'ignore'],
+            ['ignore', 'ignore'],
+            [],
+            ['ignore'],
         ],
     ),
     a_subordinates_skills=Template(

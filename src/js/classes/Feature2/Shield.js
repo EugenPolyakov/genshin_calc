@@ -87,7 +87,7 @@ export class FeatureShield extends Feature2 {
 
         if (this.element) {
             result.push({
-                icon: this.element,
+                icon: this.getElement(data),
                 title: 'shield.element_bonus',
                 subItemId: this.getName() + '.element_bonus',
                 isChild: true,
