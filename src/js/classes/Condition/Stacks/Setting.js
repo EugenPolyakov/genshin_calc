@@ -5,8 +5,8 @@ export class ConditionStacksSetting extends ConditionStacks {
         return 'static';
     }
 
-    getStats(settings, stacksCnt) {
-        let result = super.getStats(settings, stacksCnt);
+    getDefaultStats(settings, stacksCnt) {
+        let result = super.getDefaultStats(settings, stacksCnt);
         result.add(this.params.name, settings[this.params.name] || 0.001);
         return result;
     }

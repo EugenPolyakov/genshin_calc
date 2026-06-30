@@ -107,12 +107,12 @@ const Talents = new DbObjectTalents({
                 table: new StatTable('baal_musou_no_hitotachi_dmg', charTalentTables.RaidenShogun.s3.p1),
             },
             {
-                unit: 'per_stack',
+                unit: 'percent_per_stack',
                 digits: 2,
                 table: new StatTable('baal_resolve_burst', charTalentTables.RaidenShogun.s3.p2),
             },
             {
-                unit: 'per_stack',
+                unit: 'percent_per_stack',
                 digits: 2,
                 table: new StatTable('baal_resolve_atk', charTalentTables.RaidenShogun.s3.p3),
             },

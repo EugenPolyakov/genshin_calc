@@ -31,8 +31,8 @@ export class StatsInfo extends React.Component {
         data.postEffects = build.artifacts.getPostEffects();
 
         for (const cond of artCond) {
-            let art = cond.getData(data.settings);
-            stats.concat(art.stats);
+            let art = cond.getDisplayStats(data.settings);
+            stats.concat(art);
         }
 
         stats.processPercent();

@@ -34,6 +34,7 @@ import { FeatureMultiplierTarget } from "../../classes/Feature2/Multiplier/Targe
 import { ConditionBooleanLevels } from "../../classes/Condition/Boolean/Levels";
 import { ConditionNumberTalent } from "../../classes/Condition/Number/Talent";
 import { ConditionNumber } from "../../classes/Condition/Number";
+import { ConditionStacks } from "../../classes/Condition/Stacks";
 
 
 const Talents = new DbObjectTalents({
@@ -53,26 +54,26 @@ const Talents = new DbObjectTalents({
             },
             {
                 unit: 'per_sec',
-                table: new StatTable('lauma_peregrination_of_linnunrata_1', charTalentTables.Lauma.s1.p4),
+                table: new StatTable('lauma_spirit_envoy_form_movement_stamina_cost', charTalentTables.Lauma.s1.p4),
             },
             {
                 unit: 'unit',
-                table: new StatTable('lauma_peregrination_of_linnunrata_2', charTalentTables.Lauma.s1.p5),
+                table: new StatTable('lauma_spirit_envoy_form_jumping_stamina_cost', charTalentTables.Lauma.s1.p5),
             },
             {
                 unit: 'sec',
-                table: new StatTable('lauma_peregrination_of_linnunrata_3', charTalentTables.Lauma.s1.p6),
+                table: new StatTable('lauma_spirit_envoy_form_max_duration', charTalentTables.Lauma.s1.p6),
             },
             {
                 unit: 'sec',
-                table: new StatTable('lauma_peregrination_of_linnunrata_4', charTalentTables.Lauma.s1.p7),
+                table: new StatTable('lauma_spirit_envoy_metamorphosis_cd', charTalentTables.Lauma.s1.p7),
             },
             {
                 unit: 'unit',
-                table: new StatTable('lauma_peregrination_of_linnunrata_5', charTalentTables.Lauma.s1.p8),
+                table: new StatTable('lauma_spiritcall_prayer_stamina_cost', charTalentTables.Lauma.s1.p8),
             },
             {
-                table: new StatTable('lauma_peregrination_of_linnunrata_6', charTalentTables.Lauma.s1.p9),
+                table: new StatTable('lauma_spiritcall_prayer_dmg', charTalentTables.Lauma.s1.p9),
             },
             {
                 table: new StatTable('plunge', charTalentTables.Lauma.s1.p10),
@@ -94,11 +95,11 @@ const Talents = new DbObjectTalents({
                 table: new StatTable('skill_dmg', charTalentTables.Lauma.s2.p1),
             },
             {
-                table: new StatTable('lauma_dawnless_rest_of_karsikko_1', charTalentTables.Lauma.s2.p2),
+                table: new StatTable('lauma_1_hit_hold_dmg', charTalentTables.Lauma.s2.p2),
             },
             {
                 unit: 'mastery_per_verdant_dew',
-                table: new StatTable('lauma_dawnless_rest_of_karsikko_2', charTalentTables.Lauma.s2.p3),
+                table: new StatTable('lauma_2_hit_hold_dmg', charTalentTables.Lauma.s2.p3),
             },
             {
                 type: 'multivalue',
@@ -108,24 +109,24 @@ const Talents = new DbObjectTalents({
                     'mastery',
                 ],
                 table: [
-                    new StatTable('lauma_dawnless_rest_of_karsikko_3', charTalentTables.Lauma.s2.p4),
-                    new StatTable('lauma_dawnless_rest_of_karsikko_3_mastery', charTalentTables.Lauma.s2.p5),
+                    new StatTable('lauma_frostgrove_sanctuary_attack_dmg', charTalentTables.Lauma.s2.p4),
+                    new StatTable('lauma_frostgrove_sanctuary_attack_dmg_mastery', charTalentTables.Lauma.s2.p5),
                 ],
             },
             {
                 unit: 'sec',
-                table: new StatTable('lauma_dawnless_rest_of_karsikko_4', charTalentTables.Lauma.s2.p6),
+                table: new StatTable('lauma_frostgrove_sanctuary_duration', charTalentTables.Lauma.s2.p6),
             },
             {
                 unit: 'sec',
-                table: new StatTable('lauma_dawnless_rest_of_karsikko_5', charTalentTables.Lauma.s2.p7),
+                table: new StatTable('lauma_moon_song_duration', charTalentTables.Lauma.s2.p7),
             },
             {
-                table: new StatTable('lauma_dawnless_rest_of_karsikko_6', charTalentTables.Lauma.s2.p8),
+                table: new StatTable('lauma_elemental_res_decrease', charTalentTables.Lauma.s2.p8),
             },
             {
                 unit: 'sec',
-                table: new StatTable('lauma_dawnless_rest_of_karsikko_7', charTalentTables.Lauma.s2.p9),
+                table: new StatTable('lauma_elemental_res_decrease_duration', charTalentTables.Lauma.s2.p9),
             },
             {
                 unit: 'sec',
@@ -140,35 +141,35 @@ const Talents = new DbObjectTalents({
         items: [
             {
                 unit: 'stack',
-                table: new StatTable('lauma_all_hearts_become_the_beating_moon_1', charTalentTables.Lauma.s3.p1),
+                table: new StatTable('lauma_pale_hymn_stacks_gained_from_elemental_burst', charTalentTables.Lauma.s3.p1),
             },
             {
                 unit: 'stacks_per_moon_song',
-                table: new StatTable('lauma_all_hearts_become_the_beating_moon_2', charTalentTables.Lauma.s3.p2),
+                table: new StatTable('lauma_moon_song_to_pale_hymn_conversion', charTalentTables.Lauma.s3.p2),
             },
             {
                 unit: 'mastery',
-                table: new StatTable('lauma_all_hearts_become_the_beating_moon_3', charTalentTables.Lauma.s3.p3),
+                table: new StatTable('lauma_bloom_hyperbloom_and_burgeon_dmg_increase', charTalentTables.Lauma.s3.p3),
             },
             {
                 unit: 'mastery',
-                table: new StatTable('lauma_all_hearts_become_the_beating_moon_4', charTalentTables.Lauma.s3.p4),
+                table: new StatTable('lauma_lunar_bloom_dmg_increase', charTalentTables.Lauma.s3.p4),
             },
             {
                 unit: 'sec',
-                table: new StatTable('lauma_all_hearts_become_the_beating_moon_5', charTalentTables.Lauma.s3.p5),
+                table: new StatTable('lauma_pale_hymn_duration', charTalentTables.Lauma.s3.p5),
             },
             {
                 unit: 'sec',
                 table: new StatTable('cd', charTalentTables.Lauma.s3.p6),
             },
             {
-                unit: '',
+                unit: 'unit',
                 table: new StatTable('energy_cost', charTalentTables.Lauma.s3.p7),
             },
         ],
     },
-    links: [11190001, 11190002, 11190003, 11190007, 11190008],
+    links: charTalentTables.Lauma.links,
 });
 
 const lunarPost = new PostEffectStatsMastery({
@@ -232,12 +233,12 @@ export const Lauma = new DbObjectChar({
             ],
         }),
         new FeatureDamageCharged({
-            name: 'lauma_peregrination_of_linnunrata_6',
+            name: 'lauma_spiritcall_prayer_dmg',
             element: 'dendro',
             multipliers: [
                 new FeatureMultiplier({
                     leveling: 'char_skill_attack',
-                    values: Talents.get('attack.lauma_peregrination_of_linnunrata_6'),
+                    values: Talents.get('attack.lauma_spiritcall_prayer_dmg'),
                 }),
             ],
         }),
@@ -294,39 +295,40 @@ export const Lauma = new DbObjectChar({
             ],
         }),
         new FeatureDamageSkill({
-            name: 'lauma_dawnless_rest_of_karsikko_1',
+            name: 'lauma_1_hit_hold_dmg',
             element: 'dendro',
             multipliers: [
                 new FeatureMultiplier({
                     leveling: 'char_skill_elemental',
-                    values: Talents.get('skill.lauma_dawnless_rest_of_karsikko_1'),
+                    values: Talents.get('skill.lauma_1_hit_hold_dmg'),
                 }),
             ],
         }),
         new FeatureReactionLunarBloomLike({
-            name: 'lauma_dawnless_rest_of_karsikko_2',
+            name: 'lauma_2_hit_hold_dmg',
             element: 'dendro',
             category: 'skill',
             multipliers: [
                 new FeatureMultiplier({
                     scaling: 'mastery*',
                     leveling: 'char_skill_elemental',
-                    values: Talents.get('skill.lauma_dawnless_rest_of_karsikko_2'),
+                    stacksLeveling: 'n11190008',
+                    values: Talents.get('skill.lauma_2_hit_hold_dmg'),
                 }),
             ],
         }),
         new FeatureDamageSkill({
-            name: 'lauma_dawnless_rest_of_karsikko_3',
+            name: 'lauma_frostgrove_sanctuary_attack_dmg',
             element: 'dendro',
             multipliers: [
                 new FeatureMultiplier({
                     leveling: 'char_skill_elemental',
-                    values: Talents.get('skill.lauma_dawnless_rest_of_karsikko_3'),
+                    values: Talents.get('skill.lauma_frostgrove_sanctuary_attack_dmg'),
                 }),
                 new FeatureMultiplier({
                     scaling: 'mastery*',
                     leveling: 'char_skill_elemental',
-                    values: Talents.get('skill.lauma_dawnless_rest_of_karsikko_3_mastery'),
+                    values: Talents.get('skill.lauma_frostgrove_sanctuary_attack_dmg_mastery'),
                 }),
             ],
         }),
@@ -362,6 +364,13 @@ export const Lauma = new DbObjectChar({
     ],
     conditions: [
         new ConditionMoonPhaseSetting(),
+        new ConditionStacks({
+            name: 'n11190008',
+            serializeId: 4,
+            title: 'talent_name.n11190008',
+            description: 'talent_descr.n11190008',
+            maxStacks: 3,
+        }),
         new ConditionBooleanLevels({
             serializeId: 1,
             name: 'lauma_dawnless_rest_of_karsikko',
@@ -369,7 +378,7 @@ export const Lauma = new DbObjectChar({
             description: 'talent_descr.lauma_dawnless_rest_of_karsikko_2',
             levelSetting: 'char_skill_elemental',
             stats: [
-                Talents.getAlias('skill.lauma_dawnless_rest_of_karsikko_6', 'enemy_res_dendro', true),
+                Talents.getAlias('skill.lauma_elemental_res_decrease', 'enemy_res_dendro', -1),
             ],
         }),
         new ConditionBoolean({
@@ -378,7 +387,9 @@ export const Lauma = new DbObjectChar({
             title: 'talent_name.lauma_all_hearts_become_the_beating_moon_2',
             description: 'talent_descr.lauma_all_hearts_become_the_beating_moon_2',
         }),
-        new ConditionStatic({
+        new ConditionBoolean({
+            serializeId: 3,
+            name: 'lauma_light_for_the_frosty_night_1',
             title: 'talent_name.lauma_light_for_the_frosty_night_1',
             description: 'talent_descr.lauma_light_for_the_frosty_night_1',
             info: { ascension: 1 },
@@ -398,8 +409,7 @@ export const Lauma = new DbObjectChar({
             condition: new ConditionAnd([
                 new ConditionAscensionChar({ ascension: 1 }),
                 new ConditionMoonPhaseCheck({ moonphase: 1 }),
-                //считаем E всегда активированным, т.к. без его активации герой просто ничего не представляет как и Нилу
-                //new ConditionBoolean({ name: 'lauma_dawnless_rest_of_karsikko' }),
+                new ConditionBoolean({ name: 'lauma_light_for_the_frosty_night_1' }),
             ]),
         }),
         new ConditionStatic({
@@ -416,7 +426,7 @@ export const Lauma = new DbObjectChar({
             condition: new ConditionAnd([
                 new ConditionAscensionChar({ ascension: 1 }),
                 new ConditionMoonPhaseCheck({ moonphase: 2 }),
-                //new ConditionBoolean({ name: 'lauma_dawnless_rest_of_karsikko' }),
+                new ConditionBoolean({ name: 'lauma_light_for_the_frosty_night_1' }),
             ]),
         }),
         new ConditionStatic({
@@ -437,14 +447,14 @@ export const Lauma = new DbObjectChar({
         new FeatureMultiplier({
             scaling: 'mastery*',
             leveling: 'char_skill_burst',
-            values: Talents.get('burst.lauma_all_hearts_become_the_beating_moon_3'),
+            values: Talents.get('burst.lauma_bloom_hyperbloom_and_burgeon_dmg_increase'),
             target: bloomTarget,
             condition: new ConditionBoolean({ name: 'lauma_all_hearts_become_the_beating_moon' }),
         }),
         new FeatureMultiplier({
             scaling: 'mastery*',
             leveling: 'char_skill_burst',
-            values: Talents.get('burst.lauma_all_hearts_become_the_beating_moon_4'),
+            values: Talents.get('burst.lauma_lunar_bloom_dmg_increase'),
             target: lunarbloomTarget,
             condition: new ConditionBoolean({ name: 'lauma_all_hearts_become_the_beating_moon' }),
         }),
@@ -593,7 +603,7 @@ export const Lauma = new DbObjectChar({
                 levelSetting: 'lauma_char_skill_elemental',
                 rotation: 'party',
                 stats: [
-                    Talents.getAlias('skill.lauma_dawnless_rest_of_karsikko_6', 'enemy_res_dendro', true),
+                    Talents.getAlias('skill.lauma_elemental_res_decrease', 'enemy_res_dendro', -1),
                 ],
             }),
             new ConditionNumber({
@@ -648,15 +658,6 @@ export const Lauma = new DbObjectChar({
                 },
                 info: { ascension: 1 },
             }),
-            new ConditionMoonPhaseBuff({
-                realStats: {
-                    crit_rate_bloom: [0, charTalentTables.Lauma.passsive[0][0] * 100, 0],
-                    crit_dmg_bloom: [0, charTalentTables.Lauma.passsive[0][1] * 100, 0],
-                    crit_rate_lunarbloom: [0, 0, charTalentTables.Lauma.passsive[0][2] * 100],
-                    crit_dmg_lunarbloom: [0, 0, charTalentTables.Lauma.passsive[0][3] * 100],
-                },
-                condition: new ConditionBoolean({ name: 'party.lauma_light_for_the_frosty_night' }),
-            }),
             new ConditionBoolean({
                 name: 'party.lauma_twine_warnings_and_tales_from_the_north',
                 serializeId: 9,
@@ -695,14 +696,14 @@ export const Lauma = new DbObjectChar({
             new FeatureMultiplier({
                 scaling: 'lauma_mastery_total',
                 leveling: 'lauma_char_skill_burst',
-                values: Talents.get('burst.lauma_all_hearts_become_the_beating_moon_3'),
+                values: Talents.get('burst.lauma_bloom_hyperbloom_and_burgeon_dmg_increase'),
                 target: bloomTarget,
                 condition: new ConditionBoolean({ name: 'party.lauma_all_hearts_become_the_beating_moon' }),
             }),
             new FeatureMultiplier({
                 scaling: 'lauma_mastery_total',
                 leveling: 'lauma_char_skill_burst',
-                values: Talents.get('burst.lauma_all_hearts_become_the_beating_moon_4'),
+                values: Talents.get('burst.lauma_lunar_bloom_dmg_increase'),
                 target: lunarbloomTarget,
                 condition: new ConditionBoolean({ name: 'party.lauma_all_hearts_become_the_beating_moon' }),
             }),

@@ -115,7 +115,7 @@ const Talents = new DbObjectTalents({
             },
             {
                 unit: 'sec',
-                table: new StatTable('ayaka_infusion_duration', charTalentTables.Ayaka.s3.p3),
+                table: new StatTable('kamisato_ayaka_infusion_duration', charTalentTables.Ayaka.s3.p3),
             },
         ],
     },

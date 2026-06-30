@@ -77,7 +77,7 @@ export class ConditionPartyWeapon extends Condition {
         return 5;
     }
 
-    getStats(settings) {
+    getDefaultStats(settings) {
         let stats = new Stats();
         let max   = this.getMaxStacks(settings);
 
@@ -103,7 +103,8 @@ export class ConditionPartyWeapon extends Condition {
 
             let statCond = this.createStatCond(i);
             if (statCond) {
-                stats.concat(statCond.getStats(settings));
+                //todo пока так, но если создавать с какими-то условиями или нужна полная обработка, то стоит вызывать другие методы getAllStats или getActualStats или getDisplayStats
+                stats.concat(statCond.getDefaultStats(settings));
             }
         }
 

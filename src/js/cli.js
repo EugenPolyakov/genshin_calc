@@ -21,7 +21,6 @@ import { FeaturePostEffectValue } from "./classes/Feature2/PostEffectValue";
 import { FeatureShield } from "./classes/Feature2/Shield";
 import { ArtifactGenerator, getMainStatCombinations, getStatRolls, StatDistributor, StatsObject } from "./classes/Generator/Artifacts";
 import { ArtifactGeneratorKQM } from "./classes/Generator/ArtifactsKQM";
-import { PostEffectSetBonusViridiscent } from "./classes/PostEffect/SetBonus/Viridescent";
 import { PostEffectStats } from "./classes/PostEffect/Stats";
 import { PostEffectStatsAtk } from "./classes/PostEffect/Stats/Atk";
 import { PostEffectStatsHP } from "./classes/PostEffect/Stats/HP";

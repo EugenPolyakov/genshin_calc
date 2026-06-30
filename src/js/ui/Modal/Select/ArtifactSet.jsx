@@ -161,7 +161,7 @@ class ArtifactSetSelectItem extends React.PureComponent {
 
             if (bonuses && bonuses.length) {
                 for (const bonus of bonuses) {
-                    let stats = bonus.getStats({});
+                    let stats = bonus.getDisplayStats({});
                     let descr = bonus.getDescription(stats);
 
                     if (descr) {

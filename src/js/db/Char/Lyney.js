@@ -102,7 +102,7 @@ const Talents = new DbObjectTalents({
                 table: new StatTable('lyney_skill_dmg_bonus', charTalentTables.Lyney.s2.p2),
             },
             {
-                unit: 'per_stack',
+                unit: 'percent_per_stack',
                 table: new StatTable('lyney_hp_regeneration', charTalentTables.Lyney.s2.p3),
             },
             {

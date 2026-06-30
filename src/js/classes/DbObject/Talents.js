@@ -15,7 +15,7 @@ export class DbObjectTalents {
         return Array.isArray(result) ? result : [];
     }
 
-    getAlias(id, alias, neg) {
+    getAlias(id, alias, multy) {
         let orig = this.get(id);
 
         if (!orig) {
@@ -26,12 +26,12 @@ export class DbObjectTalents {
             let result = [];
 
             for (const item of orig) {
-                result.push(new StatTable(alias, neg ? item.values.map(x => -x) : [].concat(item.values)));
+                result.push(new StatTable(alias, item.values, multy));
             }
 
             return result;
         } else {
-            return new StatTable(alias, neg ? orig.values.map(x => -x) : [].concat(orig));
+            return new StatTable(alias, orig.values, multy);
         }
     }
 

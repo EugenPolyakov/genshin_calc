@@ -79,7 +79,7 @@ const Talents = new DbObjectTalents({
             },
             {
                 unit: '',
-                table: new StatTable('xilonen_nightsoul', charTalentTables.TravelerPyro.s2.p4),
+                table: new StatTable('nightsoul_point_limit', charTalentTables.TravelerPyro.s2.p4),
             },
             {
                 unit: 'sec',

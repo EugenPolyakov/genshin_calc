@@ -120,64 +120,77 @@ export class ConditionDropdown extends Condition {
         return this.params.limit || 0;
     }
 
-    getData(settings) {
-        let result = {
-            settings: {},
-            stats: new Stats(),
-        };
+    getSelectedConditions(settings, defaultItem) {
+        let items = this.getSelectedItems(settings);
+        if (items.length == 0) {
+            if (defaultItem)
+                items = [defaultItem];
+            else
+                return [];
+        }
+
+        let conditions = [];
+
+        for (let i = 0; i < items.length; ++i) {
+            conditions = conditions.concat(items[i].conditions);
+        }
+
+        return conditions;
+    }
+
+    getSettings(settings) {
+        let result = {};
 
         if (this.params.settings) {
-            result.settings = Object.assign(result.settings, this.params.settings);
+            Object.assign(result, this.params.settings);
         }
 
         if (!this.isActive(settings)) {
             return result;
         }
 
-        let items = this.getSelectedItems(settings);
-        if (items.length == 0) {
-            return result;
-        }
-
-        let conditions = [];
-
-        for (let i = 0; i < items.length; ++i) {
-            conditions = conditions.concat(items[i].conditions);
-        }
+        let conditions = this.getSelectedConditions(settings);
 
         for (let i = 0; i < conditions.length; ++i) {
             const cond = conditions[i];
             if (cond) {
-                let data = cond.getData(settings);
-
-                result.stats.concat(data.stats);
-                result.settings = Object.assign(result.settings, data.settings);
+                let data = cond.getSettings(settings);
+                Object.assign(result, data);
             }
         }
 
         return result;
     }
 
-    getStats(settings) {
+    getDisplayStats(settings) {
         let result = new Stats();
 
-        let items = this.getSelectedItems(settings);
-        if (items.length == 0 && this.params.values) {
-            items = [this.params.values[0]];
-        }
-
-        let conditions = [];
-        for (let i = 0; i < items.length; ++i) {
-            conditions = conditions.concat(items[i].conditions);
-        }
+        let conditions = this.getSelectedConditions(settings, this.params.values && this.params.values[0]);
 
         for (const cond of conditions) {
             if (!cond) {
                 continue;
             }
 
-            let data = cond.getData(settings);
-            result.concat(data.stats);
+            let data = cond.getDisplayStats(settings);
+            result.concat(data);
+        }
+
+        return result;
+    }
+
+    getAllStats(settings,) {
+        let result = new Stats();
+
+        let conditions = this.getSelectedConditions(settings);
+
+        for (const cond of conditions) {
+            if (!cond) {
+                continue;
+            }
+
+            let data = cond.getActualStats(settings);
+            result.concat(data);
         }
 
         return result;

@@ -33,6 +33,7 @@ export class Feature2 {
         this.tags = params.tags || [];
         this.multipliers = params.multipliers || [];
         this.category = params.category;
+        this.title = params.title;
         this.condition = params.condition;
         this.element = '';
         this.damageType = '';
@@ -210,7 +211,7 @@ export class Feature2 {
         let [normal, crit, average] = compiler.execute(data);
 
         return {
-            [this.getName()]: new FeatureResult({
+            [this.title ? this.title : this.getName()]: new FeatureResult({
                 icon: this.icon || this.getElement(data),
                 normal: normal,
                 crit: crit,

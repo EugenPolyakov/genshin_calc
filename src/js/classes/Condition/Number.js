@@ -42,21 +42,19 @@ export class ConditionNumber extends Condition {
         return value;
     }
 
-    getData(settings) {
+    getSettings(settings) {
         let result = {};
 
+        //очень странный флаг используется в ConditionNumberSkirk, зачем понадобилось установить значение раньше чем это сделается автоматически???
         if (this.params.forceSettings) {
             result = {[this.params.name]: this.getValue(settings)};
         }
 
-        return {
-            settings: result,
-            stats: this.getStats(settings),
-        };
+        return result;
     }
 
-    getStats(settings) {
-        let stats = super.getStats(settings);
+    getDefaultStats(settings) {
+        let stats = super.getDefaultStats(settings);
 
         let value = this.getValue(settings);
         if (!this.params.noStat) {

@@ -46,9 +46,10 @@ export class BuildSettings {
     }
 }
 
-export function getSkillLevelByName(name, settings) {
+export function getSkillLevelByName(name, settings, baseMax) {
     let result = settings[name] || 1;
-
+    if ((baseMax || 0) > 1)
+        result = Math.min(result, baseMax);
     result += settings[name + '_bonus'] || 0;
     result += settings[name + '_bonus_2'] || 0;
 

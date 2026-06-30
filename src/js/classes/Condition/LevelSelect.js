@@ -16,7 +16,7 @@ export class ConditionLevelSelect extends Condition {
         return settings[this.params.name] || 0;
     }
 
-    getStats(settings) {
+    getDefaultStats(settings) {
         let level = this.getLevel(settings);
         let max   = this.getMaxStacks(settings);
         let stats = new Stats();

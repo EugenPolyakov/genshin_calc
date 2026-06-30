@@ -1,35 +1,18 @@
 import { ConditionStatic } from "../Static";
 import { Stats } from "../../Stats";
+import { getSkillLevelByName } from "../../Build/Settings";
 
 export class ConditionStaticLevel extends ConditionStatic {
     getLevel(settings) {
-        let level = settings[this.params.levelSetting] || 0;
-        level += settings[this.params.levelSetting + '_bonus'] || 0;
-        level += settings[this.params.levelSetting + '_bonus_2'] || 0;
+        let level = getSkillLevelByName(this.params.levelSetting, settings);
 
-        if (this.params.fromZero) {
+        if (this.params.fromZero && settings[this.params.levelSetting])
             ++level;
-        } else {
-            level ||= 1;
-        }
+
         return level;
     }
 
-    getData(settings) {
-        let result = {
-            settings: {},
-            stats: new Stats(),
-        };
-
-        if (this.isActive(settings)) {
-            result.settings = this.params.settings || {};
-            result.stats = this.getStats(settings);
-        }
-
-        return result;
-    }
-
-    getStats(settings) {
+    getDefaultStats(settings) {
         let stats = new Stats();
         let level = this.getLevel(settings);
 

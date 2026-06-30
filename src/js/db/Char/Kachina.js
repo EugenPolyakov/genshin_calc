@@ -78,7 +78,7 @@ const Talents = new DbObjectTalents({
             },
             {
                 unit: '',
-                table: new StatTable('nightsoul_points_limit', charTalentTables.Kachina.s2.p3),
+                table: new StatTable('nightsoul_point_limit', charTalentTables.Kachina.s2.p3),
             },
             {
                 unit: 'sec',

@@ -10,7 +10,7 @@ export class CustomOrigin extends Condition {
         return v == this.params.origin;
     }
 
-    getData(settings) {
+    getSettings(settings) {
         let stacks = 0;
         if (settings.char_originList.some(this.checkOrigin, this)) {
             ++stacks;
@@ -28,11 +28,8 @@ export class CustomOrigin extends Condition {
             }
         }
 
-        var result = {
-            settings: {},
-            stats: new Stats({}),
-        };
-        result.settings[this.params.name] = stacks;
+        var result = { };
+        result[this.params.name] = stacks;
 
         return result;
     }

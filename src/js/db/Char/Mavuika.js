@@ -110,7 +110,7 @@ const Talents = new DbObjectTalents({
             },
             {
                 unit: 'unit',
-                table: new StatTable('xilonen_nightsoul', charTalentTables.Mavuika.s2.p13),
+                table: new StatTable('nightsoul_point_limit', charTalentTables.Mavuika.s2.p13),
             },
             {
                 unit: 'sec',

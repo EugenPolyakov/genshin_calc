@@ -21,8 +21,8 @@ export class ConditionStaticRefineWaveridingWhirl extends ConditionStaticRefine 
         return Math.min(2, level);
     }
 
-    getStats(settings) {
-        let stats = super.getStats(settings);
+    getDefaultStats(settings) {
+        let stats = super.getDefaultStats(settings);
         let level = this.getElementsCount(settings);
 
         if (!level) {

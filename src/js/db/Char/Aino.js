@@ -72,10 +72,10 @@ const Talents = new DbObjectTalents({
         description: 'talent_descr.aino_musecatcher',
         items: [
             {
-                table: new StatTable('skill_dmg', charTalentTables.Aino.s2.p1),
+                table: new StatTable('aino_stage_1_dmg', charTalentTables.Aino.s2.p1),
             },
             {
-                table: new StatTable('aino_musecatcher', charTalentTables.Aino.s2.p2),
+                table: new StatTable('aino_stage_2_dmg', charTalentTables.Aino.s2.p2),
             },
             {
                 unit: 'sec',
@@ -89,7 +89,7 @@ const Talents = new DbObjectTalents({
         description: 'talent_descr.aino_precision_hydronic_cooler',
         items: [
             {
-                table: new StatTable('burst_dmg', charTalentTables.Aino.s3.p1),
+                table: new StatTable('aino_water_ball_dmg', charTalentTables.Aino.s3.p1),
             },
             {
                 unit: 'sec',
@@ -211,32 +211,32 @@ export const Aino = new DbObjectChar({
             ],
         }),
         new FeatureDamageSkill({
-            name: 'skill_dmg',
+            name: 'aino_stage_1_dmg',
             element: 'hydro',
             multipliers: [
                 new FeatureMultiplier({
                     leveling: 'char_skill_elemental',
-                    values: Talents.get('skill.skill_dmg'),
+                    values: Talents.get('skill.aino_stage_1_dmg'),
                 }),
             ],
         }),
         new FeatureDamageSkill({
-            name: 'aino_musecatcher',
+            name: 'aino_stage_2_dmg',
             element: 'hydro',
             multipliers: [
                 new FeatureMultiplier({
                     leveling: 'char_skill_elemental',
-                    values: Talents.get('skill.aino_musecatcher'),
+                    values: Talents.get('skill.aino_stage_2_dmg'),
                 }),
             ],
         }),
         new FeatureDamageBurst({
-            name: 'burst_dmg',
+            name: 'aino_water_ball_dmg',
             element: 'hydro',
             multipliers: [
                 new FeatureMultiplier({
                     leveling: 'char_skill_burst',
-                    values: Talents.get('burst.burst_dmg'),
+                    values: Talents.get('burst.aino_water_ball_dmg'),
                 }),
                 new FeatureMultiplier({
                     scaling: 'mastery*',

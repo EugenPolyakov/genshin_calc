@@ -1,8 +1,8 @@
 import { ConditionStacks } from "../Stacks"
 
 export class ConditionStacksLevels extends ConditionStacks {
-    getStats(settings, stacksCnt) {
-        let result = super.getStats(settings, stacksCnt);
+    getDefaultStats(settings, stacksCnt) {
+        let result = super.getDefaultStats(settings, stacksCnt);
 
         if (stacksCnt) {
             let real = this.params.realStats;

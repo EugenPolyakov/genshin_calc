@@ -1,8 +1,8 @@
 import { Condition } from "../Condition";
 
 export class ConditionMoonPhaseBuff extends Condition {
-    getStats(settings) {
-        let stats = super.getStats(settings);
+    getDefaultStats(settings) {
+        let stats = super.getDefaultStats(settings);
         let level = Math.min(2, settings['moon_phase']);
         if (!level) {
             return stats;

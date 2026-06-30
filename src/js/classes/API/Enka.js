@@ -2,7 +2,7 @@ import { Artifact } from "../Artifact";
 import { CalcSet } from "../CalcSet";
 import { prepareUid } from "./Uid";
 
-const API_URL = '/back/proxy/enka/?uid=<uid>&hash=<hash>';
+const API_URL = '/enka/';
 
 const SLOT_DATA = {
     'EQUIP_RING': 'goblet',
@@ -15,8 +15,7 @@ const SLOT_DATA = {
 export class EnkaApi {
     load(uid, hash, callback) {
         let xhr = new XMLHttpRequest();
-        let url = API_URL.replace('<uid>', prepareUid(uid));
-        url = url.replace('<hash>', hash || '');
+        let url = API_URL + prepareUid(uid);
 
         xhr.open('GET', url)
         xhr.onload = () => callback(this.processData(xhr.response));
@@ -100,21 +99,22 @@ function getPlayer(data) {
 }
 
 function getChars(data) {
-    if (!data.hasOwnProperty('builds')) {
+    let player = data.playerInfo;
+    if (!player.hasOwnProperty('avatarInfoList')) {
         return;
     }
 
-    let chars = data.builds;
+    let chars = player.avatarInfoList;
     if (!Array.isArray(chars)) {
         return;
     }
 
     let result = [];
     for (let charData of chars) {
-        let calcset = processChar(charData.data);
+        let calcset = processChar(charData);
         if (calcset) {
             result.push({
-                title: charData.name,
+                title: calcset.char.getName(),
                 set: calcset,
             });
         }

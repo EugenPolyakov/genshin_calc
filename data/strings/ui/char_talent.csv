@@ -13,7 +13,6 @@ char_talent;unit_per_seal;%;% Per Seal
 char_talent;unit_percent_per_stack;%/ур.;% per stack
 char_talent;unit_current_hp;% текущего HP;% Current HP
 char_talent;unit_per_energy;% за энергию;% Per Energy
-char_talent;unit_per_stack;% за каждый уровень;% per stack
 char_talent;unit_normal_atk;% от урона обычной атаки;% Normal Attack DMG
 char_talent;unit_per_amulet;/амулет; per amulet
 char_talent;unit_cur_hp_per_second;%/сек;% Current HP Per Second

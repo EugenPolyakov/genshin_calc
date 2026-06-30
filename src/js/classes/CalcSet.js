@@ -348,6 +348,7 @@ export class CalcSet {
 
         let objects = objectsNames;
 
+        //сначала обновляем все настройки (предположительно они не должны зависеть от stats)
         for (let i = 0; i < objects.length; ++i) {
             let name = objects[i];
             if (!this[name]) {
@@ -357,10 +358,24 @@ export class CalcSet {
             let conditions = this[name].getConditions();
             for (let j = 0; j < conditions.length; ++j) {
                 let cond = conditions[j];
-                let condData = cond.getData(result.settings);
+                let condSettings = cond.getSettings(result.settings);
 
-                result.stats.concat(condData.stats);
-                result.settings.concat(result.settings, condData.settings);
+                result.settings.concat(result.settings, condSettings);
+            }
+        }
+
+        for (let i = 0; i < objects.length; ++i) {
+            let name = objects[i];
+            if (!this[name]) {
+                continue;
+            }
+
+            let conditions = this[name].getConditions();
+            for (let j = 0; j < conditions.length; ++j) {
+                let cond = conditions[j];
+                let condStats = cond.getActualStats(result.settings);
+
+                result.stats.concat(condStats);
             }
         }
 
@@ -420,11 +435,6 @@ export class CalcSet {
         result = result.concat(DB.CalcData.Multipliers);
 
         return result;
-    }
-
-    /* deprecated */
-    getStats(bonus, addSettings) {
-        return this.getBaseStats(bonus, addSettings);
     }
 
     getBuildData(bonus, addSettings) {
@@ -511,7 +521,7 @@ export class CalcSet {
 
     getFeaturesNames() {
         let result = {};
-        let data = this.getStats();
+        let data = this.getBaseStats();
         let features = this.getFeaturesList();
 
         for (let i = 0; i < features.length; ++i) {
@@ -586,8 +596,8 @@ export class CalcSet {
             if (!this[name]) continue;
 
             for (let cond of this[name].getConditions()) {
-                let condData = cond.getData(settings);
-                Object.assign(settings, condData.settings);
+                let condSettings = cond.getSettings(settings);
+                Object.assign(settings, condSettings);
             }
         }
 

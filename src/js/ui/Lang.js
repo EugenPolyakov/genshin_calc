@@ -26,9 +26,11 @@ export class Lang {
         result = result.replace(/skill\{(\w+):(.*?)\}/g, '<span class="text-name gi-skill-info" data-skill="$1">$2</span>');
         result = result.replace(/tab\{([\w\-]+):(.*?)\}/g, '<span class="text-name gi-tab-change" data-tab="$1">$2</span>');
 
-        result = result.replace(/format\{(\w+)=(\w+)\|([\w\.\%\{\}]+)\}/g, function(all_str, stat, value, str) {
-            let statValue = stats.get(stat)
-            if (statValue == value) {
+        result = result.replace(/format\{(\w+)(=|<|>)(\w+)\|([\w\.\%\{\}]+)\}/g, function(all_str, stat, cmp, value, str) {
+            let statValue = stats.get(stat);
+            if (((cmp == '=') && (statValue == value))
+                    || ((cmp == '>') && (statValue > value))
+                    || ((cmp == '<') && (statValue < value))) {
                 return '<span class="text-value">'+ str +'</span>';
             }
             return '<span class="text-fade">'+ str +'</span>';

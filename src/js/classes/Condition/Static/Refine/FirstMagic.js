@@ -1,8 +1,8 @@
 import { ConditionStaticRefine } from "../Refine";
 
 export class ConditionStaticRefineFirstMagic extends ConditionStaticRefine {
-    getStats(settings) {
-        let stats = super.getStats(settings);
+    getDefaultStats(settings) {
+        let stats = super.getDefaultStats(settings);
         let level = Math.min(3, settings[this.params.effectLevelSetting]);
         if (!level) {
             return stats;

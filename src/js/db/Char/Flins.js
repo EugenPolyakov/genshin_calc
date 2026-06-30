@@ -97,15 +97,15 @@ const Talents = new DbObjectTalents({
                 table: new StatTable('charged_hit', charTalentTables.Flins.s2.p6),
             },
             {
-                table: new StatTable('flins_arcane_light_1', charTalentTables.Flins.s2.p7),
+                table: new StatTable('flins_northland_spearstorm_dmg', charTalentTables.Flins.s2.p7),
             },
             {
                 unit: 'sec',
-                table: new StatTable('flins_arcane_light_2', charTalentTables.Flins.s2.p8),
+                table: new StatTable('flins_northland_spearstorm_cd', charTalentTables.Flins.s2.p8),
             },
             {
                 unit: 'sec',
-                table: new StatTable('flins_arcane_light_3', charTalentTables.Flins.s2.p9),
+                table: new StatTable('flins_manifest_flame_duration', charTalentTables.Flins.s2.p9),
             },
             {
                 unit: 'sec',
@@ -119,16 +119,16 @@ const Talents = new DbObjectTalents({
         description: 'talent_descr.flins_cometh_the_night',
         items: [
             {
-                table: new StatTable('burst_dmg', charTalentTables.Flins.s3.p1),
+                table: new StatTable('flins_initial_skill_dmg', charTalentTables.Flins.s3.p1),
             },
             {
-                table: new StatTable('flins_cometh_the_night_1', charTalentTables.Flins.s3.p2),
+                table: new StatTable('flins_middle_phase_lunar_charged_dmg', charTalentTables.Flins.s3.p2),
             },
             {
-                table: new StatTable('flins_cometh_the_night_2', charTalentTables.Flins.s3.p3),
+                table: new StatTable('flins_final_phase_lunar_charged_dmg', charTalentTables.Flins.s3.p3),
             },
             {
-                unit: '',
+                unit: 'unit',
                 table: new StatTable('energy_cost', charTalentTables.Flins.s3.p4),
             },
             {
@@ -136,14 +136,14 @@ const Talents = new DbObjectTalents({
                 table: new StatTable('cd', charTalentTables.Flins.s3.p5),
             },
             {
-                table: new StatTable('flins_cometh_the_night_3', charTalentTables.Flins.s3.p6),
+                table: new StatTable('flins_thunderous_symphony_dmg', charTalentTables.Flins.s3.p6),
             },
             {
-                table: new StatTable('flins_cometh_the_night_4', charTalentTables.Flins.s3.p7),
+                table: new StatTable('flins_thunderous_symphony_additional_dmg', charTalentTables.Flins.s3.p7),
             },
             {
-                unit: '',
-                table: new StatTable('flins_cometh_the_night_5', charTalentTables.Flins.s3.p8),
+                unit: 'unit',
+                table: new StatTable('flins_thunderous_symphony_energy_cost', charTalentTables.Flins.s3.p8),
             },
         ],
     },
@@ -358,81 +358,71 @@ export const Flins = new DbObjectChar({
             condition: new ConditionBoolean({ name: 'flins_arcane_light' }),
         }),
         new FeatureDamageSkill({
-            name: 'flins_arcane_light_1',
+            name: 'flins_northland_spearstorm_dmg',
             element: 'electro',
             multipliers: [
                 new FeatureMultiplier({
                     leveling: 'char_skill_elemental',
-                    values: Talents.get('skill.flins_arcane_light_1'),
+                    values: Talents.get('skill.flins_northland_spearstorm_dmg'),
                 }),
             ],
             condition: new ConditionBoolean({ name: 'flins_arcane_light' }),
         }),
         new FeatureDamageBurst({
-            name: 'burst_dmg',
+            name: 'flins_initial_skill_dmg',
             element: 'electro',
             multipliers: [
                 new FeatureMultiplier({
                     leveling: 'char_skill_burst',
-                    values: Talents.get('burst.burst_dmg'),
-                }),
-            ],
-            condition: new ConditionBoolean({ name: 'flins_arcane_light', invert: true, }),
-        }),
-        new FeatureDamageBurst({
-            name: 'flins_cometh_the_night_1',
-            element: 'electro',
-            multipliers: [
-                new FeatureMultiplier({
-                    leveling: 'char_skill_burst',
-                    values: Talents.get('burst.flins_cometh_the_night_1'),
-                }),
-            ],
-            condition: new ConditionBoolean({ name: 'flins_arcane_light', invert: true, }),
-        }),
-        new FeatureDamageBurst({
-            name: 'flins_cometh_the_night_2',
-            element: 'electro',
-            multipliers: [
-                new FeatureMultiplier({
-                    leveling: 'char_skill_burst',
-                    values: Talents.get('burst.flins_cometh_the_night_2'),
+                    values: Talents.get('burst.flins_initial_skill_dmg'),
                 }),
             ],
             condition: new ConditionBoolean({ name: 'flins_arcane_light', invert: true, }),
         }),
         new FeatureReactionLunarChargedLike({
-            name: 'flins_cometh_the_night_3',
+            name: 'flins_middle_phase_lunar_charged_dmg',
             element: 'electro',
             category: 'burst',
             multipliers: [
                 new FeatureMultiplier({
                     leveling: 'char_skill_burst',
-                    values: Talents.get('burst.flins_cometh_the_night_3'),
+                    values: Talents.get('burst.flins_middle_phase_lunar_charged_dmg'),
+                }),
+            ],
+            condition: new ConditionBoolean({ name: 'flins_arcane_light', invert: true, }),
+        }),
+        new FeatureReactionLunarChargedLike({
+            name: 'flins_final_phase_lunar_charged_dmg',
+            element: 'electro',
+            category: 'burst',
+            multipliers: [
+                new FeatureMultiplier({
+                    leveling: 'char_skill_burst',
+                    values: Talents.get('burst.flins_final_phase_lunar_charged_dmg'),
+                }),
+            ],
+            condition: new ConditionBoolean({ name: 'flins_arcane_light', invert: true, }),
+        }),
+        new FeatureReactionLunarChargedLike({
+            name: 'flins_thunderous_symphony_dmg',
+            element: 'electro',
+            category: 'burst',
+            multipliers: [
+                new FeatureMultiplier({
+                    leveling: 'char_skill_burst',
+                    values: Talents.get('burst.flins_thunderous_symphony_dmg'),
                 }),
             ],
             condition: new ConditionBoolean({ name: 'flins_arcane_light' }),
         }),
         new FeatureReactionLunarChargedLike({
-            name: 'flins_cometh_the_night_4',
+            name: 'flins_thunderous_symphony_additional_dmg',
             element: 'electro',
             category: 'burst',
             multipliers: [
                 new FeatureMultiplier({
                     leveling: 'char_skill_burst',
-                    values: Talents.get('burst.flins_cometh_the_night_4'),
-                }),
-            ],
-            condition: new ConditionBoolean({ name: 'flins_arcane_light' }),
-        }),
-        new FeatureReactionLunarChargedLike({
-            name: 'flins_cometh_the_night_5',
-            element: 'electro',
-            category: 'burst',
-            multipliers: [
-                new FeatureMultiplier({
-                    leveling: 'char_skill_burst',
-                    values: Talents.get('burst.flins_cometh_the_night_5'),
+                    values: Talents.get('burst.flins_thunderous_symphony_additional_dmg'),
                 }),
             ],
             condition: new ConditionBoolean({ name: 'flins_arcane_light' }),

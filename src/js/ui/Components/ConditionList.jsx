@@ -89,7 +89,7 @@ function ConditionItem(props) {
         return null;
     }
 
-    let stats = cond.getStats(props.settings);
+    let stats = cond.getDisplayStats(props.settings);
     let result = (
         <div
             className="condition-list-item"
@@ -231,7 +231,7 @@ class PartyWeaponItem extends React.Component {
     render() {
         let cond = this.props.item;
         let type = cond.getType();
-        let stats = cond.getStats(this.props.settings);
+        let stats = cond.getDisplayStats(this.props.settings);
 
         return (
             <GroupBox>
@@ -266,9 +266,9 @@ function ConditionControl(props) {
 
             if (cond.params.titleFunc) {
                 let localSettings = Object.assign({}, props.settings, {[cond.getName()]: i});
-                let condData = cond.getData(localSettings);
+                let condData = cond.getDisplayStats(localSettings);
 
-                let titleData = cond.params.titleFunc(i, condData.stats);
+                let titleData = cond.params.titleFunc(i, condData);
                 if (typeof titleData == 'object') {
                     title = lang.getTalent(titleData.str, titleData.values);
                 } else if (titleData) {

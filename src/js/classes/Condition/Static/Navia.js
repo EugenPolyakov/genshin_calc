@@ -6,7 +6,7 @@ export class ConditionStaticNavia extends ConditionStatic {
         return '';
     }
 
-    getStats(settings) {
+    getDefaultStats(settings) {
         let stats = new Stats();
 
         let shrapnel1 = Math.min(3, settings.navia_shrapnel_charge);

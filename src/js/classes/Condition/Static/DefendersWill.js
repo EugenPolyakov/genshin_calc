@@ -2,22 +2,7 @@ import { Stats } from "../../Stats";
 import { ConditionStatic } from "../Static";
 
 export class ConditionDefendersWill extends ConditionStatic {
-
-    getData(settings) {
-        let result = {
-            settings: {},
-            stats: new Stats(),
-        };
-
-        if (this.isActive(settings)) {
-            result.settings = this.params.settings || {};
-            result.stats = this.getStats(settings);
-        }
-
-        return result;
-    }
-
-    getStats(settings) {
+    getDefaultStats(settings) {
         settings ||= {}
 
         let stats = new Stats({

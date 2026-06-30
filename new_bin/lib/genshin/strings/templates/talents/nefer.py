@@ -1,0 +1,215 @@
+from ...template import Template, TemplateList
+
+
+char_nefer = TemplateList(
+    default_rus=Template(
+        names=[
+            'Нефер',
+        ],
+        keywords=[
+            ('Лунная бутонизация', 'dendro'),
+            ('Бутонизация', 'dendro'),
+            ('Вегетация', 'dendro'),
+            ('Цветение', 'dendro'),
+        ],
+        skills={
+            'skill': ['Стратегия сенета: Танец тысячи ночей'],
+            'burst': ['Священная клятва: Химера истинного взора'],
+        },
+    ),
+    default_eng=Template(
+        names=[
+            'Nefer',
+        ],
+        keywords=[
+            ('Lunar-Bloom DMG', 'dendro'),
+            ('Bloom', 'dendro'),
+            ('Hyperbloom', 'dendro'),
+            ('Burgeon', 'dendro'),
+        ],
+        skills={
+            'skill': ['Senet Strategy: Dance of a Thousand Nights'],
+            'burst': ["Sacred Vow: True Eye's Phantasm"],
+        },
+    ),
+    dance_of_a_thousand_nights = Template(
+        prouds=[1, 2, 3, 4, 5, 6, 7]
+    ),
+    true_eyes_phantasm = Template(
+        prouds=[0, 1, 2]
+    ),
+    striking_serpent = Template(
+        prouds=[5, 7]
+    ),
+    dawnless_rest_of_karsikko_rus = Template(
+        replace={
+            '</p><p>': '</p>\n<p>',
+        },
+        sentences=[
+            [],
+            [],
+            [],
+            ['1:ignore'],
+            [],
+            [],
+            ['3:ignore'],
+            ['10:ignore'],
+        ],
+        results=[
+            list(range(0, 8)),
+            [7],
+        ],
+        prouds=[1, 2, 3, 4, 5, 6, 7],
+    ),
+    dawnless_rest_of_karsikko_eng = Template(
+        replace={
+            '</p><p>': '</p>\n<p>',
+        },
+        sentences=[
+            [],
+            [],
+            ['1:ignore'],
+            [],
+            [],
+            ['3:ignore'],
+            ['10:ignore'],
+        ],
+        results=[
+            list(range(0, 7)),
+            [6],
+        ],
+        prouds=[1, 2, 3, 4, 5, 6, 7],
+    ),
+    all_hearts_become_the_beating_moon = Template(
+        replace={
+            '<p>name': '<p>\nname',
+            '<br>': '\n<br>\n',
+        },
+        sentences=[
+            [],
+            ['18:'],
+            [],
+            ['15:ignore', '6:'],
+            ['15:ignore'],
+            [],
+            [],
+            ['1:'],
+            [],
+            [],
+            [],
+        ],
+        results=[
+            [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+            [5],
+            [7, 8, 9, 10]
+        ],
+        extracted_names=[1],
+        prouds=[0, 1, 2, 3, 4],
+    ),
+    light_for_the_frosty_night_rus=Template(
+        replace={'<br>': '\n<br>\n'},
+        sentences=[
+            ['20:ignore'],
+            [],
+            [],
+            [],
+            [],
+            [],
+            [],
+            [],
+            ['15:format{text_number_f=1|{value}}:text_crit_rate_bloom', '100:format{text_number_f=1|{value}}:text_crit_dmg_bloom'],
+            [],
+            [],
+            [],
+            [],
+            [],
+            [],
+            ['10:format{text_number_f=2|{value}}:text_crit_rate_lunarbloom', '20:format{text_number_f=2|{value}}:text_crit_dmg_lunarbloom'],
+        ],
+        results=[
+            [0, 1],
+            [5],
+            [7, 8, 9],
+            [13],
+            [15],
+            [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15],
+        ],
+        extracted_names=[1, 3],
+    ),
+    light_for_the_frosty_night_eng=Template(
+        replace={'<br>': '\n<br>\n'},
+        sentences=[
+            ['20:ignore'],
+            [],
+            [],
+            [],
+            [],
+            [],
+            [],
+            ['15:format{text_number_f=1|{value}}:text_crit_rate_bloom', '100:format{text_number_f=1|{value}}:text_crit_dmg_bloom'],
+            [],
+            [],
+            [],
+            [],
+            [],
+            [],
+            ['10:format{text_number_f=2|{value}}:text_crit_rate_lunarbloom', '20:format{text_number_f=2|{value}}:text_crit_dmg_lunarbloom'],
+        ],
+        results=[
+            [0, 1],
+            [5],
+            [7, 8],
+            [12],
+            [14],
+            [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14],
+        ],
+        extracted_names=[1, 3],
+    ),
+    i_offer_blood_and_tears_to_the_moonlight_rus=Template(
+        replace={'<br>': '\n<br>\n'},
+        sentences=[
+            ['185:text_percent_skill_dmg'],
+            ['2:'],
+            [],
+            ['8:'],
+            [],
+            [],
+            [],
+            [],
+            ['1:ignore', '150:text_percent_atk_dmg'],
+            [],
+            [],
+            [],
+            [],
+            ['25:text_percent_lunarbloom_bonus'],
+        ],
+        results=[
+            [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13],
+            [13],
+        ],
+    ),
+    i_offer_blood_and_tears_to_the_moonlight_eng=Template(
+        replace={'<br>': '\n<br>\n'},
+        sentences=[
+            ['1:ignore', '185:text_percent_skill_dmg'],
+            [],
+            ['2:'],
+            [],
+            ['8:'],
+            [],
+            [],
+            [],
+            [],
+            ['1:ignore', '150:text_percent_atk_dmg'],
+            [],
+            [],
+            [],
+            [],
+            ['25:text_percent_lunarbloom_bonus'],
+        ],
+        results=[
+            [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14],
+            [14],
+        ],
+    ),
+)

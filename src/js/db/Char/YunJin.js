@@ -143,6 +143,19 @@ const Talents = new DbObjectTalents({
     },
 });
 
+export function FillYunJinSettingsStacks(settings) {
+    let result = Object.getPrototypeOf(Object.getPrototypeOf(this)).getSettings.call(this, settings);
+    result.yunjin_traditionalist_stacks = settings.party_elements_count_level;
+
+    return result;
+}
+
+export function FillYunJinStatsStacksFromSettings(settings) {
+    return new Stats({
+        yunjin_traditionalist_stacks: settings.party_elements_count_level || 1,
+    });
+}
+
 export const YunJin = new DbObjectChar({
     name: 'yun_jin',
     serializeId: 47,

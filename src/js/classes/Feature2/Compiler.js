@@ -1,8 +1,8 @@
 import { BuildData } from "../Build/Data";
 import { baseStatName, getUsedStats } from "./Compile/Stats";
 import { CBlock } from "./Compile/Types";
-import { CBlockPost, CIsolatedBlock, CStatDecrease, CStatIncrease, CVar } from "./Compile/Types/Block";
-import { CVarValue } from "./Compile/Types/Item";
+import { CBlockPost, CIsolatedBlock, CStatDecrease, CStatIncrease, CStatSet, CVar } from "./Compile/Types/Block";
+import { CStat, CVarValue } from "./Compile/Types/Item";
 
 const MAX_REPLACE_ITERATIONS = 10;
 
@@ -116,6 +116,14 @@ export class FeatureCompiler {
         let assign = [];
         let revert = [];
 
+        let filtered = postItems.reduce((f, v) => f.add(v.stat), new Set());
+        for (let item of filtered) {
+            let statVar = new CVar([new CStat({ stat: item })], { name: 'post_' + item });
+            assign.push(statVar);
+
+            revert.push(new CStatSet([new CVarValue({ ref: statVar })], { stat: item }))
+        }
+
         let byPriority = postPyPriority(postItems);
 
         for (let priority of Object.keys(byPriority).sort()) {
@@ -126,7 +134,6 @@ export class FeatureCompiler {
                 let statVar = new CVar([post], {name: 'post_'+ post.stat});
                 vars.push(statVar);
                 localAssig.push(new CStatIncrease([new CVarValue({ref: statVar})], {stat: post.stat}));
-                revert.unshift(new CStatDecrease([new CVarValue({ref: statVar})], {stat: post.stat}));
             }
 
             assign.push(

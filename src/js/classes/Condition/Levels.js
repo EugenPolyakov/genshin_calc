@@ -6,21 +6,7 @@ export class ConditionLevels extends Condition {
         return this.params.description ? 'static' : '';
     }
 
-    getData(settings) {
-        let result = {
-            settings: {},
-            stats: new Stats(),
-        };
-
-        if (this.isActive(settings)) {
-            result.settings = this.params.settings || {};
-            result.stats = this.getStats(settings);
-        }
-
-        return result;
-    }
-
-    getStats(settings) {
+    getDefaultStats(settings) {
         let stats = new Stats();
         let level = this.getLevel(settings) || 1;
 

@@ -109,7 +109,7 @@ export class FeatureHeal extends Feature2 {
             },
             {
                 title: 'heal.healing_recv',
-                subItemId: this.getName() + '.healing_recv',
+                subItemId: this.getName() + '.healing_recv' ,
                 isChild: true,
                 settings: {ignore_healing_recv: 0},
             },

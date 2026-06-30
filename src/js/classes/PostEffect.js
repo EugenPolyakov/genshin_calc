@@ -1,3 +1,4 @@
+import { getSkillLevelByName } from "./Build/Settings";
 import { Stats } from "./Stats";
 
 export const PRIORITIES = {
@@ -44,13 +45,7 @@ export class PostEffect {
 
     getLevel(settings) {
         let settingName = this.params.levelSetting;
-        let result = settings[settingName] || 1;
-        if (this.params.maxLevelSetting > 1) {
-            result = Math.min(result, this.params.maxLevelSetting);
-        }
-        result += settings[settingName +'_bonus'] || 0;
-        result += settings[settingName +'_bonus_2'] || 0;
 
-        return result;
+        return getSkillLevelByName(settingName, settings, this.params.maxLevelSetting);
     }
 }

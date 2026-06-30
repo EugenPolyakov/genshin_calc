@@ -4,31 +4,28 @@ import { ConditionBoolean } from "../Boolean";
 const samplersElements = ['pyro', 'cryo', 'electro', 'hydro'];
 
 export class ConditionBooleanXilonen extends ConditionBoolean {
-    getData(settings) {
-        let result = {
-            settings: {},
-            stats: new Stats(),
-        };
+    getSettings(settings) {
+        let result = {};
 
         let samplers = this.getSamplers(settings);
         let otherElementsCnt = 0;
 
         for (let element of samplers) {
-            result.settings['xilonen_sampler_'+ element] = 1;
+            result['xilonen_sampler_'+ element] = 1;
             if (element != 'geo') {
                 ++otherElementsCnt;
             }
         }
 
         if (otherElementsCnt >= 2) {
-            result.settings['xilonen_support_mode'] = 1;
+            result['xilonen_support_mode'] = 1;
         } else {
-            result.settings['xilonen_damage_mode'] = 1;
+            result['xilonen_damage_mode'] = 1;
         }
 
         if (this.isActive(settings)) {
             for (let element of samplers) {
-                result.settings['xilonen_active_sampler_'+ element] = 1;
+                result['xilonen_active_sampler_'+ element] = 1;
             }
         }
 

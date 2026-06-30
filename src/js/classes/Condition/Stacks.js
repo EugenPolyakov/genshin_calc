@@ -1,3 +1,4 @@
+import { getSkillLevelByName } from "../Build/Settings";
 import { Condition } from "../Condition";
 import { Stats } from "../Stats";
 import { StatTableConditions } from "../StatTable/Condition";
@@ -71,43 +72,51 @@ export class ConditionStacks extends Condition {
             return 1;
         }
 
-        return settings[this.params.levelSetting] || 1;
+        return getSkillLevelByName(this.params.levelSetting, settings);
     }
 
-    getData(settings) {
-        let result = {
-            settings: {},
-            stats: new Stats(),
-        };
+    getSettings(settings) {
+        let result = {};
 
         let stacksCnt = this.getStacksCnt(settings);
 
         if (stacksCnt > 0) {
-            result.settings = this.params.settings;
-            result.stats = this.getStats(settings, stacksCnt);
+            result = this.params.settings;
         }
 
         return result;
     }
 
-    getStats(settings, stacksCnt) {
+    getDisplayStats(settings) {
+        let result = this.getDefaultStats(settings, 1);
+
+        //result['global_settings'] = settings;
+        return result;
+    }
+
+    getDefaultStats(settings, stacksCnt) {
         let stats = new Stats();
-        stacksCnt ||= 1;
 
-        let level = this.getStacksLevel(settings);
+        if (stacksCnt > 0) {
+            let level = this.getStacksLevel(settings);
 
-        if (this.params.stats) {
-            for (const stat of this.params.stats) {
-                if (stat instanceof StatTableConditions) {
-                    if (!stat.isActive(settings)) {
-                        continue;
+            if (this.params.stats) {
+                for (const stat of this.params.stats) {
+                    if (stat instanceof StatTableConditions) {
+                        if (!stat.isActive(settings)) {
+                            continue;
+                        }
                     }
-                }
 
-                stats.add(stat.getName(), stat.getValue(level) * stacksCnt);
+                    stats.add(stat.getName(), stat.getValue(level) * stacksCnt);
+                }
             }
         }
 
         return stats;
+    }
+
+    getAllStats(settings) {
+        return this.getDefaultStats(settings, this.getStacksCnt(settings));
     }
 }

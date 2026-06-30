@@ -6,8 +6,8 @@ export class ConditionStaticRefineDreamsSame extends ConditionStaticRefine {
         return settings.party_elements_same || 0;
     }
 
-    getStats(settings) {
-        let stacksCnt = this.getStacks(settings);
+    getDefaultStats(settings) {
+        let stacksCnt = this.getDefaultStats(settings);
         let stats = new Stats({
             dreams_elements_same: stacksCnt,
         });

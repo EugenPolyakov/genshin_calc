@@ -75,7 +75,7 @@ const Talents = new DbObjectTalents({
             },
             {
                 unit: 'unit',
-                table: new StatTable('xilonen_nightsoul', charTalentTables.Ifa.s2.p4),
+                table: new StatTable('nightsoul_point_limit', charTalentTables.Ifa.s2.p4),
             },
             {
                 unit: 'sec',

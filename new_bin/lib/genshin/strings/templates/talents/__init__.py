@@ -67,6 +67,7 @@ from .mona import char_mona  # noqa
 from .mualani import char_mualani  # noqa
 from .navia import char_navia  # noqa
 from .nahida import char_nahida  # noqa
+from .nefer import char_nefer  # noqa
 from .neuvillette import char_neuvillette  # noqa
 from .nilou import char_nilou  # noqa
 from .ningguang import char_ningguang  # noqa
@@ -89,7 +90,7 @@ from .thoma import char_thoma  # noqa
 from .tighnari import char_tighnari  # noqa
 from .traveler_hydro import char_traveler_hydro  # noqa
 from .traveler_pyro import char_traveler_pyro  # noqa
-# from .traveler import char_traveler  # noqa
+from .traveler_dendro import char_traveler_dendro  # noqa
 from .varesa import char_varesa  # noqa
 from .venti import char_venti  # noqa
 from .wanderer import char_wanderer  # noqa

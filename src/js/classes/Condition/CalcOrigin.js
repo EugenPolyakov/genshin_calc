@@ -2,11 +2,11 @@ import { Stats } from "../Stats";
 import { Condition } from "../Condition";
 
 export class ConditionCalcOrigin extends Condition {
-    getData(settings) {
+    getSettings(settings) {
         let same_origin = 0;
         let other_origin = 0;
 
-        if (this.isActive(settings) && settings && settings.char_id) {
+        if (settings && settings.char_id) {
             let origin = DB.Chars.getById(settings.char_id).getOrigin();
 
             for (const name of ['party_char_1', 'party_char_2', 'party_char_3']) {
@@ -25,20 +25,13 @@ export class ConditionCalcOrigin extends Condition {
         }
 
         return {
-            settings: {
-                party_origin_same: same_origin,
-                party_origin_same_inc: same_origin + 1,
-                party_origin_different: other_origin,
-            },
-            stats: new Stats(),
+            party_origin_same: same_origin,
+            party_origin_same_inc: same_origin + 1,
+            party_origin_different: other_origin,
         };
     }
 
     getAllConditionsOn(settings) {
-        return this.getData(settings || {}).settings
-    }
-
-    getStats(settings) {
-        return new Stats();
+        return this.getSettings(settings);
     }
 }

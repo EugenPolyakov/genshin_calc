@@ -108,7 +108,7 @@ class ArtifactTooltipWindow extends React.PureComponent {
         for (const i in conditions) {
             let items = conditions[i];
             for (const item of items) {
-                let stats = item.getStats({});
+                let stats = item.getDisplayStats({});
                 let descr = item.getDescription(stats);
 
                 if (descr) {

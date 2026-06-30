@@ -1,7 +1,7 @@
 from ...template import Template, TemplateList
 
 
-char_traveler = TemplateList(
+char_traveler_dendro = TemplateList(
     default_rus=Template(
         names=[
             'путешественника', 'путешественнику',
@@ -31,7 +31,8 @@ char_traveler = TemplateList(
     ),
     verdant_overgrowth_eng=Template(
         sentences=[
-            ['mastery', 'ignore'],
+            ['mastery'],
+            ['ignore'],
         ],
     ),
     verdant_luxury=Template(

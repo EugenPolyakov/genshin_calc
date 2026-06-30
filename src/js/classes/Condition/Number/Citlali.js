@@ -1,8 +1,8 @@
 import { ConditionNumber } from "../Number";
 
 export class ConditionNumberCitlali extends ConditionNumber {
-    getStats(settings) {
-        let stats = super.getStats(settings);
+    getDefaultStats(settings) {
+        let stats = super.getDefaultStats(settings);
         let value = this.getValue(settings);
 
         if (value > 0) {

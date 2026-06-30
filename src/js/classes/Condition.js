@@ -1,4 +1,4 @@
-import { getSkillLevelByName } from "./Build/Settings";
+import { BuildSettings, getSkillLevelByName } from "./Build/Settings";
 import {Stats} from "./Stats";
 
 export class Condition {
@@ -115,23 +115,31 @@ export class Condition {
         return true;
     }
 
-    getData(settings) {
-        let result = {
-            settings: {},
-        };
+    getSettings(settings) {
+        if (this.isActive(settings))
+            return this.params.settings || {};
+        return {};
+    }
 
-        if (this.isActive(settings)) {
-            result.settings = this.params.settings || {};
-            result.stats = this.getStats(settings);
-        } else {
-            result.stats = new Stats();
-        }
+    getDefaultStats(settings) {
+        return new Stats(this.params.stats || new Stats());
+    }
 
+    getAllStats(settings) {
+        return this.getDefaultStats(settings);
+    }
+
+    getDisplayStats(settings) {
+        let result = this.getDefaultStats(settings);
+
+        //result.add('global_settings', this.params.settings || {});
         return result;
     }
 
-    getStats(settings) {
-        return new Stats(this.params.stats || {});
+    getActualStats(settings) {
+        if (this.isActive(settings))
+            return this.getAllStats(settings);
+        return new Stats();
     }
 
     getBuffRotationSection(settings) {
@@ -152,7 +160,7 @@ export class Condition {
             } else if (type == 'dropdown') {
                 settings[cond.getName()] = cond.params.suggesterValue || 0;
             } else if (cond.getAllConditionsOn) {
-                Object.assign(settings, cond.getAllConditionsOn(buildSettings));
+                Object.assign(settings, cond.getAllConditionsOn(buildSettings || {}));
             }
         }
 

@@ -249,7 +249,7 @@ export class App {
     }
 
     getStats() {
-        return this.currentSet().getStats();
+        return this.currentSet().getBaseStats();
     }
 
     setPartyChars(ids) {

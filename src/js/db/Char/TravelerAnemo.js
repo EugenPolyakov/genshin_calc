@@ -83,7 +83,7 @@ const Talents = new DbObjectTalents({
             },
             {
                 unit: 'sec',
-                table: new StatTable('base_cd', charTalentTables.TravelerAnemo.s2.p5),
+                table: new StatTable('traveler_base_cd', charTalentTables.TravelerAnemo.s2.p5),
             },
             {
                 unit: 'sec',

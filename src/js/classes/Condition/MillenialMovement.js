@@ -2,7 +2,7 @@ import { Condition } from "../Condition";
 import { Stats } from "../Stats";
 
 export class ConditionMillenialMovement extends Condition {
-    getData(settings) {
+    getDefaultStats(settings) {
         let maxLevels = {
             atkBuff: 0,
             atkSpeedBuff: Math.max(settings.weapon_song_of_broken_pines ? settings.weapon_refine : 0, settings['weapon_other.weapon_song_of_broken_pines'] || 0),
@@ -12,10 +12,7 @@ export class ConditionMillenialMovement extends Condition {
 
         maxLevels.atkBuff = Math.max(maxLevels.atkSpeedBuff, maxLevels.masteryBuff, maxLevels.affixBuff);
 
-        let result = {
-            settings: {},
-            stats: new Stats(),
-        };
+        let result = new Stats();
 
         if (maxLevels.atkBuff == 0) {
             return result;
@@ -32,7 +29,7 @@ export class ConditionMillenialMovement extends Condition {
 
             for (let index = 0; index < stats.length; ++index) {
                 let stat = stats[index];
-                result.stats.add(stat.getName(), stat.getValue(level));
+                result.add(stat.getName(), stat.getValue(level));
             }
         }
 
