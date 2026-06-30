@@ -10,7 +10,7 @@ export class Artifact {
         this.set = set;
         this.mainStat = mainStat;
         if (subStats)
-            this.subStats = subStats.splice();
+            this.subStats = Object.assign({}, subStats);
         else
             this.subStats = {};
         this.locked = false;

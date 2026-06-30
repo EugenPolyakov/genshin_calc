@@ -1,5 +1,4 @@
 import React from "react";
-import _uniqueId from 'lodash/uniqueId';
 
 import "../../../../css/Components/Rotation/StorageModal.css"
 
@@ -181,7 +180,7 @@ export class RotationList extends React.PureComponent {
 
         for (let item of items) {
             renderItems.push(
-                <div key={_uniqueId()} className={item.isVisible ? '' : 'hidden'}>
+                <div className={item.isVisible ? '' : 'hidden'}>
                     <RotationListItem
                         title={item.title}
                         item={item.rotation}

@@ -12,8 +12,8 @@ import { TitledButton } from '../Components/Inputs/Buttons';
 import { Checkbox, CheckboxList, FileInput } from '../Components/Inputs/Input';
 import { Backup } from '../../classes/Backup';
 import { ImporterGood } from '../../classes/Importer/Good';
+import * as FileSaver from 'file-saver';
 
-let FileSaver = require('file-saver');
 let lang = new Lang();
 
 export class SettingsTab extends Tab {

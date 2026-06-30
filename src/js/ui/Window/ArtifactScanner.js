@@ -1,7 +1,7 @@
 import $ from "jquery";
 import SimpleBar from 'simplebar';
 import "../../../css/ui/Window/ArtifactScanner.css"
-const levenshtein = require('js-levenshtein');
+import * as levenshtein from "js-levenshtein";
 
 import { Artifact } from "../../classes/Artifact";
 import { ArtifactWidget } from "../Wigdet/Artifact";

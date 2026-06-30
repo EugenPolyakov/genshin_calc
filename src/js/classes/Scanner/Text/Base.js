@@ -1,4 +1,4 @@
-const levenshtein = require('js-levenshtein');
+import * as levenshtein from "js-levenshtein";
 
 export class ScannerTextBase {
     removeNonAlnum(text) {
