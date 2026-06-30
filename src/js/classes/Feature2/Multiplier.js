@@ -261,6 +261,10 @@ export class FeatureMultiplier {
         let value = this.getScalingMultiplier(data);
         if (value == 1) return;
 
+        if (typeof value == "function") {
+            value = value(data);
+        }
+
         if (isNaN(value)) {
             return new CSumPlusOne([makeStatItem(value, data.stats)], {
                 percent: true,
@@ -280,13 +284,7 @@ export class FeatureMultiplier {
      * @returns {CItem}
      */
     getTreeStatValue(data) {
-        let value;
-        if (this.scaling.indexOf('*') >= 0) {
-            let realStat = this.scaling.replace('*', '');
-            value = makeStatTotalItem(realStat, data.stats);
-        } else {
-            value = makeStatItem(this.scaling, data.stats);
-        }
+        let value = makeStatItem(this.scaling, data.stats);
 
         if (this.exceedStatValue) {
             value = new CMax([

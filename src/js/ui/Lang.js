@@ -8,7 +8,9 @@ export class Lang {
         } else {
             this.name = 'eng';
             this.current = {
-                'layout.locale': 'en-GB',
+                layout: {
+                    locale: 'en-GB',
+                },
             }
         }
     }

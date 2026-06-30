@@ -88,7 +88,7 @@ class ImageGenerator:
             file_path = os.path.join(img_out_path, self.pack_name, file_name)
             self._minify_file(image, file_path)
 
-        with open(f'{css_out_path}/icons_{ self.pack_name.replace("/", "_")}.css', 'w') as css_fh:
+        with open(f'{css_out_path}icons_{ self.pack_name.replace("/", "_")}.css', 'w') as css_fh:
             css_fh.write(css)
 
     def generate_individual(self, size: Tuple[int, int], retina: bool = True) -> None:

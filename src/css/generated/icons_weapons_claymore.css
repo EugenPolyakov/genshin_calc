@@ -38,16 +38,17 @@
 .weapon-icon-claymore-verdict {background-image: url("../../images/weapons/claymore/claymore_goldenverdict.png")}
 .weapon-icon-claymore-fang-of-the-mountain-king {background-image: url("../../images/weapons/claymore/claymore_emeraldsword.png")}
 .weapon-icon-claymore-a-thousand-blazing-suns {background-image: url("../../images/weapons/claymore/claymore_radiancesword.png")}
+.weapon-icon-claymore-gest-of-the-mighty-wolf {background-image: url("../../images/weapons/claymore/claymore_ensisaquilonis.png")}
 .sprite-weapon-claymore.sprite-24 {
-	background-image: url("../../images/sprites/weapon_claymore_7e9525013d35755f621518853dc862f5.png");
+	background-image: url("../../images/sprites/weapon_claymore_d865bde261c01bcfdb88fcd527312ac3.png");
 	background-size: 120px 264px;
 }
 .sprite-weapon-claymore.sprite-40 {
-	background-image: url("../../images/sprites/weapon_claymore_31afbe5e0ee3be2f5e5d219ee953e615.png");
+	background-image: url("../../images/sprites/weapon_claymore_69a25348efbd0eaf37a2b10f37fcccb5.png");
 	background-size: 200px 440px;
 }
 .sprite-weapon-claymore.sprite-60 {
-	background-image: url("../../images/sprites/weapon_claymore_355808be19204806344a64aea9203878.png");
+	background-image: url("../../images/sprites/weapon_claymore_80ccc020577d01ad4277e99a878ca3ab.png");
 	background-size: 300px 660px;
 }
 .sprite.weapon-icon-claymore-unknown {background-position: 0% 0%}
@@ -90,6 +91,7 @@
 .sprite.weapon-icon-claymore-verdict {background-position: 50% 70%}
 .sprite.weapon-icon-claymore-fang-of-the-mountain-king {background-position: 75% 70%}
 .sprite.weapon-icon-claymore-a-thousand-blazing-suns {background-position: 100% 70%}
+.sprite.weapon-icon-claymore-gest-of-the-mighty-wolf {background-position: 0% 80%}
 
 @media
 only screen and (-webkit-min-device-pixel-ratio: 2),
@@ -138,7 +140,8 @@ only screen and (                min-resolution: 2dppx) {
 	.weapon-icon-claymore-verdict {background-image: url("../../images/weapons/claymore/claymore_goldenverdict_2x.png")}
 	.weapon-icon-claymore-fang-of-the-mountain-king {background-image: url("../../images/weapons/claymore/claymore_emeraldsword_2x.png")}
 	.weapon-icon-claymore-a-thousand-blazing-suns {background-image: url("../../images/weapons/claymore/claymore_radiancesword_2x.png")}
-	.sprite-weapon-claymore.sprite-24 {background-image: url("../../images/sprites/weapon_claymore_40fc07cb169cc580de94b6064bc2f10c.png")}
-	.sprite-weapon-claymore.sprite-40 {background-image: url("../../images/sprites/weapon_claymore_ada9cbc1d0026cbf63619941ad7fbe18.png")}
-	.sprite-weapon-claymore.sprite-60 {background-image: url("../../images/sprites/weapon_claymore_beb63eca6de9e7e65ec487e02a480d77.png")}
+	.weapon-icon-claymore-gest-of-the-mighty-wolf {background-image: url("../../images/weapons/claymore/claymore_ensisaquilonis_2x.png")}
+	.sprite-weapon-claymore.sprite-24 {background-image: url("../../images/sprites/weapon_claymore_0f61e51f9f2e9958b910cce6d77f843d.png")}
+	.sprite-weapon-claymore.sprite-40 {background-image: url("../../images/sprites/weapon_claymore_2a6fd02176dc05c0e24521623c6228a7.png")}
+	.sprite-weapon-claymore.sprite-60 {background-image: url("../../images/sprites/weapon_claymore_fe9e7e4b64894c7f1c8f96b3a5aae0a7.png")}
 }

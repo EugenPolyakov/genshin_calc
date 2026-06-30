@@ -113,7 +113,7 @@ export class ArtifactListItem extends React.Component {
                         UI.TooltipArtifact.updatePosition(e);
                     }
                 }}
-                onMouseEnter={() => this.props.onOver(art)}
+                onMouseEnter={ () => this.props.onOver ? this.props.onOver(art) : ''}
                 onMouseLeave={() => UI.TooltipArtifact.hide()}
             >
                 <div className="line">

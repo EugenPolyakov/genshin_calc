@@ -169,6 +169,8 @@ export class Condition {
                 settings[cond.getName()] = true;
             } else if (type == 'dropdown') {
                 settings[cond.getName()] = cond.params.suggesterValue || 0;
+            } else if (type == 'number') {
+                settings[cond.getName()] = cond.getMinValue();
             } else if (cond.getAllConditionsOn) {
                 Object.assign(settings, cond.getAllConditionsOn(buildSettings || {}));
             }

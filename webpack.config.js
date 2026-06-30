@@ -24,7 +24,7 @@ module.exports = (env, argv) => {
         plugins: [
             new webpack.DefinePlugin({
                 __VERSION__: JSON.stringify(pkg.version),
-                __DEVEL__: JSON.stringify(argv.mode === 'development'),
+                __DEVEL__: JSON.stringify(argv.mode === 'development' || env.min === 'false'),
             }),
             new MiniCssExtractPlugin({
                 filename: 'css/[name].css',

@@ -4,7 +4,7 @@ export class ConditionNumberFurina extends ConditionNumber {
     getMinValue(settings) {
         let value = super.getMinValue(settings);
 
-        if (settings.char_constellation >= 1 && settings[this.params.name] > 0) {
+        if (settings && settings.char_constellation >= 1 && settings[this.params.name] > 0) {
             value += this.params.c1bonus;
         }
 

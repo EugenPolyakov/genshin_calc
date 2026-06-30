@@ -24,6 +24,25 @@ char_venti = TemplateList(
             'burst': ['Wind\'s Grand Ode'],
         },
     ),
+    temporal_winds_eulogy=Template(
+        replace={
+            '<br>': '\n<br>\n',
+        },
+        sentences=[
+            [],
+            ['2:ignore'],
+            [],
+            [],
+            [],
+            [],
+            [],
+            ['4:ignore', '50:dmg_all', '135:text_percent'],
+        ],
+        results=[
+            [0, 1],
+            [5, 6, 7],
+        ],
+    ),
     embrace_of_winds=Template(
         sentences=[
             ['ignore'],
@@ -58,9 +77,39 @@ char_venti = TemplateList(
             [1],
         ],
     ),
+    breeze_of_reminiscence_hex=Template(
+        patterns=[
+            (r'<br>', '\\n'),
+        ],
+        sentences=[
+            ['24:enemy_res_anemo', '10:ignore'],
+            [],
+            ['25:'],
+            [],
+            [],
+            ['300:text_percent'],
+            ['15:ignore'],
+        ],
+        results=[
+            [0],
+            [1, 2, '<br>', 5, 6],
+            [4],
+        ],
+        extracted_names=[2],
+    ),
     hurricane_of_freedom=Template(
         sentences=[
-            ['dmg_anemo', 'ignore'],
+            ['25:dmg_anemo', '10:ignore'],
+        ],
+    ),
+    hurricane_of_freedom_hex_rus=Template(
+        sentences=[
+            ['10:ignore', '25:dmg_anemo'],
+        ],
+    ),
+    hurricane_of_freedom_hex_eng=Template(
+        sentences=[
+            ['25:dmg_anemo', '10:ignore'],
         ],
     ),
     storm_of_defiance=Template(
@@ -73,6 +122,20 @@ char_venti = TemplateList(
         ],
         results=[
             [0],
+            [1],
+        ],
+    ),
+    storm_of_defiance_hex=Template(
+        patterns=[
+            (r'<br>', '\\n'),
+        ],
+        sentences=[
+            ['20:enemy_res_anemo'],
+            ['20:'],
+            ['100:crit_dmg'],
+        ],
+        results=[
+            [0, '<br>', 2],
             [1],
         ],
     ),

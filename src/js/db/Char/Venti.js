@@ -1,8 +1,11 @@
 import { Condition } from "../../classes/Condition";
+import { ConditionAnd } from "../../classes/Condition/And";
 import { ConditionAscensionChar } from "../../classes/Condition/Ascension/Char";
 import { ConditionBoolean } from "../../classes/Condition/Boolean";
 import { ConditionConstellation } from "../../classes/Condition/Constellation";
 import { ConditionDropdownElement } from "../../classes/Condition/Dropdown/Element";
+import { ConditionHexCheck } from "../../classes/Condition/HexCheck";
+import { ConditionHexCurrent } from "../../classes/Condition/HexCurrent";
 import { ConditionStatic } from "../../classes/Condition/Static";
 import { DbObjectChar } from "../../classes/DbObject/Char";
 import { DbObjectConstellation } from "../../classes/DbObject/Constellation";
@@ -23,7 +26,7 @@ const Talents = new DbObjectTalents({
     attack: {
         gameId: charTalentTables.Venti.s1_id,
         title: 'talent_name.venti_divine_marksmanship',
-        description: 'talent_descr.venti_divine_marksmanship',
+        description: 'talent_descr.venti_divine_marksmanship_hex',
         items: [
             {
                 type: 'multihit_sum',
@@ -52,6 +55,9 @@ const Talents = new DbObjectTalents({
             },
             {
                 table: new StatTable('charged_aimed', charTalentTables.Venti.s1.p8),
+            },
+            {
+                table: new StatTable('venti_windsunder_arrow_dmg', charTalentTables.Venti.s1.p12),
             },
             {
                 table: new StatTable('plunge', charTalentTables.Venti.s1.p9),
@@ -254,6 +260,36 @@ export const Venti = new DbObjectChar({
             ],
             condition: new ConditionConstellation({constellation: 1}),
         }),
+        new FeatureDamageNormal({
+            element: 'anemo',
+            multipliers: [
+                new FeatureMultiplier({
+                    leveling: 'char_skill_attack',
+                    values: Talents.get('attack.venti_windsunder_arrow_dmg'),
+                }),
+            ],
+            condition: new ConditionAnd([
+                new ConditionHexCheck({ hex: 2 }),
+                new ConditionHexCurrent(),
+            ]),
+        }),
+        new FeatureDamageNormal({
+            name: 'venti_second_windsunder_arrow_dmg',
+            element: 'anemo',
+            multipliers: [
+                new FeatureMultiplier({
+                    scalingMultiplier: 0.2,
+                    scalingSource: 'constellation1',
+                    leveling: 'char_skill_attack',
+                    values: Talents.get('attack.venti_windsunder_arrow_dmg'),
+                }),
+            ],
+            condition: new ConditionAnd([
+                new ConditionHexCheck({ hex: 2 }),
+                new ConditionHexCurrent(),
+                new ConditionConstellation({ constellation: 1 }),
+            ]),
+        }),
         new FeatureDamagePlungeCollision({
             multipliers: [
                 new FeatureMultiplier({
@@ -285,6 +321,13 @@ export const Venti = new DbObjectChar({
                 new FeatureMultiplier({
                     leveling: 'char_skill_elemental',
                     values: Talents.get('skill.press_dmg'),
+                    scalingMultiplier: charTalentTables.Venti.cons[1][1],
+                    scalingSource: 'constellation2',
+                    scalingMultiplierCondition: new ConditionAnd([
+                        new ConditionHexCurrent(),
+                        new ConditionBoolean({ name: 'venti_wherever_breeze' }),
+                        new ConditionConstellation({ constellation: 2 }),
+                    ]),
                 }),
             ],
         }),
@@ -303,6 +346,13 @@ export const Venti = new DbObjectChar({
                 new FeatureMultiplier({
                     leveling: 'char_skill_burst',
                     values: Talents.get('burst.dot_dmg'),
+                    scalingMultiplier: charTalentTables.Venti.passsive[2][1],
+                    scalingSource: 'hex',
+                    scalingMultiplierCondition: new ConditionAnd([
+                        new ConditionHexCurrent(),
+                        new ConditionHexCheck({ hex: 2 }),
+                        new ConditionBoolean({ name: 'venti_temporal_winds_eulogy' }),
+                    ]),
                 }),
             ],
         }),
@@ -314,27 +364,50 @@ export const Venti = new DbObjectChar({
                     new FeatureMultiplier({
                         leveling: 'char_skill_burst',
                         values: Talents.get('burst.anemoskill_dmg'),
+                        scalingMultiplier: charTalentTables.Venti.passsive[2][1],
+                        scalingSource: 'hex',
+                        scalingMultiplierCondition: new ConditionAnd([
+                            new ConditionHexCurrent(),
+                            new ConditionHexCheck({ hex: 2 }),
+                            new ConditionBoolean({ name: 'venti_temporal_winds_eulogy' }),
+                        ]),
                     }),
                 ],
             });
         }),
     ],
     conditions: [
+        new ConditionBoolean({
+            name: 'char_hex_venti',
+            serializeId: 6,
+            title: 'talent_name.venti_temporal_winds_eulogy',
+            description: 'talent_descr.venti_temporal_winds_eulogy_1',
+        }),
+        new ConditionBoolean({
+            name: 'venti_temporal_winds_eulogy',
+            serializeId: 7,
+            title: 'talent_name.venti_temporal_winds_eulogy',
+            description: 'talent_descr.venti_temporal_winds_eulogy_2',
+            stats: {
+                dmg_all: charTalentTables.Venti.passsive[2][0] * 100,
+                text_percent: charTalentTables.Venti.passsive[2][1] * 100,
+            },
+            condition: new ConditionAnd([
+                new ConditionHexCurrent(),
+                new ConditionHexCheck({ hex: 2 }),
+            ]),
+        }),
         new ConditionStatic({
             title: 'talent_name.venti_embrace_of_winds',
             description: 'talent_descr.venti_embrace_of_winds',
             info: {ascension: 1},
-            subConditions: [
-                new ConditionAscensionChar({ascension: 1}),
-            ],
+            condition: new ConditionAscensionChar({ascension: 1}),
         }),
         new ConditionStatic({
             title: 'talent_name.venti_stormeye',
             description: 'talent_descr.venti_stormeye',
             info: {ascension: 4},
-            subConditions: [
-                new ConditionAscensionChar({ascension: 4}),
-            ],
+            condition: new ConditionAscensionChar({ascension: 4}),
         }),
     ],
     constellation: new DbObjectConstellation([
@@ -347,6 +420,13 @@ export const Venti = new DbObjectChar({
                         text_percent_dmg: 33,
                     },
                 }),
+                new ConditionStatic({
+                    title: 'talent_name.venti_splitting_gales',
+                    description: 'talent_descr.venti_splitting_gales_hex',
+                    stats: {
+                        text_percent_dmg: 33,
+                    },
+                }),
             ],
         },
         {
@@ -354,8 +434,10 @@ export const Venti = new DbObjectChar({
                 new ConditionBoolean({
                     name: 'venti_breeze',
                     serializeId: 1,
-                    title: 'talent_name.venti_breeze_of_reminiscence',
+                    title: 'talent_name.venti_breeze_of_reminiscence_1',
                     description: 'talent_descr.venti_breeze_of_reminiscence_1',
+                    hideCondition: new ConditionBoolean({ name: 'char_hex_venti' }),
+                    condition: new ConditionBoolean({ name: 'char_hex_venti', invert: 1 }),
                     stats: {
                         enemy_res_anemo: -12,
                         enemy_res_phys: -12,
@@ -364,11 +446,39 @@ export const Venti = new DbObjectChar({
                 new ConditionBoolean({
                     name: 'venti_breeze_2',
                     serializeId: 2,
-                    title: 'talent_name.venti_breeze_of_reminiscence',
+                    title: 'talent_name.venti_breeze_of_reminiscence_1',
                     description: 'talent_descr.venti_breeze_of_reminiscence_2',
+                    hideCondition: new ConditionBoolean({ name: 'char_hex_venti' }),
+                    condition: new ConditionAnd([
+                        new ConditionBoolean({ name: 'venti_breeze' }),
+                        new ConditionBoolean({ name: 'char_hex_venti', invert: 1 }),
+                    ]),
                     stats: {
                         enemy_res_anemo: -12,
                         enemy_res_phys: -12,
+                    },
+                }),
+                new ConditionBoolean({
+                    name: 'venti_breeze',
+                    serializeId: 1,
+                    title: 'talent_name.venti_breeze_of_reminiscence_1',
+                    description: 'talent_descr.venti_breeze_of_reminiscence_hex_1',
+                    hideCondition: new ConditionBoolean({ name: 'char_hex_venti', invert: 1 }),
+                    condition: new ConditionBoolean({ name: 'char_hex_venti' }),
+                    stats: {
+                        enemy_res_anemo: -24,
+                        enemy_res_phys: -24,
+                    },
+                }),
+                new ConditionBoolean({
+                    name: 'venti_wherever_breeze',
+                    serializeId: 8,
+                    title: 'talent_name.venti_breeze_of_reminiscence_2',
+                    description: 'talent_descr.venti_breeze_of_reminiscence_hex_2',
+                    hideCondition: new ConditionBoolean({ name: 'char_hex_venti', invert: 1 }),
+                    condition: new ConditionBoolean({ name: 'char_hex_venti' }),
+                    stats: {
+                        text_percent: charTalentTables.Venti.cons[1][1] * 100,
                     },
                 }),
             ]
@@ -389,6 +499,19 @@ export const Venti = new DbObjectChar({
                     serializeId: 3,
                     title: 'talent_name.venti_hurricane_of_freedom',
                     description: 'talent_descr.venti_hurricane_of_freedom',
+                    hideCondition: new ConditionBoolean({ name: 'char_hex_venti' }),
+                    condition: new ConditionBoolean({ name: 'char_hex_venti', invert: 1 }),
+                    stats: {
+                        dmg_anemo: 25,
+                    },
+                }),
+                new ConditionBoolean({
+                    name: 'venti_hurricane',
+                    serializeId: 3,
+                    title: 'talent_name.venti_hurricane_of_freedom',
+                    description: 'talent_descr.venti_hurricane_of_freedom_hex',
+                    hideCondition: new ConditionBoolean({ name: 'char_hex_venti', invert: 1 }),
+                    condition: new ConditionBoolean({ name: 'char_hex_venti' }),
                     stats: {
                         dmg_anemo: 25,
                     },
@@ -411,6 +534,8 @@ export const Venti = new DbObjectChar({
                     serializeId: 4,
                     title: 'talent_name.venti_storm_of_defiance',
                     description: 'talent_descr.venti_storm_of_defiance_1',
+                    hideCondition: new ConditionBoolean({ name: 'char_hex_venti' }),
+                    condition: new ConditionBoolean({ name: 'char_hex_venti', invert: 1 }),
                     stats: {
                         enemy_res_anemo: -20,
                     },
@@ -420,6 +545,11 @@ export const Venti = new DbObjectChar({
                     serializeId: 5,
                     title: 'talent_name.venti_storm_of_defiance',
                     description: 'talent_descr.venti_storm_of_defiance_2',
+                    hideCondition: new ConditionBoolean({ name: 'char_hex_venti' }),
+                    condition: new ConditionAnd([
+                        new ConditionBoolean({ name: 'venti_storm' }),
+                        new ConditionBoolean({ name: 'char_hex_venti', invert: 1 }),
+                    ]),
                     values: [
                         {
                             value: 'cryo',
@@ -450,9 +580,60 @@ export const Venti = new DbObjectChar({
                             ],
                         },
                     ],
-                    subConditions: [
-                        new ConditionBoolean({name: 'venti_storm'}),
-                    ]
+                    condition: new ConditionBoolean({name: 'venti_storm'})
+                }),
+                new ConditionBoolean({
+                    name: 'venti_storm',
+                    serializeId: 4,
+                    title: 'talent_name.venti_storm_of_defiance',
+                    description: 'talent_descr.venti_storm_of_defiance_hex_1',
+                    hideCondition: new ConditionBoolean({ name: 'char_hex_venti', invert: 1 }),
+                    condition: new ConditionBoolean({ name: 'char_hex_venti' }),
+                    stats: {
+                        enemy_res_anemo: -20,
+                        crit_dmg: charTalentTables.Venti.cons[5][0] * 100,
+                    },
+                }),
+                new ConditionDropdownElement({
+                    name: 'venti_storm_element',
+                    serializeId: 5,
+                    title: 'talent_name.venti_storm_of_defiance',
+                    description: 'talent_descr.venti_storm_of_defiance_hex_2',
+                    hideCondition: new ConditionBoolean({ name: 'char_hex_venti', invert: 1 }),
+                    condition: new ConditionAnd([
+                        new ConditionBoolean({ name: 'venti_storm' }),
+                        new ConditionBoolean({ name: 'char_hex_venti' }),
+                    ]),
+                    values: [
+                        {
+                            value: 'cryo',
+                            serializeId: 1,
+                            conditions: [
+                                new Condition({ stats: { enemy_res_cryo: -20 } }),
+                            ],
+                        },
+                        {
+                            value: 'electro',
+                            serializeId: 2,
+                            conditions: [
+                                new Condition({ stats: { enemy_res_electro: -20 } }),
+                            ],
+                        },
+                        {
+                            value: 'hydro',
+                            serializeId: 3,
+                            conditions: [
+                                new Condition({ stats: { enemy_res_hydro: -20 } }),
+                            ],
+                        },
+                        {
+                            value: 'pyro',
+                            serializeId: 4,
+                            conditions: [
+                                new Condition({ stats: { enemy_res_pyro: -20 } }),
+                            ],
+                        },
+                    ],
                 }),
             ],
         },
@@ -460,11 +641,19 @@ export const Venti = new DbObjectChar({
     partyData: {
         conditions: [
             new ConditionBoolean({
+                name: 'char_hex_venti',
+                serializeId: 5,
+                title: 'talent_name.venti_temporal_winds_eulogy',
+                description: 'talent_descr.venti_temporal_winds_eulogy_1',
+            }),
+            new ConditionBoolean({
                 name: 'party.venti_breeze',
                 serializeId: 1,
                 rotation: 'party',
-                title: 'talent_name.venti_breeze_of_reminiscence',
+                title: 'talent_name.venti_breeze_of_reminiscence_1',
                 description: 'talent_descr.venti_breeze_of_reminiscence_1',
+                hideCondition: new ConditionBoolean({ name: 'char_hex_venti' }),
+                condition: new ConditionBoolean({ name: 'char_hex_venti', invert: 1 }),
                 stats: {
                     enemy_res_anemo: -12,
                     enemy_res_phys: -12,
@@ -475,16 +664,43 @@ export const Venti = new DbObjectChar({
                 name: 'party.venti_breeze_2',
                 serializeId: 2,
                 rotation: 'party',
-                title: 'talent_name.venti_breeze_of_reminiscence',
+                title: 'talent_name.venti_breeze_of_reminiscence_1',
                 description: 'talent_descr.venti_breeze_of_reminiscence_2',
+                hideCondition: new ConditionBoolean({ name: 'char_hex_venti' }),
+                condition: new ConditionAnd([
+                    new ConditionBoolean({ name: 'party.venti_breeze' }),
+                    new ConditionBoolean({ name: 'char_hex_venti', invert: 1 }),
+                ]),
                 stats: {
                     enemy_res_anemo: -12,
                     enemy_res_phys: -12,
                 },
                 info: {constellation: 2},
-                subConditions: [
-                    new ConditionBoolean({name: 'party.venti_breeze'}),
-                ],
+            }),
+            new ConditionBoolean({
+                name: 'party.venti_breeze',
+                serializeId: 1,
+                rotation: 'party',
+                title: 'talent_name.venti_breeze_of_reminiscence_1',
+                description: 'talent_descr.venti_breeze_of_reminiscence_hex_1',
+                hideCondition: new ConditionBoolean({ name: 'char_hex_venti', invert: 1 }),
+                condition: new ConditionBoolean({ name: 'char_hex_venti' }),
+                stats: {
+                    enemy_res_anemo: -24,
+                    enemy_res_phys: -24,
+                },
+                info: { constellation: 2 },
+            }),
+            new ConditionBoolean({
+                name: 'party.venti_hurricane',
+                serializeId: 6,
+                title: 'talent_name.venti_hurricane_of_freedom',
+                description: 'talent_descr.venti_hurricane_of_freedom_hex',
+                condition: new ConditionBoolean({ name: 'char_hex_venti' }),
+                info: { constellation: 4 },
+                stats: {
+                    dmg_anemo: 25,
+                },
             }),
             new ConditionBoolean({
                 name: 'party.venti_storm',

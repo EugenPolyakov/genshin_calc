@@ -28,11 +28,12 @@ export class WorkerFactorySuggestArtifacts extends WorkerFactory {
             item.artifacts = deserialized;
         }
 
-
+        UI.debug(result.map(x => x.value));
         result = result.sort(function(a,b) {
             return b.value - a.value;
         });
         result = result.splice(0, MAX_RESULTS);
+        UI.debug(result.map(x => x.value));
 
         return result;
     }

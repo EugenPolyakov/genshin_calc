@@ -375,18 +375,6 @@ export const Razor = new DbObjectChar({
                 text_percent: charTalentTables.Razor.passsive[2][0] * 100,
             }
         }),
-        new ConditionStatic({
-            title: 'talent_name.razor_surge_of_lightning',
-            description: 'talent_descr.razor_surge_of_lightning_2',
-            condition: new ConditionAnd([
-                new ConditionHexCheck({ hex: 2 }),
-                new ConditionBoolean({ name: 'razor_wolf_within' }),
-                new ConditionHexCurrent(),
-            ]),
-            stats: {
-                text_percent: charTalentTables.Razor.passsive[2][1] * 100,
-            }
-        }),
         new ConditionStacks({
             name: 'razor_claw_and_thunder',
             serializeId: 1,
@@ -407,6 +395,18 @@ export const Razor = new DbObjectChar({
                 Talents.getAlias('burst.razor_atk_speed_bonus', 'atk_speed_normal'),
                 Talents.getAlias('burst.razor_res_bonus', 'res_electro'),
             ],
+        }),
+        new ConditionStatic({
+            title: 'talent_name.razor_surge_of_lightning',
+            description: 'talent_descr.razor_surge_of_lightning_2',
+            condition: new ConditionAnd([
+                new ConditionHexCheck({ hex: 2 }),
+                new ConditionBoolean({ name: 'razor_wolf_within' }),
+                new ConditionHexCurrent(),
+            ]),
+            stats: {
+                text_percent: charTalentTables.Razor.passsive[2][1] * 100,
+            }
         }),
         new ConditionStatic({
             title: 'talent_name.razor_awakening',

@@ -643,4 +643,6 @@ export const Rotation = new DbObjectRotation({
     'skill.zibai_spirit_steeds_stride_2_hit_dmg_first': 633,
 
     'burst.albedo_fatal_blossom_c2': 634,
+    'attack.venti_windsunder_arrow_dmg': 635,
+    'attack.venti_second_windsunder_arrow_dmg': 636,
 });

@@ -1,7 +1,12 @@
 import { Condition } from "../../classes/Condition";
+import { ConditionAnd } from "../../classes/Condition/And";
 import { ConditionAscensionChar } from "../../classes/Condition/Ascension/Char";
 import { ConditionBoolean } from "../../classes/Condition/Boolean";
 import { ConditionConstellation } from "../../classes/Condition/Constellation";
+import { ConditionDropdown } from "../../classes/Condition/Dropdown";
+import { ConditionHexCheck } from "../../classes/Condition/HexCheck";
+import { ConditionHexCurrent } from "../../classes/Condition/HexCurrent";
+import { ConditionStacks } from "../../classes/Condition/Stacks";
 import { ConditionStatic } from "../../classes/Condition/Static";
 import { DbObjectChar } from "../../classes/DbObject/Char";
 import { DbObjectConstellation } from "../../classes/DbObject/Constellation";
@@ -99,7 +104,6 @@ const Talents = new DbObjectTalents({
 
 const TalentValues = {
     A1ChargedBonus: 50,
-    C1Damage: 120,
     C2DefReduce: 23,
     C4BurstDamage: 555,
     C6PyroBonus: 10,
@@ -153,6 +157,19 @@ export const Klee = new DbObjectChar({
             multipliers: [
                 new FeatureMultiplier({
                     leveling: 'char_skill_attack',
+                    scalingMultiplier: (data) => {
+                        if (data && data.settings) {
+                            if (data.settings['klee_sparkborne_magic'] == 3)
+                                return 1.5;
+                            else if (data.settings['klee_sparkborne_magic'] == 2)
+                                return 1.3;
+                            else if (data.settings['klee_sparkborne_magic'] == 1)
+                                return 1.15;
+                        }
+                        return 1;
+                    },
+                    scalingMultiplierCondition: new ConditionBoolean({ name: 'klee_pounding_surprise' }),
+                    scalingSource: 'hex',
                     values: Talents.get('attack.charged_hit'),
                 }),
             ],
@@ -224,7 +241,7 @@ export const Klee = new DbObjectChar({
                 new FeatureMultiplier({
                     leveling: 'char_skill_burst',
                     scalingSource: 'constellation1',
-                    scalingMultiplier: TalentValues.C1Damage / 100,
+                    scalingMultiplier: charTalentTables.Klee.cons[0][0],
                     values: Talents.get('burst.burst_dmg'),
                 }),
             ],
@@ -237,6 +254,12 @@ export const Klee = new DbObjectChar({
             multipliers: [
                 new FeatureMultiplier({
                     source: 'constellation4',
+                    scalingMultiplier: 2,
+                    scalingSource: 'onfield',
+                    scalingMultiplierCondition: new ConditionAnd([
+                        new ConditionBoolean({ name: 'char_hex_klee' }),
+                        new ConditionBoolean({ name: 'klee_sparkly_explosion' }),
+                    ]),
                     values: new ValueTable([TalentValues.C4BurstDamage]),
                 }),
             ],
@@ -245,6 +268,12 @@ export const Klee = new DbObjectChar({
     ],
     conditions: [
         new ConditionBoolean({
+            name: 'char_hex_klee',
+            serializeId: 5,
+            title: 'talent_name.klee_sparkborne_magic',
+            description: 'talent_descr.klee_sparkborne_magic_1',
+        }),
+        new ConditionBoolean({
             name: 'klee_pounding_surprise',
             serializeId: 1,
             title: 'talent_name.klee_pounding_surprise',
@@ -252,10 +281,52 @@ export const Klee = new DbObjectChar({
             stats: {
                 dmg_charged: TalentValues.A1ChargedBonus,
             },
-            info: {ascension: 1},
-            subConditions: [
-                new ConditionAscensionChar({ascension: 1}),
-            ],
+            info: { ascension: 1 },
+            hideCondition: new ConditionHexCurrent(),
+            condition: new ConditionAnd([
+                new ConditionHexCurrent({ invert: 1 }),
+                new ConditionAscensionChar({ ascension: 1 }),
+            ]),
+        }),
+        //todo: не думаю что баф так работает
+        new ConditionBoolean({
+            name: 'klee_pounding_surprise',
+            serializeId: 1,
+            title: 'talent_name.klee_pounding_surprise',
+            description: 'talent_descr.klee_pounding_surprise_hex_1',
+            stats: {
+                dmg_charged: TalentValues.A1ChargedBonus,
+            },
+            info: { ascension: 1 },
+            hideCondition: new ConditionHexCurrent({ invert: 1 }),
+            condition: new ConditionAnd([
+                new ConditionHexCurrent(),
+                new ConditionAscensionChar({ ascension: 1 }),
+            ]),
+        }),
+        new ConditionStatic({
+            title: 'talent_name.klee_pounding_surprise',
+            description: 'talent_descr.klee_pounding_surprise_hex_2',
+            info: { ascension: 1 },
+            hideCondition: new ConditionHexCurrent({ invert: 1 }),
+            condition: new ConditionAnd([
+                new ConditionHexCurrent(),
+                new ConditionHexCheck({ hex: 2 }),
+                new ConditionAscensionChar({ ascension: 1 }),
+            ]),
+        }),
+        new ConditionStacks({
+            name: 'klee_sparkborne_magic',
+            serializeId: 6,
+            title: 'talent_name.klee_sparkborne_magic',
+            description: 'talent_descr.klee_sparkborne_magic_2',
+            condition: new ConditionAnd([
+                new ConditionHexCurrent(),
+                new ConditionHexCheck({ hex: 2 }),
+                new ConditionAscensionChar({ ascension: 1 }),
+                new ConditionBoolean({ name: 'klee_pounding_surprise' }),
+            ]),
+            maxStacks: 3,
         }),
         new ConditionStatic({
             title: 'talent_name.klee_sparkling_burst',
@@ -272,8 +343,22 @@ export const Klee = new DbObjectChar({
                 new ConditionStatic({
                     title: 'talent_name.klee_chained_reactions',
                     description: 'talent_descr.klee_chained_reactions',
+                    hideCondition: new ConditionHexCurrent(),
+                    condition: new ConditionHexCurrent({ invert: 1 }),
                     stats: {
-                        text_percent_dmg: TalentValues.C1Damage,
+                        text_percent_dmg: charTalentTables.Klee.cons[0][0] * 100,
+                    },
+                }),
+                new ConditionBoolean({
+                    name: 'klee_chained_reactions',
+                    serializeId: 7,
+                    title: 'talent_name.klee_chained_reactions',
+                    description: 'talent_descr.klee_chained_reactions_hex',
+                    hideCondition: new ConditionHexCurrent({ invert: 1 }),
+                    condition: new ConditionHexCurrent(),
+                    stats: {
+                        text_percent_dmg: charTalentTables.Klee.cons[0][0] * 100,
+                        atk_percent: charTalentTables.Klee.cons[0][1] * 100,
                     },
                 }),
             ],
@@ -285,6 +370,19 @@ export const Klee = new DbObjectChar({
                     serializeId: 3,
                     title: 'talent_name.klee_explosive_frags',
                     description: 'talent_descr.klee_explosive_frags',
+                    hideCondition: new ConditionHexCurrent(),
+                    condition: new ConditionHexCurrent({ invert: 1 }),
+                    stats: {
+                        enemy_def_reduce: TalentValues.C2DefReduce,
+                    },
+                }),
+                new ConditionBoolean({
+                    name: 'klee_explosive_frags',
+                    serializeId: 3,
+                    title: 'talent_name.klee_explosive_frags',
+                    description: 'talent_descr.klee_explosive_frags_hex',
+                    hideCondition: new ConditionHexCurrent({ invert: 1 }),
+                    condition: new ConditionHexCurrent(),
                     stats: {
                         enemy_def_reduce: TalentValues.C2DefReduce,
                     },
@@ -305,6 +403,19 @@ export const Klee = new DbObjectChar({
                 new ConditionStatic({
                     title: 'talent_name.klee_sparkly_explosion',
                     description: 'talent_descr.klee_sparkly_explosion',
+                    hideCondition: new ConditionHexCurrent(),
+                    condition: new ConditionHexCurrent({ invert: 1 }),
+                    stats: {
+                        text_percent_dmg: TalentValues.C4BurstDamage,
+                    },
+                }),
+                new ConditionBoolean({
+                    name: 'klee_sparkly_explosion',
+                    serializeId: 8,
+                    title: 'talent_name.klee_sparkly_explosion',
+                    description: 'talent_descr.klee_sparkly_explosion_hex',
+                    hideCondition: new ConditionHexCurrent({ invert: 1 }),
+                    condition: new ConditionHexCurrent(),
                     stats: {
                         text_percent_dmg: TalentValues.C4BurstDamage,
                     },
@@ -327,9 +438,31 @@ export const Klee = new DbObjectChar({
                     serializeId: 4,
                     title: 'talent_name.klee_blazing_delight',
                     description: 'talent_descr.klee_blazing_delight',
+                    hideCondition: new ConditionHexCurrent(),
+                    condition: new ConditionHexCurrent({ invert: 1 }),
                     stats: {
                         dmg_pyro: TalentValues.C6PyroBonus,
                     },
+                }),
+                new ConditionBoolean({
+                    name: 'klee_blazing_delight',
+                    serializeId: 4,
+                    title: 'talent_name.klee_blazing_delight',
+                    description: 'talent_descr.klee_blazing_delight_hex_1',
+                    hideCondition: new ConditionHexCurrent({ invert: 1 }),
+                    condition: new ConditionHexCurrent(),
+                    stats: {
+                        dmg_pyro: 50,
+                    },
+                }),
+                new ConditionStatic({
+                    title: 'talent_name.klee_blazing_delight',
+                    description: 'talent_descr.klee_blazing_delight_hex_2',
+                    hideCondition: new ConditionHexCurrent({ invert: 1 }),
+                    condition: new ConditionAnd([
+                        new ConditionHexCurrent(),
+                        new ConditionHexCheck({ hex: 2 }),
+                    ]),
                 }),
             ],
         },

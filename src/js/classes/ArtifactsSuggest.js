@@ -415,7 +415,10 @@ export class ArtifactsSuggest {
         let value;
         let featureIndex = FEATURE_TYPE_INDEX[this.featureType];
 
-        let generator = artifactCombinations(this.settings, this.setNames, this.slots, (val) => {
+
+        let checkFunc = generateCheckFunc(this.settings);
+        let requireFunc = generateRequireFunc(this.settings);
+        let generator = artifactCombinations(checkFunc, requireFunc, this.setNames, this.slots, (val) => {
             this.currentCombinations += val;
             this.skippedCombinations += val;
             if (callback && this.currentCombinations % 50000 == 0 || val > 50000) {
@@ -434,30 +437,31 @@ export class ArtifactsSuggest {
             artSets = {};
             artifacts = combination.value;
             artStats = new Stats();
-
+            let variation = [];
             for (let item of artifacts) {
                 if (item) {
                     artSets[item.set] = (artSets[item.set] || 0) + 1;
-                    item.concatFunc(artStats);
                 }
             }
 
-            let variation = [];
             for (let id in artSets) {
-                let sdata = this.setData[ id ] && this.setData[ id ][ artSets[id] ];
+                let sdata = this.setData[id] && this.setData[id][artSets[id]];
                 if (!sdata) continue;
 
                 if (sdata.variation) {
                     variation.push(sdata.variation)
                 }
-
-                if (sdata.concatFunc) {
-                    sdata.concatFunc(artStats);
-                }
             }
 
             variation = variation.sort().join('-') || 'default';
             this.initSetFuncVariants[variation](artStats);
+
+            for (let item of artifacts) {
+                if (item) {
+                    item.concatFunc(artStats);
+                }
+            }
+
             let compiler = this.featureVariants[variation];
 
             // check for stat requirements
@@ -496,16 +500,13 @@ export class ArtifactsSuggest {
 
 }
 
-function* artifactCombinations(settings, setNames, slots, skipCallback) {
+function* artifactCombinations(checkFunc, requireFunc, setNames, slots, skipCallback) {
     let s1, s2, s3, s4, s5;
 
     let sets = {};
     for (let name of Object.keys(setNames)) {
         sets[name] = 0;
     }
-
-    let checkFunc = generateCheckFunc(settings);
-    let requireFunc = generateRequireFunc(settings);
 
     let skip5 = slots.circlet.length;
     let skip4 = skip5 * slots.goblet.length;

@@ -1667,14 +1667,14 @@ old_values = {
     },
     #jumpy_dumpty
     (10292, 2932): {
-        3528241014: "jumpy_dumpty_dmg",
-        248576950: "mine_dmg",
+        3528241014: "jumpy_dumpty", #WasChanged from jumpy_dumpty_dmg
+        248576950: "mine", #WasChanged from mine_dmg
         3701688463: "mine_duration",
         3207456087: "cd", #Default
     },
     #sparks_n_splash
     (10295, 2939): {
-        605069670: "sparks_n_splash_dmg",
+        605069670: "burst_dmg", #ManualToDefault sparks_n_splash_dmg
         2491487606: "duration", #Default
         3010805087: "cd", #Default
         2465815063: "energy_cost", #Default

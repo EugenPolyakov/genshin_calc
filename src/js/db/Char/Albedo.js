@@ -5,6 +5,7 @@ import { ConditionBoolean } from "../../classes/Condition/Boolean";
 import { ConditionConstellation } from "../../classes/Condition/Constellation";
 import { ConditionHexCheck } from "../../classes/Condition/HexCheck";
 import { ConditionHexCurrent } from "../../classes/Condition/HexCurrent";
+import { ConditionNumber } from "../../classes/Condition/Number";
 import { ConditionStacks } from "../../classes/Condition/Stacks";
 import { ConditionStatic } from "../../classes/Condition/Static";
 import { DbObjectChar } from "../../classes/DbObject/Char";
@@ -127,7 +128,7 @@ const TalentValues = {
 const normalDmgPostSolar = new PostEffectStats({
     from: 'def*',
     percent: new StatTable('dmg_normal', [charTalentTables.Albedo.passsive[2][0]], 0.1),
-    statCap: new StatTable('dmg_normal', [charTalentTables.Albedo.passsive[2][1]], 100),
+    statCap: new ValueTable([charTalentTables.Albedo.passsive[2][1]], 100),
     condition: new ConditionAnd([
         new ConditionBoolean({ name: 'albedo_solar_isotoma' }),
         new ConditionBoolean({ name: 'char_hex_albedo' }),
@@ -138,7 +139,7 @@ const normalDmgPostSolar = new PostEffectStats({
 const normalDmgPostSilver = new PostEffectStats({
     from: 'def*',
     percent: new StatTable('dmg_normal', [charTalentTables.Albedo.passsive[2][2]], 0.1),
-    statCap: new StatTable('dmg_normal', [charTalentTables.Albedo.passsive[2][3]], 100),
+    statCap: new ValueTable([charTalentTables.Albedo.passsive[2][3]], 100),
     condition: new ConditionAnd([
         new ConditionBoolean({ name: 'albedo_silver_isotoma' }),
         new ConditionBoolean({ name: 'char_hex_albedo' }),
@@ -371,87 +372,31 @@ export const Albedo = new DbObjectChar({
     ],
     postEffects: [
         normalDmgPostSolar,
-        new PostEffectStats({
-            from: 'def*',
-            percent: new StatTable('dmg_charged', [charTalentTables.Albedo.passsive[2][0]], 0.1),
-            statCap: new StatTable('dmg_charged', [charTalentTables.Albedo.passsive[2][1]], 100),
-            condition: new ConditionAnd([
-                new ConditionBoolean({ name: 'albedo_solar_isotoma' }),
-                new ConditionBoolean({ name: 'char_hex_albedo' }),
-                new ConditionHexCheck({ hex: 2 }),
-            ]),
-        }),
-        new PostEffectStats({
-            from: 'def*',
-            percent: new StatTable('dmg_plunge', [charTalentTables.Albedo.passsive[2][0]], 0.1),
-            statCap: new StatTable('dmg_plunge', [charTalentTables.Albedo.passsive[2][1]], 100),
-            condition: new ConditionAnd([
-                new ConditionBoolean({ name: 'albedo_solar_isotoma' }),
-                new ConditionBoolean({ name: 'char_hex_albedo' }),
-                new ConditionHexCheck({ hex: 2 }),
-            ]),
-        }),
-        new PostEffectStats({
-            from: 'def*',
-            percent: new StatTable('dmg_skill', [charTalentTables.Albedo.passsive[2][0]], 0.1),
-            statCap: new StatTable('dmg_skill', [charTalentTables.Albedo.passsive[2][1]], 100),
-            condition: new ConditionAnd([
-                new ConditionBoolean({ name: 'albedo_solar_isotoma' }),
-                new ConditionBoolean({ name: 'char_hex_albedo' }),
-                new ConditionHexCheck({ hex: 2 }),
-            ]),
-        }),
-        new PostEffectStats({
-            from: 'def*',
-            percent: new StatTable('dmg_burst', [charTalentTables.Albedo.passsive[2][0]], 0.1),
-            statCap: new StatTable('dmg_burst', [charTalentTables.Albedo.passsive[2][1]], 100),
-            condition: new ConditionAnd([
-                new ConditionBoolean({ name: 'albedo_solar_isotoma' }),
-                new ConditionBoolean({ name: 'char_hex_albedo' }),
-                new ConditionHexCheck({ hex: 2 }),
-            ]),
-        }),
+        ...['dmg_charged', 'dmg_plunge', 'dmg_skill', 'dmg_burst'].map((dmg) =>
+            new PostEffectStats({
+                from: 'def*',
+                percent: new StatTable(dmg, [charTalentTables.Albedo.passsive[2][0]], 0.1),
+                statCap: new ValueTable([charTalentTables.Albedo.passsive[2][1]], 100),
+                condition: new ConditionAnd([
+                    new ConditionBoolean({ name: 'albedo_solar_isotoma' }),
+                    new ConditionBoolean({ name: 'char_hex_albedo' }),
+                    new ConditionHexCheck({ hex: 2 }),
+                ]),
+            })
+        ),
         normalDmgPostSilver,
-        new PostEffectStats({
-            from: 'def*',
-            percent: new StatTable('dmg_charged', [charTalentTables.Albedo.passsive[2][2]], 0.1),
-            statCap: new StatTable('dmg_charged', [charTalentTables.Albedo.passsive[2][3]], 100),
-            condition: new ConditionAnd([
-                new ConditionBoolean({ name: 'albedo_silver_isotoma' }),
-                new ConditionBoolean({ name: 'char_hex_albedo' }),
-                new ConditionHexCheck({ hex: 2 }),
-            ]),
-        }),
-        new PostEffectStats({
-            from: 'def*',
-            percent: new StatTable('dmg_plunge', [charTalentTables.Albedo.passsive[2][2]], 0.1),
-            statCap: new StatTable('dmg_plunge', [charTalentTables.Albedo.passsive[2][3]], 100),
-            condition: new ConditionAnd([
-                new ConditionBoolean({ name: 'albedo_silver_isotoma' }),
-                new ConditionBoolean({ name: 'char_hex_albedo' }),
-                new ConditionHexCheck({ hex: 2 }),
-            ]),
-        }),
-        new PostEffectStats({
-            from: 'def*',
-            percent: new StatTable('dmg_skill', [charTalentTables.Albedo.passsive[2][2]], 0.1),
-            statCap: new StatTable('dmg_skill', [charTalentTables.Albedo.passsive[2][3]], 100),
-            condition: new ConditionAnd([
-                new ConditionBoolean({ name: 'albedo_silver_isotoma' }),
-                new ConditionBoolean({ name: 'char_hex_albedo' }),
-                new ConditionHexCheck({ hex: 2 }),
-            ]),
-        }),
-        new PostEffectStats({
-            from: 'def*',
-            percent: new StatTable('dmg_burst', [charTalentTables.Albedo.passsive[2][0]], 0.1),
-            statCap: new StatTable('dmg_burst', [charTalentTables.Albedo.passsive[2][1]], 100),
-            condition: new ConditionAnd([
-                new ConditionBoolean({ name: 'albedo_silver_isotoma' }),
-                new ConditionBoolean({ name: 'char_hex_albedo' }),
-                new ConditionHexCheck({ hex: 2 }),
-            ]),
-        }),
+        ...['dmg_charged', 'dmg_plunge', 'dmg_skill', 'dmg_burst'].map((dmg) =>
+            new PostEffectStats({
+                from: 'def*',
+                percent: new StatTable(dmg, [charTalentTables.Albedo.passsive[2][2]], 0.1),
+                statCap: new ValueTable([charTalentTables.Albedo.passsive[2][3]], 100),
+                condition: new ConditionAnd([
+                    new ConditionBoolean({ name: 'albedo_silver_isotoma' }),
+                    new ConditionBoolean({ name: 'char_hex_albedo' }),
+                    new ConditionHexCheck({ hex: 2 }),
+                ]),
+            })
+        ),
     ],
     conditions: [
         new ConditionBoolean({
@@ -736,12 +681,52 @@ export const Albedo = new DbObjectChar({
         },
     ]),
     partyData: {
+        loadStats: {
+            stats: ['def_total'],
+        },
         conditions: [
+            new ConditionNumber({
+                name: 'albedo_def',
+                title: 'stat.def',
+                partyStat: 'def_total',
+                serializeId: 8,
+                rotation: 'party',
+                max: 10000,
+            }),
             new ConditionBoolean({
                 name: 'char_hex_albedo',
                 serializeId: 4,
                 title: 'talent_name.albedo_book_of_blinding_light_1',
                 description: 'talent_descr.albedo_book_of_blinding_light_1',
+            }),
+            new ConditionBoolean({
+                name: 'party.albedo_solar_isotoma',
+                serializeId: 6,
+                title: 'talent_name.albedo_book_of_blinding_light_2',
+                description: 'talent_descr.albedo_book_of_blinding_light_3',
+                condition: new ConditionAnd([
+                    new ConditionBoolean({ name: 'char_hex_albedo' }),
+                    new ConditionHexCheck({ hex: 2 }),
+                ]),
+                stats: {
+                    text_percent: charTalentTables.Albedo.passsive[2][0] * 100,
+                    text_percent_max: charTalentTables.Albedo.passsive[2][1] * 100,
+                },
+            }),
+            new ConditionBoolean({
+                name: 'party.albedo_silver_isotoma',
+                serializeId: 7,
+                title: 'talent_name.albedo_book_of_blinding_light_3',
+                description: 'talent_descr.albedo_book_of_blinding_light_4',
+                condition: new ConditionAnd([
+                    new ConditionBoolean({ name: 'char_hex_albedo' }),
+                    new ConditionHexCurrent(),
+                    new ConditionHexCheck({ hex: 2 }),
+                ]),
+                stats: {
+                    text_percent: charTalentTables.Albedo.passsive[2][2] * 100,
+                    text_percent_max: charTalentTables.Albedo.passsive[2][3] * 100,
+                },
             }),
             new ConditionBoolean({
                 name: 'party.albedo_homuncular_nature',
@@ -816,6 +801,33 @@ export const Albedo = new DbObjectChar({
                     constellation: 6,
                 },
             }),
+        ],
+        postEffects: [
+            ...['dmg_normal', 'dmg_charged', 'dmg_plunge', 'dmg_skill', 'dmg_burst'].map((dmg) =>
+                new PostEffectStats({
+                    from: 'albedo_def',
+                    percent: new StatTable(dmg, [charTalentTables.Albedo.passsive[2][0]], 0.1),
+                    statCap: new ValueTable([charTalentTables.Albedo.passsive[2][1]], 100),
+                    condition: new ConditionAnd([
+                        new ConditionBoolean({ name: 'party.albedo_solar_isotoma' }),
+                        new ConditionBoolean({ name: 'char_hex_albedo' }),
+                        new ConditionHexCheck({ hex: 2 }),
+                    ]),
+                })
+            ),
+            ...['dmg_normal', 'dmg_charged', 'dmg_plunge', 'dmg_skill', 'dmg_burst'].map((dmg) =>
+                new PostEffectStats({
+                    from: 'albedo_def',
+                    percent: new StatTable(dmg, [charTalentTables.Albedo.passsive[2][2]], 0.1),
+                    statCap: new ValueTable([charTalentTables.Albedo.passsive[2][3]], 100),
+                    condition: new ConditionAnd([
+                        new ConditionBoolean({ name: 'party.albedo_silver_isotoma' }),
+                        new ConditionHexCurrent(),
+                        new ConditionBoolean({ name: 'char_hex_albedo' }),
+                        new ConditionHexCheck({ hex: 2 }),
+                    ]),
+                })
+            ),
         ],
     }
 });
