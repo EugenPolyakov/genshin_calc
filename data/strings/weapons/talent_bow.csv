@@ -32,7 +32,7 @@ talent_name;weapon_mitternachts_waltz;Дуэт полярной ночи;Evernig
 talent_descr;weapon_mitternachts_waltz_1;Попадания name{обычной атакой} увеличивают name{урон элементального навыка} на %{dmg_skill} в течение 5 сек.;name{Normal Attack} hits on opponents increase name{Elemental Skill DMG} by %{dmg_skill} for 5s.
 talent_descr;weapon_mitternachts_waltz_2;Попадания name{элементальным навыком} увеличивают name{урон обычной атаки} на %{dmg_normal} в течение 5 сек.;name{Elemental Skill} hits on opponents increase name{Normal Attack DMG} by %{dmg_normal} for 5s.
 talent_name;weapon_demon_slayer_bow;Ничья;Full Draw
-talent_descr;weapon_demon_slayer_bow_1;Увеличивает name{урон} name{обычной атаки} на %{dmg_normal} и name{урон заряженной атаки} на  %{dmg_charged}.;Increases name{Normal Attack} name{DMG} by %{dmg_normal} and name{Charged ATK} name{DMG} by %{dmg_charged}.;Increases name{Normal Attack} name{DMG} by %{dmg_normal} and name{Charged ATK} name{DMG} by %{dmg_charged}.
+talent_descr;weapon_demon_slayer_bow_1;Увеличивает name{урон} name{обычной атаки} на %{dmg_normal} и name{урон заряженной атаки} на  %{dmg_charged}.;Increases name{Normal Attack} name{DMG} by %{dmg_normal} and name{Charged ATK} name{DMG} by %{dmg_charged}.
 talent_descr;weapon_demon_slayer_bow_2;Когда элементальная name{энергия} персонажа с этим оружием достигает value{100%}, эффект увеличивается на value{100%}.;When the equipping character's name{Energy} reaches value{100%}, this effect is increased by value{100%}.
 talent_name;weapon_thundering_pulse;Правило грома;Rule by Thunder
 talent_descr;weapon_thundering_pulse;Увеличивает name{силу атаки} на %{atk_percent} и дарует мощь name{Громовой эмблемы}.;Increases name{ATK} by %{atk_percent} and grants the might of the name{Thunder Seal}.
