@@ -223,7 +223,10 @@ export class FeatureMultiplier {
 
         let bonusMulti = this.getTreeBonusMultiplier(data);
         if (bonusMulti) {
-            items.push(bonusMulti);
+            if (Array.isArray(bonusMulti))
+                items = items.concat(bonusMulti);
+            else
+                items.push(bonusMulti);
         }
 
         if (this.stacksLeveling) {

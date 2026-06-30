@@ -23,7 +23,22 @@
 .checkbox-wrapper {
     display: flex;
     height: 30px;
+}
+
+.checkbox-wrapper.active{
     cursor: pointer;
+}
+
+.checkbox-wrapper .static {
+    margin: auto;
+    width: 40px;
+    height: 20px;
+    background-image: url("../../../images/icons/condition_static.png");
+    background-size: 40px 20px;
+    background-position-x: -20px;
+    background-repeat: no-repeat;
+    margin-bottom: 5px;
+    margin-top: 5px;
 }
 
 .checkbox-switcher {

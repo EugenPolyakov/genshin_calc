@@ -457,6 +457,7 @@ export const Illuga = new DbObjectChar({
             bonusLeveling: 'illuga_stacks',
             bonusValues: new ValueTable([0, charTalentTables.Illuga.passsive[1][3], charTalentTables.Illuga.passsive[1][4], charTalentTables.Illuga.passsive[1][5]], 100),
             target: new FeatureMultiplierTarget({
+                isReactionFlatBonus: true,
                 damageTypes: ['lunardirect'],
                 damageElements: ['geo'],
             }),
@@ -698,6 +699,7 @@ export const Illuga = new DbObjectChar({
                 bonusLeveling: 'illuga_stacks',
                 bonusValues: new ValueTable([0, charTalentTables.Illuga.passsive[1][3], charTalentTables.Illuga.passsive[1][4], charTalentTables.Illuga.passsive[1][5]], 100),
                 target: new FeatureMultiplierTarget({
+                    isReactionFlatBonus: true,
                     damageTypes: ['lunardirect'],
                     damageElements: ['geo'],
                 }),

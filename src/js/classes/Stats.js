@@ -76,9 +76,27 @@ export class Stats {
         return Object.keys(this).length == 0;
     }
 
+    /**
+     * @param {Set} stats 
+     * @returns {Boolean}
+     */
+    includesAny(stats) {
+        return Object.keys(this).some(x => stats.has(x));
+    }
+
     concat(data) {
         for (let stat of Object.keys(data)) {
             this[stat] = (this[stat] || 0) + data[stat];
+        }
+    }
+
+    exclude(data) {
+        for (let stat of Object.keys(data)) {
+            if (this[stat]) {
+                this[stat] = this[stat] - data[stat];
+                if (!this[stat])
+                    delete this[stat];
+            }
         }
     }
 

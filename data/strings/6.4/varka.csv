@@ -8,3 +8,5 @@ feature_skill;varka_four_winds_ascension_dmg_anemo;Урон Восхождени
 feature_skill;varka_azure_devour_dmg_anemo;Урон Лазурного поглощения (Анемо);Azure Devour DMG (Anemo)
 feature_skill;varka_azure_devour_dmg_anemo_1;Урон Лазурного поглощения (Анемо) (2 удара);Azure Devour DMG (Anemo) (2 hits)
 feature_skill;varka_azure_devour_dmg_1;Урон Лазурного поглощения (2 удара);Azure Devour DMG (2 hits)
+features_view;stat_dmg_sturm_und_drang;Путеводный стяг ветра;Wind's Vanguard
+feature_other;varka_constellation2;Урон дополнительной атаки;Additional Attack DMG

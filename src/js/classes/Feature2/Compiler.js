@@ -161,8 +161,6 @@ export class FeatureCompiler {
      */
     compile(opts) {
         let code = this.getCode(opts);
-        // console.log('------------------');
-        // console.log(code);
         this.compiled = Function('stats', code);
         return code;
     }

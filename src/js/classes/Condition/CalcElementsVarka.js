@@ -21,8 +21,8 @@ export class ConditionCalcElementsVarka extends Condition {
 
         let has_phec = Object.values(elements).some(x => x >= 2);
         result.varka_has_any = Object.values(elements).some(x => x >= 1);
-        result.varka_has_all = has_anemo && has_phec;
-        result.varka_has_one = has_anemo || has_phec;
+        result.varka_has_all = (has_anemo && has_phec) ? 1 : 0;
+        result.varka_has_one = (has_anemo || has_phec) ? 1: 0;
         return result;
     }
 }

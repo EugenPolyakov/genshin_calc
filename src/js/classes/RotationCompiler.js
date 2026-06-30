@@ -220,12 +220,11 @@ export class RotationCompiler {
         this.conditions = [];
         this.sideEffectStats = [];
 
-        let items = [].concat(this.rotation.getItems());
-        items.unshift({
+        let items = [{
             type: 'condition',
             static: 1,
-            getSettings: () => {return {}},
-        });
+            getSettings: () => { return {} },
+        }].concat(this.rotation.getItems());
 
         let compiledItems = this.processBlock(this.build.cloneWithArtifactSettings(), items);
 

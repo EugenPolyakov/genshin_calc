@@ -4,6 +4,8 @@ import "../../../../css/Components/Accordion/StatFilter.css";
 
 import { Lang } from '../../Lang';
 import { Checkbox, NumberInput } from '../Inputs/Input';
+import { ControlsBar } from '../ControlsBar';
+import { TitledButton } from '../Inputs/Buttons';
 
 let lang = new Lang();
 
@@ -31,6 +33,10 @@ export class AccordionStatFilter extends React.Component {
                         />
                     </div>
                 </div>
+                <ControlsBar>
+                    <TitledButton title={ lang.get('artifacts_ui.auto_stats') } onClick={this.props.autoStats} icon="icon-ok"/>
+                    <TitledButton title={ lang.get('artifacts_ui.all_stats') } onClick={this.props.enableAllFilter} icon="icon-check"/>
+                </ControlsBar>
                 <SlotLine
                     lang={lang}
                     slot="sands"

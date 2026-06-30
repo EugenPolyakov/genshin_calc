@@ -31,7 +31,7 @@ export class CSum extends CBlock {
         let staticItems = this.items.filter((i) => {return i instanceof CConst && i.value != 0});
         let nonStaticItems = this.items.filter((i) => {return !(i instanceof CConst)});
 
-        if (staticItems.length > 1 && !opts.dontProcessStaticValues) {
+        if ((staticItems.length > 1 || nonStaticItems.length == 0) && !opts.dontProcessStaticValues) {
             let newItems = [];
             let value = 0;
 
@@ -115,6 +115,48 @@ export class CSubtract extends CBlock {
 
         return result || '0';
     }
+
+    /**
+     * @param {Object} opts
+     * @returns {CBlock}
+     */
+    process(opts) {
+        this.items = this.items.map((i) => { return i.process(opts) });
+        let staticItems = this.items.filter((i) => { return i instanceof CConst });
+        let nonStaticItems = this.items.filter((i) => { return !(i instanceof CConst) });
+
+        if ((staticItems.length > 1 || nonStaticItems.length == 0) && !opts.dontProcessStaticValues ) {
+            let newItems = [];
+            let value = 0;
+            let base = false;
+
+            for (let item of staticItems) {
+                if (this.items[0] != item)
+                    value -= item.value;
+                else {
+                    value += item.value;
+                    base = true;
+                }
+            }
+
+            let constItem = new CConst({ value: value, comment: 'processed' });
+            if (nonStaticItems.length == 0) {
+                return constItem;
+            }
+
+            if (base)
+                newItems.push(constItem);
+            for (let item of nonStaticItems) {
+                newItems.push(item);
+            }
+            if (!base)
+                newItems.push(constItem);
+
+            this.items = newItems;
+        }
+
+        return super.process();
+    }
 }
 
 export class CMulti extends CBlock {
@@ -144,7 +186,7 @@ export class CMulti extends CBlock {
         let staticItems = this.items.filter((i) => {return i instanceof CConst && i.value != 1});
         let nonStaticItems = this.items.filter((i) => {return !(i instanceof CConst)});
 
-        if (staticItems.length > 1 && !opts.dontProcessStaticValues) {
+        if ((staticItems.length > 1 || nonStaticItems.length == 0) && !opts.dontProcessStaticValues) {
             let newItems = [];
             let value = 1;
 
@@ -202,14 +244,25 @@ export class CDivide extends CBlock {
         let staticItems = this.items.filter((i) => {return i instanceof CConst});
         let nonStaticItems = this.items.filter((i) => {return !(i instanceof CConst)});
 
-        if (staticItems.length > 1 && !opts.dontProcessStaticValues) {
+        if ((staticItems.length > 1 || nonStaticItems.length == 0) && !opts.dontProcessStaticValues) {
             let newItems = [];
 
-            let first = staticItems.shift();
-            let value = first.value;
+            let base = false;
+            let value;
+            if (staticItems[0] == this.items[0]) {
+                base = true;
+                let first = staticItems.shift();
+                value = first.value;
 
-            for (let item of staticItems) {
-                value /= item.value;
+                for (let item of staticItems) {
+                    value /= item.value;
+                }
+            } else {
+                value = 1;
+
+                for (let item of staticItems) {
+                    value *= item.value;
+                }
             }
 
             let constItem = new CConst({value: value, comment: 'processed'});
@@ -217,10 +270,13 @@ export class CDivide extends CBlock {
                 return constItem;
             }
 
-            newItems.push(constItem);
+            if (base)
+                newItems.push(constItem);
             for (let item of nonStaticItems) {
                 newItems.push(item);
             }
+            if (!base)
+                newItems.push(constItem);
 
             this.items = newItems;
         }
@@ -293,6 +349,7 @@ export class CVar extends CSum {
     getType() {return 'variable_set'}
     isCollapsable() {return false}
     isVariableSet() {return true}
+    dontShrink() { return 1 }
 
     constructor(items, params) {
         params = Object.assign({}, params);
@@ -552,6 +609,10 @@ export class CResistanceValue extends CSum {
     }
 
     compile(opts) {
+        if (this.items.length == 1 && this.items[0] instanceof CConst) {
+            let val = this.items[0].value;
+            return val < 0 ? (1 - val / 2) : (val > 0.75 ? (1 / (4 * val + 1)) : 1 - val);
+        }
         let code = super.compile(opts);
         return `(${code} < 0 ? (1 - ${code} / 2) : (${code} > 0.75 ? (1 / (4 * ${code} + 1)) : 1 - ${code}))`;
     }

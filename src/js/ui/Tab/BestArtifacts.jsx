@@ -25,6 +25,8 @@ import { SuggestResult } from '../Components/SuggestResult';
 import { Tab } from "../Tab";
 import { TitledButton } from '../Components/Inputs/Buttons';
 import { WorkerFactorySuggestArtifacts } from '../../classes/WorkerFactory/SuggestArtifacts';
+import { FeatureCompiler } from '../../classes/Feature2/Compiler';
+import { isPercent } from '../../classes/Stats';
 
 const MIN_THREADS = 1;
 const MAX_THREADS = 16;
@@ -351,10 +353,61 @@ class BestArtifact extends React.Component {
         this.modifySettings('sets', setsSettings);
     }
 
+    handleAutoStatFilter() {
+        let compilerOpts = {
+            // dontProcessTree: 1,
+            ignoreSideEffects: 1,
+            staticStats: [],
+        };
+        let calcset = this.props.app.currentSet().clone();
+        let feature = calcset.getFeatureByName(this.state.feature);
+        let vBuildData = calcset.getBuildData();
+        let tree = feature.getTree(vBuildData, compilerOpts);
+        let compiler = new FeatureCompiler(tree, []);
+        let usedStats = compiler.usedStats;
+        compilerOpts.staticStats = usedStats;
+
+        let filterSettings = this.state.settings.filter;
+        compiler.prepare(vBuildData, compilerOpts);
+        let code = compiler.compile(compilerOpts);
+        let stats = new Set();
+        for (let stat in this.state.settings.stats) {
+            let statValue = this.state.settings.stats[stat] || 0;
+            if (statValue == 0)
+                continue;
+            stat = stat.replace('_min', '').replace('_max', '');
+
+            let val = vBuildData.stats[stat + '_base'] || 0;
+            if (isPercent(stat))
+                val *= 100;
+            if (val >= statValue)
+                continue;
+            stats.add(stat);
+            stats.add(stat + '_percent');
+        }
+        for (let slot of ["sands", "goblet", "circlet"]) {
+            for (let stat in this.state.settings.filter.main_stats[slot])
+                filterSettings.main_stats[slot][stat] = usedStats.includes(stat) || stats.has(stat);
+        }
+
+        this.modifySettings('filter', filterSettings);
+    }
+
     handleFilterLevel(min, max) {
         let filterSettings = this.state.settings.filter;
         filterSettings.min_level = min;
         filterSettings.max_level = max;
+        this.modifySettings('filter', filterSettings);
+    }
+
+    handleStatAllFilter() {
+        let filterSettings = this.state.settings.filter;
+
+        for (let slot in filterSettings.main_stats)
+            for (let s of Object.keys(filterSettings.main_stats[slot])) {
+                filterSettings.main_stats[slot][s] = true;
+            }
+
         this.modifySettings('filter', filterSettings);
     }
 
@@ -697,6 +750,15 @@ class BestArtifact extends React.Component {
                                 onChange={(stat, value) => this.handleStatSetting(stat, value)}
                             />
                         </AccordionItem>
+                        <AccordionItem id="filter" title={ this.strings.item_filter }>
+                            <AccordionStatFilter
+                                settings={ this.state.settings.filter }
+                                onLevelChange={ (min, max) => this.handleFilterLevel(min, max) }
+                                onStatChange={ (slot, stat, checked, keys) => this.handleStatFilter(slot, stat, checked, keys) }
+                                autoStats={ () => this.handleAutoStatFilter() }
+                                enableAllFilter={ () => this.handleStatAllFilter() }
+                            />
+                        </AccordionItem>
                         <AccordionItem id="groups" title={this.strings.item_groups}>
                             <AccordionArtifactGroups
                                 items={this.dataArtifactGroups()}
@@ -728,13 +790,6 @@ class BestArtifact extends React.Component {
                                 onSettingChange={(param, value) => this.handleSetBonusesSettings(param, value)}
                                 enableAction={() => this.handleSetBonusesEnable()}
                                 disableAction={() => this.handleSetBonusesDisable()}
-                            />
-                        </AccordionItem>
-                        <AccordionItem id="filter" title={this.strings.item_filter}>
-                            <AccordionStatFilter
-                                settings={this.state.settings.filter}
-                                onLevelChange={(min, max) => this.handleFilterLevel(min, max)}
-                                onStatChange={(slot, stat, checked, keys) => this.handleStatFilter(slot, stat, checked, keys)}
                             />
                         </AccordionItem>
                     </Accordion>

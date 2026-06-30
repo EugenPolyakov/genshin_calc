@@ -1,7 +1,7 @@
 import { BuildData } from "../../Build/Data";
 import { FeatureDamage } from "../Damage";
 
-export function getVarkaActiveElement(settings) {
+export function getVarkaActiveElement(settings, defaultElem) {
     let actualElement = 5;
     let priolity = {
         'pyro': 1,
@@ -15,7 +15,7 @@ export function getVarkaActiveElement(settings) {
 
         actualElement = Math.min(actualElement, priolity[element] || 5);
     }
-    return ['anemo', 'pyro', 'hydro', 'electro', 'cryo', 'anemo'][actualElement];
+    return [defaultElem, 'pyro', 'hydro', 'electro', 'cryo', defaultElem][actualElement];
 }
 
 export class FeatureDamageVarka extends FeatureDamage {
@@ -24,7 +24,7 @@ export class FeatureDamageVarka extends FeatureDamage {
      * @returns {string}
      */
     getElement(data) {
-        let element = getVarkaActiveElement(data.settings);
+        let element = getVarkaActiveElement(data.settings, 'phys');
 
         if (this.allowInfusion && element == 'phys') {
             element = this.getInfusionElement(data);

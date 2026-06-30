@@ -19,6 +19,17 @@ import { charTables } from "../generated/CharTables";
 import { charTalentTables } from "../generated/CharTalentTables";
 import { FeatureDamage } from "../../classes/Feature2/Damage";
 import { ConditionCalcElementsVarka } from "../../classes/Condition/CalcElementsVarka";
+import { ConditionAnd } from "../../classes/Condition/And";
+import { ConditionHexCheck } from "../../classes/Condition/HexCheck";
+import { ConditionVarkaStatic } from "../../classes/Condition/Static/Varka";
+import { ConditionHexCurrent } from "../../classes/Condition/HexCurrent";
+import { ConditionStacks } from "../../classes/Condition/Stacks";
+import { PostEffectStats } from "../../classes/PostEffect/Stats";
+import { ValueTable } from "../../classes/ValueTable";
+import { FeatureMultiplierVarkaSkill } from "../../classes/Feature2/Multiplier/VarkaSkill";
+import { ConditionConstellation } from "../../classes/Condition/Constellation";
+import { ConditionStacksHidden } from "../../classes/Condition/Stacks/Hidden";
+import { ConditionDropdownElement } from "../../classes/Condition/Dropdown/Element";
 
 const Talents = new DbObjectTalents({
     attack: {
@@ -70,6 +81,7 @@ const Talents = new DbObjectTalents({
                 ],
             },
             {
+                unit: 'unit',
                 table: new StatTable('stamina_cost', charTalentTables.Varka.s1.p12),
             },
             {
@@ -194,7 +206,7 @@ const Talents = new DbObjectTalents({
     links: charTalentTables.Varka.links,
 });
 
-function VarkaSturmUndDrangScalingMultiplier(data) {
+export function VarkaSturmUndDrangScalingMultiplier(data) {
     if (data.settings.varka_has_all)
         return charTalentTables.Varka.passsive[0][3];
     else if (data.settings.varka_has_one)
@@ -214,7 +226,6 @@ export const Varka = new DbObjectChar({
     origin: 'mondstadt',
     talents: Talents,
     statTable: charTables.Varka,
-    beta: true,
     features: [
         new FeatureDamageNormal({
             condition: new ConditionBoolean({ name: 'varka_sturm_und_drang', invert: 1 }),
@@ -477,12 +488,14 @@ export const Varka = new DbObjectChar({
             damageType: 'normal',
             fullName: 'skill.varka_sturm_und_drang_1_hit_dmg',
             allowInfusion: true,
+            damageBonuses: ['dmg_sturm_und_drang'],
             condition: new ConditionBoolean({ name: 'varka_sturm_und_drang' }),
             multipliers: [
                 new FeatureMultiplier({
                     leveling: 'char_skill_elemental',
                     scalingMultiplier: VarkaSturmUndDrangScalingMultiplier,
                     scalingSource: 'ascension1',
+                    scalingMultiplierCondition: new ConditionAscensionChar({ ascension: 1 }),
                     values: Talents.get('skill.varka_sturm_und_drang_1_hit_dmg'),
                 }),
             ],
@@ -491,12 +504,14 @@ export const Varka = new DbObjectChar({
             element: 'anemo',
             fullName: 'skill.varka_sturm_und_drang_2_hit_dmg_anemo',
             name: 'varka_sturm_und_drang_2_hit_dmg_anemo',
+            damageBonuses: ['dmg_sturm_und_drang'],
             condition: new ConditionBoolean({ name: 'varka_sturm_und_drang' }),
             multipliers: [
                 new FeatureMultiplier({
                     leveling: 'char_skill_elemental',
                     scalingMultiplier: VarkaSturmUndDrangScalingMultiplier,
                     scalingSource: 'ascension1',
+                    scalingMultiplierCondition: new ConditionAscensionChar({ ascension: 1 }),
                     values: Talents.get('skill.varka_sturm_und_drang_2_hit_dmg_1'),
                 }),
             ],
@@ -507,12 +522,14 @@ export const Varka = new DbObjectChar({
             fullName: 'skill.varka_sturm_und_drang_2_hit_dmg',
             name: 'varka_sturm_und_drang_2_hit_dmg',
             allowInfusion: true,
+            damageBonuses: ['dmg_sturm_und_drang'],
             condition: new ConditionBoolean({ name: 'varka_sturm_und_drang' }),
             multipliers: [
                 new FeatureMultiplier({
                     leveling: 'char_skill_elemental',
                     scalingMultiplier: VarkaSturmUndDrangScalingMultiplier,
                     scalingSource: 'ascension1',
+                    scalingMultiplierCondition: new ConditionAscensionChar({ ascension: 1 }),
                     values: Talents.get('skill.varka_sturm_und_drang_2_hit_dmg_2'),
                 }),
             ],
@@ -521,12 +538,14 @@ export const Varka = new DbObjectChar({
             element: 'anemo',
             fullName: 'skill.varka_sturm_und_drang_3_hit_dmg_anemo',
             name: 'varka_sturm_und_drang_3_hit_dmg_anemo',
+            damageBonuses: ['dmg_sturm_und_drang'],
             condition: new ConditionBoolean({ name: 'varka_sturm_und_drang' }),
             multipliers: [
                 new FeatureMultiplier({
                     leveling: 'char_skill_elemental',
                     scalingMultiplier: VarkaSturmUndDrangScalingMultiplier,
                     scalingSource: 'ascension1',
+                    scalingMultiplierCondition: new ConditionAscensionChar({ ascension: 1 }),
                     values: Talents.get('skill.varka_sturm_und_drang_3_hit_dmg_1'),
                 }),
             ],
@@ -537,12 +556,14 @@ export const Varka = new DbObjectChar({
             fullName: 'skill.varka_sturm_und_drang_3_hit_dmg',
             name: 'varka_sturm_und_drang_3_hit_dmg',
             allowInfusion: true,
+            damageBonuses: ['dmg_sturm_und_drang'],
             condition: new ConditionBoolean({ name: 'varka_sturm_und_drang' }),
             multipliers: [
                 new FeatureMultiplier({
                     leveling: 'char_skill_elemental',
                     scalingMultiplier: VarkaSturmUndDrangScalingMultiplier,
                     scalingSource: 'ascension1',
+                    scalingMultiplierCondition: new ConditionAscensionChar({ ascension: 1 }),
                     values: Talents.get('skill.varka_sturm_und_drang_3_hit_dmg_2'),
                 }),
             ],
@@ -553,12 +574,14 @@ export const Varka = new DbObjectChar({
             fullName: 'skill.varka_sturm_und_drang_4_hit_dmg',
             name: 'varka_sturm_und_drang_4_hit_dmg',
             allowInfusion: true,
+            damageBonuses: ['dmg_sturm_und_drang'],
             condition: new ConditionBoolean({ name: 'varka_sturm_und_drang' }),
             multipliers: [
                 new FeatureMultiplier({
                     leveling: 'char_skill_elemental',
                     scalingMultiplier: VarkaSturmUndDrangScalingMultiplier,
                     scalingSource: 'ascension1',
+                    scalingMultiplierCondition: new ConditionAscensionChar({ ascension: 1 }),
                     values: Talents.get('skill.varka_sturm_und_drang_4_hit_dmg_1'),
                 }),
             ],
@@ -567,12 +590,14 @@ export const Varka = new DbObjectChar({
             element: 'anemo',
             fullName: 'skill.varka_sturm_und_drang_4_hit_dmg_anemo',
             name: 'varka_sturm_und_drang_4_hit_dmg_anemo',
+            damageBonuses: ['dmg_sturm_und_drang'],
             condition: new ConditionBoolean({ name: 'varka_sturm_und_drang' }),
             multipliers: [
                 new FeatureMultiplier({
                     leveling: 'char_skill_elemental',
                     scalingMultiplier: VarkaSturmUndDrangScalingMultiplier,
                     scalingSource: 'ascension1',
+                    scalingMultiplierCondition: new ConditionAscensionChar({ ascension: 1 }),
                     values: Talents.get('skill.varka_sturm_und_drang_4_hit_dmg_2'),
                 }),
             ],
@@ -583,12 +608,14 @@ export const Varka = new DbObjectChar({
             fullName: 'skill.varka_sturm_und_drang_5_hit_dmg',
             name: 'varka_sturm_und_drang_5_hit_dmg',
             allowInfusion: true,
+            damageBonuses: ['dmg_sturm_und_drang'],
             condition: new ConditionBoolean({ name: 'varka_sturm_und_drang' }),
             multipliers: [
                 new FeatureMultiplier({
                     leveling: 'char_skill_elemental',
                     scalingMultiplier: VarkaSturmUndDrangScalingMultiplier,
                     scalingSource: 'ascension1',
+                    scalingMultiplierCondition: new ConditionAscensionChar({ ascension: 1 }),
                     values: Talents.get('skill.varka_sturm_und_drang_5_hit_dmg_1'),
                 }),
             ],
@@ -597,12 +624,14 @@ export const Varka = new DbObjectChar({
             element: 'anemo',
             fullName: 'skill.varka_sturm_und_drang_5_hit_dmg_anemo',
             name: 'varka_sturm_und_drang_5_hit_dmg_anemo',
+            damageBonuses: ['dmg_sturm_und_drang'],
             condition: new ConditionBoolean({ name: 'varka_sturm_und_drang' }),
             multipliers: [
                 new FeatureMultiplier({
                     leveling: 'char_skill_elemental',
                     scalingMultiplier: VarkaSturmUndDrangScalingMultiplier,
                     scalingSource: 'ascension1',
+                    scalingMultiplierCondition: new ConditionAscensionChar({ ascension: 1 }),
                     values: Talents.get('skill.varka_sturm_und_drang_5_hit_dmg_2'),
                 }),
             ],
@@ -613,12 +642,14 @@ export const Varka = new DbObjectChar({
             fullName: 'skill.varka_sturm_und_drang_charged_attack_dmg',
             name: 'varka_sturm_und_drang_charged_attack_dmg',
             allowInfusion: true,
+            damageBonuses: ['dmg_sturm_und_drang'],
             condition: new ConditionBoolean({ name: 'varka_sturm_und_drang' }),
             multipliers: [
                 new FeatureMultiplier({
                     leveling: 'char_skill_elemental',
                     scalingMultiplier: VarkaSturmUndDrangScalingMultiplier,
                     scalingSource: 'ascension1',
+                    scalingMultiplierCondition: new ConditionAscensionChar({ ascension: 1 }),
                     values: Talents.get('skill.varka_sturm_und_drang_charged_attack_dmg_1'),
                 }),
             ],
@@ -627,6 +658,7 @@ export const Varka = new DbObjectChar({
             category: 'attack',
             damageType: 'charged',
             element: 'anemo',
+            damageBonuses: ['dmg_sturm_und_drang'],
             fullName: 'skill.varka_sturm_und_drang_charged_attack_dmg_anemo',
             name: 'varka_sturm_und_drang_charged_attack_dmg_anemo',
             condition: new ConditionBoolean({ name: 'varka_sturm_und_drang' }),
@@ -635,6 +667,7 @@ export const Varka = new DbObjectChar({
                     leveling: 'char_skill_elemental',
                     scalingMultiplier: VarkaSturmUndDrangScalingMultiplier,
                     scalingSource: 'ascension1',
+                    scalingMultiplierCondition: new ConditionAscensionChar({ ascension: 1 }),
                     values: Talents.get('skill.varka_sturm_und_drang_charged_attack_dmg_2'),
                 }),
             ],
@@ -646,15 +679,17 @@ export const Varka = new DbObjectChar({
             name: 'varka_azure_devour_dmg',
             element: getVarkaActiveElement,
             allowInfusion: true,
-            condition: new ConditionBoolean({ name: 'varka_sturm_und_drang' }),
+            damageBonuses: ['dmg_sturm_und_drang'],
+            condition: new ConditionAnd([
+                new ConditionBoolean({ name: 'varka_has_any' }),
+                new ConditionBoolean({ name: 'varka_sturm_und_drang' }),
+            ]),
             items: [
                 {
                     hits: 2,
                     multipliers: [
-                        new FeatureMultiplier({
+                        new FeatureMultiplierVarkaSkill({
                             leveling: 'char_skill_elemental',
-                            scalingMultiplier: VarkaSturmUndDrangScalingMultiplier,
-                            scalingSource: 'ascension1',
                             values: Talents.get('skill.varka_azure_devour_dmg_1'),
                         }),
                     ],
@@ -666,13 +701,15 @@ export const Varka = new DbObjectChar({
             damageType: 'charged',
             fullName: 'skill.varka_azure_devour_dmg_1',
             allowInfusion: true,
+            damageBonuses: ['dmg_sturm_und_drang'],
             isChild: true,
-            condition: new ConditionBoolean({ name: 'varka_sturm_und_drang' }),
+            condition: new ConditionAnd([
+                new ConditionBoolean({ name: 'varka_has_any' }),
+                new ConditionBoolean({ name: 'varka_sturm_und_drang' }),
+            ]),
             multipliers: [
-                new FeatureMultiplier({
+                new FeatureMultiplierVarkaSkill({
                     leveling: 'char_skill_elemental',
-                    scalingMultiplier: VarkaSturmUndDrangScalingMultiplier,
-                    scalingSource: 'ascension1',
                     values: Talents.get('skill.varka_azure_devour_dmg_1'),
                 }),
             ],
@@ -683,15 +720,17 @@ export const Varka = new DbObjectChar({
             fullName: 'skill.varka_azure_devour_dmg_anemo',
             name: 'varka_azure_devour_dmg_anemo',
             element: 'anemo',
-            condition: new ConditionBoolean({ name: 'varka_sturm_und_drang' }),
+            damageBonuses: ['dmg_sturm_und_drang'],
+            condition: new ConditionAnd([
+                new ConditionBoolean({ name: 'varka_has_any' }),
+                new ConditionBoolean({ name: 'varka_sturm_und_drang' }),
+            ]),
             items: [
                 {
                     hits: 2,
                     multipliers: [
-                        new FeatureMultiplier({
+                        new FeatureMultiplierVarkaSkill({
                             leveling: 'char_skill_elemental',
-                            scalingMultiplier: VarkaSturmUndDrangScalingMultiplier,
-                            scalingSource: 'ascension1',
                             values: Talents.get('skill.varka_azure_devour_dmg_2'),
                         }),
                     ],
@@ -704,13 +743,15 @@ export const Varka = new DbObjectChar({
             fullName: 'skill.varka_azure_devour_dmg_anemo_1',
             name: 'varka_azure_devour_dmg_anemo_1',
             element: 'anemo',
+            damageBonuses: ['dmg_sturm_und_drang'],
             isChild: true,
-            condition: new ConditionBoolean({ name: 'varka_sturm_und_drang' }),
+            condition: new ConditionAnd([
+                new ConditionBoolean({ name: 'varka_has_any' }),
+                new ConditionBoolean({ name: 'varka_sturm_und_drang' }),
+            ]),
             multipliers: [
-                new FeatureMultiplier({
+                new FeatureMultiplierVarkaSkill({
                     leveling: 'char_skill_elemental',
-                    scalingMultiplier: VarkaSturmUndDrangScalingMultiplier,
-                    scalingSource: 'ascension1',
                     values: Talents.get('skill.varka_azure_devour_dmg_2'),
                 }),
             ],
@@ -728,12 +769,14 @@ export const Varka = new DbObjectChar({
             category: 'skill',
             damageType: 'skill',
             name: 'varka_four_winds_ascension_dmg',
-            condition: new ConditionBoolean({ name: 'varka_sturm_und_drang' }),
+            damageBonuses: ['dmg_sturm_und_drang'],
+            condition: new ConditionAnd([
+                new ConditionBoolean({ name: 'varka_has_any' }),
+                new ConditionBoolean({ name: 'varka_sturm_und_drang' }),
+            ]),
             multipliers: [
-                new FeatureMultiplier({
+                new FeatureMultiplierVarkaSkill({
                     leveling: 'char_skill_elemental',
-                    scalingMultiplier: VarkaSturmUndDrangScalingMultiplier,
-                    scalingSource: 'ascension1',
                     values: Talents.get('skill.varka_four_winds_ascension_dmg_1'),
                 }),
             ],
@@ -741,19 +784,22 @@ export const Varka = new DbObjectChar({
         new FeatureDamageSkill({
             element: 'anemo',
             name: 'varka_four_winds_ascension_dmg_anemo',
-            condition: new ConditionBoolean({ name: 'varka_sturm_und_drang' }),
+            damageBonuses: ['dmg_sturm_und_drang'],
+            condition: new ConditionAnd([
+                new ConditionBoolean({ name: 'varka_has_any' }),
+                new ConditionBoolean({ name: 'varka_sturm_und_drang' }),
+            ]),
             multipliers: [
-                new FeatureMultiplier({
+                new FeatureMultiplierVarkaSkill({
                     leveling: 'char_skill_elemental',
-                    scalingMultiplier: VarkaSturmUndDrangScalingMultiplier,
-                    scalingSource: 'ascension1',
                     values: Talents.get('skill.varka_four_winds_ascension_dmg_2'),
                 }),
             ],
         }),
-        new FeatureDamageVarka({
+        new FeatureDamageBurst({
             category: 'burst',
             damageType: 'burst',
+            element: (settings) => getVarkaActiveElement(settings, 'anemo'),
             multipliers: [
                 new FeatureMultiplier({
                     leveling: 'char_skill_burst',
@@ -770,6 +816,18 @@ export const Varka = new DbObjectChar({
                 }),
             ],
         }),
+        new FeatureDamage({
+            element: 'anemo',
+            category: 'other',
+            name: 'varka_constellation2',
+            multipliers: [
+                new FeatureMultiplier({
+                    leveling: 'char_skill_burst',
+                    values: new ValueTable([charTalentTables.Varka.cons[1][0]]),
+                }),
+            ],
+            condition: new ConditionConstellation({ constellation: 2 }),
+        }),
     ],
     conditions: [
         new ConditionCalcElementsVarka(),
@@ -779,24 +837,48 @@ export const Varka = new DbObjectChar({
             title: 'talent_name.n11280001',
             description: 'talent_descr.n11280001_2',
         }),
-        new ConditionStatic({
-            name: 'varka_dawns_return',
+        new ConditionBoolean({
+            name: 'char_hex_varka',
+            serializeId: 2,
             title: 'talent_name.varka_dawns_return',
-            description: 'talent_descr.varka_dawns_return',
+            description: 'talent_descr.varka_dawns_return_1',
         }),
         new ConditionStatic({
-            name: 'varka_dawn_winds_march',
+            title: 'talent_name.varka_dawns_return',
+            description: 'talent_descr.varka_dawns_return_2',
+            condition: new ConditionAnd([
+                new ConditionHexCheck({ hex: 2 }),
+                new ConditionHexCurrent(),
+            ]),
+        }),
+        new ConditionVarkaStatic({
             title: 'talent_name.varka_dawn_winds_march',
             description: 'talent_descr.varka_dawn_winds_march',
             info: {ascension: 1},
             condition: new ConditionAscensionChar({ascension: 1}),
         }),
-        new ConditionStatic({
+        new ConditionStacks({
             name: 'varka_winds_vanguard',
+            serializeId: 3,
             title: 'talent_name.varka_winds_vanguard',
             description: 'talent_descr.varka_winds_vanguard',
-            info: {ascension: 4},
+            info: { ascension: 4 },
+            maxStacks: charTalentTables.Varka.passsive[1][2],
+            stats: [
+                new StatTable('dmg_sturm_und_drang', [charTalentTables.Varka.passsive[1][1]], 100),
+            ],
             condition: new ConditionAscensionChar({ascension: 4}),
+        }),
+    ],
+    postEffects: [
+        new PostEffectStats({
+            from: 'atk*',
+            percent: [...['dmg_anemo', 'dmg_pyro', 'dmg_hydro', 'dmg_cryo', 'dmg_electro'].map(elem => new StatTable(elem, [charTalentTables.Varka.passsive[0][0]], 0.1))],
+            statCap: new ValueTable([charTalentTables.Varka.passsive[0][1]], 100),
+            condition: new ConditionAnd([
+                new ConditionAscensionChar({ ascension: 1 }),
+                new ConditionBoolean({ name: 'varka_has_any' }),
+            ]),
         }),
     ],
     multipliers: [
@@ -804,8 +886,9 @@ export const Varka = new DbObjectChar({
     constellation: new DbObjectConstellation([
         {
             conditions: [
-                new ConditionStatic({
+                new ConditionBoolean({
                     name: 'varka_come_friend_let_us_dance_beneath_the_moons_soft_glow',
+                    serializeId: 4,
                     title: 'talent_name.varka_come_friend_let_us_dance_beneath_the_moons_soft_glow',
                     description: 'talent_descr.varka_come_friend_let_us_dance_beneath_the_moons_soft_glow',
                 }),
@@ -824,17 +907,48 @@ export const Varka = new DbObjectChar({
             conditions: [
                 new Condition({
                     settings: {
-                        char_skill_burst_bonus: 3, char_skill_elemental_bonus: 3,
+                        char_skill_elemental_bonus: 3,
                     },
                 }),
             ],
         },
         {
             conditions: [
-                new ConditionStatic({
+                new ConditionDropdownElement({
                     name: 'varka_for_none_may_take_from_us_our_freedom_of_song',
+                    serializeId: 5,
                     title: 'talent_name.varka_for_none_may_take_from_us_our_freedom_of_song',
                     description: 'talent_descr.varka_for_none_may_take_from_us_our_freedom_of_song',
+                    values: [
+                        {
+                            value: 'pyro',
+                            serializeId: 4,
+                            conditions: [
+                                new Condition({ stats: { dmg_pyro: 20, dmg_anemo: 20 } }),
+                            ],
+                        },
+                        {
+                            value: 'hydro',
+                            serializeId: 3,
+                            conditions: [
+                                new Condition({ stats: { dmg_hydro: 20, dmg_anemo: 20 } }),
+                            ],
+                        },
+                        {
+                            value: 'electro',
+                            serializeId: 2,
+                            conditions: [
+                                new Condition({ stats: { dmg_electro: 20, dmg_anemo: 20 } }),
+                            ],
+                        },
+                        {
+                            value: 'cryo',
+                            serializeId: 1,
+                            conditions: [
+                                new Condition({ stats: { dmg_cryo: 20, dmg_anemo: 20 } }),
+                            ],
+                        },
+                    ],
                 }),
             ],
         },
@@ -842,7 +956,7 @@ export const Varka = new DbObjectChar({
             conditions: [
                 new Condition({
                     settings: {
-                        char_skill_burst_bonus: 3, char_skill_elemental_bonus: 3,
+                        char_skill_burst_bonus: 3
                     },
                 }),
             ],
@@ -854,7 +968,62 @@ export const Varka = new DbObjectChar({
                     title: 'talent_name.varka_beloved_mondstadt_steadfast_you_shall_shine',
                     description: 'talent_descr.varka_beloved_mondstadt_steadfast_you_shall_shine',
                 }),
+                new ConditionStacksHidden({
+                    name: 'varka_winds_vanguard',
+                    maxStacks: charTalentTables.Varka.passsive[1][2],
+                    stats: [
+                        new StatTable('crit_dmg', [charTalentTables.Varka.cons[5][1]], 100),
+                    ],
+                    condition: new ConditionAscensionChar({ ascension: 4 }),
+                }),
             ],
         },
     ]),
+    partyData: {
+        conditions: [
+            new ConditionBoolean({
+                name: 'char_hex_varka',
+                serializeId: 1,
+                title: 'talent_name.varka_dawns_return',
+                description: 'talent_descr.varka_dawns_return_1',
+            }),
+            new ConditionDropdownElement({
+                name: 'party.varka_for_none_may_take_from_us_our_freedom_of_song',
+                serializeId: 2,
+                title: 'talent_name.varka_for_none_may_take_from_us_our_freedom_of_song',
+                description: 'talent_descr.varka_for_none_may_take_from_us_our_freedom_of_song',
+                info: { constellation: 4 },
+                values: [
+                    {
+                        value: 'pyro',
+                        serializeId: 4,
+                        conditions: [
+                            new Condition({ stats: { dmg_pyro: 20, dmg_anemo: 20 } }),
+                        ],
+                    },
+                    {
+                        value: 'hydro',
+                        serializeId: 3,
+                        conditions: [
+                            new Condition({ stats: { dmg_hydro: 20, dmg_anemo: 20 } }),
+                        ],
+                    },
+                    {
+                        value: 'electro',
+                        serializeId: 2,
+                        conditions: [
+                            new Condition({ stats: { dmg_electro: 20, dmg_anemo: 20 } }),
+                        ],
+                    },
+                    {
+                        value: 'cryo',
+                        serializeId: 1,
+                        conditions: [
+                            new Condition({ stats: { dmg_cryo: 20, dmg_anemo: 20 } }),
+                        ],
+                    },
+                ],
+            }),
+        ],
+    },
 });

@@ -21,6 +21,7 @@ export class ArtifactsSuggest {
         this.featureName = data.featureName;
         this.featureType = data.featureType;
         this.settings = data.settings;
+        this.skippedOnPrepare = 0;
         this.limit = data.limit || 20;
     }
 
@@ -46,21 +47,22 @@ export class ArtifactsSuggest {
         };
 
         this.featureVariants = {};
-        this.initSetFuncVariants = {};
-        this.usedStats = [];
+        this.usedStats = new Set();
         let variationData = [];
 
-        let statFilterUsedStats = [];
+        let statFilterUsedStats = new Set();
         for (let name of Object.keys(this.settings.stats || {})) {
+            if (!this.settings.stats[name])
+                continue;
             name = name.replace('_min', '').replace('_max', '');
-            statFilterUsedStats.push(name);
-            statFilterUsedStats.push(name +'_base');
+            statFilterUsedStats.add(name);
+            statFilterUsedStats.add(name +'_base');
             if (REAL_TOTAL.includes(name)) {
-                statFilterUsedStats.push(name +'_percent');
+                statFilterUsedStats.add(name +'_percent');
             }
         }
 
-        this.usedStats = this.usedStats.concat(statFilterUsedStats);
+        this.usedStats = this.usedStats.union(statFilterUsedStats);
 
         for (let variant of this.getVariations()) {
             let vBuild = this.build.clone();
@@ -112,7 +114,7 @@ export class ArtifactsSuggest {
             let compiler = new FeatureCompiler(tree, postTrees);
 
             let usedStats = compiler.usedStats;
-            this.usedStats = this.usedStats.concat(usedStats);
+            this.usedStats = this.usedStats.union(new Set(usedStats));
             usedStats = usedStats.concat(statFilterUsedStats);
             item.buildData.stats.ensure(usedStats);
 
@@ -124,13 +126,23 @@ export class ArtifactsSuggest {
             compiler.checkFunc = makeStatCheckFunc(this.settings.stats, activePostTree);
 
             this.featureVariants[item.variandId] = compiler;
-            this.initSetFuncVariants[item.variandId] = item.buildData.stats.getSetFunc();
         }
 
-        this.buildData.stats.truncate(this.usedStats);
-        this.buildData.stats.ensure(this.usedStats);
+        this.usedStats.delete('crit_value');
+        let arr = Array.from(this.usedStats);
+        this.buildData.stats.truncate(arr);
+        this.buildData.stats.ensure(arr);
 
         this.prepareArtifacts();
+    }
+
+    log(msg, toString) {
+        if (typeof __DEVEL__ !== 'undefined' && __DEVEL__) {
+            if (toString)
+                console.log(JSON.stringify(msg));
+            else
+                console.log(msg);
+        }
     }
 
     getVariations() {
@@ -204,22 +216,158 @@ export class ArtifactsSuggest {
             goblet: [],
             circlet: [],
         };
+        let skiped = {
+            flower: 0,
+            plume: 0,
+            sands: 0,
+            goblet: 0,
+            circlet: 0,
+        };
+        let filteredSlots = {
+            flower: [],
+            plume: [],
+            sands: [],
+            goblet: [],
+            circlet: [],
+        };
         this.setNames = {};
         this.totalCombinations = 1;
+        let actualCombinations = 1;
+        let setDataStats = {};
 
-        for (let art of this.artifacts) {
-            this.setNames[art.set] = 1;
-
-            art.calcCache(this.usedStats);
-            art.concatFunc = art.calculated.getConcatFunc();
-            this.slots[art.slot].push(art);
+        for (let setId in this.setData) {
+            setDataStats[setId] = new Stats(this.setData[setId][Math.max(...Object.keys(this.setData[setId]))].stats);
+            //.includesAny = Object.values(this.setData[setId]).some((x) => x.stats.includesAny(this.usedStats));
         }
 
-        for (const slot of Object.keys(this.slots)) {
+        let canEmblem4 = Math.max(...Object.keys(this.setData['EmblemofSeveredFate'])) >= 4;
+        let arr = Array.from(this.usedStats);
+        for (let art of this.artifacts) {
+            art.calcCache(arr);
+
+            //фильтрация работает пока нет артефакта с пост-эффектами которые увеличивают обычные хар-ки
+            //если появится такой набор артефактов, то все эти оптимизации идут нафиг, т.к. любой кусок может зарешать
+            /*if (this.setData[art.set] && this.setData[art.set].includesAny) {
+                art.concatFunc = art.calculated.getConcatFunc();
+                this.setNames[art.set] = 1;
+                this.slots[art.slot].push(art);
+            } else if (!art.calculated.isEmpty()) {
+                if (this.usedStats.intersection(new Set(Object.keys(art.calculated))).size == 5) {
+                    art.concatFunc = art.calculated.getConcatFunc();
+                    this.setNames[art.set] = 1;
+                    this.slots[art.slot].push(art);
+                } else {
+                    filteredSlots[art.slot].push(art);
+                }*/
+            //Эмблема всегда добавляется если учитывается урон Взрыва стихии, т.к. на данном этапе невозможно просчитать насколько артефакт будет полезен
+            if (canEmblem4 && this.usedStats.has("dmg_burst") && art.set == "EmblemofSeveredFate") {
+                art.concatFunc = art.calculated.getConcatFunc();
+                this.setNames[art.set] = 1;
+                this.slots[art.slot].push(art);
+            } else if (!art.calculated.isEmpty() || (setDataStats[art.set] && setDataStats[art.set].includesAny(this.usedStats))) {
+                filteredSlots[art.slot].push(art);
+                if (!setDataStats[art.set])
+                    setDataStats[art.set] = new Stats();
+            } else {
+                skiped[art.slot]++;
+            }
+        }
+
+        let base_params = {
+            atk: this.buildData.stats['atk_base'],
+            def: this.buildData.stats['def_base'],
+            hp: this.buildData.stats['hp_base'],
+        };
+        let mapComparer = new Map();
+        for (let slot of Object.keys(this.slots)) {
+            let artsParams = new Map();
+            for (let art of filteredSlots[slot]) {
+                let prm = this.usedStats.intersection(new Set(Object.keys(art.calculated).map(x => x.endsWith('_percent') ? x.slice(0, -8) : x)));
+                let arrPrm = [...prm].sort().join(';');
+                if (!artsParams.has(arrPrm)) {
+                    artsParams.set(arrPrm, []);
+                    if (!mapComparer.has(arrPrm)) {
+                        let code = [];
+                        //бонус набора учитываем только у исключаемого артефакта, что бы не выкинуть потенциального кандидата для набора
+                        for (let st of prm)
+                            if (base_params[st])
+                                code.push(`(a.get('${st}') /*+ aSet.get('${st}')*/ + (a.get('${st}_percent') /*+ aSet.get('${st}_percent')*/) * ${base_params[st]} >= b.get('${st}') + bSet.get('${st}') + (b.get('${st}_percent') + bSet.get('${st}_percent')) * ${base_params[st]})`);
+                            else
+                                code.push(`(a.${st} /*+ aSet.get('${st}')*/ >= b.${st} + bSet.get('${st}'))`);
+                        mapComparer.set(arrPrm, Function('a', 'aSet', 'b', 'bSet', "return " + code.join('&&') + ";"));
+                    }
+                }
+                artsParams.get(arrPrm).push(art);
+            }
+
+            let keyList = Array.from(artsParams.keys()).sort((a, b) => b.split(';').length - a.split(';').length);
+            for (let i = 0, len = keyList.length; i < len; i++) {
+                let base = keyList[i];
+                let cmp = mapComparer.get(base);
+                let list = artsParams.get(base);
+                for (let k = 0; k < list.length - 1; k++) {
+                    for (let l = k + 1; l < list.length; l++) {
+                        if (cmp(list[k].calculated, setDataStats[list[k].set], list[l].calculated, setDataStats[list[l].set])) {
+                            /*this.log('--------');
+                            this.log('excluded:');
+                            this.log(list[l].calculated, true);
+                            this.log('because:');
+                            this.log(list[k].calculated, true);*/
+                            list.splice(l, 1);
+                            l--;
+                            skiped[slot]++;
+                        } else if (cmp(list[l].calculated, setDataStats[list[l].set], list[k].calculated, setDataStats[list[k].set])) {
+                            /*this.log('--------');
+                            this.log('excluded:');
+                            this.log(list[k].calculated, true);
+                            this.log('because:');
+                            this.log(list[l].calculated, true);*/
+                            list.splice(k, 1);
+                            k--;
+                            skiped[slot]++;
+                            break;
+                        }
+                    }
+                }
+            }
+            for (let i = 0, len = keyList.length; i < len; i++) {
+                let base = keyList[i];
+                let baseSet = new Set(base.split(';'));
+                if (artsParams.get(base).length > 0)
+                    for (let j = i + 1; j < len; j++)
+                        if (baseSet.isSupersetOf(new Set(keyList[j].split(';')))) {
+                            let cmp = mapComparer.get(keyList[j]);
+                            let list = artsParams.get(keyList[j]);
+                            let superset = artsParams.get(base);
+                            for (let k = 0, lenSup = superset.length; k < lenSup; k++) {
+                                for (let l = list.length - 1; l >= 0 ; l--) {
+                                    if (cmp(superset[k].calculated, setDataStats[superset[k].set], list[l].calculated, setDataStats[list[l].set])) {
+                                        /*this.log('--------');
+                                        this.log('excluded:');
+                                        this.log(list[l].calculated, true);
+                                        this.log('because:');
+                                        this.log(superset[k].calculated, true);*/
+                                        list.splice(l, 1);
+                                        skiped[slot]++;
+                                    }
+                                }
+                            }
+                        }
+            }
+
+            for (let art of Array.from(artsParams.values()).flat()) {
+                art.concatFunc = art.calculated.getConcatFunc();
+                this.setNames[art.set] = 1;
+                this.slots[slot].push(art);
+            }
+        }
+
+        this.log("skiped arts count: " + (skiped.flower + skiped.plume + skiped.sands + skiped.goblet + skiped.circlet));
+        for (let slot of Object.keys(this.slots)) {
             if (this.slots[slot].length == 0) {
                 let curArt = this.currentArts[slot];
                 if (curArt) {
-                    curArt.calcCache(this.usedStats);
+                    curArt.calcCache(arr);
                     this.slots[slot].push(curArt);
                 } else {
                     let emptyArtifact = new Artifact(5, 0, slot, 'none', 'none');
@@ -230,8 +378,12 @@ export class ArtifactsSuggest {
                 }
             }
 
-            this.totalCombinations *= this.slots[slot].length;
+            this.totalCombinations *= this.slots[slot].length + skiped[slot];
+            actualCombinations *= this.slots[slot].length;
         }
+
+        this.skippedOnPrepare = this.totalCombinations - actualCombinations;
+        this.log("skiped combinations count: " + this.skippedOnPrepare);
     }
 
     prepareArtifactSets() {
@@ -243,11 +395,21 @@ export class ArtifactsSuggest {
             setPieces[art.set][art.slot] = 1;
         }
 
+        let blockedSlots = 0;
+        for (let s in this.settings.setMinValues)
+            blockedSlots += this.settings.setMinValues[s];
+
         let setMaxPieces = {};
         for (let setName of Object.keys(setPieces)) {
-            setMaxPieces[setName] = Object.keys(setPieces[setName]).length
+            if ((this.settings.setMinValues[setName] && Object.keys(setPieces[setName]).length >= this.settings.setMinValues[setName])
+                    || !this.settings.setMinValues[setName]) {
+                if (this.settings.setMaxValues[setName])
+                    setMaxPieces[setName] = Math.min(Object.keys(setPieces[setName]).length, 5 - blockedSlots, this.settings.setMaxValues[setName] - 1);
+                else
+                    setMaxPieces[setName] = Math.min(Object.keys(setPieces[setName]).length, 5 - blockedSlots);
+            } else
+                setMaxPieces[setName] = 0;
         }
-
 
         this.setData = {};
         // let baseSettings = Object.assign({}, this.buildData.settings, this.settings.sets_settings);
@@ -260,6 +422,13 @@ export class ArtifactsSuggest {
         //         postArtNames.push(item.params.suggesterPieces);
         //     }
         // }
+
+        let defaultStats = new Stats();
+        let defaultCond = this.build.buffs.buffs.items.Artifacts.getConditions();
+        for (let cond of defaultCond) {
+            let data = cond.getActualStats(baseSettings);
+            defaultStats.concat(data);
+        }
 
         let activePostEffects = this.buildData.getActivePostEffects().length;
 
@@ -284,7 +453,7 @@ export class ArtifactsSuggest {
 
                 buildData.addSettings({[Artifact.settingName(setId)]: pieces});
 
-                const conditions = bonuses[pieces];
+                let conditions = bonuses[pieces];
                 let pieceSettings = {};
 
                 if (conditions.length) {
@@ -298,12 +467,14 @@ export class ArtifactsSuggest {
 
                     let stats = new Stats();
 
+                    conditions = conditions.concat(defaultCond);
                     for (let cond of conditions) {
                         let data = cond.getActualStats(localSettings);
                         stats.concat(data);
                     }
 
-                    // stats.truncate(this.usedStats); // TODO нужно пересчитать после обработки всех variation
+                    stats.exclude(defaultStats);
+
                     setStats.concat(stats);
                     Object.assign(setTotalSettings, pieceSettings);
                     buildData.addSettings(pieceSettings);
@@ -405,8 +576,8 @@ export class ArtifactsSuggest {
         let combination;
         let results = [];
         let minimalValue = 0;
-        this.currentCombinations = 0;
-        this.skippedCombinations = 0;
+        this.currentCombinations = this.skippedOnPrepare;
+        this.skippedCombinations = this.skippedOnPrepare;
 
         let artifacts;
         let artSets;
@@ -415,7 +586,7 @@ export class ArtifactsSuggest {
         let value;
         let featureIndex = FEATURE_TYPE_INDEX[this.featureType];
 
-
+        let initialStatFunc = this.buildData.stats.getSetFunc();
         let checkFunc = generateCheckFunc(this.settings);
         let requireFunc = generateRequireFunc(this.settings);
         let generator = artifactCombinations(checkFunc, requireFunc, this.setNames, this.slots, (val) => {
@@ -437,13 +608,16 @@ export class ArtifactsSuggest {
             artSets = {};
             artifacts = combination.value;
             artStats = new Stats();
-            let variation = [];
+            initialStatFunc(artStats);
+
             for (let item of artifacts) {
                 if (item) {
                     artSets[item.set] = (artSets[item.set] || 0) + 1;
+                    item.concatFunc(artStats);
                 }
             }
 
+            let variation = [];
             for (let id in artSets) {
                 let sdata = this.setData[id] && this.setData[id][artSets[id]];
                 if (!sdata) continue;
@@ -451,16 +625,12 @@ export class ArtifactsSuggest {
                 if (sdata.variation) {
                     variation.push(sdata.variation)
                 }
-            }
 
-            variation = variation.sort().join('-') || 'default';
-            this.initSetFuncVariants[variation](artStats);
-
-            for (let item of artifacts) {
-                if (item) {
-                    item.concatFunc(artStats);
+                if (sdata.concatFunc) {
+                    sdata.concatFunc(artStats);
                 }
             }
+            variation = variation.sort().join('-') || 'default';
 
             let compiler = this.featureVariants[variation];
 
@@ -614,7 +784,6 @@ function makeStatCheckFunc(settings, post) {
         code = before +';\n' + code + ';\n'+ after;
     }
 
-    // console.log(code)
     return Function('stats', code + ';\nreturn true');
 }
 

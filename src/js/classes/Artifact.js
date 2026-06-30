@@ -25,6 +25,9 @@ export class Artifact {
         this.calculated = null;
     }
 
+    /**
+     * @returns {Stats}
+     */
     calcStats() {
         var result = new Stats();
 

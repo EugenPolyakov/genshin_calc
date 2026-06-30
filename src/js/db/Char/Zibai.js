@@ -22,6 +22,7 @@ import { FeatureDamagePlungeCollision } from "../../classes/Feature2/Damage/Plun
 import { FeatureDamagePlungeShockWave } from "../../classes/Feature2/Damage/Plunge/ShockWave";
 import { FeatureDamageSkill } from "../../classes/Feature2/Damage/Skill";
 import { FeatureMultiplier } from "../../classes/Feature2/Multiplier";
+import { FeatureMultiplierTarget } from "../../classes/Feature2/Multiplier/Target";
 import { FeaturePostEffectValue } from "../../classes/Feature2/PostEffectValue";
 import { FeatureReactionLunarCrystallizeLike } from "../../classes/Feature2/Reaction/Transformative/Lunar/CrystallizeLike";
 import { PostEffectStats } from "../../classes/PostEffect/Stats";
@@ -500,43 +501,8 @@ export const Zibai = new DbObjectChar({
                     ]),
                     values: Talents.get('skill.zibai_spirit_steeds_stride_2_hit_dmg'),
                 }),
-                new FeatureMultiplier({
-                    scaling: 'def*',
-                    leveling: 'char_skill_elemental',
-                    source: 'ascension1',
-                    scalingSource: 'constellation1',
-                    scalingMultiplier: charTalentTables.Zibai.cons[0][0],
-                    scalingMultiplierCondition: new ConditionAnd([
-                        new ConditionBoolean({ name: 'zibai_lunar_phase_shift' }),
-                        new ConditionBoolean({ name: 'zibai_burst_forth_with_vigor_but_enter_in_silence' }),
-                        new ConditionConstellation({ constellation: 1 }),
-                    ]),
-                    values: new ValueTable([charTalentTables.Zibai.passsive[0][0]], 100),
-                    condition: new ConditionAnd([
-                        new ConditionBoolean({ name: 'zibai_the_selenic_adeptus_descends' }),
-                        new ConditionAscensionChar({ ascension: 1 }),
-                    ]),
-                }),
-                new FeatureMultiplier({
-                    scaling: 'def*',
-                    leveling: 'char_skill_elemental',
-                    source: 'constellation2',
-                    scalingSource: 'constellation1',
-                    scalingMultiplier: charTalentTables.Zibai.cons[0][0],
-                    scalingMultiplierCondition: new ConditionAnd([
-                        new ConditionBoolean({ name: 'zibai_lunar_phase_shift' }),
-                        new ConditionBoolean({ name: 'zibai_burst_forth_with_vigor_but_enter_in_silence' }),
-                        new ConditionConstellation({ constellation: 1 }),
-                    ]),
-                    values: new ValueTable([charTalentTables.Zibai.cons[1][1] - charTalentTables.Zibai.passsive[0][0]], 100),
-                    condition: new ConditionAnd([
-                        new ConditionBoolean({ name: 'zibai_the_selenic_adeptus_descends' }),
-                        new ConditionAscensionChar({ ascension: 1 }),
-                        new ConditionConstellation({ constellation: 2 }),
-                        new ConditionMoonPhaseCheck({ moonphase: 2 }),
-                    ]),
-                }),
             ],
+            tags: ['zibai_spirit_steeds_stride_2_hit_dmg'],
             rotationAfterItems: (item, opts) => {
                 if (item.count > 1 || opts.insideBlock) {
                     return [];
@@ -646,6 +612,50 @@ export const Zibai = new DbObjectChar({
         }),
     ],
     multipliers: [
+        new FeatureMultiplier({
+            scaling: 'def*',
+            leveling: 'char_skill_elemental',
+            source: 'ascension1',
+            scalingSource: 'constellation1',
+            scalingMultiplier: charTalentTables.Zibai.cons[0][0],
+            scalingMultiplierCondition: new ConditionAnd([
+                new ConditionBoolean({ name: 'zibai_lunar_phase_shift' }),
+                new ConditionBoolean({ name: 'zibai_burst_forth_with_vigor_but_enter_in_silence' }),
+                new ConditionConstellation({ constellation: 1 }),
+            ]),
+            values: new ValueTable([charTalentTables.Zibai.passsive[0][0]], 100),
+            condition: new ConditionAnd([
+                new ConditionBoolean({ name: 'zibai_the_selenic_adeptus_descends' }),
+                new ConditionAscensionChar({ ascension: 1 }),
+            ]),
+            target: new FeatureMultiplierTarget({
+                isReactionFlatBonus: true,
+                tags: ['zibai_spirit_steeds_stride_2_hit_dmg'],
+            }),
+        }),
+        new FeatureMultiplier({
+            scaling: 'def*',
+            leveling: 'char_skill_elemental',
+            source: 'constellation2',
+            scalingSource: 'constellation1',
+            scalingMultiplier: charTalentTables.Zibai.cons[0][0],
+            scalingMultiplierCondition: new ConditionAnd([
+                new ConditionBoolean({ name: 'zibai_lunar_phase_shift' }),
+                new ConditionBoolean({ name: 'zibai_burst_forth_with_vigor_but_enter_in_silence' }),
+                new ConditionConstellation({ constellation: 1 }),
+            ]),
+            values: new ValueTable([charTalentTables.Zibai.cons[1][1] - charTalentTables.Zibai.passsive[0][0]], 100),
+            condition: new ConditionAnd([
+                new ConditionBoolean({ name: 'zibai_the_selenic_adeptus_descends' }),
+                new ConditionAscensionChar({ ascension: 1 }),
+                new ConditionConstellation({ constellation: 2 }),
+                new ConditionMoonPhaseCheck({ moonphase: 2 }),
+            ]),
+            target: new FeatureMultiplierTarget({
+                isReactionFlatBonus: true,
+                tags: ['zibai_spirit_steeds_stride_2_hit_dmg'],
+            }),
+        }),
     ],
     postEffects: [
         lunarcrystallizePost,

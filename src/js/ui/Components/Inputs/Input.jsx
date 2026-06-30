@@ -225,17 +225,22 @@ export class NumberInput extends React.PureComponent {
 export function Checkbox(props) {
     return (
         <div
-            className="checkbox-wrapper"
-            onClick={(e) => props.onChange(!props.checked, commandKeys(e))}
+            className={ "checkbox-wrapper" + (!props.disabled ? ' active': '') }
+            onClick={ (e) => !props.disabled ? props.onChange(!props.checked, commandKeys(e)) : ''}
         >
-            <input
-                autoComplete="off"
-                className="checkbox"
-                type="checkbox"
-                checked={!!props.checked}
-                onChange={() => {}}
-            />
-            <div className="checkbox-switcher"></div>
+            {
+                props.disabled ? <div className="static" /> :
+                    <>
+                        <input
+                            autoComplete="off"
+                            className="checkbox"
+                            type="checkbox"
+                            checked={ !!props.checked }
+                            onChange={ () => { } }
+                        />
+                        <div className="checkbox-switcher"></div>
+                    </>
+            }
             <div className="checkbox-label">{props.title}</div>
         </div>
     )

@@ -25,12 +25,4 @@ export class FeatureReactionLunarCrystallizeLike extends FeatureReactionLunarCry
         );
         return result;
     }
-
-    /**
-     * @param {BuildData} data
-     * @returns {CBlock}
-     */
-    getReactionBaseMultipliers(data) {
-        return this.getMultipliers(data);
-    }
 }

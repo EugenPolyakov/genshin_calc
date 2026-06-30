@@ -7,7 +7,7 @@ export class ConditionStaticRefineDreamsOther extends ConditionStaticRefine {
     }
 
     getDefaultStats(settings) {
-        let stacksCnt = this.getDefaultStats(settings);
+        let stacksCnt = super.getDefaultStats(settings);
         let stats = new Stats({
             dreams_elements_different: stacksCnt,
         });

@@ -32,16 +32,28 @@ export class AccordionSetBonuses extends React.Component {
 
         let itemData = this.props.sets[setName]
 
-        for (let p of itemData.pieces) {
-            let id = setName +'-'+ p;
+        if (itemData.pieces.length > 0) {
+            let id = setName + '-' + itemData.pieces[0];
             pieces.push(
                 <Checkbox
-                    key={id}
-                    checked={!!this.props.settings[id]}
-                    title={this.strings['pieces_'+ p]}
-                    onChange={(value) => {this.props.onChange(id, value)}}
+                    key={ id }
+                    checked={ !!this.props.settings[id] }
+                    title={ this.strings['pieces_' + itemData.pieces[0]] }
+                    onChange={ (value) => { this.props.onChange(id, value) } }
                 />
             )
+            for (let idx = 1; idx < itemData.pieces.length; idx++) {
+                let id = setName + '-' + itemData.pieces[idx];
+                pieces.push(
+                    <Checkbox
+                        key={ id }
+                        checked={ !!this.props.settings[id] }
+                        title={ this.strings['pieces_' + itemData.pieces[idx]] }
+                        disabled={ !this.props.settings[setName + '-' + itemData.pieces[idx - 1]] }
+                        onChange={ (value) => { this.props.onChange(id, value) } }
+                    />
+                )
+            }
         }
 
         let appSettings = Object.assign({char_element: 'anemo'}, this.props.setsSettings);

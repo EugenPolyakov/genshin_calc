@@ -24,3 +24,5 @@ artifacts_ui;accordion_slots;Типы предметов;Artifact slots
 artifacts_ui;accordion_required_sets;Требуемая комбинация комплектов;Required artifact sets combination
 artifacts_ui;accordion_sets;Бонусы комплектов;Artifact sets
 artifacts_ui;accordion_filter;Фильтр по уровню и характеристике;Level and main stat filter
+artifacts_ui;auto_stats;Необходимые хар-ки;Required main stats
+artifacts_ui;all_stats;Все хар-ки;All main stats

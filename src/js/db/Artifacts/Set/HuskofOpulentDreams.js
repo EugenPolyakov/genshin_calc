@@ -29,30 +29,22 @@ export const HuskofOpulentDreams = new ArtifactSet({
         {},
         {
             conditions: [
-                new ConditionStatic({
+                new ConditionStacks({
                     name: 'set.husk_of_opulent_dreams_4',
+                    serializeId: 19,
                     title: 'set_bonus.husk_of_opulent_dreams_4',
                     description: 'set_descr.husk_of_opulent_dreams_4',
-                }),
-                new ConditionStacks({
-                    name: 'set.husk_of_opulent_dreams_4_def',
-                    serializeId: 19,
-                    title: 'set_bonus.husk_of_opulent_dreams_4_def',
-                    description: 'set_descr.husk_of_opulent_dreams_4_def',
                     maxStacks: 4,
                     stats: [
                         new StatTable('def_percent', [6, 12, 18, 24]),
+                        new StatTable('dmg_geo', [6, 12, 18, 24]),
                     ],
                 }),
                 new ConditionStacks({
                     name: 'set.husk_of_opulent_dreams_4_geo',
                     serializeId: 21,
-                    title: 'set_bonus.husk_of_opulent_dreams_4_geo',
-                    description: 'set_descr.husk_of_opulent_dreams_4_geo',
                     maxStacks: 4,
-                    stats: [
-                        new StatTable('dmg_geo', [6, 12, 18, 24]),
-                    ],
+                    isHidden: true,
                 }),
             ],
         },

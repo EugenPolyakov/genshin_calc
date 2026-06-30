@@ -21,12 +21,4 @@ export class FeatureReactionLunarBloomLike extends FeatureReactionLunarBloom {
         );
         return result;
     }
-
-    /**
-     * @param {BuildData} data
-     * @returns {CBlock}
-     */
-    getReactionBaseMultipliers(data) {
-        return this.getMultipliers(data);
-    }
 }
