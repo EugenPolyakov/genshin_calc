@@ -10,7 +10,7 @@ from lib.genshin.datafiles.weapons import IGNORED_WEAPONS, WeaponData, WeaponSki
 from lib.genshin.utils import convert_id, add_array
 from lib.genshin.strings.templates import weapons as weapons_tpl
 from lib.genshin.strings.templates.talents import templates as common_tpl
-from lib.genshin.strings.templates.names import names_eng, names_rus, keywords_eng, keywords_rus, color_patterns, postprocess
+from lib.genshin.strings.templates.names import names_eng, names_rus, keywords_eng, keywords_rus, postprocess
 from lib.genshin.strings.csv import CsvDumper
 from lib.genshin.strings.text import TextDumper
 import lib.static as static
@@ -26,13 +26,11 @@ weapon_skill_data = WeaponSkillData()
 lang_data = {
     'rus': {
         'lang': LangData('RU'),
-        'patterns': color_patterns,
         'names': names_rus,
         'keywords': keywords_rus,
     },
     'eng': {
         'lang': LangData('EN'),
-        'patterns': color_patterns,
         'names': names_eng,
         'keywords': keywords_eng,
     },
@@ -447,8 +445,8 @@ def prepare_data():
                     # если есть описание навыка, то проверим совпадает ли оно с другими навыками
                     item_descr = lang_eng.get(affixList[0]['descTextMapHash'])
                     item_descr = tpl_keywords.process(item_descr)['descr'][0]
-                    item_descr = tpl_names.process(item_descr)['descr'][0]
                     item_descr = common_tpl.process(item_descr)['descr'][0]
+                    item_descr = tpl_names.process(item_descr)['descr'][0]
                     item_descr = tpl_weapon.process(item_descr)['descr'][0]
                     elem['descr'] = item_descr
                     if not skill_id in skills_byName:
@@ -648,8 +646,8 @@ def print_Texts(weapons):
 
                     # item_descr[lang_name] = tpl_patterns.process(item_descr[lang_name])
                     item_descr[lang_name] = tpl_keywords.process(item_descr[lang_name])['descr'][0]
-                    item_descr[lang_name] = tpl_names.process(item_descr[lang_name])['descr'][0]
                     item_descr[lang_name] = common_tpl.process(item_descr[lang_name])['descr'][0]
+                    item_descr[lang_name] = tpl_names.process(item_descr[lang_name])['descr'][0]
 
                     tpl_weapon = getattr(weapons_tpl, f'{weapon_id}_{lang_name}', None) or getattr(weapons_tpl, weapon_id, None) or \
                         getattr(weapons_tpl, f'{skill_title}_{lang_name}', None) or getattr(weapons_tpl, skill_title, None)

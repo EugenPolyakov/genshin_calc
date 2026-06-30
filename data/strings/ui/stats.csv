@@ -41,6 +41,7 @@ stat;dmg_electro_base;Базовый Электро урон;Base Electro DMG
 stat;dmg_geo_base;Базовый Гео урон;Base Geo DMG
 stat;dmg_hydro_base;Базовый Гидро урон;Base Hydro DMG
 stat;dmg_pyro_base;Базовый Пиро урон;Base Pyro DMG
+stat;dmg_cryo_base;Базовый Крио урон;Base Cryo DMG
 stat;dmg_phys_base;Базовый Физ. урон;Base Phys. DMG
 stat;dmg_dendro_base;Базовый Дендро урон;Base Hydro DMG
 

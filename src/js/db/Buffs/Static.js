@@ -1,13 +1,10 @@
 import { ConditionAnd } from "../../classes/Condition/And";
 import { ConditionBoLStat } from "../../classes/Condition/BoLStat";
 import { ConditionBoolean } from "../../classes/Condition/Boolean";
-import { ConditionHexCheck } from "../../classes/Condition/HexCheck";
-import { ConditionHexCurrent } from "../../classes/Condition/HexCurrent";
 import { ConditionMillenialMovement } from "../../classes/Condition/MillenialMovement";
 import { ConditionPartyWeaponSelect } from "../../classes/Condition/PartyWeaponSelect";
 import { DbObjectBuff } from "../../classes/DbObject/Buff";
 import { PostEffectKhajNisut } from "../../classes/PostEffect/KhajNisut";
-import { PostEffectStats } from "../../classes/PostEffect/Stats";
 import { StatTable } from "../../classes/StatTable";
 import { weaponDataTable } from "../generated/WeaponStatTables";
 
@@ -65,19 +62,6 @@ export const Static = new DbObjectBuff({
     postEffects: [
         new PostEffectKhajNisut({
             percent: new StatTable('mastery', [0.002, 0.0025, 0.003, 0.0035, 0.004]),
-        }),
-        new PostEffectStats({
-            from: function (data) {
-                let max = Math.max(data.settings.weapon_angelos_heptades_1 ? data.settings.weapon_refine : 0, data.settings['weapon_other.weapon_angelos_heptades'] || 0);
-                if (data.settings.weapon_angelos_heptades_1 && max == data.settings.weapon_refine)
-                    return 'atk*';
-                return 'angelos_heptades_atk';
-            },
-            levelSetting: function (settings) {
-                return Math.max(settings.weapon_angelos_heptades_1 ? settings.weapon_refine : 0, settings['weapon_other.weapon_angelos_heptades'] || 0);
-            },
-            percent: new StatTable('dmg_all', weaponDataTable.angelos_heptades.angelos_heptades.param3, 0.1),
-            statCap: new StatTable('dmg_all', weaponDataTable.angelos_heptades.angelos_heptades.param4, 100),
         }),
     ],
 });

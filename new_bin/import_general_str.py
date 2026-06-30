@@ -8,28 +8,23 @@ start_time = time.time()
 import re
 from collections import OrderedDict
 
-from lib.genshin.datafiles.char import CharData, CharProudSkillData, CharSkillData, CharSkillDepotData, SKIP_CHARACTERS, CharTalentSkillData
-from lib.genshin.datafiles.hyperlinks import HyperLinkData
+from lib.genshin.datafiles.char import TeamResonanceExcelConfigData, CharProudSkillData
 from lib.genshin.datafiles.lang import LangData
-from lib.genshin.strings.templates.names import keywords_eng, keywords_rus, names_eng, names_rus, patterns_eng
+from lib.genshin.strings.templates.names import keywords_eng, keywords_rus, names_eng, names_rus, patterns_eng, postprocess
 from lib.genshin.strings.templates import talents
-from lib.genshin.strings.template import SentenceMismatch
+from lib.genshin.strings.templates import resonance as resonance_tpl
 from lib.genshin.utils import convert_id, add_array
 from lib.genshin.strings.csv import CsvDumper
 from lib.genshin.strings.text import TextDumper  # noqa
 import lib.static
-from lib.static import WEAPON_TYPES, shrink_table, names_mapping, fix_name
+from lib.static import names_mapping, fix_name
 from old_values import old_values
 import logging
 
 logger = logging.getLogger(__name__)
 
-char_data = CharData()
-depot_data = CharSkillDepotData()
-char_skill_data = CharSkillData()
-talent_data = CharTalentSkillData()
 proud_data = CharProudSkillData()
-hyperlink_data = HyperLinkData()
+resonance = TeamResonanceExcelConfigData()
 
 lang_data = {
     'rus': {
@@ -50,29 +45,64 @@ lang_data = {
 
 lang_default = lang_data['eng']['lang']
 
-char_keys = {}
-uniq_skills = {}
-texts = {}
+def process_talent_desc(lang_name, skill_descr, talent_short_id, tpl_patterns):
+    tpl_names = lang_data[lang_name]['names']
+    tpl_keywords = lang_data[lang_name]['keywords']
+    # print('default:--------------------------')
+    # print(skill_descr)
+    skill_descr = tpl_patterns.process(skill_descr)['descr'][0]
+    # print('patterns:--------------------------')
+    # print(skill_descr)
+    # print(tpl_keywords)
+    skill_descr = tpl_keywords.process(skill_descr)['descr'][0]
+    # print('keywords:--------------------------')
+    # print(skill_descr)
+    skill_descr = tpl_names.process(skill_descr)['descr'][0]
+    # print('names:--------------------------')
+    # print(skill_descr)
+    tpl_resonance = getattr(resonance_tpl, f'{talent_short_id}_{lang_name}', None) or getattr(resonance_tpl, talent_short_id, None)
+    if tpl_resonance:
+        skill_descr = tpl_resonance.process(skill_descr)
+    # print('char:--------------------------')
+    # print(skill_descr)
 
-traveler_depot_ids = {
-    702: 'pyro',
-    703: 'hydro',
-    704: 'anemo',
-    # 705: 'cryo',
-    706: 'geo',
-    707: 'electro',
-    708: 'dendro',
-}
+    if isinstance(skill_descr, str):
+        skill_descr = {'descr': [skill_descr], 'names': []}
 
-NEED_PASSIVE_TALENTS = [
-    'tartaglia',
-    'skirk',
-    'ineffa',
-    'aino',
-    'flins',
-    'lauma',
-    'nefer'
-]
+    for i in range(0, len(skill_descr['descr'])):
+        if skill_descr['descr'][i]:
+            skill_descr['descr'][i] = postprocess.process(skill_descr['descr'][i])['descr'][0]
+    return skill_descr
+
+result_resonance = []
+def extract_resonances():
+    for item in resonance.get_list():
+        skill_name = lang_default.get(item['nameTextMapHash'])
+        if not skill_name:
+            continue
+        talent_short_id = convert_id(skill_name, removeSemicolon=True)
+
+        descItems = {}
+        descItems_hex = {}
+        nameItems = {}
+        err = False
+        for lang_name in lang_data:
+            try:
+                lang = lang_data[lang_name]['lang']
+                skill_name = lang.get(item['nameTextMapHash'])
+                nameItems[lang_name] = [skill_name]
+                tpl_patterns = lang_data[lang_name]['patterns']
+                skill_descr = process_talent_desc(lang_name, lang.get(item['descTextMapHash']), talent_short_id, tpl_patterns)
+                descItems[lang_name] = skill_descr['descr']
+                nameItems[lang_name].extend(skill_descr['names'])
+            except Exception as e:
+                logger.error(f'error on {talent_short_id} [{item["descTextMapHash"]}]')
+                logger.error(e)
+                err = True
+        if err: continue
+
+        add_array(nameItems, result_resonance, talent_short_id, 'buffs_name')
+        add_array(descItems, result_resonance, talent_short_id, 'buffs_descr')
 
 def extract_params(skillId, proudId, lrange, do_process, types):
     item = proud_data.get_item_by_filter(lambda x: x['proudSkillGroupId'] == proudId and x['level'] == 1)
@@ -85,10 +115,10 @@ def extract_params(skillId, proudId, lrange, do_process, types):
                 (name, params_str) = text.split('|')
                 name = fix_name(name)
                 cur_desc = desc
-                if (skillId, proudId) in old_values and cur_desc in old_values[(skillId, proudId)]:
+                if (skillId, proudId) in old_values:
                     if not name in names_mapping:
-                        print(f'text changed {cur_desc} to {name}')
-                    name_idx = old_values[(skillId, proudId)][cur_desc]
+                        print(f'text changed [{i}] to {name}')
+                    name_idx = old_values[(skillId, proudId)][i]
                     do_process(name_idx, desc, types)
                 else:
                     raise Exception(f'Skill not found ({skillId}, {proudId})[{i}] in old_values')
@@ -177,5 +207,8 @@ extract_params(10341, 3431, [4, 5, 6, 7], default_skill, ['attack', 'skill', 'bu
 #extract_params(10343, 3439, [0], default_skill, ['attack', 'skill', 'burst'])
 
 CsvDumper().dump(result_talents, 'default_features.csv')
+
+extract_resonances()
+CsvDumper().dump(result_resonance, 'default_resonance.csv')
 
 print("--- %s ms ---" % (int((time.time() - start_time) * 1000)))

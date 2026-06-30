@@ -123,7 +123,7 @@ export class CalcObject {
         }
 
         for (const cond of conditions) {
-            if (!cond.params.serializeId) {
+            if (!cond.params.serializeId || !cond.isSerializable()) {
                 continue;
             }
 

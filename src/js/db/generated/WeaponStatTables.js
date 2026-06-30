@@ -902,6 +902,10 @@ export const weaponStatTables = {
 		enumStatTables.atk48,
 		enumStatTables.crit5,
 	],
+	disaster_and_remorse: [
+		enumStatTables.atk48,
+		enumStatTables.crit5,
+	],
 	MagicGuide: [
 		enumStatTables.atk38,
 		enumStatTables.mastery41,
@@ -2612,6 +2616,20 @@ export const weaponDataTable = {
 			param4: [0.28, 0.35, 0.42, 0.49, 0.56],
 			param5: [12, 13, 14, 15, 16],
 			param6: [14],
+		},
+	},
+	disaster_and_remorse: {
+		rarity: 5,
+		weapon: "polearm",
+		gameId: 13517,
+		disaster_and_remorse: {
+			param1: [17],
+			param2: [3],
+			param3: [0.4, 0.5, 0.6, 0.7, 0.8],
+			param4: [0.4, 0.5, 0.6, 0.7, 0.8],
+			param5: [1],
+			param6: [0.75],
+			param7: [18],
 		},
 	},
 	MagicGuide: {

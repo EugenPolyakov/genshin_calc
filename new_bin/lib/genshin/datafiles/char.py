@@ -33,6 +33,11 @@ class CharTalentSkillData(ListParser):
     id_field = 'talentId'
     filename = 'AvatarTalentExcelConfigData.json'
 
+
+class TeamResonanceExcelConfigData(ListParser):
+    id_field = False
+    filename = 'TeamResonanceExcelConfigData.json'
+
 # AvatarExcelConfigData
 #   skillDepotId -> AvatarSkillDepotExcelConfigData
 # AvatarSkillDepotExcelConfigData

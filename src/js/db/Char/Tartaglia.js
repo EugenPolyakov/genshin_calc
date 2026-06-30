@@ -525,7 +525,7 @@ export const Tartaglia = new DbObjectChar({
             title: 'talent_name.tartaglia_raging_tide',
             description: 'talent_descr.tartaglia_raging_tide_2',
             stats: {
-                charged_stamina_cost: 20,
+                charged_stamina_cost: charTalentTables.Tartaglia.s2.p12[0],
             },
             settings: {
                 attack_infusion: 'hydro',

@@ -19,14 +19,14 @@ export const CalamityQueller = new DbObjectWeapon({
             name: 'on_field',
             settings: {
                 weapon_calamity_queller: 6,
-                weapon_calamity_queller_off_field: 0,
+                ['common.char_status_shield_off_field']: 0,
             },
         },
         {
             name: 'off_field',
             settings: {
                 weapon_calamity_queller: 6,
-                weapon_calamity_queller_off_field: 1,
+                ['common.char_status_shield_off_field']: 1,
             },
         },
     ],
@@ -56,7 +56,7 @@ export const CalamityQueller = new DbObjectWeapon({
             ],
         }),
         new ConditionBoolean({
-            name: 'weapon_calamity_queller_off_field',
+            name: 'common.char_status_shield_off_field',
             serializeId: 2,
             title: 'talent_name.weapon_extinguishing_precept',
             description: 'talent_descr.weapon_extinguishing_precept_3',
@@ -68,9 +68,7 @@ export const CalamityQueller = new DbObjectWeapon({
             stats: [
                 new StatTable('atk_percent', [3.2, 4, 4.8, 5.6, 6.4]),
             ],
-            subConditions: [
-                new ConditionBoolean({name: 'weapon_calamity_queller_off_field'}),
-            ],
+            condition: new ConditionBoolean({ name: 'common.char_status_shield_off_field' }),
         }),
     ],
 });

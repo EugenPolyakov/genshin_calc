@@ -49,20 +49,25 @@ class StatGenerator:
         self.values['crit_rate_base'] = static.trimValue(jsonData["critical"], 100)
         self.values['crit_dmg_base'] = static.trimValue(jsonData["criticalHurt"], 100)
         self.values['recharge_base'] = static.trimValue(jsonData["chargeEfficiency"], 100)
+        self.values.pop('charged_stamina_cost', None)
+        self.values.pop('burst_energy_cost', None)
         self.grows = {}
         for grow in jsonData.get('propGrowCurves', []):
             stat = static.getStatByName(grow.get('type'))
             self.grows[stat] = static.getCurveName(grow.get('growCurve'))
         self.ascension = self.ascensions.get(jsonData.get('avatarPromoteId'), {})
 
-    def processScaleData(self, scaleData):
-        for (desc, tmp) in scaleData['desc']:
-            if not desc:
-                continue
-            if 'Charged Attack Stamina Cost' in desc or 'Saichimonji Slash Stamina' in desc:
-                m = re.search(r'param(\d+)', desc)
-                self.values['charged_stamina_cost'] = scaleData['levels'][1][int(m[1]) - 1]
-                return
+    def processScaleData(self, scaleData, isAttack):
+        if isAttack:
+            for (desc, tmp) in scaleData['desc']:
+                if not desc:
+                    continue
+                if 'Charged Attack Stamina Cost' in desc or 'Saichimonji Slash Stamina' in desc\
+                        or 'Charged Attack & Swift Stormflight Stamina Cost' in desc\
+                        or 'Spiritcall Prayer Stamina Cost' in desc:
+                    m = re.search(r'param(\d+)', desc)
+                    self.values['charged_stamina_cost'] = scaleData['levels'][1][int(m[1]) - 1]
+                    return
 
     def processBurst(self, skill):
         self.values['burst_energy_cost'] = skill.get('costElemVal')

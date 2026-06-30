@@ -185,9 +185,11 @@ export class ArtifactGenerator {
             crit_dmg: 0,
         };
 
+        let processedPercents = new Map();
+        let actualBaseList = [0, 0, 0, 0, 0];
 
         var check = (actualCnt) => {
-            let statsCnt = preparedData.mainStats.map(x => Math.min(4, preparedData.actualList.reduce((a, v) => a + (result[v] && x != v ? 1 : 0), 0)));
+            let statsCnt = actualBaseList.map(x => Math.min(4, x));
             let max = statsCnt.reduce((a, v) => a + (v > 0 ? v + 5 : 0), 0);
             if (max < actualCnt)
                 return false;
@@ -195,41 +197,94 @@ export class ArtifactGenerator {
             for (let i of Object.keys(result))
                 if (result[i])
                     base -= Math.min(result[i], preparedData.mainStatCnt[i]);
-            return max - base >= actualCnt;
+            if (max - base >= actualCnt) {
+                let processed = Object.keys(result).reduce((a, z) => a + preparedData.procValue[z] * result[z], 0);
+                let cont = 0, proc = 3;
+                for (let attr of ['atk', 'hp', 'def']) {
+                    if ((result[attr] || 0) + (result[attr + '_percent'] || 0) > 0) {
+                        //превращаем флет данные в процентные
+                        let tmp = processed + (preparedData.procValue[attr + '_percent'] - preparedData.procValue[attr]) * (result[attr] || 0);
+                        if (!processedPercents.has(tmp)) {
+                            let nVal = { atk: 0, def: 0, hp: 0 };
+                            nVal[attr] = result[attr + '_percent'] || 0;
+                            processedPercents.set(tmp, nVal);
+                        } else if (processedPercents.get(tmp)[attr] < result[attr + '_percent']) {
+                            processedPercents.get(tmp)[attr] = result[attr + '_percent'];
+                        } else {
+                            cont++;
+                        }
+                    } else
+                        proc--;
+                }
+                if (proc && proc == cont)
+                    return false;
+                return true;
+            } else
+                return false;
         }
 
         var regenerate = (critRolls, critVal) => {
             max = preparedData.localMax;
             let minLimit = minimalCount;
-            for (let i = 0; i < cnt; i++) {
-                minLimit -= generatedList[i].min;
-                if (generatedList[i].crit) {
-                    critVal -= generatedList[i].actualCnt;
-                    generatedList[i].max = Math.min(generatedList[i].base, critRolls - critVal, max - minLimit);
-                    critVal += generatedList[i].actualCnt;
+            actualBaseList.fill(0);
+            for (let i = 0; i < cnt - 1; i++) {
+                let act = generatedList[i];
+                minLimit -= act.min;
+                if (act.crit) {
+                    critVal -= act.actualCnt;
+                    act.max = Math.min(act.base, critRolls - critVal, max - minLimit);
+                    critVal += act.actualCnt;
                 } else {
-                    generatedList[i].max = Math.min(generatedList[i].base, max - minLimit);
+                    act.max = Math.min(act.base, max - minLimit);
                 }
-                max -= generatedList[i].actualCnt;
+                max -= act.actualCnt;
             }
             if (max < 0)
                 return true;
 
-            for (let i = cnt - 1; i >= 0; i--) {
-                max += generatedList[i].actualCnt;
-                if (generatedList[i].crit) {
-                    critVal -= generatedList[i].actualCnt;
-                    generatedList[i].actualCnt = Math.max(generatedList[i].min, Math.min(max, generatedList[i].max, critRolls - critVal));
-                    critVal += generatedList[i].actualCnt;
-                } else
-                    generatedList[i].actualCnt = Math.max(generatedList[i].min, Math.min(max, generatedList[i].max));
-                max -= generatedList[i].actualCnt;
-
-                result[generatedList[i].stat] = generatedList[i].actualCnt;
+            //отдельная обработка последнего стата
+            let last = generatedList[cnt - 1];
+            if (last.crit) {
+                critVal -= last.actualCnt;
+                let newVal = Math.min(max, last.base, critRolls - critVal);
+                if (newVal > last.actualCnt)
+                    last.actualCnt = newVal;
+                critVal += last.actualCnt;
+            } else {
+                let newVal = Math.min(max, last.base);
+                if (max > last.actualCnt)
+                    last.actualCnt = newVal;
             }
-            //максимум для последнего сбрасываем к актуальному, т.к. всегда заполняем его на максимум
-            //в идеале нужно переделать алгоритм поиска следующего и пропускать последний элемент, т.к. он всегда заполнен на максимум
-            generatedList[cnt - 1].max = generatedList[cnt - 1].actualCnt;
+            max -= last.actualCnt;
+            result[last.stat] = last.actualCnt;
+            if (last.actualCnt)
+                for (let j = 0; j < 5; j++)
+                    if (preparedData.canBeIn[last.stat][j])
+                        actualBaseList[j]++;
+
+            for (let i = cnt - 2; i >= 0; i--) {
+                let act = generatedList[i];
+                max += act.actualCnt;
+                if (act.crit) {
+                    critVal -= act.actualCnt;
+                    let newVal = Math.min(max, act.max, critRolls - critVal);
+                    if (newVal > act.actualCnt)
+                        act.actualCnt = newVal;
+                    critVal += act.actualCnt;
+                } else {
+                    let newVal = Math.min(max, act.max);
+                    if (newVal > act.actualCnt)
+                        act.actualCnt = newVal;
+                }
+                max -= act.actualCnt;
+
+                result[act.stat] = act.actualCnt;
+
+                if (act.actualCnt)
+                    for (let j = 0; j < 5; j++)
+                        if (preparedData.canBeIn[act.stat][j])
+                            actualBaseList[j]++;
+            }
             return false;
         }
         //max содержит кол-во не израсходованных стаков, по сути max = sum(min)
@@ -238,7 +293,7 @@ export class ArtifactGenerator {
 
         while (true) {
             if (check(preparedData.localMax - max)) {
-                let uid = this.usefulStats.reduce((a, i) => a * 30 + (result[i] || 0), 0);
+                let uid = this.usefulStats.reduce((a, i) => a + preparedData.procValue[i] * (result[i] || 0), 0);
                 yield [uid, result];
             } else {
                 preparedData.fullSkipped++;
@@ -250,15 +305,16 @@ export class ArtifactGenerator {
                 generatedList[cnt - 1].actualCnt = generatedList[cnt - 1].min;
                 result[generatedList[cnt - 1].stat] = generatedList[cnt - 1].actualCnt;
                 for (let i = cnt - 2; i >= 0; i--) {
-                    generatedList[i].actualCnt++;
-                    if (generatedList[i].actualCnt > generatedList[i].max) {
+                    let act = generatedList[i];
+                    act.actualCnt++;
+                    if (act.actualCnt > act.max) {
                         if (i == 0)
                             return;
-                        generatedList[i].actualCnt = generatedList[i].min;
-                        result[generatedList[i].stat] = generatedList[i].actualCnt;
+                        act.actualCnt = act.min;
+                        result[act.stat] = act.actualCnt;
                     } else {
                         //нужно актуализировать текущее значение, чтобы правильно посчитать critVal
-                        result[generatedList[i].stat] = generatedList[i].actualCnt;
+                        result[act.stat] = act.actualCnt;
                         if (regenerate(this.settings.critRolls, result.crit_dmg + result.crit_rate))
                             return;
                         break;
@@ -277,20 +333,33 @@ export class ArtifactGenerator {
             maxVal: {},
             mainStats: ['hp', 'atk'].concat(Object.values(combination)),
             min: {},
-            actualList: Object.keys(result).filter(x => !this.usefulStats.includes(x) && result[x]).concat(this.usefulStats),
+            procValue: {},
+            actualList: Object.keys(result).filter(x => !this.usefulStats.includes(x) && result[x]).concat(this.usefulStats).
+                sort((a, b) => a == b ? 0 : (['hp', 'atk', 'def'].includes(a) ? 1 : ['hp', 'atk', 'def'].includes(b) ? 1 : 0)),
         };
 
         preparedData.actualList.forEach(x => preparedData.canBeIn[x] = preparedData.mainStats.map(a => a != x));
         preparedData.mainStatCnt = Object.fromEntries(Object.entries(preparedData.canBeIn).map(x => [x[0], x[1].reduce((a, item) => a + (item ? 1 : 0), 0)]));
         preparedData.actualList.forEach(x => {
+            let max = 0;
+            if (['hp', 'atk', 'def'].includes(x))
+                //для флет атрибутов максимум устанавливаем равным только тем артам что не могут использовать процентный атрибут
+                max = [0, 1, 2, 3, 4].reduce((a, z) => a + (preparedData.canBeIn[x][z] ? (preparedData.canBeIn[x + '_percent'][z] ? 1 : 6) : 0), 0);
+            else
+                max = preparedData.mainStatCnt[x] * 6;
             if (this.usefulStats.includes(x)) {
-                preparedData.maxVal[x] = preparedData.mainStatCnt[x] * 6;
-                preparedData.min[x] = 0;
+                preparedData.maxVal[x] = max;
             } else {
-                preparedData.maxVal[x] = Math.min(preparedData.mainStatCnt[x] * 6, result[x]);
-                preparedData.min[x] = result[x];
+                preparedData.maxVal[x] = Math.min(max, result[x]);
             }
+            preparedData.min[x] = result[x] || 0;
         });
+
+        let ofs = 1;
+        for (let i = preparedData.actualList.length - 1; i >= 0; i--) {
+            preparedData.procValue[preparedData.actualList[i]] = ofs;
+            ofs *= 35; //35 т.к. для флет атрибутов и их процентных аналогов может понадобиться сумма (30 + 5)
+        }
 
         yield* this.generateBase(preparedData, this.settings.count + ((this.usefulStats.includes("recharge") ? 0 : preparedData.min.recharge) | 0));
 
@@ -357,23 +426,25 @@ export class ArtifactGenerator {
 
             if (typeof __DEVEL__ !== 'undefined' && __DEVEL__ && b) {
                 this.log(processed);
+                let list = ['recharge'].filter(x => !this.usefulStats.includes(x)).concat(this.usefulStats).
+                    sort((a, b) => a == b ? 0 : (['hp', 'atk', 'def'].includes(a) ? 1 : ['hp', 'atk', 'def'].includes(b) ? 1 : 0));
                 this.log(Array.from(processed.values()).sort((a, b) => a - b).reduce((a, v) => {
                     let str = "";
                     let sum = 0;
-                    for (let i = this.usefulStats.length - 1; i >= 0; i--) {
-                        sum += v % 30;
-                        str = this.usefulStats[i] + ":" + (v % 30).toString() + ";" + str;
-                        v = Math.floor(v / 30);
+                    for (let i = list.length - 1; i >= 0; i--) {
+                        sum += v % 35;
+                        str = list[i] + ":" + (v % 35).toString() + ";" + str;
+                        v = Math.floor(v / 35);
                     }
                     //if (sum < this.settings.count)
                     return a + "," + str;
                     //else
                     //    return a;
                 }, ""));
-                this.log(calcCount);
                 this.log(skipCount);
                 b = false;
             }
+            this.log(calcCount);
             this.updateProgress();
 
             if (maxObj) {

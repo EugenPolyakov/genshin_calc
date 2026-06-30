@@ -1,5 +1,4 @@
 import { getSkillLevelByName } from "./Build/Settings";
-import { Stats } from "./Stats";
 
 export const PRIORITIES = {
     DEFAULT: 2,

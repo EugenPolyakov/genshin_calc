@@ -55,6 +55,12 @@ export const ElementalResonance = new DbObjectBuff({
     name: 'elemental_resonance',
     type: 'elemental_resonance',
     conditions: [
+        new ConditionBoolean({
+            name: 'common.char_status_shield_off_field',
+            title: 'weapon_settings.off_field',
+            serializeId: 81,
+            rotation: 'buffs',
+        }),
         new ConditionDropdownElement({
             name: 'old_resonance_element_1',
             serializeId: 1,
@@ -84,8 +90,8 @@ export const ElementalResonance = new DbObjectBuff({
             isHidden: true,
         }),
         new ConditionStatic({
-            title: 'buffs_name.resonance_cryo',
-            description: 'buffs_descr.resonance_cryo',
+            title: 'buffs_name.shattering_ice',
+            description: 'buffs_descr.shattering_ice_1',
             stats: {
                 text_percent: 40,
             },
@@ -103,7 +109,7 @@ export const ElementalResonance = new DbObjectBuff({
         new ConditionStatic({
             serializeId: 4,
             title: 'buffs_name.resonance_cryo_status',
-            description: 'buffs_descr.resonance_cryo_status',
+            description: 'buffs_descr.shattering_ice_2',
             stats: {
                 crit_rate_enemy: 15,
             },
@@ -122,12 +128,8 @@ export const ElementalResonance = new DbObjectBuff({
             ],
         }),
         new ConditionStatic({
-            title: 'buffs_name.resonance_electro',
-            description: 'buffs_descr.resonance_electro',
-            stats: {
-                text_percent_1: 40,
-                text_percent_2: 100,
-            },
+            title: 'buffs_name.high_voltage',
+            description: 'buffs_descr.high_voltage',
             hideCondition: new ConditionResonance({
                 element: 'electro',
                 invert: true,
@@ -140,10 +142,9 @@ export const ElementalResonance = new DbObjectBuff({
             ],
         }),
         new ConditionStatic({
-            title: 'buffs_name.resonance_hydro',
-            description: 'buffs_descr.resonance_hydro',
+            title: 'buffs_name.soothing_water',
+            description: 'buffs_descr.soothing_water',
             stats: {
-                text_percent: 40,
                 hp_percent: 25,
             },
             hideCondition: new ConditionResonance({
@@ -158,10 +159,9 @@ export const ElementalResonance = new DbObjectBuff({
             ],
         }),
         new ConditionStatic({
-            title: 'buffs_name.resonance_pyro',
-            description: 'buffs_descr.resonance_pyro',
+            title: 'buffs_name.fervent_flames',
+            description: 'buffs_descr.fervent_flames',
             stats: {
-                text_percent: 40,
                 atk_percent: 25,
             },
             hideCondition: new ConditionResonance({
@@ -176,8 +176,8 @@ export const ElementalResonance = new DbObjectBuff({
             ],
         }),
         new ConditionStatic({
-            title: 'buffs_name.resonance_anemo',
-            description: 'buffs_descr.resonance_anemo',
+            title: 'buffs_name.impetuous_winds',
+            description: 'buffs_descr.impetuous_winds',
             stats: {
                 stamina_consume: 15,
                 move_speed: 10,
@@ -195,8 +195,8 @@ export const ElementalResonance = new DbObjectBuff({
             ],
         }),
         new ConditionStatic({
-            title: 'buffs_name.resonance_geo',
-            description: 'buffs_descr.resonance_geo',
+            title: 'buffs_name.enduring_rock',
+            description: 'buffs_descr.enduring_rock_1',
             stats: {
                 shield: 15,
             },
@@ -216,7 +216,7 @@ export const ElementalResonance = new DbObjectBuff({
             serializeId: 5,
             rotation: 'buffs',
             title: 'buffs_name.resonance_geo_shield',
-            description: 'buffs_descr.resonance_geo_shield',
+            description: 'buffs_descr.enduring_rock_2',
             stats: {
                 dmg_all: 15,
             },
@@ -239,9 +239,8 @@ export const ElementalResonance = new DbObjectBuff({
             serializeId: 6,
             rotation: 'buffs',
             title: 'buffs_name.resonance_geo_attack',
-            description: 'buffs_descr.resonance_geo_attack',
+            description: 'buffs_descr.enduring_rock_3',
             stats: {
-                text_percent: 20,
                 enemy_res_geo: -20,
             },
             icon: {
@@ -259,10 +258,8 @@ export const ElementalResonance = new DbObjectBuff({
             ],
         }),
         new ConditionStatic({
-            name: 'common.char_status_shield',
-            rotation: 'buffs',
-            title: 'buffs_name.resonance_dendro',
-            description: 'buffs_descr.resonance_dendro_1',
+            title: 'buffs_name.sprawling_greenery',
+            description: 'buffs_descr.sprawling_greenery_1',
             stats: {
                 mastery: 50,
             },
@@ -284,8 +281,8 @@ export const ElementalResonance = new DbObjectBuff({
             name: 'buffs.resonance_dendro_1',
             serializeId: 22,
             rotation: 'buffs',
-            title: 'buffs_name.resonance_dendro',
-            description: 'buffs_descr.resonance_dendro_2',
+            title: 'buffs_name.sprawling_greenery',
+            description: 'buffs_descr.sprawling_greenery_2',
             stats: {
                 mastery: 30,
             },
@@ -307,8 +304,8 @@ export const ElementalResonance = new DbObjectBuff({
             name: 'buffs.resonance_dendro_2',
             serializeId: 23,
             rotation: 'buffs',
-            title: 'buffs_name.resonance_dendro',
-            description: 'buffs_descr.resonance_dendro_3',
+            title: 'buffs_name.sprawling_greenery',
+            description: 'buffs_descr.sprawling_greenery_3',
             stats: {
                 mastery: 20,
             },
@@ -327,8 +324,8 @@ export const ElementalResonance = new DbObjectBuff({
             ],
         }),
         new ConditionStatic({
-            title: 'buffs_name.resonance_none',
-            description: 'buffs_descr.resonance_none',
+            title: 'buffs_name.protective_canopy',
+            description: 'buffs_descr.protective_canopy',
             stats: {
                 res_anemo: 15,
                 res_phys: 15,
@@ -493,8 +490,6 @@ export const ElementalResonance = new DbObjectBuff({
         }),
     ],
 });
-
-//"1292621586": "Ползучая зелень",
 
 //"1163540020": "Зарождающееся сияние",
 //"1363705078": "Зарождающееся сияние",

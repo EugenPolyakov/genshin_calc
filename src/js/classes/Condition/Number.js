@@ -19,6 +19,8 @@ export class ConditionNumber extends Condition {
     }
 
     getMaxValue(settings) {
+        if (this.params.max instanceof Function)
+            return this.params.max(settings);
         return this.params.max;
     }
 

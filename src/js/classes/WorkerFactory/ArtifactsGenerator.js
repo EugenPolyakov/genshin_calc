@@ -2,7 +2,7 @@ import { Artifact } from "../Artifact";
 import { getMainStatCombinations } from "../Generator/Artifacts";
 import { WorkerFactory } from "../WorkerFactory";
 
-const MAX_WORKERS = 1;
+const MAX_WORKERS = 4;
 
 export class WorkerFactoryArtifactsGenerator extends WorkerFactory {
     createWorker() {

@@ -77,7 +77,7 @@ export class ShareView extends React.Component {
                 key: index +' '+ prefix,
                 callbackData: {index: item.index},
                 title: title,
-                sortTitle: title.toLocaleUpperCase(),
+                sortTitle: title.toLocaleUpperCase() + ' ' + lang.get(item.data.getChar().object.getName()).toLocaleUpperCase(),
                 set: item.data,
             });
             ++index;

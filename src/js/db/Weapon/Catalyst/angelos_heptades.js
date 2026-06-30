@@ -1,7 +1,12 @@
+import { ConditionAnd } from "../../../classes/Condition/And";
+import { ConditionBoolean } from "../../../classes/Condition/Boolean";
 import { ConditionBooleanRefine } from "../../../classes/Condition/Boolean/Refine";
+import { ConditionHexCheck } from "../../../classes/Condition/HexCheck";
+import { ConditionHexCurrent } from "../../../classes/Condition/HexCurrent";
 import { ConditionStatic } from "../../../classes/Condition/Static";
 import { ConditionStaticRefine } from "../../../classes/Condition/Static/Refine";
 import { DbObjectWeapon } from "../../../classes/DbObject/Weapon";
+import { PostEffectStats } from "../../../classes/PostEffect/Stats";
 import { StatTable } from "../../../classes/StatTable";
 import { weaponDataTable, weaponStatTables } from "../../generated/WeaponStatTables";
 
@@ -22,7 +27,7 @@ export const angelos_heptades = new DbObjectWeapon({
             ],
         }),
         new ConditionBooleanRefine({
-            name: 'weapon_angelos_heptades_1',
+            name: 'weapon_angelos_heptades',
             serializeId: 1,
             title: 'talent_name.weapon_angelos_heptades_1',
             description: 'talent_descr.weapon_angelos_heptades_2',
@@ -38,5 +43,29 @@ export const angelos_heptades = new DbObjectWeapon({
                 new StatTable('energy', weaponDataTable.angelos_heptades.angelos_heptades.param6),
             ],
         })
+    ],
+    postEffects: [
+        new PostEffectStats({
+            from: 'atk*',
+            levelSetting: 'weapon_refine',
+            percent: new StatTable('dmg_all', weaponDataTable.angelos_heptades.angelos_heptades.param3, 0.1),
+            statCap: new StatTable('dmg_all', weaponDataTable.angelos_heptades.angelos_heptades.param4, 100),
+            condition: new ConditionAnd([
+                new ConditionBoolean({ name: 'weapon_angelos_heptades' }),
+                new ConditionBoolean({ name: 'common.char_status_shield_off_field', invert: 1 }),
+            ]),
+        }),
+        new PostEffectStats({
+            from: 'atk*',
+            levelSetting: 'weapon_refine',
+            percent: new StatTable('dmg_all', weaponDataTable.angelos_heptades.angelos_heptades.param3, 0.05),
+            statCap: new StatTable('dmg_all', weaponDataTable.angelos_heptades.angelos_heptades.param4, 50),
+            condition: new ConditionAnd([
+                new ConditionHexCheck({ hex: 2 }),
+                new ConditionHexCurrent(),
+                new ConditionBoolean({ name: 'weapon_angelos_heptades' }),
+                new ConditionBoolean({ name: 'common.char_status_shield_off_field' }),
+            ]),
+        }),
     ],
 });

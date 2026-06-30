@@ -31,7 +31,7 @@ char_nicole = TemplateList(
         ],
         results=[
             [0, 1],
-            [4, 5],
+            [5],
         ],
     ),
     methexis=Template(

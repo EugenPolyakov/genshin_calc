@@ -414,8 +414,8 @@ export const Arlecchino = new DbObjectChar({
         new ConditionBoolean({
             name: 'arlecchino_cinders_alone_shall_nourish',
             serializeId: 3,
-            title: 'talent_name.arlecchino_cinders_alone_shall_nourish',
-            description: 'talent_descr.arlecchino_cinders_alone_shall_nourish',
+            title: 'talent_name.arlecchino_the_balemoon_alone_may_know',
+            description: 'talent_descr.arlecchino_the_balemoon_alone_may_know',
             stats: {
                 dmg_pyro: 40,
             },

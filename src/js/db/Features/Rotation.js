@@ -695,4 +695,6 @@ export const Rotation = new DbObjectRotation({
     'skill.nicole_grace_of_kenosis_atk_bonus_ratio': 680,
     'burst.nicole_arcane_projection_dmg': 681,
     'other.nicole_arcane_projection_unity': 682,
+
+    'skill.lohen_etched_into_bone_and_soul_dmg': 683,
 });

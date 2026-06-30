@@ -37,6 +37,7 @@ import { FracturedHalo } from "./Polearm/FracturedHalo";
 import { prospectors_shovel } from "./Polearm/prospectors_shovel";
 import { sacrificers_staff } from "./Polearm/sacrificers_staff";
 import { bloodsoaked_ruins } from "./Polearm/bloodsoaked_ruins";
+import { disaster_and_remorse } from "./Polearm/disaster_and_remorse";
 
 export const Polearm = new DbObjectListSerializeStats({
     BlackcliffPole: BlackcliffPole, // 85
@@ -77,4 +78,5 @@ export const Polearm = new DbObjectListSerializeStats({
     prospectors_shovel: prospectors_shovel, // 226
     sacrificers_staff: sacrificers_staff, // 230
     bloodsoaked_ruins: bloodsoaked_ruins, // 236
+    disaster_and_remorse: disaster_and_remorse, // 244
 });

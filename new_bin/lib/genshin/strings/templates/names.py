@@ -4,7 +4,7 @@ names_eng = Template(
     names=[
         'Bond of Life',
         'Life Bond',
-        'Hexerei: Secret Rite effects',
+        'Hexerei: Secret Rite',
         'Hexerei',
 
         'Nightsoul\'s Blessing',
@@ -214,28 +214,6 @@ postprocess_art = Template(
     patterns=[
         (r'((<>)+)$', ''),
         (r'<> ?', '<br>'),
-    ]
-)
-
-color_patterns = Template(
-    patterns=[
-        (r'<color=\#99FFFFFF>(.*?)<\/color>', 'name{\\1}'),
-        (r'<color=\#FFE699FF>(.*?)<\/color>', 'geo{\\1}'),
-        (r'<color=\#FF9999FF>(.*?)<\/color>', 'pyro{\\1}'),
-        (r'<color=\#80C0FFFF>(.*?)<\/color>', 'hydro{\\1}'),
-        (r'<color=\#FFACFFFF>(.*?)<\/color>', 'electro{\\1}'),
-        (r'<color=\#80FFD7FF>(.*?)<\/color>', 'anemo{\\1}'),
-        (r'<color=\#99FF88FF>(.*?)<\/color>', 'dendro{\\1}'),
-        (r'<color=\#FFD780FF>(.*?)<\/color>', 'name{\\1}'),
-
-        (r"<color style='color\:\#99FFFF;'>(.*?)<\/color>", 'name{\\1}'),
-        (r"<color style='color\:\#FFE699;'>(.*?)<\/color>", 'geo{\\1}'),
-        (r"<color style='color\:\#FF9999;'>(.*?)<\/color>", 'pyro{\\1}'),
-        (r"<color style='color\:\#80C0FF;'>(.*?)<\/color>", 'hydro{\\1}'),
-        (r"<color style='color\:\#FFACFF;'>(.*?)<\/color>", 'electro{\\1}'),
-        (r"<color style='color\:\#80FFD7;'>(.*?)<\/color>", 'anemo{\\1}'),
-        (r"<color style='color\:\#99FF88;'>(.*?)<\/color>", 'dendro{\\1}'),
-        (r"<color style='color\:\#FFD780;'>(.*?)<\/color>", 'name{\\1}'),
     ]
 )
 

@@ -98,6 +98,7 @@ NEED_PASSIVE_TALENTS = [
     'illuga',
     'zibai',
     'linnea',
+    'arlecchino',
 ]
 
 skiped_features = set([
@@ -207,7 +208,7 @@ for char in char_data.get_list():
             'depot_id': char['skillDepotId'],
         }
 
-def scales_and_proud(skillId, proudId, index, char_id):
+def scales_and_proud(skillId, proudId, index, char_id, isAttack):
     scaleData = {
         'levels': {},
         'desc': [],
@@ -279,7 +280,7 @@ def scales_and_proud(skillId, proudId, index, char_id):
         talenttable("\t\ts" + str(index) + ": {\n")
         make_tables(scaleData)
         talenttable("\t\t},\n")
-        if statgenerator: statgenerator.processScaleData(scaleData)
+        if statgenerator: statgenerator.processScaleData(scaleData, isAttack)
 
     return scaleData
 
@@ -501,7 +502,7 @@ for charVarName in sorted(char_keys):
 
         if not do_single:
             updated_values.write(f'    #{talent_short_id}\n')
-        proud_params = scales_and_proud(id, skill.get('proudSkillGroupId'), index, char_id)
+        proud_params = scales_and_proud(id, skill.get('proudSkillGroupId'), index, char_id, skill_type == 'feature_attack')
         generator.end_talent(char_id)
         if proud_params['desc']:
             index+= 1
@@ -659,22 +660,28 @@ if not do_single:
             )
 
             for lang_name in lang_data:
-                lang = lang_data[lang_name]['lang']
-                skill_name = lang.get(hl_item['nameTextMapHash'])
-                skill_descr = lang.get(hl_item['descTextMapHash'])
+                try:
+                    lang = lang_data[lang_name]['lang']
+                    skill_name = lang.get(hl_item['nameTextMapHash'])
+                    skill_descr = lang.get(hl_item['descTextMapHash'])
 
-                tpl_patterns = lang_data[lang_name]['patterns']
-                tpl_names = lang_data[lang_name]['names']
-                skill_descr = tpl_patterns.process(skill_descr)['descr'][0]
-                skill_descr = tpl_names.process(skill_descr)['descr'][0]
-                tpl_hyper = getattr(hyperlink, f"{skill_id}_{lang_name}", None) or getattr(hyperlink, skill_id, None)
-                if tpl_hyper:
-                    skill_descr = tpl_hyper.process(skill_descr)['descr'][0]
-                res_item1[lang_name] = skill_name
-                res_item2[lang_name] = postprocess.process(skill_descr)['descr'][0]
+                    tpl_patterns = lang_data[lang_name]['patterns']
+                    tpl_names = lang_data[lang_name]['names']
+                    skill_descr = tpl_patterns.process(skill_descr)['descr'][0]
+                    skill_descr = tpl_names.process(skill_descr)['descr'][0]
+                    tpl_hyper = getattr(hyperlink, f"{skill_id}_{lang_name}", None) or getattr(hyperlink, skill_id, None)
+                    if tpl_hyper:
+                        skill_descr = tpl_hyper.process(skill_descr)['descr'][0]
+                    res_item1[lang_name] = skill_name
+                    res_item2[lang_name] = postprocess.process(skill_descr)['descr'][0]
+                except Exception as e:
+                    logger.error(f'error on {skill_id} [{skill["descTextMapHash"]}]')
+                    logger.error(e)
+                    err = True
 
-            result_talents.append(res_item1)
-            result_talents.append(res_item2)
+            if not err:
+                result_talents.append(res_item1)
+                result_talents.append(res_item2)
 
     if len(result_talents) > 0:
         CsvDumper().dump(result_talents, 'char_skills.csv')

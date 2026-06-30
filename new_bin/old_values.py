@@ -1881,6 +1881,42 @@ old_values = {
         2: "cd", #Default
         3: "energy_cost", #Default
     },
+#lohen
+    #spear_of_favonius_broken_oath
+    (11291, 12931): {
+        0: "normal_hit_1", #Default
+        1: "normal_hit_2", #Default
+        2: "normal_hit_3", #Default
+        3: "normal_hit_4", #Default
+        4: "normal_hit_5", #Default
+        5: "charged_hit", #Default
+        6: "stamina_cost", #Default
+        7: "plunge", #Default
+        8: "plunge_low/plunge_high", #Default
+    },
+    #unforeseen_strike
+    (11292, 12932): {
+        0: "normal_hit_1", #Default
+        1: "normal_hit_2", #Default
+        2: "normal_hit_3", #Default
+        3: "normal_hit_4", #Default
+        4: "normal_hit_5", #Default
+        5: "charged_hit", #Default
+        6: "stamina_cost", #Default
+        7: "plunge", #Default
+        8: "plunge_low/plunge_high", #Default
+        9: "masterstroke",
+        10: "etched_into_bone_and_soul_dmg",
+        11: "dmg_increase_from_will_to_win",
+        12: "cd", #Default
+    },
+    #manifest_judgment
+    (11295, 12939): {
+        0: "skill_dmg", #Default
+        1: "dmg_increase_from_will_to_win",
+        2: "cd", #Default
+        3: "energy_cost", #Default
+    },
 #lynette
     #rapid_ritesword
     (10831, 8331): {

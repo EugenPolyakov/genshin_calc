@@ -3260,10 +3260,8 @@ angelos_heptades_rus = Template(
         [1, 2, 6, 7, 8],
         [3, 4, 5, 6],
         ['$$$name$$$ (Атака)'],
-        ['$$$name$$$ (Вне поля)'],
-        ['$$$name$$$ (Атака вне поля)'],
     ],
-    extracted_names=[3, 4, 5],
+    extracted_names=[3],
 )
 
 angelos_heptades_eng = Template(
@@ -3282,9 +3280,41 @@ angelos_heptades_eng = Template(
         [1, 2, 4, 5, 6],
         [3, 4],
         ['$$$name$$$ (ATK)'],
-        ['$$$name$$$ (off-field)'],
-        ['$$$name$$$ (ATK off-field)'],
     ],
-    extracted_names=[3, 4, 5],
+    extracted_names=[3],
+)
+
+disaster_and_remorse=Template(
+    replace={
+        ': ': '\n',
+    },
+    sentences=[
+        ['17:ignore', '3:ignore'],
+        ['18:ignore'],
+        [],
+        [],
+        ['40:dmg_normal'],
+        [],
+        [],
+        ['40:dmg_burst'],
+        [],
+        ['1:ignore'],
+        ['1:ignore'],
+        ['0.1:ignore'],
+        [],
+        [],
+        [],
+        [],
+        ['75%'],
+    ],
+    results=[
+        [0, 1, 9, 10, 11, 12],
+        [4],
+        [7],
+        [14, ': ', 15, ': ', 16],
+        [3],
+        [6],
+    ],
+    extracted_names=[4, 5],
 )
 

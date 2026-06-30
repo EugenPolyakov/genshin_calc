@@ -232,7 +232,7 @@ class Template:
         result = string
         for skill in self.skills:
             for name in self.skills[skill]:
-                result = result.replace(f'skill{{{name}}}', f'skill{{{skill}:{name}}}')
+                result = re.sub(f'skill\\{{({name})}}', f'skill{{{skill}:\\1}}', result)
         return result
 
 class TemplateList:

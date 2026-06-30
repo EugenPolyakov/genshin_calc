@@ -5,6 +5,7 @@ import { ConditionHexCurrent } from "../../classes/Condition/HexCurrent";
 import { ConditionLevelSelect } from "../../classes/Condition/LevelSelect";
 import { ConditionNot } from "../../classes/Condition/Not";
 import { ConditionPartyWeapon } from "../../classes/Condition/PartyWeapon";
+import { ConditionStacksHidden } from "../../classes/Condition/Stacks/Hidden";
 import { DbObjectBuff } from "../../classes/DbObject/Buff";
 import { PostEffectStats } from "../../classes/PostEffect/Stats";
 import { StatTable } from "../../classes/StatTable";
@@ -356,6 +357,7 @@ export const Weapons = new DbObjectBuff({
                 new StatTable('text_percent', weaponDataTable.athame_artis.athame_artis.param4, 100),
                 new StatTableConditions('atk_percent', weaponDataTable.athame_artis.athame_artis.param4, new ConditionHexCheck({ hex: 2 }), 75),
             ],
+            condition: new ConditionBoolean({ name: 'common.char_status_shield_off_field', invert: 1 }),
         }),
         new ConditionLevelSelect({
             name: 'weapon_other.weapon_golden_frostbound_oath',
@@ -399,30 +401,12 @@ export const Weapons = new DbObjectBuff({
                 new StatTable('text_dmg_percent_max', weaponDataTable.angelos_heptades.angelos_heptades.param4, 100),
             ],
         }),
-        new ConditionPartyWeapon({
-            name: 'weapon_other.weapon_angelos_heptades_off',
-            serializeIds: [73],
-            title: 'talent_name.weapon_angelos_heptades_3',
-            statTitle: 'talent_name.weapon_angelos_heptades_4',
-            description: 'talent_descr.weapon_angelos_heptades_2',
-            statName: 'angelos_heptades_atk_off',
-            statSerializeIds: [74],
-            rotation: 'buffs',
-            maxStacks: 5,
-
-            statClass: 'inputs-6digit',
-            partyStat: 'atk',
-            statMax: 20000,
-
-            icon: {
-                rarity: weaponDataTable.angelos_heptades.rarity,
-                name: 'sprite-weapon-catalyst weapon-icon-catalyst-angelos-heptades',
-            },
-            stats: [
-                new StatTable('text_dmg_percent', weaponDataTable.angelos_heptades.angelos_heptades.param3, 100),
-                new StatTable('text_dmg_percent_max', weaponDataTable.angelos_heptades.angelos_heptades.param4, 100),
-            ],
-        }),
+        new ConditionStacksHidden({ serializeId: 73, name: 'temp' }),
+        new ConditionStacksHidden({ serializeId: 74, name: 'temp' }),
+        new ConditionStacksHidden({ serializeId: 75, name: 'temp' }),
+        new ConditionStacksHidden({ serializeId: 76, name: 'temp' }),
+        new ConditionStacksHidden({ serializeId: 77, name: 'temp' }),
+        new ConditionStacksHidden({ serializeId: 78, name: 'temp' }),
     ],
     postEffects: [
         new PostEffectStats({
@@ -494,14 +478,25 @@ export const Weapons = new DbObjectBuff({
             ],
         }),
         new PostEffectStats({
-            from: 'angelos_heptades_atk_off',
-            levelSetting: 'weapon_other.weapon_angelos_heptades_off',
+            from: 'angelos_heptades_atk',
+            levelSetting: 'weapon_other.weapon_angelos_heptades',
+            percent: new StatTable('dmg_all', weaponDataTable.angelos_heptades.angelos_heptades.param3, 0.1),
+            statCap: new StatTable('dmg_all', weaponDataTable.angelos_heptades.angelos_heptades.param4, 100),
+            condition: new ConditionAnd([
+                new ConditionBoolean({ name: 'weapon_angelos_heptades', invert: 1 }),
+                new ConditionBoolean({ name: 'common.char_status_shield_off_field', invert: 1 }),
+            ]),
+        }),
+        new PostEffectStats({
+            from: 'angelos_heptades_atk',
+            levelSetting: 'weapon_other.weapon_angelos_heptades',
             percent: new StatTable('dmg_all', weaponDataTable.angelos_heptades.angelos_heptades.param3, 0.05),
             statCap: new StatTable('dmg_all', weaponDataTable.angelos_heptades.angelos_heptades.param4, 50),
             condition: new ConditionAnd([
                 new ConditionHexCheck({ hex: 2 }),
                 new ConditionHexCurrent(),
-                new ConditionBoolean({ name: 'weapon_angelos_heptades_1', invert: 1 }),
+                new ConditionBoolean({ name: 'weapon_angelos_heptades', invert: 1 }),
+                new ConditionBoolean({ name: 'common.char_status_shield_off_field' }),
             ]),
         }),
     ]

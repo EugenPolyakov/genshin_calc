@@ -13,7 +13,7 @@ char_arlecchino = TemplateList(
         ],
         skills={
             'skill': ['Веление кровавого долга', 'Всё превращается в прах'],
-            'burst': ['Восхождения роковой луны', 'Восхождение роковой луны'],
+            'burst': ['Восхождени(я|ем?) роковой луны'],
         },
     ),
     default_eng=Template(
@@ -49,6 +49,11 @@ char_arlecchino = TemplateList(
             ['130:text_percent'],
             [],
             [],
+        ],
+    ),
+    the_balemoon_alone_may_know=Template(
+        sentences=[
+            ['40:dmg_pyro'],
         ],
     ),
     strength_alone_can_defend_rus=Template(

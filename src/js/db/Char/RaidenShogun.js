@@ -639,6 +639,9 @@ export const RaidenShogun = new DbObjectChar({
             serializeId: 2,
             title: 'talent_name.raiden_shogun_musou_shinsetsu_2',
             description: 'talent_descr.raiden_shogun_musou_shinsetsu_2',
+            stats: {
+                charged_stamina_cost: charTalentTables.RaidenShogun.s3.p13[0] - charTalentTables.RaidenShogun.s1.p8[0],
+            },
             settings: {
                 attack_infusion: 'electro',
             },

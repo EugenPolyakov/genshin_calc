@@ -63,6 +63,7 @@ from .lauma import char_lauma  # noqa
 from .layla import char_layla  # noqa
 from .linnea import char_linnea  # noqa
 from .lisa import char_lisa  # noqa
+from .lohen import char_lohen  # noqa
 from .lynette import char_lynette  # noqa
 from .lyney import char_lyney  # noqa
 from .mavuika import char_mavuika  # noqa

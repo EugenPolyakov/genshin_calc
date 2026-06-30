@@ -159,10 +159,6 @@ export const charTables = {
 			base: 40,
 		}),
 		new StatTableAscensionScale({
-			stat: 'charged_stamina_cost',
-			base: 20,
-		}),
-		new StatTableAscensionScale({
 			stat: 'crit_dmg_base',
 			base: 50,
 		}),
@@ -211,10 +207,6 @@ export const charTables = {
 		new StatTableAscensionScale({
 			stat: 'burst_energy_cost',
 			base: 40,
-		}),
-		new StatTableAscensionScale({
-			stat: 'charged_stamina_cost',
-			base: 20,
 		}),
 		new StatTableAscensionScale({
 			stat: 'crit_dmg_base',
@@ -682,10 +674,6 @@ export const charTables = {
 			base: 60,
 		}),
 		new StatTableAscensionScale({
-			stat: 'charged_stamina_cost',
-			base: 50,
-		}),
-		new StatTableAscensionScale({
 			stat: 'crit_dmg_base',
 			base: 50,
 		}),
@@ -965,10 +953,6 @@ export const charTables = {
 			base: 60,
 		}),
 		new StatTableAscensionScale({
-			stat: 'charged_stamina_cost',
-			base: 20,
-		}),
-		new StatTableAscensionScale({
 			stat: 'crit_dmg_base',
 			base: 50,
 		}),
@@ -1240,10 +1224,6 @@ export const charTables = {
 		new StatTableAscensionScale({
 			stat: 'burst_energy_cost',
 			base: 80,
-		}),
-		new StatTableAscensionScale({
-			stat: 'charged_stamina_cost',
-			base: 40,
 		}),
 		new StatTableAscensionScale({
 			stat: 'crit_dmg_base',
@@ -1525,10 +1505,6 @@ export const charTables = {
 			base: 80,
 		}),
 		new StatTableAscensionScale({
-			stat: 'charged_stamina_cost',
-			base: 40,
-		}),
-		new StatTableAscensionScale({
 			stat: 'crit_dmg_base',
 			base: 50,
 		}),
@@ -1572,10 +1548,6 @@ export const charTables = {
 		new StatTableAscensionScale({
 			stat: 'burst_energy_cost',
 			base: 60,
-		}),
-		new StatTableAscensionScale({
-			stat: 'charged_stamina_cost',
-			base: 40,
 		}),
 		new StatTableAscensionScale({
 			stat: 'crit_dmg_base',
@@ -1806,10 +1778,6 @@ export const charTables = {
 			base: 60,
 		}),
 		new StatTableAscensionScale({
-			stat: 'charged_stamina_cost',
-			base: 40,
-		}),
-		new StatTableAscensionScale({
 			stat: 'crit_dmg_base',
 			base: 50,
 			ascension: new StatTable('', [0, 9.600000381469727, 19.200000762939453, 19.200000762939453, 28.799999237060547, 38.400001525878906]),
@@ -1849,10 +1817,6 @@ export const charTables = {
 		new StatTableAscensionScale({
 			stat: 'burst_energy_cost',
 			base: 80,
-		}),
-		new StatTableAscensionScale({
-			stat: 'charged_stamina_cost',
-			base: 40,
 		}),
 		new StatTableAscensionScale({
 			stat: 'crit_dmg_base',
@@ -2221,10 +2185,6 @@ export const charTables = {
 		new StatTableAscensionScale({
 			stat: 'burst_energy_cost',
 			base: 70,
-		}),
-		new StatTableAscensionScale({
-			stat: 'charged_stamina_cost',
-			base: 20,
 		}),
 		new StatTableAscensionScale({
 			stat: 'crit_dmg_base',
@@ -2934,10 +2894,6 @@ export const charTables = {
 			base: 60,
 		}),
 		new StatTableAscensionScale({
-			stat: 'charged_stamina_cost',
-			base: 20,
-		}),
-		new StatTableAscensionScale({
 			stat: 'crit_dmg_base',
 			base: 50,
 		}),
@@ -3012,6 +2968,51 @@ export const charTables = {
 			base: 100,
 		}),
 	],
+	Lohen: [
+		new StatTableAscensionScale({
+			stat: 'atk_base',
+			base: 26.81279945373535,
+			ascension: new StatTable('', [22.987871170043945, 39.32136154174805, 61.099342346191406, 77.43283081054688, 93.76631927490234, 110.09980773925781]),
+			scale: charScales.s5atk,
+		}),
+		new StatTableAscensionScale({
+			stat: 'burst_energy_cost',
+			base: 60,
+		}),
+		new StatTableAscensionScale({
+			stat: 'charged_stamina_cost',
+			base: 25,
+		}),
+		new StatTableAscensionScale({
+			stat: 'crit_dmg_base',
+			base: 50,
+			ascension: new StatTable('', [0, 9.600000381469727, 19.200000762939453, 19.200000762939453, 28.799999237060547, 38.400001525878906]),
+		}),
+		new StatTableAscensionScale({
+			stat: 'crit_rate_base',
+			base: 5.000000074505806,
+		}),
+		new StatTableAscensionScale({
+			stat: 'def_base',
+			base: 61.0265998840332,
+			ascension: new StatTable('', [52.32600021362305, 89.50499725341797, 139.07699584960938, 176.25599670410156, 213.43499755859375, 250.61399841308594]),
+			scale: charScales.s5hp,
+		}),
+		new StatTableAscensionScale({
+			stat: 'hp_base',
+			base: 1000.9860229492188,
+			ascension: new StatTable('', [858.2550048828125, 1468.0677490234375, 2281.1513671875, 2890.964111328125, 3500.77685546875, 4110.58984375]),
+			scale: charScales.s5hp,
+		}),
+		new StatTableAscensionScale({
+			stat: 'mastery_base',
+			base: 0,
+		}),
+		new StatTableAscensionScale({
+			stat: 'recharge_base',
+			base: 100,
+		}),
+	],
 	Lynette: [
 		new StatTableAscensionScale({
 			stat: 'atk_base',
@@ -3071,10 +3072,6 @@ export const charTables = {
 		new StatTableAscensionScale({
 			stat: 'burst_energy_cost',
 			base: 60,
-		}),
-		new StatTableAscensionScale({
-			stat: 'charged_stamina_cost',
-			base: 20,
 		}),
 		new StatTableAscensionScale({
 			stat: 'crit_dmg_base',
@@ -3728,10 +3725,6 @@ export const charTables = {
 			base: 60,
 		}),
 		new StatTableAscensionScale({
-			stat: 'charged_stamina_cost',
-			base: 40,
-		}),
-		new StatTableAscensionScale({
 			stat: 'crit_dmg_base',
 			base: 50,
 		}),
@@ -3871,7 +3864,7 @@ export const charTables = {
 		}),
 		new StatTableAscensionScale({
 			stat: 'charged_stamina_cost',
-			base: 20,
+			base: 25,
 		}),
 		new StatTableAscensionScale({
 			stat: 'crit_dmg_base',
@@ -4018,10 +4011,6 @@ export const charTables = {
 			base: 80,
 		}),
 		new StatTableAscensionScale({
-			stat: 'charged_stamina_cost',
-			base: 25,
-		}),
-		new StatTableAscensionScale({
 			stat: 'crit_dmg_base',
 			base: 50,
 		}),
@@ -4105,10 +4094,6 @@ export const charTables = {
 		new StatTableAscensionScale({
 			stat: 'burst_energy_cost',
 			base: 60,
-		}),
-		new StatTableAscensionScale({
-			stat: 'charged_stamina_cost',
-			base: 40,
 		}),
 		new StatTableAscensionScale({
 			stat: 'crit_dmg_base',
@@ -4199,10 +4184,6 @@ export const charTables = {
 		new StatTableAscensionScale({
 			stat: 'burst_energy_cost',
 			base: 70,
-		}),
-		new StatTableAscensionScale({
-			stat: 'charged_stamina_cost',
-			base: 25,
 		}),
 		new StatTableAscensionScale({
 			stat: 'crit_dmg_base',
@@ -4344,10 +4325,6 @@ export const charTables = {
 			base: 60,
 		}),
 		new StatTableAscensionScale({
-			stat: 'charged_stamina_cost',
-			base: 20,
-		}),
-		new StatTableAscensionScale({
 			stat: 'crit_dmg_base',
 			base: 50,
 		}),
@@ -4440,10 +4417,6 @@ export const charTables = {
 		new StatTableAscensionScale({
 			stat: 'burst_energy_cost',
 			base: 40,
-		}),
-		new StatTableAscensionScale({
-			stat: 'charged_stamina_cost',
-			base: 25,
 		}),
 		new StatTableAscensionScale({
 			stat: 'crit_dmg_base',
@@ -4873,10 +4846,6 @@ export const charTables = {
 		new StatTableAscensionScale({
 			stat: 'burst_energy_cost',
 			base: 60,
-		}),
-		new StatTableAscensionScale({
-			stat: 'charged_stamina_cost',
-			base: 50,
 		}),
 		new StatTableAscensionScale({
 			stat: 'crit_dmg_base',
@@ -5439,10 +5408,6 @@ export const charTables = {
 			base: 70,
 		}),
 		new StatTableAscensionScale({
-			stat: 'charged_stamina_cost',
-			base: 25,
-		}),
-		new StatTableAscensionScale({
 			stat: 'crit_dmg_base',
 			base: 50,
 		}),
@@ -5482,10 +5447,6 @@ export const charTables = {
 		new StatTableAscensionScale({
 			stat: 'burst_energy_cost',
 			base: 60,
-		}),
-		new StatTableAscensionScale({
-			stat: 'charged_stamina_cost',
-			base: 25,
 		}),
 		new StatTableAscensionScale({
 			stat: 'crit_dmg_base',
