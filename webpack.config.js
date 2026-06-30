@@ -129,6 +129,6 @@ module.exports = (env, argv) => {
                 }),
             ],
         },
-        devtool: argv.mode === 'development' ? 'eval-source-map' : false,
+        devtool: argv.mode === 'development' ? 'source-map'/*'eval-source-map'*/ : false,
     };
 };

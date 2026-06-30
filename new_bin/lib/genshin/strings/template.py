@@ -104,13 +104,14 @@ class TemplateString:
         if isinstance(res_index, list):
             res_list = []
             for indices in res_index:
-                r = []
+                r = ''
                 for index in indices:
-                    if isinstance(index, str):
-                        r.append(index)
+                    v= index if isinstance(index, str) else result[index]
+                    if (v and v[0] in ',;.') or r == '':
+                        r+=v
                     else:
-                        r.append(result[index])
-                res_list.append(' '.join(r))
+                        r+= ' ' + v
+                res_list.append(r)
             return res_list
         return ' '.join(result)
 
@@ -121,7 +122,7 @@ class TemplateString:
 
 
 class Template:
-    def __init__(self, replace={}, names=[], sentences=[], patterns=[], keywords=[], skills={}, results=None):
+    def __init__(self, replace={}, names=[], sentences=[], patterns=[], keywords=[], skills={}, results=None, prouds=[]):
         self.replace = replace
         self.names = names
         self.sentences = sentences
@@ -131,6 +132,7 @@ class Template:
         # если отсутсвует, то все последовательности будут объеденены в одну, нумерация сквозная
         self.results = results
         self.skills = skills
+        self.prouds = prouds
 
     def process(self, string: str):
         result = string
@@ -168,9 +170,9 @@ class Template:
         #     result = re.sub(r'(?:^|([^\{])\b)' + re.escape(name) + r'(?:\b([^\}])|$)', '\\1name{%s}\\2' % name, result)
             idx = 0
             cnt = 1
-            rx = re.compile(r'((^[^\{]*?|}[^\{]*?|{[^\{]*?})+)\b(' + name + r')(?=\b[^\}]|$)')
+            rx = re.compile(r'((^[^\{]*?|}[^\{]*?|{[^\{]*?})+)(^|[^\w\-\{])(' + name + r')(?=\b[^\}]|$)')
             while cnt > 0:
-                (result, cnt) = rx.subn('\\1name{\\3}', result)
+                (result, cnt) = rx.subn('\\1\\3name{\\4}', result)
                 idx+=1
                 if idx > 100:
                     break
@@ -182,9 +184,9 @@ class Template:
         #     result = re.sub(r'(?:^|([^\{])\b)(' + re.escape(keyword[0]) + r')(?:$|\b([^\}]))', '\\1' + keyword[1] + '{\\2}\\3', result)
             idx = 0
             cnt = 1
-            rx = re.compile(r'((^[^\{]*?|}[^\{]*?|{[^\{]*?})+)\b(' + keyword[0] + r')(?=\b[^\}]|$)')
+            rx = re.compile(r'((^[^\{]*?|}[^\{]*?|{[^\{]*?})+)(^|[^\w\-\{])(' + keyword[0] + r')(?=\b[^\}]|$)')
             while cnt > 0:
-                (result, cnt) = rx.subn('\\1' + keyword[1] + '{\\3}', result)
+                (result, cnt) = rx.subn('\\1\\3' + keyword[1] + '{\\4}', result)
                 idx+=1
                 if idx > 100:
                     break
@@ -241,7 +243,7 @@ class WeaponTemplate(Template):
 
 
 class TemplateList:
-    def __init__(self, **templates):
+    def __init__(self, prouds = [], **templates):
         self.templates = dict(**templates)
 
     def process(self, lang, name, string):

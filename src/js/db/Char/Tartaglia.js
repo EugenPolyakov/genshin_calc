@@ -75,7 +75,7 @@ const Talents = new DbObjectTalents({
     skill: {
         gameId: charTalentTables.Tartaglia.s2_id,
         title: 'talent_name.tartaglia_raging_tide',
-        description: 'talent_descr.tartaglia_raging_tide',
+        description: 'talent_descr.tartaglia_raging_tide_1',
         items: [
             {
                 table: new StatTable('activation_dmg', charTalentTables.Tartaglia.s2.p1),
@@ -523,7 +523,7 @@ export const Tartaglia = new DbObjectChar({
             name: 'tartaglia_raging_tide',
             serializeId: 1,
             title: 'talent_name.tartaglia_raging_tide',
-            description: 'talent_descr.tartaglia_raging_tide_talent',
+            description: 'talent_descr.tartaglia_raging_tide_2',
             stats: {
                 charged_stamina_cost: 20,
             },

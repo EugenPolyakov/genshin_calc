@@ -4,8 +4,8 @@ from ...template import Template, TemplateList
 char_tartaglia = TemplateList(
     default_rus=Template(
         names=[
-            'Тарталья',
-            'обычными', 'Отлив-удар', 'Отлив-вспышка', 'Отлив',
+            'Тарталья', 'Тартальи',
+            'обычными', 'обычные', 'Отлив-удар', 'Отлив-вспышка', 'Отлив',
         ],
         skills={
             'skill': ['Форма духа: Бушующие волны'],
@@ -22,6 +22,26 @@ char_tartaglia = TemplateList(
             'skill': ['Foul Legacy: Raging Tide'],
             'burst': ['Havoc: Obliteration'],
         },
+    ),
+    raging_tide=Template(
+        replace={
+            'инфузией, и': 'инфузией\n, и',
+        },
+        sentences=[[],[],[],['ignore', 'ignore'],['ignore']],
+        results=[
+            [0, 1, 2, 3, 4],
+            [0, '.'],
+        ],
+    ),
+    raging_tide_eng=Template(
+        replace={
+            'infusion and change': 'infusion\nand change',
+        },
+        sentences=[[],['ignore'],['ignore', 'ignore'],[],['ignore'],[]],
+        results=[
+            [0, 1, 2, 3, 4, 5],
+            [0, '.'],
+        ],
     ),
     never_ending=Template(
         sentences=[

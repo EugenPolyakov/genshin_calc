@@ -10,6 +10,7 @@ export class FeatureReactionLunarBloom extends FeatureReactionLunar {
      */
     getStatsReactionBonus() {
         let result = super.getStatsReactionBonus();
+        result.push('dmg_reaction_lunar');
         result.push('dmg_reaction_lunarbloom');
         return result;
     }

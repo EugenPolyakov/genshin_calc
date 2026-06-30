@@ -350,11 +350,6 @@ export const Ineffa = new DbObjectChar({
         }),
     ],
     conditions: [
-        new Condition({
-            settings: {
-                allowed_lunarcharged: 1,
-            },
-        }),
         new ConditionStatic({
             title: 'talent_name.ineffa_overclocking_circuit',
             description: 'talent_descr.ineffa_overclocking_circuit',
@@ -381,6 +376,9 @@ export const Ineffa = new DbObjectChar({
             stats: {
                 text_percent: PassiveLunarScale,
                 text_percent_max: PassiveLunarScaleCap,
+            },
+            settings: {
+                allowed_lunarcharged: 1,
             },
         }),
     ],
@@ -496,24 +494,6 @@ export const Ineffa = new DbObjectChar({
                     text_percent: C1AtkScale,
                     text_percent_max: C1AtkScaleCap,
                 },
-            }),
-        ],
-        postEffects: [
-            new PostEffectStats({
-                from: 'ineffa_atk_total',
-                percent: new StatTable('mastery', [A4EmScale / 100]),
-                condition: new ConditionBoolean({name: 'party.ineffa_panoramic_permutation_protocol'}),
-            }),
-            new PostEffectStats({
-                from: 'ineffa_atk_total',
-                percent: new StatTable('lunarcharged_multi', [PassiveLunarScale / 100]),
-                statCap: new ValueTable([PassiveLunarScaleCap]),
-            }),
-            new PostEffectStats({
-                from: 'ineffa_atk_total',
-                percent: new StatTable('dmg_reaction_lunarcharged', [C1AtkScale / 100]),
-                statCap: new ValueTable([C1AtkScaleCap]),
-                condition: new ConditionBoolean({name: 'party.ineffa_rectifying_processor'}),
             }),
         ],
     },

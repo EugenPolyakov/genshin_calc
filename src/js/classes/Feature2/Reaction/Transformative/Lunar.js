@@ -28,13 +28,4 @@ export class FeatureReactionLunar extends FeatureReactionTransformative {
     getStatsCritDamage(data) {
         return this.getDefaultStatsCritDamage(data);
     }
-
-    /**
-     * @returns {Array.<string>}
-     */
-    getStatsReactionBonus() {
-        let result = super.getStatsReactionBonus();
-        result.push('dmg_reaction_lunar');
-        return result;
-    }
 }

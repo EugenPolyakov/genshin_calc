@@ -1,7 +1,7 @@
 import { Condition } from "../../classes/Condition";
 import { ConditionMoonPhaseBuff } from "../../classes/Condition/MoonPhaseBuff";
 import { ConditionMoonPhase } from "../../classes/Condition/Boolean/MoonPhase";
-import { CustomOrigin } from "../../classes/Condition/CustomOrigin";
+import { ConditionMoonPhaseSetting } from "../../classes/Condition/CustomOrigin/MoonPhaseSetting";
 import { ConditionAnd } from "../../classes/Condition/And";
 import { ConditionArchaic } from "../../classes/Condition/Archaic";
 import { ConditionBoolean } from "../../classes/Condition/Boolean";
@@ -360,7 +360,7 @@ export const Artifacts = new DbObjectBuff({
                 new ConditionBoolean({name: 'set_other.scroll_of_the_hero_of_cinder_city_4_2'}),
             ]),
         }),
-        new CustomOrigin({ origin: 'lunar', name: 'moon_phase' }),
+        new ConditionMoonPhaseSetting(),
         //max SerializeId = DB.Buffs.getList().reduce((acc, val)=> acc.concat(val.getConditions()), []).reduce((amax, val)=>Array.isArray(val.params.serializeIds)?(amax>=Math.max(val.params.serializeIds)?amax:Math.max(val.params.serializeIds)):amax>=(val.params.serializeId|0)?amax:val.params.serializeId, 0)
         new ConditionMoonPhase({
             name: 'set_other.silken_moons_serenade_4',

@@ -20,6 +20,9 @@ char_charlotte = TemplateList(
             'Focused Impression', 'Fontainians', 'Verification',
             'Monsieur Verite', 'Snappy Silhouette',
         ],
+        replace={
+            'Fontainians': 'name{Fontainians}',
+        },
         skills={
             'skill': ['Framing: Freezing Point Composition'],
             'burst': ['Still Photo: Comprehensive Confirmation'],

@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.VisualStudio.JavaScript.Sdk/1.0.2752196">
+﻿<Project Sdk="Microsoft.VisualStudio.JavaScript.Sdk/1.0.2752196">
   <PropertyGroup>
     <StartupCommand>npm run start</StartupCommand>
     <!-- Allows the build (or compile) script located on package.json to run on Build -->
@@ -6,7 +6,9 @@
     <!-- Folder where production build objects will be placed -->
     <BuildOutputFolder>$(MSBuildProjectDirectory)\dist</BuildOutputFolder>
     <ClientAppDir>$(MSBuildProjectDirectory)</ClientAppDir>
-    <BuildCommand>npm run build</BuildCommand>
+    <BuildCommand>
+    </BuildCommand>
+    <StartupCommandWorkingDirectory>$(MSBuildProjectDirectory)\</StartupCommandWorkingDirectory>
   </PropertyGroup>
   <ItemGroup>
     <None Remove="dist\**" />

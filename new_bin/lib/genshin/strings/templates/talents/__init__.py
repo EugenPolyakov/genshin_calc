@@ -1,5 +1,6 @@
 from ...template import Template
 
+from .aino import char_aino  # noqa
 from .albedo import char_albedo  # noqa
 from .alhaitham import char_alhaitham  # noqa
 from .aloy import char_aloy  # noqa
@@ -30,6 +31,7 @@ from .escoffier import char_escoffier # noqa
 from .eula import char_eula  # noqa
 from .faruzan import char_faruzan  # noqa
 from .fischl import char_fischl  # noqa
+from .flins import char_flins  # noqa
 from .freminet import char_freminet  # noqa
 from .furina import char_furina  # noqa
 from .gaming import char_gaming  # noqa

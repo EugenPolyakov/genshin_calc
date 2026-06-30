@@ -1,7 +1,7 @@
 import { ArtifactSet } from "../../../classes/ArtifactSet";
 import { ConditionMoonPhase } from "../../../classes/Condition/Boolean/MoonPhase";
 import { ConditionStatic } from "../../../classes/Condition/Static";
-import { CustomOrigin } from "../../../classes/Condition/CustomOrigin";
+import { ConditionMoonPhaseSetting } from "../../../classes/Condition/CustomOrigin/MoonPhaseSetting";
 
 export const NightOfTheSkysUnveiling = new ArtifactSet({
     serializeId: 56,
@@ -28,7 +28,7 @@ export const NightOfTheSkysUnveiling = new ArtifactSet({
         {},
         {
             conditions: [
-                new CustomOrigin({ origin: 'lunar', name: 'moon_phase' }),
+                new ConditionMoonPhaseSetting(),
                 new ConditionMoonPhase({
                     name: 'set.night_of_the_skys_unveiling_4',
                     title: 'set_bonus.night_of_the_skys_unveiling_4',

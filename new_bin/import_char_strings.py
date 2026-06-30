@@ -1,6 +1,8 @@
 import sys
 import os
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+import time
+start_time = time.time()
 
 import re
 from collections import OrderedDict
@@ -53,6 +55,16 @@ traveler_depot_ids = {
     508: 'dendro',
 }
 
+NEED_PASSIVE_TALENTS = [
+    'tartaglia',
+    'skirk',
+    'ineffa',
+    'aino',
+    'flins',
+    'lauma',
+    'nefer'
+]
+
 def collect_links(txt):
     return re.findall(r'{LINK#N(\d+)}', txt)
 
@@ -63,15 +75,17 @@ for char in char_data.get_list():
     if char['id'] in (10000007,):
         continue
 
-    # if char['id'] not in (10000114,):
-    #     continue
+    # if char['id'] not in (10000114,): continue
 
     char_name = lang_default.get(char['nameTextMapHash'])
     char_id = convert_id(char_name)
 
+    # if char_id!="flins": continue
+
     # print([char_id, char['id']])
 
     depot_ids = char.get('candSkillDepotIds', [])
+
     if depot_ids:
         for depot_id in depot_ids:
             if depot_id not in traveler_depot_ids.keys():
@@ -88,6 +102,22 @@ for char in char_data.get_list():
             'nameTextMapHash': char['nameTextMapHash'],
             'depot_ids': [char['skillDepotId']],
         }
+
+def add_array(descItems, result_hero_strings, talent_id, categ):
+    index = 0
+    for (rus, eng) in zip(descItems['rus'], descItems['eng']):
+        index += 1
+        namei = talent_id
+        if len(descItems['rus']) > 1:
+            namei = f'{talent_id}_{index}'
+        result_hero_strings.append(
+            OrderedDict(
+                category=categ,
+                name=namei,
+                rus=rus,
+                eng=eng,
+            )
+        )
 
 hyperlinks = set()
 for char_key in sorted(char_keys):
@@ -118,8 +148,10 @@ for char_key in sorted(char_keys):
         if not depot:
             continue
         skill_ids = []
+        burst_id = 0
         if depot.get('energySkill'):
-            skill_ids.append(depot.get('energySkill'))
+            burst_id = depot.get('energySkill')
+            skill_ids.append(burst_id)
         if depot.get('skills'):
             skill_ids.extend(depot.get('skills'))
         # if depot.get('SubSkills'):
@@ -134,7 +166,8 @@ for char_key in sorted(char_keys):
             skill_name = lang_default.get(skill['nameTextMapHash'])
             if not skill_name:
                 continue
-            skill_id = char_id + '_' + convert_id(skill_name, removeSemicolon=True)
+            talent_short_id = convert_id(skill_name, removeSemicolon=True)
+            skill_id = char_id + '_' + talent_short_id
 
             if uniq_skills.get(skill_id):
                 continue
@@ -145,11 +178,21 @@ for char_key in sorted(char_keys):
                 name=skill_id,
             )
 
-            res_item2 = OrderedDict(
-                category='talent_descr',
-                name=skill_id,
-            )
+            proud_params = []
+            proud = None
+            passive_id = skill.get('proudSkillGroupId')
+            if passive_id and tpl_char:
+                proud = proud_data.get_item_by_field('proudSkillGroupId', passive_id)
+                if proud:
+                    for lang_name in lang_data:
+                        selected = tpl_char.templates.get(f'{talent_short_id}_{lang_name}') or tpl_char.templates.get(talent_short_id)
+                        if selected:
+                            proud_params = selected.prouds
+                            break
+                        # else:
+                        #     print(skill_id)
 
+            descItems = {}
             for lang_name in lang_data:
                 lang = lang_data[lang_name]['lang']
                 skill_name = lang.get(skill['nameTextMapHash'])
@@ -157,41 +200,56 @@ for char_key in sorted(char_keys):
 
                 hyperlinks.update(collect_links(skill_descr))
 
-                # tpl_names = lang_data[lang_name]['names']
-                # tpl_keywords = lang_data[lang_name]['keywords']
+                tpl_names = lang_data[lang_name]['names']
+                tpl_keywords = lang_data[lang_name]['keywords']
                 tpl_patterns = lang_data[lang_name]['patterns']
 
                 skill_name = re.sub(r'^Normal Attack:\s*', '', skill_name)
+                # print('default:--------------------------')
+                # print(skill_descr)
                 skill_descr = tpl_patterns.process(skill_descr)
+                # skill_descr = tpl_keywords.process(skill_descr)
+                # print('patterns:--------------------------')
+                # print(skill_descr)
+                skill_descr = tpl_names.process(skill_descr)
+                # print('names:--------------------------')
+                # print(skill_descr)
+                if tpl_char:
+                    skill_descr = tpl_char.process(lang_name, talent_short_id, skill_descr)
+                    # print('char:--------------------------')
+                    # print(skill_descr)
+
+                if not isinstance(skill_descr, list):
+                    skill_descr = [skill_descr]
 
                 res_item1[lang_name] = skill_name
-                res_item2[lang_name] = skill_descr
+                descItems[lang_name] = skill_descr
+
+            if proud:
+                values = {'rus':[], 'eng':[]}
+                for idx, param in enumerate(proud_params):
+                    for lang_name in lang_data:
+                        lang = lang_data[lang_name]['lang']
+                        (name, params_str) = lang.get(proud['paramDescList'][param]).split('|')
+                        values[lang_name].append(name)
+                add_array(values, result_hero_strings, skill_id, 'feature_burst' if id==burst_id else 'feature_skill')
 
             result_hero_strings.append(res_item1)
-            result_hero_strings.append(res_item2)
+            add_array(descItems, result_hero_strings, skill_id, 'talent_descr')
 
         talent_items = []
         const_num = 0
         used_passive = 0
 
         for passive in depot.get('inherentProudSkillOpens', []):
-            skip = 1
-            if passive.get('needAvatarPromoteLevel'):
-                skip = 0
-            elif passive.get('proudSkillGroupId') and char_id in ('skirk', 'ineffa'):
-                if not used_passive:
-                    skip = 0
-                    used_passive = 1
-            if skip:
-                continue
-
-            passive_id = passive.get('proudSkillGroupId')
-            proud = proud_data.get_item_by_field('proudSkillGroupId', passive_id)
-            if proud:
+            if (passive.get('needAvatarPromoteLevel') > 0 or char_id in NEED_PASSIVE_TALENTS) and passive.get('proudSkillGroupId') > 0:
+                passive_id = passive.get('proudSkillGroupId')
+                proud = proud_data.get_item_by_field('proudSkillGroupId', passive_id)
                 talent_items.append({
                     'nameTextMapHash': proud.get('nameTextMapHash'),
                     'descTextMapHash': proud.get('descTextMapHash'),
                 })
+            else: break
 
         for const_id in depot.get('talents'):
             const_num += 1
@@ -241,16 +299,16 @@ for char_key in sorted(char_keys):
                     tpl_talents = lang_data[lang_name]['talents']
 
                     # skill_name = re.sub(r'^.*?:\s*', '', skill_name)
-                    #if talent_id=="citlali_teoiztacs_secret_pact": print(skill_descr, '\n-----------------\n')
+                    # if char_id=="flins": print(skill_descr, '\n-----------------\n')
                     skill_descr = tpl_talents.process(skill_descr)
-                    #if talent_id=="citlali_teoiztacs_secret_pact": print(skill_descr, '\n-----------------\n')
+                    # if char_id=="flins": print(skill_descr, '\n-----------------\n')
                     skill_descr = tpl_keywords.process(skill_descr)
-                    #if talent_id=="citlali_teoiztacs_secret_pact": print(skill_descr, '\n-----------------\n')
+                    # if char_id=="flins": print(skill_descr, '\n-----------------\n')
                     skill_descr = tpl_names. process(skill_descr)
-                    #if talent_id=="citlali_teoiztacs_secret_pact": print(skill_descr, '\n-----------------\n')
+                    # if char_id=="flins": print(skill_descr, '\n-----------------\n')
                     if tpl_char:
                         skill_descr = tpl_char.process(lang_name, talent_short_id, skill_descr)
-                    #if talent_id=="citlali_teoiztacs_secret_pact": print(skill_descr, '\n-----------------\n')
+                    # if char_id=="flins": print(skill_descr, '\n-----------------\n')
 
                     if not isinstance(skill_descr, list):
                         skill_descr = [skill_descr]
@@ -259,24 +317,10 @@ for char_key in sorted(char_keys):
                 #if not tpl_char: texts[eng_name].append('\n')
                 texts[eng_name].append('\n')
 
-            if tpl_char:
-                result_hero_strings.append(res_item1)
+            result_hero_strings.append(res_item1)
 
-                if descItems and not talent.get('no_descr'):
-                    index = 0
-                    for (rus, eng) in zip(descItems['rus'], descItems['eng']):
-                        index += 1
-                        namei = talent_id
-                        if len(descItems['rus']) > 1:
-                            namei = f'{talent_id}_{index}'
-                        result_hero_strings.append(
-                            OrderedDict(
-                                category='talent_descr',
-                                name=namei,
-                                rus=rus,
-                                eng=eng,
-                            )
-                        )
+            if descItems and not talent.get('no_descr'):
+                add_array(descItems, result_hero_strings, talent_id, 'talent_descr')
     CsvDumper().dump(result_hero_strings, f'char/{char_key}.csv')
 
 result_talents = []
@@ -310,7 +354,9 @@ for hl_id in sorted(hyperlinks):
         result_talents.append(res_item1)
         result_talents.append(res_item2)
 
-CsvDumper().dump(result_talents, 'char_skills.csv')
+if len(result_talents) > 0:
+    CsvDumper().dump(result_talents, 'char_skills.csv')
 # CsvDumper().dump(result_names, '../../strings_casino/char_names.csv')
 # CsvDumper().dump(result_names, '../../strings_draft/char_names.csv')
 TextDumper().dump(texts, 'chat_texts.txt')
+print("--- %s ms ---" % (int((time.time() - start_time) * 1000)))

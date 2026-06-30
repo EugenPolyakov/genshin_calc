@@ -1,5 +1,6 @@
 import { DbObjectListSerializeChars } from "../classes/DbObject/List/Serialize/Chars"
 import { Albedo } from "./Char/Albedo"
+import { Aino } from "./Char/Aino"
 import { Alhaitham } from "./Char/Alhaitham"
 import { Aloy } from "./Char/Aloy"
 import { Amber } from "./Char/Amber"
@@ -30,6 +31,7 @@ import { Escoffier } from "./Char/Escoffier"
 import { Eula } from "./Char/Eula"
 import { Faruzan } from "./Char/Faruzan"
 import { Fischl } from "./Char/Fischl"
+import { Flins } from "./Char/Flins"
 import { Freminet } from "./Char/Freminet"
 import { Furina } from "./Char/Furina"
 import { Gaming } from "./Char/Gaming"
@@ -215,4 +217,6 @@ export const Chars = new DbObjectListSerializeChars({
     Skirk: Skirk, // 106
     Dahlia: Dahlia, // 107
     Ineffa: Ineffa, // 108
+    Flins: Flins, // 109
+    Aino: Aino, // 110
 });

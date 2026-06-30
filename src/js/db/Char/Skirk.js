@@ -601,7 +601,6 @@ export const Skirk = new DbObjectChar({
             description: 'talent_descr.skirk_mutual_weapons_mentorship',
             settings: {
                 char_skill_elemental_bonus_2: 1,
-                char_skill_elemental_bonus_party: 1,
             },
             condition: new ConditionBooleanSkirkParty(),
         }),
@@ -721,7 +720,6 @@ export const Skirk = new DbObjectChar({
                 description: 'talent_descr.skirk_mutual_weapons_mentorship',
                 settings: {
                     char_skill_elemental_bonus_2: 1,
-                    char_skill_elemental_bonus_party: 1,
                 },
                 condition: new ConditionBooleanSkirkParty(),
             }),

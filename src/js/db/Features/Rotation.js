@@ -573,4 +573,13 @@ export const Rotation = new DbObjectRotation({
     'other.ineffa_carrier_flow_composite_dmg': 572,
     'reaction.lunarcharged_contrubution_2': 573,
     'reaction.lunarcharged_contrubution_12': 574,
+    "skill.aino_musecatcher": 575,
+    "burst.aino_addition_burst_dmg": 576,
+    "burst.flins_cometh_the_night_1": 577,
+    "burst.flins_cometh_the_night_2": 578,
+    "burst.flins_cometh_the_night_3": 579,
+    "burst.flins_cometh_the_night_4": 580,
+    "burst.flins_cometh_the_night_5": 581,
+    "skill.flins_arcane_light_1": 582,
+    "other.flins_addition_burst_dmg": 583,
 });

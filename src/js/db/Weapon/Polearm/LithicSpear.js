@@ -1,5 +1,5 @@
 import { ConditionBoolean } from "../../../classes/Condition/Boolean";
-import { ConditionLithic } from "../../../classes/Condition/Lithic";
+import { ConditionLithic } from "../../../classes/Condition/CustomOrigin/Lithic";
 import { ConditionStacksSetting } from "../../../classes/Condition/Stacks/Setting";
 import { DbObjectWeapon } from "../../../classes/DbObject/Weapon";
 import { StatTable } from "../../../classes/StatTable";
