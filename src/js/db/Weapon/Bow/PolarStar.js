@@ -14,8 +14,8 @@ export const PolarStar = new DbObjectWeapon({
     statTable: weaponStatTables.PolarStar,
     conditions: [
         new ConditionStaticRefine({
-            title: 'talent_name.weapon_polar_star',
-            description: 'talent_descr.weapon_polar_star_1',
+            title: 'talent_name.weapon_daylights_augury',
+            description: 'talent_descr.weapon_daylights_augury_1',
             stats: [
                 new StatTable('dmg_skill', [12, 15, 18, 21, 24]),
                 new StatTable('dmg_burst', [12, 15, 18, 21, 24]),
@@ -24,8 +24,8 @@ export const PolarStar = new DbObjectWeapon({
         new ConditionDropdown({
             name: 'weapon_polar_star',
             serializeId: 1,
-            title: 'talent_name.weapon_polar_star',
-            description: 'talent_descr.weapon_polar_star_2',
+            title: 'talent_name.weapon_daylights_augury',
+            description: 'talent_descr.weapon_daylights_augury_2',
             suggesterValue: 4,
             values: [
                 {

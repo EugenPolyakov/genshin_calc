@@ -15,8 +15,8 @@ export const DarkIronSword = new DbObjectWeapon({
         new ConditionBooleanRefine({
             name: 'weapon_dark_iron_sword',
             serializeId: 1,
-            title: 'talent_name.weapon_dark_iron_sword',
-            description: 'talent_descr.weapon_dark_iron_sword',
+            title: 'talent_name.weapon_overloaded',
+            description: 'talent_descr.weapon_overloaded',
             stats: [
                 new StatTable('atk_percent', [20, 25, 30, 35, 40]),
             ],

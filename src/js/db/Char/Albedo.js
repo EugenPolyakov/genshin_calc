@@ -446,7 +446,7 @@ export const Albedo = new DbObjectChar({
                 serializeId: 3,
                 rotation: 'party',
                 title: 'talent_name.albedo_dust_of_purification',
-                statTitle: 'talent_name.whisper_of_the_jinn_mastery',
+                statTitle: 'talent_name.weapon_jinnis_whisper_2',
                 description: 'talent_descr.albedo_dust_of_purification',
                 stats: {
                     dmg_all: TalentValues.C6ShieldDmg,

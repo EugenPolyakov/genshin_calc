@@ -15,8 +15,8 @@ export const IbisPiercer = new DbObjectWeapon({
         new ConditionStacks({
             name: 'weapon_ibis_piercer',
             serializeId: 1,
-            title: 'talent_name.weapon_ibis_piercer',
-            description: 'talent_descr.weapon_ibis_piercer',
+            title: 'talent_name.weapon_secret_wisdoms_favor',
+            description: 'talent_descr.weapon_secret_wisdoms_favor',
             maxStacks: 2,
             levelSetting: 'weapon_refine',
             stats: [

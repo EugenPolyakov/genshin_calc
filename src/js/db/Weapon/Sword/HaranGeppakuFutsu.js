@@ -14,8 +14,8 @@ export const HaranGeppakuFutsu = new DbObjectWeapon({
     statTable: weaponStatTables.HaranGeppakuFutsu,
     conditions: [
         new ConditionStaticRefine({
-            title: 'talent_name.haran_geppaku_futsu',
-            description: 'talent_descr.haran_geppaku_futsu_1',
+            title: 'talent_name.weapon_honed_flow_1',
+            description: 'talent_descr.weapon_honed_flow_1',
             stats: [
                 new StatTable('dmg_anemo', [12, 15, 18, 21, 24]),
                 new StatTable('dmg_geo', [12, 15, 18, 21, 24]),
@@ -29,8 +29,8 @@ export const HaranGeppakuFutsu = new DbObjectWeapon({
         new ConditionStacks({
             name: 'haran_geppaku_futsu',
             serializeId: 1,
-            title: 'talent_name.haran_geppaku_futsu_2',
-            description: 'talent_descr.haran_geppaku_futsu_2',
+            title: 'talent_name.weapon_honed_flow_2',
+            description: 'talent_descr.weapon_honed_flow_2',
             maxStacks: 2,
             levelSetting: 'weapon_refine',
             stats: [

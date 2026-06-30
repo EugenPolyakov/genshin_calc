@@ -15,8 +15,8 @@ export const SplendorOfStillWaters = new DbObjectWeapon({
         new ConditionStacks({
             name: 'weapon_splendor_of_tranquil_waters',
             serializeId: 1,
-            title: 'talent_name.weapon_splendor_of_tranquil_waters',
-            description: 'talent_descr.weapon_splendor_of_tranquil_waters_1',
+            title: 'talent_name.weapon_dawn_and_dusk_by_the_lake',
+            description: 'talent_descr.weapon_dawn_and_dusk_by_the_lake_1',
             maxStacks: 3,
             levelSetting: 'weapon_refine',
             stats: [
@@ -26,8 +26,8 @@ export const SplendorOfStillWaters = new DbObjectWeapon({
         new ConditionStacks({
             name: 'weapon_splendor_of_tranquil_waters_2',
             serializeId: 2,
-            title: 'talent_name.weapon_splendor_of_tranquil_waters',
-            description: 'talent_descr.weapon_splendor_of_tranquil_waters_2',
+            title: 'talent_name.weapon_dawn_and_dusk_by_the_lake',
+            description: 'talent_descr.weapon_dawn_and_dusk_by_the_lake_2',
             maxStacks: 2,
             levelSetting: 'weapon_refine',
             stats: [

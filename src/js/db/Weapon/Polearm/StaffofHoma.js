@@ -39,8 +39,8 @@ export const StaffofHoma = new DbObjectWeapon({
     ],
     conditions: [
         new ConditionStaticRefine({
-            title: 'talent_name.weapon_staff_of_homa',
-            description: 'talent_descr.weapon_staff_of_homa_passive',
+            title: 'talent_name.weapon_reckless_cinnabar',
+            description: 'talent_descr.weapon_reckless_cinnabar_1',
             stats: [
                 new StatTable('hp_percent', [20, 25, 30, 35, 40]),
                 new StatTable('text_percent', [0.8, 1, 1.2, 1.4, 1.6]),
@@ -49,8 +49,8 @@ export const StaffofHoma = new DbObjectWeapon({
         new ConditionBooleanRefine({
             name: 'weapon_staff_of_homa',
             serializeId: 1,
-            title: 'talent_name.weapon_staff_of_homa',
-            description: 'talent_descr.weapon_staff_of_homa',
+            title: 'talent_name.weapon_reckless_cinnabar',
+            description: 'talent_descr.weapon_reckless_cinnabar_2',
             stats: [
                 new StatTable('text_percent', [1, 1.2, 1.4, 1.6, 1.8]),
             ],

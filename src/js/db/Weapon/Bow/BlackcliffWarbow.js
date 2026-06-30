@@ -2,14 +2,15 @@ import { ConditionStacks } from "../../../classes/Condition/Stacks";
 import { DbObjectWeapon } from "../../../classes/DbObject/Weapon";
 import { StatTable } from "../../../classes/StatTable";
 import { weaponStatTables } from "../../generated/WeaponStatTables";
+import { weaponDataTable } from "../../generated/WeaponStatTables";
 
 export const BlackcliffWarbow = new DbObjectWeapon({
     name: 'blackcliff_warbow',
     serializeId: 25,
-    gameId: 15408,
+    gameId: weaponDataTable.BlackcliffWarbow.gameId,
     iconClass: "weapon-icon-bow-blackcliff-warbow",
-    rarity: 4,
-    weapon: 'bow',
+    rarity: weaponDataTable.BlackcliffWarbow.rarity,
+    weapon: weaponDataTable.BlackcliffWarbow.weapon,
     statTable: weaponStatTables.BlackcliffWarbow,
     settingsSets: [
         {
@@ -34,7 +35,7 @@ export const BlackcliffWarbow = new DbObjectWeapon({
             maxStacks: 3,
             levelSetting: 'weapon_refine',
             stats: [
-                new StatTable('atk_percent', [12, 15, 18, 21, 24]),
+                new StatTable('atk_percent', weaponDataTable.BlackcliffWarbow.Weapon_Bow_Blackrock.param1, 100),
             ],
         })
     ],

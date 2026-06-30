@@ -29,7 +29,7 @@ export const WolfsGravestone = new DbObjectWeapon({
     conditions: [
         new ConditionStaticRefine({
             title: 'talent_name.weapon_wolfish_tracker',
-            description: 'talent_descr.bonus_atk',
+            description: 'talent_descr.weapon_wolfish_tracker_1',
             stats: [
                 new StatTable('atk_percent', [20, 25, 30, 35, 40]),
             ],
@@ -38,7 +38,7 @@ export const WolfsGravestone = new DbObjectWeapon({
             name: 'weapon_wolfs_gravestone',
             serializeId: 1,
             title: 'talent_name.weapon_wolfish_tracker',
-            description: 'talent_descr.weapon_wolfish_tracker',
+            description: 'talent_descr.weapon_wolfish_tracker_2',
             stats: [
                 new StatTable('atk_percent', [40, 50, 60, 70, 80]),
             ],

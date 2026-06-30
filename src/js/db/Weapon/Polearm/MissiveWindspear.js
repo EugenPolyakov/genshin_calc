@@ -16,8 +16,8 @@ export const MissiveWindspear = new DbObjectWeapon({
         new ConditionBooleanRefine({
             name: 'weapon_missive_windspear',
             serializeId: 1,
-            title: 'talent_name.the_wind_unattained',
-            description: 'talent_descr.the_wind_unattained',
+            title: 'talent_name.weapon_the_wind_unattained',
+            description: 'talent_descr.weapon_the_wind_unattained',
             stats: [
                 new StatTable('atk_percent', [12, 15, 18, 21, 24]),
                 new StatTable('mastery', [48, 60, 72, 84, 96]),

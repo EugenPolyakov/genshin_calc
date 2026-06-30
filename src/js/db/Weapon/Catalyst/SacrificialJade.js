@@ -15,8 +15,8 @@ export const SacrificialJade = new DbObjectWeapon({
         new ConditionBooleanRefine({
             name: 'weapon_sacrificial_jade',
             serializeId: 1,
-            title: 'talent_name.weapon_sacrificial_jade',
-            description: 'talent_descr.weapon_sacrificial_jade',
+            title: 'talent_name.weapon_jade_circulation',
+            description: 'talent_descr.weapon_jade_circulation',
             stats: [
                 new StatTable('hp_percent', [32, 40, 48, 56, 64]),
                 new StatTable('mastery', [40, 50, 60, 70, 80]),

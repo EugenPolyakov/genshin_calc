@@ -1,6 +1,7 @@
 import requests
 import re
 from typing import List, Dict
+from static import WEAPON_TYPES
 
 PROPS = {
     'FIGHT_PROP_BASE_HP': 'hp_base',
@@ -29,14 +30,6 @@ ELEMENTS = {
     'ICE': 'cryo',
     'WATER': 'hydro',
     'ROCK': 'geo',
-}
-
-WEAPON_TYPES = {
-    'WEAPON_SWORD_ONE_HAND': 'sword',
-    'WEAPON_CLAYMORE': 'claymore',
-    'WEAPON_BOW': 'bow',
-    'WEAPON_CATALYST': 'catalyst',
-    'WEAPON_POLE': 'polearm',
 }
 
 RARITY_NAMES = {

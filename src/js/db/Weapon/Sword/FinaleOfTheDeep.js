@@ -30,8 +30,8 @@ export const FinaleOfTheDeep = new DbObjectWeapon({
         new ConditionBooleanRefine({
             name: 'weapon_finale_of_the_deep_1',
             serializeId: 1,
-            title: 'talent_name.weapon_finale_of_the_deep',
-            description: 'talent_descr.weapon_finale_of_the_deep_1',
+            title: 'talent_name.weapon_an_end_sublime_1',
+            description: 'talent_descr.weapon_an_end_sublime_1',
             stats: [
                 new StatTable('atk_percent', [12, 15, 18, 21, 24]),
             ],
@@ -41,8 +41,8 @@ export const FinaleOfTheDeep = new DbObjectWeapon({
             serializeId: 2,
             max: BOND_OF_LIFE_MAX_PERCENT,
             levelSetting: 'weapon_refine',
-            title: 'talent_name.weapon_finale_of_the_deep_2',
-            description: 'talent_descr.weapon_finale_of_the_deep_2',
+            title: 'talent_name.weapon_an_end_sublime_2',
+            description: 'talent_descr.weapon_an_end_sublime_2',
             stats: [
                 new StatTable('text_decimal', [150, 187.5, 225, 262.5, 300]),
                 new StatTable('text_percent_hp', [2.4, 3, 3.6, 4.2, 4.8]),

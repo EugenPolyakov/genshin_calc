@@ -15,8 +15,8 @@ export const FilletBlade = new DbObjectWeapon({
     statTable: weaponStatTables.FilletBlade,
     conditions: [
         new ConditionStaticRefine({
-            title: 'talent_name.weapon_fillet_blade',
-            description: 'talent_descr.weapon_fillet_blade',
+            title: 'talent_name.weapon_gash',
+            description: 'talent_descr.weapon_gash',
             stats: [
                 new StatTable('text_percent_dmg', [240, 280, 320, 360, 400]),
             ],

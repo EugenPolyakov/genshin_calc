@@ -33,8 +33,8 @@ export const Azurelight = new DbObjectWeapon({
         new ConditionBooleanRefine({
             name: 'weapon_azurelight_1',
             serializeId: 1,
-            title: 'talent_name.weapon_azurelight',
-            description: 'talent_descr.weapon_azurelight',
+            title: 'talent_name.weapon_whitehills_bestowal',
+            description: 'talent_descr.weapon_whitehills_bestowal_1',
             stats: [
                 new StatTable('atk_percent', [24, 30, 36, 42, 48]),
             ],
@@ -42,8 +42,8 @@ export const Azurelight = new DbObjectWeapon({
         new ConditionBooleanRefine({
             name: 'weapon_azurelight_2',
             serializeId: 2,
-            title: 'talent_name.weapon_azurelight',
-            description: 'talent_descr.weapon_azurelight_2',
+            title: 'talent_name.weapon_whitehills_bestowal',
+            description: 'talent_descr.weapon_whitehills_bestowal_2',
             stats: [
                 new StatTable('atk_percent', [24, 30, 36, 42, 48]),
                 new StatTable('crit_dmg', [40, 50, 60, 70, 80]),

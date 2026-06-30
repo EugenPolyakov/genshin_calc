@@ -18,8 +18,8 @@ export const HuntersPath = new DbObjectWeapon({
     statTable: weaponStatTables.HuntersPath,
     conditions: [
         new ConditionStaticRefine({
-            title: 'talent_name.at_the_end_of_the_beast_paths',
-            description: 'talent_descr.at_the_end_of_the_beast_paths_1',
+            title: 'talent_name.weapon_at_the_end_of_the_beast_paths',
+            description: 'talent_descr.weapon_at_the_end_of_the_beast_paths_1',
             stats: [
                 new StatTable('dmg_anemo', [12, 15, 18, 21, 24]),
                 new StatTable('dmg_geo', [12, 15, 18, 21, 24]),
@@ -33,8 +33,8 @@ export const HuntersPath = new DbObjectWeapon({
         new ConditionBooleanRefine({
             name: 'weapon_hunters_path',
             serializeId: 1,
-            title: 'talent_name.at_the_end_of_the_beast_paths',
-            description: 'talent_descr.at_the_end_of_the_beast_paths_2',
+            title: 'talent_name.weapon_at_the_end_of_the_beast_paths',
+            description: 'talent_descr.weapon_at_the_end_of_the_beast_paths_2',
             stats: [
                 new StatTable('text_percent', [160, 200, 240, 280, 320]),
             ],

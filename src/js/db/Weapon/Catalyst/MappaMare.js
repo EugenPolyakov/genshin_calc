@@ -15,8 +15,8 @@ export const MappaMare = new DbObjectWeapon({
         new ConditionStacks({
             name: 'weapon_mappa_mare',
             serializeId: 1,
-            title: 'talent_name.weapon_mappa_mare',
-            description: 'talent_descr.weapon_mappa_mare',
+            title: 'talent_name.weapon_infusion_scroll',
+            description: 'talent_descr.weapon_infusion_scroll',
             maxStacks: 2,
             levelSetting: 'weapon_refine',
             stats: [

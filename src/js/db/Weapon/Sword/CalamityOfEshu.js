@@ -33,8 +33,8 @@ export const CalamityOfEshu = new DbObjectWeapon({
             title: 'buffs_name.resonance_geo_shield',
         }),
         new ConditionStaticRefine({
-            title: 'talent_name.calamity_of_eshu',
-            description: 'talent_descr.calamity_of_eshu',
+            title: 'talent_name.weapon_diffusing_boundary',
+            description: 'talent_descr.weapon_diffusing_boundary',
             stats: [
                 new StatTable('dmg_normal', [20, 25, 30, 35, 40]),
                 new StatTable('dmg_charged', [20, 25, 30, 35, 40]),

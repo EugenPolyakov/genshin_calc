@@ -64,14 +64,14 @@ export const Widsith = new DbObjectWeapon({
     ],
     conditions: [
         new ConditionStatic({
-            title: 'talent_name.weapon_widsith',
-            description: 'talent_descr.weapon_widsith',
+            title: 'talent_name.weapon_debut_1',
+            description: 'talent_descr.weapon_debut_1',
         }),
         new ConditionBooleanRefine({
             name: 'weapon_widsith_1',
             serializeId: 1,
-            title: 'talent_name.weapon_widsith_1',
-            description: 'talent_descr.weapon_widsith_1',
+            title: 'talent_name.weapon_debut_2',
+            description: 'talent_descr.weapon_debut_2',
             stats: [
                 new StatTable('atk_percent', [60, 75, 90, 105, 120]),
             ],
@@ -88,8 +88,8 @@ export const Widsith = new DbObjectWeapon({
         new ConditionBooleanRefine({
             name: 'weapon_widsith_2',
             serializeId: 2,
-            title: 'talent_name.weapon_widsith_2',
-            description: 'talent_descr.weapon_widsith_2',
+            title: 'talent_name.weapon_debut_3',
+            description: 'talent_descr.weapon_debut_3',
             stats: [
                 new StatTable('dmg_anemo', [48, 60, 72, 84, 96]),
                 new StatTable('dmg_electro', [48, 60, 72, 84, 96]),
@@ -111,8 +111,8 @@ export const Widsith = new DbObjectWeapon({
         new ConditionBooleanRefine({
             name: 'weapon_widsith_3',
             serializeId: 3,
-            title: 'talent_name.weapon_widsith_3',
-            description: 'talent_descr.weapon_widsith_3',
+            title: 'talent_name.weapon_debut_4',
+            description: 'talent_descr.weapon_debut_4',
             stats: [
                 new StatTable('mastery', [240, 300, 360, 420, 480]),
             ],

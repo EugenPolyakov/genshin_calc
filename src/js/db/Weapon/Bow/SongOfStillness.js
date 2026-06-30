@@ -15,8 +15,8 @@ export const SongOfStillness = new DbObjectWeapon({
         new ConditionBooleanRefine({
             name: 'weapon_song_of_stillness',
             serializeId: 1,
-            title: 'talent_name.weapon_song_of_stillness',
-            description: 'talent_descr.weapon_song_of_stillness',
+            title: 'talent_name.weapon_benthic_pulse',
+            description: 'talent_descr.weapon_benthic_pulse',
             stats: [
                 new StatTable('dmg_all', [16, 20, 24, 28, 32]),
             ],

@@ -16,8 +16,8 @@ export const RedhornStonethresher = new DbObjectWeapon({
     statTable: weaponStatTables.RedhornStonethresher,
     conditions: [
         new ConditionStaticRefine({
-            title: 'talent_name.weapon_redhorn_stonethresher',
-            description: 'talent_descr.weapon_redhorn_stonethresher',
+            title: 'talent_name.weapon_gokadaiou_otogibanashi',
+            description: 'talent_descr.weapon_gokadaiou_otogibanashi',
             stats: [
                 new StatTable('def_percent', [28, 35, 42, 49, 56]),
                 new StatTable('normal_base_def_percent', [40, 50, 60, 70, 80]),

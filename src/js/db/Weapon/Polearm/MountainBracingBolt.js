@@ -14,8 +14,8 @@ export const MountainBracingBolt = new DbObjectWeapon({
     statTable: weaponStatTables.MountainBracingBolt,
     conditions: [
         new ConditionStaticRefine({
-            title: 'talent_name.weapon_mountain_bracing_bolt',
-            description: 'talent_descr.weapon_mountain_bracing_bolt_1',
+            title: 'talent_name.weapon_hope_beyond_the_peaks',
+            description: 'talent_descr.weapon_hope_beyond_the_peaks_1',
             stats: [
                 new StatTable('dmg_skill', [12, 15, 18, 21, 24]),
             ],
@@ -23,8 +23,8 @@ export const MountainBracingBolt = new DbObjectWeapon({
         new ConditionBooleanRefine({
             name: 'weapon_mountain_bracing_bolt',
             serializeId: 1,
-            title: 'talent_name.weapon_mountain_bracing_bolt',
-            description: 'talent_descr.weapon_mountain_bracing_bolt_2',
+            title: 'talent_name.weapon_hope_beyond_the_peaks',
+            description: 'talent_descr.weapon_hope_beyond_the_peaks_2',
             stats: [
                 new StatTable('dmg_skill', [12, 15, 18, 21, 24]),
             ],

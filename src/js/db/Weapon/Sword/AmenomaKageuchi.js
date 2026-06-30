@@ -13,8 +13,8 @@ export const AmenomaKageuchi = new DbObjectWeapon({
     statTable: weaponStatTables.AmenomaKageuchi,
     conditions: [
         new ConditionStaticRefine({
-            title: 'talent_name.weapon_amenoma_kageuta_blade',
-            description: 'talent_descr.weapon_amenoma_kageuta_blade',
+            title: 'talent_name.weapon_iwakura_succession',
+            description: 'talent_descr.weapon_iwakura_succession',
             stats: [
                 new StatTable('text_decimal', [6, 7.5, 9, 10.5, 12]),
             ],

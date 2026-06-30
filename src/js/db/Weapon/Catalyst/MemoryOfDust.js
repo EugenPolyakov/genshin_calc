@@ -33,7 +33,7 @@ export const MemoryOfDust = new DbObjectWeapon({
     conditions: [
         new ConditionStaticRefine({
             title: 'talent_name.weapon_golden_majesty',
-            description: 'talent_descr.weapon_golden_majesty_passive',
+            description: 'talent_descr.weapon_golden_majesty_2',
             stats: [
                 new StatTable('shield', [20, 25, 30, 35, 40]),
             ],
@@ -42,7 +42,7 @@ export const MemoryOfDust = new DbObjectWeapon({
             name: 'weapon_memory_of_dust',
             serializeId: 1,
             title: 'talent_name.weapon_golden_majesty',
-            description: 'talent_descr.weapon_golden_majesty',
+            description: 'talent_descr.weapon_golden_majesty_1',
             maxStacks: 5,
             levelSetting: 'weapon_refine',
             stats: [
@@ -71,7 +71,7 @@ export const MemoryOfDust = new DbObjectWeapon({
             name: 'common.char_status_shield',
             serializeId: 2,
             title: 'talent_name.weapon_golden_majesty',
-            description: 'talent_descr.weapon_golden_majesty_shield',
+            description: 'talent_descr.weapon_golden_majesty_3',
         }),
     ],
 });

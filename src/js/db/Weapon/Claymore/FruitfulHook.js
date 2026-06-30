@@ -14,8 +14,8 @@ export const FruitfulHook = new DbObjectWeapon({
     statTable: weaponStatTables.FruitfulHook,
     conditions: [
         new ConditionStaticRefine({
-            title: 'talent_name.weapon_fruitful_hook',
-            description: 'talent_descr.weapon_fruitful_hook_1',
+            title: 'talent_name.weapon_the_weight_of_falling_branches',
+            description: 'talent_descr.weapon_the_weight_of_falling_branches_1',
             stats: [
                 new StatTable('crit_rate_plunge', [16, 20, 24, 28, 32]),
             ],
@@ -23,8 +23,8 @@ export const FruitfulHook = new DbObjectWeapon({
         new ConditionBooleanRefine({
             name: 'weapon_fruitful_hook',
             serializeId: 1,
-            title: 'talent_name.weapon_fruitful_hook',
-            description: 'talent_descr.weapon_fruitful_hook_2',
+            title: 'talent_name.weapon_the_weight_of_falling_branches',
+            description: 'talent_descr.weapon_the_weight_of_falling_branches_2',
             stats: [
                 new StatTable('dmg_normal', [16, 20, 24, 28, 32]),
                 new StatTable('dmg_charged', [16, 20, 24, 28, 32]),

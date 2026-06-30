@@ -4,27 +4,23 @@ import { ConditionShatteredChains } from "../../../classes/Condition/ShatteredCh
 import { ConditionStacksSetting } from "../../../classes/Condition/Stacks/Setting";
 import { DbObjectWeapon } from "../../../classes/DbObject/Weapon";
 import { StatTable } from "../../../classes/StatTable";
-// import { weaponStatTables } from "../../generated/WeaponStatTables";
-import { atkTables } from "../AtkTables";
+import { weaponStatTables } from "../../generated/WeaponStatTables";
 
 export const ShatteredChains = new DbObjectWeapon({
-    name: 'shattered_chains',
+    name: 'chain_breaker',
     serializeId: 177,
     gameId: 15431,
     iconClass: "weapon-icon-bow-chain-breaker",
     rarity: 4,
     weapon: 'bow',
-    statTable: [
-        atkTables.s4atk44,
-        atkTables.s4atkp6,
-    ],
+    statTable: weaponStatTables.ShatteredChains,
     conditions: [
         new ConditionShatteredChains(),
         new ConditionStacksSetting({
             name: 'weapon_shattered_chains_stacks',
             serializeId: 1,
-            title: 'talent_name.weapon_shattered_chains',
-            description: 'talent_descr.weapon_shattered_chains_1',
+            title: 'talent_name.weapon_flower_feather_song',
+            description: 'talent_descr.weapon_flower_feather_song_1',
             maxStacks: 3,
             levelSetting: 'weapon_refine',
             stats: [
@@ -35,8 +31,8 @@ export const ShatteredChains = new DbObjectWeapon({
             ],
         }),
         new ConditionBooleanValue({
-            title: 'talent_name.weapon_shattered_chains',
-            description: 'talent_descr.weapon_shattered_chains_2',
+            title: 'talent_name.weapon_flower_feather_song',
+            description: 'talent_descr.weapon_flower_feather_song_2',
             levelSetting: 'weapon_refine',
             cond: 'ge',
             value: 3,

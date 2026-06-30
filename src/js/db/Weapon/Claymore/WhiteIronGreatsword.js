@@ -13,8 +13,8 @@ export const WhiteIronGreatsword = new DbObjectWeapon({
     statTable: weaponStatTables.WhiteIronGreatsword,
     conditions: [
         new ConditionStaticRefine({
-            title: 'talent_name.weapon_cull_the_weal',
-            description: 'talent_descr.weapon_cull_the_weal',
+            title: 'talent_name.weapon_cull_the_weak',
+            description: 'talent_descr.weapon_cull_the_weak',
             stats: [
                 new StatTable('text_percent', [8, 10, 12, 14, 16]),
             ],

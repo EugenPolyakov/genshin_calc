@@ -17,8 +17,8 @@ export const CrescentPike = new DbObjectWeapon({
         new ConditionStaticRefine({
             name: 'weapon_crescent_pike',
             serializeId: 1,
-            title: 'talent_name.weapon_crescent_pike',
-            description: 'talent_descr.weapon_crescent_pike',
+            title: 'talent_name.weapon_infusion_needle',
+            description: 'talent_descr.weapon_infusion_needle',
             stats: [
                 new StatTable('text_percent', [20, 25, 30, 35, 40]),
             ]

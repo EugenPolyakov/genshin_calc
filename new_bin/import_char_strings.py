@@ -304,6 +304,6 @@ for hl_id in sorted(hyperlinks):
 CsvDumper().dump(result_talents, 'char_skills.csv')
 CsvDumper().dump(result_const, 'char_talents.csv')
 CsvDumper().dump(result_names, 'char_names.csv')
-CsvDumper().dump(result_names, '../../strings_casino/char_names.csv')
-CsvDumper().dump(result_names, '../../strings_draft/char_names.csv')
+# CsvDumper().dump(result_names, '../../strings_casino/char_names.csv')
+# CsvDumper().dump(result_names, '../../strings_draft/char_names.csv')
 TextDumper().dump(texts, 'chat_texts.txt')

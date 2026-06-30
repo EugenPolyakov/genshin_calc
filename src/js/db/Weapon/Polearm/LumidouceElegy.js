@@ -15,8 +15,8 @@ export const LumidouceElegy = new DbObjectWeapon({
     statTable: weaponStatTables.LumidouceElegy,
     conditions: [
         new ConditionStaticRefine({
-            title: 'talent_name.weapon_lumidouce_elegy',
-            description: 'talent_descr.weapon_lumidouce_elegy_1',
+            title: 'talent_name.weapon_bright_dawn_overture',
+            description: 'talent_descr.weapon_bright_dawn_overture_1',
             stats: [
                 new StatTable('atk_percent', [15, 19, 23, 27, 31]),
             ],
@@ -24,8 +24,8 @@ export const LumidouceElegy = new DbObjectWeapon({
         new ConditionStacks({
             name: 'weapon_lumidouce_elegy',
             serializeId: 1,
-            title: 'talent_name.weapon_lumidouce_elegy',
-            description: 'talent_descr.weapon_lumidouce_elegy_2',
+            title: 'talent_name.weapon_bright_dawn_overture',
+            description: 'talent_descr.weapon_bright_dawn_overture_2',
             maxStacks: 2,
             levelSetting: 'weapon_refine',
             stats: [

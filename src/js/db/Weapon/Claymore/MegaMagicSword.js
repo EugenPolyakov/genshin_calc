@@ -15,8 +15,8 @@ export const MegaMagicSword = new DbObjectWeapon({
     statTable: weaponStatTables.MegaMagicSword,
     conditions: [
         new ConditionStaticRefine({
-            title: 'talent_name.weapon_ultimate_overlords_mega_magic_sword',
-            description: 'talent_descr.weapon_ultimate_overlords_mega_magic_sword_1',
+            title: 'talent_name.weapon_melussistance',
+            description: 'talent_descr.weapon_melussistance_1',
             stats: [
                 new StatTable('atk_percent', [12, 15, 18, 21, 24]),
             ],
@@ -25,8 +25,8 @@ export const MegaMagicSword = new DbObjectWeapon({
         new ConditionStacks({
             name: 'weapon_ultimate_overlords_mega_magic_sword',
             serializeId: 2,
-            title: 'talent_name.weapon_ultimate_overlords_mega_magic_sword',
-            description: 'talent_descr.weapon_ultimate_overlords_mega_magic_sword_2',
+            title: 'talent_name.weapon_melussistance',
+            description: 'talent_descr.weapon_melussistance_2',
             maxStacks: 12,
             levelSetting: 'weapon_refine',
             stats: [

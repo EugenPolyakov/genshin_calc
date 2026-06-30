@@ -15,8 +15,8 @@ export const SwordOfNarzissenkreuz = new DbObjectWeapon({
     statTable: weaponStatTables.SwordOfNarzissenkreuz,
     conditions: [
         new ConditionStaticRefine({
-            title: 'talent_name.weapon_sword_of_narzissenkreuz',
-            description: 'talent_descr.weapon_sword_of_narzissenkreuz',
+            title: 'talent_name.weapon_heros_blade',
+            description: 'talent_descr.weapon_heros_blade',
             stats: [
                 new StatTable('text_percent_dmg', [160, 200, 240, 280, 320]),
             ],

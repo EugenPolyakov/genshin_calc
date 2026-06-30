@@ -1,7 +1,13 @@
 export class StatTable {
-    constructor(stat, values) {
+    constructor (stat, values, multi) {
         this.stat = stat;
-        this.values = values;
+        if (multi != undefined) {
+            this.values = [];
+            for (var val of values) {
+                new_values.push(val * multi);
+            }
+        } else
+            this.values = values;
     }
 
     getName() {
@@ -24,12 +30,6 @@ export class StatTable {
     }
 
     multiply(multi) {
-        let new_values = [];
-
-        for (let val of this.values) {
-            new_values.push(val * multi);
-        }
-
-        return new StatTable(this.stat, new_values)
+        return new StatTable(this.stat, this.values, multi)
     }
 }

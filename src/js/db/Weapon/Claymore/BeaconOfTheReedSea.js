@@ -32,8 +32,8 @@ export const BeaconOfTheReedSea = new DbObjectWeapon({
         new ConditionStacks({
             name: 'beacon_of_the_reed_sea',
             serializeId: 1,
-            title: 'talent_name.beacon_of_the_reed_sea',
-            description: 'talent_descr.beacon_of_the_reed_sea_1',
+            title: 'talent_name.weapon_desert_watch',
+            description: 'talent_descr.weapon_desert_watch_1',
             maxStacks: 2,
             levelSetting: 'weapon_refine',
             stats: [
@@ -46,8 +46,8 @@ export const BeaconOfTheReedSea = new DbObjectWeapon({
             title: 'buffs_name.resonance_geo_shield',
         }),
         new ConditionStaticRefine({
-            title: 'talent_name.beacon_of_the_reed_sea',
-            description: 'talent_descr.beacon_of_the_reed_sea_2',
+            title: 'talent_name.weapon_desert_watch',
+            description: 'talent_descr.weapon_desert_watch_2',
             stats: [
                 new StatTable('hp_percent', [32, 40, 48, 56, 64]),
             ],

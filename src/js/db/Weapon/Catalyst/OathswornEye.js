@@ -15,8 +15,8 @@ export const OathswornEye = new DbObjectWeapon({
         new ConditionBooleanRefine({
             name: 'weapon_oathsworn_eye',
             serializeId: 1,
-            title: 'talent_name.weapon_oathsworn_eye',
-            description: 'talent_descr.weapon_oathsworn_eye',
+            title: 'talent_name.weapon_people_of_the_faltering_light',
+            description: 'talent_descr.weapon_people_of_the_faltering_light',
             stats: [
                 new StatTable('recharge', [24, 30, 36, 42, 48]),
             ],

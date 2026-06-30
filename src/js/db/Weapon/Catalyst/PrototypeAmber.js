@@ -15,8 +15,8 @@ export const PrototypeAmber = new DbObjectWeapon({
     statTable: weaponStatTables.PrototypeAmber,
     conditions: [
         new ConditionStaticRefine({
-            title: 'talent_name.weapon_prototype_amber',
-            description: 'talent_descr.weapon_prototype_amber',
+            title: 'talent_name.weapon_gilding',
+            description: 'talent_descr.weapon_gilding',
             stats: [
                 new StatTable('text_decimal', [4, 4.5, 5, 5.5, 6]),
                 new StatTable('text_percent', [4, 4.5, 5, 5.5, 6]),

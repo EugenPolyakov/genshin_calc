@@ -4,7 +4,7 @@ import { StatTable } from "../../../classes/StatTable";
 import { weaponStatTables } from "../../generated/WeaponStatTables";
 
 export const FlamebreathFlute = new DbObjectWeapon({
-    name: 'flamebreath_flute',
+    name: 'flute_of_ezpitzal',
     serializeId: 184,
     gameId: 11431,
     iconClass: "weapon-icon-sword-flute-of-ezpitzal",
@@ -15,8 +15,8 @@ export const FlamebreathFlute = new DbObjectWeapon({
         new ConditionBooleanRefine({
             name: 'weapon_flamebreath_flute',
             serializeId: 1,
-            title: 'talent_name.weapon_flamebreath_flute',
-            description: 'talent_descr.weapon_flamebreath_flute',
+            title: 'talent_name.weapon_smoke_and_mirror_mystery',
+            description: 'talent_descr.weapon_smoke_and_mirror_mystery',
             stats: [
                 new StatTable('def_percent', [16, 20, 24, 28, 32]),
             ],

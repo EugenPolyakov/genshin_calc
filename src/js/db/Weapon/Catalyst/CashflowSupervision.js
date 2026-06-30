@@ -15,8 +15,8 @@ export const CashflowSupervision = new DbObjectWeapon({
     statTable: weaponStatTables.CashflowSupervision,
     conditions: [
         new ConditionStaticRefine({
-            title: 'talent_name.weapon_cashflow_supervision',
-            description: 'talent_descr.weapon_cashflow_supervision_1',
+            title: 'talent_name.weapon_golden_blood_tide',
+            description: 'talent_descr.weapon_golden_blood_tide_1',
             stats: [
                 new StatTable('atk_percent', [16, 20, 24, 28, 32]),
             ],
@@ -24,8 +24,8 @@ export const CashflowSupervision = new DbObjectWeapon({
         new ConditionStacks({
             name: 'weapon_cashflow_supervision',
             serializeId: 1,
-            title: 'talent_name.weapon_cashflow_supervision',
-            description: 'talent_descr.weapon_cashflow_supervision_2',
+            title: 'talent_name.weapon_golden_blood_tide',
+            description: 'talent_descr.weapon_golden_blood_tide_2',
             maxStacks: 3,
             levelSetting: 'weapon_refine',
             stats: [
@@ -34,8 +34,8 @@ export const CashflowSupervision = new DbObjectWeapon({
             ],
         }),
         new ConditionBooleanValue({
-            title: 'talent_name.weapon_cashflow_supervision',
-            description: 'talent_descr.weapon_cashflow_supervision_3',
+            title: 'talent_name.weapon_golden_blood_tide',
+            description: 'talent_descr.weapon_golden_blood_tide_3',
             levelSetting: 'weapon_refine',
             cond: 'ge',
             value: 3,

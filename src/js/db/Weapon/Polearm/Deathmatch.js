@@ -29,8 +29,8 @@ export const Deathmatch = new DbObjectWeapon({
     ],
     conditions: [
         new ConditionStaticRefine({
-            title: 'talent_name.weapon_deathmatch_1',
-            description: 'talent_descr.weapon_deathmatch_1',
+            title: 'talent_name.weapon_gladiator_2',
+            description: 'talent_descr.weapon_gladiator_1',
             stats: [
                 new StatTable('atk_percent', [16, 20, 24, 28, 32]),
                 new StatTable('def_percent', [16, 20, 24, 28, 32]),
@@ -45,8 +45,8 @@ export const Deathmatch = new DbObjectWeapon({
         new ConditionBooleanRefine({
             name: 'weapon_deathmatch',
             serializeId: 1,
-            title: 'talent_name.weapon_deathmatch_2',
-            description: 'talent_descr.weapon_deathmatch_2',
+            title: 'talent_name.weapon_gladiator_3',
+            description: 'talent_descr.weapon_gladiator_2',
             stats: [
                 new StatTable('atk_percent', [24, 30, 36, 42, 48]),
             ],

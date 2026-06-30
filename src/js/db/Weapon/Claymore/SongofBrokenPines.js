@@ -14,8 +14,8 @@ export const SongofBrokenPines = new DbObjectWeapon({
     statTable: weaponStatTables.SongofBrokenPines,
     conditions: [
         new ConditionStaticRefine({
-            title: 'talent_name.weapon_song_of_broken_pines_passive',
-            description: 'talent_descr.weapon_song_of_broken_pines_passive',
+            title: 'talent_name.weapon_rebels_banner_hymn_1',
+            description: 'talent_descr.weapon_rebels_banner_hymn_1',
             stats: [
                 new StatTable('atk_percent', [16, 20, 24, 28, 32]),
             ],
@@ -23,8 +23,8 @@ export const SongofBrokenPines = new DbObjectWeapon({
         new ConditionBooleanRefine({
             name: 'weapon_song_of_broken_pines',
             serializeId: 1,
-            title: 'talent_name.weapon_song_of_broken_pines',
-            description: 'talent_descr.weapon_song_of_broken_pines',
+            title: 'talent_name.weapon_rebels_banner_hymn_2',
+            description: 'talent_descr.weapon_rebels_banner_hymn_2',
             stats: [
                 new StatTable('text_percent', [20, 25, 30, 35, 40]),
                 new StatTable('text_percent_2', [12, 15, 18, 21, 24]),

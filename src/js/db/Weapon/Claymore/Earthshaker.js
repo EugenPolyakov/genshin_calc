@@ -4,7 +4,7 @@ import { StatTable } from "../../../classes/StatTable";
 import { weaponStatTables } from "../../generated/WeaponStatTables";
 
 export const Earthshaker = new DbObjectWeapon({
-    name: 'earthshaker',
+    name: 'earth_shaker',
     serializeId: 182,
     gameId: 12431,
     iconClass: "weapon-icon-claymore-earth-shaker",
@@ -15,8 +15,8 @@ export const Earthshaker = new DbObjectWeapon({
         new ConditionBooleanRefine({
             name: 'weapon_earthshaker',
             serializeId: 1,
-            title: 'talent_name.weapon_earthshaker',
-            description: 'talent_descr.weapon_earthshaker',
+            title: 'talent_name.weapon_oath_of_qhapaq_nan',
+            description: 'talent_descr.weapon_oath_of_qhapaq_nan',
             levelSetting: 'weapon_refine',
             stats: [
                 new StatTable('dmg_skill', [16, 20, 24, 28, 32]),

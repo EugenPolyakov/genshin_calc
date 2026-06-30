@@ -18,7 +18,7 @@ export const Bell = new DbObjectWeapon({
     conditions: [
         new ConditionStaticRefine({
             title: 'talent_name.weapon_rebellious_guardian',
-            description: 'talent_descr.weapon_rebellious_guardian_passive',
+            description: 'talent_descr.weapon_rebellious_guardian_2',
             stats: [
                 new StatTable('text_percent_hp', [20, 23, 26, 29, 32]),
             ],
@@ -27,7 +27,7 @@ export const Bell = new DbObjectWeapon({
             name: 'weapon_bell',
             serializeId: 1,
             title: 'talent_name.weapon_rebellious_guardian',
-            description: 'talent_descr.weapon_rebellious_guardian',
+            description: 'talent_descr.weapon_rebellious_guardian_1',
             stats: [
                 new StatTable('dmg_all', [12, 15, 18, 21, 24]),
             ],

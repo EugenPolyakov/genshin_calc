@@ -13,8 +13,8 @@ export const RightfulReward = new DbObjectWeapon({
     statTable: weaponStatTables.RightfulReward,
     conditions: [
         new ConditionStaticRefine({
-            title: 'talent_name.weapon_rightful_reward',
-            description: 'talent_descr.weapon_rightful_reward',
+            title: 'talent_name.weapon_tip_of_the_spear',
+            description: 'talent_descr.weapon_tip_of_the_spear',
             stats: [
                 new StatTable('text_number', [8, 10, 12, 14, 16]),
             ],

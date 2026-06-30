@@ -27,8 +27,8 @@ export const JadefallsSplendor = new DbObjectWeapon({
         new ConditionBooleanRefine({
             name: 'weapon_jadefalls_splendor',
             serializeId: 1,
-            title: 'talent_name.weapon_jadefalls_splendor',
-            description: 'talent_descr.weapon_jadefalls_splendor',
+            title: 'talent_name.weapon_primordial_jade_regalia',
+            description: 'talent_descr.weapon_primordial_jade_regalia',
             stats: [
                 new StatTable('text_percent', [0.3, 0.5, 0.7, 0.9, 1.1]),
                 new StatTable('text_percent_max', [12, 20, 28, 36, 44]),

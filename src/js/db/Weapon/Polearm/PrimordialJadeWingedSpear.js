@@ -16,8 +16,8 @@ export const PrimordialJadeWingedSpear = new DbObjectWeapon({
         new ConditionStacks({
             name: 'primordial_jade_winged_spear',
             serializeId: 1,
-            title: 'talent_name.primordial_jade_winged_spear',
-            description: 'talent_descr.primordial_jade_winged_spear_1',
+            title: 'talent_name.weapon_eagle_spear_of_justice',
+            description: 'talent_descr.weapon_eagle_spear_of_justice_1',
             maxStacks: 7,
             levelSetting: 'weapon_refine',
             stats: [
@@ -26,8 +26,8 @@ export const PrimordialJadeWingedSpear = new DbObjectWeapon({
             ],
         }),
         new ConditionBooleanValue({
-            title: 'talent_name.primordial_jade_winged_spear',
-            description: 'talent_descr.primordial_jade_winged_spear_2',
+            title: 'talent_name.weapon_eagle_spear_of_justice',
+            description: 'talent_descr.weapon_eagle_spear_of_justice_2',
             levelSetting: 'weapon_refine',
             cond: 'ge',
             value: 7,

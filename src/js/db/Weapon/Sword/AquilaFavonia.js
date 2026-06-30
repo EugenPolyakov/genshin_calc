@@ -16,15 +16,15 @@ export const AquilaFavonia = new DbObjectWeapon({
     statTable: weaponStatTables.AquilaFavonia,
     conditions: [
         new ConditionStaticRefine({
-            title: 'talent_name.weapon_aquila_favonia',
-            description: 'talent_descr.bonus_atk',
+            title: 'talent_name.weapon_falcons_defiance',
+            description: 'talent_descr.weapon_falcons_defiance_1',
             stats: [
                 new StatTable('atk_percent', [20, 25, 30, 35, 40]),
             ],
         }),
         new ConditionStaticRefine({
-            title: 'talent_name.weapon_aquila_favonia',
-            description: 'talent_descr.weapon_aquila_favonia',
+            title: 'talent_name.weapon_falcons_defiance',
+            description: 'talent_descr.weapon_falcons_defiance_2',
             stats: [
                 new StatTable('text_percent_hp', [100, 115, 130, 145, 160]),
                 new StatTable('text_percent_dmg', [200, 230, 260, 290, 320]),

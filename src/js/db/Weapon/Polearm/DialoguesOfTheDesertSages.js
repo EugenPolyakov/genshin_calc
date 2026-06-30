@@ -4,7 +4,7 @@ import { StatTable } from "../../../classes/StatTable";
 import { weaponStatTables } from "../../generated/WeaponStatTables";
 
 export const DialoguesOfTheDesertSages = new DbObjectWeapon({
-    name: 'weapon_dialogues_of_the_desert_sages',
+    name: 'dialogues_of_the_desert_sages',
     serializeId: 171,
     gameId: 13426,
     iconClass: 'weapon-icon-polearm-dialogues-of-the-desert-sages',
@@ -13,8 +13,8 @@ export const DialoguesOfTheDesertSages = new DbObjectWeapon({
     statTable: weaponStatTables.DialoguesOfTheDesertSages,
     conditions: [
         new ConditionStaticRefine({
-            title: 'talent_name.weapon_dialogues_of_the_desert_sages',
-            description: 'talent_descr.weapon_dialogues_of_the_desert_sages',
+            title: 'talent_name.weapon_principle_of_equilibrium',
+            description: 'talent_descr.weapon_principle_of_equilibrium',
             stats: [
                 new StatTable('text_number', [8, 10, 12, 14, 16]),
             ],

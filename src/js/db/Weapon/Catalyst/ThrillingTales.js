@@ -13,8 +13,8 @@ export const ThrillingTales = new DbObjectWeapon({
     statTable: weaponStatTables.ThrillingTalesofDragonSlayers,
     conditions: [
         new ConditionStaticRefine({
-            title: 'talent_name.weapon_thrilling_tales',
-            description: 'talent_descr.weapon_thrilling_tales',
+            title: 'talent_name.weapon_heritage',
+            description: 'talent_descr.weapon_heritage',
             stats: [
                 new StatTable('text_percent', [24, 30, 36, 42, 48]),
             ],

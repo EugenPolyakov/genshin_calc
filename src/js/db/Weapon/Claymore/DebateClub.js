@@ -15,8 +15,8 @@ export const DebateClub = new DbObjectWeapon({
     statTable: weaponStatTables.DebateClub,
     conditions: [
         new ConditionStaticRefine({
-            title: 'talent_name.weapon_debate_club',
-            description: 'talent_descr.weapon_debate_club',
+            title: 'talent_name.weapon_blunt_conclusion',
+            description: 'talent_descr.weapon_blunt_conclusion',
             stats: [
                 new StatTable('text_percent_dmg', [60, 75, 90, 105, 120]),
             ],

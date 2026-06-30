@@ -35,8 +35,8 @@ export const LostPrayer = new DbObjectWeapon({
         new ConditionStacks({
             name: 'weapon_lost_prayer',
             serializeId: 1,
-            title: 'talent_name.weapon_lost_prayer',
-            description: 'talent_descr.weapon_lost_prayer',
+            title: 'talent_name.weapon_boundless_blessing',
+            description: 'talent_descr.weapon_boundless_blessing',
             maxStacks: 4,
             levelSetting: 'weapon_refine',
             stats: [

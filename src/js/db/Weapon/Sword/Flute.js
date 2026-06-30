@@ -15,8 +15,8 @@ export const Flute = new DbObjectWeapon({
     statTable: weaponStatTables.Flute,
     conditions: [
         new ConditionStaticRefine({
-            title: 'talent_name.weapon_flute',
-            description: 'talent_descr.weapon_flute',
+            title: 'talent_name.weapon_chord',
+            description: 'talent_descr.weapon_chord',
             stats: [
                 new StatTable('text_percent_dmg', [100, 125, 150, 175, 200]),
             ],

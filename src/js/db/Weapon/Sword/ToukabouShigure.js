@@ -15,8 +15,8 @@ export const ToukabouShigure = new DbObjectWeapon({
         new ConditionBooleanRefine({
             name: 'whisper_toukabou_shigure',
             serializeId: 1,
-            title: 'talent_name.whisper_toukabou_shigure',
-            description: 'talent_descr.whisper_toukabou_shigure',
+            title: 'talent_name.weapon_kaidan_rainfall_earthbinder',
+            description: 'talent_descr.weapon_kaidan_rainfall_earthbinder',
             stats: [
                 new StatTable('dmg_all', [16, 20, 24, 28, 32]),
             ],

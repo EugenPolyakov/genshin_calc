@@ -15,8 +15,8 @@ export const HakushinRing = new DbObjectWeapon({
         new ConditionBooleanRefine({
             name: 'weapon_white_dragon_ring',
             serializeId: 1,
-            title: 'talent_name.weapon_white_dragon_ring',
-            description: 'talent_descr.weapon_white_dragon_ring',
+            title: 'talent_name.weapon_sakura_saiguu',
+            description: 'talent_descr.weapon_sakura_saiguu',
             stats: [
                 new StatTable('dmg_own', [10, 12.5, 15, 17.5, 20]),
             ],

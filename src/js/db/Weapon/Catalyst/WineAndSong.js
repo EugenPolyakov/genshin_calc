@@ -15,8 +15,8 @@ export const WineAndSong = new DbObjectWeapon({
         new ConditionBooleanRefine({
             name: 'weapon_wine_and_song',
             serializeId: 1,
-            title: 'talent_name.weapon_wine_and_song',
-            description: 'talent_descr.weapon_wine_and_song',
+            title: 'talent_name.weapon_ever_changing',
+            description: 'talent_descr.weapon_ever_changing',
             stats: [
                 new StatTable('atk_percent', [20, 25, 30, 35, 40]),
                 new StatTable('text_percent', [14, 16, 18, 20, 22]),

@@ -13,8 +13,8 @@ export const OtherworldlyStory = new DbObjectWeapon({
     statTable: weaponStatTables.OtherworldlyStory,
     conditions: [
         new ConditionStaticRefine({
-            title: 'talent_name.weapon_otherworldly_story',
-            description: 'talent_descr.weapon_otherworldly_story',
+            title: 'talent_name.weapon_energy_shower',
+            description: 'talent_descr.weapon_energy_shower',
             stats: [
                 new StatTable('text_percent_hp', [1, 1.25, 1.5, 1.75, 2]),
             ],

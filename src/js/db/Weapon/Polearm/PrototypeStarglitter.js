@@ -15,8 +15,8 @@ export const PrototypeStarglitter = new DbObjectWeapon({
         new ConditionStacks({
             name: 'prototype_starglitter',
             serializeId: 1,
-            title: 'talent_name.prototype_starglitter',
-            description: 'talent_descr.prototype_starglitter',
+            title: 'talent_name.weapon_magic_affinity',
+            description: 'talent_descr.weapon_magic_affinity',
             maxStacks: 2,
             levelSetting: 'weapon_refine',
             stats: [

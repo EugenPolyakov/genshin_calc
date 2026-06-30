@@ -2,25 +2,26 @@ import { ConditionStacks } from "../../../classes/Condition/Stacks";
 import { DbObjectWeapon } from "../../../classes/DbObject/Weapon";
 import { StatTable } from "../../../classes/StatTable";
 import { weaponStatTables } from "../../generated/WeaponStatTables";
+import { weaponDataTable } from "../../generated/WeaponStatTables";
 
 export const Cloudforged = new DbObjectWeapon({
     name: 'cloudforged',
     serializeId: 174,
-    gameId: 15426,
+    gameId: weaponDataTable.Cloudforged.gameId,
     iconClass: "weapon-icon-bow-cloudforged",
-    rarity: 4,
-    weapon: 'bow',
+    rarity: weaponDataTable.Cloudforged.rarity,
+    weapon: weaponDataTable.Cloudforged.weapon,
     statTable: weaponStatTables.Cloudforged,
     conditions: [
         new ConditionStacks({
             name: 'weapon_cloudforged',
             serializeId: 1,
-            title: 'talent_name.weapon_cloudforged',
-            description: 'talent_descr.weapon_cloudforged',
+            title: 'talent_name.weapon_crag_chiseled_forge',
+            description: 'talent_descr.weapon_crag_chiseled_forge',
             maxStacks: 2,
             levelSetting: 'weapon_refine',
             stats: [
-                new StatTable('mastery', [40, 50, 60, 70, 80]),
+                new StatTable('mastery', weaponDataTable.Cloudforged.Weapon_Bow_Ultimatum.param1),
             ],
         }),
     ],

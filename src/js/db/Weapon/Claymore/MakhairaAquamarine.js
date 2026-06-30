@@ -27,8 +27,8 @@ export const MakhairaAquamarine = new DbObjectWeapon({
         new ConditionBooleanRefine({
             name: 'weapon_desert_pavilion',
             serializeId: 1,
-            title: 'talent_name.desert_pavilion',
-            description: 'talent_descr.desert_pavilion',
+            title: 'talent_name.weapon_desert_pavilion_1',
+            description: 'talent_descr.weapon_desert_pavilion',
             stats: [
                 new StatTable('text_percent', [24, 30, 36, 42, 48]),
             ],

@@ -15,8 +15,8 @@ export const HarbingerofDawn = new DbObjectWeapon({
         new ConditionBooleanRefine({
             name: 'weapon_harbinger_of_dawn',
             serializeId: 1,
-            title: 'talent_name.weapon_harbinger_of_dawn',
-            description: 'talent_descr.weapon_harbinger_of_dawn',
+            title: 'talent_name.weapon_vigorous',
+            description: 'talent_descr.weapon_vigorous',
             stats: [
                 new StatTable('crit_rate', [14, 17.5, 21, 24.5, 28]),
             ],

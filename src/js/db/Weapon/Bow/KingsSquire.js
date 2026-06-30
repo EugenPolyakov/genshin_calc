@@ -17,8 +17,8 @@ export const KingsSquire = new DbObjectWeapon({
         new ConditionBooleanRefine({
             name: 'weapon_kings_squire',
             serializeId: 1,
-            title: 'talent_name.labyrinth_lords_instruction',
-            description: 'talent_descr.labyrinth_lords_instruction',
+            title: 'talent_name.weapon_labyrinth_lords_instruction',
+            description: 'talent_descr.weapon_labyrinth_lords_instruction',
             stats: [
                 new StatTable('mastery', [60, 80, 100, 120, 140]),
                 new StatTable('text_percent_dmg', [100, 120, 140, 160, 180]),

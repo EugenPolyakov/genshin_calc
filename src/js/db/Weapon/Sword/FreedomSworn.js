@@ -14,8 +14,8 @@ export const FreedomSworn = new DbObjectWeapon({
     statTable: weaponStatTables.FreedomSworn,
     conditions: [
         new ConditionStaticRefine({
-            title: 'talent_name.weapon_freedom_sworn_passive',
-            description: 'talent_descr.weapon_freedom_sworn_passive',
+            title: 'talent_name.weapon_revolutionary_chorale_1',
+            description: 'talent_descr.weapon_revolutionary_chorale_1',
             stats: [
                 new StatTable('dmg_all', [10, 12.5, 15, 17.5, 20]),
             ],
@@ -23,8 +23,8 @@ export const FreedomSworn = new DbObjectWeapon({
         new ConditionBooleanRefine({
             name: 'weapon_freedom_sworn',
             serializeId: 1,
-            title: 'talent_name.weapon_freedom_sworn',
-            description: 'talent_descr.weapon_freedom_sworn',
+            title: 'talent_name.weapon_revolutionary_chorale_2',
+            description: 'talent_descr.weapon_revolutionary_chorale_2',
             stats: [
                 new StatTable('text_percent', [20, 25, 30, 35, 40]),
                 new StatTable('text_percent_2', [16, 20, 24, 28, 32]),

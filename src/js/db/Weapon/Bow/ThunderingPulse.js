@@ -14,8 +14,8 @@ export const ThunderingPulse = new DbObjectWeapon({
     statTable: weaponStatTables.ThunderingPulse,
     conditions: [
         new ConditionStaticRefine({
-            title: 'talent_name.weapon_thundering_pulse',
-            description: 'talent_descr.weapon_thundering_pulse',
+            title: 'talent_name.weapon_rule_by_thunder',
+            description: 'talent_descr.weapon_rule_by_thunder_1',
             stats: [
                 new StatTable('atk_percent', [20, 25, 30, 35, 40]),
             ],
@@ -23,8 +23,8 @@ export const ThunderingPulse = new DbObjectWeapon({
         new ConditionDropdown({
             name: 'weapon_thundering_pulse_2',
             serializeId: 1,
-            title: 'talent_name.weapon_thundering_pulse',
-            description: 'talent_descr.weapon_thundering_pulse_2',
+            title: 'talent_name.weapon_rule_by_thunder',
+            description: 'talent_descr.weapon_rule_by_thunder_2',
             suggesterValue: 3,
             values: [
                 {

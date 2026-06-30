@@ -16,7 +16,7 @@ let weaponBuff = new PostEffectStatsHP({
 });
 
 export const RingOfCeiba = new DbObjectWeapon({
-    name: 'ring_of_ceiba',
+    name: 'ring_of_yaxche',
     serializeId: 180,
     gameId: 14431,
     iconClass: "weapon-icon-catalyst-ring-of-yaxche",
@@ -27,8 +27,8 @@ export const RingOfCeiba = new DbObjectWeapon({
         new ConditionBooleanRefine({
             name: 'weapon_ring_of_ceiba',
             serializeId: 1,
-            title: 'talent_name.weapon_ring_of_ceiba',
-            description: 'talent_descr.weapon_ring_of_ceiba',
+            title: 'talent_name.weapon_echoes_of_the_plentiful_land',
+            description: 'talent_descr.weapon_echoes_of_the_plentiful_land',
             stats: [
                 new StatTable('text_percent', [0.6, 0.7, 0.8, 0.9, 1]),
                 new StatTable('text_percent_max', [16, 20, 24, 28, 32]),

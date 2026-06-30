@@ -7,7 +7,7 @@
         "dev": "npm run build",
         "start": "node server.js --port 52216",
         "build": "npm run build:lang && webpack --mode=production",
-        "build:lang": "pythonw bin/gen_string_table.py base casino",
+        "build:lang": "pythonw bin/gen_string_table.py base",
         "watch": "npm run build:lang && webpack --mode=development --watch",
         "build:draft": "npm run build:draft:lang && webpack --config ./webpack.config.draft.js --mode=production",
         "build:draft:lang": "pythonw bin/gen_string_table.py draft",

@@ -15,8 +15,8 @@ export const BlackSword = new DbObjectWeapon({
     statTable: weaponStatTables.BlackSword,
     conditions: [
         new ConditionStaticRefine({
-            title: 'talent_name.weapon_black_sword',
-            description: 'talent_descr.weapon_black_sword',
+            title: 'talent_name.weapon_justice',
+            description: 'talent_descr.weapon_justice',
             stats: [
                 new StatTable('dmg_normal', [20, 25, 30, 35, 40]),
                 new StatTable('dmg_charged', [20, 25, 30, 35, 40]),

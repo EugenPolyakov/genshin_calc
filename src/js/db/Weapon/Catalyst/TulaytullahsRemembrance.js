@@ -17,8 +17,8 @@ export const TulaytullahsRemembrance = new DbObjectWeapon({
         new ConditionStaticRefine({
             name: 'weapon_tulaytullahs_remembrance',
             serializeId: 1,
-            title: 'talent_name.weapon_tulaytullahs_remembrance',
-            description: 'talent_descr.weapon_tulaytullahs_remembrance_1',
+            title: 'talent_name.weapon_bygone_azure_teardrop',
+            description: 'talent_descr.weapon_bygone_azure_teardrop_1',
             stats: [
                 new StatTable('atk_speed_normal', [10, 12.5, 15, 17.5, 20]),
             ],
@@ -26,8 +26,8 @@ export const TulaytullahsRemembrance = new DbObjectWeapon({
         new ConditionStacks({
             name: 'weapon_tulaytullahs_remembrance_2',
             serializeId: 2,
-            title: 'talent_name.weapon_tulaytullahs_remembrance',
-            description: 'talent_descr.weapon_tulaytullahs_remembrance_2',
+            title: 'talent_name.weapon_bygone_azure_teardrop',
+            description: 'talent_descr.weapon_bygone_azure_teardrop_2',
             maxStacks: 10,
             levelSetting: 'weapon_refine',
             dropdownClass: 'stack-percent',

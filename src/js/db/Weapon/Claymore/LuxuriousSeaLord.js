@@ -15,9 +15,9 @@ export const LuxuriousSeaLord = new DbObjectWeapon({
     statTable: weaponStatTables.LuxuriousSeaLord,
     conditions: [
         new ConditionStaticRefine({
-            // title: 'talent_name.weapon_luxurious_sea_lord',
-            title: 'weapon_name.luxurious_sea_lord',
-            description: 'talent_descr.weapon_luxurious_sea_lord',
+            title: 'talent_name.weapon_oceanic_victory',
+            //title: 'weapon_name.luxurious_sea_lord',
+            description: 'talent_descr.weapon_oceanic_victory',
             stats: [
                 new StatTable('dmg_burst', [12, 15, 18, 21, 24]),
                 new StatTable('text_percent_dmg', [100, 125, 150, 175, 200]),

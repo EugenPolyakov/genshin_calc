@@ -25,21 +25,21 @@ export const TheFirstGreatMagic = new DbObjectWeapon({
     conditions: [
         new ConditionCalcElements({}),
         new ConditionStaticRefine({
-            title: 'talent_name.weapon_the_first_great_magic_1',
-            description: 'talent_descr.weapon_the_first_great_magic_1',
+            title: 'talent_name.weapon_parsifal_the_great_1',
+            description: 'talent_descr.weapon_parsifal_the_great_1',
             stats: [
                 new StatTable('dmg_charged', [16, 20, 24, 28, 32]),
             ],
         }),
         new ConditionStaticRefineFirstMagic({
-            title: 'talent_name.weapon_the_first_great_magic_2',
-            description: 'talent_descr.weapon_the_first_great_magic_2',
+            title: 'talent_name.weapon_parsifal_the_great_2',
+            description: 'talent_descr.weapon_parsifal_the_great_2',
             levelSetting: 'weapon_refine',
             effectLevelSetting: 'party_elements_same_inc',
             stats: [
-                new StatTable('text_number_1', atk_table_1),
-                new StatTable('text_number_2', atk_table_2),
-                new StatTable('text_number_3', atk_table_3),
+                new StatTable('text_number_percent_1', atk_table_1),
+                new StatTable('text_number_percent_2', atk_table_2),
+                new StatTable('text_number_percent_3', atk_table_3),
             ],
             realStats: [
                 new StatTable('', [
@@ -50,14 +50,14 @@ export const TheFirstGreatMagic = new DbObjectWeapon({
             ],
         }),
         new ConditionStaticRefineFirstMagic({
-            title: 'talent_name.weapon_the_first_great_magic_3',
-            description: 'talent_descr.weapon_the_first_great_magic_3',
+            title: 'talent_name.weapon_parsifal_the_great_3',
+            description: 'talent_descr.weapon_parsifal_the_great_3',
             levelSetting: 'weapon_refine',
             effectLevelSetting: 'party_elements_different',
             stats: [
-                new StatTable('text_number_1', ms_table_1),
-                new StatTable('text_number_2', ms_table_2),
-                new StatTable('text_number_3', ms_table_3),
+                new StatTable('text_number_percent_1', ms_table_1),
+                new StatTable('text_number_percent_2', ms_table_2),
+                new StatTable('text_number_percent_3', ms_table_3),
             ],
             realStats: [
                 new StatTable('', [

@@ -15,8 +15,8 @@ export const MitternachtsWaltz = new DbObjectWeapon({
         new ConditionBooleanRefine({
             name: 'weapon_mitternachts_waltz_1',
             serializeId: 1,
-            title: 'talent_name.weapon_mitternachts_waltz',
-            description: 'talent_descr.weapon_mitternachts_waltz_1',
+            title: 'talent_name.weapon_evernight_duet',
+            description: 'talent_descr.weapon_evernight_duet_1',
             stats: [
                 new StatTable('dmg_skill', [20, 25, 30, 35, 40]),
             ],
@@ -24,8 +24,8 @@ export const MitternachtsWaltz = new DbObjectWeapon({
         new ConditionBooleanRefine({
             name: 'weapon_mitternachts_waltz_2',
             serializeId: 2,
-            title: 'talent_name.weapon_mitternachts_waltz',
-            description: 'talent_descr.weapon_mitternachts_waltz_2',
+            title: 'talent_name.weapon_evernight_duet',
+            description: 'talent_descr.weapon_evernight_duet_2',
             stats: [
                 new StatTable('dmg_normal', [20, 25, 30, 35, 40]),
             ],

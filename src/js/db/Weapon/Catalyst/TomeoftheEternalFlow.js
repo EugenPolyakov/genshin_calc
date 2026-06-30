@@ -15,8 +15,8 @@ export const TomeoftheEternalFlow = new DbObjectWeapon({
     statTable: weaponStatTables.TomeoftheEternalFlow,
     conditions: [
         new ConditionStaticRefine({
-            title: 'talent_name.weapon_tome_of_the_eternal_flow',
-            description: 'talent_descr.weapon_tome_of_the_eternal_flow_1',
+            title: 'talent_name.weapon_aeon_wave',
+            description: 'talent_descr.weapon_aeon_wave_1',
             stats: [
                 new StatTable('hp_percent', [16, 20, 24, 28, 32]),
             ],
@@ -24,8 +24,8 @@ export const TomeoftheEternalFlow = new DbObjectWeapon({
         new ConditionStacks({
             name: 'weapon_tome_of_the_eternal_flow',
             serializeId: 1,
-            title: 'talent_name.weapon_tome_of_the_eternal_flow',
-            description: 'talent_descr.weapon_tome_of_the_eternal_flow_2',
+            title: 'talent_name.weapon_aeon_wave',
+            description: 'talent_descr.weapon_aeon_wave_2',
             maxStacks: 3,
             levelSetting: 'weapon_refine',
             stats: [
@@ -33,8 +33,8 @@ export const TomeoftheEternalFlow = new DbObjectWeapon({
             ],
         }),
         new ConditionStaticRefine({
-            title: 'talent_name.weapon_tome_of_the_eternal_flow',
-            description: 'talent_descr.weapon_tome_of_the_eternal_flow_3',
+            title: 'talent_name.weapon_aeon_wave',
+            description: 'talent_descr.weapon_aeon_wave_3',
             stats: [
                 new StatTable('text_value', [8, 9, 10, 11, 12]),
             ],

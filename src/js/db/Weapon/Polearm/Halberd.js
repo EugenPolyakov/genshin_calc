@@ -15,8 +15,8 @@ export const Halberd = new DbObjectWeapon({
     statTable: weaponStatTables.Halberd,
     conditions: [
         new ConditionStaticRefine({
-            title: 'talent_name.weapon_halberd',
-            description: 'talent_descr.weapon_halberd',
+            title: 'talent_name.weapon_heavy',
+            description: 'talent_descr.weapon_heavy',
             stats: [
                 new StatTable('text_percent_dmg', [160, 200, 240, 280, 320]),
             ]

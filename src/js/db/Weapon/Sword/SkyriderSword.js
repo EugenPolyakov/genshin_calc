@@ -15,8 +15,8 @@ export const SkyriderSword = new DbObjectWeapon({
         new ConditionBooleanRefine({
             name: 'weapon_skyrider_sword',
             serializeId: 1,
-            title: 'talent_name.weapon_skyrider_sword',
-            description: 'talent_descr.weapon_skyrider_sword',
+            title: 'talent_name.weapon_determination',
+            description: 'talent_descr.weapon_determination',
             stats: [
                 new StatTable('atk_percent', [12, 15, 18, 21, 24]),
                 new StatTable('move_speed', [12, 15, 18, 21, 24]),

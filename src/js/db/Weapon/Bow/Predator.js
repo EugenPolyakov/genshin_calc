@@ -20,12 +20,12 @@ export const Predator = new DbObjectWeapon({
             name: 'common.ps_network',
             serializeId: 1,
             title: 'talent_name.ps_network',
-            description: 'talent_descr.ps_network',
+            description: 'talent_descr.weapon_strong_strike_3',
         }),
         new ConditionStatic({
-            // title: 'talent_name.weapon_predator',
+            // title: 'talent_name.weapon_strong_strike',
             title: 'weapon_name.predator',
-            description: 'talent_descr.weapon_predator_1',
+            description: 'talent_descr.weapon_strong_strike_1',
             stats: {
                 atk: 66,
             },
@@ -41,9 +41,9 @@ export const Predator = new DbObjectWeapon({
         new ConditionStacks({
             name: 'weapon_predator',
             serializeId: 2,
-            // title: 'talent_name.weapon_predator',
+            // title: 'talent_name.weapon_strong_strike',
             title: 'weapon_name.predator',
-            description: 'talent_descr.weapon_predator_2',
+            description: 'talent_descr.weapon_strong_strike_2',
             maxStacks: 2,
             stats: [
                 new StatTable('dmg_normal', [10]),

@@ -16,8 +16,8 @@ export const BalladOfTheFjords = new DbObjectWeapon({
     conditions: [
         new ConditionCalcElements({}),
         new ConditionStaticRefine({
-            title: 'talent_name.weapon_ballad_of_the_fjords',
-            description: 'talent_descr.weapon_ballad_of_the_fjords',
+            title: 'talent_name.weapon_tales_of_the_tundra',
+            description: 'talent_descr.weapon_tales_of_the_tundra',
             levelSetting: 'weapon_refine',
             stats: [
                 new StatTable('mastery', [120, 150, 180, 210, 240]),

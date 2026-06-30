@@ -15,8 +15,8 @@ export const EyeOfPerception = new DbObjectWeapon({
     statTable: weaponStatTables.EyeofPerception,
     conditions: [
         new ConditionStaticRefine({
-            title: 'talent_name.weapon_eye_of_perception',
-            description: 'talent_descr.weapon_eye_of_perception',
+            title: 'talent_name.weapon_echo',
+            description: 'talent_descr.weapon_echo',
             stats: [
                 new StatTable('text_percent_dmg', [240, 270, 300, 330, 360]),
                 new StatTable('text_percent_chance', [50]),

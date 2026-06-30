@@ -14,8 +14,8 @@ export const FleuveCendreFerryman = new DbObjectWeapon({
     statTable: weaponStatTables.FleuveCendreFerryman,
     conditions: [
         new ConditionStaticRefine({
-            title: 'talent_name.weapon_fleuve_cendre_ferryman',
-            description: 'talent_descr.weapon_fleuve_cendre_ferryman_1',
+            title: 'talent_name.weapon_ironbone',
+            description: 'talent_descr.weapon_ironbone_1',
             stats: [
                 new StatTable('crit_rate_skill', [8, 10, 12, 14, 16]),
             ],
@@ -23,8 +23,8 @@ export const FleuveCendreFerryman = new DbObjectWeapon({
         new ConditionBooleanRefine({
             name: 'weapon_fleuve_cendre_ferryman',
             serializeId: 1,
-            title: 'talent_name.weapon_fleuve_cendre_ferryman',
-            description: 'talent_descr.weapon_fleuve_cendre_ferryman_2',
+            title: 'talent_name.weapon_ironbone',
+            description: 'talent_descr.weapon_ironbone_2',
             stats: [
                 new StatTable('recharge', [16, 20, 24, 28, 32]),
             ],

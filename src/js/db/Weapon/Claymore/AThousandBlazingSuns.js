@@ -5,7 +5,6 @@ import { ConditionStaticRefine } from "../../../classes/Condition/Static/Refine"
 import { DbObjectWeapon } from "../../../classes/DbObject/Weapon";
 import { StatTable } from "../../../classes/StatTable";
 import { weaponStatTables } from "../../generated/WeaponStatTables";
-import { atkTables } from "../AtkTables";
 
 const NightSoulRatio = 0.75;
 
@@ -29,16 +28,16 @@ export const AThousandBlazingSuns = new DbObjectWeapon({
         new ConditionBooleanRefine({
             name: 'weapon_a_thousand_blazing_suns',
             serializeId: 2,
-            title: 'talent_name.weapon_a_thousand_blazing_suns',
-            description: 'talent_descr.weapon_a_thousand_blazing_suns_1',
+            title: 'talent_name.weapon_sunset_reignites_the_dawn',
+            description: 'talent_descr.weapon_sunset_reignites_the_dawn_1',
             stats: [
                 new StatTable('crit_dmg', [20, 25, 30, 35, 40]),
                 new StatTable('atk_percent', [28, 37, 42, 49, 56]),
             ],
         }),
         new ConditionStaticRefine({
-            title: 'talent_name.weapon_a_thousand_blazing_suns',
-            description: 'talent_descr.weapon_a_thousand_blazing_suns_2',
+            title: 'talent_name.weapon_sunset_reignites_the_dawn',
+            description: 'talent_descr.weapon_sunset_reignites_the_dawn_2',
             stats: [
                 new StatTable('text_petcent', [100 * NightSoulRatio]),
                 new StatTable('crit_dmg', [20 * NightSoulRatio, 25 * NightSoulRatio, 30 * NightSoulRatio, 35 * NightSoulRatio, 40 * NightSoulRatio]),

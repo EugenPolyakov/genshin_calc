@@ -4,7 +4,7 @@ import { StatTable } from "../../../classes/StatTable";
 import { weaponStatTables } from "../../generated/WeaponStatTables";
 
 export const RainbowsTrail = new DbObjectWeapon({
-    name: 'rainbows_trail',
+    name: 'footprint_of_the_rainbow',
     serializeId: 183,
     gameId: 13431,
     iconClass: "weapon-icon-polearm-footprint-of-the-rainbow",
@@ -15,8 +15,8 @@ export const RainbowsTrail = new DbObjectWeapon({
         new ConditionBooleanRefine({
             name: 'weapon_rainbows_trail',
             serializeId: 1,
-            title: 'talent_name.weapon_rainbows_trail',
-            description: 'talent_descr.weapon_rainbows_trail',
+            title: 'talent_name.weapon_pact_of_flowing_springs',
+            description: 'talent_descr.weapon_pact_of_flowing_springs',
             stats: [
                 new StatTable('def_percent', [16, 20, 24, 28, 32]),
             ],

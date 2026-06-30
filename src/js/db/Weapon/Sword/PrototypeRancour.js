@@ -15,8 +15,8 @@ export const PrototypeRancour = new DbObjectWeapon({
         new ConditionStacks({
             name: 'weapon_prototype_rancour',
             serializeId: 1,
-            title: 'talent_name.weapon_prototype_rancour',
-            description: 'talent_descr.weapon_prototype_rancour',
+            title: 'talent_name.weapon_smashed_stone',
+            description: 'talent_descr.weapon_smashed_stone',
             maxStacks: 4,
             levelSetting: 'weapon_refine',
             stats: [

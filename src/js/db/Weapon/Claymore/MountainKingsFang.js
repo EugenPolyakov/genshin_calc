@@ -4,7 +4,7 @@ import { StatTable } from "../../../classes/StatTable";
 import { weaponStatTables } from "../../generated/WeaponStatTables";
 
 export const MountainKingsFang = new DbObjectWeapon({
-    name: 'mountain_kings_fang',
+    name: 'fang_of_the_mountain_king',
     serializeId: 181,
     gameId: 12513,
     iconClass: "weapon-icon-claymore-fang-of-the-mountain-king",
@@ -15,8 +15,8 @@ export const MountainKingsFang = new DbObjectWeapon({
         new ConditionStacks({
             name: 'weapon_mountain_kings_fang',
             serializeId: 1,
-            title: 'talent_name.weapon_mountain_kings_fang',
-            description: 'talent_descr.weapon_mountain_kings_fang',
+            title: 'talent_name.weapon_turquoise_hunt',
+            description: 'talent_descr.weapon_turquoise_hunt',
             maxStacks: 6,
             levelSetting: 'weapon_refine',
             stats: [

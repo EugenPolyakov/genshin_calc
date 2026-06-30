@@ -13,8 +13,8 @@ export const SharpshooterOath = new DbObjectWeapon({
     statTable: weaponStatTables.SharpshootersOath,
     conditions: [
         new ConditionStaticRefine({
-            title: 'talent_name.weapon_sharpshooter_oath',
-            description: 'talent_descr.weapon_sharpshooter_oath',
+            title: 'talent_name.weapon_precise',
+            description: 'talent_descr.weapon_precise',
             stats: [
                 new StatTable('dmg_weak', [24, 30, 36, 42, 48]),
             ],

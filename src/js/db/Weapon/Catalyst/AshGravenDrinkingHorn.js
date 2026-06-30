@@ -15,8 +15,8 @@ export const AshGravenDrinkingHorn = new DbObjectWeapon({
     statTable: weaponStatTables.AshGravenDrinkingHorn,
     conditions: [
         new ConditionStaticRefine({
-            title: 'talent_name.weapon_ash_graven_drinking_horn',
-            description: 'talent_descr.weapon_ash_graven_drinking_horn',
+            title: 'talent_name.weapon_tupacs_grip',
+            description: 'talent_descr.weapon_tupacs_grip',
             stats: [
                 new StatTable('text_percent_dmg', [40, 50, 60, 70, 80]),
             ],

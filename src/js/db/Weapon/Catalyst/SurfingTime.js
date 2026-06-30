@@ -5,7 +5,7 @@ import { StatTable } from "../../../classes/StatTable";
 import { weaponStatTables } from "../../generated/WeaponStatTables";
 
 export const SurfingTime = new DbObjectWeapon({
-    name: 'surfing_time',
+    name: 'surfs_up',
     serializeId: 178,
     gameId: 14516,
     iconClass: "weapon-icon-catalyst-surfs-up",
@@ -14,8 +14,8 @@ export const SurfingTime = new DbObjectWeapon({
     statTable: weaponStatTables.SurfingTime,
     conditions: [
         new ConditionStaticRefine({
-            title: 'talent_name.weapon_surfing_time',
-            description: 'talent_descr.weapon_surfing_time_1',
+            title: 'talent_name.weapon_aqua_remembrance',
+            description: 'talent_descr.weapon_aqua_remembrance_1',
             stats: [
                 new StatTable('hp_percent', [20, 25, 30, 35, 40]),
             ],
@@ -23,8 +23,8 @@ export const SurfingTime = new DbObjectWeapon({
         new ConditionStacks({
             name: 'weapon_surfing_time',
             serializeId: 1,
-            title: 'talent_name.weapon_surfing_time',
-            description: 'talent_descr.weapon_surfing_time_2',
+            title: 'talent_name.weapon_aqua_remembrance',
+            description: 'talent_descr.weapon_aqua_remembrance_2',
             maxStacks: 4,
             levelSetting: 'weapon_refine',
             stats: [

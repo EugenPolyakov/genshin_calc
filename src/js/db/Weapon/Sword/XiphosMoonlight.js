@@ -26,8 +26,8 @@ export const XiphosMoonlight = new DbObjectWeapon({
         new ConditionBooleanRefine({
             name: 'whisper_of_the_jinn',
             serializeId: 1,
-            title: 'talent_name.whisper_of_the_jinn',
-            description: 'talent_descr.whisper_of_the_jinn',
+            title: 'talent_name.weapon_jinnis_whisper',
+            description: 'talent_descr.weapon_jinnis_whisper',
             stats: [
                 new StatTable('text_percent', [0.036, 0.045, 0.054, 0.063, 0.072]),
             ],

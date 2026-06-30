@@ -15,15 +15,15 @@ export const SkywardHarp = new DbObjectWeapon({
     statTable: weaponStatTables.SkywardHarp,
     conditions: [
         new ConditionStaticRefine({
-            title: 'talent_name.weapon_skyward_harp',
-            description: 'talent_descr.bonus_crit_dmg',
+            title: 'talent_name.weapon_echoing_ballad',
+            description: 'talent_descr.weapon_echoing_ballad_1',
             stats: [
                 new StatTable('crit_dmg', [20, 25, 30, 35, 40]),
             ],
         }),
         new ConditionStaticRefine({
-            title: 'talent_name.weapon_skyward_harp',
-            description: 'talent_descr.weapon_skyward_harp',
+            title: 'talent_name.weapon_echoing_ballad',
+            description: 'talent_descr.weapon_echoing_ballad_2',
             stats: [
                 new StatTable('text_percent_chance', [60, 70, 80, 90, 100]),
                 new StatTable('text_percent_dmg', [125]),

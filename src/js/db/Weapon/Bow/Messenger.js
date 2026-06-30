@@ -15,8 +15,8 @@ export const Messenger = new DbObjectWeapon({
     statTable: weaponStatTables.Messenger,
     conditions: [
         new ConditionStaticRefine({
-            title: 'talent_name.weapon_messenger',
-            description: 'talent_descr.weapon_messenger',
+            title: 'talent_name.weapon_archers_message',
+            description: 'talent_descr.weapon_archers_message',
             stats: [
                 new StatTable('text_percent_dmg', [100, 125, 150, 175, 200]),
             ],

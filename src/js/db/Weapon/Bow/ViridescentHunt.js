@@ -15,8 +15,8 @@ export const ViridescentHunt = new DbObjectWeapon({
     statTable: weaponStatTables.ViridescentHunt,
     conditions: [
         new ConditionStaticRefine({
-            title: 'talent_name.weapon_viridescent_hunt',
-            description: 'talent_descr.weapon_viridescent_hunt',
+            title: 'talent_name.weapon_verdant_wind',
+            description: 'talent_descr.weapon_verdant_wind',
             stats: [
                 new StatTable('text_percent_dmg', [40, 50, 60, 70, 80]),
                 new StatTable('text_percent_chance', [50]),

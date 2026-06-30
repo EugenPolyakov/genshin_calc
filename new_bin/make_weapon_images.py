@@ -6,6 +6,7 @@ from lib.genshin.datafiles.weapons import IGNORED_WEAPONS, WeaponData
 from lib.genshin.datafiles.lang import LangData
 from lib.genshin.utils import convert_id
 from lib.genshin.sprite import ImageGenerator
+from static import WEAPON_TYPES as weapon_types
 
 dirname = os.path.dirname(__file__)
 img_path = os.path.join(dirname, '../data/images/')
@@ -14,14 +15,6 @@ weapon_data = WeaponData()
 lang = LangData('EN')
 weapons = {}
 images = {}
-
-weapon_types = {
-    'WEAPON_SWORD_ONE_HAND': 'sword',
-    'WEAPON_CLAYMORE': 'claymore',
-    'WEAPON_POLE': 'polearm',
-    'WEAPON_CATALYST': 'catalyst',
-    'WEAPON_BOW': 'bow',
-}
 
 weapons = {
     'sword': ['weapon-icon-sword-unknown'],

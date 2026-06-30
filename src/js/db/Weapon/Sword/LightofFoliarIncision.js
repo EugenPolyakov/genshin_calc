@@ -18,8 +18,8 @@ export const LightofFoliarIncision = new DbObjectWeapon({
     statTable: weaponStatTables.LightofFoliarIncision,
     conditions: [
         new ConditionStaticRefine({
-            title: 'talent_name.weapon_light_of_foliar_incision',
-            description: 'talent_descr.weapon_light_of_foliar_incision_1',
+            title: 'talent_name.weapon_whitemoon_bristle',
+            description: 'talent_descr.weapon_whitemoon_bristle_1',
             stats: [
                 new StatTable('crit_rate', [4, 5, 6, 7, 8]),
             ],
@@ -27,8 +27,8 @@ export const LightofFoliarIncision = new DbObjectWeapon({
         new ConditionBooleanRefine({
             name: 'weapon_light_of_foliar_incision',
             serializeId: 1,
-            title: 'talent_name.weapon_light_of_foliar_incision',
-            description: 'talent_descr.weapon_light_of_foliar_incision_2',
+            title: 'talent_name.weapon_whitemoon_bristle',
+            description: 'talent_descr.weapon_whitemoon_bristle_2',
             stats: [
                 new StatTable('text_percent', [120, 150, 180, 210, 240]),
             ],

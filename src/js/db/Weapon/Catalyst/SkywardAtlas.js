@@ -15,8 +15,8 @@ export const SkywardAtlas = new DbObjectWeapon({
     statTable: weaponStatTables.SkywardAtlas,
     conditions: [
         new ConditionStaticRefine({
-            title: 'talent_name.weapon_skyward_atlas',
-            description: 'talent_descr.weapon_skyward_atlas',
+            title: 'talent_name.weapon_wandering_clouds',
+            description: 'talent_descr.weapon_wandering_clouds',
             stats: [
                 new StatTable('dmg_anemo', [12, 15, 18, 21, 24]),
                 new StatTable('dmg_geo', [12, 15, 18, 21, 24]),

@@ -13,8 +13,8 @@ export const SacrificialGreatsword = new DbObjectWeapon({
     statTable: weaponStatTables.SacrificialGreatsword,
     conditions: [
         new ConditionStaticRefine({
-            title: 'talent_name.weapon_sacrificial_passive',
-            description: 'talent_descr.weapon_sacrificial_passive',
+            title: 'talent_name.weapon_composed',
+            description: 'talent_descr.weapon_composed',
             stats: [
                 new StatTable('text_percent', [40, 50, 60, 70, 80]),
                 new StatTable('text_cooldown', [30, 26, 22, 19, 16]),

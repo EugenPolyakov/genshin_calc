@@ -14,8 +14,8 @@ export const Verdict = new DbObjectWeapon({
     statTable: weaponStatTables.Verdict,
     conditions: [
         new ConditionStaticRefine({
-            title: 'talent_name.weapon_verdict',
-            description: 'talent_descr.weapon_verdict_1',
+            title: 'talent_name.weapon_many_oaths_of_dawn_and_dusk',
+            description: 'talent_descr.weapon_many_oaths_of_dawn_and_dusk_1',
             stats: [
                 new StatTable('atk_percent', [20, 25, 30, 35, 40]),
             ],
@@ -23,8 +23,8 @@ export const Verdict = new DbObjectWeapon({
         new ConditionStacks({
             name: 'weapon_verdict',
             serializeId: 1,
-            title: 'talent_name.weapon_verdict',
-            description: 'talent_descr.weapon_verdict_2',
+            title: 'talent_name.weapon_many_oaths_of_dawn_and_dusk',
+            description: 'talent_descr.weapon_many_oaths_of_dawn_and_dusk_2',
             maxStacks: 2,
             levelSetting: 'weapon_refine',
             stats: [

@@ -17,8 +17,8 @@ export const SilvershowerHeartstrings = new DbObjectWeapon({
         new ConditionDropdown({
             name: 'weapon_silvershower_heartstrings',
             serializeId: 1,
-            title: 'talent_name.weapon_silvershower_heartstrings',
-            description: 'talent_descr.weapon_silvershower_heartstrings_1',
+            title: 'talent_name.weapon_dryass_nocturne',
+            description: 'talent_descr.weapon_dryass_nocturne_1',
             suggesterValue: 3,
             values: [
                 {
@@ -60,8 +60,8 @@ export const SilvershowerHeartstrings = new DbObjectWeapon({
             ],
         }),
         new ConditionBooleanValue({
-            title: 'talent_name.weapon_silvershower_heartstrings',
-            description: 'talent_descr.weapon_silvershower_heartstrings_2',
+            title: 'talent_name.weapon_dryass_nocturne',
+            description: 'talent_descr.weapon_dryass_nocturne_2',
             levelSetting: 'weapon_refine',
             cond: 'ge',
             value: 3,

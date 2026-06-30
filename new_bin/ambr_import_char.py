@@ -4,6 +4,7 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
 import requests
 import re
+from static import WEAPON_TYPES
 
 PROPS = {
     'FIGHT_PROP_BASE_HP': 'hp_base',
@@ -29,14 +30,6 @@ ELEMENTS = {
     'ICE': 'cryo',
     'WATER': 'hydro',
     'ROCK': 'geo',
-}
-
-WEAPON_TYPES = {
-    'WEAPON_SWORD_ONE_HAND': 'sword',
-    'WEAPON_CLAYMORE': 'claymore',
-    'WEAPON_BOW': 'bow',
-    'WEAPON_CATALYST': 'catalyst',
-    'WEAPON_POLE': 'polearm',
 }
 
 DATA_URL = 'https://gi.yatta.moe/api/v2/en/avatar/10000106'

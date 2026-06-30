@@ -15,8 +15,8 @@ export const FruitOfFulfillment = new DbObjectWeapon({
         new ConditionStacks({
             name: 'weapon_fruit_of_fulfillment',
             serializeId: 1,
-            title: 'talent_name.full_circle',
-            description: 'talent_descr.full_circle',
+            title: 'talent_name.weapon_full_circle',
+            description: 'talent_descr.weapon_full_circle',
             maxStacks: 5,
             levelSetting: 'weapon_refine',
             stats: [

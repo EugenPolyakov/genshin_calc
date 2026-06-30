@@ -15,8 +15,8 @@ export const EmeraldOrb = new DbObjectWeapon({
         new ConditionBooleanRefine({
             name: 'weapon_emerald_orb',
             serializeId: 1,
-            title: 'talent_name.weapon_emerald_orb',
-            description: 'talent_descr.weapon_emerald_orb',
+            title: 'talent_name.weapon_rapids',
+            description: 'talent_descr.weapon_rapids',
             stats: [
                 new StatTable('atk_percent', [20, 25, 30, 35, 40]),
             ],

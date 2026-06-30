@@ -13,8 +13,8 @@ export const TravelersHandySword = new DbObjectWeapon({
     statTable: weaponStatTables.TravelersHandySword,
     conditions: [
         new ConditionStaticRefine({
-            title: 'talent_name.weapon_travelers_handy_sword',
-            description: 'talent_descr.weapon_travelers_handy_sword',
+            title: 'talent_name.weapon_journey',
+            description: 'talent_descr.weapon_journey',
             stats: [
                 new StatTable('text_percent_hp', [1, 1.25, 1.5, 1.75, 2]),
             ],

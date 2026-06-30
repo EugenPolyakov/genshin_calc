@@ -14,8 +14,8 @@ export const WolfFang = new DbObjectWeapon({
     statTable: weaponStatTables.WolfFang,
     conditions: [
         new ConditionStaticRefine({
-            title: 'talent_name.weapon_wolf_fang',
-            description: 'talent_descr.weapon_wolf_fang_1',
+            title: 'talent_name.weapon_northwind_wolf',
+            description: 'talent_descr.weapon_northwind_wolf_1',
             stats: [
                 new StatTable('dmg_skill', [16, 20, 24, 28, 32]),
                 new StatTable('dmg_burst', [16, 20, 24, 28, 32]),
@@ -24,8 +24,8 @@ export const WolfFang = new DbObjectWeapon({
         new ConditionStacks({
             name: 'weapon_wolf_fang_1',
             serializeId: 1,
-            title: 'talent_name.weapon_wolf_fang_2',
-            description: 'talent_descr.weapon_wolf_fang_2',
+            title: 'talent_name.weapon_northwind_wolf_2',
+            description: 'talent_descr.weapon_northwind_wolf_2',
             maxStacks: 4,
             levelSetting: 'weapon_refine',
             stats: [
@@ -35,8 +35,8 @@ export const WolfFang = new DbObjectWeapon({
         new ConditionStacks({
             name: 'weapon_wolf_fang_2',
             serializeId: 2,
-            title: 'talent_name.weapon_wolf_fang_3',
-            description: 'talent_descr.weapon_wolf_fang_3',
+            title: 'talent_name.weapon_northwind_wolf_3',
+            description: 'talent_descr.weapon_northwind_wolf_3',
             maxStacks: 4,
             levelSetting: 'weapon_refine',
             stats: [

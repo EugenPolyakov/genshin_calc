@@ -13,8 +13,8 @@ export const Rust = new DbObjectWeapon({
     statTable: weaponStatTables.Rust,
     conditions: [
         new ConditionStaticRefine({
-            title: 'talent_name.weapon_rust_passive',
-            description: 'talent_descr.weapon_rust_passive',
+            title: 'talent_name.weapon_rapid_firing',
+            description: 'talent_descr.weapon_rapid_firing',
             stats: [
                 new StatTable('dmg_normal', [40, 50, 60, 70, 80]),
                 new StatTable('dmg_charged', [-10]),

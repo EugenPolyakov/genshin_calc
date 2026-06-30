@@ -75,31 +75,32 @@ for (weapon_id, weapon) in sorted(weapons.items()):
         skill = weapon_skill_data.get_item_by_field('id', id)
         skill_id = convert_id(lang_eng.get(skill['nameTextMapHash']))
 
-        print(f'W:{weapon_id} S:{skill_id}')
+        # print(f'["{weapon_id}", "{skill_id}"],')
+        texts[weapon_id].append(f'--{skill_id}--')
 
         if existed_talents.get(skill_id):
             continue
         existed_talents[skill_id] = 1
 
         talent_name = f'weapon_{skill_id}'
-        item_name = OrderedDict(
-            category='talent_name',
-            name=talent_name,
-        )
         item_descr = {
             'rus': '',
             'eng': '',
+        }
+        item_name = {
+            'rus': [],
+            'eng': [],
         }
 
         has_tpl = False
 
         for lang_name in lang_data:
             lang = lang_data[lang_name]['lang']
-            item_name[lang_name] = lang.get(skill['nameTextMapHash'])
+            item_name[lang_name] = [lang.get(skill['nameTextMapHash'])]
             # item_name[lang_name] = lang.get(skill['nameTextMapHash'])
             item_descr[lang_name] = lang.get(skill['descTextMapHash'])
 
-            texts[weapon_id].append(item_name[lang_name])
+            texts[weapon_id].append(item_name[lang_name][0])
             texts[weapon_id].append(item_descr[lang_name] + '\n')
 
             tpl_names = lang_data[lang_name]['names']
@@ -111,16 +112,32 @@ for (weapon_id, weapon) in sorted(weapons.items()):
             item_descr[lang_name] = tpl_names.process(item_descr[lang_name])
             item_descr[lang_name] = common_tpl.process(item_descr[lang_name])
 
-            tpl_weapon = getattr(weapons_tpl, f'{skill_id}_{lang_name}', None) or getattr(weapons_tpl, skill_id, None)
+            tpl_weapon = getattr(weapons_tpl, f'{weapon_id}_{lang_name}', None) or getattr(weapons_tpl, weapon_id, None) or \
+                getattr(weapons_tpl, f'{skill_id}_{lang_name}', None) or getattr(weapons_tpl, skill_id, None)
             if tpl_weapon:
                 has_tpl = True
 
-                item_descr[lang_name] = tpl_weapon.process(item_descr[lang_name])
+                values = tpl_weapon.process(item_descr[lang_name])
+                item_descr[lang_name] = values['descr'];
+                item_name[lang_name].extend(values['names']);
 
             if not isinstance(item_descr[lang_name], list):
                 item_descr[lang_name] = [item_descr[lang_name]]
-                
-        result_talents.append(item_name)
+
+        index = 0
+        for (rus, eng) in zip(item_name['rus'], item_name['eng']):
+            index += 1
+            namei = talent_name
+            if len(item_name['rus']) > 1:
+                namei = f'{talent_name}_{index}'
+            result_talents.append(
+                OrderedDict(
+                    category='talent_name',
+                    name=namei,
+                    rus=rus,
+                    eng=eng,
+                )
+            )
         if has_tpl or len(item_descr['rus']) == len(item_descr['eng']):
             # result_talents.append(item_descr)
             if item_descr:
@@ -151,7 +168,7 @@ for (weapon_id, weapon) in sorted(weapons.items()):
 
 
 CsvDumper().dump(result_names, 'weapon_names.csv')
-CsvDumper().dump(result_names, '../../strings_casino/weapon_names.csv')
+#CsvDumper().dump(result_names, '../../strings_casino/weapon_names.csv')
 if result_talents:
     CsvDumper().dump(result_talents, 'weapon_talents.csv')
 TextDumper().dump(texts, 'weapon_texts.txt')

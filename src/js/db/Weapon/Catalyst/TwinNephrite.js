@@ -15,8 +15,8 @@ export const TwinNephrite = new DbObjectWeapon({
         new ConditionBooleanRefine({
             name: 'weapon_twin_nephrite',
             serializeId: 1,
-            title: 'talent_name.weapon_twin_nephrite',
-            description: 'talent_descr.weapon_twin_nephrite',
+            title: 'talent_name.weapon_guerilla_tactics',
+            description: 'talent_descr.weapon_guerilla_tactics',
             levelSetting: 'weapon_refine',
             stats: [
                 new StatTable('atk_percent', [12, 14, 16, 18, 20]),

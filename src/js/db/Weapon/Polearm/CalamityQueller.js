@@ -32,8 +32,8 @@ export const CalamityQueller = new DbObjectWeapon({
     ],
     conditions: [
         new ConditionStaticRefine({
-            title: 'talent_name.weapon_calamity_queller',
-            description: 'talent_descr.weapon_calamity_queller',
+            title: 'talent_name.weapon_extinguishing_precept',
+            description: 'talent_descr.weapon_extinguishing_precept_1',
             stats: [
                 new StatTable('dmg_anemo', [12, 15, 18, 21, 24]),
                 new StatTable('dmg_geo', [12, 15, 18, 21, 24]),
@@ -47,8 +47,8 @@ export const CalamityQueller = new DbObjectWeapon({
         new ConditionStacks({
             name: 'weapon_calamity_queller',
             serializeId: 1,
-            title: 'talent_name.weapon_calamity_queller',
-            description: 'talent_descr.weapon_calamity_queller_2',
+            title: 'talent_name.weapon_extinguishing_precept',
+            description: 'talent_descr.weapon_extinguishing_precept_2',
             maxStacks: 6,
             levelSetting: 'weapon_refine',
             stats: [
@@ -58,8 +58,8 @@ export const CalamityQueller = new DbObjectWeapon({
         new ConditionBoolean({
             name: 'weapon_calamity_queller_off_field',
             serializeId: 2,
-            title: 'talent_name.weapon_calamity_queller',
-            description: 'talent_descr.weapon_calamity_queller_3',
+            title: 'talent_name.weapon_extinguishing_precept',
+            description: 'talent_descr.weapon_extinguishing_precept_3',
         }),
         new ConditionStacksHidden({
             name: 'weapon_calamity_queller',

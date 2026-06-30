@@ -13,8 +13,8 @@ export const WhiteTassel = new DbObjectWeapon({
     statTable: weaponStatTables.WhiteTassel,
     conditions: [
         new ConditionStaticRefine({
-            title: 'talent_name.weapon_white_tassel',
-            description: 'talent_descr.weapon_white_tassel',
+            title: 'talent_name.weapon_sharp',
+            description: 'talent_descr.weapon_sharp',
             stats: [
                 new StatTable('dmg_normal', [24, 30, 36, 42, 48]),
             ],

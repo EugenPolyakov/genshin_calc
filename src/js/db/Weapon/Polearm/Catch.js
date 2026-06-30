@@ -13,8 +13,8 @@ export const Catch = new DbObjectWeapon({
     statTable: weaponStatTables.Catch,
     conditions: [
         new ConditionStaticRefine({
-            title: 'talent_name.weapon_catch',
-            description: 'talent_descr.weapon_catch',
+            title: 'talent_name.weapon_shanty',
+            description: 'talent_descr.weapon_shanty',
             stats: [
                 new StatTable('dmg_burst', [16, 20, 24, 28, 32]),
                 new StatTable('crit_rate_burst', [6, 7.5, 9, 10.5, 12]),

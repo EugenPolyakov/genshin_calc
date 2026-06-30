@@ -15,8 +15,8 @@ export const Moonpiercer = new DbObjectWeapon({
         new ConditionBooleanRefine({
             name: 'weapon_stillwood_moonshadow',
             serializeId: 1,
-            title: 'talent_name.stillwood_moonshadow',
-            description: 'talent_descr.stillwood_moonshadow',
+            title: 'talent_name.weapon_stillwood_moonshadow',
+            description: 'talent_descr.weapon_stillwood_moonshadow',
             stats: [
                 new StatTable('atk_percent', [16, 20, 24, 28, 32]),
             ],

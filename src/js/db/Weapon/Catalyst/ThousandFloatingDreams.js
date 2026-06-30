@@ -18,12 +18,12 @@ export const ThousandFloatingDreams = new DbObjectWeapon({
     conditions: [
         new ConditionCalcElements({}),
         new ConditionStatic({
-            title: 'talent_name.weapon_thousand_floating_dreams',
-            description: 'talent_descr.weapon_thousand_floating_dreams_static',
+            title: 'talent_name.weapon_a_thousand_nights_dawnsong',
+            description: 'talent_descr.weapon_a_thousand_nights_dawnsong_4',
         }),
         new ConditionStaticRefineDreamsSame({
-            title: 'talent_name.weapon_thousand_floating_dreams',
-            description: 'talent_descr.weapon_thousand_floating_dreams_same',
+            title: 'talent_name.weapon_a_thousand_nights_dawnsong',
+            description: 'talent_descr.weapon_a_thousand_nights_dawnsong_3',
             stats: [
                 new StatTable('mastery', [32, 40, 48, 56, 64]),
             ],
@@ -32,8 +32,8 @@ export const ThousandFloatingDreams = new DbObjectWeapon({
             ],
         }),
         new ConditionStaticRefineDreamsOther({
-            title: 'talent_name.weapon_thousand_floating_dreams',
-            description: 'talent_descr.weapon_thousand_floating_dreams_other',
+            title: 'talent_name.weapon_a_thousand_nights_dawnsong',
+            description: 'talent_descr.weapon_a_thousand_nights_dawnsong_1',
             stats: [
                 new StatTable('dmg_own', [10, 14, 18, 22, 26]),
             ],

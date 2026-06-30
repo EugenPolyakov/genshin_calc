@@ -16,8 +16,8 @@ export const ScionOfTheBlazingSun = new DbObjectWeapon({
     statTable: weaponStatTables.ScionOfTheBlazingSun,
     conditions: [
         new ConditionStaticRefine({
-            title: 'talent_name.weapon_scion_of_the_blazing_sun',
-            description: 'talent_descr.weapon_scion_of_the_blazing_sun_1',
+            title: 'talent_name.weapon_the_way_of_sunfire_1',
+            description: 'talent_descr.weapon_the_way_of_sunfire_1',
             stats: [
                 new StatTable('text_percent_dmg', [60, 75, 90, 105, 120]),
             ],
@@ -25,8 +25,8 @@ export const ScionOfTheBlazingSun = new DbObjectWeapon({
         new ConditionBooleanRefine({
             name: 'weapon_scion_of_the_blazing_sun',
             serializeId: 1,
-            title: 'talent_name.weapon_scion_of_the_blazing_sun_2',
-            description: 'talent_descr.weapon_scion_of_the_blazing_sun_2',
+            title: 'talent_name.weapon_the_way_of_sunfire_2',
+            description: 'talent_descr.weapon_the_way_of_sunfire_2',
             stats: [
                 new StatTable('dmg_charged_enemy', [28, 35, 42, 49, 56]),
             ],

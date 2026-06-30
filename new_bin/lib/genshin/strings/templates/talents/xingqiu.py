@@ -21,8 +21,8 @@ char_xingqiu = TemplateList(
             'Rain Swords', 'Rain Sword', 'sword rain',
         ],
         skills={
-            'skill': ['Guhua name{Sword}: Fatal Rainscreen'],
-            'burst': ['Guhua name{Sword}: Raincutter'],
+            'skill': ['Guhua Sword: Fatal Rainscreen'],
+            'burst': ['Guhua Sword: Raincutter'],
         },
     ),
     hydropathic_rus=Template(

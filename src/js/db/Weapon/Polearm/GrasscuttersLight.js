@@ -22,8 +22,8 @@ export const GrasscuttersLight = new DbObjectWeapon({
     statTable: weaponStatTables.GrasscuttersLight,
     conditions: [
         new ConditionStaticRefine({
-            title: 'talent_name.weapon_grasscutters_light',
-            description: 'talent_descr.weapon_grasscutters_light_1',
+            title: 'talent_name.weapon_timeless_dream_eternal_stove',
+            description: 'talent_descr.weapon_timeless_dream_eternal_stove_1',
             stats: [
                 new StatTable('text_percent', [28, 35, 42, 49, 56]),
                 new StatTable('text_percent_max', [80, 90, 100, 110, 120]),
@@ -32,8 +32,8 @@ export const GrasscuttersLight = new DbObjectWeapon({
         new ConditionBooleanRefine({
             name: 'weapon_grasscutters_light',
             serializeId: 1,
-            title: 'talent_name.weapon_grasscutters_light',
-            description: 'talent_descr.weapon_grasscutters_light_2',
+            title: 'talent_name.weapon_timeless_dream_eternal_stove',
+            description: 'talent_descr.weapon_timeless_dream_eternal_stove_2',
             stats: [
                 new StatTable('recharge', [30, 35, 40, 45, 50]),
             ],

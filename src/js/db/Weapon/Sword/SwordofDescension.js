@@ -23,8 +23,8 @@ export const SwordofDescension = new DbObjectWeapon({
             description: 'talent_descr.ps_network',
         }),
         new ConditionStatic({
-            title: 'talent_name.sword_of_descension',
-            description: 'talent_descr.sword_of_descension_1',
+            title: 'talent_name.weapon_descension',
+            description: 'talent_descr.weapon_descension_1',
             stats: {
                 atk: 66,
             },
@@ -36,8 +36,8 @@ export const SwordofDescension = new DbObjectWeapon({
             ],
         }),
         new ConditionStatic({
-            title: 'talent_name.sword_of_descension',
-            description: 'talent_descr.sword_of_descension_2',
+            title: 'talent_name.weapon_descension',
+            description: 'talent_descr.weapon_descension_2',
             stats: {
                 text_percent_chance: 50,
                 text_percent_dmg: 200,

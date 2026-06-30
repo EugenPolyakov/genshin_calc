@@ -5,7 +5,6 @@ import { ConditionStaticRefineWaveridingWhirl } from "../../../classes/Condition
 import { DbObjectWeapon } from "../../../classes/DbObject/Weapon";
 import { StatTable } from "../../../classes/StatTable";
 import { weaponStatTables } from "../../generated/WeaponStatTables";
-import { atkTables } from "../AtkTables";
 
 export const WaveridingWhirl = new DbObjectWeapon({
     name: 'waveriding_whirl',
@@ -17,8 +16,8 @@ export const WaveridingWhirl = new DbObjectWeapon({
     statTable: weaponStatTables.WaveridingWhirl,
     conditions: [
         new ConditionStaticRefine({
-            title: 'talent_name.waveriding_whirl',
-            description: 'talent_descr.waveriding_whirl_1',
+            title: 'talent_name.weapon_fangs_flying_to_and_fro',
+            description: 'talent_descr.weapon_fangs_flying_to_and_fro_1',
             stats: [
                 new StatTable('text_percent', [15]),
             ],
@@ -26,15 +25,15 @@ export const WaveridingWhirl = new DbObjectWeapon({
         new ConditionBooleanRefine({
             name: 'waveriding_whirl',
             serializeId: 1,
-            title: 'talent_name.waveriding_whirl',
-            description: 'talent_descr.waveriding_whirl_2',
+            title: 'talent_name.weapon_fangs_flying_to_and_fro',
+            description: 'talent_descr.weapon_fangs_flying_to_and_fro_2',
             stats: [
                 new StatTable('hp_percent', [20, 25, 30, 35, 40]),
             ],
         }),
         new ConditionStaticRefineWaveridingWhirl({
-            title: 'talent_name.waveriding_whirl',
-            description: 'talent_descr.waveriding_whirl_3',
+            title: 'talent_name.weapon_fangs_flying_to_and_fro',
+            description: 'talent_descr.weapon_fangs_flying_to_and_fro_3',
             levelSetting: 'weapon_refine',
             effectLevelSetting: 'party_elements_different',
             stats: [

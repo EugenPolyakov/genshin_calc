@@ -15,8 +15,8 @@ export const IronSting = new DbObjectWeapon({
         new ConditionStacks({
             name: 'weapon_iron_sting',
             serializeId: 1,
-            title: 'talent_name.weapon_iron_sting',
-            description: 'talent_descr.weapon_iron_sting',
+            title: 'talent_name.weapon_infusion_stinger',
+            description: 'talent_descr.weapon_infusion_stinger',
             maxStacks: 2,
             levelSetting: 'weapon_refine',
             stats: [

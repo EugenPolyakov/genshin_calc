@@ -15,8 +15,8 @@ export const ForestRegalia = new DbObjectWeapon({
         new ConditionBooleanRefine({
             name: 'weapon_forest_sanctuary',
             serializeId: 1,
-            title: 'talent_name.forest_sanctuary',
-            description: 'talent_descr.forest_sanctuary',
+            title: 'talent_name.weapon_forest_sanctuary',
+            description: 'talent_descr.weapon_forest_sanctuary',
             stats: [
                 new StatTable('mastery', [60, 75, 90, 105, 120]),
             ],

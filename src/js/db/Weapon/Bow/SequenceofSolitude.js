@@ -17,8 +17,8 @@ export const SequenceofSolitude = new DbObjectWeapon({
         new ConditionStaticRefine({
             name: 'weapon_sequence_of_solitude',
             serializeId: 1,
-            title: 'talent_name.weapon_sequence_of_solitude',
-            description: 'talent_descr.weapon_sequence_of_solitude',
+            title: 'talent_name.weapon_silent_trigger',
+            description: 'talent_descr.weapon_silent_trigger',
             stats: [
                 new StatTable('text_percent_dmg', [40, 50, 60, 70, 80]),
             ],

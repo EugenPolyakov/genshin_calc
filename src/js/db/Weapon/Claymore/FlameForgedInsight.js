@@ -15,8 +15,8 @@ export const FlameForgedInsight = new DbObjectWeapon({
         new ConditionBooleanRefine({
             name: 'weapon_flame_forged_insight',
             serializeId: 1,
-            title: 'talent_name.weapon_flame_forged_insight',
-            description: 'talent_descr.weapon_flame_forged_insight',
+            title: 'talent_name.weapon_mind_in_bloom',
+            description: 'talent_descr.weapon_mind_in_bloom',
             stats: [
                 new StatTable('text_value', [12, 15, 18, 21, 24]),
                 new StatTable('mastery', [60, 75, 90, 105, 120]),

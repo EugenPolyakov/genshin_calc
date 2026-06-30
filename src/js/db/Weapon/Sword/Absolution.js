@@ -14,8 +14,8 @@ export const Absolution = new DbObjectWeapon({
     statTable: weaponStatTables.Absolution,
     conditions: [
         new ConditionStaticRefine({
-            title: 'talent_name.weapon_absolution',
-            description: 'talent_descr.weapon_absolution_1',
+            title: 'talent_name.weapon_deathly_pact',
+            description: 'talent_descr.weapon_deathly_pact_1',
             stats: [
                 new StatTable('crit_dmg', [20, 25, 30, 35, 40]),
             ],
@@ -23,8 +23,8 @@ export const Absolution = new DbObjectWeapon({
         new ConditionStacks({
             name: 'weapon_absolution',
             serializeId: 1,
-            title: 'talent_name.weapon_absolution',
-            description: 'talent_descr.weapon_absolution_2',
+            title: 'talent_name.weapon_deathly_pact',
+            description: 'talent_descr.weapon_deathly_pact_2',
             maxStacks: 3,
             levelSetting: 'weapon_refine',
             stats: [

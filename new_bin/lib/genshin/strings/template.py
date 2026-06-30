@@ -110,7 +110,10 @@ class TemplateString:
             for indices in res_index:
                 r = []
                 for index in indices:
-                    r.append(result[index])
+                    if isinstance(index, str):
+                        r.append(index)
+                    else:
+                        r.append(result[index])
                 res_list.append(' '.join(r))
             return res_list
         return ' '.join(result)
@@ -161,8 +164,11 @@ class Template:
         return result
 
     def apply_names(self, string):
+        return self.apply_custom_names(string, self.names)
+    
+    def apply_custom_names(self, string, names):
         result = string
-        for name in self.names:
+        for name in names:
         #     result = re.sub(r'(?:^|([^\{])\b)' + re.escape(name) + r'(?:\b([^\}])|$)', '\\1name{%s}\\2' % name, result)
             idx = 0
             cnt = 1
@@ -200,6 +206,42 @@ class Template:
             for name in self.skills[skill]:
                 result = result.replace(f'skill{{{name}}}', f'skill{{{skill}:{name}}}')
         return result
+
+class WeaponTemplate(Template):
+    def __init__(self, replace={}, names=[], sentences=[], patterns=[], keywords=[], skills={}, results=None, extracted_names=None):
+        super().__init__(replace, names, sentences, patterns, keywords, skills, results)
+        self.extracted_names = extracted_names
+
+    def process(self, string: str):
+        result = string
+        result = self.apply_replace(result)
+        result = self.apply_keywords(result)
+        result = self.apply_skills(result)
+        result = self.apply_patterns(result)
+        sen_result = self.apply_sentences(result)
+        out = {'names': [], 'descr': []}
+        if isinstance(sen_result, list):
+            ret = []
+            if isinstance(self.extracted_names, list):
+                for idx, v in enumerate(sen_result):
+                    if idx in self.extracted_names:
+                        out['names'].append(v)
+                    else:
+                        out['descr'].append(v)
+
+                if len(out['names']) > 0:
+                    for sent in out['descr']:
+                        ret.append(self.apply_custom_names(sent, out['names']))
+                    out['descr'] = []
+            else:
+                ret = sen_result
+
+        else:
+            ret = [sen_result]
+
+        for sent in ret:
+            out['descr'].append(self.apply_names(sent))
+        return out
 
 
 class TemplateList:

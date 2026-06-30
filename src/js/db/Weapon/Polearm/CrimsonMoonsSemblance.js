@@ -18,15 +18,15 @@ export const CrimsonMoonsSemblance = new DbObjectWeapon({
             serializeId: 1,
         }),
         new ConditionStaticRefine({
-            title: 'talent_name.crimson_moons_semblance',
-            description: 'talent_descr.crimson_moons_semblance_1',
+            title: 'talent_name.weapon_ashen_suns_shadow',
+            description: 'talent_descr.weapon_ashen_suns_shadow_1',
             stats: [
                 new StatTable('text_percent', [25]),
             ],
         }),
         new ConditionStaticRefine({
-            title: 'talent_name.crimson_moons_semblance',
-            description: 'talent_descr.crimson_moons_semblance_2',
+            title: 'talent_name.weapon_ashen_suns_shadow',
+            description: 'talent_descr.weapon_ashen_suns_shadow_2',
             stats: [
                 new StatTable('dmg_all', [12, 16, 20, 24, 28]),
             ],
@@ -39,8 +39,8 @@ export const CrimsonMoonsSemblance = new DbObjectWeapon({
             ],
         }),
         new ConditionStaticRefine({
-            title: 'talent_name.crimson_moons_semblance',
-            description: 'talent_descr.crimson_moons_semblance_3',
+            title: 'talent_name.weapon_ashen_suns_shadow',
+            description: 'talent_descr.weapon_ashen_suns_shadow_3',
             stats: [
                 new StatTable('text_percent', [30]),
                 new StatTable('dmg_all', [24, 32, 40, 48, 56]),

@@ -30,8 +30,8 @@ export const KagurasVerity = new DbObjectWeapon({
         new ConditionStacks({
             name: 'weapon_kaguras_verity',
             serializeId: 1,
-            title: 'talent_name.weapon_kaguras_verity',
-            description: 'talent_descr.weapon_kaguras_verity_1',
+            title: 'talent_name.weapon_kagura_dance_of_the_sacred_sakura',
+            description: 'talent_descr.weapon_kagura_dance_of_the_sacred_sakura_1',
             maxStacks: 3,
             levelSetting: 'weapon_refine',
             stats: [
@@ -40,8 +40,8 @@ export const KagurasVerity = new DbObjectWeapon({
         }),
         new ConditionBooleanValue({
             name: 'weapon_kaguras_verity_max_stack',
-            title: 'talent_name.weapon_kaguras_verity',
-            description: 'talent_descr.weapon_kaguras_verity_2',
+            title: 'talent_name.weapon_kagura_dance_of_the_sacred_sakura',
+            description: 'talent_descr.weapon_kagura_dance_of_the_sacred_sakura_2',
             levelSetting: 'weapon_refine',
             cond: 'ge',
             value: 3,

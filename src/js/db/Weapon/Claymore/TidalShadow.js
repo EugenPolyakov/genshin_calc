@@ -15,8 +15,8 @@ export const TidalShadow = new DbObjectWeapon({
         new ConditionBooleanRefine({
             name: 'weapon_tidal_shadow',
             serializeId: 1,
-            title: 'talent_name.weapon_tidal_shadow',
-            description: 'talent_descr.weapon_tidal_shadow',
+            title: 'talent_name.weapon_white_cruising_wave',
+            description: 'talent_descr.weapon_white_cruising_wave',
             stats: [
                 new StatTable('atk_percent', [24, 30, 36, 42, 48]),
             ],

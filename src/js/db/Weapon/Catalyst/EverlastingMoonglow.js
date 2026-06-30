@@ -17,16 +17,16 @@ export const EverlastingMoonglow = new DbObjectWeapon({
     statTable: weaponStatTables.EverlastingMoonglow,
     conditions: [
         new ConditionStaticRefine({
-            title: 'talent_name.weapon_everlasting_moonglow',
-            description: 'talent_descr.weapon_everlasting_moonglow_1',
+            title: 'talent_name.weapon_byakuya_kougetsu',
+            description: 'talent_descr.weapon_byakuya_kougetsu_1',
             stats: [
                 new StatTable('healing', [10, 12.5, 15, 17.5, 20]),
                 new StatTable('normal_base_hp_percent', [1, 1.5, 2, 2.5, 3]),
             ],
         }),
         new ConditionStatic({
-            title: 'talent_name.weapon_everlasting_moonglow',
-            description: 'talent_descr.weapon_everlasting_moonglow_2',
+            title: 'talent_name.weapon_byakuya_kougetsu',
+            description: 'talent_descr.weapon_byakuya_kougetsu_2',
         }),
     ],
     multipliers: [

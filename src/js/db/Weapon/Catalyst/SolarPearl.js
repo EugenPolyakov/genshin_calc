@@ -15,8 +15,8 @@ export const SolarPearl = new DbObjectWeapon({
         new ConditionBooleanRefine({
             name: 'weapon_solar_pearl_1',
             serializeId: 1,
-            title: 'talent_name.weapon_solar_pearl',
-            description: 'talent_descr.weapon_solar_pearl_1',
+            title: 'talent_name.weapon_solar_shine',
+            description: 'talent_descr.weapon_solar_shine_1',
             stats: [
                 new StatTable('dmg_skill', [20, 25, 30, 35, 40]),
                 new StatTable('dmg_burst', [20, 25, 30, 35, 40]),
@@ -25,8 +25,8 @@ export const SolarPearl = new DbObjectWeapon({
         new ConditionBooleanRefine({
             name: 'weapon_solar_pearl_2',
             serializeId: 2,
-            title: 'talent_name.weapon_solar_pearl',
-            description: 'talent_descr.weapon_solar_pearl_2',
+            title: 'talent_name.weapon_solar_shine',
+            description: 'talent_descr.weapon_solar_shine_2',
             stats: [
                 new StatTable('dmg_normal', [20, 25, 30, 35, 40]),
             ],

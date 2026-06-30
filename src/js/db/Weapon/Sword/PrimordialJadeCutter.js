@@ -20,8 +20,8 @@ export const PrimordialJadeCutter = new DbObjectWeapon({
     statTable: weaponStatTables.PrimordialJadeCutter,
     conditions: [
         new ConditionStaticRefine({
-            title: 'talent_name.weapon_primordial_jade_cutter',
-            description: 'talent_descr.weapon_primordial_jade_cutter',
+            title: 'talent_name.weapon_protectors_virtue',
+            description: 'talent_descr.weapon_protectors_virtue',
             stats: [
                 new StatTable('hp_percent', [20, 25, 30, 35, 40]),
                 new StatTable('text_percent', [1.2, 1.5, 1.8, 2.1, 2.4]),

@@ -15,8 +15,8 @@ export const AlleyFlash = new DbObjectWeapon({
         new ConditionBooleanRefine({
             name: 'weapon_alley_flash',
             serializeId: 1,
-            title: 'talent_name.weapon_alley_flash',
-            description: 'talent_descr.weapon_alley_flash',
+            title: 'talent_name.weapon_itinerant_hero',
+            description: 'talent_descr.weapon_itinerant_hero',
             stats: [
                 new StatTable('dmg_all', [12, 15, 18, 21, 24]),
             ],

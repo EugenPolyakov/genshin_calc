@@ -26,8 +26,8 @@ export const StaffOfScarletSands = new DbObjectWeapon({
     statTable: weaponStatTables.StaffOfScarletSands,
     conditions: [
         new ConditionStaticRefine({
-            title: 'talent_name.heat_haze_at_horizons_end',
-            description: 'talent_descr.heat_haze_at_horizons_end_1',
+            title: 'talent_name.weapon_heat_haze_at_horizons_end',
+            description: 'talent_descr.weapon_heat_haze_at_horizons_end_1',
             stats: [
                 new StatTable('text_percent', [52, 65, 78, 91, 104]),
             ],
@@ -35,8 +35,8 @@ export const StaffOfScarletSands = new DbObjectWeapon({
         new ConditionStacks({
             name: 'weapon_staff_of_the_scarlet_sands',
             serializeId: 1,
-            title: 'talent_name.heat_haze_at_horizons_end',
-            description: 'talent_descr.heat_haze_at_horizons_end_2',
+            title: 'talent_name.weapon_heat_haze_at_horizons_end',
+            description: 'talent_descr.weapon_heat_haze_at_horizons_end_2',
             levelSetting: 'weapon_refine',
             maxStacks: 3,
             stats: [

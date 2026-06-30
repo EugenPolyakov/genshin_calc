@@ -15,8 +15,8 @@ export const WindblumeOde = new DbObjectWeapon({
         new ConditionBooleanRefine({
             name: 'weapon_windblume_ode',
             serializeId: 1,
-            title: 'talent_name.weapon_windblume_ode',
-            description: 'talent_descr.weapon_windblume_ode',
+            title: 'talent_name.weapon_windblume_wish',
+            description: 'talent_descr.weapon_windblume_wish',
             stats: [
                 new StatTable('atk_percent', [16, 20, 24, 28, 32]),
             ],

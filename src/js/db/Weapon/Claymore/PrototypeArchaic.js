@@ -15,8 +15,8 @@ export const PrototypeArchaic = new DbObjectWeapon({
     statTable: weaponStatTables.PrototypeArchaic,
     conditions: [
         new ConditionStaticRefine({
-            title: 'talent_name.weapon_prototype_archaic',
-            description: 'talent_descr.weapon_prototype_archaic',
+            title: 'talent_name.weapon_crush',
+            description: 'talent_descr.weapon_crush',
             stats: [
                 new StatTable('text_percent_dmg', [240, 300, 360, 420, 480]),
                 new StatTable('text_percent_chance', [50]),

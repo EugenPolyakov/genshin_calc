@@ -15,8 +15,8 @@ export const SkywardSpine = new DbObjectWeapon({
     statTable: weaponStatTables.SkywardSpine,
     conditions: [
         new ConditionStaticRefine({
-            title: 'talent_name.weapon_skyward_spine',
-            description: 'talent_descr.weapon_skyward_spine',
+            title: 'talent_name.weapon_black_wing',
+            description: 'talent_descr.weapon_black_wing_1',
             stats: [
                 new StatTable('crit_rate', [8, 10, 12, 14, 16]),
                 new StatTable('atk_speed_normal', [12]),
@@ -24,8 +24,8 @@ export const SkywardSpine = new DbObjectWeapon({
         }),
 
         new ConditionStaticRefine({
-            title: 'talent_name.weapon_skyward_spine',
-            description: 'talent_descr.weapon_skyward_spine_2',
+            title: 'talent_name.weapon_black_wing',
+            description: 'talent_descr.weapon_black_wing_2',
             stats: [
                 new StatTable('text_percent', [40, 55, 70, 85, 100]),
             ],

@@ -19,8 +19,8 @@ export const CinnabarSpindle = new DbObjectWeapon({
         new ConditionBooleanRefine({
             name: 'weapon_cinnabar_spindle',
             serializeId: 1,
-            title: 'talent_name.weapon_cinnabar_spindle',
-            description: 'talent_descr.weapon_cinnabar_spindle',
+            title: 'talent_name.weapon_spotless_heart',
+            description: 'talent_descr.weapon_spotless_heart',
             stats: [
                 new StatTable('text_percent', [40, 50, 60, 70, 80]),
             ],

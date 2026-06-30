@@ -18,8 +18,8 @@ export const LithicSpear = new DbObjectWeapon({
         new ConditionStacksSetting({
             name: 'weapon_lithic_stacks',
             serializeId: 1,
-            title: 'talent_name.weapon_lithic_axiome',
-            description: 'talent_descr.weapon_lithic_axiome',
+            title: 'talent_name.weapon_lithic_axiom_unity',
+            description: 'talent_descr.weapon_lithic_axiom_unity',
             maxStacks: 4,
             levelSetting: 'weapon_refine',
             stats: [

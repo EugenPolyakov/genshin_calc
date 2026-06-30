@@ -17,8 +17,8 @@ export const KeyofKhajNisut = new DbObjectWeapon({
     statTable: weaponStatTables.KeyofKhajNisut,
     conditions: [
         new ConditionStaticRefine({
-            title: 'talent_name.sunken_song_of_the_sands',
-            description: 'talent_descr.sunken_song_of_the_sands_1',
+            title: 'talent_name.weapon_sunken_song_of_the_sands',
+            description: 'talent_descr.weapon_sunken_song_of_the_sands_1',
             stats: [
                 new StatTable('hp_percent', [20, 25, 30, 35, 40]),
             ],
@@ -26,8 +26,8 @@ export const KeyofKhajNisut = new DbObjectWeapon({
         new ConditionStacks({
             name: 'weapon_key_of_khaj_nisut',
             serializeId: 1,
-            title: 'talent_name.sunken_song_of_the_sands',
-            description: 'talent_descr.sunken_song_of_the_sands_2',
+            title: 'talent_name.weapon_sunken_song_of_the_sands',
+            description: 'talent_descr.weapon_sunken_song_of_the_sands_2',
             maxStacks: 3,
             levelSetting: 'weapon_refine',
             stats: [
@@ -35,8 +35,8 @@ export const KeyofKhajNisut = new DbObjectWeapon({
             ],
         }),
         new ConditionStaticRefine({
-            title: 'talent_name.sunken_song_of_the_sands',
-            description: 'talent_descr.sunken_song_of_the_sands_3',
+            title: 'talent_name.weapon_sunken_song_of_the_sands',
+            description: 'talent_descr.weapon_sunken_song_of_the_sands_3',
             stats: [
                 new StatTable('text_percent', [0.2, 0.25, 0.3, 0.35, 0.4]),
             ],

@@ -13,8 +13,8 @@ export const FesteringDesire = new DbObjectWeapon({
     statTable: weaponStatTables.FesteringDesire,
     conditions: [
         new ConditionStaticRefine({
-            title: 'talent_name.weapon_festering_desire',
-            description: 'talent_descr.weapon_festering_desire',
+            title: 'talent_name.weapon_undying_admiration',
+            description: 'talent_descr.weapon_undying_admiration',
             stats: [
                 new StatTable('dmg_skill', [16, 20, 24, 28, 32]),
                 new StatTable('crit_rate_skill', [6, 7.5, 9, 10.5, 12]),

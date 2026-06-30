@@ -17,8 +17,8 @@ export const KagotsurubeIsshin = new DbObjectWeapon({
         new ConditionBooleanRefine({
             name: 'weapon_kagotsurube_isshin',
             serializeId: 1,
-            title: 'talent_name.weapon_kagotsurube_isshin',
-            description: 'talent_descr.weapon_kagotsurube_isshin',
+            title: 'talent_name.weapon_isshin_art_clarity',
+            description: 'talent_descr.weapon_isshin_art_clarity',
             stats: [
                 new StatTable('text_percent', [180]),
                 new StatTable('atk_percent', [15]),

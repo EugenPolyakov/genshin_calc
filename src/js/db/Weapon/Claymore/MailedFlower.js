@@ -15,8 +15,8 @@ export const MailedFlower = new DbObjectWeapon({
         new ConditionBooleanRefine({
             name: 'weapon_mailed_flower',
             serializeId: 1,
-            title: 'talent_name.weapon_mailed_flower',
-            description: 'talent_descr.weapon_mailed_flower',
+            title: 'talent_name.weapon_whispers_of_wind_and_flower',
+            description: 'talent_descr.weapon_whispers_of_wind_and_flower',
             stats: [
                 new StatTable('atk_percent', [12, 15, 18, 21, 24]),
                 new StatTable('mastery', [48, 60, 72, 84, 96]),

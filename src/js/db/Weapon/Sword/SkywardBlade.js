@@ -16,8 +16,8 @@ export const SkywardBlade = new DbObjectWeapon({
     statTable: weaponStatTables.SkywardBlade,
     conditions: [
         new ConditionStaticRefine({
-            title: 'talent_name.weapon_skyward_blade',
-            description: 'talent_descr.bonus_crit_rate',
+            title: 'talent_name.weapon_sky_piercing_fang',
+            description: 'talent_descr.weapon_sky_piercing_fang_1',
             stats: [
                 new StatTable('crit_rate', [4, 5, 6, 7, 8]),
             ],
@@ -25,8 +25,8 @@ export const SkywardBlade = new DbObjectWeapon({
         new ConditionBooleanRefine({
             name: 'weapon_skyward_blade',
             serializeId: 1,
-            title: 'talent_name.weapon_skyward_blade',
-            description: 'talent_descr.weapon_skyward_blade',
+            title: 'talent_name.weapon_sky_piercing_fang',
+            description: 'talent_descr.weapon_sky_piercing_fang_2',
             stats: [
                 new StatTable('atk_speed_normal', [10]),
                 new StatTable('move_speed', [10]),

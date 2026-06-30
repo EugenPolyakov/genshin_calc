@@ -28,8 +28,8 @@ export const MistsplitterReforged = new DbObjectWeapon({
     ],
     conditions: [
         new ConditionStaticRefine({
-            title: 'talent_name.weapon_mistsplitters_reforged',
-            description: 'talent_descr.weapon_mistsplitters_reforged_1',
+            title: 'talent_name.weapon_mistsplitters_edge',
+            description: 'talent_descr.weapon_mistsplitters_edge_1',
             stats: [
                 new StatTable('dmg_anemo', [12, 15, 18, 21, 24]),
                 new StatTable('dmg_geo', [12, 15, 18, 21, 24]),
@@ -43,8 +43,8 @@ export const MistsplitterReforged = new DbObjectWeapon({
         new ConditionDropdown({
             name: 'weapon_mistsplitters_reforged',
             serializeId: 1,
-            title: 'talent_name.weapon_mistsplitters_reforged',
-            description: 'talent_descr.weapon_mistsplitters_reforged_2',
+            title: 'talent_name.weapon_mistsplitters_edge',
+            description: 'talent_descr.weapon_mistsplitters_edge_2',
             suggesterValue: 3,
             values: [
                 {

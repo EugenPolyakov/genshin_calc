@@ -40,8 +40,8 @@ export const PeakPatrolSong = new DbObjectWeapon({
         new ConditionStacks({
             name: 'weapon_peak_patrol_song',
             serializeId: 1,
-            title: 'talent_name.weapon_peak_patrol_song',
-            description: 'talent_descr.weapon_peak_patrol_song_1',
+            title: 'talent_name.weapon_halcyon_years_unending_1',
+            description: 'talent_descr.weapon_halcyon_years_unending_1',
             maxStacks: 2,
             levelSetting: 'weapon_refine',
             stats: [
@@ -58,8 +58,8 @@ export const PeakPatrolSong = new DbObjectWeapon({
         new ConditionBooleanRefine({
             name: 'weapon_peak_patrol_song_2',
             serializeId: 2,
-            title: 'talent_name.weapon_peak_patrol_song',
-            description: 'talent_descr.weapon_peak_patrol_song_2',
+            title: 'talent_name.weapon_halcyon_years_unending_1',
+            description: 'talent_descr.weapon_halcyon_years_unending_2',
             stats: [
                 new StatTable('text_percent', [8, 10, 12, 14, 16]),
                 new StatTable('text_percent_max', elemBonusCap),

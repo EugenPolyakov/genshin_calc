@@ -30,8 +30,8 @@ export const SymphonistofScents = new DbObjectWeapon({
     ],
     conditions: [
         new ConditionStaticRefine({
-            title: 'talent_name.weapon_symphonist_of_scents',
-            description: 'talent_descr.weapon_symphonist_of_scents_1',
+            title: 'talent_name.weapon_seasoned_symphony',
+            description: 'talent_descr.weapon_seasoned_symphony_1',
             stats: [
                 new StatTable('atk_percent', [12, 15, 18, 21, 24]),
             ],
@@ -39,8 +39,8 @@ export const SymphonistofScents = new DbObjectWeapon({
         new ConditionBooleanRefine({
             name: 'symphonist_of_scents_2',
             serializeId: 1,
-            title: 'talent_name.weapon_symphonist_of_scents',
-            description: 'talent_descr.weapon_symphonist_of_scents_2',
+            title: 'talent_name.weapon_seasoned_symphony',
+            description: 'talent_descr.weapon_seasoned_symphony_2',
             stats: [
                 new StatTable('atk_percent', [12, 15, 18, 21, 24]),
             ],
@@ -48,8 +48,8 @@ export const SymphonistofScents = new DbObjectWeapon({
         new ConditionBooleanRefine({
             name: 'symphonist_of_scents_3',
             serializeId: 2,
-            title: 'talent_name.weapon_symphonist_of_scents',
-            description: 'talent_descr.weapon_symphonist_of_scents_3',
+            title: 'talent_name.weapon_seasoned_symphony',
+            description: 'talent_descr.weapon_seasoned_symphony_3',
             stats: [
                 new StatTable('atk_percent', [32, 40, 48, 56, 64]),
             ],

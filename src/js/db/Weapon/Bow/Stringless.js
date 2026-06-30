@@ -13,8 +13,8 @@ export const Stringless = new DbObjectWeapon({
     statTable: weaponStatTables.Stringless,
     conditions: [
         new ConditionStaticRefine({
-            title: 'talent_name.weapon_stringless',
-            description: 'talent_descr.weapon_stringless',
+            title: 'talent_name.weapon_arrowless_song',
+            description: 'talent_descr.weapon_arrowless_song',
             stats: [
                 new StatTable('dmg_burst', [24, 30, 36, 42, 48]),
                 new StatTable('dmg_skill', [24, 30, 36, 42, 48]),

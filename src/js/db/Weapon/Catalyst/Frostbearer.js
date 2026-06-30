@@ -18,7 +18,7 @@ export const Frostbearer = new DbObjectWeapon({
     conditions: [
         new ConditionStaticRefine({
             title: 'talent_name.weapon_frost_burial',
-            description: 'talent_descr.weapon_frost_burial_passive',
+            description: 'talent_descr.weapon_frost_burial_1',
             stats: [
                 new StatTable('text_percent_chance', [60, 70, 80, 90, 100]),
                 new StatTable('text_percent_dmg', [80, 95, 110, 125, 140]),
@@ -27,7 +27,7 @@ export const Frostbearer = new DbObjectWeapon({
         new ConditionStaticRefine({
             serializeId: 1,
             title: 'talent_name.weapon_frost_burial',
-            description: 'talent_descr.weapon_frost_burial',
+            description: 'talent_descr.weapon_frost_burial_2',
             stats: [
                 new StatTable('text_percent_dmg', [200, 240, 280, 320, 360]),
             ],
