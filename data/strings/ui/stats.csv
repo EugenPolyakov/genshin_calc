@@ -13,7 +13,7 @@ stat;def_percent;Защита;DEF
 stat;recharge;Воcст. энергии;Energy Recharge
 stat;crit_rate;Шанс крит. попадания;Crit. Rate
 stat;crit_dmg;Крит. урон;Crit. DMG
-stat;crit_value_percent;<span class="dotted" data-tooltip="Сумма Крит. урона и удвоенного Крит. шанса на артефактах">Крит. масса</span>;<span class="dotted" data-tooltip="Sum of Crit. DMG and doubled Crit. Rate from artifacts">Crit. Value</span>
+stat;crit_value_percent;"<span class=""dotted"" data-tooltip=""Сумма Крит. урона и удвоенного Крит. шанса на артефактах"">Крит. масса</span>";"<span class=""dotted"" data-tooltip=""Sum of Crit. DMG and doubled Crit. Rate from artifacts"">Crit. Value</span>"
 
 stat;healing;Бонус лечения;Healing Bonus
 stat;healing_recv;Бонус получаемого лечения;Incoming Healing Bonus
@@ -105,6 +105,7 @@ stat_artifact;dmg_pyro;бонус пиро урона;pyro dmg bonus
 stat_artifact;dmg_cryo;бонус крио урона;cryo dmg bonus
 stat_artifact;dmg_hydro;бонус гидро урона;hydro dmg bonus
 stat_artifact;dmg_dendro;бонус дендро урона;dendro dmg bonus
+stat_artifact;unactivated;(неактивно);(unactivated)
 
 stat_mini;hp;HP;HP
 stat_mini;atk;Атк;Atk

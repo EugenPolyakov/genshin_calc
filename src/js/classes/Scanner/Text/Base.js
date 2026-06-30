@@ -3,7 +3,7 @@ const levenshtein = require('js-levenshtein');
 export class ScannerTextBase {
     removeNonAlnum(text) {
         let result = text.replace(/^[^\wа-я]+/ig, '');
-        result = result.replace(/[^\wа-я%]+$/ig, '').toLowerCase();
+        result = result.replace(/[^\wа-я%()]+$/ig, '').toLowerCase();
 
         return result;
     }

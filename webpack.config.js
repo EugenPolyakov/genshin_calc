@@ -82,7 +82,7 @@ module.exports = (env, argv) => {
                             loader: 'file-loader',
                             options: {
                                 name(resourcePath) {
-                                    return resourcePath.replace(/^.*?\/src\/images\//, '');
+                                    return resourcePath.replace(/^.*?\\src\\images\\/, '');
                                 },
                                 outputPath: 'images/',
                                 publicPath: '../images/'
@@ -111,9 +111,20 @@ module.exports = (env, argv) => {
             extensions: ['', '.js', '.jsx'],
         },
         optimization: {
+            //minimize: false,
             minimizer: [
                 new CssMinimizerPlugin(),
                 new TerserPlugin({
+                    terserOptions: {
+                      compress: false, // отключаем сжатие
+                      mangle: false,   // отключаем переименование переменных
+                      keep_classnames: true,
+                      keep_fnames: true,
+                      format: {
+                        beautify: true,
+                        comments: true,
+                      },
+                    },
                     test: /\.js(\?.*)?$/i,
                 }),
             ],

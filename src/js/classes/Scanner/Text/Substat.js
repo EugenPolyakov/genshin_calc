@@ -7,7 +7,8 @@ export class ScannerTextSubstat extends ScannerTextBase {
 
         let parts = this.getParts(line);
         let stat  = this.getStatName(parts[0], line);
-        let value = this.getStatValue(parts[1], line);
+        let value = this.getStatValue( parts[ 1 ], line );
+        let unactivated = parts[ 2 ].toLowerCase().includes( UI.Lang.get( 'stat_artifact.unactivated' ).toLowerCase() );
 
         if (!stat || !value) {
             return null;
@@ -16,6 +17,7 @@ export class ScannerTextSubstat extends ScannerTextBase {
         return {
             stat: stat,
             value: value,
+            unactivated: unactivated,
         };
     }
 
@@ -23,10 +25,14 @@ export class ScannerTextSubstat extends ScannerTextBase {
         let parts = text.split('+');
         let value;
         let name;
+        let unactivated = '';
 
         if (parts.length == 2) {
             name  = parts[0];
-            value = parts[1];
+            parts = parts[ 1 ].split( ' ' );
+            value = parts[ 0 ];
+            if ( parts.length > 1 )
+                unactivated = parts[ parts.length - 1 ];
         } else {
             value = text.replace(/[^0-9\.,]+/g, '');
             name  = text.replace(/\s*(\+)?\s*\d+((,|\.)\d+)?/ig, '');
@@ -37,7 +43,7 @@ export class ScannerTextSubstat extends ScannerTextBase {
 
         name = this.processName(name);
 
-        return [name, value];
+        return [ name, value, unactivated ];
     }
 
     getStatName(name, line) {
