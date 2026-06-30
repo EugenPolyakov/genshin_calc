@@ -4,14 +4,11 @@ import "../../../css/Components/Tab/ArtifactStorage.css"
 import { ArtifactStoragePool } from './ArtifactStorage/Pool';
 import { Condition } from '../../classes/Condition';
 import { Feature2 } from '../../classes/Feature2';
-import { Lang } from '../Lang';
 import { ReactTab } from '../Components/Tab';
 import { Tab } from "../Tab";
 import { WorkerFactoryArtifactsSort } from '../../classes/WorkerFactory/ArtifactsSort';
 import { DB } from '../../db/DB';
 import { UI } from '../../ui';
-
-let lang = new Lang();
 
 export class ArtifactsStorageTab extends Tab {
     constructor(params) {
@@ -260,7 +257,7 @@ export class ArtifactsPoolView extends React.Component {
 
     render() {
         return (
-            <ReactTab title={lang.get(this.props.title)}>
+            <ReactTab title={UI.Lang.get(this.props.title)}>
                 <ArtifactStoragePool
                     ref={obj => this.pool = obj}
                     feature={this.state.feature}

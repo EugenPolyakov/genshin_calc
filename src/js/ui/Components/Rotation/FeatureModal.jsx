@@ -4,20 +4,11 @@ import "../../../../css/Components/Tab/Rotation/FeatureModal.css"
 import { ControlsBar, ControlsBarDivider } from "../../Components/ControlsBar";
 import { DialogContainer } from "../../Components/Dialog/Container";
 import { Dropdown } from "../../Components/Inputs/Dropdown";
-import { Lang } from "../../Lang";
 import { NumberInput, RadioList } from "../../Components/Inputs/Input";
 import { TitledButton } from "../../Components/Inputs/Buttons";
 import { Feature2 } from "../../../classes/Feature2";
 import { DB } from "../../../db/DB";
-
-let lang = new Lang();
-
-const reactionRadios = [
-    {value: 0, title: lang.get('feature_reaction.none')},
-    {value: 1, title: lang.get('feature_reaction.melt')},
-    {value: 2, title: lang.get('feature_reaction.vaporize')},
-    {value: 3, title: lang.get('feature_reaction.quicken')},
-];
+import { UI } from "../../../ui";
 
 export class RotationFeatureModal extends React.PureComponent {
     constructor(props) {
@@ -89,12 +80,19 @@ export class RotationFeatureModal extends React.PureComponent {
     }
 
     render() {
+        const reactionRadios = [
+            { value: 0, title: UI.Lang.get('feature_reaction.none') },
+            { value: 1, title: UI.Lang.get('feature_reaction.melt') },
+            { value: 2, title: UI.Lang.get('feature_reaction.vaporize') },
+            { value: 3, title: UI.Lang.get('feature_reaction.quicken') },
+        ];
+
         return (
             <DialogContainer
                 addClass="rotation-feature-modal"
                 width={500}
                 isVisible={this.state.isVisible}
-                title={lang.get('modal_window.rotation_feature')}
+                title={UI.Lang.get('modal_window.rotation_feature')}
                 closeCallback={() => this.handleClose()}
             >
                 <ControlsBar>
@@ -113,7 +111,7 @@ export class RotationFeatureModal extends React.PureComponent {
                     />
                 </div>
                 <div className="line">
-                    <div>{lang.get('rotation_view.feature_count')}</div>
+                    <div>{UI.Lang.get('rotation_view.feature_count')}</div>
                     <NumberInput
                         value={this.state.count}
                         nonEmpty={true}
@@ -127,12 +125,12 @@ export class RotationFeatureModal extends React.PureComponent {
                     <ControlsBarDivider />
                     <TitledButton
                         icon="icon-ok"
-                        title={lang.get('modal_buttons.confirm')}
+                        title={UI.Lang.get('modal_buttons.confirm')}
                         onClick={() => this.handleSave()}
                     />
                     <TitledButton
                         icon="icon-cancel"
-                        title={lang.get('modal_buttons.cancel')}
+                        title={UI.Lang.get('modal_buttons.cancel')}
                         onClick={() => this.handleClose()}
                     />
                 </ControlsBar>

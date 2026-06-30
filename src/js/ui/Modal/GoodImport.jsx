@@ -7,14 +7,10 @@ import { ControlsBar, ControlsBarDivider } from "../Components/ControlsBar";
 import { DialogContainer } from "../Components/Dialog/Container";
 import { Checkbox, FileInput, TextInput } from "../Components/Inputs/Input";
 import { ImporterGood } from "../../classes/Importer/Good";
-import { Lang } from "../Lang";
 import { Modal } from "../Modal";
-import { Serializer } from "../../classes/Serializer";
 import { RoundButton, TitledButton } from "../Components/Inputs/Buttons";
 import { Dropdown } from "../Components/Inputs/Dropdown";
 import { UI } from "../../ui";
-
-let lang = new Lang();
 
 export class GoodImportModal extends Modal {
     createContent() {
@@ -136,7 +132,7 @@ export class GoodImportComponent extends React.Component {
             this.setState({
                 count: "-",
                 canImport: false,
-                statusText: lang.get('good_import.status_error_' + result.code),
+                statusText: UI.Lang.get('good_import.status_error_' + result.code),
             });
         } else {
             this.refreshItemsList(result);
@@ -158,28 +154,27 @@ export class GoodImportComponent extends React.Component {
     }
 
     refreshItemsList(result) {
-        let existedHashes = this.props.storage.storageHashes();
+        let existedHashes = this.props.storage.storageLexHashes();
 
         for (let artifact of result.items) {
-            let hash = artifact.getHash();
+            let hash = artifact.getLexHash();
 
             if (existedHashes[hash]) {
-                this.items.matched.push(artifact);
+                this.items.matched.push(existedHashes[hash].data);
                 delete existedHashes[hash];
             } else {
                 this.items.added.push(artifact);
             }
         }
 
-        for (let hash of Object.keys(existedHashes)) {
-            let artifact = Artifact.deserialize(Serializer.unpack(hash));
-            this.items.missing.push(artifact)
+        for (let art of Object.values(existedHashes)) {
+            this.items.missing.push(art.data);
         }
 
         this.setState({
             count: result.items.length,
             canImport: true,
-            statusText: lang.get('good_import.status_error_0'),
+            statusText: UI.Lang.get('good_import.status_error_0'),
         });
     }
 
@@ -212,7 +207,7 @@ export class GoodImportComponent extends React.Component {
                 addClass="gi-window-good"
                 width={510}
                 isVisible={this.state.isVisible}
-                title={lang.get('modal_window.good_import')}
+                title={UI.Lang.get('modal_window.good_import')}
                 closeCallback={() => this.handleClose()}
             >
                 <div className="gi-good-inputs">
@@ -223,27 +218,27 @@ export class GoodImportComponent extends React.Component {
                         <TextInput
                             value={this.state.goodText}
                             onChange={(value) => {this.handleChangeText(value)}}
-                            placeholder={lang.get('good_import.paste_text')}
+                            placeholder={UI.Lang.get('good_import.paste_text')}
                         />
                     </div>
                 </div>
                 <div className="gi-good-result">
                     <div className="gi-good-result-line">
-                        <div className="title">{lang.get('good_import.import_status')}</div>
+                        <div className="title">{UI.Lang.get('good_import.import_status')}</div>
                         <div className="full">{this.state.statusText}</div>
                     </div>
 
                     <div className="gi-good-result-line">
-                        <div className="title">{lang.get('good_import.import_count')}</div>
+                        <div className="title">{UI.Lang.get('good_import.import_count')}</div>
                         <div className="value">{this.state.count}</div>
                     </div>
 
                     <div className="gi-good-result-line">
-                        <div className="title">{lang.get('good_import.import_added')}</div>
+                        <div className="title">{UI.Lang.get('good_import.import_added')}</div>
                         <div className="value">{this.items.added.length}</div>
                         <div className="full">
                             <Checkbox
-                                title={lang.get('good_import.action_added')}
+                                title={UI.Lang.get('good_import.action_added')}
                                 checked={this.state.actionAdd}
                                 onChange={(checked) => this.handleAdd(checked)}
                             />
@@ -266,22 +261,22 @@ export class GoodImportComponent extends React.Component {
                         </ControlsBar>
                     </div>
                     {/* <div className="gi-good-result-line">
-                        <div className="title">{lang.get('good_import.import_updated')}</div>
+                        <div className="title">{UI.Lang.get('good_import.import_updated')}</div>
                         <div className="value">{this.items.updated.length}</div>
                         <div className="full">
                             <Checkbox
-                                title={lang.get('good_import.action_updated')}
+                                title={UI.Lang.get('good_import.action_updated')}
                                 checked={this.state.actionUpdate}
                                 onChange={(checked) => this.handleActionUpdate(checked)}
                             />
                         </div>
                     </div> */}
                     <div className="gi-good-result-line">
-                        <div className="title">{lang.get('good_import.import_missing')}</div>
+                        <div className="title">{UI.Lang.get('good_import.import_missing')}</div>
                         <div className="value">{this.items.missing.length}</div>
                         <div className="full">
                             <Checkbox
-                                title={lang.get('good_import.action_missing')}
+                                title={UI.Lang.get('good_import.action_missing')}
                                 checked={this.state.actionMissing}
                                 onChange={(checked) => this.handleActionMissing(checked)}
                             />
@@ -293,13 +288,13 @@ export class GoodImportComponent extends React.Component {
                     <ControlsBarDivider />
                     <TitledButton
                         icon="button-icon-ok"
-                        title={lang.get('modal_buttons.confirm')}
+                        title={UI.Lang.get('modal_buttons.confirm')}
                         disabled={!this.state.canImport}
                         onClick={() => this.handleConfirm()}
                     />
                     <TitledButton
                         icon="button-icon-cancel"
-                        title={lang.get('modal_buttons.cancel')}
+                        title={UI.Lang.get('modal_buttons.cancel')}
                         onClick={() => this.handleClose()}
                     />
                 </ControlsBar>

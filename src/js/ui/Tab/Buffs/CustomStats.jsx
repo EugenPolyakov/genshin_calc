@@ -3,7 +3,7 @@ import "../../../../css/Components/Tab/Buffs/CustomStats.css";
 
 import { GroupBox } from '../../Components/Inputs/GroupBox';
 import { NumberInput } from '../../Components/Inputs/Input';
-import { Lang } from '../../Lang';
+import { UI } from '../../../ui';
 
 
 const PRIMARY_STATS = ['atk', 'def', 'hp'];
@@ -43,12 +43,10 @@ export class CustomStats extends React.Component {
     constructor(props) {
         super(props);
 
-        this.lang = new Lang();
-
         this.strings = {
-            primary: this.lang.get('stat_view.base_stats'),
-            damage_bonus: this.lang.get('stat_view.damage_bonus'),
-            reaction_bonus: this.lang.get('stat_view.reaction_bonus'),
+            primary: UI.Lang.get('stat_view.base_stats'),
+            damage_bonus: UI.Lang.get('stat_view.damage_bonus'),
+            reaction_bonus: UI.Lang.get('stat_view.reaction_bonus'),
         };
     }
 
@@ -60,7 +58,7 @@ export class CustomStats extends React.Component {
         for (let stat of PRIMARY_STATS) {
             items.push(
                 <div key={stat} className="line">
-                    <div className="name">{this.lang.get('stat.'+ stat)}</div>
+                    <div className="name">{UI.Lang.get('stat.'+ stat)}</div>
                     <div className="value">
                         <NumberInput
                             maxValue={9999}
@@ -90,7 +88,7 @@ export class CustomStats extends React.Component {
                     key={stat}
                     stat={stat}
                     value={this.props.settings['custom_buffs.' + stat]}
-                    title={this.lang.get('stat.'+ stat)}
+                    title={UI.Lang.get('stat.'+ stat)}
                     isDecimal={isPercent}
                     maxValue={isPercent ? 999 : 9999}
                     onChange={this.props.onChange}
@@ -104,7 +102,7 @@ export class CustomStats extends React.Component {
                     key={stat}
                     stat={stat}
                     value={this.props.settings['custom_buffs.' + stat]}
-                    title={this.lang.get('stat.'+ stat)}
+                    title={UI.Lang.get('stat.'+ stat)}
                     isDecimal={true}
                     maxValue={999}
                     onChange={this.props.onChange}
@@ -118,7 +116,7 @@ export class CustomStats extends React.Component {
                     key={ stat }
                     stat={ stat }
                     value={ this.props.settings['custom_buffs.' + stat] }
-                    title={ this.lang.get('stat.' + stat) }
+                    title={ UI.Lang.get('stat.' + stat) }
                     isDecimal={ true }
                     maxValue={ 999 }
                     onChange={ this.props.onChange }

@@ -3,11 +3,8 @@ import React from "react";
 
 import { DialogContainer } from "../Components/Dialog/Container";
 import { EnkaApp } from "../Components/Enka";
-import { Lang } from "../Lang";
 import { Modal } from "../Modal";
 import { UI } from "../../ui";
-
-let lang = new Lang();
 
 export class EnkaImportModal extends Modal {
     createContent() {
@@ -17,7 +14,7 @@ export class EnkaImportModal extends Modal {
                 storage={this.app.storage.char}
                 artifactStorage={this.app.storage.artifacts}
                 addClass="lockartifacts-select-modal"
-                title={lang.get('modal_window.lock_artifact')}
+                title={UI.Lang.get('modal_window.lock_artifact')}
             />
         );
     }
@@ -53,7 +50,7 @@ export class EnkaImportComponent extends React.Component {
 
     saveCalcSet(set) {
         UI.ConfirmWindow.show('modal.confirm', 'enka_import.confirm_save_char', () => {
-            UI.Layout.app.storage.char.add(set.clone(), {});
+            UI.Layout.app.storage.char.add(set.clone(), {}, true);
             UI.Layout.app.refresh();
             UI.Layout.app.queueUpdate();
         });
@@ -78,7 +75,7 @@ export class EnkaImportComponent extends React.Component {
                 width={600}
                 isVisible={this.state.isVisible}
                 maxHeight={true}
-                title={lang.get('enka_import.window_title')}
+                title={UI.Lang.get('enka_import.window_title')}
                 closeCallback={() => this.handleClose()}
             >
                 <EnkaApp

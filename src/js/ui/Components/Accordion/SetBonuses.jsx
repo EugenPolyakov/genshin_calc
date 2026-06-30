@@ -6,24 +6,22 @@ import { Checkbox } from '../Inputs/Input';
 import { ConditionList } from '../ConditionList';
 import { ControlsBar } from '../ControlsBar';
 import { GroupBox } from '../Inputs/GroupBox';
-import { Lang } from '../../Lang';
 import { TitledButton } from '../Inputs/Buttons';
 import { DB } from '../../../db/DB';
+import { UI } from '../../../ui';
 
 export class AccordionSetBonuses extends React.Component {
     constructor(props) {
         super(props);
 
-        this.lang = new Lang();
-
         this.strings = {
-            enable_all: this.lang.get('pool_view.enable_sets'),
-            disable_all: this.lang.get('pool_view.disable_sets'),
-            pieces_1: this.lang.get('artifact_set.pieces_1'),
-            pieces_2: this.lang.get('artifact_set.pieces_2'),
-            pieces_3: this.lang.get('artifact_set.pieces_3'),
-            pieces_4: this.lang.get('artifact_set.pieces_4'),
-            pieces_5: this.lang.get('artifact_set.pieces_5'),
+            enable_all: UI.Lang.get('pool_view.enable_sets'),
+            disable_all: UI.Lang.get('pool_view.disable_sets'),
+            pieces_1: UI.Lang.get('artifact_set.pieces_1'),
+            pieces_2: UI.Lang.get('artifact_set.pieces_2'),
+            pieces_3: UI.Lang.get('artifact_set.pieces_3'),
+            pieces_4: UI.Lang.get('artifact_set.pieces_4'),
+            pieces_5: UI.Lang.get('artifact_set.pieces_5'),
         }
     }
 
@@ -65,7 +63,7 @@ export class AccordionSetBonuses extends React.Component {
                     <ArtifactSetIcon size="60" set={setName}/>
                     <div className="data">
                         <div className="title">
-                            {this.lang.get(setData.getName())}
+                            {UI.Lang.get(setData.getName())}
                             <div className="pieces">
                                 {pieces}
                             </div>

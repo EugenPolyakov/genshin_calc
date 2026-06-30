@@ -7,11 +7,8 @@ import { FullHeight, FullHeightScrollable, FullHeightStatic } from "../../Compon
 import { WeaponIcon } from "../../Components/Icons";
 import { TitledButton, ToggleRoundButton } from "../../Components/Inputs/Buttons";
 import { Checkbox } from "../../Components/Inputs/Input";
-import { Lang } from "../../Lang";
 import { DB } from "../../../db/DB";
 import { UI } from "../../../ui";
-
-let lang = new Lang();
 
 export class WeaponSuggestListModal extends React.Component {
     constructor(props) {
@@ -97,7 +94,7 @@ export class WeaponSuggestListModal extends React.Component {
                 width={500}
                 height={UI.Layout.windowHeight() - 50}
                 isVisible={this.state.isVisible}
-                title={lang.get('weapon_suggest.weapon_list')}
+                title={UI.Lang.get('weapon_suggest.weapon_list')}
                 closeCallback={() => this.handleClose()}
             >
                 <FullHeight>
@@ -108,18 +105,18 @@ export class WeaponSuggestListModal extends React.Component {
                         <ControlsBar>
                             <TitledButton
                                 icon="icon-delete"
-                                title={lang.get('modal_buttons.reset')}
+                                title={UI.Lang.get('modal_buttons.reset')}
                                 onClick={() => this.handleReset()}
                             />
                             <ControlsBarDivider />
                             <TitledButton
                                 icon="icon-ok"
-                                title={lang.get('art_gen.apply')}
+                                title={UI.Lang.get('art_gen.apply')}
                                 onClick={() => this.handleSave()}
                             />
                             <TitledButton
                                 icon="icon-cancel"
-                                title={lang.get('modal_buttons.cancel')}
+                                title={UI.Lang.get('modal_buttons.cancel')}
                                 onClick={() => this.handleClose()}
                             />
                         </ControlsBar>
@@ -144,7 +141,7 @@ export class WeaponSuggestListModal extends React.Component {
             weaponsSorted.push({
                 name: weaponName,
                 weapon: weapon,
-                title: lang.get(weapon.getName()),
+                title: UI.Lang.get(weapon.getName()),
                 rarity: weapon.getRarity(),
             });
         }
@@ -212,7 +209,7 @@ function WeaponListItemSettings(props) {
 
         items.push(
             <div key={props.name + id} className="setting">
-                <div className="name">{id ? lang.get('weapon_settings.'+ id) : ''}</div>
+                <div className="name">{id ? UI.Lang.get('weapon_settings.'+ id) : ''}</div>
                 <div className="show">
                     <Checkbox
                         checked={idSettings.show}

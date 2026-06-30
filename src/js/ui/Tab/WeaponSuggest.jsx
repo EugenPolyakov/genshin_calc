@@ -9,7 +9,6 @@ import { Feature2 } from '../../classes/Feature2';
 import { FeatureTableHeader } from '../Components/FeatureTable';
 import { FullHeight, FullHeightScrollable, FullHeightStatic } from '../Components/FullHeight';
 import { generatorSettings, getDefaultSettings } from '../Components/ArtifactGenerator';
-import { Lang } from '../Lang';
 import { ReactTab } from '../Components/Tab';
 import { RoundButton, TitledButton } from '../Components/Inputs/Buttons';
 import { Tab } from "../Tab";
@@ -20,9 +19,6 @@ import { WorkerFactorySuggestArtifacts } from '../../classes/WorkerFactory/Sugge
 import { WorkerFactorySuggestWeapons } from '../../classes/WorkerFactory/SuggestWeapons';
 import { DB } from '../../db/DB';
 import { UI } from '../../ui';
-
-
-let lang = new Lang();
 
 export class WeaponSuggestTab extends Tab {
     constructor(params) {
@@ -544,7 +540,7 @@ export class WeaponSuggestView extends React.Component {
     render() {
         return (
             <ReactTab
-                title={lang.get(this.props.title)}
+                title={UI.Lang.get(this.props.title)}
             >
                 <FullHeight>
                     <FullHeightStatic>
@@ -566,8 +562,8 @@ export class WeaponSuggestView extends React.Component {
                             <Dropdown
                                 barClass="feature-type"
                                 items={[
-                                    {value: 'percent', text: lang.get('suggester.display_percent')},
-                                    {value: 'absolute', text: lang.get('suggester.display_absolute')},
+                                    {value: 'percent', text: UI.Lang.get('suggester.display_percent')},
+                                    {value: 'absolute', text: UI.Lang.get('suggester.display_absolute')},
                                 ]}
                                 selected={this.state.displayMode}
                                 onChange={(item) => this.handleDisplayMode(item.value)}
@@ -579,13 +575,13 @@ export class WeaponSuggestView extends React.Component {
                                 {this.state.isLoading ?
                                     <TitledButton
                                         icon="icon-cancel"
-                                        title={lang.get('weapon_suggest.stop')}
+                                        title={UI.Lang.get('weapon_suggest.stop')}
                                         onClick={() => this.handleStopSuggest()}
                                     />
                                     :
                                     <TitledButton
                                         icon="icon-ok"
-                                        title={lang.get('weapon_suggest.start')}
+                                        title={UI.Lang.get('weapon_suggest.start')}
                                         onClick={() => this.handleStartSuggest()}
                                     />
                                 }
@@ -595,7 +591,7 @@ export class WeaponSuggestView extends React.Component {
                     </FullHeightStatic>
                     <FullHeightScrollable
                         isLoading={this.state.isLoading}
-                        loadingOverlay={lang.get('weapon_suggest.loading')}
+                        loadingOverlay={UI.Lang.get('weapon_suggest.loading')}
                         loadingProgress={this.state.progress}
                         loadingSubProgress={this.state.subProgress}
                         noPadding={true}

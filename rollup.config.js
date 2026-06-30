@@ -22,7 +22,7 @@ import { readdirSync } from 'fs';
 const POLYFILL_ID = '\0polyfill';
 const __DEVEL__ = process.env.mode === 'development' || process.env.min === 'false';
 const replaces = replace({
-    'process.env.NODE_ENV': process.env.NODE_ENV,
+    'process.env.NODE_ENV': JSON.stringify(process.env.mode),
     __VERSION__: JSON.stringify(pkg.version),
     __DEVEL__: JSON.stringify(__DEVEL__),
     // Важно для предотвращения случайных замен в присваиваниях
@@ -434,7 +434,7 @@ export default [
             }
         ]
     },
-    ...readdirSync(path.resolve('./src/js/workers')).map(file => workerInput(path.basename(file, '.js'))),
+    ...readdirSync(path.resolve('./src/js/workers'), { withFileTypes: true }).filter(f => f.isFile()).map(file => workerInput(path.basename(file.name, '.js'))),
     {
         input: './src/js/generated/db.js',
         output: {

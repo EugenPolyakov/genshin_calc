@@ -6,18 +6,9 @@ import { CharInfo } from "../../Components/Character/Info";
 import { ControlsBar } from "../../Components/ControlsBar";
 import { TitledButton } from "../../Components/Inputs/Buttons";
 import { Dropdown } from "../../Components/Inputs/Dropdown";
-import { Lang } from "../../Lang";
 import { Modal } from "../../Modal";
 import { ModalSelectBase, SearchInput } from "../Select";
-
-let lang = new Lang();
-
-const LOCK_MODES = [
-    {value: 'current',  text: lang.get('pool_view.lockmode_current') },
-    {value: 'all',      text: lang.get('pool_view.lockmode_all') },
-    {value: 'all_save', text: lang.get('pool_view.lockmode_all_save') },
-    {value: 'filtered', text: lang.get('pool_view.lockmode_filtered') },
-];
+import { UI } from "../../../ui";
 
 export class ModalLockArtifacts extends Modal {
     createContent() {
@@ -27,7 +18,7 @@ export class ModalLockArtifacts extends Modal {
                 storage={this.app.storage.char}
                 artifactStorage={this.app.storage.artifacts}
                 addClass="lockartifacts-select-modal"
-                title={lang.get('modal_window.lock_artifact')}
+                title={UI.Lang.get('modal_window.lock_artifact')}
             />
         );
     }
@@ -66,7 +57,7 @@ class LockArtifactComponent extends ModalSelectBase {
         for (let item of this.props.storage.listDecoded(showBeta)) {
             let build = item.data;
             let char = build.char.object;
-            let title = item.title || lang.get(char.getName());
+            let title = item.title || UI.Lang.get(char.getName());
 
             let storageArts = [];
             for (let hash of build.getArtifactsHashList()) {
@@ -79,7 +70,7 @@ class LockArtifactComponent extends ModalSelectBase {
                 id: 'save'+ (index++),
                 build: item.data,
                 title: item.title,
-                sortTitle: (title + ' ' + lang.get(char.getName())).toLocaleUpperCase(),
+                sortTitle: (title + ' ' + UI.Lang.get(char.getName())).toLocaleUpperCase(),
                 storageArts: storageArts,
             });
         }
@@ -186,6 +177,13 @@ class LockArtifactComponent extends ModalSelectBase {
     }
 
     getControls() {
+        const LOCK_MODES = [
+            { value: 'current', text: UI.Lang.get('pool_view.lockmode_current') },
+            { value: 'all', text: UI.Lang.get('pool_view.lockmode_all') },
+            { value: 'all_save', text: UI.Lang.get('pool_view.lockmode_all_save') },
+            { value: 'filtered', text: UI.Lang.get('pool_view.lockmode_filtered') },
+        ];
+
         return (
             <>
                 <ControlsBar>
@@ -197,16 +195,16 @@ class LockArtifactComponent extends ModalSelectBase {
                     />
                     <TitledButton
                         icon="button-icon-unlock"
-                        title={lang.get('pool_view.unlock_artifacts')}
+                        title={UI.Lang.get('pool_view.unlock_artifacts')}
                         onClick={() => this.handleLockArtifacts(false)}
                     />
                     <TitledButton
                         icon="button-icon-lock"
-                        title={lang.get('pool_view.lock_artifacts')}
+                        title={UI.Lang.get('pool_view.lock_artifacts')}
                         onClick={() => this.handleLockArtifacts(true)}
                     />
                 </ControlsBar>
-                <div className="text-info">{lang.get('pool_view.lock_info')}</div>
+                <div className="text-info">{UI.Lang.get('pool_view.lock_info')}</div>
                 <ControlsBar>
                     <SearchInput
                         barClass="resizable"
@@ -239,12 +237,12 @@ function LockCharList(props) {
     let buttons = [
         {
             icon: 'icon-unlock',
-            tooltip: lang.get('tooltip.pool_unlock_char'),
+            tooltip: UI.Lang.get('tooltip.pool_unlock_char'),
             callback: (build) => props.onUnlockBuild(build),
         },
         {
             icon: 'icon-lock',
-            tooltip: lang.get('tooltip.pool_lock_char'),
+            tooltip: UI.Lang.get('tooltip.pool_lock_char'),
             callback: (build) => props.onLockBuild(build),
         },
     ];

@@ -2,12 +2,10 @@ import React from "react";
 
 import { ControlsBar, ControlsBarDivider } from "../../Components/ControlsBar";
 import { DialogContainer } from "../../Components/Dialog/Container";
-import { Lang } from "../../Lang";
 import { TitledButton } from "../../Components/Inputs/Buttons";
 import { ArtifactGeneratorSettings, cloneSettings, getDefaultSettings } from "../../Components/ArtifactGenerator";
 import { Radio } from "../../Components/Inputs/Input";
-
-let lang = new Lang();
+import { UI } from "../../../ui";
 
 export class WeaponSuggestSettingsModal extends React.PureComponent {
     constructor(props) {
@@ -58,13 +56,13 @@ export class WeaponSuggestSettingsModal extends React.PureComponent {
             <DialogContainer
                 width={500}
                 isVisible={this.state.isVisible}
-                title={lang.get('weapon_suggest.generator_settings')}
+                title={UI.Lang.get('weapon_suggest.generator_settings')}
                 closeCallback={() => this.handleClose()}
             >
                 <div className="weapon-suggest-radio">
                     <Radio
                         value={'current'}
-                        title={lang.get('weapon_suggest.use_equipped')}
+                        title={UI.Lang.get('weapon_suggest.use_equipped')}
                         selected={this.state.artifactMode == 'current'}
                         onChange={() => this.handleartifactModeChange('current')}
                     />
@@ -72,20 +70,20 @@ export class WeaponSuggestSettingsModal extends React.PureComponent {
                 <div className="weapon-suggest-radio">
                     <Radio
                         value={'storage'}
-                        title={lang.get('weapon_suggest.use_storage')}
+                        title={UI.Lang.get('weapon_suggest.use_storage')}
                         selected={this.state.artifactMode == 'storage'}
                         onChange={() => this.handleartifactModeChange('storage')}
                     />
-                    <div className="radio-remark">{lang.get('weapon_suggest.use_storage_remark')}</div>
+                    <div className="radio-remark">{UI.Lang.get('weapon_suggest.use_storage_remark')}</div>
                 </div>
                 <div className="weapon-suggest-radio">
                     <Radio
                         value={'generate'}
-                        title={lang.get('weapon_suggest.use_generated')}
+                        title={UI.Lang.get('weapon_suggest.use_generated')}
                         selected={this.state.artifactMode == 'generate'}
                         onChange={() => this.handleartifactModeChange('generate')}
                     />
-                    <div className="radio-remark">{lang.get('weapon_suggest.use_generated_remark')}</div>
+                    <div className="radio-remark">{UI.Lang.get('weapon_suggest.use_generated_remark')}</div>
                 </div>
                 <ArtifactGeneratorSettings
                     settings={this.state.settings}
@@ -95,12 +93,12 @@ export class WeaponSuggestSettingsModal extends React.PureComponent {
                     <ControlsBarDivider />
                     <TitledButton
                         icon="icon-ok"
-                        title={lang.get('modal_buttons.confirm')}
+                        title={UI.Lang.get('modal_buttons.confirm')}
                         onClick={() => this.handleSave()}
                     />
                     <TitledButton
                         icon="icon-cancel"
-                        title={lang.get('modal_buttons.cancel')}
+                        title={UI.Lang.get('modal_buttons.cancel')}
                         onClick={() => this.handleClose()}
                     />
                 </ControlsBar>

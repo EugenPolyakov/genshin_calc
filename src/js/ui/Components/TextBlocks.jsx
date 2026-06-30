@@ -2,10 +2,7 @@ import React from 'react';
 import parse from 'html-react-parser';
 
 import "../../../css/Components/TextBlocks.css"
-
-import { Lang } from '../Lang';
-
-let lang = new Lang();
+import { UI } from '../../ui';
 
 export function BlockRemark(props) {
     return (
@@ -16,7 +13,7 @@ export function BlockRemark(props) {
 export function NotAvailable(props) {
     return (
         <div className="beta-warning">
-            {lang.get('tab_content.not_avaliable')}
+            {UI.Lang.get('tab_content.not_avaliable')}
         </div>
     );
 }
@@ -24,7 +21,7 @@ export function NotAvailable(props) {
 export function UnderDevelopment(props) {
     return (
         <div className="beta-warning">
-            {parse(lang.get('tab_content.under_development'))}
+            {parse(UI.Lang.get('tab_content.under_development'))}
         </div>
     );
 }
@@ -32,8 +29,8 @@ export function UnderDevelopment(props) {
 export function BetaWarning(prors) {
     return (
         <div className="beta-warning">
-            <span>{lang.get('object_view.beta_1')} </span>
-            <span>{lang.get('object_view.beta_2')} </span>
+            <span>{UI.Lang.get('object_view.beta_1')} </span>
+            <span>{UI.Lang.get('object_view.beta_2')} </span>
         </div>
     );
 }

@@ -3,14 +3,12 @@ import React from "react";
 import { ControlsBar, ControlsBarDivider } from "../ControlsBar";
 import { DialogContainer } from "../Dialog/Container";
 import { Dropdown } from "../Inputs/Dropdown";
-import { Lang } from "../../Lang";
 import { TitledButton } from "../Inputs/Buttons";
 import { Rotation } from "../../../classes/Rotation";
 import { ConditionList } from "../ConditionList";
 import { Condition } from "../../../classes/Condition";
 import { DB } from "../../../db/DB";
-
-let lang = new Lang();
+import { UI } from "../../../ui";
 
 const sections = ['char', 'weapon', 'artifacts', 'enemy', 'buffs'];
 const condSections = ['char', 'weapon', 'artifacts', 'enemy', 'party', 'buffs'];
@@ -141,7 +139,7 @@ export class RotationConditionModal extends React.PureComponent {
                 addClass="rotation-feature-modal"
                 width={500}
                 isVisible={this.state.isVisible}
-                title={lang.get('modal_window.rotation_condition')}
+                title={UI.Lang.get('modal_window.rotation_condition')}
                 closeCallback={() => this.handleClose()}
             >
                 {this.state.showDropdown ? <ControlsBar>
@@ -163,12 +161,12 @@ export class RotationConditionModal extends React.PureComponent {
                     <ControlsBarDivider />
                     <TitledButton
                         icon="icon-ok"
-                        title={lang.get('modal_buttons.confirm')}
+                        title={UI.Lang.get('modal_buttons.confirm')}
                         onClick={() => this.handleSave()}
                     />
                     <TitledButton
                         icon="icon-cancel"
-                        title={lang.get('modal_buttons.cancel')}
+                        title={UI.Lang.get('modal_buttons.cancel')}
                         onClick={() => this.handleClose()}
                     />
                 </ControlsBar>
@@ -302,7 +300,7 @@ export class RotationConditionModal extends React.PureComponent {
                 result.push({
                     isCaption: true,
                     value: section,
-                    text: lang.get('rotation_view.section_'+ section),
+                    text: UI.Lang.get('rotation_view.section_'+ section),
                 });
 
                 result = result.concat(results[section]);

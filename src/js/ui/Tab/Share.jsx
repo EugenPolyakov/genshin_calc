@@ -8,13 +8,9 @@ import { FullHeight, FullHeightScrollable, FullHeightStatic } from '../Component
 import { TitledButton } from '../Components/Inputs/Buttons';
 import { TextInputWithButton, TextInputWithCopy } from '../Components/Inputs/Input';
 import { ReactTab } from '../Components/Tab';
-
-import { Lang } from '../Lang';
 import { SearchInput } from '../Modal/Select';
 import { Tab } from "../Tab";
 import { UI } from '../../ui';
-
-let lang = new Lang();
 
 export class ShareTab extends Tab {
     constructor(params) {
@@ -70,13 +66,13 @@ export class ShareView extends React.Component {
         let showBeta = UI.Layout.app.showBetaContent();
 
         for (let item of this.storage.listDecoded(showBeta)) {
-            let title = item.title || lang.get(item.data.getChar().object.getName());
+            let title = item.title || UI.Lang.get(item.data.getChar().object.getName());
 
             this.items.push({
                 key: index +' '+ prefix,
                 callbackData: {index: item.index},
                 title: title,
-                sortTitle: (title + ' ' + lang.get(item.data.getChar().object.getName())).toLocaleUpperCase(),
+                sortTitle: (title + ' ' + UI.Lang.get(item.data.getChar().object.getName())).toLocaleUpperCase(),
                 set: item.data,
             });
             ++index;
@@ -164,7 +160,7 @@ export class ShareView extends React.Component {
         this.filterItems();
 
         return (
-            <ReactTab title={lang.get('tab_header.share_view')}>
+            <ReactTab title={UI.Lang.get('tab_header.share_view')}>
                 <FullHeight>
                     <FullHeightStatic>
                         <ControlsBar>
@@ -177,18 +173,18 @@ export class ShareView extends React.Component {
                             <TextInputWithButton
                                 barClass="resizable"
                                 value={this.state.saveString}
-                                placeholder={lang.get('share_view.save_placeholder')}
-                                text={lang.get('share_view.save_local')}
+                                placeholder={UI.Lang.get('share_view.save_placeholder')}
+                                text={UI.Lang.get('share_view.save_local')}
                                 onChange={(value) => this.handleSaveNameChange(value)}
                                 onClick={() => this.handleSaveBuild()}
                             />
                         </ControlsBar>
                         <ControlsBar>
-                            <div>{lang.get('share_view.stored_title')}</div>
+                            <div>{UI.Lang.get('share_view.stored_title')}</div>
                             <ControlsBarDivider />
                             <TitledButton
                                 icon="icon-ok"
-                                title={lang.get('share_view.showcase_import')}
+                                title={UI.Lang.get('share_view.showcase_import')}
                                 onClick={() => this.handleShowEnka()}
                             />
                         </ControlsBar>

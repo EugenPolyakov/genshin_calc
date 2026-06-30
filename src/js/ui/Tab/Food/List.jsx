@@ -3,10 +3,8 @@ import "../../../../css/Components/Tab/Food/List.css"
 import { Stats } from '../../../classes/Stats';
 
 import { FeatureTableValues } from '../../Components/FeatureTable';
-import { Lang } from '../../Lang';
 import { DB } from '../../../db/DB';
-
-const lang = new Lang();
+import { UI } from '../../../ui';
 
 export class FoodList extends React.Component {
     render() {
@@ -38,7 +36,7 @@ export class FoodList extends React.Component {
         return (
             <div className={classes.join(' ')}>
                 {items}
-                {this.props.foodCategory != 'Potion' ? <div className="remark">{lang.get('food_view.disclaimer')}</div> : ''}
+                {this.props.foodCategory != 'Potion' ? <div className="remark">{UI.Lang.get('food_view.disclaimer')}</div> : ''}
             </div>
         );
     }
@@ -77,8 +75,8 @@ function FoodListItem(props) {
     return (
         <div className={classes.join(' ')} onClick={() => props.onClick(props.food, props.level)}>
             <div className="title">
-                {props.food.hasQuality() ? <span className="quality">{lang.get('food_view.quality_'+ prefix +'_'+ props.level)}</span> : null}
-                {lang.get(foodName)}
+                {props.food.hasQuality() ? <span className="quality">{UI.Lang.get('food_view.quality_'+ prefix +'_'+ props.level)}</span> : null}
+                {UI.Lang.get(foodName)}
             </div>
             <div className="line">
                 <div className={'icon '+ foodIcon} />
@@ -101,7 +99,7 @@ function FoodListItemStats(props) {
     for (let stat of Object.keys(stats)) {
         items.push(
             <div key={stat} className="stat">
-                <span className="name">{lang.get('stat_short.'+ stat)}</span>
+                <span className="name">{UI.Lang.get('stat_short.'+ stat)}</span>
                 <span className="value">{Stats.format(stat, stats[stat], {signed: 1, no_decimal_zero: 1})}</span>
             </div>
         );

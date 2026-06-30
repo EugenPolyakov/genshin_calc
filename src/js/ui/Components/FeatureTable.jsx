@@ -3,9 +3,8 @@ import "../../../css/Components/FeatureTable.css"
 
 import { Stats } from '../../classes/Stats';
 import { formatNumber } from '../../Utils';
-import { Lang } from '../Lang';
+import { UI } from '../../ui';
 
-const lang = new Lang();
 const FEATURE_VALUES = ['normal', 'crit', 'average'];
 const FEATURE_HEAL_EMPTY = ['normal', 'crit'];
 
@@ -13,9 +12,9 @@ export function FeatureTableHeader(props) {
     return (
         <div className="feature-table-header">
             <div className="flex-spacer">{props.title}</div>
-            <div className="item">{lang.get('stat_view.normal')}</div>
-            <div className="item">{lang.get('stat_view.crit')}</div>
-            <div className="item">{lang.get('stat_view.average')}</div>
+            <div className="item">{UI.Lang.get('stat_view.normal')}</div>
+            <div className="item">{UI.Lang.get('stat_view.crit')}</div>
+            <div className="item">{UI.Lang.get('stat_view.average')}</div>
         </div>
     );
 }

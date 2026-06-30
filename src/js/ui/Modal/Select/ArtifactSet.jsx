@@ -4,15 +4,13 @@ import parse from 'html-react-parser';
 import "../../../../css/Components/Modal/Select/ArtifactSet.css"
 
 import { ArtifactSetIcon } from "../../Components/Icons";
-import { Lang } from "../../Lang";
 import { Modal } from "../../Modal";
 import { ModalSelectBase, SearchInput } from "../Select";
 import { ControlsBar } from "../../Components/ControlsBar";
 import { DialogContainer } from "../../Components/Dialog/Container";
 import { ConditionList } from "../../Components/ConditionList";
 import { DB } from "../../../db/DB";
-
-let lang = new Lang();
+import { UI } from "../../../ui";
 
 export class ModalSelectArtifactSet extends Modal {
     createContent() {
@@ -20,7 +18,7 @@ export class ModalSelectArtifactSet extends Modal {
             <ArtifactSetSelectComponent
                 ref={(obj) => this.modal = obj}
                 addClass="artifactset-select-modal"
-                title={lang.get('modal_window.select_artifact_set')}
+                title={UI.Lang.get('modal_window.select_artifact_set')}
             />
         );
     }
@@ -43,7 +41,7 @@ class ArtifactSetSelectComponent extends ModalSelectBase {
             this.items.push({
                 item: set,
                 id: set.getId(),
-                title: lang.get(set.getName()).toUpperCase(),
+                title: UI.Lang.get(set.getName()).toUpperCase(),
                 rarity: set.maxRarity,
                 beta: set.isBeta(),
             });
@@ -189,7 +187,7 @@ class ArtifactSetSelectItem extends React.PureComponent {
             >
                 <div className="line">
                     <ArtifactSetIcon size={40} set={item} />
-                    <div className="name">{lang.get(item.getName())}</div>
+                    <div className="name">{UI.Lang.get(item.getName())}</div>
                 </div>
                 <div className="line">
                     <div className="set-info">{piecesInfo}</div>
@@ -238,7 +236,7 @@ class SetInfoModal extends React.PureComponent {
                 addClass="artifactset-info-modal"
                 width={500}
                 isVisible={this.state.isVisible}
-                title={lang.get('modal_window.artifact_set_info')}
+                title={UI.Lang.get('modal_window.artifact_set_info')}
                 closeCallback={() => this.handleClose()}
             >
                 <ConditionList

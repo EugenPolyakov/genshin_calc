@@ -1,7 +1,7 @@
-import { GroupToSubstats } from "../../db/Artifacts/Substats";
-import { DB } from "../../db/DB";
-import { Artifact } from "../Artifact";
-import { CalcSet } from "../CalcSet";
+import { GroupToSubstats } from "../../../db/Artifacts/Substats";
+import { DB } from "../../../db/DB";
+import { Artifact } from "../../../classes/Artifact";
+import { CalcSet } from "../../../classes/CalcSet";
 import { prepareUid } from "./Uid";
 
 const API_URL = '/enka/';

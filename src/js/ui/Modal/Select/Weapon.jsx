@@ -3,15 +3,13 @@ import "../../../../css/Components/Modal/Select/Weapon.css"
 
 import { ControlsBar } from "../../Components/ControlsBar";
 import { Dropdown } from "../../Components/Inputs/Dropdown";
-import { Lang } from "../../Lang";
 import { Modal } from "../../Modal";
 import { ModalSelectBase, SearchInput } from "../Select";
 import { Stats } from "../../../classes/Stats";
 import { ToggleRoundButton } from "../../Components/Inputs/Buttons";
 import { WeaponIcon } from "../../Components/Icons";
 import { DB } from "../../../db/DB";
-
-let lang = new Lang();
+import { UI } from "../../../ui";
 
 export class ModalSelectWeapon extends Modal {
     createContent() {
@@ -19,7 +17,7 @@ export class ModalSelectWeapon extends Modal {
             <WeaponSelectComponent
                 ref={(obj) => this.modal = obj}
                 addClass="weapon-select-modal"
-                title={lang.get('modal_window.select_weapon')}
+                title={UI.Lang.get('modal_window.select_weapon')}
             />
         )
     }
@@ -60,7 +58,7 @@ class WeaponSelectComponent extends ModalSelectBase {
             this.items.push({
                 weapon: weapon,
                 id: weapon.getId(),
-                title: lang.get(weapon.getName()).toUpperCase(),
+                title: UI.Lang.get(weapon.getName()).toUpperCase(),
                 type: weapon.getType(),
                 stats: stats,
                 beta: weapon.isBeta(),
@@ -123,7 +121,7 @@ class WeaponSelectComponent extends ModalSelectBase {
         for (let stat of Object.keys(allStats)) {
             this.statsFilter.push({
                 value: stat,
-                text: lang.get('stat.'+ stat),
+                text: UI.Lang.get('stat.'+ stat),
             });
         }
 
@@ -131,7 +129,7 @@ class WeaponSelectComponent extends ModalSelectBase {
             return a.text.localeCompare(b.text);
         });
 
-        this.statsFilter.unshift({'value': '', text: lang.get('dropdown.title')});
+        this.statsFilter.unshift({'value': '', text: UI.Lang.get('dropdown.title')});
     }
 
     handleTypeToggle(type) {
@@ -191,7 +189,7 @@ class WeaponSelectComponent extends ModalSelectBase {
                         key={type}
                         icon={'weapon-types ' + type}
                         checked={this.state.weaponType == type}
-                        tooltip={lang.get('weapon_type.'+ type)}
+                        tooltip={UI.Lang.get('weapon_type.'+ type)}
                         onChange={() => this.handleTypeToggle(type)}
                     />
                 );
@@ -243,7 +241,7 @@ class WeaponSelectItem extends React.PureComponent {
 
             stats.push(
                 <div key={stat.getName()} className="stat-line">
-                    <div className="stat">{lang.getStat('stat_short.'+ name.replace('_percent', ''))}</div>
+                    <div className="stat">{UI.Lang.getStat('stat_short.'+ name.replace('_percent', ''))}</div>
                     <div className="value">
                         {Stats.format(name, stat.getValue(1, 0))}
                         &nbsp;-&nbsp;
@@ -260,7 +258,7 @@ class WeaponSelectItem extends React.PureComponent {
             >
                 <WeaponIcon size={60} weapon={weapon} />
                 <div className="info">
-                    <div className="name">{lang.get(weapon.getName())}</div>
+                    <div className="name">{UI.Lang.get(weapon.getName())}</div>
                     {stats}
                 </div>
             </div>

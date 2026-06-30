@@ -16,7 +16,6 @@ import { FeatureReactionRupture } from '../../classes/Feature2/Reaction/Transfor
 import { FeatureReactionSuperConduct } from '../../classes/Feature2/Reaction/Transformative/SuperConduct';
 import { FeatureReactionTransformative } from '../../classes/Feature2/Reaction/Transformative';
 import { FullHeight, FullHeightStatic, FullHeightFloatTitle, FloatTitleBlock } from '../Components/FullHeight';
-import { Lang } from '../Lang';
 import { ReactTab } from '../Components/Tab';
 import { Stats, isPercent } from '../../classes/Stats';
 import { Tab } from "../Tab";
@@ -30,8 +29,7 @@ import { FeatureReactionSwirlPyro } from '../../classes/Feature2/Reaction/Transf
 import { FeatureReactionSwirlHydro } from '../../classes/Feature2/Reaction/Transformative/Swirl/Hydro';
 import { FeatureReactionSwirlElectro } from '../../classes/Feature2/Reaction/Transformative/Swirl/Electro';
 import { FeatureReactionSwirlCryo } from '../../classes/Feature2/Reaction/Transformative/Swirl/Cryo';
-
-let lang = new Lang();
+import { UI } from '../../ui';
 
 const secondaryStatsList = [
     'recharge',
@@ -127,7 +125,7 @@ export class StatsTab extends Tab {
         return (
             <StatsView
                 ref={element => { this.component = element }}
-                title={lang.get('tab_header.stat_view')}
+                title={UI.Lang.get('tab_header.stat_view')}
             />
         );
     }
@@ -145,7 +143,7 @@ class StatsView extends React.Component {
             rows.push({
                 stat: stat,
                 icon: 'icon-'+ stat,
-                title: lang.getStat('stat.'+ stat),
+                title: UI.Lang.getStat('stat.'+ stat),
                 base: Stats.format(stat, base, {zero: 1}),
                 bonus: Stats.format(stat, bonus, {signed: 1, zero: 1}),
                 total: Stats.format(stat, total, {zero: 1}),
@@ -176,7 +174,7 @@ class StatsView extends React.Component {
                 continue;
             }
 
-            let title = lang.getStat('stat.'+ stat);
+            let title = UI.Lang.getStat('stat.'+ stat);
             if (optional) {
                 title = '• '+ title;
             }
@@ -224,7 +222,7 @@ class StatsView extends React.Component {
                 rows.push({
                     stat: stat,
                     icon: 'icon-'+ name,
-                    title: lang.getStat('stat.'+ name),
+                    title: UI.Lang.getStat('stat.'+ name),
                     base: Stats.format(name, base, {zero: 1}),
                     bonus: Stats.format(name, bonus, {signed: 1, zero: 1}),
                     total: Stats.format(name, total, {zero: 1}),
@@ -247,7 +245,7 @@ class StatsView extends React.Component {
 
             rows.push({
                 stat: stat,
-                title: lang.getStat('stat.'+ stat),
+                title: UI.Lang.getStat('stat.'+ stat),
                 base: Stats.format(stat, 0, {zero: 1}),
                 bonus: Stats.format(stat, value, {signed: 1, zero: 1}),
                 total: Stats.format(stat, value, {zero: 1}),
@@ -259,7 +257,7 @@ class StatsView extends React.Component {
             stat = stat.replace(/^\!/, '');
 
             let value = stats.get(stat)
-            let title = lang.getStat('stat.'+ stat);
+            let title = UI.Lang.getStat('stat.'+ stat);
             if (optional) {
                 title = '• '+ title;
             }
@@ -295,7 +293,7 @@ class StatsView extends React.Component {
             let feature = new featureClass({});
             let base = 0;
             let bonus = 0;
-            let title = lang.getStat('feature_reaction.'+ stat.replace('dmg_reaction_', ''));
+            let title = UI.Lang.getStat('feature_reaction.'+ stat.replace('dmg_reaction_', ''));
 
             if (feature.getReactionMasteryBonus) {
                 base = calcTreeValue(feature.getReactionMasteryBonus(data), data) * 100 || 0;
@@ -352,7 +350,7 @@ class StatsView extends React.Component {
 
             rows.push({
                 stat: stat,
-                title: lang.getStat('stat.'+ stat),
+                title: UI.Lang.getStat('stat.'+ stat),
                 base: Stats.format(stat, value, {zero: 1}),
                 bonus: Stats.format('stamina_consume', multi, {signed: 1, zero: 1}),
                 total: Stats.format(stat, total, {zero: 1}),
@@ -364,7 +362,7 @@ class StatsView extends React.Component {
 
             rows.push({
                 stat: stat,
-                title: lang.getStat('stat.'+ stat),
+                title: UI.Lang.getStat('stat.'+ stat),
                 base: Stats.format(stat, value, {zero: 1}),
                 bonus: '',
                 total: Stats.format(stat, value, {zero: 1}),
@@ -381,7 +379,7 @@ class StatsView extends React.Component {
 
             rows.push({
                 stat: stat,
-                title: lang.getStat('stat.'+ stat),
+                title: UI.Lang.getStat('stat.'+ stat),
                 base: Stats.format(stat, 0, {zero: 1}),
                 bonus: Stats.format(stat, value, {signed: 1, zero: 1}),
                 total: Stats.format(stat, value, {signed: 1, zero: 1}),
@@ -404,22 +402,22 @@ class StatsView extends React.Component {
                         <StatsTableHeader />
                     </FullHeightStatic>
                     <FullHeightFloatTitle noPadding={true}>
-                        <FloatTitleBlock title={lang.get('stat_view.base_stats')}>
+                        <FloatTitleBlock title={UI.Lang.get('stat_view.base_stats')}>
                             <StatsTableBlock items={this.getBaseStats(stats)} />
                         </FloatTitleBlock>
-                        <FloatTitleBlock title={lang.get('stat_view.secondary_stats')}>
+                        <FloatTitleBlock title={UI.Lang.get('stat_view.secondary_stats')}>
                             <StatsTableBlock items={this.getSecondaryStats(stats)} />
                         </FloatTitleBlock>
-                        <FloatTitleBlock title={lang.get('stat_view.elemental_stats')}>
+                        <FloatTitleBlock title={UI.Lang.get('stat_view.elemental_stats')}>
                             <StatsTableBlock items={this.getElementalStats(stats)} />
                         </FloatTitleBlock>
-                        <FloatTitleBlock title={lang.get('stat_view.damage_bonus')}>
+                        <FloatTitleBlock title={UI.Lang.get('stat_view.damage_bonus')}>
                             <StatsTableBlock items={this.getModifierStats(stats)} />
                         </FloatTitleBlock>
-                        <FloatTitleBlock title={lang.get('stat_view.reaction_bonus')}>
+                        <FloatTitleBlock title={UI.Lang.get('stat_view.reaction_bonus')}>
                             <StatsTableBlock items={this.getReactionStats(buildData)} />
                         </FloatTitleBlock>
-                        <FloatTitleBlock title={lang.get('stat_view.other')}>
+                        <FloatTitleBlock title={UI.Lang.get('stat_view.other')}>
                             <StatsTableBlock items={this.getOtherStats(stats)} />
                         </FloatTitleBlock>
                     </FullHeightFloatTitle>
@@ -433,9 +431,9 @@ function StatsTableHeader(props) {
     return (
         <div className="stats-table-block header">
             <div className="flex-spacer"/>
-            <div className="item">{lang.get('stat_view.base')}</div>
-            <div className="item green">{lang.get('stat_view.bonus')}</div>
-            <div className="item">{lang.get('stat_view.total')}</div>
+            <div className="item">{UI.Lang.get('stat_view.base')}</div>
+            <div className="item green">{UI.Lang.get('stat_view.bonus')}</div>
+            <div className="item">{UI.Lang.get('stat_view.total')}</div>
         </div>
     );
 }

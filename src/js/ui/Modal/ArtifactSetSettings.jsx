@@ -3,14 +3,11 @@ import React from "react";
 import "../../../css/modal/ArtifactSetSettings.css"
 
 import { DialogContainer } from "../Components/Dialog/Container";
-import { Lang } from "../Lang";
 import { Modal } from "../Modal";
-import { FullHeight, FullHeightScrollable, FullHeightStatic } from "../Components/FullHeight";
 import { ControlsBar, ControlsBarDivider } from "../Components/ControlsBar";
 import { TitledButton } from "../Components/Inputs/Buttons";
 import { ConditionList } from "../Components/ConditionList";
-
-let lang = new Lang();
+import { UI } from "../../ui";
 
 export class ArtifactSetSettingsModal extends Modal {
     createContent() {
@@ -66,7 +63,7 @@ class ArtifactSetSettingsComponent extends React.Component {
                 addClass="artifact-settings-modal"
                 width={500}
                 isVisible={this.state.isVisible}
-                title={ lang.get('artifacts_ui.settings') }
+                title={ UI.Lang.get('artifacts_ui.settings') }
                 closeCallback={() => this.handleClose()}
             >
                 <ConditionList
@@ -79,12 +76,12 @@ class ArtifactSetSettingsComponent extends React.Component {
                     <ControlsBarDivider />
                     <TitledButton
                         icon="icon-ok"
-                        title={lang.get('art_gen.apply')}
+                        title={UI.Lang.get('art_gen.apply')}
                         onClick={() => this.handleSave()}
                     />
                     <TitledButton
                         icon="icon-cancel"
-                        title={lang.get('modal_buttons.cancel')}
+                        title={UI.Lang.get('modal_buttons.cancel')}
                         onClick={() => this.handleClose()}
                     />
                 </ControlsBar>

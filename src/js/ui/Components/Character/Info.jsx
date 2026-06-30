@@ -1,7 +1,6 @@
 import React from 'react';
 import "../../../../css/Components/Char/Info.css"
 import { Stats } from '../../../classes/Stats';
-import { Lang } from '../../Lang';
 import { StatLine } from '../../Tab/Artifacts/StatsInfo';
 import { ArtifactList } from '../Artifact';
 import { ControlsBar, ControlsBarDivider } from '../ControlsBar';
@@ -11,8 +10,6 @@ import { GroupBox } from '../Inputs/GroupBox';
 import { getLevelData, levelItemsChar } from '../ObjectBlock';
 import { DB } from '../../../db/DB';
 import { UI } from '../../../ui';
-
-let lang = new Lang();
 
 export class CharInfo extends React.Component {
     constructor(props) {
@@ -123,7 +120,7 @@ export class CharInfo extends React.Component {
                                     className="show-arts"
                                     onClick={() => this.handleShowDetails()}
                                 >
-                                    {lang.get(this.state.showDetails ? 'char_info.hide_artifacts' : 'char_info.show_artifacts')}
+                                    {UI.Lang.get(this.state.showDetails ? 'char_info.hide_artifacts' : 'char_info.show_artifacts')}
                                 </div>
                                 : ''
                             }
@@ -211,7 +208,7 @@ function BuildDetails(props) {
             <StatLine
                 key="talents"
                 stat=""
-                title={lang.get('char_info.skills')}
+                title={UI.Lang.get('char_info.skills')}
                 strValue={skills.attack + ' - ' + skills.elemental + ' - ' + skills.burst}
                 unsigned={true}
             />
@@ -229,7 +226,7 @@ function CharInfoStats(props) {
     for (let setting of props.settings) {
         items.push(
             <div key={setting} className="line">
-                <div className="line-name">{lang.get('stat_settings.'+ setting)}</div>
+                <div className="line-name">{UI.Lang.get('stat_settings.'+ setting)}</div>
                 <div className="line-value">{settings[setting] || 0}</div>
             </div>
         );
@@ -241,7 +238,7 @@ function CharInfoStats(props) {
 
         items.push(
             <div key={stat} className="line">
-                <div className="line-name">{lang.get('stat.'+ statTrim)}</div>
+                <div className="line-name">{UI.Lang.get('stat.'+ statTrim)}</div>
                 <div className="line-value">{Stats.format(statTrim, value) || 0}</div>
             </div>
         );

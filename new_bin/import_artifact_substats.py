@@ -269,17 +269,17 @@ for key, stat in TYPES_TO_STATS.items():
         s = ''
         for k in sorted(v.keys(), key=float):
             s += f"{k}: {v[k]['preciseValues']}, "
-        print('            {' + s + '},')
+        print('            { ' + s + '},')
     print('        ],')
     print('        stacks: [')
     for v in stats[stat]['values']:
         s = ''
         for k in sorted(v.keys(), key=float):
-            a = ''
+            a = []
             for z in sorted(v[k]['comb'].keys(), key=len):
-                a += f"[{', '.join(list(z))}], "
-            s += f"{k}: [{a}], "
-        print('            {' + s + '},')
+                a.append(f"[{', '.join(list(z))}],")
+            s += f"{k}: [{' '.join(a)}], "
+        print('            { ' + s + '},')
     print('        ],')
     print('        rollsToValue: [')
     for v in stats[stat]['values']:
@@ -287,17 +287,17 @@ for key, stat in TYPES_TO_STATS.items():
         for k in sorted(v.keys(), key=float):
             for z in v[k]['comb'].keys():
                 s += f"'{z}': {k}, "
-        print('            {' + s + '},')
+        print('            { ' + s + '},')
     print('        ],')
     print('        rollsReal: [')
     for rolls in sorted(stats[stat]['rolls'].keys()):
         data = stats[stat]['rolls'][rolls]
         print('            [' + ', '.join(data) + '],')
     print('        ],')
-    print('        testValues: [')
-    for v in stats[stat]['values']:
-        print('           ', sorted(v.keys(), key=float), ',')
-    print('        ],')
+    # print('        testValues: [')
+    # for v in stats[stat]['values']:
+    #     print('           ', sorted(v.keys(), key=float), ',')
+    # print('        ],')
     print('    }),')
 print('});')
 print('')

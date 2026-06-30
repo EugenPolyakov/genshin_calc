@@ -5,12 +5,10 @@ import { ReactSortable } from "react-sortablejs";
 import "../../../../css/Components/Tab/Rotation/List.css"
 
 import { GroupBox } from "../Inputs/GroupBox";
-import { Lang } from "../../Lang";
 import { MAX_DEPTH, Rotation } from "../../../classes/Rotation";
 import { Stats } from "../../../classes/Stats";
 import { BlockRemark } from "../TextBlocks";
-
-let lang = new Lang();
+import { UI } from "../../../ui";
 
 const reactionNames = {
     1: 'melt',
@@ -241,7 +239,7 @@ function RotationFeatureSubLine(props) {
         count100_percent: props.data.value * 100,
     });
 
-    let text = lang.getTalent(props.data.descr, values) || '';
+    let text = UI.Lang.getTalent(props.data.descr, values) || '';
 
     return (
         <div className="sub-line">
@@ -270,7 +268,7 @@ function RotationLineReaction(props) {
     }
 
     return (
-        <div className={'reaction' + reactionClass}>{lang.get('feature_reaction.'+ reactionName)}</div>
+        <div className={'reaction' + reactionClass}>{UI.Lang.get('feature_reaction.'+ reactionName)}</div>
     );
 }
 
@@ -281,7 +279,7 @@ function RotationLineValues(props) {
         if (props.result[type]) {
             items.push(
                 <React.Fragment key={type}>
-                    <div className="name">{lang.get('stat_view.' + type)}</div>
+                    <div className="name">{UI.Lang.get('stat_view.' + type)}</div>
                     <div className="value">{Stats.format('', props.count * props.result[type])}</div>
                 </React.Fragment>
             );
@@ -319,8 +317,8 @@ function FeatureLine(props) {
 
     return (
         <div className="feature-line">
-            <span className="feature-name">{ lang.get('feature_' + name) }</span>
-            <span className="feature-category">{ lang.get('feature_rotation.' + parts[0]) }</span>
+            <span className="feature-name">{ UI.Lang.get('feature_' + name) }</span>
+            <span className="feature-category">{ UI.Lang.get('feature_rotation.' + parts[0]) }</span>
         </div>
     );
 }
@@ -405,7 +403,7 @@ function RotationListCondition(props) {
 }
 
 function RotationRepeat(props) {
-    let title = lang.get('rotation_view.repeat_text');
+    let title = UI.Lang.get('rotation_view.repeat_text');
     title = title.replace('{x}', props.item.count);
 
     return (
@@ -431,7 +429,7 @@ function RotationRepeat(props) {
             </div>
             {props.item.collapsed
                 ? <BlockRemark>
-                    {parse(lang.getTalent('rotation_view.items_collapsed', new Stats({number: props.list.length})))}
+                    {parse(UI.Lang.getTalent('rotation_view.items_collapsed', new Stats({number: props.list.length})))}
                 </BlockRemark>
                 :
                 <GroupBox>
@@ -462,7 +460,7 @@ function RotationRepeat(props) {
 }
 
 function RotationBuffUptime(props) {
-    let title = lang.get('rotation_view.uptime_text');
+    let title = UI.Lang.get('rotation_view.uptime_text');
     title = title.replace('{x}', props.item.percent);
     title += '%';
 
@@ -489,7 +487,7 @@ function RotationBuffUptime(props) {
             </div>
             {props.item.collapsed
                 ? <BlockRemark>{
-                    parse(lang.getTalent('rotation_view.items_collapsed', new Stats({number: props.conditions.length + props.features.length})))}
+                    parse(UI.Lang.getTalent('rotation_view.items_collapsed', new Stats({number: props.conditions.length + props.features.length})))}
                 </BlockRemark>
                 : <>
                     <GroupBox>

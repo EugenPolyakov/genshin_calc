@@ -7,15 +7,12 @@ import { Dropdown } from '../Components/Inputs/Dropdown';
 import { Feature2 } from '../../classes/Feature2';
 import { FeatureTableHeader, FeatureTableValues } from '../Components/FeatureTable';
 import { FullHeight, FullHeightScrollable, FullHeightStatic } from '../Components/FullHeight';
-import { Lang } from '../Lang';
 import { Radio } from '../Components/Inputs/Input';
 import { ReactTab } from '../Components/Tab';
 import { RoundButton, TitledButton, ToggleRoundButton } from '../Components/Inputs/Buttons';
 import { Serializer } from '../../classes/Serializer';
 import { Tab } from "../Tab";
 import { UI } from '../../ui';
-
-let lang = new Lang();
 
 const MAX_STORAGE_LEGNTH = 50;
 const ROTATION_TYPE_SAVED = 1;
@@ -118,7 +115,7 @@ export class CompareView extends React.Component {
 
     addFromBuild(build, title, noRefresh) {
         this.index++;
-        title = title || lang.get(build.getChar().getName()) +' '+ this.index;
+        title = title || UI.Lang.get(build.getChar().getName()) +' '+ this.index;
 
         this.state.items.push({
             key: 'compare'+ this.index,
@@ -163,7 +160,7 @@ export class CompareView extends React.Component {
     handleAddItem() {
         this.index++;
         let build = UI.Layout.app.currentSet().clone();
-        let title = lang.get(build.getChar().getName()) +' '+ this.index;
+        let title = UI.Lang.get(build.getChar().getName()) +' '+ this.index;
 
         this.state.items.push({
             key: 'compare'+ this.index,
@@ -282,7 +279,7 @@ export class CompareView extends React.Component {
         let isRotation = /rotation/.test(this.state.feature);
 
         return (
-            <ReactTab title={lang.get('tab_header.compare')}>
+            <ReactTab title={UI.Lang.get('tab_header.compare')}>
                 <FullHeight>
                     <FullHeightStatic>
                         <ControlsBar>
@@ -299,19 +296,19 @@ export class CompareView extends React.Component {
                             <Dropdown
                                 barClass="feature-type"
                                 items={[
-                                    {value: 'percent', text: lang.get('suggester.display_percent')},
-                                    {value: 'absolute', text: lang.get('suggester.display_absolute')},
+                                    {value: 'percent', text: UI.Lang.get('suggester.display_percent')},
+                                    {value: 'absolute', text: UI.Lang.get('suggester.display_absolute')},
                                 ]}
                                 selected={this.state.displayMode}
                                 onChange={(item) => this.handleDisplayMode(item.value)}
                             />
                         </ControlsBar>
                         {isRotation ? <ControlsBar>
-                            <div>{lang.get('compare_view.use_rotation')}</div>
+                            <div>{UI.Lang.get('compare_view.use_rotation')}</div>
                             <div>
                                 <Radio
                                     value={ROTATION_TYPE_CURRENT}
-                                    title={lang.get('compare_view.rotation_current')}
+                                    title={UI.Lang.get('compare_view.rotation_current')}
                                     selected={this.state.rotationType === ROTATION_TYPE_CURRENT}
                                     onChange={(value) => this.handleRotationType(value)}
                                 />
@@ -319,7 +316,7 @@ export class CompareView extends React.Component {
                             <div>
                                 <Radio
                                     value={ROTATION_TYPE_SAVED}
-                                    title={lang.get('compare_view.rotation_saved')}
+                                    title={UI.Lang.get('compare_view.rotation_saved')}
                                     selected={this.state.rotationType === ROTATION_TYPE_SAVED}
                                     onChange={(value) => this.handleRotationType(value)}
                                 />
@@ -329,18 +326,18 @@ export class CompareView extends React.Component {
                             <ToggleRoundButton
                                 icon="icon-sort"
                                 checked={this.state.sortByFeature}
-                                tooltip={lang.get('tooltip.pool_sort')}
+                                tooltip={UI.Lang.get('tooltip.pool_sort')}
                                 onChange={(value) => this.handleFeatureSort(value)}
                             />
                             <ControlsBarDivider />
                             <TitledButton
                                 icon="icon-add"
-                                title={lang.get('compare_view.add')}
+                                title={UI.Lang.get('compare_view.add')}
                                 onClick={() => this.handleAddItem()}
                             />
                             <TitledButton
                                 icon="icon-delete"
-                                title={lang.get('compare_view.clear')}
+                                title={UI.Lang.get('compare_view.clear')}
                                 onClick={() => this.handleClearItems()}
                             />
                         </ControlsBar>
@@ -426,7 +423,7 @@ export class CompareItem extends React.Component {
                     className={'line' + (this.props.odd ? ' odd': '')}
                 >
                     <div className="more-info">
-                        {lang.get('feature_' + feature)}
+                        {UI.Lang.get('feature_' + feature)}
                     </div>
                     <FeatureTableValues
                         result={this.props.itemFeatures[feature]}
@@ -449,9 +446,9 @@ export class CompareItem extends React.Component {
                             <span className="name-title">{this.props.item.title}</span>
                         </div>
                         <div>
-                            <span className="item-button" onClick={() => this.props.onApply(this.props.index)}>{lang.get('compare_view.load_set')}</span>
-                            <span className="item-button" onClick={() => this.props.onDelete(this.props.index)}>{lang.get('compare_view.delete_set')}</span>
-                            {/* <span className="item-button">{lang.get('compare_view.set_details')}</span> */}
+                            <span className="item-button" onClick={() => this.props.onApply(this.props.index)}>{UI.Lang.get('compare_view.load_set')}</span>
+                            <span className="item-button" onClick={() => this.props.onDelete(this.props.index)}>{UI.Lang.get('compare_view.delete_set')}</span>
+                            {/* <span className="item-button">{UI.Lang.get('compare_view.set_details')}</span> */}
                         </div>
                     </div>
                     <FeatureTableValues

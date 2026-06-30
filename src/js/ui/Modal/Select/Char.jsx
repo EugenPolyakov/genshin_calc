@@ -3,13 +3,10 @@ import "../../../../css/Components/Modal/Select/Char.css"
 import { ControlsBar, ControlsBarDivider } from "../../Components/ControlsBar";
 import { CharIcon } from "../../Components/Icons";
 
-import { Lang } from "../../Lang";
 import { Modal } from "../../Modal";
 import { ModalSelectBase } from "../Select";
 import { DB } from "../../../db/DB";
 import { UI } from "../../../ui";
-
-let lang = new Lang();
 
 export class ModalSelectChar extends Modal {
     createContent() {
@@ -17,7 +14,7 @@ export class ModalSelectChar extends Modal {
             <CharSelectComponent
                 ref={(obj) => this.modal = obj}
                 addClass="char-select-modal"
-                title={lang.get('modal_window.select_char')}
+                title={UI.Lang.get('modal_window.select_char')}
             />
         );
     }
@@ -53,7 +50,7 @@ export class CharSelectComponent extends ModalSelectBase {
             this.items.push({
                 char: char,
                 id: char.getId(),
-                title: lang.get(char.getName()).toUpperCase(),
+                title: UI.Lang.get(char.getName()).toUpperCase(),
                 element: char.getElement(),
                 weapon: char.getWeapon(),
                 beta: char.isBeta(),
@@ -262,7 +259,7 @@ class ResetSelectItem extends React.PureComponent {
             >
                 <CharIcon size={60} resetIcon={true} />
                 <div className="info">
-                    <div className="name">{lang.get('char_name.reset_build')}</div>
+                    <div className="name">{UI.Lang.get('char_name.reset_build')}</div>
                 </div>
             </div>
         );
@@ -278,7 +275,7 @@ class EmptySelectItem extends React.PureComponent {
             >
                 <CharIcon size={60} />
                 <div className="info">
-                    <div className="name">{lang.get('char_name.no_char')}</div>
+                    <div className="name">{UI.Lang.get('char_name.no_char')}</div>
                 </div>
             </div>
         );
@@ -296,7 +293,7 @@ class CharSelectItem extends React.PureComponent {
             >
                 <CharIcon size={60} char={char} />
                 <div className="info">
-                    <div className="name">{lang.get(char.getName())}</div>
+                    <div className="name">{UI.Lang.get(char.getName())}</div>
                     <div className="icons">
                         <div className={'element element-' + char.getElement()} />
                         <div className={'weapon weapon-type-' + char.getWeapon()} />

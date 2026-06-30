@@ -4,9 +4,7 @@ import ReactDOM from 'react-dom/client'
 import "../../../css/ui/Sync.css"
 
 import { waitForCondition } from "../../Utils";
-import { Lang } from "../Lang";
-
-let lang = new Lang();
+import { UI } from "../../ui";
 
 export class Sync extends React.Component {
     init() {
@@ -68,7 +66,7 @@ class SyncComponent extends React.Component {
         return (
             <>
                 <i className="sync-icon-auth"></i>
-                <span className="gi-sync-status-name">{lang.get('sync_status.'+ this.state.status)}</span>
+                <span className="gi-sync-status-name">{UI.Lang.get('sync_status.'+ this.state.status)}</span>
             </>
         );
     }

@@ -8,7 +8,8 @@ import { Features } from './Features';
 import { Food } from './Food';
 import { Objects } from './Objects';
 import { Weapons } from './Weapons';
-export * from './Constants'
+export * from './Constants';
+export { GroupToSubstats } from './Artifacts/Substats' ;
 
 export const DB = {
     Artifacts: Artifacts,

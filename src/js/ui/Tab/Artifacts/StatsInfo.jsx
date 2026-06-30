@@ -4,9 +4,9 @@ import "../../../../css/Components/Tab/Artifacts/StatsInfo.css"
 
 import { Stats } from '../../../classes/Stats';
 import { GroupBox } from '../../Components/Inputs/GroupBox';
-import { Lang } from '../../Lang';
 import { FeatureCompiler } from '../../../classes/Feature2/Compiler';
 import { CBlock } from '../../../classes/Feature2/Compile/Types';
+import { UI } from '../../../ui';
 
 const statsList1 = ['hp', 'atk', 'def'];
 const statsList2 = [
@@ -15,7 +15,6 @@ const statsList2 = [
     'res_anemo', 'res_cryo', 'res_electro', 'res_geo', 'res_hydro', 'res_pyro', 'res_phys', 'res_dendro',
     'atk_speed_normal', 'atk_speed_charged', 'dmg_all', 'dmg_normal', 'dmg_charged', 'dmg_plunge', 'dmg_skill', 'dmg_burst',
 ];
-let lang = new Lang();
 
 export class StatsInfo extends React.Component {
     constructor(props) {
@@ -91,7 +90,7 @@ export class StatsInfo extends React.Component {
         }
 
         return (
-            <GroupBox title={lang.get('artifact_view.total_stats')}>
+            <GroupBox title={UI.Lang.get('artifact_view.total_stats')}>
                 {items}
             </GroupBox>
         );
@@ -101,7 +100,7 @@ export class StatsInfo extends React.Component {
 export function StatLine(props) {
     return (
         <div className="arifacts-stat-info-line">
-            <div className="si-name">{props.title || parse(lang.get('stat.'+ props.stat))}</div>
+            <div className="si-name">{props.title || parse(UI.Lang.get('stat.'+ props.stat))}</div>
             <div className="si-value">
                 {props.strValue || Stats.format(props.stat, props.value, {signed: props.unsigned ? false : true})}
             </div>
@@ -112,7 +111,7 @@ export function StatLine(props) {
 function StatLineWithBase(props) {
     return (
         <div className="arifacts-stat-info-line">
-            <div className="si-name">{lang.get('stat.'+ props.stat)}</div>
+            <div className="si-name">{UI.Lang.get('stat.'+ props.stat)}</div>
             <div className="si-value">
                 {Stats.format(props.stat, props.total, {signed: true})}
                 <span className="si-remark">

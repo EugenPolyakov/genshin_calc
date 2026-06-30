@@ -2,12 +2,8 @@ import React from "react";
 import "../../../css/Components/Artifact.css"
 
 import { Stats } from "../../classes/Stats";
-import { Lang } from "../Lang";
 import { ArtifactSetIcon } from "./Icons";
 import { UI } from "../../ui";
-
-const lang = new Lang();
-
 export function ArtifactList(props) {
     let items = [];
 
@@ -97,7 +93,7 @@ export class ArtifactListItem extends React.Component {
             let stat = item.replace('_percent', '');
             substats[value.index] = (
                 <div key={item} className={'substat'+ (item == this.props.highlightStat ? ' highlight' : '') + (value.unactivated ? ' unactivated' : '')}>
-                    <span className="stat">{lang.get('stat_mini.'+ stat)}</span>
+                    <span className="stat">{UI.Lang.get('stat_mini.'+ stat)}</span>
                     <span className="value">{Stats.format(item, value.value, {signed: false})}</span>
                 </div>
             );
@@ -132,7 +128,7 @@ export class ArtifactListItem extends React.Component {
                             showLockCallback={this.props.showLockCallback}
                         />
                         <div className="main-stat">
-                            {lang.get('stat_short.'+ stat)}
+                            {UI.Lang.get('stat_short.'+ stat)}
                         </div>
                         <div className={'main-stat'+ (statOriginal == this.props.highlightStat ? ' highlight' : '')}>
                             <span className="main-value">
@@ -190,24 +186,24 @@ function ArtifactListItemButtons(props) {
         }}>
             {props.onEdit ? <div
                 className="button edit"
-                data-tooltop={lang.get('tooltip.artifact_edit')}
+                data-tooltop={UI.Lang.get('tooltip.artifact_edit')}
                 onClick={() => props.onEdit(props.art)}
             /> : ''}
             {props.onDelete ? <div
                 className="button delete"
-                data-tooltop={lang.get('tooltip.artifact_delete')}
+                data-tooltop={UI.Lang.get('tooltip.artifact_delete')}
                 onClick={() => props.onDelete(props.art)}
             /> : ''}
             {showLocking ? (props.locked ?
                 <div
                     className="button locked"
-                    data-tooltop={lang.get('tooltip.artifact_unlock')}
+                    data-tooltop={UI.Lang.get('tooltip.artifact_unlock')}
                     onClick={() => props.onLock(props.art, false)}
                 />
                 :
                 <div
                     className="button unlocked"
-                    data-tooltop={lang.get('tooltip.artifact_lock')}
+                    data-tooltop={UI.Lang.get('tooltip.artifact_lock')}
                     onClick={() => props.onLock(props.art, true)}
                 />
             ) : ''}

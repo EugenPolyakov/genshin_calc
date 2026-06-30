@@ -1,5 +1,5 @@
-import { Rotation } from "../Rotation";
-import { Serializer } from "../Serializer";
+import { Rotation } from "../../../classes/Rotation";
+import { Serializer } from "../../../classes/Serializer";
 import { StorageItem } from "../StorageItem";
 
 export class StorageItemRotation extends StorageItem {

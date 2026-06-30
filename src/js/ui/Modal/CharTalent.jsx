@@ -6,14 +6,13 @@ import "../../../css/modal/CharTalent.css"
 import "../../../css/ui/Widget/TalentTable.css"
 
 import { DialogContainer } from "../Components/Dialog/Container";
-import { Lang } from "../Lang";
 import { Modal } from "../Modal";
 import { BetaWarning } from "../Components/TextBlocks";
 import { GroupBox } from "../Components/Inputs/GroupBox";
 import { FullHeight, FullHeightScrollable, FullHeightStatic } from "../Components/FullHeight";
 import { DB } from "../../db/DB";
+import { UI } from "../../ui";
 
-let lang = new Lang();
 const maxLevels = {
     attack: 15,
     skill: 15,
@@ -76,8 +75,8 @@ export class CharTalentComponent extends React.Component {
 
             this.tabs.push({
                 name: category,
-                title: lang.get(cData.title),
-                descr: lang.getTalent(cData.description),
+                title: UI.Lang.get(cData.title),
+                descr: UI.Lang.getTalent(cData.description),
                 data: cData,
             });
         }
@@ -88,8 +87,8 @@ export class CharTalentComponent extends React.Component {
                 let category = 'n'+ link_id;
                 this.links.push({
                     name: category,
-                    title: lang.get('talent_name.'+ category),
-                    descr: lang.getTalent('talent_descr.'+ category),
+                    title: UI.Lang.get('talent_name.'+ category),
+                    descr: UI.Lang.getTalent('talent_descr.'+ category),
                 });
             }
         }
@@ -110,7 +109,7 @@ export class CharTalentComponent extends React.Component {
                 width={1000}
                 isVisible={this.state.isVisible}
                 maxHeight={true}
-                title={ (this.char ? lang.get(this.char.getName()) + ': ' : '') + lang.get('char_talent.caption') }
+                title={ (this.char ? UI.Lang.get(this.char.getName()) + ': ' : '') + UI.Lang.get('char_talent.caption') }
                 closeCallback={() => this.handleClose()}
                 data-char={ this.char ? this.char.getId() : "" }
             >
@@ -184,7 +183,7 @@ function TalentTable(props) {
     for (let i = 1; i <= max; ++i) {
         captionItems.push(
             <div key={'lvl'+i} className="gi-talent-table-line-caption">
-                <span className="gi-foreground-text">{lang.get('char_talent.level')}</span>
+                <span className="gi-foreground-text">{UI.Lang.get('char_talent.level')}</span>
                 {i}
             </div>
         );
@@ -195,7 +194,7 @@ function TalentTable(props) {
         let talent = item.name || first.getName();
         let type = item.type || '';
         let unit = '%';
-        let title = lang.get('feature_'+ props.item.name +'.'+ talent);
+        let title = UI.Lang.get('feature_'+ props.item.name +'.'+ talent);
         let formatOpts = {
             digits: item.digits,
             integer : item.integer,
@@ -203,7 +202,7 @@ function TalentTable(props) {
 
         if (item.unit !== undefined) {
             if (item.unit) {
-                unit = lang.get('char_talent.unit_'+ item.unit);
+                unit = UI.Lang.get('char_talent.unit_'+ item.unit);
             } else {
                 unit = '';
             }
@@ -323,7 +322,7 @@ function TalentTable(props) {
 
                     values.push(
                         <span key={'sep'+ values.length} className="gi-foreground-text">
-                            {unit ? lang.get('char_talent.unit_'+ unit) : '%'}
+                            {unit ? UI.Lang.get('char_talent.unit_'+ unit) : '%'}
                         </span>
                     );
 
@@ -392,9 +391,9 @@ function formatValue(value, formatOpts) {
     if (isFloat(value)) {
         result += 0.00000001;
         if (formatOpts.integer) {
-            result = Math.round(result).toLocaleString(lang.getLocale());
+            result = Math.round(result).toLocaleString(UI.Lang.getLocale());
         } else {
-            result = result.toLocaleString(lang.getLocale(), { maximumFractionDigits: formatOpts.digits || 1 });
+            result = result.toLocaleString(UI.Lang.getLocale(), { maximumFractionDigits: formatOpts.digits || 1 });
         }
     }
 

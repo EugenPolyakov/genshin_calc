@@ -5,21 +5,19 @@ import { ArtifactList } from "./Artifact";
 import { ArtifactSetIcon } from "./Icons";
 import { ControlsBar, ControlsBarDivider } from "./ControlsBar";
 import { formatNumber } from "../../Utils";
-import { Lang } from "../Lang";
 import { ResultTableButton, RoundButton } from "./Inputs/Buttons";
 import { Dropdown } from "./Inputs/Dropdown";
 import { Stats } from "../../classes/Stats";
 import { FullHeight, FullHeightScrollable, FullHeightStatic } from "./FullHeight";
 import { TabDisclaimer } from "./Tab";
-import { FeatureTableValues } from "./FeatureTable";
 import { DB } from "../../db/DB";
+import { UI } from "../../ui";
 
 export function SuggestResult(props) {
-    let lang = new Lang();
 
     if (props.result.items.length == 0) {
         return (
-            <TabDisclaimer>{lang.get('artifacts_ui.nothing_found')}</TabDisclaimer>
+            <TabDisclaimer>{UI.Lang.get('artifacts_ui.nothing_found')}</TabDisclaimer>
         );
     }
 
@@ -59,8 +57,8 @@ export function SuggestResult(props) {
                     <Dropdown
                         barClass="feature-type"
                         items={[
-                            {value: 'percent', text: lang.get('suggester.display_percent')},
-                            {value: 'absolute', text: lang.get('suggester.display_absolute')},
+                            {value: 'percent', text: UI.Lang.get('suggester.display_percent')},
+                            {value: 'absolute', text: UI.Lang.get('suggester.display_absolute')},
                         ]}
                         selected={props.displayMode}
                         onChange={(item) => props.onDisplayModeChange(item.value)}
@@ -78,7 +76,6 @@ export class SuggestResultItem extends React.Component {
     constructor(props) {
         super(props);
 
-        this.lang = new Lang();
         this.state = {
             showArtifacts: false,
         };
@@ -107,7 +104,7 @@ export class SuggestResultItem extends React.Component {
                         {icons[0] ? <SuggestSetIcon name={icons[0].name} count={icons[0].count} /> : ''}
                         {icons[1] ? <SuggestSetIcon name={icons[1].name} count={icons[1].count} /> : ''}
                         <div className="show-arts" onClick={() => this.handleToggleVisibility()}>
-                            {this.state.showArtifacts ? this.lang.get('pool_view.hide_artifacts') : this.lang.get('pool_view.show_artifacts')}
+                            {this.state.showArtifacts ? UI.Lang.get('pool_view.hide_artifacts') : UI.Lang.get('pool_view.show_artifacts')}
                         </div>
                     </div>
                     <div className="button">
@@ -154,7 +151,6 @@ function SuggestSetIcon(props) {
 }
 
 function SuggesterFeatures(props) {
-    let lang = new Lang();
     let features = props.item.calcFeatures(1);
 
     let items = [];
@@ -165,7 +161,7 @@ function SuggesterFeatures(props) {
 
         items.push(
             <div className="value-line sub" key={feat}>
-                <div className="value-name">{lang.get('feature_' + feat)}</div>
+                <div className="value-name">{UI.Lang.get('feature_' + feat)}</div>
                 <SuggesterFeaturesValues
                     item={features[feat]}
                 />
@@ -176,7 +172,7 @@ function SuggesterFeatures(props) {
     return (
         <div className="values">
             <div className="value-line">
-                <div className="value-name">{lang.get('feature_' + props.mainFeature)}</div>
+                <div className="value-name">{UI.Lang.get('feature_' + props.mainFeature)}</div>
                 <SuggesterFeaturesValues
                     item={features[props.mainFeature]}
                     base={props.maxFeatures[props.mainFeature]}

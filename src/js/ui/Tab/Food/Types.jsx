@@ -2,10 +2,8 @@ import React from 'react';
 import "../../../../css/Components/Tab/Food/FoodTypes.css"
 
 import { Stats } from '../../../classes/Stats';
-import { Lang } from '../../Lang';
 import { DB } from '../../../db/DB';
-
-let lang = new Lang();
+import { UI } from '../../../ui';
 
 export class FoodTypes extends React.PureComponent {
     render() {
@@ -43,9 +41,9 @@ function FoodTypesSlot(props) {
                 className={'item'+ (props.selected ? ' active' : '')}
                 onClick={props.onClick}
             >
-                <div className="name">{lang.get('food_view.type_'+ props.slot.toLowerCase())}</div>
+                <div className="name">{UI.Lang.get('food_view.type_'+ props.slot.toLowerCase())}</div>
                 <div className="stat">
-                    <span className="empty">{lang.get('food_name.not_selected')}</span>
+                    <span className="empty">{UI.Lang.get('food_name.not_selected')}</span>
                 </div>
             </div>
         )
@@ -57,7 +55,7 @@ function FoodTypesSlot(props) {
     for (let stat of Object.keys(stats)) {
         items.push(
             <div key={stat} className="stat">
-                <span className="name">{lang.get('stat_short.'+ stat)}</span>
+                <span className="name">{UI.Lang.get('stat_short.'+ stat)}</span>
                 <span className="value">{Stats.format(stat, stats.get(stat), {signed: 1, no_decimal_zero: 1})}</span>
             </div>
         );
@@ -68,7 +66,7 @@ function FoodTypesSlot(props) {
             className={'item'+ (props.selected ? ' active' : '')}
             onClick={() => props.onClick(props.type)}
         >
-            <div className="name">{lang.get('food_view.type_'+ props.slot.toLowerCase())}</div>
+            <div className="name">{UI.Lang.get('food_view.type_'+ props.slot.toLowerCase())}</div>
             <div className={'icon '+ (props.level == 4 ? props.food.getSpecialIcon() : props.food.getIcon())}></div>
             {items}
         </div>

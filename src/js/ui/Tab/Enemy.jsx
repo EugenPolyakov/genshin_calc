@@ -7,7 +7,6 @@ import { FullHeight, FullHeightScrollable, FullHeightStatic } from '../Component
 import { EnemyObjectBlock } from '../Components/ObjectBlock';
 import { ResistanceBlock } from '../Components/ResistanceBlock';
 import { ReactTab } from '../Components/Tab';
-import { Lang } from '../Lang';
 import { Tab } from "../Tab";
 import { CustomEnemy } from './Enemy/Custom';
 import { UI } from '../../ui';
@@ -44,11 +43,10 @@ export class EnemyTab extends Tab {
 export class EnemyView extends React.Component {
     constructor(props) {
         super(props);
-        this.lang = new Lang();
 
         this.state = {};
         this.strings = {
-            title: this.lang.get(this.props.title),
+            title: UI.Lang.get(this.props.title),
         };
     }
 
@@ -129,7 +127,7 @@ export class EnemyView extends React.Component {
                         onResistanceChange={(element, value) => this.handleResistanceChange(element, value)}
                     />
                     <ResistanceBlock
-                        title={this.lang.get('object_view.total_resistance')}
+                        title={UI.Lang.get('object_view.total_resistance')}
                         stats={data.stats}
                         settings={data.settings}
                     />

@@ -5,15 +5,13 @@ import "../../../css/Components/Tab/ArtifactSubstatTab.css"
 import { ControlsBar } from '../Components/ControlsBar';
 import { Dropdown } from '../Components/Inputs/Dropdown';
 import { FullHeight, FullHeightStatic, FullHeightScrollable } from '../Components/FullHeight';
-import { Lang } from '../Lang';
 import { ReactTab } from '../Components/Tab';
 import { Tab } from "../Tab";
 import { Stats, isPercent } from '../../classes/Stats';
 import { FeatureTableHeader, FeatureTableValues } from '../Components/FeatureTable';
 import { Feature2 } from '../../classes/Feature2';
 import { DB } from '../../db/DB';
-
-let lang = new Lang();
+import { UI } from '../../ui';
 
 export class ArtifactSubstatTab extends Tab {
     constructor(params) {
@@ -117,7 +115,7 @@ class ArtifactSubstatView extends React.Component {
     render() {
         let items = this.dataResults();
         return (
-            <ReactTab title={lang.get('tab_header.suggest-artifact-substat')}>
+            <ReactTab title={UI.Lang.get('tab_header.suggest-artifact-substat')}>
                 <FullHeight>
                     <FullHeightStatic>
                         <ControlsBar>
@@ -130,14 +128,14 @@ class ArtifactSubstatView extends React.Component {
                             <Dropdown
                                 barClass="feature-type"
                                 items={[
-                                    {value: 'percent', text: lang.get('suggester.display_percent')},
-                                    {value: 'absolute', text: lang.get('suggester.display_absolute')},
+                                    {value: 'percent', text: UI.Lang.get('suggester.display_percent')},
+                                    {value: 'absolute', text: UI.Lang.get('suggester.display_absolute')},
                                 ]}
                                 selected={this.state.displayMode}
                                 onChange={(item) => this.handleDisplayMode(item.value)}
                             />
                         </ControlsBar>
-                        <FeatureTableHeader title={lang.get('stat_view.average_roll')}/>
+                        <FeatureTableHeader title={UI.Lang.get('stat_view.average_roll')}/>
                     </FullHeightStatic>
                     <FullHeightScrollable noPadding={true}>
                         <ArtifactSubstatList
@@ -175,7 +173,7 @@ function ArtifactSubstatList(props) {
 function ArtifactSubstatItem(props) {
     return (
         <div className={'line' + (props.odd ? ' odd': '')}>
-            <div className="name">{lang.get('stat.' + props.stat)}</div>
+            <div className="name">{UI.Lang.get('stat.' + props.stat)}</div>
             <div className="value">{Stats.format(props.stat, props.value, {signed: true})}</div>
             <FeatureTableValues
                 result={props.feature}

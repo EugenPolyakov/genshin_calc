@@ -6,13 +6,10 @@ import { Checkbox } from "../../Components/Inputs/Input";
 import { ControlsBar, ControlsBarDivider } from "../../Components/ControlsBar";
 import { DialogContainer } from "../../Components/Dialog/Container";
 import { FullHeight, FullHeightScrollable, FullHeightStatic } from "../../Components/FullHeight";
-import { Lang } from "../../Lang";
 import { Modal } from "../../Modal";
 import { MiniButton, TitledButton } from "../../Components/Inputs/Buttons";
 import { BlockRemark } from "../../Components/TextBlocks";
 import { UI } from "../../../ui";
-
-let lang = new Lang();
 
 export class SelectGroupListModal extends Modal {
     createContent() {
@@ -107,7 +104,7 @@ class GroupListComponent extends React.Component {
                 addClass={this.props.addClass}
                 width={510}
                 isVisible={this.state.isVisible}
-                title={lang.get('artifact_group.select_list_modal')}
+                title={UI.Lang.get('artifact_group.select_list_modal')}
                 closeCallback={() => this.handleClose()}
             >
                 <FullHeight>
@@ -124,18 +121,18 @@ class GroupListComponent extends React.Component {
                         <ControlsBar>
                             <TitledButton
                                 icon="button-icon-delete"
-                                title={lang.get('modal_buttons.reset')}
+                                title={UI.Lang.get('modal_buttons.reset')}
                                 onClick={() => this.handleReset()}
                             />
                             <ControlsBarDivider />
                             <TitledButton
                                 icon="button-icon-ok"
-                                title={lang.get('modal_buttons.confirm')}
+                                title={UI.Lang.get('modal_buttons.confirm')}
                                 onClick={() => this.handleConfirm()}
                             />
                             <TitledButton
                                 icon="button-icon-cancel"
-                                title={lang.get('modal_buttons.cancel')}
+                                title={UI.Lang.get('modal_buttons.cancel')}
                                 onClick={() => this.handleClose()}
                             />
                         </ControlsBar>
@@ -160,12 +157,12 @@ function GroupList(props) {
                     <MiniButton
                         icon="edit"
                         onClick={() => props.onEdit(item.value)}
-                        tooltip={lang.get('tooltip.artifact_edit')}
+                        tooltip={UI.Lang.get('tooltip.artifact_edit')}
                     />
                     <MiniButton
                         icon="delete"
                         onClick={() => props.onDelete(item.value)}
-                        tooltip={lang.get('tooltip.artifact_delete')}
+                        tooltip={UI.Lang.get('tooltip.artifact_delete')}
                     />
                 </> : ''}
                 <span className="value" onClick={() => props.onChange(item.value)}>{item.title}</span>
@@ -177,7 +174,7 @@ function GroupList(props) {
     return (
         <div className="art-group-list-items">
             {items}
-            <BlockRemark>{lang.get('artifact_group.add_group_remark')}</BlockRemark>
+            <BlockRemark>{UI.Lang.get('artifact_group.add_group_remark')}</BlockRemark>
         </div>
     );
 }

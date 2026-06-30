@@ -1,6 +1,6 @@
-import { CalcSet } from "./CalcSet";
-import { Rotation } from "./Rotation";
-import { Serializer } from "./Serializer";
+import { CalcSet } from "../../classes/CalcSet";
+import { Rotation } from "../../classes/Rotation";
+import { Serializer } from "../../classes/Serializer";
 import { StorageItemArtifacts } from "./StorageItem/Artifacts";
 
 export class Backup {

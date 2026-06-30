@@ -1,5 +1,6 @@
-import { Artifact } from "../Artifact";
-import { Serializer } from "../Serializer";
+import { Artifact } from "../../../classes/Artifact";
+import { Serializer } from "../../../classes/Serializer";
+import { UI } from "../../../ui";
 import { StorageItem } from "../StorageItem";
 
 export class StorageItemArtifacts extends StorageItem {
@@ -63,6 +64,16 @@ export class StorageItemArtifacts extends StorageItem {
 
         for (let item of this.listDecoded(1)) {
             hashes[item.data.getHash()] = 1;
+        }
+
+        return hashes;
+    }
+
+    storageLexHashes() {
+        let hashes = {};
+
+        for (let item of this.listDecoded(1)) {
+            hashes[item.data.getLexHash()] = item;
         }
 
         return hashes;

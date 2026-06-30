@@ -10,14 +10,11 @@ import { Feature2 } from '../../classes/Feature2';
 import { FeatureTableHeader } from '../Components/FeatureTable';
 import { FullHeight, FullHeightScrollable, FullHeightStatic } from '../Components/FullHeight';
 import { generatorSettings, getDefaultSettings } from '../Components/ArtifactGenerator';
-import { Lang } from '../Lang';
 import { ReactTab } from '../Components/Tab';
 import { RoundButton } from '../Components/Inputs/Buttons';
 import { Tab } from "../Tab";
 import { WorkerFactoryArtifactsGenerator } from '../../classes/WorkerFactory/ArtifactsGenerator';
 import { UI } from '../../ui';
-
-let lang = new Lang();
 
 export class ArtifactsGeneratorTab extends Tab {
     constructor(params) {
@@ -198,7 +195,7 @@ export class ArtifactsGeneratorView extends React.Component {
 
     render() {
         return (
-            <ReactTab title={lang.get('art_gen.title')}>
+            <ReactTab title={UI.Lang.get('art_gen.title')}>
                 <FullHeight>
                     <FullHeightStatic>
                         <ControlsBar>
@@ -215,8 +212,8 @@ export class ArtifactsGeneratorView extends React.Component {
                             <Dropdown
                                 barClass="feature-type"
                                 items={[
-                                    {value: 'percent', text: lang.get('suggester.display_percent')},
-                                    {value: 'absolute', text: lang.get('suggester.display_absolute')},
+                                    {value: 'percent', text: UI.Lang.get('suggester.display_percent')},
+                                    {value: 'absolute', text: UI.Lang.get('suggester.display_absolute')},
                                 ]}
                                 selected={this.state.displayMode}
                                 onChange={(item) => this.handleDisplayMode(item.value)}
@@ -226,7 +223,7 @@ export class ArtifactsGeneratorView extends React.Component {
                     </FullHeightStatic>
                     <FullHeightScrollable
                         isLoading={this.state.isLoading}
-                        loadingOverlay={!this.settings ? lang.get('art_gen.set_settings') : lang.get('art_gen.loading')}
+                        loadingOverlay={!this.settings ? UI.Lang.get('art_gen.set_settings') : UI.Lang.get('art_gen.loading')}
                         loadingProgress={this.state.progress}
                         noPadding={true}
                     >

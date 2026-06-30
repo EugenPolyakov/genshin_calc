@@ -6,11 +6,9 @@ import "../../../css/Components/ArtifactGenerator.css"
 import { AccordionRequredSets } from "./Accordion/RequredSets";
 import { Dropdown } from "./Inputs/Dropdown";
 import { GroupBox } from "./Inputs/GroupBox";
-import { Lang } from "../Lang";
 import { Checkbox, NumberInput } from "./Inputs/Input";
 import { Slider } from "./Inputs/Slider";
-
-let lang = new Lang();
+import { UI } from "../../ui";
 
 export const DEFAULT_SETTINGS = {
     rolls: 25,
@@ -25,9 +23,9 @@ export class ArtifactGeneratorSettings extends React.Component {
         super(props);
 
         this.rollModes = [
-            {value: 'min', text: lang.get('art_gen.roll_mode_min')},
-            {value: 'avg', text: lang.get('art_gen.roll_mode_avg')},
-            {value: 'max', text: lang.get('art_gen.roll_mode_max')},
+            {value: 'min', text: UI.Lang.get('art_gen.roll_mode_min')},
+            {value: 'avg', text: UI.Lang.get('art_gen.roll_mode_avg')},
+            {value: 'max', text: UI.Lang.get('art_gen.roll_mode_max')},
         ];
     }
 
@@ -84,7 +82,7 @@ export class ArtifactGeneratorSettings extends React.Component {
         return (
             <div className="artifact-generator">
                 <AccordionRequredSets
-                    title={lang.get('art_gen.set_bonus')}
+                    title={UI.Lang.get('art_gen.set_bonus')}
                     set1={settings.required_sets ? settings.required_sets.set1 : ''}
                     set2={settings.required_sets ? settings.required_sets.set2 : ''}
                     settings={settings.required_sets_settings || {}}
@@ -93,9 +91,9 @@ export class ArtifactGeneratorSettings extends React.Component {
                     minRarity={5}
                     showSettingsCallback={(settings) => this.handleSetSettings(settings)}
                 />
-                <GroupBox title={lang.get('art_gen.conditions')}>
+                <GroupBox title={UI.Lang.get('art_gen.conditions')}>
                 <div className="line">
-                        <div className="name">{parse(lang.get('art_gen.kqms'))}</div>
+                        <div className="name">{parse(UI.Lang.get('art_gen.kqms'))}</div>
                         <div className="control">
                             <Checkbox
                                 checked={settings.kqms}
@@ -104,7 +102,7 @@ export class ArtifactGeneratorSettings extends React.Component {
                         </div>
                     </div>
                     <div className="line">
-                        <div className="name">{lang.get('art_gen.min_recharge')}</div>
+                        <div className="name">{UI.Lang.get('art_gen.min_recharge')}</div>
                         <div className="control">
                             <NumberInput
                                 minValue={100}
@@ -117,7 +115,7 @@ export class ArtifactGeneratorSettings extends React.Component {
                         </div>
                     </div>
                     <div className="line rolls">
-                        <div className="name">{lang.get('art_gen.useful_rolls')}</div>
+                        <div className="name">{UI.Lang.get('art_gen.useful_rolls')}</div>
                         {settings.kqms ? <div className="value">-</div> : <>
                             <div className="value">{settings.rolls}</div>
                             <div className="control">
@@ -131,7 +129,7 @@ export class ArtifactGeneratorSettings extends React.Component {
                         </>}
                     </div>
                     <div className="line rolls">
-                        <div className="name">{lang.get('art_gen.crit_rolls')}</div>
+                        <div className="name">{UI.Lang.get('art_gen.crit_rolls')}</div>
                         {settings.kqms ? <div className="value">-</div> : <>
                             <div className="value">{settings.critRolls}</div>
                             <div className="control">
@@ -145,7 +143,7 @@ export class ArtifactGeneratorSettings extends React.Component {
                         </>}
                     </div>
                     <div className="line">
-                        <div className="name">{lang.get('art_gen.roll_mode')}</div>
+                        <div className="name">{UI.Lang.get('art_gen.roll_mode')}</div>
                         {settings.kqms ? <div className="value">-</div> : <>
                             <div className="control dropdown">
                                 <Dropdown

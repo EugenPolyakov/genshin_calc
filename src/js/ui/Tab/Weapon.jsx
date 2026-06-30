@@ -6,7 +6,6 @@ import { ConditionList } from '../Components/ConditionList';
 import { FullHeight, FullHeightScrollable, FullHeightStatic } from '../Components/FullHeight';
 import { WeaponObjectBlock } from '../Components/ObjectBlock';
 import { ReactTab } from '../Components/Tab';
-import { Lang } from '../Lang';
 import { Tab } from "../Tab";
 import { UI } from '../../ui';
 
@@ -42,11 +41,10 @@ export class WeaponTab extends Tab {
 export class WeaponView extends React.Component {
     constructor(props) {
         super(props);
-        this.lang = new Lang();
 
         this.state = {};
         this.strings = {
-            title: this.lang.get(this.props.title),
+            title: UI.Lang.get(this.props.title),
         };
     }
 

@@ -1,3 +1,4 @@
+import { UI } from "../../../../ui";
 import { ScannerTextBase } from "./Base";
 
 export class ScannerTextSubstat extends ScannerTextBase {

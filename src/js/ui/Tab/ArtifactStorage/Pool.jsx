@@ -4,12 +4,9 @@ import { ArtifactPoolList } from "../../Components/Artifact";
 import { ControlsBar, ControlsBarDivider } from "../../Components/ControlsBar";
 import { Dropdown } from "../../Components/Inputs/Dropdown";
 import { FullHeight, FullHeightScrollable, FullHeightStatic } from "../../Components/FullHeight";
-import { Lang } from "../../Lang";
 import { RoundButton, ToggleRoundButton } from "../../Components/Inputs/Buttons";
 import { DB } from "../../../db/DB";
 import { UI } from "../../../ui";
-
-const lang = new Lang();
 
 export class ArtifactStoragePool extends React.Component {
     constructor(props) {
@@ -60,7 +57,7 @@ export class ArtifactStoragePool extends React.Component {
         let result = [
             {
                 value: '',
-                text: lang.get('pool_view.all_sets'),
+                text: UI.Lang.get('pool_view.all_sets'),
                 number: this.state.items.length,
             }
         ];
@@ -84,7 +81,7 @@ export class ArtifactStoragePool extends React.Component {
                 result.push({
                     value: setId,
                     optionIcons: [' sprite sprite-artifact sprite-24 flower '+ set.getImage()],
-                    text: lang.get(set.getName()),
+                    text: UI.Lang.get(set.getName()),
                     number: setData[setId],
                 });
             }
@@ -95,7 +92,7 @@ export class ArtifactStoragePool extends React.Component {
 
     dataArtifactStats() {
         let result = [
-            {value: '', text: lang.get('pool_view.upgrade_level')},
+            {value: '', text: UI.Lang.get('pool_view.upgrade_level')},
         ];
 
         let stats = [
@@ -106,7 +103,7 @@ export class ArtifactStoragePool extends React.Component {
 
         for (let stat of stats) {
             result.push(
-                {value: stat, text: lang.getStat('pool_stat.'+ stat)},
+                {value: stat, text: UI.Lang.getStat('pool_stat.'+ stat)},
             )
         }
 
@@ -151,7 +148,7 @@ export class ArtifactStoragePool extends React.Component {
                         <ToggleRoundButton
                             icon="icon-sort"
                             checked={this.props.sortByFeature}
-                            tooltip={lang.get('tooltip.pool_sort')}
+                            tooltip={UI.Lang.get('tooltip.pool_sort')}
                             onChange={this.props.onFeatureSortChange}
                         />
                         <Dropdown
@@ -166,29 +163,29 @@ export class ArtifactStoragePool extends React.Component {
                         <ControlsBarDivider />
                         <RoundButton
                             icon={'icon-groups'}
-                            tooltip={lang.get('tooltip.pool_groups')}
+                            tooltip={UI.Lang.get('tooltip.pool_groups')}
                             onClick={() => this.handleShowGroups()}
                         />
                         <RoundButton
                             icon={'icon-add'}
-                            tooltip={lang.get('tooltip.pool_add')}
+                            tooltip={UI.Lang.get('tooltip.pool_add')}
                             onClick={this.props.onCreateArtifact}
                         />
                         <RoundButton
                             icon={'icon-lock'}
-                            tooltip={lang.get('tooltip.pool_lock')}
+                            tooltip={UI.Lang.get('tooltip.pool_lock')}
                             onClick={this.props.onLockWindowOpen}
                         />
                         <RoundButton
                             icon={'icon-scan'}
-                            tooltip={lang.get('tooltip.scan_artifact')}
+                            tooltip={UI.Lang.get('tooltip.scan_artifact')}
                             onClick={this.props.onScannerOpen}
                         />
                     </ControlsBar>
                 </FullHeightStatic>
                 <FullHeightScrollable
                     isLoading={this.state.isLoading}
-                    loadingOverlay={lang.get('pool_view.loading')}
+                    loadingOverlay={UI.Lang.get('pool_view.loading')}
                     maxHeight={UI.Layout.isMobile() ? UI.Layout.windowHeight() - 170 : null}
                 >
                     <ArtifactPoolList
@@ -234,7 +231,7 @@ export class ArtifactStoragePool extends React.Component {
                     key={slot}
                     icon={'icon-' + slot}
                     checked={this.state.visibleSlots[slot]}
-                    tooltip={lang.get('tooltip.artifact_' + slot)}
+                    tooltip={UI.Lang.get('tooltip.artifact_' + slot)}
                     onChange={() => this.handleSlotChecked(slot)}
                 />
             );
@@ -244,7 +241,7 @@ export class ArtifactStoragePool extends React.Component {
             <RoundButton
                 key="all"
                 icon={'icon-all-slots'}
-                tooltip={lang.get('tooltip.artifact_all')}
+                tooltip={UI.Lang.get('tooltip.artifact_all')}
                 onClick={() => this.handleSlotChecked('all')}
             />
         );

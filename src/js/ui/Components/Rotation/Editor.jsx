@@ -1,5 +1,4 @@
 import React from "react";
-import { Lang } from "../../Lang";
 
 import { RotationConditionModal } from "./ConditionModal";
 import { RotationFeatureModal } from "./FeatureModal";
@@ -11,8 +10,6 @@ import { RotationStorageModal } from "./StorageModal";
 import { RotationBlockModal } from "./BlockModal";
 import { DB } from "../../../db/DB";
 import { UI } from "../../../ui";
-
-const lang = new Lang();
 
 export class RotationEditor extends React.Component {
     constructor(props) {
@@ -158,7 +155,7 @@ export class RotationEditor extends React.Component {
     handleSaveRotation(name) {
         let char = this.props.build.getChar().object;
         if (!name) {
-            name = lang.get(char.getName());
+            name = UI.Lang.get(char.getName());
         }
 
         this.props.storage.add(this.rotation, {
@@ -215,27 +212,27 @@ export class RotationEditor extends React.Component {
         this.menuButtons = [
             {
                 icon: 'icon-add',
-                title: lang.get('rotation_view.add_feature'),
+                title: UI.Lang.get('rotation_view.add_feature'),
                 onClick: () => this.handleCreateFeature(),
             },
             {
                 icon: 'icon-add',
-                title: lang.get('rotation_view.add_condition'),
+                title: UI.Lang.get('rotation_view.add_condition'),
                 onClick: () => this.handleCreateCondition(),
             },
             {
                 icon: 'icon-add',
-                title: lang.get('rotation_view.add_block'),
+                title: UI.Lang.get('rotation_view.add_block'),
                 onClick: () => this.handleCreateBlock(),
             },
             {
                 icon: 'icon-delete',
-                title: lang.get('rotation_view.clear'),
+                title: UI.Lang.get('rotation_view.clear'),
                 onClick: () => this.handleClearRotation(),
             },
             {
                 icon: 'icon-ok',
-                title: lang.get('rotation_view.save_load'),
+                title: UI.Lang.get('rotation_view.save_load'),
                 onClick: () => this.handleOpenStorage(),
             },
         ];

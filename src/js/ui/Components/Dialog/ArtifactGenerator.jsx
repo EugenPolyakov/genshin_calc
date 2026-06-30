@@ -3,11 +3,9 @@ import "../../../../css/Components/Dialog/ArtifactGenerator.css"
 
 import { ControlsBar, ControlsBarDivider } from "../ControlsBar";
 import { DialogContainer } from "../../Components/Dialog/Container";
-import { Lang } from "../../Lang";
 import { TitledButton } from "../Inputs/Buttons";
 import { ArtifactGeneratorSettings, cloneSettings, getDefaultSettings } from "../ArtifactGenerator";
-
-let lang = new Lang();
+import { UI } from "../../../ui";
 
 export class ArtifactGeneratorModal extends React.Component {
     constructor(props) {
@@ -51,7 +49,7 @@ export class ArtifactGeneratorModal extends React.Component {
                 addClass="artifact-generator-modal"
                 width={500}
                 isVisible={this.state.isVisible}
-                title={lang.get('art_gen.title')}
+                title={UI.Lang.get('art_gen.title')}
                 closeCallback={() => this.handleClose()}
             >
                 <ArtifactGeneratorSettings
@@ -62,12 +60,12 @@ export class ArtifactGeneratorModal extends React.Component {
                     <ControlsBarDivider />
                     <TitledButton
                         icon="icon-ok"
-                        title={lang.get('art_gen.apply')}
+                        title={UI.Lang.get('art_gen.apply')}
                         onClick={() => this.handleSave()}
                     />
                     <TitledButton
                         icon="icon-cancel"
-                        title={lang.get('modal_buttons.cancel')}
+                        title={UI.Lang.get('modal_buttons.cancel')}
                         onClick={() => this.handleClose()}
                     />
                 </ControlsBar>

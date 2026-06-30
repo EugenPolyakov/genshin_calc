@@ -1,13 +1,10 @@
 import React from "react";
 import "../../../css/modal/Help.css"
 
-import { Lang } from "../Lang";
 import { Modal, } from "../Modal";
 import { DialogContainer } from "../Components/Dialog/Container";
 import { FullHeight, FullHeightScrollable } from "../Components/FullHeight";
-
-
-let lang = new Lang();
+import { UI } from "../../ui";
 
 export class HelpModal extends Modal {
     createContent() {
@@ -29,7 +26,7 @@ export class HelpComponent extends React.Component {
     }
 
     show(title, name) {
-        let url = '/help/'+ lang.getLang() +'/'+ name +'.html?v='+ UI.Layout.app.getVersion();
+        let url = '/help/'+ UI.Lang.getLang() +'/'+ name +'.html?v='+ UI.Layout.app.getVersion();
 
         this.setState({
             title: title,
@@ -55,7 +52,7 @@ export class HelpComponent extends React.Component {
                 addClass="gi-window-help"
                 width={650}
                 isVisible={this.state.isVisible}
-                title={lang.get(this.state.title)}
+                title={UI.Lang.get(this.state.title)}
                 closeCallback={() => this.handleClose()}
                 maxHeight={true}
             >

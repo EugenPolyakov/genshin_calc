@@ -1,6 +1,10 @@
 export class Serializer {
     static pack(object) {
         let input = object.serialize();
+        return Serializer.packSerialized(input);
+    }
+
+    static packSerialized(input) {
         let result = '';
 
         if (!input) {

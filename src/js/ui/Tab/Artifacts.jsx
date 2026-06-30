@@ -8,14 +8,11 @@ import { FullHeight, FullHeightScrollable, FullHeightStatic } from '../Component
 import { ArtifactIcon } from '../Components/Icons';
 import { TitledButton } from '../Components/Inputs/Buttons';
 import { ReactTab } from '../Components/Tab';
-import { Lang } from '../Lang';
 import { Tab } from "../Tab";
 import { StatsInfo } from './Artifacts/StatsInfo';
 import { RollsInfo } from './Artifacts/RollsInfo';
 import { DB } from '../../db/DB';
 import { UI } from '../../ui';
-
-let lang = new Lang();
 
 export class ArtifactsTab extends Tab {
     constructor(params) {
@@ -53,10 +50,10 @@ export class ArtifactsView extends React.Component {
         this.state = {};
 
         this.strings = {
-            title: lang.get(this.props.title),
-            scan: lang.get('artifact_view.scan'),
-            change: lang.get('artifact_view.change_set'),
-            clear: lang.get('artifact_view.clear_artifacts'),
+            title: UI.Lang.get(this.props.title),
+            scan: UI.Lang.get('artifact_view.scan'),
+            change: UI.Lang.get('artifact_view.change_set'),
+            clear: UI.Lang.get('artifact_view.clear_artifacts'),
         };
     }
 
@@ -261,7 +258,7 @@ function ArtifactBlock(props) {
     for (let subStat in art.getSubStats()) {
         substats[art.getSubStats()[subStat].index] = (
             <div key={subStat} className="value">
-                <span className="stat-name">{lang.get('stat.'+ subStat)} </span>
+                <span className="stat-name">{UI.Lang.get('stat.'+ subStat)} </span>
                 { Stats.format( subStat, art.getSubStats()[subStat].value, {signed: true})}
             </div>
         );
@@ -270,7 +267,7 @@ function ArtifactBlock(props) {
     // TODO
     // let errors = [];
     // for (let name of art.getErrors()) {
-    //     errors.push(<p>{lang.get('artifact_error.'+ name)}</p>)
+    //     errors.push(<p>{UI.Lang.get('artifact_error.'+ name)}</p>)
     // }
 
     return (
@@ -287,25 +284,25 @@ function ArtifactBlock(props) {
                             <ArtifactButton
                                 icon="edit"
                                 onClick={props.onIconClick}
-                                tooltip={lang.get('tooltip.artifact_edit')}
+                                tooltip={UI.Lang.get('tooltip.artifact_edit')}
                             />
                             <ArtifactButton
                                 icon="delete"
                                 onClick={props.onDeleteClick}
-                                tooltip={lang.get('tooltip.artifact_pulloff')}
+                                tooltip={UI.Lang.get('tooltip.artifact_pulloff')}
                             />
                             {props.showStorage ? <ArtifactButton
                                 icon="storage"
                                 onClick={props.onStorageClick}
-                                tooltip={lang.get('tooltip.artifact_storage')}
+                                tooltip={UI.Lang.get('tooltip.artifact_storage')}
                             /> : null}
                         </div>
-                        <div className="name">{lang.get(setData.getName())}</div>
+                        <div className="name">{UI.Lang.get(setData.getName())}</div>
                     </div>
                     <div className="line main-stat">
                         <div className="level">+{art.getLevel()}</div>
                         <div className="value">
-                            <span className="stat-name">({lang.get('stat.'+ art.getMainStat())} </span>
+                            <span className="stat-name">({UI.Lang.get('stat.'+ art.getMainStat())} </span>
                             +{Stats.format(art.getMainStat(), art.getMainStatValue())}
                             <span className="stat-name">)</span>
                         </div>

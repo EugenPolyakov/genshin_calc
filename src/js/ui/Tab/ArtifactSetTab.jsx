@@ -7,7 +7,6 @@ import { ControlsBar } from '../Components/ControlsBar';
 import { Dropdown } from '../Components/Inputs/Dropdown';
 import { FeatureTableHeader, FeatureTableValues } from '../Components/FeatureTable';
 import { FullHeight, FullHeightStatic, FullHeightScrollable } from '../Components/FullHeight';
-import { Lang } from '../Lang';
 import { ReactTab } from '../Components/Tab';
 import { ResultTableButton } from '../Components/Inputs/Buttons';
 import { Tab } from "../Tab";
@@ -15,8 +14,7 @@ import { WorkerFactorySuggestSet } from '../../classes/WorkerFactory/SuggestSet'
 import { ArtifactSetIcon } from '../Components/Icons';
 import { Feature2 } from '../../classes/Feature2';
 import { DB } from '../../db/DB';
-
-let lang = new Lang();
+import { UI } from '../../ui';
 
 export class ArtifactSetTab extends Tab {
     constructor(params) {
@@ -182,7 +180,7 @@ class ArtifactSetView extends React.Component {
 
     render() {
         return (
-            <ReactTab title={lang.get('tab_header.suggest-artifact-set')}>
+            <ReactTab title={UI.Lang.get('tab_header.suggest-artifact-set')}>
                 <FullHeight>
                     <FullHeightStatic>
                         <ControlsBar>
@@ -195,8 +193,8 @@ class ArtifactSetView extends React.Component {
                             <Dropdown
                                 barClass="feature-type"
                                 items={[
-                                    {value: 'percent', text: lang.get('suggester.display_percent')},
-                                    {value: 'absolute', text: lang.get('suggester.display_absolute')},
+                                    {value: 'percent', text: UI.Lang.get('suggester.display_percent')},
+                                    {value: 'absolute', text: UI.Lang.get('suggester.display_absolute')},
                                 ]}
                                 selected={this.state.displayMode}
                                 onChange={(item) => this.handleDisplayMode(item.value)}
@@ -207,7 +205,7 @@ class ArtifactSetView extends React.Component {
                     <FullHeightScrollable
                         noPadding={true}
                         isLoading={this.state.isLoading}
-                        loadingOverlay={lang.get('pool_view.loading')}
+                        loadingOverlay={UI.Lang.get('pool_view.loading')}
                     >
                         {this.state.hasResults ?
                             <ArtifactSetList
@@ -217,7 +215,7 @@ class ArtifactSetView extends React.Component {
                                 displayMode={this.state.displayMode}
                                 onApply={(item) => this.handleApplySet(item)}
                             />
-                        : <div className="placeholder">{parse(lang.getTalent('suggester.no_equipped_artifacts'))}</div> }
+                        : <div className="placeholder">{parse(UI.Lang.getTalent('suggester.no_equipped_artifacts'))}</div> }
                     </FullHeightScrollable>
                 </FullHeight>
             </ReactTab>
@@ -276,7 +274,7 @@ function ArtifactSetDetail(props) {
         let setData = DB.Artifacts.Sets.get(item.id);
 
         titles.push(
-            <div key={item.id} className="title">{item.pieces}: {lang.get(setData.getName())}</div>
+            <div key={item.id} className="title">{item.pieces}: {UI.Lang.get(setData.getName())}</div>
         );
 
         images.push(

@@ -8,17 +8,10 @@ import { FeatureTableHeader } from '../Components/FeatureTable';
 import { FoodList } from './Food/List';
 import { FoodTypes } from './Food/Types';
 import { FullHeight, FullHeightScrollable, FullHeightStatic } from '../Components/FullHeight';
-import { Lang } from '../Lang';
 import { ReactTab } from '../Components/Tab';
 import { Tab } from "../Tab";
 import { DB } from '../../db/DB';
-
-let lang = new Lang();
-
-const DISPLAY_MODES = [
-    {value: 'percent', text: lang.get('suggester.display_percent')},
-    {value: 'absolute', text: lang.get('suggester.display_absolute')},
-];
+import { UI } from '../../ui';
 
 export class FoodTab extends Tab {
     constructor(params) {
@@ -55,7 +48,6 @@ export class FoodTab extends Tab {
 export class FoodView extends React.Component {
     constructor(props) {
         super(props);
-        this.lang = new Lang();
 
         this.state = {
             foodCategory: 'Attack',
@@ -70,7 +62,7 @@ export class FoodView extends React.Component {
         };
 
         this.strings = {
-            title: this.lang.get(this.props.title),
+            title: UI.Lang.get(this.props.title),
         };
     }
 
@@ -174,6 +166,11 @@ export class FoodView extends React.Component {
     render() {
         this.buildFoodList();
 
+        const DISPLAY_MODES = [
+            { value: 'percent', text: UI.Lang.get('suggester.display_percent') },
+            { value: 'absolute', text: UI.Lang.get('suggester.display_absolute') },
+        ];
+
         return (
             <ReactTab title={this.strings.title}>
                 <FullHeight>
@@ -230,7 +227,7 @@ function FoodLevels(props) {
                 className={'item'+ (props.selected[i] ? ' active' : '')}
                 onClick={() => props.onClick(i)}
             >
-                {lang.get('food_view.quality_n_'+ i)}
+                {UI.Lang.get('food_view.quality_n_'+ i)}
             </div>
         );
     }

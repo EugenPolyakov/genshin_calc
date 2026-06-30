@@ -3,7 +3,7 @@ import { DB } from "./db/DB";
 import { CalcSet } from "./classes/CalcSet";
 import { Rotation } from "./classes/Rotation";
 import { Serializer } from "./classes/Serializer";
-import { Storage } from "./classes/Storage";
+import { Storage } from "./ui/classes/Storage";
 import { UI } from "./ui.js";
 
 const DEFAULT_CHAR_BUILD = 'bbbaabbbabbabaaabcbabradaadaaa';

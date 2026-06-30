@@ -48,7 +48,7 @@ export class FeaturesTab extends Tab {
             <FeaturesView
                 ref={element => { this.component = element }}
                 feature={this.app.getFeature()}
-                title={lang.get('tab_header.features')}
+                title={UI.Lang.get('tab_header.features')}
             />
         );
     }
@@ -181,7 +181,7 @@ class FeaturesView extends React.Component {
 
         for (let section of sections) {
             items.push(
-                <FloatTitleBlock key={section.name} title={lang.get('feature_section.'+ section.name)}>
+                <FloatTitleBlock key={section.name} title={UI.Lang.get('feature_section.'+ section.name)}>
                     <FeaturesTableBlock items={section.items} />
                 </FloatTitleBlock>
             );
@@ -199,7 +199,7 @@ class FeaturesView extends React.Component {
                         />
                         <TitledButton
                             icon="icon-ok"
-                            title={lang.get('features_view.details')}
+                            title={UI.Lang.get('features_view.details')}
                             onClick={() => this.handleViewChange('detail')}
                         />
                     </ControlsBar>
@@ -209,7 +209,7 @@ class FeaturesView extends React.Component {
                     {items}
                 </FullHeightFloatTitle>
                 {this.state.reaction ? <FullHeightStatic>
-                    <BlockRemark>{parse(lang.getTalent('features_view.reaction_remark'))}</BlockRemark>
+                    <BlockRemark>{parse(UI.Lang.getTalent('features_view.reaction_remark'))}</BlockRemark>
                 </FullHeightStatic> : ''}
             </>
         );
@@ -291,7 +291,7 @@ function FeaturesTableBlock(props) {
 
         let str = 'feature_' + item.name;
 
-        let title = lang.get(str);
+        let title = UI.Lang.get(str);
 
         if (item.isChild) {
             classes.push('optional');

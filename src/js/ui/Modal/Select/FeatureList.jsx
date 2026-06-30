@@ -7,11 +7,9 @@ import { ControlsBar, ControlsBarDivider } from "../../Components/ControlsBar";
 import { DialogContainer } from "../../Components/Dialog/Container";
 import { Feature2 } from "../../../classes/Feature2";
 import { FullHeight, FullHeightScrollable, FullHeightStatic } from "../../Components/FullHeight";
-import { Lang } from "../../Lang";
 import { Modal } from "../../Modal";
 import { TitledButton } from "../../Components/Inputs/Buttons";
-
-let lang = new Lang();
+import { UI } from "../../../ui";
 
 export class SelectFeatureListModal extends Modal {
     createContent() {
@@ -82,7 +80,7 @@ class FeatureListComponent extends React.Component {
                 addClass={this.props.addClass}
                 width={510}
                 isVisible={this.state.isVisible}
-                title={lang.get('modal_window.select_feature_list')}
+                title={UI.Lang.get('modal_window.select_feature_list')}
                 closeCallback={() => this.handleClose()}
             >
                 <FullHeight>
@@ -97,18 +95,18 @@ class FeatureListComponent extends React.Component {
                         <ControlsBar>
                             <TitledButton
                                 icon="button-icon-delete"
-                                title={lang.get('modal_buttons.reset')}
+                                title={UI.Lang.get('modal_buttons.reset')}
                                 onClick={() => this.handleReset()}
                             />
                             <ControlsBarDivider />
                             <TitledButton
                                 icon="button-icon-ok"
-                                title={lang.get('modal_buttons.confirm')}
+                                title={UI.Lang.get('modal_buttons.confirm')}
                                 onClick={() => this.handleConfirm()}
                             />
                             <TitledButton
                                 icon="button-icon-cancel"
-                                title={lang.get('modal_buttons.cancel')}
+                                title={UI.Lang.get('modal_buttons.cancel')}
                                 onClick={() => this.handleClose()}
                             />
                         </ControlsBar>
@@ -152,7 +150,7 @@ function FeatureList(props) {
             items.push(
                 <Checkbox
                     key={featName}
-                    title={lang.get(str)}
+                    title={UI.Lang.get(str)}
                     checked={props.selectedNames.includes(featName)}
                     onChange={() => props.onChange(featName)}
                 />
@@ -166,7 +164,7 @@ function FeatureList(props) {
                     items.push(
                         <Checkbox
                             key={featName}
-                            title={lang.get('feature_'+ featName)}
+                            title={UI.Lang.get('feature_'+ featName)}
                             checked={props.selectedNames.includes(featName)}
                             onChange={() => props.onChange(featName)}
                         />
@@ -177,7 +175,7 @@ function FeatureList(props) {
 
         sections.push(
             <div key={section} className="feature-select-section">
-                <div className="feature-select-caption">{lang.get('feature_section.'+ section)}</div>
+                <div className="feature-select-caption">{UI.Lang.get('feature_section.'+ section)}</div>
                 <div className="feature-select-items">{items}</div>
             </div>
         );

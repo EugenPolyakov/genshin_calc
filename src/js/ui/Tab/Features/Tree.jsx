@@ -3,11 +3,11 @@ import parse from 'html-react-parser';
 
 import "../../../../css/Components/Tab/Feature/Tree.css";
 
-import { Lang } from "../../Lang";
 import { Stats, isPercent } from "../../../classes/Stats";
 import { FeatureCompiler } from "../../../classes/Feature2/Compiler";
 import { CConst } from "../../../classes/Feature2/Compile/Types/Item";
 import { CSum } from "../../../classes/Feature2/Compile/Types/Block";
+import { UI } from "../../../ui";
 
 const ROOT_TYPES = {
     'base_damage': LeafRoot,
@@ -54,8 +54,6 @@ const INLINE_TYPES = {
     'value_cap': LeafValueCap,
     'number_floor': LeftFloor,
 };
-
-let lang = new Lang();
 
 export class FeatureViewTree extends React.Component {
     render() {
@@ -143,7 +141,7 @@ function LeafRoot(props) {
     return (
         <div className="block">
             <div className="line">
-                <span className="block-name">{lang.get('features_view.block_'+ props.title)}</span>
+                <span className="block-name">{UI.Lang.get('features_view.block_'+ props.title)}</span>
                 <span className="block-value"><TreeValue tree={props.tree} data={props.data} percent={isPercent} /></span>
             </div>
             <LeafRootItems {...props} base={true} />
@@ -155,7 +153,7 @@ function LeafRootMulti(props) {
     return (
         <div className="block">
             <div className="line">
-                <span className="block-name">{lang.get('features_view.block_'+ props.title)}</span>
+                <span className="block-name">{UI.Lang.get('features_view.block_'+ props.title)}</span>
                 <span className="block-value"><TreeValue tree={props.tree} data={props.data} percent={isPercent} /></span>
             </div>
             <div className="line">
@@ -182,7 +180,7 @@ function LeafRootSum(props) {
     return (
         <div className="block">
             <div className="line">
-                <span className="block-name">{lang.get('features_view.block_'+ props.title)}</span>
+                <span className="block-name">{UI.Lang.get('features_view.block_'+ props.title)}</span>
                 <span className="block-value"><TreeValue tree={props.tree} data={props.data} percent={isPercent} /></span>
             </div>
             <div className="line">
@@ -196,7 +194,7 @@ function LeafRootSubtract(props) {
     return (
         <div className="block">
             <div className="line">
-                <span className="block-name">{lang.get('features_view.block_'+ props.title)}</span>
+                <span className="block-name">{UI.Lang.get('features_view.block_'+ props.title)}</span>
                 <span className="block-value"><TreeValue tree={props.tree} data={props.data} percent={isPercent} /></span>
             </div>
             <div className="line">
@@ -210,7 +208,7 @@ function LeafResult(props) {
     return (
         <div className="block">
             <div className="line">
-                <span className="block-name">{lang.get('features_view.block_'+ props.title)}</span>
+                <span className="block-name">{UI.Lang.get('features_view.block_'+ props.title)}</span>
                 {/* <span className="block-value"><TreeValue tree={props.tree} data={props.data} percent={props.percent} /></span> */}
             </div>
             <div className="line">
@@ -577,7 +575,7 @@ function TreeValue(props) {
 function langStat(name, data) {
     name = name.replace('enemy_res', 'res');
 
-    let result = lang.any(
+    let result = UI.Lang.any(
         'features_view.stat_' + name,
         'stat_short.' + name,
         'stat.' + name,

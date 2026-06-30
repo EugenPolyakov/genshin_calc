@@ -3,13 +3,11 @@ import "../../../../css/Components/Modal/Select/Enemy.css"
 
 import { ControlsBar } from "../../Components/ControlsBar";
 import { EnemyIcon } from "../../Components/Icons";
-import { Lang } from "../../Lang";
 import { Modal } from "../../Modal";
 import { ModalSelectBase, SearchInput } from "../Select";
 import { ResistanceBlockMini } from "../../Components/ResistanceBlock";
 import { DB } from "../../../db/DB";
-
-let lang = new Lang();
+import { UI } from "../../../ui";
 
 export class ModalSelectEnemy extends Modal {
     createContent() {
@@ -18,7 +16,7 @@ export class ModalSelectEnemy extends Modal {
                 ref={(obj) => this.modal = obj}
                 width={1050}
                 addClass="enemy-select-modal"
-                title={lang.get('modal_window.select_enemy')}
+                title={UI.Lang.get('modal_window.select_enemy')}
             />
         );
     }
@@ -36,12 +34,12 @@ class EnemySelectComponent extends ModalSelectBase {
                 groupItems.push({
                     enemy: enemy,
                     id: enemy.getId(),
-                    title: lang.get(enemy.getName()).toUpperCase(),
+                    title: UI.Lang.get(enemy.getName()).toUpperCase(),
                 });
             }
 
             this.items.push({
-                title: lang.get('enemy_group.'+ group),
+                title: UI.Lang.get('enemy_group.'+ group),
                 id: group,
                 visible: groupItems.length > 0,
                 items: groupItems,
@@ -161,7 +159,7 @@ function EnemyList(props) {
             >
                 <EnemyIcon size={60} enemy={null} />
                 <div className="info">
-                    <div className="name">{lang.get('modal_window.enemy_custom')}</div>
+                    <div className="name">{UI.Lang.get('modal_window.enemy_custom')}</div>
                 </div>
             </div>
         </div>
@@ -194,7 +192,7 @@ class EnemySelectItem extends React.PureComponent {
             >
                 <EnemyIcon size={60} enemy={enemy} />
                 <div className="info">
-                    <div className="name">{lang.get(enemy.getName())}</div>
+                    <div className="name">{UI.Lang.get(enemy.getName())}</div>
                     <ResistanceBlockMini settings={settings} stats={{}}/>
                 </div>
             </div>

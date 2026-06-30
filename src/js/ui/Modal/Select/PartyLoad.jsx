@@ -5,11 +5,9 @@ import "../../../../css/Components/Modal/Select/PartyLoad.css"
 import { CharInfo } from "../../Components/Character/Info";
 import { ControlsBar } from "../../Components/ControlsBar";
 import { Dropdown } from "../../Components/Inputs/Dropdown";
-import { Lang } from "../../Lang";
 import { Modal } from "../../Modal";
 import { ModalSelectBase, SearchInput } from "../Select";
-
-let lang = new Lang();
+import { UI } from "../../../ui";
 
 export class ModalPartyLoad extends Modal {
     createContent() {
@@ -19,7 +17,7 @@ export class ModalPartyLoad extends Modal {
                 width={650}
                 storage={this.app.storage.char}
                 addClass="partyload-select-modal"
-                title={lang.get('modal_window.buff_select_char')}
+                title={UI.Lang.get('modal_window.buff_select_char')}
             />
         );
     }
@@ -70,7 +68,7 @@ class PartyLoadComponent extends ModalSelectBase {
             }
 
             let char = build.char.object;
-            let title = item.title || lang.get(char.getName());
+            let title = item.title || UI.Lang.get(char.getName());
 
             let data = build.getBaseStatsWithSets();
             let buildStats = data.stats;
@@ -96,7 +94,7 @@ class PartyLoadComponent extends ModalSelectBase {
                 build: item.data,
                 title: item.title || '',
                 charId: char.getId(),
-                sortTitle: (title + ' ' + lang.get(char.getName())).toLocaleUpperCase(),
+                sortTitle: (title + ' ' + UI.Lang.get(char.getName())).toLocaleUpperCase(),
                 values: buildValues,
             });
         }
@@ -143,14 +141,14 @@ class PartyLoadComponent extends ModalSelectBase {
         for (let stat of this.state.displayedStats) {
             this.statsFilter.push({
                 value: stat,
-                text: lang.getStatTotal('stat.'+ stat),
+                text: UI.Lang.getStatTotal('stat.'+ stat),
             });
         }
 
         for (let setting of this.state.displayedSettings) {
             this.statsFilter.push({
                 value: setting,
-                text: lang.get('stat_settings.'+ setting),
+                text: UI.Lang.get('stat_settings.'+ setting),
             });
         }
 
@@ -158,7 +156,7 @@ class PartyLoadComponent extends ModalSelectBase {
             return a.text.localeCompare(b.text);
         });
 
-        this.statsFilter.unshift({'value': '', text: lang.get('dropdown.title')});
+        this.statsFilter.unshift({'value': '', text: UI.Lang.get('dropdown.title')});
     }
 
     handleLoadBuild(build) {
@@ -220,7 +218,7 @@ function LockCharList(props) {
     let buttons = [
         {
             icon: 'icon-load',
-            tooltip: lang.get('tooltip.share_load'),
+            tooltip: UI.Lang.get('tooltip.share_load'),
             callback: (build) => props.onLoadBuild(build),
         },
     ];

@@ -4,9 +4,7 @@ import "../../../../css/Components/Tab/ArtifactsGenerator/Results.css"
 import { ArtifactList } from '../../Components/Artifact';
 import { FeatureTableValues } from '../../Components/FeatureTable';
 import { ResultTableButton } from '../../Components/Inputs/Buttons';
-import { Lang } from '../../Lang';
-
-let lang = new Lang();
+import { UI } from '../../../ui';
 
 export function ArtifactsGeneratorResults(props) {
     let items = [];
@@ -89,7 +87,7 @@ class ResultItem extends React.Component {
                 </div>
                 <div className="line-substats">
                     <div className="show-arts" onClick={() => this.handleToggleVisibility()}>
-                        {this.state.showArtifacts ? lang.get('pool_view.hide_artifacts') : lang.get('pool_view.show_artifacts')}
+                        {this.state.showArtifacts ? UI.Lang.get('pool_view.hide_artifacts') : UI.Lang.get('pool_view.show_artifacts')}
                     </div>
                     <div className="flex-spacer" />
                     {rollItems}
@@ -111,7 +109,7 @@ function MainStats(props) {
         items.push(
             <div className="line" key={slot}>
                 <div className={'slot '+ slot} />
-                <div className="text">{lang.get('stat_short.'+ props.data[slot])}</div>
+                <div className="text">{UI.Lang.get('stat_short.'+ props.data[slot])}</div>
             </div>
         );
     }
@@ -126,7 +124,7 @@ function RollItem(props) {
     return (
         <div className="roll-item">
             <div className="roll-count">{props.value}</div>
-            <div className="roll-stat">{lang.get('stat_short.'+ props.stat)}</div>
+            <div className="roll-stat">{UI.Lang.get('stat_short.'+ props.stat)}</div>
         </div>
     );
 }

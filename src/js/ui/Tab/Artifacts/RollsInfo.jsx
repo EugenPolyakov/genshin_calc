@@ -2,11 +2,9 @@ import React from 'react';
 import parse from 'html-react-parser';
 
 import { GroupBox } from '../../Components/Inputs/GroupBox';
-import { Lang } from '../../Lang';
 import { substatCheck } from '../../../classes/SubstatCheck';
 import { Stats } from '../../../classes/Stats';
-
-let lang = new Lang();
+import { UI } from '../../../ui';
 
 export class RollsInfo extends React.Component {
     getSubstatRolls() {
@@ -85,7 +83,7 @@ export class RollsInfo extends React.Component {
 
             items.push(
                 <div className="arifacts-stat-info-line" key={item.stat}>
-                    <div className="si-name">{lang.get('stat.'+ item.stat)}</div>
+                    <div className="si-name">{UI.Lang.get('stat.'+ item.stat)}</div>
                     <div className="si-value">
                         {item.count}
                         <span className="si-remark">
@@ -101,13 +99,13 @@ export class RollsInfo extends React.Component {
         }
 
         return (
-            <GroupBox title={lang.get('artifact_view.useful_rolls')}>
+            <GroupBox title={UI.Lang.get('artifact_view.useful_rolls')}>
                 <div className="arifacts-stat-info-line">
-                    <div className="si-name">{lang.get('stat_view.total')}</div>
+                    <div className="si-name">{UI.Lang.get('stat_view.total')}</div>
                     <div className="si-value">{total}</div>
                 </div>
                 {items}
-                <div className="feature-roll-remark">{lang.get('stat_view.for_feature')}: {parse(lang.get('feature_'+ this.props.feature))}</div>
+                <div className="feature-roll-remark">{UI.Lang.get('stat_view.for_feature')}: {parse(UI.Lang.get('feature_'+ this.props.feature))}</div>
             </GroupBox>
         );
     }

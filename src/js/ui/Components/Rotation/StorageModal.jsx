@@ -3,7 +3,6 @@ import React from "react";
 import "../../../../css/Components/Rotation/StorageModal.css"
 
 import { DialogContainer } from "../Dialog/Container";
-import { Lang } from "../../Lang";
 import { FullHeight, FullHeightScrollable, FullHeightStatic } from "../FullHeight";
 import { TextInput, TextInputWithButton, TextInputWithCopy } from "../Inputs/Input";
 import { ControlsBar } from "../ControlsBar";
@@ -14,8 +13,6 @@ import { Serializer } from "../../../classes/Serializer";
 import { makeShareUrl } from "../../../Utils";
 import { DB } from "../../../db/DB";
 import { UI } from "../../../ui";
-
-let lang = new Lang();
 
 export class RotationStorageModal extends React.Component {
     constructor(props) {
@@ -95,7 +92,7 @@ export class RotationStorageModal extends React.Component {
                 width={700}
                 maxHeight={true}
                 isVisible={this.state.isVisible}
-                title={lang.get('modal_window.rotation_storage')}
+                title={UI.Lang.get('modal_window.rotation_storage')}
                 closeCallback={() => this.handleClose()}
             >
                 <FullHeight>
@@ -110,8 +107,8 @@ export class RotationStorageModal extends React.Component {
                             <TextInputWithButton
                                 barClass="resizable"
                                 value={this.state.saveString}
-                                placeholder={lang.get('rotation_view.add_placeholder')}
-                                text={lang.get('rotation_view.save_rotation')}
+                                placeholder={UI.Lang.get('rotation_view.add_placeholder')}
+                                text={UI.Lang.get('rotation_view.save_rotation')}
                                 onChange={(value) => this.handleSaveNameChange(value)}
                                 onClick={() => this.props.onSave(this.state.saveString)}
                             />
@@ -122,7 +119,7 @@ export class RotationStorageModal extends React.Component {
                                 barClass="resizable"
                                 addClass="left"
                                 value={this.state.filterString}
-                                placeholder={lang.get('share_view.search')}
+                                placeholder={UI.Lang.get('share_view.search')}
                                 onChange={(value) => this.handleFilterChange(value)}
                             />
                         </ControlsBar>
@@ -159,7 +156,7 @@ export class RotationList extends React.PureComponent {
 
             let charTitle = '';
             if (char) {
-                charTitle = lang.get(char.getName())
+                charTitle = UI.Lang.get(char.getName())
             }
 
             let title = item.title || charTitle;

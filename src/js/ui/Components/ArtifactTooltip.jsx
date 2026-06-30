@@ -4,7 +4,6 @@ import parse from 'html-react-parser';
 
 import "../../../css/ui/Tooltip/Artifact.css"
 
-import { Lang } from '../Lang';
 import { Modal } from '../Modal';
 import { waitForCondition } from '../../Utils';
 import { Stats } from '../../classes/Stats';
@@ -14,8 +13,6 @@ import { ArtifactSet } from '../../classes/ArtifactSet';
 import { Artifact } from '../../classes/Artifact';
 import { WorkerFactoryPotentialArtifactUsefulness } from '../../classes/WorkerFactory/PotentialArtifactUsefulness';
 import { Serializer } from '../../classes/Serializer';
-
-let lang = new Lang();
 
 export class ArtifactTooltip extends Modal {
     constructor () {
@@ -130,7 +127,7 @@ class ArtifactTooltipWindow extends React.PureComponent {
             return (
                 <table className="gi-tooltip-artifact-feature">
                     <tbody>
-                        <tr><th>{ lang.get('artifacts_ui.calculation_progress') }{ Stats.format('text_percent', result.progress, { decimal_digits: 2, no_decimal_zero: 1, zero: 1 }) }</th></tr>
+                        <tr><th>{ UI.Lang.get('artifacts_ui.calculation_progress') }{ Stats.format('text_percent', result.progress, { decimal_digits: 2, no_decimal_zero: 1, zero: 1 }) }</th></tr>
                     </tbody>
                 </table>
             );
@@ -160,17 +157,17 @@ class ArtifactTooltipWindow extends React.PureComponent {
         return (
                 <table className="gi-tooltip-artifact-feature">
                     <tbody>
-                        <tr><th colSpan="5">{ lang.get('artifacts_ui.maximum_possible_values') }</th></tr>
-                        <tr><th colSpan="5">{ lang.get('feature_' + this.state.feature) }</th></tr>
+                        <tr><th colSpan="5">{ UI.Lang.get('artifacts_ui.maximum_possible_values') }</th></tr>
+                        <tr><th colSpan="5">{ UI.Lang.get('feature_' + this.state.feature) }</th></tr>
                         <tr></tr>
                         <tr>
                             <td></td>
-                            <td>{ lang.get('stat_view.normal') }</td>
-                            <td>{ lang.get('stat_view.crit') }</td>
-                            <td>{ lang.get('stat_view.average') }</td>
+                            <td>{ UI.Lang.get('stat_view.normal') }</td>
+                            <td>{ UI.Lang.get('stat_view.crit') }</td>
+                            <td>{ UI.Lang.get('stat_view.average') }</td>
                         </tr>
                         <tr><td></td>{ values }</tr>
-                        <tr><td>{ lang.get('artifacts_ui.chance') }</td>{ values2 }</tr>
+                        <tr><td>{ UI.Lang.get('artifacts_ui.chance') }</td>{ values2 }</tr>
                     </tbody>
                 </table>
         );
@@ -194,7 +191,7 @@ class ArtifactTooltipWindow extends React.PureComponent {
         for (let item in art.getSubStats()) {
             subStats[art.getSubStats()[item].index] =(
                 <li key={ "stat" + (art.getSubStats()[item].index - 1)}>
-                    { lang.getStat( 'stat.' + item ) }&nbsp;{ Stats.format( item, art.getSubStats()[item].value, {signed: 1})}
+                    { UI.Lang.getStat( 'stat.' + item ) }&nbsp;{ Stats.format( item, art.getSubStats()[item].value, {signed: 1})}
                 </li>
             );
         }
@@ -208,7 +205,7 @@ class ArtifactTooltipWindow extends React.PureComponent {
 
                 if (descr) {
                     condItems.push(
-                        <li key={"cond"+ condItems.length}>{lang.get('artifact_set.pieces_'+ i)}:&nbsp;{parse(descr)}</li>
+                        <li key={"cond"+ condItems.length}>{UI.Lang.get('artifact_set.pieces_'+ i)}:&nbsp;{parse(descr)}</li>
                     );
                 }
             }
@@ -296,12 +293,12 @@ class ArtifactTooltipWindow extends React.PureComponent {
                 featureBlock = (
                     <table className="gi-tooltip-artifact-feature">
                         <tbody>
-                            <tr><th colSpan="4">{ lang.get('feature_' + this.state.feature) }</th></tr>
+                            <tr><th colSpan="4">{ UI.Lang.get('feature_' + this.state.feature) }</th></tr>
                             <tr></tr>
                             <tr>
-                                <td>{ lang.get('stat_view.normal') }</td>
-                                <td>{ lang.get('stat_view.crit') }</td>
-                                <td>{ lang.get('stat_view.average') }</td>
+                                <td>{ UI.Lang.get('stat_view.normal') }</td>
+                                <td>{ UI.Lang.get('stat_view.crit') }</td>
+                                <td>{ UI.Lang.get('stat_view.average') }</td>
                             </tr>
                             <tr>{ values }</tr>
                         </tbody>
@@ -316,16 +313,16 @@ class ArtifactTooltipWindow extends React.PureComponent {
                     <div className="gi-tooltip-artifact-caption-background-left"/>
                     <div className="gi-tooltip-artifact-caption-background-middle"/>
                     <div className="gi-tooltip-artifact-caption-background-right"/>
-                    {art.title ? art.title : lang.get( setData.getName() )}
+                    {art.title ? art.title : UI.Lang.get( setData.getName() )}
                 </div>
                 <div className="gi-tooltip-artifact-stats">
-                    <div className="gi-tooltip-artifact-mainstat-name">{lang.getStat('stat.'+ mainStat)}</div>
+                    <div className="gi-tooltip-artifact-mainstat-name">{UI.Lang.getStat('stat.'+ mainStat)}</div>
                     <div className="gi-tooltip-artifact-mainstat-value">{Stats.format(mainStat, art.getMainStatValue())}</div>
                 </div>
                 <div className="gi-tooltip-artifact-substats">
                     <ul>{subStats}</ul>
                 </div>
-                <div className="gi-tooltip-artifact-set-name">{lang.get( setData.getName() )}:</div>
+                <div className="gi-tooltip-artifact-set-name">{UI.Lang.get( setData.getName() )}:</div>
                 <ul className="gi-tooltip-artifact-pieces">{condItems}</ul>
                 {featureBlock}
             </div>

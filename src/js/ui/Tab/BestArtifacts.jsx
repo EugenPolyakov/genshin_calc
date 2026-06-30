@@ -1,7 +1,7 @@
 import React from 'react';
 import parse from 'html-react-parser';
 
-import "../../../css/ui/Tab/BestArtifact.css"
+import "../../../css/Components/Tab/BestArtifact.css"
 
 import { Accordion, AccordionItem } from '../Components/Accordion';
 import { AccordionArtifactGroups } from '../Components/Accordion/ArtifactGroups';
@@ -17,8 +17,7 @@ import { Feature2 } from '../../classes/Feature2';
 import { formatNumber } from '../../Utils';
 import { FullHeight, FullHeightStatic, FullHeightScrollable } from '../Components/FullHeight';
 import { GroupBox } from '../Components/Inputs/GroupBox';
-import { Lang } from '../Lang';
-import { Checkbox, NumberInput } from '../Components/Inputs/Input';
+import { NumberInput } from '../Components/Inputs/Input';
 import { ReactTab } from '../Components/Tab';
 import { SuggestProgressModal } from '../Components/Dialog/SuggestProgressModal';
 import { SuggestResult } from '../Components/SuggestResult';
@@ -75,7 +74,6 @@ export class BestArtifactTab extends Tab {
 class BestArtifact extends React.Component {
     constructor(props) {
         super(props);
-        this.lang = new Lang();
 
         this.storage = UI.Layout.app.storage.artifacts;
         this.factory = new WorkerFactorySuggestArtifacts({
@@ -115,28 +113,28 @@ class BestArtifact extends React.Component {
         this.setInitialSettings();
 
         this.strings = {
-            title: this.lang.get('tab_header.artifact_pool_suggest'),
-            item_stats: this.lang.get('artifacts_ui.accordion_stats'),
-            item_groups: this.lang.get('artifacts_ui.accordion_groups'),
-            item_slots: this.lang.get('artifacts_ui.accordion_slots'),
-            item_required_sets: this.lang.get('artifacts_ui.accordion_required_sets'),
-            item_sets: this.lang.get('artifacts_ui.accordion_sets'),
-            item_filter: this.lang.get('artifacts_ui.accordion_filter'),
-            no_artifacts: this.lang.getTalent('artifacts_ui.no_artifacts'),
-            total_arts: this.lang.get('artifacts_ui.total_arts'),
-            total_combinations: this.lang.get('artifacts_ui.total_combinations'),
-            total_locked: this.lang.get('artifacts_ui.total_locked'),
-            total_filtered: this.lang.get('artifacts_ui.total_filtered'),
-            total_used: this.lang.get('artifacts_ui.total_used'),
-            start: this.lang.get('artifacts_ui.start'),
-            show_results: this.lang.get('artifacts_ui.show_results'),
-            lock_window: this.lang.get('artifacts_ui.lock_window'),
+            title: UI.Lang.get('tab_header.artifact_pool_suggest'),
+            item_stats: UI.Lang.get('artifacts_ui.accordion_stats'),
+            item_groups: UI.Lang.get('artifacts_ui.accordion_groups'),
+            item_slots: UI.Lang.get('artifacts_ui.accordion_slots'),
+            item_required_sets: UI.Lang.get('artifacts_ui.accordion_required_sets'),
+            item_sets: UI.Lang.get('artifacts_ui.accordion_sets'),
+            item_filter: UI.Lang.get('artifacts_ui.accordion_filter'),
+            no_artifacts: UI.Lang.getTalent('artifacts_ui.no_artifacts'),
+            total_arts: UI.Lang.get('artifacts_ui.total_arts'),
+            total_combinations: UI.Lang.get('artifacts_ui.total_combinations'),
+            total_locked: UI.Lang.get('artifacts_ui.total_locked'),
+            total_filtered: UI.Lang.get('artifacts_ui.total_filtered'),
+            total_used: UI.Lang.get('artifacts_ui.total_used'),
+            start: UI.Lang.get('artifacts_ui.start'),
+            show_results: UI.Lang.get('artifacts_ui.show_results'),
+            lock_window: UI.Lang.get('artifacts_ui.lock_window'),
         };
 
         this.featureTypeValues = [
-            {value: 'normal',  text: this.lang.get('pool_view.type_normal')},
-            {value: 'crit',    text: this.lang.get('pool_view.type_crit')},
-            {value: 'average', text: this.lang.get('pool_view.type_average')},
+            {value: 'normal',  text: UI.Lang.get('pool_view.type_normal')},
+            {value: 'crit',    text: UI.Lang.get('pool_view.type_crit')},
+            {value: 'average', text: UI.Lang.get('pool_view.type_average')},
         ];
     }
 
@@ -687,7 +685,7 @@ class BestArtifact extends React.Component {
                             <div className="title">{this.strings.total_combinations}</div>
                         </div>
                         <div className="line">
-                            <div className="value">{this.lang.get('artifacts_ui.max_threads')}</div>
+                            <div className="value">{UI.Lang.get('artifacts_ui.max_threads')}</div>
                             <div className="title">
                                 <NumberInput
                                     addClass="inputs-2digit"
@@ -706,7 +704,7 @@ class BestArtifact extends React.Component {
                                     onChange={(checked) => this.setState({artifactFilter: checked})}
                                 />
                             </div>
-                            <div className="title">{this.lang.get('artifacts_ui.suggest_filter_artifacts')}</div>
+                            <div className="title">{UI.Lang.get('artifacts_ui.suggest_filter_artifacts')}</div>
                         </div> */}
                         <TitledButton
                             icon="icon-ok"

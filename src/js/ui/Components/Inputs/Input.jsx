@@ -1,9 +1,7 @@
 import React from 'react';
 
 import "../../../../css/Components/Inputs/Input.css"
-import { Lang } from '../../Lang';
-
-let lang = new Lang();
+import { UI } from '../../../ui';
 
 export function TextInput(props) {
     let classes = ['inputs-text'];
@@ -86,7 +84,7 @@ export class TextInputWithCopy extends React.Component {
                     onClick={() => this.handleCopy()}
                 >
                     <span className="copy" />
-                    {lang.get('share_view.copy')}
+                    {UI.Lang.get('share_view.copy')}
                 </div>
             </div>
         );

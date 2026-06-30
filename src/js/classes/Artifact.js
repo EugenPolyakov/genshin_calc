@@ -297,6 +297,10 @@ export class Artifact {
         return Serializer.pack(this);
     }
 
+    getLexHash() {
+        return Serializer.packSerialized(this.serialize(1));
+    }
+
     getErrors() {
         let errors = [];
 
@@ -444,7 +448,7 @@ export class Artifact {
         return result;
     }
 
-    serialize() {
+    serialize(lex) {
         let result = [2];
 
         result.push(DB.Artifacts.Sets.getId(this.set));
@@ -455,7 +459,16 @@ export class Artifact {
         result.push(Object.keys(this.subStats).length);
 
         this.tryDoRightSubstats();
-        Object.keys(this.subStats).forEach((stat) => {
+        let flatStatValues;
+        let rollsCount = DB.Artifacts.Substats.get('hp').rolls[this.rarity - 1].length;
+        if (rollsCount == 4) {
+            flatStatValues = [7, 8, 9, 10];
+        } else if (rollsCount == 3) {
+            flatStatValues = [14, 17, 20];
+        } else if (rollsCount == 2) {
+            flatStatValues = [8, 10];
+        }
+        Object.keys(this.subStats).sort((a, b) => this.subStats[a].index - this.subStats[b].index).forEach((stat) => {
             let statData = this.subStats[stat];
             if (statData.unactivated)
                 result.push(25);
@@ -465,9 +478,13 @@ export class Artifact {
             let value = statData.value;
 
             if (statData.values && statData.values.length > 0 && value.toFixed(1) == substat.rollsToValue[this.rarity - 1][statData.values.join('')].toFixed(1)) {
-                value = statData.values[statData.values.length - 1] + 1;
-                for (let i = statData.values.length - 2; i >= 0; i--) {
-                    value = (value << 3) + statData.values[i] + 1;
+                if (lex) {
+                    value = statData.values.reduce((a, x) => a + flatStatValues[x], 0);
+                } else {
+                    value = statData.values[statData.values.length - 1] + 1;
+                    for (let i = statData.values.length - 2; i >= 0; i--) {
+                        value = (value << 3) + statData.values[i] + 1;
+                    }
                 }
                 result.push((value << 1) + 1);
             } else {

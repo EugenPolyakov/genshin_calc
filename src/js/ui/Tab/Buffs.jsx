@@ -9,7 +9,6 @@ import { ControlsBar, ControlsBarDivider } from '../Components/ControlsBar';
 import { FullHeight, FullHeightScrollable } from '../Components/FullHeight';
 import { TitledButton } from '../Components/Inputs/Buttons';
 import { ReactTab } from '../Components/Tab';
-import { Lang } from '../Lang';
 import { Tab } from "../Tab";
 import { CustomStats } from './Buffs/CustomStats';
 import { PartyList } from './Buffs/PartyList';
@@ -49,16 +48,15 @@ export class Buffs extends React.Component {
     constructor(props) {
         super(props);
 
-        this.lang = new Lang();
         this.state = {};
 
         this.strings = {
-            title: this.lang.get('tab_header.buff_view'),
-            party: this.lang.get('buff_group.elemental_resonance'),
-            artifacts: this.lang.get('buff_group.artifacts'),
-            weapons: this.lang.get('buff_group.weapons'),
-            custom: this.lang.get('buff_group.custom'),
-            load_char: this.lang.get('buff_view.buff_char_load'),
+            title: UI.Lang.get('tab_header.buff_view'),
+            party: UI.Lang.get('buff_group.elemental_resonance'),
+            artifacts: UI.Lang.get('buff_group.artifacts'),
+            weapons: UI.Lang.get('buff_group.weapons'),
+            custom: UI.Lang.get('buff_group.custom'),
+            load_char: UI.Lang.get('buff_view.buff_char_load'),
         };
 
         this.resonanceConditions = DB.Buffs.get('ElementalResonance').getConditions();
@@ -119,7 +117,7 @@ export class Buffs extends React.Component {
             }
 
             charItems.push(
-                <AccordionItem id={'char'+ char.getId()} title={makeTitleWithCount(this.lang.get(char.getName()), conditions, settings)}>
+                <AccordionItem id={'char'+ char.getId()} title={makeTitleWithCount(UI.Lang.get(char.getName()), conditions, settings)}>
                     <ControlsBar>
                         <ControlsBarDivider />
                         <TitledButton

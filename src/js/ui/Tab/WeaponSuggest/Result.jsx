@@ -4,10 +4,8 @@ import { ArtifactList } from '../../Components/Artifact';
 
 import { FeatureTableValues } from '../../Components/FeatureTable';
 import { ResultTableButton } from '../../Components/Inputs/Buttons';
-import { Lang } from '../../Lang';
 import { DB } from '../../../db/DB';
-
-let lang = new Lang();
+import { UI } from '../../../ui';
 
 export function WeaponSuggestResult(props) {
     let items = [];
@@ -53,13 +51,13 @@ export class WeaponSuggestItem extends React.Component {
             <>
                 <div className={'item' + (this.props.odd ? ' odd': '')}>
                     <div className="name">
-                        {lang.get(weapon.getName())}<br/>
-                        <span className="remark">{lang.get('object_view.weapon_refine')}: </span>
+                        {UI.Lang.get(weapon.getName())}<br/>
+                        <span className="remark">{UI.Lang.get('object_view.weapon_refine')}: </span>
                         <span className="value">{this.props.refine}</span>
-                        {this.props.suggestName ? <span className="remark">, {lang.get('weapon_settings.'+ this.props.suggestName)}</span> : ''}
+                        {this.props.suggestName ? <span className="remark">, {UI.Lang.get('weapon_settings.'+ this.props.suggestName)}</span> : ''}
                         {this.props.artifacts && this.props.artifacts.length > 0 ?
                             <div className="show-arts" onClick={() => this.handleToggleVisibility()}>
-                                {this.state.showArtifacts ? lang.get('pool_view.hide_artifacts') : lang.get('pool_view.show_artifacts')}
+                                {this.state.showArtifacts ? UI.Lang.get('pool_view.hide_artifacts') : UI.Lang.get('pool_view.show_artifacts')}
                             </div>
                             : ''
                         }

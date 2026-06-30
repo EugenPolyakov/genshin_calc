@@ -2,12 +2,10 @@ import React from "react";
 import "../../../../css/Components/Dialog/SuggestProgressModal.css"
 
 import { DialogContainer } from "./Container";
-import { Lang } from "../../Lang";
 import { ProgressBar } from "../ProgressBar";
 import { ControlsBar, ControlsBarDivider } from "../ControlsBar";
 import { TitledButton } from "../Inputs/Buttons";
-
-let lang = new Lang();
+import { UI } from "../../../ui";
 
 export class SuggestProgressModal extends React.Component {
     constructor(props) {
@@ -86,7 +84,7 @@ export class SuggestProgressModal extends React.Component {
             if (data.total) {
                 content = <ProgressBar addClass="small" count={data.count} total={data.total} />
             } else {
-                content = <div className="loading">{lang.get('artifacts_suggest.thread_loading')}</div>
+                content = <div className="loading">{UI.Lang.get('artifacts_suggest.thread_loading')}</div>
             }
 
             threads.push(<div key={'item'+ threadId} className="thread">{content}</div>);
@@ -97,13 +95,13 @@ export class SuggestProgressModal extends React.Component {
                 addClass="artifact-progress-modal"
                 width={500}
                 isVisible={this.state.isVisible}
-                title={lang.get('modal_window.suggest_artifact')}
+                title={UI.Lang.get('modal_window.suggest_artifact')}
             >
                 <ProgressBar count={this.state.count} total={this.state.total} />
                 <ElapsedTime started={this.state.started} />
                 {this.state.threads.length > 1 ?
                 <>
-                    <div className="info-line rem">{lang.get('artifacts_suggest.threads_info')}</div>
+                    <div className="info-line rem">{UI.Lang.get('artifacts_suggest.threads_info')}</div>
                     {threads}
                 </> : ''}
 
@@ -111,7 +109,7 @@ export class SuggestProgressModal extends React.Component {
                     <ControlsBarDivider />
                     <TitledButton
                         icon="icon-cancel"
-                        title={lang.get('modal_buttons.cancel')}
+                        title={UI.Lang.get('modal_buttons.cancel')}
                         onClick={() => this.handleClose()}
                     />
                 </ControlsBar>
@@ -124,7 +122,7 @@ export class SuggestProgressModal extends React.Component {
 function ElapsedTime(props) {
     return (
         <div className="info-line">
-            <span className="rem">{lang.get('artifacts_suggest.elapsed_time')}</span> {formatSeconds(performance.now() - props.started)}
+            <span className="rem">{UI.Lang.get('artifacts_suggest.elapsed_time')}</span> {formatSeconds(performance.now() - props.started)}
         </div>
     );
 }

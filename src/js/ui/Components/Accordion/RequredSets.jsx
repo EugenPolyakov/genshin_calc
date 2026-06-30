@@ -1,7 +1,5 @@
 import React from 'react';
 import "../../../../css/Components/Accordion/RequredSets.css";
-import { Lang } from '../../Lang';
-
 import { ArtifactSetIcon } from '../Icons';
 import { TitledButton } from '../Inputs/Buttons';
 import { GroupBox } from '../Inputs/GroupBox';
@@ -14,11 +12,10 @@ export class AccordionRequredSets extends React.Component {
     constructor(props) {
         super(props);
 
-        this.lang = new Lang();
 
         this.strings = {
-            reset: this.lang.get('artifacts_ui.pick_reset'),
-            no_set: this.lang.get('artifacts_ui.set_not_selected')
+            reset: UI.Lang.get('artifacts_ui.pick_reset'),
+            no_set: UI.Lang.get('artifacts_ui.set_not_selected')
         }
     }
 
@@ -74,19 +71,19 @@ export class AccordionRequredSets extends React.Component {
 
         if (set1Data && set2Data && this.props.set1 === this.props.set2) {
             if (set1Data) {
-                set1label = this.lang.get(set1Data.getName());
-                set1pieces = this.lang.get('artifact_set.pieces_4');
+                set1label = UI.Lang.get(set1Data.getName());
+                set1pieces = UI.Lang.get('artifact_set.pieces_4');
             }
             set2label = '';
             set2pieces = '';
         } else {
             if (set1Data) {
-                set1label = this.lang.get(set1Data.getName());
-                set1pieces = this.lang.get('artifact_set.pieces_2');
+                set1label = UI.Lang.get(set1Data.getName());
+                set1pieces = UI.Lang.get('artifact_set.pieces_2');
             }
             if (set2Data) {
-                set2label = this.lang.get(set2Data.getName());
-                set2pieces = this.lang.get('artifact_set.pieces_2');
+                set2label = UI.Lang.get(set2Data.getName());
+                set2pieces = UI.Lang.get('artifact_set.pieces_2');
             }
         }
 
@@ -116,7 +113,7 @@ export class AccordionRequredSets extends React.Component {
                     />
                     {artSetConditions.length ? <TitledButton
                         icon="icon-ok"
-                        title={this.lang.get('artifacts_ui.settings')}
+                        title={UI.Lang.get('artifacts_ui.settings')}
                         onClick={() => this.handleSettingsChange(artSetConditions)}
                     /> : <span />}
                 </ControlsBar>

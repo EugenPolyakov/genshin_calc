@@ -1,14 +1,13 @@
 import React from 'react';
 
-import { Lang } from '../../Lang';
 import { EnemyLevelLine } from '../../Components/ObjectBlock';
 import { DB } from '../../../db/DB';
+import { UI } from '../../../ui';
 
 export class CustomEnemy extends React.Component {
     constructor(props) {
         super(props);
 
-        this.lang = new Lang();
         this.elements = DB.Objects.Elements.getList().map((v) => {return v.name});
     }
 
@@ -19,7 +18,7 @@ export class CustomEnemy extends React.Component {
             items.push(
                 <EnemyLevelLine
                     key={element}
-                    title={this.lang.get('stat.res_'+ element)}
+                    title={UI.Lang.get('stat.res_'+ element)}
                     value={this.props.resistances[element]}
                     minValue={-100}
                     maxValue={400}

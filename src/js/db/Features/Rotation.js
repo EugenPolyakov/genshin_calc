@@ -697,4 +697,7 @@ export const Rotation = new DbObjectRotation({
     'other.nicole_arcane_projection_unity': 682,
 
     'skill.lohen_etched_into_bone_and_soul_dmg': 683,
+
+    "burst.durin_dragon_of_white_flame_dmg": 684,
+    "burst.durin_dragon_of_dark_decay_dmg": 685,
 });

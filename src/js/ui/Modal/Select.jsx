@@ -4,10 +4,8 @@ import "../../../css/Components/Modal/Select.css"
 import { DialogContainer } from "../Components/Dialog/Container";
 import { FullHeight, FullHeightScrollable, FullHeightStatic } from "../Components/FullHeight";
 import { TextInputWithButton } from "../Components/Inputs/Input";
-import { Lang } from "../Lang";
-import { StorageItemSettings } from "../../classes/StorageItem/Settings";
-
-let lang = new Lang();
+import { StorageItemSettings } from "../classes/StorageItem/Settings";
+import { UI } from "../../ui";
 
 export class ModalSelectBase extends React.Component {
     constructor(props) {
@@ -129,8 +127,8 @@ export function SearchInput(props) {
     return (
         <TextInputWithButton
             value={props.value}
-            placeholder={lang.get('share_view.search')}
-            text={lang.get('rotation_view.clear')}
+            placeholder={UI.Lang.get('share_view.search')}
+            text={UI.Lang.get('rotation_view.clear')}
             onChange={(value) => props.onChange(value)}
             onClick={() => props.onChange('')}
         />

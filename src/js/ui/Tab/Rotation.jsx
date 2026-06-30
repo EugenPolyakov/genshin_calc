@@ -2,10 +2,10 @@ import React from 'react';
 
 import "../../../css/Components/Tab/Rotation.css"
 
-import { Lang } from '../Lang';
 import { ReactTab } from '../Components/Tab';
 import { Tab } from "../Tab";
 import { RotationEditor } from '../Components/Rotation/Editor';
+import { UI } from '../../ui';
 
 export class RotationTab extends Tab {
     constructor(params) {
@@ -40,10 +40,8 @@ export class RotationView extends React.Component {
     constructor(props) {
         super(props);
 
-        this.lang = new Lang();
-
         this.strings = {
-            title: this.lang.get(this.props.title),
+            title: UI.Lang.get(this.props.title),
         };
     }
 

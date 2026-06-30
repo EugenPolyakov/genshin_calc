@@ -3,14 +3,11 @@ import parse from 'html-react-parser';
 
 import "../../../css/Components/ConditionList.css"
 
-import { Lang } from "../Lang";
 import { Checkbox, NumberInput } from "./Inputs/Input";
 import { Dropdown } from "./Inputs/Dropdown";
 import { GroupBox } from "./Inputs/GroupBox";
 import { Stats } from "../../classes/Stats";
 import { UI } from "../../ui";
-
-let lang = new Lang();
 
 export class ConditionList extends React.Component {
     render() {
@@ -291,7 +288,7 @@ function ConditionControl(props) {
 
                 let titleData = cond.params.titleFunc(i, condData);
                 if (typeof titleData == 'object') {
-                    title = lang.getTalent(titleData.str, titleData.values);
+                    title = UI.Lang.getTalent(titleData.str, titleData.values);
                 } else if (titleData) {
                     title = titleData;
                 }
@@ -345,9 +342,9 @@ function ConditionControl(props) {
             let title = '';
             if (i.title_str) {
                 if (i.title_params) {
-                    title = lang.getTalent(i.title_str, new Stats(i.title_params));
+                    title = UI.Lang.getTalent(i.title_str, new Stats(i.title_params));
                 } else {
-                    title = lang.get(i.title_str);
+                    title = UI.Lang.get(i.title_str);
                 }
             } else if (i.title) {
                 title = i.title;

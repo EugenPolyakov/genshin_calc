@@ -1,6 +1,6 @@
-import { Artifact } from "./Artifact";
+import { Artifact } from "../../classes/Artifact";
 import { Backup } from "./Backup";
-import { Serializer } from "./Serializer";
+import { Serializer } from "../../classes/Serializer";
 import { StorageItemArtifacts } from "./StorageItem/Artifacts";
 import { StorageItemChar } from "./StorageItem/Char";
 import { StorageItemRotation } from "./StorageItem/Rotation";

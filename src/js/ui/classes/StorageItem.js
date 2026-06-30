@@ -1,4 +1,4 @@
-import { Serializer } from "./Serializer";
+import { Serializer } from "../../classes/Serializer";
 
 export class StorageItem {
     constructor(keyName) {

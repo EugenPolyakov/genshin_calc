@@ -4,7 +4,7 @@ import "../../../css/Components/Enka.css"
 
 import { CharacterList } from './Character/List';
 import { ControlsBar, ControlsBarDivider } from './ControlsBar';
-import { EnkaApi } from '../../classes/API/Enka';
+import { EnkaApi } from '../classes/API/Enka';
 import { TextInput } from './Inputs/Input';
 import { TitledButton } from './Inputs/Buttons';
 import { FullHeight, FullHeightScrollable, FullHeightStatic } from './FullHeight';

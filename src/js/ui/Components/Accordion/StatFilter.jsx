@@ -2,19 +2,17 @@ import React from 'react';
 
 import "../../../../css/Components/Accordion/StatFilter.css";
 
-import { Lang } from '../../Lang';
 import { Checkbox, NumberInput } from '../Inputs/Input';
 import { ControlsBar } from '../ControlsBar';
 import { TitledButton } from '../Inputs/Buttons';
-
-let lang = new Lang();
+import { UI } from '../../../ui';
 
 export class AccordionStatFilter extends React.Component {
     render() {
         return (
             <div className="accordion-stat-filter">
                 <div className="line">
-                    <div className="name">{lang.get('object_view.level')}</div>
+                    <div className="name">{UI.Lang.get('object_view.level')}</div>
                     <div className="value">
                         <NumberInput
                             addClass="stat-input"
@@ -34,28 +32,25 @@ export class AccordionStatFilter extends React.Component {
                     </div>
                 </div>
                 <ControlsBar>
-                    <TitledButton title={ lang.get('artifacts_ui.auto_stats') } onClick={this.props.autoStats} icon="icon-ok"/>
-                    <TitledButton title={ lang.get('artifacts_ui.all_stats') } onClick={this.props.enableAllFilter} icon="icon-check"/>
+                    <TitledButton title={ UI.Lang.get('artifacts_ui.auto_stats') } onClick={this.props.autoStats} icon="icon-ok"/>
+                    <TitledButton title={ UI.Lang.get('artifacts_ui.all_stats') } onClick={this.props.enableAllFilter} icon="icon-check"/>
                 </ControlsBar>
                 <SlotLine
-                    lang={lang}
                     slot="sands"
                     settings={this.props.settings.main_stats.sands}
                     onChange={this.props.onStatChange}
                 />
                 <SlotLine
-                    lang={lang}
                     slot="goblet"
                     settings={this.props.settings.main_stats.goblet}
                     onChange={this.props.onStatChange}
                 />
                 <SlotLine
-                    lang={lang}
                     slot="circlet"
                     settings={this.props.settings.main_stats.circlet}
                     onChange={this.props.onStatChange}
                 />
-                <div className="remark">{lang.get('artifacts_ui.ctrl_click_info')}</div>
+                <div className="remark">{UI.Lang.get('artifacts_ui.ctrl_click_info')}</div>
             </div>
         );
     }
@@ -67,7 +62,7 @@ function SlotLine(props) {
         items.push(
             <div key={stat} className="stat">
                 <Checkbox
-                    title={props.lang.get('stat.'+ stat)}
+                    title={UI.Lang.get('stat.'+ stat)}
                     checked={props.settings[stat]}
                     onChange={(value, keys) => props.onChange(props.slot, stat, value, keys)}
                 />
@@ -77,7 +72,7 @@ function SlotLine(props) {
 
     return (
         <div className="slot-line">
-            <div className="name">{props.lang.get('artifact_set.'+ props.slot)}</div>
+            <div className="name">{UI.Lang.get('artifact_set.'+ props.slot)}</div>
             <div className="list">
                 {items}
             </div>
