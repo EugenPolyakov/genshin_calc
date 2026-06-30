@@ -2,17 +2,6 @@ category;name;rus;eng
 stat;dmg_skill_furina;Салон одиноких сердец;Salon Solitaire
 
 feature_attack;furina_center_of_attention_heal;Лечение Центр внимания;Center of Attention Heal
-feature_skill;furina_ousia_bubble_dmg;Урон пузыря усии;Ousia Bubble DMG
-feature_skill;furina_gentilhomme_usher_dmg;Урон месье Уше;Gentilhomme Usher DMG
-feature_skill;furina_surintendante_chevalmarin_dmg;Урон управляющей Шевальмарин;Surintendante Chevalmarin DMG
-feature_skill;furina_mademoiselle_crabaletta_dmg;Урон мадемуазель Крабалетты;Mademoiselle Crabaletta DMG
-feature_skill;furina_gentilhomme_usher_hp_consumption;Потребление HP Месье Уше;Gentilhomme Usher HP Consumption
-feature_skill;furina_surintendante_chevalmarin_hp_consumption;Потребление HP управляющей Шевальмарин;Surintendante Chevalmarin HP Consumption
-feature_skill;furina_mademoiselle_crabaletta_hp_consumption;Потребление HP мадемуазель Крабалетты;Mademoiselle Crabaletta HP Consumption
-feature_skill;furina_singers_of_the_streams_healing;Лечение Певцов потоков;Singers of the Streams Healing
-feature_burst;furina_max_fanfare;Лимит фанфар;Maximum Fanfare
-feature_burst;furina_fanfare_dmg_ratio;Отношение фанфар к повышению урона;Fanfare to DMG Increase Conversion Ratio
-feature_burst;furina_fanfare_heal_ratio;Отношение фанфар к бонусу лечения;Fanfare to Healing Bonus Conversion Ratio
 feature_burst;furina_fanfare_dmg_bonus;Бонус урона;DMG Bonus
 feature_burst;furina_fanfare_heal_bonus;Бонус получаемого лечения;Incoming Healing Bonus
 feature_burst;furina_c6_healing;Лечение при Архэ: Усия;Arkhe: Ousia Healing

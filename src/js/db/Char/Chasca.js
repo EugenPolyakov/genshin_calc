@@ -64,10 +64,10 @@ const Talents = new DbObjectTalents({
         description: 'talent_descr.chasca_spirit_reins_shadow_hunt',
         items: [
             {
-                table: new StatTable('chasca_activation_dmg', charTalentTables.Chasca.s2.p1),
+                table: new StatTable('chasca_resonance_dmg', charTalentTables.Chasca.s2.p1),
             },
             {
-                table: new StatTable('chasca_multi_aim_press_dmg', charTalentTables.Chasca.s2.p2),
+                table: new StatTable('chasca_multitarget_fire_tap_dmg', charTalentTables.Chasca.s2.p2),
             },
             {
                 table: new StatTable('chasca_shadowhunt_shell_dmg', charTalentTables.Chasca.s2.p3),
@@ -91,13 +91,13 @@ const Talents = new DbObjectTalents({
         description: 'talent_descr.chasca_soul_reapers_fatal_round',
         items: [
             {
-                table: new StatTable('chasca_galesplitting_soulreaper_shell_dmg', charTalentTables.Chasca.s3.p1),
+                table: new StatTable('chasca_galesplitting_soulseeker_shell_dmg', charTalentTables.Chasca.s3.p1),
             },
             {
-                table: new StatTable('chasca_soulreaping_shell_dmg', charTalentTables.Chasca.s3.p2),
+                table: new StatTable('chasca_soulseeker_shell_dmg', charTalentTables.Chasca.s3.p2),
             },
             {
-                table: new StatTable('chasca_radiant_soulreaping_shell_dmg', charTalentTables.Chasca.s3.p3),
+                table: new StatTable('chasca_radiant_soulseeker_shell_dmg', charTalentTables.Chasca.s3.p3),
             },
             {
                 unit: 'sec',
@@ -229,7 +229,7 @@ export const Chasca = new DbObjectChar({
             multipliers: [
                 new FeatureMultiplier({
                     leveling: 'char_skill_elemental',
-                    values: Talents.get('skill.chasca_activation_dmg'),
+                    values: Talents.get('skill.chasca_resonance_dmg'),
                 }),
             ],
         }),
@@ -239,7 +239,7 @@ export const Chasca = new DbObjectChar({
             multipliers: [
                 new FeatureMultiplier({
                     leveling: 'char_skill_elemental',
-                    values: Talents.get('skill.chasca_multi_aim_press_dmg'),
+                    values: Talents.get('skill.chasca_multitarget_fire_tap_dmg'),
                 }),
             ],
         }),
@@ -304,7 +304,7 @@ export const Chasca = new DbObjectChar({
             multipliers: [
                 new FeatureMultiplier({
                     leveling: 'char_skill_burst',
-                    values: Talents.get('burst.chasca_galesplitting_soulreaper_shell_dmg'),
+                    values: Talents.get('burst.chasca_galesplitting_soulseeker_shell_dmg'),
                 }),
             ],
         }),
@@ -313,7 +313,7 @@ export const Chasca = new DbObjectChar({
             multipliers: [
                 new FeatureMultiplier({
                     leveling: 'char_skill_burst',
-                    values: Talents.get('burst.chasca_soulreaping_shell_dmg'),
+                    values: Talents.get('burst.chasca_soulseeker_shell_dmg'),
                 }),
             ],
         }),
@@ -324,7 +324,7 @@ export const Chasca = new DbObjectChar({
                 multipliers: [
                     new FeatureMultiplier({
                         leveling: 'char_skill_burst',
-                        values: Talents.get('burst.chasca_radiant_soulreaping_shell_dmg'),
+                        values: Talents.get('burst.chasca_radiant_soulseeker_shell_dmg'),
                     }),
                 ],
             });

@@ -113,11 +113,11 @@ const Talents = new DbObjectTalents({
             },
             {
                 unit: 'sec',
-                table: new StatTable('skirk_duration', charTalentTables.Skirk.s2.p13),
+                table: new StatTable('skirk_seven_phase_flash_mode_duration', charTalentTables.Skirk.s2.p13),
             },
             {
                 unit: '',
-                table: new StatTable('skirk_limit', charTalentTables.Skirk.s2.p14),
+                table: new StatTable('skirk_max_serpents_subtlety', charTalentTables.Skirk.s2.p14),
             },
             {
                 unit: 'sec',
@@ -136,11 +136,11 @@ const Talents = new DbObjectTalents({
                 table: new StatTable('skirk_slash_dmg', charTalentTables.Skirk.s3.p1),
             },
             {
-                table: new StatTable('skirk_final_dmg', charTalentTables.Skirk.s3.p2),
+                table: new StatTable('skirk_final_slash_dmg', charTalentTables.Skirk.s3.p2),
             },
             {
                 unit: 'atk_per_point',
-                table: new StatTable('skirk_burst_bonus', charTalentTables.Skirk.s3.p3),
+                table: new StatTable('skirk_serpents_subtlety_bonus', charTalentTables.Skirk.s3.p3),
             },
             {
                 table: new StatTable('skirk_absorption_0_bonus', charTalentTables.Skirk.s3.p4),
@@ -160,7 +160,7 @@ const Talents = new DbObjectTalents({
             },
         ],
     },
-    links: [11130005, 11130006, 11130007, 11130008],
+    links: charTalentTables.Skirk.links,
 });
 
 const stanceCond = new ConditionBoolean({name: 'skirk_seven_phase_flash'});
@@ -483,7 +483,7 @@ export const Skirk = new DbObjectChar({
                 new FeatureMultiplierSkirkBurst({
                     leveling: 'char_skill_burst',
                     stacksLeveling: 'skirk_serpents_subtlety',
-                    values: Talents.get('burst.skirk_burst_bonus'),
+                    values: Talents.get('burst.skirk_serpents_subtlety_bonus'),
                     condition: new ConditionBoolean({name: 'skirk_serpents_subtlety'}),
                 }),
             ],
@@ -493,12 +493,12 @@ export const Skirk = new DbObjectChar({
             multipliers: [
                 new FeatureMultiplierSkirkBurst({
                     leveling: 'char_skill_burst',
-                    values: Talents.get('burst.skirk_final_dmg'),
+                    values: Talents.get('burst.skirk_final_slash_dmg'),
                 }),
                 new FeatureMultiplierSkirkBurst({
                     leveling: 'char_skill_burst',
                     stacksLeveling: 'skirk_serpents_subtlety',
-                    values: Talents.get('burst.skirk_burst_bonus'),
+                    values: Talents.get('burst.skirk_serpents_subtlety_bonus'),
                     condition: new ConditionBoolean({name: 'skirk_serpents_subtlety'}),
                 }),
             ],

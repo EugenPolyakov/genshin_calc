@@ -1,11 +1,6 @@
 category;name;rus;eng
 
-feature_skill;emilie_lumidouce_case_1_dmg;Урон Шкатулки Люмидус ур. 1;Level 1 Lumidouce Case Attack DMG
-feature_skill;emilie_lumidouce_case_2_dmg;Урон Шкатулки Люмидус ур. 2;Level 2 Lumidouce Case Attack DMG
-feature_skill;emilie_lumidouce_case_duration;Длительность Шкатулки Люмидус;Lumidouce Case Duration
 feature_skill;emilie_cleardew_cologne_dmg;Урон Парфюма ясных рос;Cleardew Cologne DMG
-feature_burst;emilie_lumidouce_case_3_dmg;Урон Шкатулки Люмидус ур. 3;Level 3 Lumidouce Case Attack DMG
-feature_burst;emilie_lumidouce_case_3_duration;Длительность Шкатулки Люмидус ур. 3;Level 3 Lumidouce Case Duration
 feature_other;emilie_dmg_bonus;Бонус урона;DMG Bonus
 
 stat;dmg_skill_emilie;Извлечение ароматов;Fragrance Extraction

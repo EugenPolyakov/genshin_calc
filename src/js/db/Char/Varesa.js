@@ -55,23 +55,23 @@ const Talents = new DbObjectTalents({
                 table: new StatTable('plunge_high', charTalentTables.Varesa.s1.p8),
             },
             {
-                table: new StatTable('varesa_normal_hit_1', charTalentTables.Varesa.s1.p9),
+                table: new StatTable('varesa_fiery_passion_1_hit_dmg', charTalentTables.Varesa.s1.p9),
             },
             {
-                table: new StatTable('varesa_normal_hit_2', charTalentTables.Varesa.s1.p10),
+                table: new StatTable('varesa_fiery_passion_2_hit_dmg', charTalentTables.Varesa.s1.p10),
             },
             {
-                table: new StatTable('varesa_normal_hit_3', charTalentTables.Varesa.s1.p11),
+                table: new StatTable('varesa_fiery_passion_3_hit_dmg', charTalentTables.Varesa.s1.p11),
             },
             {
-                table: new StatTable('varesa_charged_hit', charTalentTables.Varesa.s1.p12),
+                table: new StatTable('varesa_fiery_passion_charged_attack_dmg', charTalentTables.Varesa.s1.p12),
             },
             {
                 unit: 'unit',
-                table: new StatTable('varesa_stamina_cost', charTalentTables.Varesa.s1.p13),
+                table: new StatTable('varesa_fiery_passion_charged_attack_stamina_cost', charTalentTables.Varesa.s1.p13),
             },
             {
-                table: new StatTable('varesa_plunge', charTalentTables.Varesa.s1.p14),
+                table: new StatTable('varesa_fiery_passion_plunge_dmg', charTalentTables.Varesa.s1.p14),
             },
             {
                 table: new StatTable('varesa_plunge_low', charTalentTables.Varesa.s1.p15),
@@ -94,7 +94,7 @@ const Talents = new DbObjectTalents({
             },
             {
                 unit: 'sec',
-                table: new StatTable('varesa_duration', charTalentTables.Varesa.s2.p3),
+                table: new StatTable('varesa_follow_up_strike_duration', charTalentTables.Varesa.s2.p3),
             },
             {
                 unit: 'unit',
@@ -126,11 +126,11 @@ const Talents = new DbObjectTalents({
                 table: new StatTable('energy_cost', charTalentTables.Varesa.s3.p4),
             },
             {
-                table: new StatTable('varesa_volcanic_collapse_dmg', charTalentTables.Varesa.s3.p5),
+                table: new StatTable('varesa_volcano_kablam_dmg', charTalentTables.Varesa.s3.p5),
             },
             {
                 unit: '',
-                table: new StatTable('varesa_energy_cost', charTalentTables.Varesa.s3.p6),
+                table: new StatTable('varesa_volcano_kablam_energy_cost', charTalentTables.Varesa.s3.p6),
             },
         ],
     },
@@ -170,7 +170,7 @@ export const Varesa = new DbObjectChar({
                 }),
                 new FeatureMultiplier({
                     leveling: 'char_skill_attack',
-                    values: Talents.get('attack.varesa_normal_hit_1'),
+                    values: Talents.get('attack.varesa_fiery_passion_1_hit_dmg'),
                     condition: stanceCond,
                 }),
             ],
@@ -185,7 +185,7 @@ export const Varesa = new DbObjectChar({
                 }),
                 new FeatureMultiplier({
                     leveling: 'char_skill_attack',
-                    values: Talents.get('attack.varesa_normal_hit_2'),
+                    values: Talents.get('attack.varesa_fiery_passion_2_hit_dmg'),
                     condition: stanceCond,
                 }),
             ],
@@ -200,7 +200,7 @@ export const Varesa = new DbObjectChar({
                 }),
                 new FeatureMultiplier({
                     leveling: 'char_skill_attack',
-                    values: Talents.get('attack.varesa_normal_hit_3'),
+                    values: Talents.get('attack.varesa_fiery_passion_3_hit_dmg'),
                     condition: stanceCond,
                 }),
             ],
@@ -215,7 +215,7 @@ export const Varesa = new DbObjectChar({
                 }),
                 new FeatureMultiplier({
                     leveling: 'char_skill_attack',
-                    values: Talents.get('attack.varesa_charged_hit'),
+                    values: Talents.get('attack.varesa_fiery_passion_charged_attack_dmg'),
                     condition: stanceCond,
                 }),
             ],
@@ -230,7 +230,7 @@ export const Varesa = new DbObjectChar({
                 }),
                 new FeatureMultiplier({
                     leveling: 'char_skill_attack',
-                    values: Talents.get('attack.varesa_plunge'),
+                    values: Talents.get('attack.varesa_fiery_passion_plunge_dmg'),
                     condition: stanceCond,
                 }),
             ],
@@ -308,7 +308,7 @@ export const Varesa = new DbObjectChar({
             multipliers: [
                 new FeatureMultiplier({
                     leveling: 'char_skill_burst',
-                    values: Talents.get('burst.varesa_volcanic_collapse_dmg'),
+                    values: Talents.get('burst.varesa_volcano_kablam_dmg'),
                 }),
                 new FeatureMultiplier({
                     source: 'ascension1',

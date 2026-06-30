@@ -1,6 +1,4 @@
 category;name;rus;eng
-feature_skill;chongyun_infusion_duration;Длительность инфузии;Infusion Duration
-feature_skill;chongyun_field_duration;Длительность сферы;Field Duration
 feature_attack;chongyun_ice_unleashed;Урон ледяного клинка;Ice Blade DMG
 
 talent_name;chongyun_frost_field;Находится в области Холода Чунхуа;Within Chonghua Frost Field

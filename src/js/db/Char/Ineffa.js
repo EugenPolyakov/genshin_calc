@@ -80,16 +80,16 @@ const Talents = new DbObjectTalents({
                 type: 'shield',
                 unit: 'atk',
                 table: [
-                    new StatTable('ineffa_base_shield_dmg_absorption', charTalentTables.Ineffa.s2.p2),
+                    new StatTable('shield_absorption', charTalentTables.Ineffa.s2.p2),
                     new StatTable('', charTalentTables.Ineffa.s2.p3),
                 ],
             },
             {
                 unit: 'sec',
-                table: new StatTable('ineffa_shield_duration', charTalentTables.Ineffa.s2.p6),
+                table: new StatTable('shield_duration', charTalentTables.Ineffa.s2.p6),
             },
             {
-                table: new StatTable('ineffa_birgitta_dmg', charTalentTables.Ineffa.s2.p4),
+                table: new StatTable('ineffa_birgitta_discharge_dmg', charTalentTables.Ineffa.s2.p4),
             },
             {
                 unit: 'sec',
@@ -119,7 +119,7 @@ const Talents = new DbObjectTalents({
             },
         ],
     },
-    links: [11160001],
+    links: charTalentTables.Ineffa.links,
 });
 
 const PassiveLunarScale = 0.7;
@@ -269,7 +269,7 @@ export const Ineffa = new DbObjectChar({
             multipliers: [
                 new FeatureMultiplierList({
                     leveling: 'char_skill_elemental',
-                    values: Talents.getList('skill.ineffa_base_shield_dmg_absorption'),
+                    values: Talents.getList('skill.shield_absorption'),
                 }),
             ],
         }),
@@ -278,7 +278,7 @@ export const Ineffa = new DbObjectChar({
             multipliers: [
                 new FeatureMultiplier({
                     leveling: 'char_skill_elemental',
-                    values: Talents.get('skill.ineffa_birgitta_dmg'),
+                    values: Talents.get('skill.ineffa_birgitta_discharge_dmg'),
                 }),
             ],
         }),

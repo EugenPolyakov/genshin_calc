@@ -5,22 +5,70 @@ char_aloy = TemplateList(
     default_rus=Template(
         names=[
             'Элой',
-            'Спирали', 'Ледяная пустошь', 'Стремительного льда',
+            'Ледяная пустошь', 'Стремительного льда', 'Морозильная бомба', 'Ледяная бомбочка', 'Спирали',
         ],
         skills={
-            'skill': ['Ледяная пустошь'],
+            'skill': ['Ледяная пустошь', 'Морозильная бомба', 'Ледяная бомбочка', 'Спирали'],
             'burst': [],
         },
     ),
     default_eng=Template(
         names=[
             'Aloy',
-            'Coil', 'Rushing Ice',
+            'Rushing Ice',
+            'Frozen Wilds', 'Freeze Bomb', 'Chillwater Bomblet', 'Coil',
         ],
         skills={
-            'skill': ['Frozen Wilds'],
+            'skill': ['Frozen Wilds', 'Freeze Bomb', 'Chillwater Bomblet', 'Coil'],
             'burst': [],
         },
+    ),
+    frozen_wilds = Template(
+        replace={
+            '<br>': '<br>\n',
+            '<p>': '\n<p>',
+        },
+        sentences=[
+            [],
+            [],
+            [],
+            [],
+            ['1:ignore', '0.1:ignore'],
+            [],
+            [],
+            ['4:ignore'],
+            [],
+            ['30:ignore'],
+            [],
+        ],
+        results=[
+            [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+            [3, 4, 5, 6, 7, 8, 9],
+        ],
+    ),
+    frozen_wilds_eng = Template(
+        replace={
+            '<br>': '<br>\n',
+            '<p>': '\n<p>',
+        },
+        sentences=[
+            [],
+            [],
+            [],
+            ['1:ignore'],
+            ['1:ignore', '0.1:ignore'],
+            [],
+            [],
+            ['4:ignore'],
+            [],
+            [],
+            ['30:ignore'],
+            [],
+        ],
+        results=[
+            [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11],
+            [3, 4, 5, 6, 7, 8, 9, 10],
+        ],
     ),
     combat_override=Template(
         sentences=[

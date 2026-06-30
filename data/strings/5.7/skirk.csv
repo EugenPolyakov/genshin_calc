@@ -2,11 +2,6 @@ category;name;rus;eng
 
 stat;dmg_normal_skirk;Режим Семифазной вспышки;Seven-Phase Flash mode
 
-feature_skill;skirk_duration;Длительность Семифазной вспышки;Seven-Phase Flash Mode Duration
-feature_skill;skirk_limit;Максимум Змеиного коварства;Max Serpent's Subtlety
-feature_burst;skirk_slash_dmg;Урон рубящего удара;Slash DMG
-feature_burst;skirk_final_dmg;Урон последнего рубящего удара;Skill Final Attack DMG
-feature_burst;skirk_burst_bonus;Бонус Змеиного коварства;Serpent's Subtlety Bonus
 feature_burst;skirk_absorption_0_bonus;Увеличение урона за поглощение 0 Разрывов пустоты;0 Void Rift Absorption DMG Bonus
 feature_burst;skirk_absorption_1_bonus;Увеличение урона за поглощение 1 Разрыва пустоты;1 Void Rift Absorption DMG Bonus
 feature_burst;skirk_absorption_2_bonus;Увеличение урона за поглощение 2 Разрывов пустоты;2 Void Rifts Absorption DMG Bonus

@@ -91,7 +91,7 @@ const Talents = new DbObjectTalents({
             },
             {
                 unit: 'sec',
-                table: new StatTable('lynette_max_duration', charTalentTables.Lynette.s2.p9),
+                table: new StatTable('lynette_hold_max_duration', charTalentTables.Lynette.s2.p9),
             },
             {
                 unit: 'sec',
@@ -115,7 +115,7 @@ const Talents = new DbObjectTalents({
             },
             {
                 unit: 'sec',
-                table: new StatTable('lynette_duration', charTalentTables.Lynette.s3.p4),
+                table: new StatTable('lynette_bogglecat_box_duration', charTalentTables.Lynette.s3.p4),
             },
             {
                 unit: 'sec',

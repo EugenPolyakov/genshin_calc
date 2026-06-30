@@ -18,6 +18,7 @@ from lib.genshin.strings.csv import CsvDumper
 from lib.genshin.strings.text import TextDumper  # noqa
 import static
 from static import WEAPON_TYPES
+from old_values import old_values
 
 generate_char = ''
 do_single = False
@@ -90,6 +91,7 @@ names_mapping = {
     '6-Hit DMG': 'normal_hit_6',
     'Aimed Shot': 'aimed',
     'Fully-Charged Aimed Shot': 'charged_aimed',
+    'Aimed Shot Charge Level 1': 'charged_aimed',
     'Plunge DMG': 'plunge',
     'Low/High Plunge DMG': 'plunge_low/plunge_high',
     'Charged Attack': 'charged_hit',
@@ -115,27 +117,41 @@ names_mapping = {
     'Hold Skill DMG': 'hold_dmg',
     'Heal': 'heal',
     'Healing': 'heal',
+    'Cast Healing': 'heal',
     'Regeneration': 'heal_dot',
+    'Continuous Healing': 'heal_dot',
+    'Continuous Regeneration': 'heal_dot',
     'Shield Duration': 'shield_duration',
     'HP Cost': 'hp_cost',
     'Shield DMG Absorption': 'shield_absorption',
     'Max CD': 'max_cd',
     'Explosion DMG': 'explosion_dmg',
+    'Activation Stamina Consumption': 'sprint_activation_cost',
     'Stamina Drain': 'sprint_stamina_drain',
     'DoT': 'dot_dmg',
+    'DMG Reduction': 'dmg_reduction',
 
     'Spiritbreath Thorn DMG': 'spiritbreath_thorn_dmg',
     'Surging Blade DMG': 'surging_blade_dmg',
     'Surging Blade Interval': 'surging_blade_interval',
     'Spiritbreath Thorn Interval': 'spiritbreath_thorn_interval',
+    'Spiritbreath Thorn DMG Interval': 'spiritbreath_thorn_interval',
 
     'Nightsoul Point Limit': 'nightsoul_point_limit',
+
+# skiped
+    'Spiritbreath Thorn/Surging Blade DMG Interval': 'spiritbreath_thorn_surging_blade_dmg',
+    'Spiritbreath Thorn/Surging Blade DMG': 'spiritbreath_thorn_surging_blade_dmg_interval',
+    'Fiery Passion Low/High Plunge DMG': 'fiery_passion_low_high_plunge_dmg',
+    '0/1/2/3 Void Rift Absorption DMG Bonus': '0_1_2_3_void_rift_absorption_dmg_bonus',
 }
 
 skiped_features = set([
     'cd', 'cd_hold', 'max_cd', 'cd_press', 'energy_cost', 'surging_blade_interval',
     'spiritbreath_thorn_interval', 'hp_cost', 'stamina_cost', 'max_duration',
-    'shield_duration', 'duration'
+    'shield_duration', 'duration', 'spiritbreath_thorn_surging_blade_dmg_interval',
+    'spiritbreath_thorn_surging_blade_dmg', 'fiery_passion_low_high_plunge_dmg',
+    '0_1_2_3_void_rift_absorption_dmg_bonus',
 ])
 
 def shrink_table(data):
@@ -171,7 +187,6 @@ def format_table(data, fmt):
 def fix_name(name):
     name = re.sub(r'\#?{LAYOUT_PC#(.*?)\}', '\g<1>', name)
     name = re.sub(r'\#?{.*?}', '', name)
-    # name = names_mapping.get(name, name)
     return name
 
 def make_tables(data, generate):
@@ -269,6 +284,8 @@ def scales_and_proud(skillId, proudId, index, generate):
             skillLevel = item['level']
 
             if skillLevel == 1:
+                if not do_single:
+                    updated_values.write(f'    ({skillId}, {proudId}): {{\n')
                 for desc in item['paramDescList']:
                     text = lang_default.get(desc)
                     scaleData['desc'].append(text)
@@ -277,18 +294,28 @@ def scales_and_proud(skillId, proudId, index, generate):
                         name_idx=''
                         name = fix_name(name)
                         if not name in names_mapping.keys():
-                            name = convert_id(name, True)
-                            idx = 0
-                            name_idx = name
-                            while name_idx in scaleData['customParams']:
-                                idx += 1
-                                name_idx = f'{name}_{idx}'
+                            if (skillId, proudId) in old_values and desc in old_values[(skillId, proudId)]:
+                                name_idx = old_values[(skillId, proudId)][desc]
+                            else:
+                                name = convert_id(name, True)
+                                idx = 0
+                                name_idx = name
+                                while name_idx in scaleData['customParams']:
+                                    idx += 1
+                                    name_idx = f'{name}_{idx}'
                             scaleData['customParams'][name_idx] = desc
+                            if not do_single:
+                                updated_values.write(f'        {desc}: "{name_idx}",\n')
+                        else:
+                            if not do_single:
+                                updated_values.write(f'        {desc}: "{names_mapping[name]}",\n')
                         if generate:
                             if name_idx:
                                 scaleData['allParams'].append(f"{generate['local']}_{name_idx}")
                             else:
                                 scaleData['allParams'].append(names_mapping[name])
+                if not do_single:
+                    updated_values.write(f'    }},\n')
 # feature_skill;layout_mobile_tap_layout_pc_press_layout_ps_press_cd;Откат быстрого нажатия;#{LAYOUT_MOBILE#Tap}{LAYOUT_PC#Press}{LAYOUT_PS#Press} CD
 
             for scale in item['paramList']:
@@ -308,6 +335,10 @@ def scales_and_proud(skillId, proudId, index, generate):
     return scaleData
 
 out_dir = os.path.join(dirname, '../src/js/db/generated/')
+if not do_single:
+    updated_values = open(dirname + '/new_values.py', 'w', encoding='utf-8')
+    updated_values.write('old_values = {\n')
+
 out = open(out_dir + 'CharTalentTables.js', 'w', encoding='utf-8')
 out.write('// This file is autogenerated\n')
 out.write('export const charTalentTables = {\n')
@@ -420,27 +451,29 @@ for charVarName in sorted(char_keys):
     out.write(f"\t\tchar_weapon:'{char['weaponType']}',\n")
 
     locallinks = set()
+    if not do_single:
+        updated_values.write(f'#{char_id}\n')
     for depot_id in char['depot_ids']:
         depot = depot_data.get(depot_id)
         if not depot:
             continue
         skill_ids = []
-        burst_id = 0
-        attack_id = 0
+        skill_type = {}
         if depot.get('skills'):
-            attack_id = depot.get('skills')[0]
+            skill_type[depot.get('skills')[0]] = 'feature_attack'
+            skill_type[depot.get('skills')[1]] = 'feature_skill'
             for idx in depot.get('skills'):
                 if idx:
                     skill_ids.append(idx)
         if depot.get('energySkill'):
-            burst_id = depot.get('energySkill')
-            skill_ids.append(burst_id)
+            skill_type[depot.get('energySkill')] = 'feature_burst'
+            skill_ids.append(depot.get('energySkill'))
 
         # if depot.get('SubSkills'):
         #     skill_ids.extend(depot.get('SubSkills'))
         index = 1
         features = []
-        for id in skill_ids:
+        for idx, id in enumerate(skill_ids):
             # print(f'index {index} id {id}')
             if not id:
                 continue
@@ -456,15 +489,8 @@ for charVarName in sorted(char_keys):
             if uniq_skills.get(skill_id):
                 continue
             if generate_char == char_id:
-                if attack_id == id:
-                    print("    attack: {")
-                    print(f"        gameId: charTalentTables.{charVarName}.s1_id,")
-                elif burst_id == id:
-                    print("    burst: {")
-                    print(f"        gameId: charTalentTables.{charVarName}.s3_id,")
-                else:
-                    print("    skill: {")
-                    print(f"        gameId: charTalentTables.{charVarName}.s2_id,")
+                print(f"    {(skill_type[id] if id in skill_type else 'feature_other')[8:]}: {{")
+                print(f"        gameId: charTalentTables.{charVarName}.s{idx}_id,")
             generate_params=None
             if generate_char == char_id:
                 print(f"        title: 'talent_name.{skill_id}',")
@@ -477,12 +503,14 @@ for charVarName in sorted(char_keys):
                 }
             uniq_skills[skill_id] = 1
 
+            if not do_single:
+                updated_values.write(f'    #{talent_short_id}\n')
             proud_params = scales_and_proud(id, skill.get('proudSkillGroupId'), index, generate_params)
             if generate_char == char_id:
                 print("        ],")
                 print("    },")
                 features.append({
-                    'type': 'feature_burst' if id==burst_id else 'feature_attack' if id==attack_id else 'feature_skill',
+                    'type': skill_type[id] if id in skill_type else 'feature_other',
                     'skills': proud_params['allParams']
                 })
             if proud_params['desc']:
@@ -532,7 +560,7 @@ for charVarName in sorted(char_keys):
                         values[lang_name] = fix_name(name)
                     result_hero_strings.append(
                         OrderedDict(
-                            category='feature_burst' if id==burst_id else 'feature_attack' if id==attack_id else 'feature_skill',
+                            category=skill_type[id] if id in skill_type else 'feature_other',
                             # name=param,
                             name=char_id + '_' + param,
                             rus=values['rus'],
@@ -647,7 +675,7 @@ for charVarName in sorted(char_keys):
         prepare_talents(talent_items[0:-passive_count], generate_char == char_id)
     CsvDumper().dump(result_hero_strings, f'char/{char_key}.csv')
     hyperlinks.update(locallinks)
-    out.write('\t\tlinks: [%s],\n' % (', '.join(locallinks)))
+    out.write('\t\tlinks: [%s],\n' % (', '.join(sorted(locallinks))))
     out.write('\t},\n')
 
 if generate_char != '':
@@ -690,6 +718,8 @@ if len(result_talents) > 0:
 # CsvDumper().dump(result_names, '../../strings_draft/char_names.csv')
 TextDumper().dump(texts, 'chat_texts.txt')
 
+if not do_single:
+    updated_values.write('}\n')
 out.write('};\n')
 
 if generate_char == '':

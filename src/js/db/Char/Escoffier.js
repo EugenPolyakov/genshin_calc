@@ -123,7 +123,7 @@ const Talents = new DbObjectTalents({
             },
         ],
     },
-    links: [11120001, 11120002],
+    links: charTalentTables.Escoffier.links,
 });
 
 const A1Heal = 138.24;

@@ -147,7 +147,7 @@ const Talents = new DbObjectTalents({
             },
         ],
     },
-    links: [11200001, 11190007],
+    links: charTalentTables.Flins.links,
 });
 
 const lunarPost = new PostEffectStatsAtk({

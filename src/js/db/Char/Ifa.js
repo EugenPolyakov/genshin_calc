@@ -69,7 +69,7 @@ const Talents = new DbObjectTalents({
                 type: 'shield',
                 unit: 'mastery',
                 table: [
-                    new StatTable('ifa_tonicshot_heal', charTalentTables.Ifa.s2.p2),
+                    new StatTable('ifa_tonicshot_healing_on_hit', charTalentTables.Ifa.s2.p2),
                     new StatTable('', charTalentTables.Ifa.s2.p3),
                 ],
             },
@@ -104,7 +104,7 @@ const Talents = new DbObjectTalents({
             },
         ],
     },
-    links: [11130001, 11130002, 11130003, 11130004],
+    links: charTalentTables.Ifa.links,
 });
 
 const A1Stacks = 150;
@@ -244,7 +244,7 @@ export const Ifa = new DbObjectChar({
                 new FeatureMultiplierList({
                     scaling: 'mastery*',
                     leveling: 'char_skill_elemental',
-                    values: Talents.getList('skill.ifa_tonicshot_heal'),
+                    values: Talents.getList('skill.ifa_tonicshot_healing_on_hit'),
                 }),
             ],
         }),

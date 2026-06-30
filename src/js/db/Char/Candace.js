@@ -84,11 +84,11 @@ const Talents = new DbObjectTalents({
             },
             {
                 unit: 'hp',
-                table: new StatTable('candace_press_dmg', charTalentTables.Candace.s2.p3),
+                table: new StatTable('candace_basic_dmg', charTalentTables.Candace.s2.p3),
             },
             {
                 unit: 'hp',
-                table: new StatTable('candace_hold_dmg', charTalentTables.Candace.s2.p4),
+                table: new StatTable('candace_charged_up_dmg', charTalentTables.Candace.s2.p4),
             },
             {
                 unit: 'sec',
@@ -102,8 +102,8 @@ const Talents = new DbObjectTalents({
     },
     burst: {
         gameId: charTalentTables.Candace.s3_id,
-        title: 'talent_name.candace_wagtails_tide',
-        description: 'talent_descr.candace_wagtails_tide',
+        title: 'talent_name.candace_wagtails_tide_1',
+        description: 'talent_descr.candace_wagtails_tide_1',
         items: [
             {
                 unit: 'hp',
@@ -118,10 +118,10 @@ const Talents = new DbObjectTalents({
             },
             {
                 unit: 'hp',
-                table: new StatTable('candace_wave_dmg', charTalentTables.Candace.s3.p4),
+                table: new StatTable('candace_wave_impact_dmg', charTalentTables.Candace.s3.p4),
             },
             {
-                table: new StatTable('candace_wave_count', charTalentTables.Candace.s3.p5),
+                table: new StatTable('candace_wave_instances', charTalentTables.Candace.s3.p5),
             },
             {
                 unit: 'sec',
@@ -262,24 +262,24 @@ export const Candace = new DbObjectChar({
             ],
         }),
         new FeatureDamageSkill({
-            name: 'candace_press_dmg',
+            name: 'candace_basic_dmg',
             element: 'hydro',
             multipliers: [
                 new FeatureMultiplier({
                     scaling: 'hp*',
                     leveling: 'char_skill_elemental',
-                    values: Talents.get('skill.candace_press_dmg'),
+                    values: Talents.get('skill.candace_basic_dmg'),
                 }),
             ],
         }),
         new FeatureDamageSkill({
-            name: 'candace_hold_dmg',
+            name: 'candace_charged_up_dmg',
             element: 'hydro',
             multipliers: [
                 new FeatureMultiplier({
                     scaling: 'hp*',
                     leveling: 'char_skill_elemental',
-                    values: Talents.get('skill.candace_hold_dmg'),
+                    values: Talents.get('skill.candace_charged_up_dmg'),
                 }),
             ],
         }),
@@ -307,13 +307,13 @@ export const Candace = new DbObjectChar({
             ],
         }),
         new FeatureDamageBurst({
-            name: 'candace_wave_dmg',
+            name: 'candace_wave_impact_dmg',
             element: 'hydro',
             multipliers: [
                 new FeatureMultiplier({
                     scaling: 'hp*',
                     leveling: 'char_skill_burst',
-                    values: Talents.get('burst.candace_wave_dmg'),
+                    values: Talents.get('burst.candace_wave_impact_dmg'),
                 }),
             ],
         }),
@@ -351,8 +351,8 @@ export const Candace = new DbObjectChar({
         new ConditionBoolean({
             name: 'candace_prayer_of_the_crimson_crown',
             serializeId: 1,
-            title: 'talent_name.candace_prayer_of_the_crimson_crown',
-            description: 'talent_descr.candace_prayer_of_the_crimson_crown',
+            title: 'talent_name.candace_wagtails_tide_2',
+            description: 'talent_descr.candace_wagtails_tide_2',
             stats: {
                 dmg_normal_anemo: TalentValues.BaseDmgBonus,
                 dmg_normal_geo: TalentValues.BaseDmgBonus,
@@ -486,8 +486,8 @@ export const Candace = new DbObjectChar({
                 name: 'party.candace_prayer_of_the_crimson_crown',
                 serializeId: 2,
                 rotation: 'party',
-                title: 'talent_name.candace_prayer_of_the_crimson_crown',
-                description: 'talent_descr.candace_prayer_of_the_crimson_crown',
+                title: 'talent_name.candace_wagtails_tide_2',
+                description: 'talent_descr.candace_wagtails_tide_2',
                 stats: {
                     dmg_normal_anemo: TalentValues.BaseDmgBonus,
                     dmg_normal_geo: TalentValues.BaseDmgBonus,

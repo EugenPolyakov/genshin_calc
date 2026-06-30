@@ -61,7 +61,7 @@ const Talents = new DbObjectTalents({
                 table: new StatTable('aimed', charTalentTables.Lyney.s1.p9),
             },
             {
-                table: new StatTable('lyney_charged_dmg', charTalentTables.Lyney.s1.p10),
+                table: new StatTable('lyney_aimed_shot_charge_level_1', charTalentTables.Lyney.s1.p10),
             },
             {
                 table: new StatTable('lyney_prop_arrow_dmg', charTalentTables.Lyney.s1.p11),
@@ -72,11 +72,11 @@ const Talents = new DbObjectTalents({
             },
             {
                 unit: 'hp',
-                table: new StatTable('lyney_hat_hp', charTalentTables.Lyney.s1.p13),
+                table: new StatTable('lyney_grin_malkin_hat_inherited_hp', charTalentTables.Lyney.s1.p13),
             },
             {
                 unit: 'sec',
-                table: new StatTable('lyney_hat_duration', charTalentTables.Lyney.s1.p14),
+                table: new StatTable('lyney_grin_malkin_hat_duration', charTalentTables.Lyney.s1.p14),
             },
             {
                 table: new StatTable('lyney_pyrotechnic_strike_dmg', charTalentTables.Lyney.s1.p15),
@@ -250,12 +250,12 @@ export const Lyney = new DbObjectChar({
             ],
         }),
         new FeatureDamageChargedAimed({
-            name: 'lyney_charged_dmg',
+            name: 'lyney_aimed_shot_charge_level_1',
             element: 'pyro',
             multipliers: [
                 new FeatureMultiplier({
                     leveling: 'char_skill_attack',
-                    values: Talents.get('attack.lyney_charged_dmg'),
+                    values: Talents.get('attack.lyney_aimed_shot_charge_level_1'),
                 }),
             ],
         }),
@@ -270,13 +270,13 @@ export const Lyney = new DbObjectChar({
             ],
         }),
         new FeaturePostEffectValue({
-            name: 'lyney_hat_hp',
+            name: 'lyney_grin_malkin_hat_inherited_hp',
             category: 'attack',
             postEffect: new PostEffectStatsHP({
                 levelSetting: 'char_skill_attack',
                 percent: Talents.getMulti({
-                    name: 'lyney_hat_hp',
-                    from: 'attack.lyney_hat_hp',
+                    name: 'lyney_grin_malkin_hat_inherited_hp',
+                    from: 'attack.lyney_grin_malkin_hat_inherited_hp',
                     multi: 0.01,
                 }),
             }),

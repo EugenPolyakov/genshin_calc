@@ -30,6 +30,47 @@ char_kamisato_ayaka = TemplateList(
             ['dmg_normal', 'ignore'],
         ],
     ),
+    senho=Template(
+        replace={
+            '<br>': '<br>\n',
+            '<p>': '\n<p>',
+        },
+        sentences=[
+            [],
+            [],
+            [],
+            [],
+            [],
+            [],
+            [],
+            [],
+            [],
+        ],
+        results=[
+            [0, 1, 2, 3, 4, 5, 6, 7, 8,],
+            [4, 5, 6, ],
+        ],
+    ),
+    senho_eng=Template(
+        replace={
+            '<br>': '<br>\n',
+            '<p>': '\n<p>',
+        },
+        sentences=[
+            [],
+            [],
+            [],
+            [],
+            [],
+            [],
+            [],
+            [],
+        ],
+        results=[
+            [0, 1, 2, 3, 4, 5, 6, 7,],
+            [4, 5, 6,],
+        ],
+    ),
     kanten_senmyou_blessing=Template(
         sentences=[
             ['ignore', 'dmg_cryo', 'ignore'],

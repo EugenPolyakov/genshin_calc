@@ -76,13 +76,13 @@ const Talents = new DbObjectTalents({
                     'mastery',
                 ],
                 table: [
-                    new StatTable('alhaitham_rush_dmg', charTalentTables.Alhaitham.s2.p1),
+                    new StatTable('alhaitham_rush_attack_dmg', charTalentTables.Alhaitham.s2.p1),
                     new StatTable('alhaitham_rush_mastery', charTalentTables.Alhaitham.s2.p2),
                 ],
             },
             {
                 unit: '',
-                table: new StatTable('alhaitham_attack_interval', charTalentTables.Alhaitham.s2.p3),
+                table: new StatTable('alhaitham_projection_attack_interval', charTalentTables.Alhaitham.s2.p3),
             },
             {
                 type: 'multivalue',
@@ -92,7 +92,7 @@ const Talents = new DbObjectTalents({
                     'mastery',
                 ],
                 table: [
-                    new StatTable('alhaitham_mirror_1_dmg', charTalentTables.Alhaitham.s2.p4),
+                    new StatTable('alhaitham_1_mirror_projection_attack_dmg', charTalentTables.Alhaitham.s2.p4),
                     new StatTable('alhaitham_mirror_1_mastery', charTalentTables.Alhaitham.s2.p5),
                 ],
             },
@@ -105,7 +105,7 @@ const Talents = new DbObjectTalents({
                     'mastery',
                 ],
                 table: [
-                    new StatTable('alhaitham_mirror_2_dmg', charTalentTables.Alhaitham.s2.p6),
+                    new StatTable('alhaitham_2_mirror_projection_attack_dmg', charTalentTables.Alhaitham.s2.p6),
                     new StatTable('alhaitham_mirror_2_mastery', charTalentTables.Alhaitham.s2.p7),
                 ],
             },
@@ -118,13 +118,13 @@ const Talents = new DbObjectTalents({
                     'mastery',
                 ],
                 table: [
-                    new StatTable('alhaitham_mirror_3_dmg', charTalentTables.Alhaitham.s2.p8),
+                    new StatTable('alhaitham_3_mirror_projection_attack_dmg', charTalentTables.Alhaitham.s2.p8),
                     new StatTable('alhaitham_mirror_3_mastery', charTalentTables.Alhaitham.s2.p9),
                 ],
             },
             {
                 unit: '',
-                table: new StatTable('alhaitham_mirror_interval', charTalentTables.Alhaitham.s2.p10),
+                table: new StatTable('alhaitham_chisel_light_mirror_removal_interval', charTalentTables.Alhaitham.s2.p10),
             },
             {
                 unit: 'sec',
@@ -151,19 +151,19 @@ const Talents = new DbObjectTalents({
             },
             {
                 unit: '',
-                table: new StatTable('alhaitham_instance_0', charTalentTables.Alhaitham.s3.p3),
+                table: new StatTable('alhaitham_basic_attack_instances', charTalentTables.Alhaitham.s3.p3),
             },
             {
                 unit: '',
-                table: new StatTable('alhaitham_instance_1', charTalentTables.Alhaitham.s3.p4),
+                table: new StatTable('alhaitham_1_mirror_attack_instances', charTalentTables.Alhaitham.s3.p4),
             },
             {
                 unit: '',
-                table: new StatTable('alhaitham_instance_2', charTalentTables.Alhaitham.s3.p5),
+                table: new StatTable('alhaitham_2_mirror_attack_instances', charTalentTables.Alhaitham.s3.p5),
             },
             {
                 unit: '',
-                table: new StatTable('alhaitham_instance_3', charTalentTables.Alhaitham.s3.p6),
+                table: new StatTable('alhaitham_3_mirror_attack_instances', charTalentTables.Alhaitham.s3.p6),
             },
             {
                 unit: 'sec',
@@ -319,12 +319,12 @@ export const Alhaitham = new DbObjectChar({
             ],
         }),
         new FeatureDamageSkill({
-            name: 'alhaitham_rush_dmg',
+            name: 'alhaitham_rush_attack_dmg',
             element: 'dendro',
             multipliers: [
                 new FeatureMultiplier({
                     leveling: 'char_skill_elemental',
-                    values: Talents.get('skill.alhaitham_rush_dmg'),
+                    values: Talents.get('skill.alhaitham_rush_attack_dmg'),
                 }),
                 new FeatureMultiplier({
                     scaling: 'mastery*',
@@ -334,13 +334,13 @@ export const Alhaitham = new DbObjectChar({
             ],
         }),
         new FeatureDamageSkill({
-            name: 'alhaitham_mirror_1_dmg',
+            name: 'alhaitham_1_mirror_projection_attack_dmg',
             element: 'dendro',
             damageBonuses: ['dmg_skill_alhaitham'],
             multipliers: [
                 new FeatureMultiplier({
                     leveling: 'char_skill_elemental',
-                    values: Talents.get('skill.alhaitham_mirror_1_dmg'),
+                    values: Talents.get('skill.alhaitham_1_mirror_projection_attack_dmg'),
                 }),
                 new FeatureMultiplier({
                     scaling: 'mastery*',
@@ -361,7 +361,7 @@ export const Alhaitham = new DbObjectChar({
                     multipliers: [
                         new FeatureMultiplier({
                             leveling: 'char_skill_elemental',
-                            values: Talents.get('skill.alhaitham_mirror_2_dmg'),
+                            values: Talents.get('skill.alhaitham_2_mirror_projection_attack_dmg'),
                         }),
                         new FeatureMultiplier({
                             scaling: 'mastery*',
@@ -373,7 +373,7 @@ export const Alhaitham = new DbObjectChar({
             ],
         }),
         new FeatureDamageSkill({
-            name: 'alhaitham_mirror_2_dmg',
+            name: 'alhaitham_2_mirror_projection_attack_dmg',
             element: 'dendro',
             isChild: true,
             hits: 2,
@@ -381,7 +381,7 @@ export const Alhaitham = new DbObjectChar({
             multipliers: [
                 new FeatureMultiplier({
                     leveling: 'char_skill_elemental',
-                    values: Talents.get('skill.alhaitham_mirror_2_dmg'),
+                    values: Talents.get('skill.alhaitham_2_mirror_projection_attack_dmg'),
                 }),
                 new FeatureMultiplier({
                     scaling: 'mastery*',
@@ -402,7 +402,7 @@ export const Alhaitham = new DbObjectChar({
                     multipliers: [
                         new FeatureMultiplier({
                             leveling: 'char_skill_elemental',
-                            values: Talents.get('skill.alhaitham_mirror_3_dmg'),
+                            values: Talents.get('skill.alhaitham_3_mirror_projection_attack_dmg'),
                         }),
                         new FeatureMultiplier({
                             scaling: 'mastery*',
@@ -414,7 +414,7 @@ export const Alhaitham = new DbObjectChar({
             ],
         }),
         new FeatureDamageSkill({
-            name: 'alhaitham_mirror_3_dmg',
+            name: 'alhaitham_3_mirror_projection_attack_dmg',
             element: 'dendro',
             isChild: true,
             hits: 3,
@@ -422,7 +422,7 @@ export const Alhaitham = new DbObjectChar({
             multipliers: [
                 new FeatureMultiplier({
                     leveling: 'char_skill_elemental',
-                    values: Talents.get('skill.alhaitham_mirror_3_dmg'),
+                    values: Talents.get('skill.alhaitham_3_mirror_projection_attack_dmg'),
                 }),
                 new FeatureMultiplier({
                     scaling: 'mastery*',

@@ -80,7 +80,7 @@ const Talents = new DbObjectTalents({
             },
             {
                 unit: 'unit',
-                table: new StatTable('sethos_recharge', charTalentTables.Sethos.s2.p2),
+                table: new StatTable('sethos_energy_regeneration', charTalentTables.Sethos.s2.p2),
             },
             {
                 unit: 'sec',

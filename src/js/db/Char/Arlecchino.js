@@ -34,7 +34,7 @@ const Talents = new DbObjectTalents({
         description: 'talent_descr.arlecchino_invitation_to_a_beheading',
         items: [
             {
-                table: new StatTable('arlecchino_masque', charTalentTables.Arlecchino.s1.p12),
+                table: new StatTable('arlecchino_masque_of_the_red_death_increase', charTalentTables.Arlecchino.s1.p12),
             },
             {
                 table: new StatTable('normal_hit_1', charTalentTables.Arlecchino.s1.p1),
@@ -65,7 +65,7 @@ const Talents = new DbObjectTalents({
             },
             {
                 unit: 'unit',
-                table: new StatTable('arlecchino_stamina_cost', charTalentTables.Arlecchino.s1.p15),
+                table: new StatTable('arlecchino_high_speed_movement_stamina_cost', charTalentTables.Arlecchino.s1.p15),
             },
             {
                 table: new StatTable('plunge', charTalentTables.Arlecchino.s1.p9),
@@ -90,7 +90,7 @@ const Talents = new DbObjectTalents({
                 table: new StatTable('arlecchino_cleave_dmg', charTalentTables.Arlecchino.s2.p2),
             },
             {
-                table: new StatTable('arlecchino_blooddebt_dmg', charTalentTables.Arlecchino.s2.p3),
+                table: new StatTable('arlecchino_blood_debt_directive_dmg', charTalentTables.Arlecchino.s2.p3),
             },
             {
                 unit: 'sec',
@@ -114,8 +114,8 @@ const Talents = new DbObjectTalents({
                     'atk',
                 ],
                 table: [
-                    new StatTable('arlecchino_heal', charTalentTables.Arlecchino.s3.p3),
-                    new StatTable('arlecchino_heal_atk', charTalentTables.Arlecchino.s3.p4),
+                    new StatTable('arlecchino_amount_of_hp_restored', charTalentTables.Arlecchino.s3.p3),
+                    new StatTable('arlecchino_amount_of_hp_restored_atk', charTalentTables.Arlecchino.s3.p4),
                 ],
             },
             {
@@ -296,12 +296,12 @@ export const Arlecchino = new DbObjectChar({
             ],
         }),
         new FeatureDamageSkill({
-            name: 'arlecchino_blooddebt_dmg',
+            name: 'arlecchino_blood_debt_directive_dmg',
             element: 'pyro',
             multipliers: [
                 new FeatureMultiplier({
                     leveling: 'char_skill_elemental',
-                    values: Talents.get('skill.arlecchino_blooddebt_dmg'),
+                    values: Talents.get('skill.arlecchino_blood_debt_directive_dmg'),
                 }),
             ],
         }),
@@ -339,17 +339,17 @@ export const Arlecchino = new DbObjectChar({
         }),
         new FeatureHeal({
             category: 'burst',
-            name: 'arlecchino_heal',
+            name: 'arlecchino_amount_of_hp_restored',
             subtractBoL: true,
             multipliers: [
                 new FeatureMultiplier({
                     leveling: 'char_skill_burst',
-                    values: Talents.get('burst.arlecchino_heal_atk'),
+                    values: Talents.get('burst.arlecchino_amount_of_hp_restored_atk'),
                 }),
                 new FeatureMultiplierBondOfLife({
                     scaling: 'hp*',
                     leveling: 'char_skill_burst',
-                    values: Talents.get('burst.arlecchino_heal'),
+                    values: Talents.get('burst.arlecchino_amount_of_hp_restored'),
                 }),
             ],
         }),
@@ -357,7 +357,7 @@ export const Arlecchino = new DbObjectChar({
     multipliers: [
         new FeatureMultiplierBondOfLife({
             leveling: 'char_skill_attack',
-            values: Talents.get('attack.arlecchino_masque'),
+            values: Talents.get('attack.arlecchino_masque_of_the_red_death_increase'),
             bonusLeveling: 'arlecchino_all_reprisals',
             bonusValues: new ValueTable([0, TalentValues.C1BonusScale]),
             condition: new ConditionBooleanValue({

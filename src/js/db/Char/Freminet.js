@@ -72,7 +72,7 @@ const Talents = new DbObjectTalents({
                 table: new StatTable('freminet_frost_dmg', charTalentTables.Freminet.s2.p3),
             },
             {
-                table: new StatTable('freminet_pressure_0_dmg', charTalentTables.Freminet.s2.p4),
+                table: new StatTable('freminet_level_0_shattering_pressure_dmg', charTalentTables.Freminet.s2.p4),
             },
             {
                 type: 'multivalue',
@@ -82,7 +82,7 @@ const Talents = new DbObjectTalents({
                     'phys',
                 ],
                 table: [
-                    new StatTable('freminet_pressure_1_dmg', charTalentTables.Freminet.s2.p5),
+                    new StatTable('freminet_level_1_shattering_pressure_dmg', charTalentTables.Freminet.s2.p5),
                     new StatTable('freminet_pressure_1_phys_dmg', charTalentTables.Freminet.s2.p6),
                 ],
             },
@@ -94,7 +94,7 @@ const Talents = new DbObjectTalents({
                     'phys',
                 ],
                 table: [
-                    new StatTable('freminet_pressure_2_dmg', charTalentTables.Freminet.s2.p7),
+                    new StatTable('freminet_level_2_shattering_pressure_dmg', charTalentTables.Freminet.s2.p7),
                     new StatTable('freminet_pressure_2_phys_dmg', charTalentTables.Freminet.s2.p8),
                 ],
             },
@@ -106,12 +106,12 @@ const Talents = new DbObjectTalents({
                     'phys',
                 ],
                 table: [
-                    new StatTable('freminet_pressure_3_dmg', charTalentTables.Freminet.s2.p9),
+                    new StatTable('freminet_level_3_shattering_pressure_dmg', charTalentTables.Freminet.s2.p9),
                     new StatTable('freminet_pressure_3_phys_dmg', charTalentTables.Freminet.s2.p10),
                 ],
             },
             {
-                table: new StatTable('freminet_pressure_4_dmg', charTalentTables.Freminet.s2.p11),
+                table: new StatTable('freminet_level_4_shattering_pressure_dmg', charTalentTables.Freminet.s2.p11),
             },
             {
                 table: new StatTable('spiritbreath_thorn_dmg', charTalentTables.Freminet.s2.p2),
@@ -275,14 +275,14 @@ export const Freminet = new DbObjectChar({
             ],
         }),
         new FeatureDamageSkill({
-            name: 'freminet_pressure_0_dmg',
+            name: 'freminet_level_0_shattering_pressure_dmg',
             element: 'cryo',
             damageBonuses: ['dmg_skill_freminet'],
             critRateBonuses: ['crit_rate_freminet'],
             multipliers: [
                 new FeatureMultiplier({
                     leveling: 'char_skill_elemental',
-                    values: Talents.get('skill.freminet_pressure_0_dmg'),
+                    values: Talents.get('skill.freminet_level_0_shattering_pressure_dmg'),
                 }),
             ],
         }),
@@ -294,7 +294,7 @@ export const Freminet = new DbObjectChar({
             multipliers: [
                 new FeatureMultiplier({
                     leveling: 'char_skill_elemental',
-                    values: Talents.get('skill.freminet_pressure_1_dmg'),
+                    values: Talents.get('skill.freminet_level_1_shattering_pressure_dmg'),
                 }),
             ],
         }),
@@ -317,7 +317,7 @@ export const Freminet = new DbObjectChar({
             multipliers: [
                 new FeatureMultiplier({
                     leveling: 'char_skill_elemental',
-                    values: Talents.get('skill.freminet_pressure_2_dmg'),
+                    values: Talents.get('skill.freminet_level_2_shattering_pressure_dmg'),
                 }),
             ],
         }),
@@ -340,7 +340,7 @@ export const Freminet = new DbObjectChar({
             multipliers: [
                 new FeatureMultiplier({
                     leveling: 'char_skill_elemental',
-                    values: Talents.get('skill.freminet_pressure_3_dmg'),
+                    values: Talents.get('skill.freminet_level_3_shattering_pressure_dmg'),
                 }),
             ],
         }),
@@ -356,13 +356,13 @@ export const Freminet = new DbObjectChar({
             ],
         }),
         new FeatureDamageSkill({
-            name: 'freminet_pressure_4_dmg',
+            name: 'freminet_level_4_shattering_pressure_dmg',
             damageBonuses: ['dmg_skill_freminet'],
             critRateBonuses: ['crit_rate_freminet'],
             multipliers: [
                 new FeatureMultiplier({
                     leveling: 'char_skill_elemental',
-                    values: Talents.get('skill.freminet_pressure_4_dmg'),
+                    values: Talents.get('skill.freminet_level_4_shattering_pressure_dmg'),
                 }),
             ],
         }),

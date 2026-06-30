@@ -68,12 +68,12 @@ const Talents = new DbObjectTalents({
                 table: new StatTable('skill_dmg', charTalentTables.Emilie.s2.p1),
             },
             {
-                table: new StatTable('emilie_lumidouce_case_1_dmg', charTalentTables.Emilie.s2.p2),
+                table: new StatTable('emilie_level_1_lumidouce_case_attack_dmg', charTalentTables.Emilie.s2.p2),
             },
             {
                 type: 'multihit',
                 hits: 2,
-                table: new StatTable('emilie_lumidouce_case_2_dmg', charTalentTables.Emilie.s2.p3),
+                table: new StatTable('emilie_level_2_lumidouce_case_attack_dmg', charTalentTables.Emilie.s2.p3),
             },
             {
                 unit: 'sec',
@@ -98,11 +98,11 @@ const Talents = new DbObjectTalents({
         description: 'talent_descr.emilie_aromatic_explication',
         items: [
             {
-                table: new StatTable('emilie_lumidouce_case_3_dmg', charTalentTables.Emilie.s3.p1),
+                table: new StatTable('emilie_level_3_lumidouce_case_attack_dmg', charTalentTables.Emilie.s3.p1),
             },
             {
                 unit: 'sec',
-                table: new StatTable('emilie_lumidouce_case_3_duration', charTalentTables.Emilie.s3.p2),
+                table: new StatTable('emilie_level_3_lumidouce_case_duration', charTalentTables.Emilie.s3.p2),
             },
             {
                 unit: 'sec',
@@ -232,24 +232,24 @@ export const Emilie = new DbObjectChar({
             ],
         }),
         new FeatureDamageSkill({
-            name: 'emilie_lumidouce_case_1_dmg',
+            name: 'emilie_level_1_lumidouce_case_attack_dmg',
             element: 'dendro',
             damageBonuses: ['dmg_skill_emilie'],
             multipliers: [
                 new FeatureMultiplier({
                     leveling: 'char_skill_elemental',
-                    values: Talents.get('skill.emilie_lumidouce_case_1_dmg'),
+                    values: Talents.get('skill.emilie_level_1_lumidouce_case_attack_dmg'),
                 }),
             ],
         }),
         new FeatureDamageSkill({
-            name: 'emilie_lumidouce_case_2_dmg',
+            name: 'emilie_level_2_lumidouce_case_attack_dmg',
             element: 'dendro',
             damageBonuses: ['dmg_skill_emilie'],
             multipliers: [
                 new FeatureMultiplier({
                     leveling: 'char_skill_elemental',
-                    values: Talents.get('skill.emilie_lumidouce_case_2_dmg'),
+                    values: Talents.get('skill.emilie_level_2_lumidouce_case_attack_dmg'),
                 }),
             ],
         }),
@@ -279,12 +279,12 @@ export const Emilie = new DbObjectChar({
             condition: new ConditionAscensionChar({ascension: 1}),
         }),
         new FeatureDamageBurst({
-            name: 'emilie_lumidouce_case_3_dmg',
+            name: 'emilie_level_3_lumidouce_case_attack_dmg',
             element: 'dendro',
             multipliers: [
                 new FeatureMultiplier({
                     leveling: 'char_skill_burst',
-                    values: Talents.get('burst.emilie_lumidouce_case_3_dmg'),
+                    values: Talents.get('burst.emilie_level_3_lumidouce_case_attack_dmg'),
                 }),
             ],
         }),

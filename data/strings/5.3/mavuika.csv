@@ -1,23 +1,6 @@
 category;name;rus;eng
-feature_skill;mavuika_flamestrider_normal_hit_1;Урон обычной атаки пламецикла 1;Flamestrider Normal Attack 1-Hit DMG
-feature_skill;mavuika_flamestrider_normal_hit_2;Урон обычной атаки пламецикла 2;Flamestrider Normal Attack 2-Hit DMG
-feature_skill;mavuika_flamestrider_normal_hit_3;Урон обычной атаки пламецикла 3;Flamestrider Normal Attack 3-Hit DMG
-feature_skill;mavuika_flamestrider_normal_hit_4;Урон обычной атаки пламецикла 4;Flamestrider Normal Attack 4-Hit DMG
-feature_skill;mavuika_flamestrider_normal_hit_5;Урон обычной атаки пламецикла 5;Flamestrider Normal Attack 5-Hit DMG
-feature_skill;mavuika_flamestrider_charged_spin;Циклический урон заряженной атаки пламецикла;Flamestrider Charged Attack Cyclic DMG
-feature_skill;mavuika_flamestrider_charged_final;Финальный урон заряженной атаки пламецикла;Flamestrider Charged Attack Final DMG
-feature_skill;mavuika_flamestrider_plunge_dmg;Урон атаки пламецикла в падении;Flamestrider Plunge DMG
-feature_skill;mavuika_flamestrider_sprint_dmg;Урон спринта пламецикла;Flamestrider Sprint DMG
-feature_skill;mavuika_rings_of_searing_radiance_dmg;Урон Колец испепеляющего блеска;Rings of Searing Radiance DMG
-feature_skill;mavuika_rings_of_searing_radiance_interval;Интервал атак Колец испепеляющего блеска;Rings of Searing Radiance Attack Interval
 feature_skill;mavuika_c6_flamestrider_dmg;Урон тарана пламецикла;Flamestrider crash DMG
 feature_skill;mavuika_c6_ring_dmg;Урон Кольца испепеляющего сияния: Раскалённый образ;Scorching Ring of Searing Radiance DMG
-
-feature_burst;mavuika_stance_duration;Длительность Горнила смерти и жизни;Crucible of Death and Life Duration
-feature_burst;mavuika_burst_bonus;Повышение урона Удара падающего солнца;Sunfell Slice DMG Bonus
-feature_burst;mavuika_normal_bonus;Повышение урона обычной атаки пламецикла;Flamestrider Normal Attack DMG Bonus
-feature_burst;mavuika_charged_bonus;Повышение урона заряженной атаки пламецикла;Flamestrider Charged Attack DMG Bonus
-feature_burst;mavuika_points_limit;Максимум очков Боевого духа;Fighting Spirit Limit
 
 talent_name;mavuika_points;Боевой дух;Fighting Spirit
 

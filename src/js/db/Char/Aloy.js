@@ -65,13 +65,13 @@ const Talents = new DbObjectTalents({
     skill: {
         gameId: charTalentTables.Aloy.s2_id,
         title: 'talent_name.aloy_frozen_wilds',
-        description: 'talent_descr.aloy_frozen_wilds',
+        description: 'talent_descr.aloy_frozen_wilds_1',
         items: [
             {
                 table: new StatTable('aloy_freeze_bomb_dmg', charTalentTables.Aloy.s2.p1),
             },
             {
-                table: new StatTable('aloy_chillwater_bomblets', charTalentTables.Aloy.s2.p2),
+                table: new StatTable('aloy_chillwater_bomblet_dmg', charTalentTables.Aloy.s2.p2),
             },
             {
                 table: new StatTable('aloy_atk_decrease', charTalentTables.Aloy.s2.p3),
@@ -83,13 +83,13 @@ const Talents = new DbObjectTalents({
             {
                 type: 'separated',
                 table: [
-                    new StatTable('aloy_coil_bonus', charTalentTables.Aloy.s2.p5),
+                    new StatTable('aloy_coil_normal_attack_dmg_bonus', charTalentTables.Aloy.s2.p5),
                     new StatTable('aloy_coil_bonus_2', charTalentTables.Aloy.s2.p6),
                     new StatTable('aloy_coil_bonus_3', charTalentTables.Aloy.s2.p7),
                 ],
             },
             {
-                table: new StatTable('aloy_rushing_ice_bonus', charTalentTables.Aloy.s2.p8),
+                table: new StatTable('aloy_rushing_ice_normal_attack_dmg_bonus', charTalentTables.Aloy.s2.p8),
             },
             {
                 unit: 'sec',
@@ -270,12 +270,12 @@ export const Aloy = new DbObjectChar({
             ],
         }),
         new FeatureDamageSkill({
-            name: 'aloy_chillwater_bomblets',
+            name: 'aloy_chillwater_bomblet_dmg',
             element: 'cryo',
             multipliers: [
                 new FeatureMultiplier({
                     leveling: 'char_skill_elemental',
-                    values: Talents.get('skill.aloy_chillwater_bomblets'),
+                    values: Talents.get('skill.aloy_chillwater_bomblet_dmg'),
                 }),
             ],
         }),
@@ -304,20 +304,20 @@ export const Aloy = new DbObjectChar({
     ],
     conditions: [
         new ConditionStacks({
-            name: 'aloy_coils',
+            name: 'aloy_frozen_wilds',
             serializeId: 1,
-            title: 'talent_name.aloy_coils',
-            description: 'talent_descr.aloy_coils',
+            title: 'talent_name.aloy_frozen_wilds',
+            description: 'talent_descr.aloy_frozen_wilds_2',
             maxStacks: 4,
         }),
         new ConditionLevels({
             levelSetting: 'char_skill_elemental',
             stats: [
-                Talents.getAlias('skill.aloy_coil_bonus', 'dmg_normal'),
+                Talents.getAlias('skill.aloy_coil_normal_attack_dmg_bonus', 'dmg_normal'),
             ],
             subConditions: [
                 new ConditionBooleanValue({
-                    setting: 'aloy_coils',
+                    setting: 'aloy_frozen_wilds',
                     cond: 'eq',
                     value: 1,
                 }),
@@ -330,7 +330,7 @@ export const Aloy = new DbObjectChar({
             ],
             subConditions: [
                 new ConditionBooleanValue({
-                    setting: 'aloy_coils',
+                    setting: 'aloy_frozen_wilds',
                     cond: 'eq',
                     value: 2,
                 }),
@@ -343,7 +343,7 @@ export const Aloy = new DbObjectChar({
             ],
             subConditions: [
                 new ConditionBooleanValue({
-                    setting: 'aloy_coils',
+                    setting: 'aloy_frozen_wilds',
                     cond: 'eq',
                     value: 3,
                 }),
@@ -352,14 +352,14 @@ export const Aloy = new DbObjectChar({
         new ConditionLevels({
             levelSetting: 'char_skill_elemental',
             stats: [
-                Talents.getAlias('skill.aloy_rushing_ice_bonus', 'dmg_normal'),
+                Talents.getAlias('skill.aloy_rushing_ice_normal_attack_dmg_bonus', 'dmg_normal'),
             ],
             settings: {
                 attack_infusion: 'cryo',
             },
             subConditions: [
                 new ConditionBooleanValue({
-                    setting: 'aloy_coils',
+                    setting: 'aloy_frozen_wilds',
                     cond: 'eq',
                     value: 4,
                 }),

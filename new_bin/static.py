@@ -293,5 +293,13 @@ def getCurveName(type):
         print(type)
     return name
 
-def getCharById(id):
-    return char_ids.get(id)
+from unicodedata import normalize
+
+def getCharById(id, name):
+    result = char_ids.get(id)
+    if not result and name:
+        result = normalize('NFKD', name).encode('ASCII', 'ignore').decode("utf-8")
+
+        result = re.sub(r' +', '', result, flags=re.IGNORECASE)
+        return result
+    return result

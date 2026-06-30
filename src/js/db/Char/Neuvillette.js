@@ -48,7 +48,7 @@ const Talents = new DbObjectTalents({
             },
             {
                 unit: 'hp',
-                table: new StatTable('neuvillette_equitable_judgment_dmg', charTalentTables.Neuvillette.s1.p5),
+                table: new StatTable('neuvillette_equitable_judgment', charTalentTables.Neuvillette.s1.p5),
             },
             {
                 unit: 'hp_per_droplet',
@@ -96,7 +96,7 @@ const Talents = new DbObjectTalents({
             },
             {
                 unit: 'sec',
-                table: new StatTable('sourcewater_droplet_duration', charTalentTables.Neuvillette.s2.p3),
+                table: new StatTable('neuvillette_sourcewater_droplet_duration', charTalentTables.Neuvillette.s2.p3),
             },
             {
                 unit: 'sec',
@@ -187,14 +187,14 @@ export const Neuvillette = new DbObjectChar({
             ],
         }),
         new FeatureDamageCharged({
-            name: 'neuvillette_equitable_judgment_dmg',
+            name: 'neuvillette_equitable_judgment',
             element: 'hydro',
             critDamageBonuses: ['crit_dmg_neuvillette'],
             multipliers: [
                 new FeatureMultiplierNeuvilleteCharged({
                     scaling: 'hp*',
                     leveling: 'char_skill_attack',
-                    values: Talents.get('attack.neuvillette_equitable_judgment_dmg'),
+                    values: Talents.get('attack.neuvillette_equitable_judgment'),
                     scalingSource: 'ascension1',
                 }),
             ],

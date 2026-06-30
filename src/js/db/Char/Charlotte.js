@@ -71,32 +71,32 @@ const Talents = new DbObjectTalents({
         description: 'talent_descr.charlotte_freezing_point_composition',
         items: [
             {
-                table: new StatTable('charlotte_photo_press_dmg', charTalentTables.Charlotte.s2.p1),
+                table: new StatTable('charlotte_photo_dmg_press', charTalentTables.Charlotte.s2.p1),
             },
             {
-                table: new StatTable('charlotte_photo_hold_dmg', charTalentTables.Charlotte.s2.p2),
+                table: new StatTable('charlotte_photo_dmg_hold', charTalentTables.Charlotte.s2.p2),
             },
             {
                 table: new StatTable('charlotte_snappy_silhouette_mark_dmg', charTalentTables.Charlotte.s2.p3),
             },
             {
                 unit: 'sec',
-                table: new StatTable('charlotte_snappy_silhouette_interval', charTalentTables.Charlotte.s2.p4),
+                table: new StatTable('charlotte_snappy_silhouette_mark_trigger_interval', charTalentTables.Charlotte.s2.p4),
             },
             {
                 unit: 'sec',
-                table: new StatTable('charlotte_snappy_silhouette_duration', charTalentTables.Charlotte.s2.p5),
+                table: new StatTable('charlotte_snappy_silhouette_mark_duration', charTalentTables.Charlotte.s2.p5),
             },
             {
                 table: new StatTable('charlotte_focused_impression_mark_dmg', charTalentTables.Charlotte.s2.p6),
             },
             {
                 unit: 'sec',
-                table: new StatTable('charlotte_focused_impression_interval', charTalentTables.Charlotte.s2.p7),
+                table: new StatTable('charlotte_focused_impression_mark_trigger_interval', charTalentTables.Charlotte.s2.p7),
             },
             {
                 unit: 'sec',
-                table: new StatTable('charlotte_focused_impression_duration', charTalentTables.Charlotte.s2.p8),
+                table: new StatTable('charlotte_focused_impression_mark_duration', charTalentTables.Charlotte.s2.p8),
             },
             {
                 unit: 'sec',
@@ -126,7 +126,7 @@ const Talents = new DbObjectTalents({
             {
                 type: 'shield',
                 table: [
-                    new StatTable('charlotte_kamera_heal', charTalentTables.Charlotte.s3.p4),
+                    new StatTable('charlotte_kamera_continuous_regeneration', charTalentTables.Charlotte.s3.p4),
                     new StatTable('', charTalentTables.Charlotte.s3.p5),
                 ],
             },
@@ -135,7 +135,7 @@ const Talents = new DbObjectTalents({
             },
             {
                 unit: 'sec',
-                table: new StatTable('charlotte_duration', charTalentTables.Charlotte.s3.p7),
+                table: new StatTable('charlotte_newsflash_field_duration', charTalentTables.Charlotte.s3.p7),
             },
             {
                 unit: 'sec',
@@ -251,22 +251,22 @@ export const Charlotte = new DbObjectChar({
             ],
         }),
         new FeatureDamageSkill({
-            name: 'charlotte_photo_press_dmg',
+            name: 'charlotte_photo_dmg_press',
             element: 'cryo',
             multipliers: [
                 new FeatureMultiplier({
                     leveling: 'char_skill_elemental',
-                    values: Talents.get('skill.charlotte_photo_press_dmg'),
+                    values: Talents.get('skill.charlotte_photo_dmg_press'),
                 }),
             ],
         }),
         new FeatureDamageSkill({
-            name: 'charlotte_photo_hold_dmg',
+            name: 'charlotte_photo_dmg_hold',
             element: 'cryo',
             multipliers: [
                 new FeatureMultiplier({
                     leveling: 'char_skill_elemental',
-                    values: Talents.get('skill.charlotte_photo_hold_dmg'),
+                    values: Talents.get('skill.charlotte_photo_dmg_hold'),
                 }),
             ],
         }),
@@ -318,11 +318,11 @@ export const Charlotte = new DbObjectChar({
         }),
         new FeatureHeal({
             category: 'burst',
-            name: 'charlotte_kamera_heal',
+            name: 'charlotte_kamera_continuous_regeneration',
             multipliers: [
                 new FeatureMultiplierList({
                     leveling: 'char_skill_burst',
-                    values: Talents.getList('burst.charlotte_kamera_heal'),
+                    values: Talents.getList('burst.charlotte_kamera_continuous_regeneration'),
                 }),
             ],
         }),

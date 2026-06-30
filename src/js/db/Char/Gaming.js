@@ -86,7 +86,7 @@ const Talents = new DbObjectTalents({
         description: 'talent_descr.gaming_suannis_gilded_dance',
         items: [
             {
-                table: new StatTable('gaming_suanni_man_dmg', charTalentTables.Gaming.s3.p1),
+                table: new StatTable('gaming_suanni_man_chai_smash_dmg', charTalentTables.Gaming.s3.p1),
             },
             {
                 unit: 'hp',
@@ -94,7 +94,7 @@ const Talents = new DbObjectTalents({
             },
             {
                 unit: 'sec',
-                table: new StatTable('gaming_duration', charTalentTables.Gaming.s3.p3),
+                table: new StatTable('gaming_wushou_stance_duration', charTalentTables.Gaming.s3.p3),
             },
             {
                 unit: 'sec',
@@ -238,12 +238,12 @@ export const Gaming = new DbObjectChar({
             condition: new ConditionAscensionChar({ascension: 1}),
         }),
         new FeatureDamageBurst({
-            name: 'gaming_suanni_man_dmg',
+            name: 'gaming_suanni_man_chai_smash_dmg',
             element: 'pyro',
             multipliers: [
                 new FeatureMultiplier({
                     leveling: 'char_skill_burst',
-                    values: Talents.get('burst.gaming_suanni_man_dmg'),
+                    values: Talents.get('burst.gaming_suanni_man_chai_smash_dmg'),
                 }),
             ],
         }),

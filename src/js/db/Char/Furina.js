@@ -114,7 +114,7 @@ const Talents = new DbObjectTalents({
                 type: 'shield',
                 unit: 'hp',
                 table: [
-                    new StatTable('furina_singers_of_the_streams_healing', charTalentTables.Furina.s2.p9),
+                    new StatTable('furina_singer_of_many_waters_healing', charTalentTables.Furina.s2.p9),
                     new StatTable('', charTalentTables.Furina.s2.p10),
                 ],
             },
@@ -138,15 +138,15 @@ const Talents = new DbObjectTalents({
             },
             {
                 unit: '',
-                table: new StatTable('furina_max_fanfare', charTalentTables.Furina.s3.p4),
+                table: new StatTable('furina_maximum_fanfare', charTalentTables.Furina.s3.p4),
             },
             {
                 digits: 2,
-                table: new StatTable('furina_fanfare_dmg_ratio', charTalentTables.Furina.s3.p5),
+                table: new StatTable('furina_fanfare_to_dmg_increase_conversion_ratio', charTalentTables.Furina.s3.p5),
             },
             {
                 digits: 2,
-                table: new StatTable('furina_fanfare_heal_ratio', charTalentTables.Furina.s3.p6),
+                table: new StatTable('furina_fanfare_to_incoming_healing_bonus_conversion_ratio', charTalentTables.Furina.s3.p6),
             },
             {
                 unit: 'sec',
@@ -178,7 +178,7 @@ const fanfareDmgPost = new PostEffectStats({
     maxBase: TalentValues.BurstFanfareLimit + TalentValues.C1FanfareLimit,
     percent: Talents.getMulti({
         name: 'dmg_all',
-        from: 'burst.furina_fanfare_dmg_ratio',
+        from: 'burst.furina_fanfare_to_dmg_increase_conversion_ratio',
     }),
 });
 
@@ -188,7 +188,7 @@ const fanfareHealingPost = new PostEffectStats({
     maxBase: TalentValues.BurstFanfareLimit + TalentValues.C1FanfareLimit,
     percent: Talents.getMulti({
         name: 'healing_recv',
-        from: 'burst.furina_fanfare_heal_ratio',
+        from: 'burst.furina_fanfare_to_incoming_healing_bonus_conversion_ratio',
     }),
 });
 
@@ -368,12 +368,12 @@ export const Furina = new DbObjectChar({
         }),
         new FeatureHeal({
             category: 'skill',
-            name: 'furina_singers_of_the_streams_healing',
+            name: 'furina_singer_of_many_waters_healing',
             multipliers: [
                 new FeatureMultiplierList({
                     scaling: 'hp*',
                     leveling: 'char_skill_elemental',
-                    values: Talents.getList('skill.furina_singers_of_the_streams_healing'),
+                    values: Talents.getList('skill.furina_singer_of_many_waters_healing'),
                 }),
             ],
         }),
@@ -623,8 +623,8 @@ export const Furina = new DbObjectChar({
                 levelSetting: 'furina_char_skill_burst',
                 maxLevelSetting: 10,
                 percent: [
-                    Talents.getAlias('burst.furina_fanfare_dmg_ratio', 'dmg_all'),
-                    Talents.getAlias('burst.furina_fanfare_heal_ratio', 'healing_recv'),
+                    Talents.getAlias('burst.furina_fanfare_to_dmg_increase_conversion_ratio', 'dmg_all'),
+                    Talents.getAlias('burst.furina_fanfare_to_incoming_healing_bonus_conversion_ratio', 'healing_recv'),
                 ],
                 condition: new ConditionBoolean({'name': 'party_furina_fanfare_stacks'}),
             }),

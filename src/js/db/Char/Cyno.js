@@ -72,7 +72,7 @@ const Talents = new DbObjectTalents({
             },
             {
                 unit: 'sec',
-                table: new StatTable('cyno_duration_bonus', charTalentTables.Cyno.s2.p3),
+                table: new StatTable('cyno_pactsworn_pathclearer_duration_bonus', charTalentTables.Cyno.s2.p3),
             },
             {
                 unit: 'sec',
@@ -80,7 +80,7 @@ const Talents = new DbObjectTalents({
             },
             {
                 unit: 'sec',
-                table: new StatTable('cyno_cd', charTalentTables.Cyno.s2.p5),
+                table: new StatTable('cyno_mortuary_rite_cd', charTalentTables.Cyno.s2.p5),
             },
         ],
     },
@@ -124,11 +124,11 @@ const Talents = new DbObjectTalents({
             },
             {
                 unit: '',
-                table: new StatTable('cyno_mastery_bonus', charTalentTables.Cyno.s3.p12),
+                table: new StatTable('cyno_elemental_mastery_bonus', charTalentTables.Cyno.s3.p12),
             },
             {
                 unit: 'sec',
-                table: new StatTable('cyno_duration', charTalentTables.Cyno.s3.p13),
+                table: new StatTable('cyno_basic_duration', charTalentTables.Cyno.s3.p13),
             },
             {
                 unit: 'sec',

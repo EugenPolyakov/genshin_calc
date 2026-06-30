@@ -81,10 +81,10 @@ const Talents = new DbObjectTalents({
         description: 'talent_descr.kamisato_ayaka_soumetsu',
         items: [
             {
-                table: new StatTable('ayaka_slashing_dmg', charTalentTables.Ayaka.s4.p1),
+                table: new StatTable('kamisato_ayaka_cutting_dmg', charTalentTables.Ayaka.s4.p1),
             },
             {
-                table: new StatTable('ayaka_bladestorm_dmg', charTalentTables.Ayaka.s4.p2),
+                table: new StatTable('kamisato_ayaka_bloom_dmg', charTalentTables.Ayaka.s4.p2),
             },
             {
                 unit: 'sec',
@@ -103,7 +103,7 @@ const Talents = new DbObjectTalents({
     other: {
         maxLevel: 1,
         title: 'talent_name.kamisato_ayaka_senho',
-        description: 'talent_descr.kamisato_ayaka_senho',
+        description: 'talent_descr.kamisato_ayaka_senho_1',
         items: [
             {
                 unit: 'unit',
@@ -120,15 +120,6 @@ const Talents = new DbObjectTalents({
         ],
     },
 });
-
-const TalentValues = {
-    A1NormalBonus: 30,
-    A1ChargedBonus: 30,
-    A4CryoDamage: 18,
-    C2BurstDamage: 20,
-    C4DefReduce: 30,
-    C6ChargedDamage: 298,
-};
 
 export const Ayaka = new DbObjectChar({
     name: 'kamisato_ayaka',
@@ -272,22 +263,22 @@ export const Ayaka = new DbObjectChar({
             ],
         }),
         new FeatureDamageBurst({
-            name: 'ayaka_slashing_dmg',
+            name: 'kamisato_ayaka_cutting_dmg',
             element: 'cryo',
             multipliers: [
                 new FeatureMultiplier({
                     leveling: 'char_skill_burst',
-                    values: Talents.get('burst.ayaka_slashing_dmg'),
+                    values: Talents.get('burst.kamisato_ayaka_cutting_dmg'),
                 }),
             ],
         }),
         new FeatureDamageBurst({
-            name: 'ayaka_bladestorm_dmg',
+            name: 'kamisato_ayaka_bloom_dmg',
             element: 'cryo',
             multipliers: [
                 new FeatureMultiplier({
                     leveling: 'char_skill_burst',
-                    values: Talents.get('burst.ayaka_bladestorm_dmg'),
+                    values: Talents.get('burst.kamisato_ayaka_bloom_dmg'),
                 }),
             ],
         }),
@@ -298,8 +289,8 @@ export const Ayaka = new DbObjectChar({
                 new FeatureMultiplier({
                     leveling: 'char_skill_burst',
                     scalingSource: 'constellation2',
-                    scalingMultiplier: TalentValues.C2BurstDamage / 100,
-                    values: Talents.get('burst.ayaka_slashing_dmg'),
+                    scalingMultiplier: charTalentTables.Ayaka.cons[1][1],
+                    values: Talents.get('burst.kamisato_ayaka_cutting_dmg'),
                 }),
             ],
             condition: new ConditionConstellation({constellation: 2}),
@@ -311,8 +302,8 @@ export const Ayaka = new DbObjectChar({
                 new FeatureMultiplier({
                     leveling: 'char_skill_burst',
                     scalingSource: 'constellation2',
-                    scalingMultiplier: TalentValues.C2BurstDamage / 100,
-                    values: Talents.get('burst.ayaka_bladestorm_dmg'),
+                    scalingMultiplier: charTalentTables.Ayaka.cons[1][1],
+                    values: Talents.get('burst.kamisato_ayaka_bloom_dmg'),
                 }),
             ],
             condition: new ConditionConstellation({constellation: 2}),
@@ -328,7 +319,7 @@ export const Ayaka = new DbObjectChar({
             name: 'ayaka_senho',
             serializeId: 1,
             title: 'talent_name.kamisato_ayaka_senho',
-            description: 'talent_descr.kamisato_ayaka_senho_talent',
+            description: 'talent_descr.kamisato_ayaka_senho_2',
             settings: {
                 attack_infusion_cryo: 1,
             },
@@ -339,8 +330,8 @@ export const Ayaka = new DbObjectChar({
             title: 'talent_name.kamisato_ayaka_amatsumi_kunitsumi_sanctification',
             description: 'talent_descr.kamisato_ayaka_amatsumi_kunitsumi_sanctification',
             stats: {
-                dmg_normal: TalentValues.A1NormalBonus,
-                dmg_charged: TalentValues.A1ChargedBonus,
+                dmg_normal: charTalentTables.Ayaka.passsive[0][0] * 100,
+                dmg_charged: charTalentTables.Ayaka.passsive[0][0] * 100,
             },
             info: {ascension: 1},
             subConditions: [
@@ -353,7 +344,7 @@ export const Ayaka = new DbObjectChar({
             title: 'talent_name.kamisato_ayaka_kanten_senmyou_blessing',
             description: 'talent_descr.kamisato_ayaka_kanten_senmyou_blessing',
             stats: {
-                dmg_cryo: TalentValues.A4CryoDamage,
+                dmg_cryo: charTalentTables.Ayaka.passsive[1][1] * 100,
             },
             info: {ascension: 4},
             subConditions: [
@@ -379,7 +370,7 @@ export const Ayaka = new DbObjectChar({
                     title: 'talent_name.kamisato_ayaka_blizzard_blade_seki_no_to',
                     description: 'talent_descr.kamisato_ayaka_blizzard_blade_seki_no_to',
                     stats: {
-                        text_percent_dmg: TalentValues.C2BurstDamage,
+                        text_percent_dmg: charTalentTables.Ayaka.cons[1][1] * 100,
                     },
                 }),
             ],
@@ -401,7 +392,7 @@ export const Ayaka = new DbObjectChar({
                     title: 'talent_name.kamisato_ayaka_ebb_and_flow',
                     description: 'talent_descr.kamisato_ayaka_ebb_and_flow',
                     stats: {
-                        enemy_def_reduce: TalentValues.C4DefReduce,
+                        enemy_def_reduce: charTalentTables.Ayaka.cons[3][0] * 100,
                     },
                 }),
             ],
@@ -423,7 +414,7 @@ export const Ayaka = new DbObjectChar({
                     title: 'talent_name.kamisato_ayaka_dance_of_suigetsu',
                     description: 'talent_descr.kamisato_ayaka_dance_of_suigetsu',
                     stats: {
-                        dmg_charged: TalentValues.C6ChargedDamage,
+                        dmg_charged: charTalentTables.Ayaka.cons[5][1] * 100,
                     },
                 }),
             ],
@@ -438,7 +429,7 @@ export const Ayaka = new DbObjectChar({
                 title: 'talent_name.kamisato_ayaka_ebb_and_flow',
                 description: 'talent_descr.kamisato_ayaka_ebb_and_flow',
                 stats: {
-                    enemy_def_reduce: TalentValues.C4DefReduce,
+                    enemy_def_reduce: charTalentTables.Ayaka.cons[3][0] * 100,
                 },
                 info: {
                     constellation: 4,

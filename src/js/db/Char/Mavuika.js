@@ -75,35 +75,35 @@ const Talents = new DbObjectTalents({
                 table: new StatTable('skill_dmg', charTalentTables.Mavuika.s2.p1),
             },
             {
-                table: new StatTable('mavuika_rings_of_searing_radiance_dmg', charTalentTables.Mavuika.s2.p2),
+                table: new StatTable('mavuika_ring_of_searing_radiance_dmg', charTalentTables.Mavuika.s2.p2),
             },
             {
                 unit: 'sec',
-                table: new StatTable('mavuika_rings_of_searing_radiance_interval', charTalentTables.Mavuika.s2.p3),
+                table: new StatTable('mavuika_ring_of_searing_radiance_attack_interval', charTalentTables.Mavuika.s2.p3),
             },
             {
-                table: new StatTable('mavuika_flamestrider_normal_hit_1', charTalentTables.Mavuika.s2.p4),
+                table: new StatTable('mavuika_flamestrider_normal_attack_1_hit_dmg', charTalentTables.Mavuika.s2.p4),
             },
             {
-                table: new StatTable('mavuika_flamestrider_normal_hit_2', charTalentTables.Mavuika.s2.p5),
+                table: new StatTable('mavuika_flamestrider_normal_attack_2_hit_dmg', charTalentTables.Mavuika.s2.p5),
             },
             {
-                table: new StatTable('mavuika_flamestrider_normal_hit_3', charTalentTables.Mavuika.s2.p6),
+                table: new StatTable('mavuika_flamestrider_normal_attack_3_hit_dmg', charTalentTables.Mavuika.s2.p6),
             },
             {
-                table: new StatTable('mavuika_flamestrider_normal_hit_4', charTalentTables.Mavuika.s2.p7),
+                table: new StatTable('mavuika_flamestrider_normal_attack_4_hit_dmg', charTalentTables.Mavuika.s2.p7),
             },
             {
-                table: new StatTable('mavuika_flamestrider_normal_hit_5', charTalentTables.Mavuika.s2.p8),
+                table: new StatTable('mavuika_flamestrider_normal_attack_5_hit_dmg', charTalentTables.Mavuika.s2.p8),
             },
             {
                 table: new StatTable('mavuika_flamestrider_sprint_dmg', charTalentTables.Mavuika.s2.p9),
             },
             {
-                table: new StatTable('mavuika_flamestrider_charged_spin', charTalentTables.Mavuika.s2.p10),
+                table: new StatTable('mavuika_flamestrider_charged_attack_cyclic_dmg', charTalentTables.Mavuika.s2.p10),
             },
             {
-                table: new StatTable('mavuika_flamestrider_charged_final', charTalentTables.Mavuika.s2.p11),
+                table: new StatTable('mavuika_flamestrider_charged_attack_final_dmg', charTalentTables.Mavuika.s2.p11),
             },
             {
                 table: new StatTable('mavuika_flamestrider_plunge_dmg', charTalentTables.Mavuika.s2.p12),
@@ -128,19 +128,19 @@ const Talents = new DbObjectTalents({
             },
             {
                 unit: 'sec',
-                table: new StatTable('mavuika_stance_duration', charTalentTables.Mavuika.s3.p2),
+                table: new StatTable('mavuika_crucible_of_death_and_life_duration', charTalentTables.Mavuika.s3.p2),
             },
             {
                 digits: 2,
-                table: new StatTable('mavuika_burst_bonus', charTalentTables.Mavuika.s3.p3),
+                table: new StatTable('mavuika_sunfell_slice_dmg_bonus', charTalentTables.Mavuika.s3.p3),
             },
             {
                 digits: 2,
-                table: new StatTable('mavuika_normal_bonus', charTalentTables.Mavuika.s3.p4),
+                table: new StatTable('mavuika_flamestrider_normal_attack_dmg_bonus', charTalentTables.Mavuika.s3.p4),
             },
             {
                 digits: 2,
-                table: new StatTable('mavuika_charged_bonus', charTalentTables.Mavuika.s3.p5),
+                table: new StatTable('mavuika_flamestrider_charged_attack_dmg_bonus', charTalentTables.Mavuika.s3.p5),
             },
             {
                 unit: 'sec',
@@ -148,7 +148,7 @@ const Talents = new DbObjectTalents({
             },
             {
                 unit: '',
-                table: new StatTable('mavuika_points_limit', charTalentTables.Mavuika.s3.p9),
+                table: new StatTable('mavuika_fighting_spirit_limit', charTalentTables.Mavuika.s3.p9),
             },
         ],
     },
@@ -329,7 +329,7 @@ export const Mavuika = new DbObjectChar({
             multipliers: [
                 new FeatureMultiplier({
                     leveling: 'char_skill_elemental',
-                    values: Talents.get('skill.mavuika_rings_of_searing_radiance_dmg'),
+                    values: Talents.get('skill.mavuika_ring_of_searing_radiance_dmg'),
                 }),
             ],
         }),
@@ -340,19 +340,7 @@ export const Mavuika = new DbObjectChar({
             multipliers: [
                 new FeatureMultiplier({
                     leveling: 'char_skill_elemental',
-                    values: Talents.get('skill.mavuika_flamestrider_normal_hit_1'),
-                }),
-            ],
-            condition: new ConditionBoolean({name: 'mavuika_stance'}),
-        }),
-        new FeatureDamageNormal({
-            element: 'pyro',
-            category: 'skill',
-            tags: ['flamestrider'],
-            multipliers: [
-                new FeatureMultiplier({
-                    leveling: 'char_skill_elemental',
-                    values: Talents.get('skill.mavuika_flamestrider_normal_hit_2'),
+                    values: Talents.get('skill.mavuika_flamestrider_normal_attack_1_hit_dmg'),
                 }),
             ],
             condition: new ConditionBoolean({name: 'mavuika_stance'}),
@@ -364,7 +352,7 @@ export const Mavuika = new DbObjectChar({
             multipliers: [
                 new FeatureMultiplier({
                     leveling: 'char_skill_elemental',
-                    values: Talents.get('skill.mavuika_flamestrider_normal_hit_3'),
+                    values: Talents.get('skill.mavuika_flamestrider_normal_attack_2_hit_dmg'),
                 }),
             ],
             condition: new ConditionBoolean({name: 'mavuika_stance'}),
@@ -376,7 +364,7 @@ export const Mavuika = new DbObjectChar({
             multipliers: [
                 new FeatureMultiplier({
                     leveling: 'char_skill_elemental',
-                    values: Talents.get('skill.mavuika_flamestrider_normal_hit_4'),
+                    values: Talents.get('skill.mavuika_flamestrider_normal_attack_3_hit_dmg'),
                 }),
             ],
             condition: new ConditionBoolean({name: 'mavuika_stance'}),
@@ -388,7 +376,19 @@ export const Mavuika = new DbObjectChar({
             multipliers: [
                 new FeatureMultiplier({
                     leveling: 'char_skill_elemental',
-                    values: Talents.get('skill.mavuika_flamestrider_normal_hit_5'),
+                    values: Talents.get('skill.mavuika_flamestrider_normal_attack_4_hit_dmg'),
+                }),
+            ],
+            condition: new ConditionBoolean({name: 'mavuika_stance'}),
+        }),
+        new FeatureDamageNormal({
+            element: 'pyro',
+            category: 'skill',
+            tags: ['flamestrider'],
+            multipliers: [
+                new FeatureMultiplier({
+                    leveling: 'char_skill_elemental',
+                    values: Talents.get('skill.mavuika_flamestrider_normal_attack_5_hit_dmg'),
                 }),
             ],
             condition: new ConditionBoolean({name: 'mavuika_stance'}),
@@ -400,7 +400,7 @@ export const Mavuika = new DbObjectChar({
             multipliers: [
                 new FeatureMultiplier({
                     leveling: 'char_skill_elemental',
-                    values: Talents.get('skill.mavuika_flamestrider_charged_spin'),
+                    values: Talents.get('skill.mavuika_flamestrider_charged_attack_cyclic_dmg'),
                 }),
             ],
             condition: new ConditionBoolean({name: 'mavuika_stance'}),
@@ -412,7 +412,7 @@ export const Mavuika = new DbObjectChar({
             multipliers: [
                 new FeatureMultiplier({
                     leveling: 'char_skill_elemental',
-                    values: Talents.get('skill.mavuika_flamestrider_charged_final'),
+                    values: Talents.get('skill.mavuika_flamestrider_charged_attack_final_dmg'),
                 }),
             ],
             condition: new ConditionBoolean({name: 'mavuika_stance'}),
@@ -477,7 +477,7 @@ export const Mavuika = new DbObjectChar({
             leveling: 'char_skill_burst',
             stacksLeveling: 'mavuika_points',
             source: 'talent_burst',
-            values: Talents.get('burst.mavuika_normal_bonus'),
+            values: Talents.get('burst.mavuika_flamestrider_normal_attack_dmg_bonus'),
             condition: new ConditionAnd([
                 new ConditionBoolean({name: 'mavuika_crucible_of_death_and_life'}),
                 new ConditionBooleanValue({setting: 'mavuika_points', cond: 'ge', value: 100}),
@@ -506,7 +506,7 @@ export const Mavuika = new DbObjectChar({
             leveling: 'char_skill_burst',
             stacksLeveling: 'mavuika_points',
             source: 'talent_burst',
-            values: Talents.get('burst.mavuika_charged_bonus'),
+            values: Talents.get('burst.mavuika_flamestrider_charged_attack_dmg_bonus'),
             condition: new ConditionAnd([
                 new ConditionBoolean({name: 'mavuika_crucible_of_death_and_life'}),
                 new ConditionBooleanValue({setting: 'mavuika_points', cond: 'ge', value: 100}),
@@ -534,7 +534,7 @@ export const Mavuika = new DbObjectChar({
             leveling: 'char_skill_burst',
             stacksLeveling: 'mavuika_points',
             source: 'talent_burst',
-            values: Talents.get('burst.mavuika_burst_bonus'),
+            values: Talents.get('burst.mavuika_sunfell_slice_dmg_bonus'),
             condition: new ConditionAnd([
                 new ConditionBoolean({name: 'mavuika_crucible_of_death_and_life'}),
                 new ConditionBooleanValue({setting: 'mavuika_points', cond: 'ge', value: 100}),

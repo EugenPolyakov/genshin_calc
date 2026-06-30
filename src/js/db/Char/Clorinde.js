@@ -79,12 +79,12 @@ const Talents = new DbObjectTalents({
             {
                 type: 'separated',
                 table: [
-                    new StatTable('clorinde_wild_hunt_dmg', charTalentTables.Clorinde.s2.p1),
+                    new StatTable('clorinde_swift_hunt_dmg', charTalentTables.Clorinde.s2.p1),
                     new StatTable('clorinde_wild_hunt_2_dmg', charTalentTables.Clorinde.s2.p2),
                 ],
             },
             {
-                table: new StatTable('clorinde_wild_hunt_bol', charTalentTables.Clorinde.s2.p3),
+                table: new StatTable('clorinde_swift_hunt_bond_of_life_gain', charTalentTables.Clorinde.s2.p3),
             },
             {
                 type: 'separated',
@@ -98,13 +98,13 @@ const Talents = new DbObjectTalents({
             {
                 type: 'separated',
                 table: [
-                    new StatTable('clorinde_impale_the_night_heal', [0]),
+                    new StatTable('clorinde_impale_the_night_healing', [0]),
                     new StatTable('clorinde_impale_the_night_2_heal', charTalentTables.Clorinde.s2.p6),
                     new StatTable('clorinde_impale_the_night_3_heal', charTalentTables.Clorinde.s2.p8),
                 ],
             },
             {
-                table: new StatTable('clorinde_conversion', charTalentTables.Clorinde.s2.p9),
+                table: new StatTable('clorinde_bond_of_life_conversion', charTalentTables.Clorinde.s2.p9),
             },
             {
                 table: new StatTable('surging_blade_dmg', charTalentTables.Clorinde.s2.p10),
@@ -115,7 +115,7 @@ const Talents = new DbObjectTalents({
             },
             {
                 unit: 'sec',
-                table: new StatTable('clorinde_duration', charTalentTables.Clorinde.s2.p12),
+                table: new StatTable('clorinde_night_vigil_duration', charTalentTables.Clorinde.s2.p12),
             },
             {
                 unit: 'sec',
@@ -134,7 +134,7 @@ const Talents = new DbObjectTalents({
                 table: new StatTable('burst_dmg', charTalentTables.Clorinde.s3.p1),
             },
             {
-                table: new StatTable('clorinde_burst_bol', charTalentTables.Clorinde.s3.p2),
+                table: new StatTable('clorinde_bond_of_life_gain', charTalentTables.Clorinde.s3.p2),
             },
             {
                 unit: 'sec',
@@ -321,7 +321,7 @@ export const Clorinde = new DbObjectChar({
             multipliers: [
                 new FeatureMultiplier({
                     leveling: 'char_skill_elemental',
-                    values: Talents.get('skill.clorinde_wild_hunt_dmg'),
+                    values: Talents.get('skill.clorinde_swift_hunt_dmg'),
                 }),
             ],
             condition: new ConditionBoolean({name: 'clorinde_night_watch'}),

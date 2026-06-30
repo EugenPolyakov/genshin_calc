@@ -70,19 +70,19 @@ const Talents = new DbObjectTalents({
             },
             {
                 unit: 'def',
-                table: new StatTable('xilonen_roller_1_dmg', charTalentTables.Xilonen.s1.p10),
+                table: new StatTable('xilonen_blade_roller_1_hit_dmg', charTalentTables.Xilonen.s1.p10),
             },
             {
                 unit: 'def',
-                table: new StatTable('xilonen_roller_2_dmg', charTalentTables.Xilonen.s1.p11),
+                table: new StatTable('xilonen_blade_roller_2_hit_dmg', charTalentTables.Xilonen.s1.p11),
             },
             {
                 unit: 'def',
-                table: new StatTable('xilonen_roller_3_dmg', charTalentTables.Xilonen.s1.p12),
+                table: new StatTable('xilonen_blade_roller_3_hit_dmg', charTalentTables.Xilonen.s1.p12),
             },
             {
                 unit: 'def',
-                table: new StatTable('xilonen_roller_4_dmg', charTalentTables.Xilonen.s1.p13),
+                table: new StatTable('xilonen_blade_roller_4_hit_dmg', charTalentTables.Xilonen.s1.p13),
             },
         ],
     },
@@ -96,15 +96,15 @@ const Talents = new DbObjectTalents({
                 table: new StatTable('xilonen_rush_dmg', charTalentTables.Xilonen.s2.p1),
             },
             {
-                table: new StatTable('xilonen_res_decrease', charTalentTables.Xilonen.s2.p2),
+                table: new StatTable('xilonen_elemental_res_decrease', charTalentTables.Xilonen.s2.p2),
             },
             {
                 unit: 'sec',
-                table: new StatTable('xilonen_sample_duration', charTalentTables.Xilonen.s2.p3),
+                table: new StatTable('xilonen_source_sample_activation_duration', charTalentTables.Xilonen.s2.p3),
             },
             {
                 unit: 'sec',
-                table: new StatTable('xilonen_blessing_duration', charTalentTables.Xilonen.s2.p4),
+                table: new StatTable('xilonen_nightsoul_point_time_limit', charTalentTables.Xilonen.s2.p4),
             },
             {
                 unit: 'unit',
@@ -135,11 +135,11 @@ const Talents = new DbObjectTalents({
             },
             {
                 unit: 'sec',
-                table: new StatTable('xilonen_duration', charTalentTables.Xilonen.s3.p4),
+                table: new StatTable('xilonen_ebullient_rhythm_duration', charTalentTables.Xilonen.s3.p4),
             },
             {
                 unit: 'def',
-                table: new StatTable('xilonen_beat_dmg', charTalentTables.Xilonen.s3.p5),
+                table: new StatTable('xilonen_follow_up_beat_dmg', charTalentTables.Xilonen.s3.p5),
             },
             {
                 unit: 'sec',
@@ -253,7 +253,7 @@ export const Xilonen = new DbObjectChar({
                 new FeatureMultiplier({
                     scaling: 'def*',
                     leveling: 'char_skill_attack',
-                    values: Talents.get('attack.xilonen_roller_1_dmg'),
+                    values: Talents.get('attack.xilonen_blade_roller_1_hit_dmg'),
                 }),
             ],
             condition: new ConditionBoolean({name: 'common.nightsoul_blessing_state'}),
@@ -263,7 +263,7 @@ export const Xilonen = new DbObjectChar({
                 new FeatureMultiplier({
                     scaling: 'def*',
                     leveling: 'char_skill_attack',
-                    values: Talents.get('attack.xilonen_roller_2_dmg'),
+                    values: Talents.get('attack.xilonen_blade_roller_2_hit_dmg'),
                 }),
             ],
             condition: new ConditionBoolean({name: 'common.nightsoul_blessing_state'}),
@@ -273,7 +273,7 @@ export const Xilonen = new DbObjectChar({
                 new FeatureMultiplier({
                     scaling: 'def*',
                     leveling: 'char_skill_attack',
-                    values: Talents.get('attack.xilonen_roller_3_dmg'),
+                    values: Talents.get('attack.xilonen_blade_roller_3_hit_dmg'),
                 }),
             ],
             condition: new ConditionBoolean({name: 'common.nightsoul_blessing_state'}),
@@ -283,7 +283,7 @@ export const Xilonen = new DbObjectChar({
                 new FeatureMultiplier({
                     scaling: 'def*',
                     leveling: 'char_skill_attack',
-                    values: Talents.get('attack.xilonen_roller_4_dmg'),
+                    values: Talents.get('attack.xilonen_blade_roller_4_hit_dmg'),
                 }),
             ],
             condition: new ConditionBoolean({name: 'common.nightsoul_blessing_state'}),
@@ -352,7 +352,7 @@ export const Xilonen = new DbObjectChar({
                 new FeatureMultiplier({
                     scaling: 'def*',
                     leveling: 'char_skill_burst',
-                    values: Talents.get('burst.xilonen_beat_dmg'),
+                    values: Talents.get('burst.xilonen_follow_up_beat_dmg'),
                 }),
             ],
         }),
@@ -480,7 +480,7 @@ export const Xilonen = new DbObjectChar({
             stats: [
                 Talents.getMulti({
                     name: 'enemy_res_geo',
-                    from: 'skill.xilonen_res_decrease',
+                    from: 'skill.xilonen_elemental_res_decrease',
                     multi: -1,
                 }),
             ],
@@ -494,7 +494,7 @@ export const Xilonen = new DbObjectChar({
             stats: [
                 Talents.getMulti({
                     name: 'enemy_res_pyro',
-                    from: 'skill.xilonen_res_decrease',
+                    from: 'skill.xilonen_elemental_res_decrease',
                     multi: -1,
                 }),
             ],
@@ -508,7 +508,7 @@ export const Xilonen = new DbObjectChar({
             stats: [
                 Talents.getMulti({
                     name: 'enemy_res_hydro',
-                    from: 'skill.xilonen_res_decrease',
+                    from: 'skill.xilonen_elemental_res_decrease',
                     multi: -1,
                 }),
             ],
@@ -522,7 +522,7 @@ export const Xilonen = new DbObjectChar({
             stats: [
                 Talents.getMulti({
                     name: 'enemy_res_cryo',
-                    from: 'skill.xilonen_res_decrease',
+                    from: 'skill.xilonen_elemental_res_decrease',
                     multi: -1,
                 }),
             ],
@@ -536,7 +536,7 @@ export const Xilonen = new DbObjectChar({
             stats: [
                 Talents.getMulti({
                     name: 'enemy_res_electro',
-                    from: 'skill.xilonen_res_decrease',
+                    from: 'skill.xilonen_elemental_res_decrease',
                     multi: -1,
                 }),
             ],
@@ -700,7 +700,7 @@ export const Xilonen = new DbObjectChar({
                 stats: [
                     Talents.getMulti({
                         name: 'enemy_res_geo',
-                        from: 'skill.xilonen_res_decrease',
+                        from: 'skill.xilonen_elemental_res_decrease',
                         multi: -1,
                     }),
                 ],
@@ -714,7 +714,7 @@ export const Xilonen = new DbObjectChar({
                 stats: [
                     Talents.getMulti({
                         name: 'enemy_res_pyro',
-                        from: 'skill.xilonen_res_decrease',
+                        from: 'skill.xilonen_elemental_res_decrease',
                         multi: -1,
                     }),
                 ],
@@ -728,7 +728,7 @@ export const Xilonen = new DbObjectChar({
                 stats: [
                     Talents.getMulti({
                         name: 'enemy_res_hydro',
-                        from: 'skill.xilonen_res_decrease',
+                        from: 'skill.xilonen_elemental_res_decrease',
                         multi: -1,
                     }),
                 ],
@@ -742,7 +742,7 @@ export const Xilonen = new DbObjectChar({
                 stats: [
                     Talents.getMulti({
                         name: 'enemy_res_cryo',
-                        from: 'skill.xilonen_res_decrease',
+                        from: 'skill.xilonen_elemental_res_decrease',
                         multi: -1,
                     }),
                 ],
@@ -756,7 +756,7 @@ export const Xilonen = new DbObjectChar({
                 stats: [
                     Talents.getMulti({
                         name: 'enemy_res_electro',
-                        from: 'skill.xilonen_res_decrease',
+                        from: 'skill.xilonen_elemental_res_decrease',
                         multi: -1,
                     }),
                 ],

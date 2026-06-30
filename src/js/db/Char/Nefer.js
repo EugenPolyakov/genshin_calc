@@ -35,6 +35,7 @@ import { ConditionBooleanLevels } from "../../classes/Condition/Boolean/Levels";
 import { ConditionNumberTalent } from "../../classes/Condition/Number/Talent";
 import { ConditionNumber } from "../../classes/Condition/Number";
 import { FeatureDamageMultihit } from "../../classes/Feature2/Damage/Multihit";
+import { ConditionStacks } from "../../classes/Condition/Stacks";
 
 
 const Talents = new DbObjectTalents({
@@ -61,8 +62,8 @@ const Talents = new DbObjectTalents({
                 table: new StatTable('charged_hit', charTalentTables.Nefer.s1.p5),
             },
             {
-                unit: 'unit_per_sec',
-                table: new StatTable('nefer_striking_serpent_1', charTalentTables.Nefer.s1.p6),
+                unit: 'per_sec',
+                table: new StatTable('nefer_charged_attack_charging_stamina_drain', charTalentTables.Nefer.s1.p6),
             },
             {
                 unit: 'unit',
@@ -70,7 +71,7 @@ const Talents = new DbObjectTalents({
             },
             {
                 unit: 'unit',
-                table: new StatTable('nefer_striking_serpent_2', charTalentTables.Nefer.s1.p11),
+                table: new StatTable('nefer_shadow_dance_charged_attack_stamina_cost', charTalentTables.Nefer.s1.p11),
             },
             {
                 table: new StatTable('plunge', charTalentTables.Nefer.s1.p8),
@@ -108,8 +109,8 @@ const Talents = new DbObjectTalents({
                     'mastery',
                 ],
                 table: [
-                    new StatTable('nefer_dance_of_a_thousand_nights_1', charTalentTables.Nefer.s2.p5),
-                    new StatTable('nefer_dance_of_a_thousand_nights_1_mastery', charTalentTables.Nefer.s2.p6),
+                    new StatTable('nefer_phantasm_performance_1_hit_dmg_nefer', charTalentTables.Nefer.s2.p5),
+                    new StatTable('nefer_phantasm_performance_1_hit_dmg_nefer_mastery', charTalentTables.Nefer.s2.p6),
                 ],
             },
             {
@@ -120,29 +121,29 @@ const Talents = new DbObjectTalents({
                     'mastery',
                 ],
                 table: [
-                    new StatTable('nefer_dance_of_a_thousand_nights_2', charTalentTables.Nefer.s2.p7),
-                    new StatTable('nefer_dance_of_a_thousand_nights_2_mastery', charTalentTables.Nefer.s2.p8),
+                    new StatTable('nefer_phantasm_performance_2_hit_dmg_nefer', charTalentTables.Nefer.s2.p7),
+                    new StatTable('nefer_phantasm_performance_2_hit_dmg_nefer_mastery', charTalentTables.Nefer.s2.p8),
                 ],
             },
             {
                 unit: 'mastery',
-                table: new StatTable('nefer_dance_of_a_thousand_nights_3', charTalentTables.Nefer.s2.p9),
+                table: new StatTable('nefer_phantasm_performance_1_hit_dmg_shades', charTalentTables.Nefer.s2.p9),
             },
             {
                 unit: 'mastery',
-                table: new StatTable('nefer_dance_of_a_thousand_nights_4', charTalentTables.Nefer.s2.p10),
+                table: new StatTable('nefer_phantasm_performance_2_hit_dmg_shades', charTalentTables.Nefer.s2.p10),
             },
             {
                 unit: 'mastery',
-                table: new StatTable('nefer_dance_of_a_thousand_nights_5', charTalentTables.Nefer.s2.p11),
+                table: new StatTable('nefer_phantasm_performance_3_hit_dmg_shades', charTalentTables.Nefer.s2.p11),
             },
             {
                 unit: '',
-                table: new StatTable('nefer_dance_of_a_thousand_nights_6', charTalentTables.Nefer.s2.p3),
+                table: new StatTable('nefer_phantasm_performance_charges', charTalentTables.Nefer.s2.p3),
             },
             {
                 unit: 'sec',
-                table: new StatTable('nefer_dance_of_a_thousand_nights_7', charTalentTables.Nefer.s2.p4),
+                table: new StatTable('nefer_shadow_dance_duration', charTalentTables.Nefer.s2.p4),
             },
             {
                 unit: 'sec',
@@ -163,8 +164,8 @@ const Talents = new DbObjectTalents({
                     'mastery',
                 ],
                 table: [
-                    new StatTable('nefer_true_eyes_phantasm_1', charTalentTables.Nefer.s2.p1),
-                    new StatTable('nefer_true_eyes_phantasm_1_mastery', charTalentTables.Nefer.s2.p2),
+                    new StatTable('normal_hit_1', charTalentTables.Nefer.s3.p1),
+                    new StatTable('normal_hit_1_mastery', charTalentTables.Nefer.s3.p2),
                 ],
             },
             {
@@ -175,13 +176,13 @@ const Talents = new DbObjectTalents({
                     'mastery',
                 ],
                 table: [
-                    new StatTable('nefer_true_eyes_phantasm_2', charTalentTables.Nefer.s2.p3),
-                    new StatTable('nefer_true_eyes_phantasm_2_mastery', charTalentTables.Nefer.s2.p4),
+                    new StatTable('normal_hit_2', charTalentTables.Nefer.s3.p3),
+                    new StatTable('normal_hit_2_mastery', charTalentTables.Nefer.s3.p4),
                 ],
             },
             {
                 unit: 'stack_per_veil_of_falsehood',
-                table: new StatTable('nefer_true_eyes_phantasm_3', charTalentTables.Nefer.s3.p5),
+                table: new StatTable('nefer_dmg_bonus', charTalentTables.Nefer.s3.p5),
             },
             {
                 unit: 'sec',
@@ -193,7 +194,7 @@ const Talents = new DbObjectTalents({
             },
         ],
     },
-    links: [11190008, 11220001, 11220002, 11220003],
+    links: charTalentTables.Nefer.links,
 });
 
 const lunarPost = new PostEffectStatsMastery({
@@ -295,35 +296,35 @@ export const Nefer = new DbObjectChar({
             ],
         }),
         new FeatureDamageCharged({
-            title: 'skill.nefer_dance_of_a_thousand_nights_1',
-            name: 'nefer_dance_of_a_thousand_nights_1',
+            title: 'skill.nefer_phantasm_performance_1_hit_dmg_nefer',
+            name: 'nefer_phantasm_performance_1_hit_dmg_nefer',
             element: 'dendro',
             multipliers: [
                 new FeatureMultiplier({
                     leveling: 'char_skill_elemental',
-                    values: Talents.get('skill.nefer_dance_of_a_thousand_nights_1'),
+                    values: Talents.get('skill.nefer_phantasm_performance_1_hit_dmg_nefer'),
                 }),
                 new FeatureMultiplier({
                     scaling: 'mastery*',
                     leveling: 'char_skill_elemental',
-                    values: Talents.get('skill.nefer_dance_of_a_thousand_nights_1_mastery'),
+                    values: Talents.get('skill.nefer_phantasm_performance_1_hit_dmg_nefer_mastery'),
                 }),
             ],
             condition: new ConditionBoolean({ name: 'nefer_dance_of_a_thousand_nights' }),
         }),
         new FeatureDamageCharged({
-            title: 'skill.nefer_dance_of_a_thousand_nights_2',
-            name: 'nefer_dance_of_a_thousand_nights_2',
+            title: 'skill.nefer_phantasm_performance_2_hit_dmg_nefer',
+            name: 'nefer_phantasm_performance_2_hit_dmg_nefer',
             element: 'dendro',
             multipliers: [
                 new FeatureMultiplier({
                     leveling: 'char_skill_elemental',
-                    values: Talents.get('skill.nefer_dance_of_a_thousand_nights_2'),
+                    values: Talents.get('skill.nefer_phantasm_performance_2_hit_dmg_nefer'),
                 }),
                 new FeatureMultiplier({
                     scaling: 'mastery*',
                     leveling: 'char_skill_elemental',
-                    values: Talents.get('skill.nefer_dance_of_a_thousand_nights_2_mastery'),
+                    values: Talents.get('skill.nefer_phantasm_performance_2_hit_dmg_nefer_mastery'),
                 }),
             ],
             condition: new ConditionBoolean({ name: 'nefer_dance_of_a_thousand_nights' }),
@@ -374,85 +375,107 @@ export const Nefer = new DbObjectChar({
             ],
         }),
         new FeatureReactionLunarBloomLike({
-            name: 'nefer_dance_of_a_thousand_nights_3',
+            name: 'nefer_phantasm_performance_1_hit_dmg_shades',
             element: 'dendro',
             category: 'skill',
             multipliers: [
                 new FeatureMultiplier({
                     leveling: 'char_skill_elemental',
-                    values: Talents.get('skill.nefer_dance_of_a_thousand_nights_3'),
+                    values: Talents.get('skill.nefer_phantasm_performance_1_hit_dmg_shades'),
                 }),
                 new FeatureMultiplier({
                     scaling: 'mastery*',
                     leveling: 'char_skill_elemental',
-                    values: Talents.get('skill.nefer_dance_of_a_thousand_nights_3_mastery'),
+                    values: Talents.get('skill.nefer_phantasm_performance_1_hit_dmg_shades_mastery'),
                 }),
             ],
             condition: new ConditionBoolean({ name: 'nefer_dance_of_a_thousand_nights' }),
         }),
         new FeatureReactionLunarBloomLike({
-            name: 'nefer_dance_of_a_thousand_nights_4',
+            name: 'nefer_phantasm_performance_2_hit_dmg_shades',
             element: 'dendro',
             category: 'skill',
             multipliers: [
                 new FeatureMultiplier({
                     leveling: 'char_skill_elemental',
-                    values: Talents.get('skill.nefer_dance_of_a_thousand_nights_4'),
+                    values: Talents.get('skill.nefer_phantasm_performance_2_hit_dmg_shades'),
                 }),
                 new FeatureMultiplier({
                     scaling: 'mastery*',
                     leveling: 'char_skill_elemental',
-                    values: Talents.get('skill.nefer_dance_of_a_thousand_nights_4_mastery'),
+                    values: Talents.get('skill.nefer_phantasm_performance_2_hit_dmg_shades_mastery'),
                 }),
             ],
             condition: new ConditionBoolean({ name: 'nefer_dance_of_a_thousand_nights' }),
         }),
         new FeatureReactionLunarBloomLike({
-            name: 'nefer_dance_of_a_thousand_nights_5',
+            name: 'nefer_phantasm_performance_3_hit_dmg_shades',
             element: 'dendro',
             category: 'skill',
             multipliers: [
                 new FeatureMultiplier({
                     leveling: 'char_skill_elemental',
-                    values: Talents.get('skill.nefer_dance_of_a_thousand_nights_5'),
+                    values: Talents.get('skill.nefer_phantasm_performance_3_hit_dmg_shades'),
                 }),
                 new FeatureMultiplier({
                     scaling: 'mastery*',
                     leveling: 'char_skill_elemental',
-                    values: Talents.get('skill.nefer_dance_of_a_thousand_nights_5_mastery'),
+                    values: Talents.get('skill.nefer_phantasm_performance_3_hit_dmg_shades_mastery'),
                 }),
             ],
             condition: new ConditionBoolean({ name: 'nefer_dance_of_a_thousand_nights' }),
         }),
+        new FeatureReactionLunarBloomLike({
+            name: 'nefer_phantasm_performance_3_hit_dmg_shades',
+            element: 'dendro',
+            category: 'skill',
+            multipliers: [
+                new FeatureMultiplier({
+                    leveling: 'char_skill_elemental',
+                    values: Talents.get('skill.nefer_phantasm_performance_3_hit_dmg_shades'),
+                }),
+                new FeatureMultiplier({
+                    scaling: 'mastery*',
+                    leveling: 'char_skill_elemental',
+                    values: Talents.get('skill.nefer_phantasm_performance_3_hit_dmg_shades_mastery'),
+                }),
+            ],
+            condition: new ConditionAnd([
+                new ConditionBoolean({ name: 'nefer_dance_of_a_thousand_nights' }),
+                new ConditionConstellation({ constellation: 6 }),
+            ]),
+        }),
         new FeatureDamageBurst({
-            name: 'nefer_true_eyes_phantasm_1',
+            name: 'normal_hit_1',
             element: 'dendro',
             category: 'burst',
+            tags: ['nefer_burst'],
             multipliers: [
                 new FeatureMultiplier({
                     leveling: 'char_skill_burst',
-                    values: Talents.get('burst.nefer_true_eyes_phantasm_1'),
+                    values: Talents.get('burst.normal_hit_1'),
                 }),
                 new FeatureMultiplier({
                     scaling: 'mastery*',
                     leveling: 'char_skill_burst',
-                    values: Talents.get('burst.nefer_true_eyes_phantasm_1_mastery'),
+                    values: Talents.get('burst.normal_hit_1_mastery'),
                 }),
             ],
         }),
         new FeatureDamageBurst({
-            name: 'nefer_true_eyes_phantasm_2',
+            name: 'normal_hit_2',
             element: 'dendro',
             category: 'burst',
+            tags: ['nefer_burst'],
             multipliers: [
                 new FeatureMultiplier({
                     leveling: 'char_skill_burst',
-                    values: Talents.get('burst.nefer_true_eyes_phantasm_2'),
+                    values: Talents.get('burst.normal_hit_2'),
                 }),
                 new FeatureMultiplier({
                     scaling: 'mastery*',
                     leveling: 'char_skill_burst',
-                    values: Talents.get('burst.nefer_true_eyes_phantasm_2_mastery'),
+                    values: Talents.get('burst.normal_hit_2_mastery'),
                 }),
             ],
         }),
@@ -473,13 +496,34 @@ export const Nefer = new DbObjectChar({
         }),
         new ConditionBoolean({
             serializeId: 2,
+            name: 'nefer_a_wager_of_moonlight',
             title: 'talent_name.nefer_a_wager_of_moonlight',
             description: 'talent_descr.nefer_a_wager_of_moonlight',
             info: { ascension: 1 },
+            stats: {
+                mastery: charTalentTables.Nefer.passsive[0][2],
+            },
             condition: new ConditionAnd([
                 new ConditionAscensionChar({ ascension: 1 }),
+                new ConditionMoonPhaseCheck({ moonphase: 2 }),
                 new ConditionBoolean({ name: 'nefer_dance_of_a_thousand_nights' }),
             ]),
+        }),
+        new ConditionStacks({
+            name: 'nefer_n11220003',
+            serializeId: 3,
+            title: 'talent_name.n11220003',
+            description: 'talent_descr.n11220003',
+            levelSetting: 'char_skill_burst',
+            info: { ascension: 1 },
+            maxStacks: function (settings) {
+                if (settings.char_constellation >= 2) { return 5 }
+                return 3;
+            },
+            stats: [
+                Talents.getAlias('burst.nefer_dmg_bonus', 'dmg_burst'),
+            ],
+            condition: new ConditionAscensionChar({ ascension: 1 }),
         }),
         new ConditionStatic({
             title: 'talent_name.nefer_daughter_of_the_dust_and_sand',
@@ -534,14 +578,18 @@ export const Nefer = new DbObjectChar({
                 ]),
             ]),
         }),
+        /*new FeatureMultiplier({
+            scaling: 'hp*',
+            leveling: 'char_skill_burst',
+            stacksLeveling: 'nefer_n11220003',
+            values: Talents.get('burst.nefer_dmg_bonus'),
+            target: new FeatureMultiplierTarget({
+                tags: ['shark_byte'],
+            }),
+        }),*/
     ],
     postEffects: [
         lunarPost,
-        new PostEffectStatsMastery({
-            percent: new StatTable('dmg_skill', [charTalentTables.Nefer.passsive[1][0]], 100),
-            condition: new ConditionAscensionChar({ ascension: 4 }),
-            statCap: new ValueTable([charTalentTables.Nefer.passsive[1][1] * 100]),
-        }),
     ],
     constellation: new DbObjectConstellation([
         {
@@ -555,9 +603,14 @@ export const Nefer = new DbObjectChar({
         {
             conditions: [
                 new ConditionMoonPhaseSetting(),
-                new ConditionStatic({
+                new ConditionBoolean({
+                    name: 'nefer_observation_feeds_strategy',
+                    serializeId: 4,
                     title: 'talent_name.nefer_observation_feeds_strategy',
                     description: 'talent_descr.nefer_observation_feeds_strategy',
+                    stats: {
+                        mastery: charTalentTables.Nefer.cons[1][2],
+                    }
                 }),
             ],
         },
@@ -572,9 +625,16 @@ export const Nefer = new DbObjectChar({
         },
         {
             conditions: [
-                new ConditionStatic({
+                new ConditionBoolean({
+                    name: 'nefer_delusion_ensnares_reason',
+                    serializeId: 5,
                     title: 'talent_name.nefer_delusion_ensnares_reason',
                     description: 'talent_descr.nefer_delusion_ensnares_reason',
+                    stats: {
+                        enemy_res_dendro: -charTalentTables.Nefer.cons[3][2]*100,
+                    },
+                    //считаем отдельно от танца теней т.к. эффект сохраняется после выхода
+                    //condition: new ConditionBoolean({ name: 'nefer_dance_of_a_thousand_nights' }),
                 }),
             ]
         },
@@ -590,9 +650,13 @@ export const Nefer = new DbObjectChar({
         {
             conditions: [
                 new ConditionMoonPhaseSetting(),
-                new ConditionStatic({
+                new ConditionMoonPhaseBuff({
                     title: 'talent_name.nefer_victory_flows_from_the_turning_of_tides',
                     description: 'talent_descr.nefer_victory_flows_from_the_turning_of_tides',
+                    realStats: {
+                        dmg_reaction_lunarcharged_bonus: [0, 0, charTalentTables.Nefer.cons[5][2] * 100],
+                    },
+                    condition: new ConditionConstellation({ constellation: 6 }),
                 }),
             ]
         },

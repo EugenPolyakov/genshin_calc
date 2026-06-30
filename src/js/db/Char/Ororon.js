@@ -79,7 +79,7 @@ const Talents = new DbObjectTalents({
         description: 'talent_descr.ororon_dark_voices_echo',
         items: [
             {
-                table: new StatTable('ororon_activation_dmg', charTalentTables.Ororon.s3.p1),
+                table: new StatTable('ororon_ritual_dmg', charTalentTables.Ororon.s3.p1),
             },
             {
                 table: new StatTable('ororon_soundwave_collision_dmg', charTalentTables.Ororon.s3.p2),
@@ -191,7 +191,7 @@ export const Ororon = new DbObjectChar({
             multipliers: [
                 new FeatureMultiplier({
                     leveling: 'char_skill_burst',
-                    values: Talents.get('burst.ororon_activation_dmg'),
+                    values: Talents.get('burst.ororon_ritual_dmg'),
                 }),
             ],
         }),

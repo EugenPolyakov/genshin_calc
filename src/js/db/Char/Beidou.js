@@ -83,10 +83,10 @@ const Talents = new DbObjectTalents({
                 ],
             },
             {
-                table: new StatTable('skill_dmg', charTalentTables.Beidou.s2.p3),
+                table: new StatTable('beidou_base_dmg', charTalentTables.Beidou.s2.p3),
             },
             {
-                table: new StatTable('beidou_skill_dmg_bonus', charTalentTables.Beidou.s2.p4),
+                table: new StatTable('beidou_dmg_bonus_on_hit_taken', charTalentTables.Beidou.s2.p4),
             },
             {
                 unit: 'sec',
@@ -265,7 +265,7 @@ export const Beidou = new DbObjectChar({
             multipliers: [
                 new FeatureMultiplier({
                     leveling: 'char_skill_elemental',
-                    values: Talents.get('skill.skill_dmg'),
+                    values: Talents.get('skill.beidou_base_dmg'),
                 }),
             ],
         }),
@@ -275,11 +275,11 @@ export const Beidou = new DbObjectChar({
             multipliers: [
                 new FeatureMultiplier({
                     leveling: 'char_skill_elemental',
-                    values: Talents.get('skill.skill_dmg'),
+                    values: Talents.get('skill.beidou_base_dmg'),
                 }),
                 new FeatureMultiplier({
                     leveling: 'char_skill_elemental',
-                    values: Talents.get('skill.beidou_skill_dmg_bonus'),
+                    values: Talents.get('skill.beidou_dmg_bonus_on_hit_taken'),
                 }),
             ],
         }),
@@ -289,13 +289,13 @@ export const Beidou = new DbObjectChar({
             multipliers: [
                 new FeatureMultiplier({
                     leveling: 'char_skill_elemental',
-                    values: Talents.get('skill.skill_dmg'),
+                    values: Talents.get('skill.beidou_base_dmg'),
                 }),
                 new FeatureMultiplier({
                     leveling: 'char_skill_elemental',
                     scalingMultiplier: 2,
                     scalingSource: 'stacks',
-                    values: Talents.get('skill.beidou_skill_dmg_bonus'),
+                    values: Talents.get('skill.beidou_dmg_bonus_on_hit_taken'),
                 }),
             ],
         }),

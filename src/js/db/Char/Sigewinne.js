@@ -49,7 +49,7 @@ const Talents = new DbObjectTalents({
                 table: new StatTable('charged_aimed', charTalentTables.Sigewinne.s1.p8),
             },
             {
-                table: new StatTable('sigewinnne_mini_stration_bubble_dmg', charTalentTables.Sigewinne.s1.p9),
+                table: new StatTable('sigewinne_mini_stration_bubble_dmg', charTalentTables.Sigewinne.s1.p9),
             },
             {
                 table: new StatTable('plunge', charTalentTables.Sigewinne.s1.p4),
@@ -75,13 +75,13 @@ const Talents = new DbObjectTalents({
                 type: 'shield',
                 unit: 'hp',
                 table: [
-                    new StatTable('sigewinne_bolstering_bubblebalm_heal', charTalentTables.Sigewinne.s2.p2),
+                    new StatTable('sigewinne_bolstering_bubblebalm_healing', charTalentTables.Sigewinne.s2.p2),
                     new StatTable('', charTalentTables.Sigewinne.s2.p3),
                 ],
             },
             {
                 unit: 'hp',
-                table: new StatTable('sigewinne_bounce_end_heal', charTalentTables.Sigewinne.s2.p4),
+                table: new StatTable('sigewinne_final_bounce_healing', charTalentTables.Sigewinne.s2.p4),
             },
             {
                 unit: 'hp',
@@ -194,7 +194,7 @@ export const Sigewinne = new DbObjectChar({
             multipliers: [
                 new FeatureMultiplier({
                     leveling: 'char_skill_attack',
-                    values: Talents.get('attack.sigewinnne_mini_stration_bubble_dmg'),
+                    values: Talents.get('attack.sigewinne_mini_stration_bubble_dmg'),
                 }),
             ],
         }),
@@ -240,7 +240,7 @@ export const Sigewinne = new DbObjectChar({
                 new FeatureMultiplierList({
                     scaling: 'hp*',
                     leveling: 'char_skill_elemental',
-                    values: Talents.getList('skill.sigewinne_bolstering_bubblebalm_heal'),
+                    values: Talents.getList('skill.sigewinne_bolstering_bubblebalm_healing'),
                 }),
             ],
         }),
@@ -250,7 +250,7 @@ export const Sigewinne = new DbObjectChar({
                 new FeatureMultiplier({
                     scaling: 'hp*',
                     leveling: 'char_skill_elemental',
-                    values: Talents.get('skill.sigewinne_bounce_end_heal'),
+                    values: Talents.get('skill.sigewinne_final_bounce_healing'),
                 }),
             ],
         }),

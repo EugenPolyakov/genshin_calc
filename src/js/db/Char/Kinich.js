@@ -35,7 +35,7 @@ const Talents = new DbObjectTalents({
                 table: new StatTable('normal_hit_3', charTalentTables.Kinich.s1.p3),
             },
             {
-                table: new StatTable('kinich_midair_dmg', charTalentTables.Kinich.s1.p9),
+                table: new StatTable('kinich_mid_air_normal_attack_dmg', charTalentTables.Kinich.s1.p9),
             },
             {
                 table: new StatTable('charged_hit', charTalentTables.Kinich.s1.p4),
@@ -87,11 +87,11 @@ const Talents = new DbObjectTalents({
                 table: new StatTable('burst_dmg', charTalentTables.Kinich.s3.p1),
             },
             {
-                table: new StatTable('kinich_laser_dmg', charTalentTables.Kinich.s3.p2),
+                table: new StatTable('kinich_dragon_breath_dmg', charTalentTables.Kinich.s3.p2),
             },
             {
                 unit: 'sec',
-                table: new StatTable('kinich_duration', charTalentTables.Kinich.s3.p3),
+                table: new StatTable('duration', charTalentTables.Kinich.s3.p3),
             },
             {
                 unit: 'sec',
@@ -155,11 +155,11 @@ export const Kinich = new DbObjectChar({
             ],
         }),
         new FeatureDamageNormal({
-            name: 'kinich_midair_dmg',
+            name: 'kinich_mid_air_normal_attack_dmg',
             multipliers: [
                 new FeatureMultiplier({
                     leveling: 'char_skill_attack',
-                    values: Talents.get('attack.kinich_midair_dmg'),
+                    values: Talents.get('attack.kinich_mid_air_normal_attack_dmg'),
                 }),
             ],
         }),
@@ -252,13 +252,13 @@ export const Kinich = new DbObjectChar({
             ],
         }),
         new FeatureDamageBurst({
-            name: 'kinich_laser_dmg',
+            name: 'kinich_dragon_breath_dmg',
             element: 'dendro',
             damageBonuses: ['dmg_burst_kinich'],
             multipliers: [
                 new FeatureMultiplier({
                     leveling: 'char_skill_burst',
-                    values: Talents.get('burst.kinich_laser_dmg'),
+                    values: Talents.get('burst.kinich_dragon_breath_dmg'),
                 }),
             ],
         }),
