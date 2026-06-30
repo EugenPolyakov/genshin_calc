@@ -128,7 +128,7 @@ desert_pavilion_chronicle_4 = Template(
 
 flower_of_paradise_lost_4 = Template(
     sentences=[
-        ['dmg_reaction_bloom', 'dmg_reaction_lunar_bloom'],
+        ['dmg_reaction_bloom', 'dmg_reaction_lunarbloom'],
         ['ignore'],
         ['ignore', 'ignore', 'ignore'],
     ],
@@ -209,5 +209,32 @@ long_nights_oath_4 = Template(
         ['15:dmg_plunge'],
         ['6:ignore', '5:ignore'],
         [],
+    ],
+)
+
+night_of_the_skys_unveiling_4 = Template(
+    names=[
+        'Сияющей луны: Намерение',
+        'Сияющей луны',
+    ],
+    sentences=[
+        ['4:ignore', '15:format{text_number_f=1|{value}}:text_crit_rate_1',
+            '30:format{text_number_f=2|{value}}:text_crit_rate_2'],
+        ['10:text_lunar_reaction_dmg_percent'],
+        []
+    ],
+)
+
+silken_moons_serenade_4 = Template(
+    names=[
+        'Сияющей луны: Доверие',
+        'Сияющей луны',
+    ],
+    sentences=[
+        ['8:ignore', '60:format{text_number_f=1|{value}}:text_mastery_1',
+            '120:format{text_number_f=2|{value}}:text_mastery_2'],
+        [],
+        ['10:text_lunar_reaction_dmg_percent'],
+        []
     ],
 )

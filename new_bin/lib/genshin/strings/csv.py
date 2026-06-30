@@ -7,8 +7,10 @@ OUT_PATH = '../../../../data/strings/generated/'
 class CsvDumper:
     def open_file(self, file):
         dirname = os.path.dirname(__file__)
-        dirname = os.path.join(dirname, OUT_PATH)
-        return open(dirname + file, 'w', encoding='utf-8')
+        dirname = os.path.join(dirname, OUT_PATH) + file
+        if not os.path.exists(os.path.dirname(dirname)):
+            os.makedirs(os.path.dirname(dirname))
+        return open(dirname, 'w', encoding='utf-8')
 
     def get_dumper(self, f, fieldnames):
         return csv.DictWriter(

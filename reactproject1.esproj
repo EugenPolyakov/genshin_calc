@@ -8,4 +8,10 @@
     <ClientAppDir>$(MSBuildProjectDirectory)</ClientAppDir>
     <BuildCommand>npm run build</BuildCommand>
   </PropertyGroup>
+  <ItemGroup>
+    <None Remove="dist\**" />
+    <None Remove="dist_old\**" />
+    <TypeScriptConfiguration Remove="dist\**" />
+    <TypeScriptConfiguration Remove="dist_old\**" />
+  </ItemGroup>
 </Project>

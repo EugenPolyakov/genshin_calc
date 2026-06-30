@@ -1,4 +1,7 @@
 import { Condition } from "../../classes/Condition";
+import { ConditionMoonPhaseBuff } from "../../classes/Condition/MoonPhaseBuff";
+import { ConditionMoonPhase } from "../../classes/Condition/Boolean/MoonPhase";
+import { CustomOrigin } from "../../classes/Condition/CustomOrigin";
 import { ConditionAnd } from "../../classes/Condition/And";
 import { ConditionArchaic } from "../../classes/Condition/Archaic";
 import { ConditionBoolean } from "../../classes/Condition/Boolean";
@@ -355,6 +358,68 @@ export const Artifacts = new DbObjectBuff({
                     }),
                 ]),
                 new ConditionBoolean({name: 'set_other.scroll_of_the_hero_of_cinder_city_4_2'}),
+            ]),
+        }),
+        new CustomOrigin({ origin: 'lunar', name: 'moon_phase' }),
+        //max SerializeId = DB.Buffs.getList().reduce((acc, val)=> acc.concat(val.getConditions()), []).reduce((amax, val)=>Array.isArray(val.params.serializeIds)?(amax>=Math.max(val.params.serializeIds)?amax:Math.max(val.params.serializeIds)):amax>=(val.params.serializeId|0)?amax:val.params.serializeId, 0)
+        new ConditionMoonPhase({
+            name: 'set_other.silken_moons_serenade_4',
+            serializeId: 60,
+            rotation: 'buffs',
+            title: 'set_bonus.silken_moons_serenade_4',
+            description: 'set_descr.silken_moons_serenade_4',
+            stats: {
+                text_mastery_1: 60,
+                text_mastery_2: 120,
+                text_lunar_reaction_dmg_percent: 10,
+            },
+            icon: {
+                rarity: 5,
+                name: 'sprite-artifact artifact-icon-silken-moons-serenade flower',
+            },
+        }),
+        new ConditionMoonPhaseBuff({
+            stats: { dmg_reaction_lunar: 10 },
+            realStats: { mastery: [0, 60, 120], },
+            condition: new ConditionOr([
+                new ConditionAnd([
+                    new ConditionBoolean({ name: 'set.silken_moons_serenade_4' }),
+                    new ConditionBooleanPiecesCount({
+                        setName: 'SilkenMoonsSerenade',
+                        count: 4,
+                    }),
+                ]),
+                new ConditionBoolean({ name: 'set_other.silken_moons_serenade_4' }),
+            ]),
+        }),
+        new ConditionMoonPhase({
+            name: 'set_other.night_of_the_skys_unveiling_4',
+            serializeId: 61,
+            rotation: 'buffs',
+            title: 'set_bonus.night_of_the_skys_unveiling_4',
+            description: 'set_descr.night_of_the_skys_unveiling_4',
+            stats: {
+                text_crit_rate_1: 15,
+                text_crit_rate_2: 30,
+                text_lunar_reaction_dmg_percent: 10,
+            },
+            icon: {
+                rarity: 5,
+                name: 'sprite-artifact artifact-icon-night-of-the-skys-unveiling flower',
+            },
+        }),
+        new ConditionMoonPhaseBuff({
+            stats: { dmg_reaction_lunar: 10 },
+            realStats: { crit_rate: [0, 15, 30], },
+            condition: new ConditionOr([
+                new ConditionAnd([
+                    new ConditionBoolean({ name: 'set.night_of_the_skys_unveiling_4' }),
+                    new ConditionBooleanPiecesCount({
+                        setName: 'NightOfTheSkysUnveiling',
+                        count: 4,
+                    }),
+                ]),
+                new ConditionBoolean({ name: 'set_other.night_of_the_skys_unveiling_4' }),
             ]),
         }),
     ],

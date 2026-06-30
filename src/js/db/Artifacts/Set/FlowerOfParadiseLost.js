@@ -31,10 +31,9 @@ export const FlowerOfParadiseLost = new ArtifactSet({
                 new ConditionStatic({
                     title: 'set_bonus.flower_of_paradise_lost_4',
                     description: 'set_descr.flower_of_paradise_lost_4_1',
-                    stacks: 4,
                     stats: {
                         'dmg_reaction_bloom': 40,
-                        'dmg_reaction_lunar_bloom': 10,
+                        'dmg_reaction_lunarbloom': 10,
                     },
                 }),
                 new ConditionStacks({
@@ -45,7 +44,7 @@ export const FlowerOfParadiseLost = new ArtifactSet({
                     maxStacks: 4,
                     stats: [
                         new StatTable('dmg_reaction_bloom', [10]),
-                        new StatTable('dmg_reaction_lunar_bloom', [2.5]),
+                        new StatTable('dmg_reaction_lunarbloom', [2.5]),
                     ],
                 }),
             ],

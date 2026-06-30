@@ -33,6 +33,7 @@ feature_weapon;dmg_bonus;Бонус урона;DMG Bonus
 feature_weapon;recharge_bonus;Бонус восст. энергии;Recharge Bonus
 feature_weapon;recharge_party_bonus;Бонус восст. энергии (отряд);Recharge Bonus (party)
 feature_weapon;sword_of_descension_dmg;Урон Меча нисхождения;Sword of Descension DMG
+feature_weapon;ash_graven_drinking_horn_dmg;Урон Хватки Тупака;Tupac's Grip DMG
 
 talent_name;ps_network;Эксклюзив PS;PS Exclusive
 talent_name;weapon_debut_avg;Грубое среднее;Rough average

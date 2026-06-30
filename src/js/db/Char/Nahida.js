@@ -457,8 +457,8 @@ export const Nahida = new DbObjectChar({
                         crit_dmg_bloom: C2CritDmg,
                         crit_rate_burning: C2CritRate,
                         crit_dmg_burning: C2CritDmg,
-                        crit_rate_lunar_bloom: C2LunarCritRate,
-                        crit_dmg_lunar_bloom: C2LunarCritDmg,
+                        crit_rate_lunarbloom: C2LunarCritRate,
+                        crit_dmg_lunarbloom: C2LunarCritDmg,
                     },
                 }),
                 new ConditionBoolean({
@@ -540,6 +540,8 @@ export const Nahida = new DbObjectChar({
                     crit_dmg_bloom: C2CritDmg,
                     crit_rate_burning: C2CritRate,
                     crit_dmg_burning: C2CritDmg,
+                    crit_rate_lunarbloom: C2LunarCritRate,
+                    crit_dmg_lunarbloom: C2LunarCritDmg,
                 },
             }),
             new ConditionBoolean({

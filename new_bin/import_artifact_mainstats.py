@@ -1,3 +1,7 @@
+import sys
+import os
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+
 from lib.genshin.datafiles.artifacts import ArtifactMainstatData
 
 TYPES_TO_STATS = {
@@ -38,6 +42,27 @@ stats = {
     5: {},
 }
 
+goods_id = {
+    'hp': 'hp',
+    'atk': 'atk',
+    'atk_percent': 'atk_',
+    'def_percent': 'def_',
+    'hp_percent':  'hp_',
+    'mastery':     'eleMas',
+    'recharge':    'enerRech_',
+    'healing':     'heal_',
+    'crit_rate':   'critRate_',
+    'crit_dmg':    'critDMG_',
+    'dmg_phys':    'physical_dmg_',
+    'dmg_electro': 'electro_dmg_',
+    'dmg_anemo':   'anemo_dmg_',
+    'dmg_geo':     'geo_dmg_',
+    'dmg_pyro':    'pyro_dmg_',
+    'dmg_cryo':    'cryo_dmg_',
+    'dmg_hydro':   'hydro_dmg_',
+    'dmg_dendro':  'dendro_dmg_',
+}
+
 for item in ArtifactMainstatData().data:
     rank = item.get('rank')
     if not rank:
@@ -57,8 +82,23 @@ for item in ArtifactMainstatData().data:
             value = round(value * 1000) / 10
         stats[rank][stat].append(str(value))
 
-for stat in TYPES_TO_STATS.values():
-    print(stat)
+print('import { DbObjectListSerializeStats } from "../../classes/DbObject/List/Serialize/Stats";')
+print('import { StatTableArtifact } from "../../classes/StatTable/Artifact";')
+print('')
+print('export const Mainstats = new DbObjectListSerializeStats({')
+idx=0
+for key, stat in TYPES_TO_STATS.items():
+    print('    "', stat, '": {')
+    idx+=1
+    print('        serializeId: ', idx, ',')
+    print("        goodId: '", goods_id[stat], "',")
+    print("        gameId: '", key, "',")
+    #print('        type: "', decimal",
+    #print('        slots: ['flower'],
+    print('        values: [')
     for rank in stats.keys():
         data = stats[rank][stat]
-        print('new StatTableArtifact([' + ', '.join(data) + ']),')
+        print('            new StatTableArtifact([' + ', '.join(data) + ']),')
+    print('        ],')
+    print('    },')
+print('});')

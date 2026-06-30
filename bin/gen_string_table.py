@@ -5,8 +5,6 @@ import os
 import sys
 
 dirname = os.path.dirname(__file__)
-input_files = os.path.join(dirname, '../data/strings/**/*.csv')
-out_dir = os.path.join(dirname, '../src/js/lang/')
 langs = ['eng', 'rus']
 
 packs = [
@@ -15,22 +13,22 @@ packs = [
         'input': os.path.join(dirname, '../data/strings/**/*.csv'),
         'output': os.path.join(dirname, '../src/js/lang/%.js'),
     },
-    {
-        'name': 'casino',
-        'input': os.path.join(dirname, '../data/strings_casino/*.csv'),
-        'output': os.path.join(dirname, '../src/js/lang/casino_%.js'),
-    },
-    {
-        'name': 'draft',
-        'input': os.path.join(dirname, '../data/strings_draft/*.csv'),
-        'output': os.path.join(dirname, '../draft/client/js/lang/%.js'),
-    },
+    # {
+    #     'name': 'casino',
+    #     'input': os.path.join(dirname, '../data/strings_casino/*.csv'),
+    #     'output': os.path.join(dirname, '../src/js/lang/casino_%.js'),
+    # },
+    # {
+    #     'name': 'draft',
+    #     'input': os.path.join(dirname, '../data/strings_draft/*.csv'),
+    #     'output': os.path.join(dirname, '../draft/client/js/lang/%.js'),
+    # },
 ]
 
 for pack in packs:
     if pack['name'] not in sys.argv:
         continue
-    files = glob.glob(pack['input'])
+    files = glob.glob(pack['input'], recursive=True)
     items = []
 
     for filename in files:

@@ -1,3 +1,7 @@
+import sys
+import os
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+
 import json
 
 from lib.genshin.datafiles.lang import LangData
@@ -38,7 +42,9 @@ for set_data in sets.get_list():
 
     item = {
         'name': lang.get(bonuses[0]['nameTextMapHash']),
+        'setId': set_data.get('setId'),
         'icons': [],
+        'itemIds': [],
         'rarity': 5,
     }
 
@@ -48,6 +54,9 @@ for set_data in sets.get_list():
         # dump(art)
         # item['rarity'] = max(item['rarity'], (art['maxLevel'] - 1) / 4)
         item['icons'].append(art['icon'])
+
+    for v in artifacts.get_list_by_field('setId', item['setId']):
+        item['itemIds'].append(v['id'])
 
     for (cnt, bonus) in zip(pieces, bonuses):
         item[f'bonus_{cnt}'] = lang.get(bonus['descTextMapHash'])

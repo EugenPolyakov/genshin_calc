@@ -10,6 +10,7 @@ weapon_name;aqua_simulacra;Аква симулякрум;Aqua Simulacra
 weapon_name;aquila_favonia;Меч Сокола;Aquila Favonia
 weapon_name;ash_graven_drinking_horn;Пепельный рог;Ash-Graven Drinking Horn
 weapon_name;astral_vultures_crimson_plumage;Алое перо звёздного грифа;Astral Vulture's Crimson Plumage
+weapon_name;azurelight;Лазурное сияние;Azurelight
 weapon_name;ballad_of_the_boundless_blue;Песнь необъятной лазури;Ballad of the Boundless Blue
 weapon_name;ballad_of_the_fjords;Баллада фьордов;Ballad of the Fjords
 weapon_name;beacon_of_the_reed_sea;Маяк тростникового моря;Beacon of the Reed Sea
@@ -19,6 +20,8 @@ weapon_name;blackcliff_longsword;Черногорский длинный меч;
 weapon_name;blackcliff_pole;Черногорская пика;Blackcliff Pole
 weapon_name;blackcliff_slasher;Черногорская бритва;Blackcliff Slasher
 weapon_name;blackcliff_warbow;Черногорский боевой лук;Blackcliff Warbow
+weapon_name;blackmarrow_lantern;Фонарь чёрной сердцевины;Blackmarrow Lantern
+weapon_name;bloodsoaked_ruins;Окровавленные руины;Bloodsoaked Ruins
 weapon_name;bloodtainted_greatsword;Меч драконьей крови;Bloodtainted Greatsword
 weapon_name;calamity_of_eshu;Бедствие Эшу;Calamity of Eshu
 weapon_name;calamity_queller;Усмиритель бед;Calamity Queller
@@ -32,6 +35,7 @@ weapon_name;cranes_echoing_call;Звонкий клич журавля;Crane's E
 weapon_name;crescent_pike;Пика полумесяца;Crescent Pike
 weapon_name;crimson_moons_semblance;Очертания алой луны;Crimson Moon's Semblance
 weapon_name;dark_iron_sword;Тёмный железный меч;Dark Iron Sword
+weapon_name;dawning_frost;Рассветный иней;Dawning Frost
 weapon_name;deathmatch;Смертельный бой;Deathmatch
 weapon_name;debate_club;Дубина переговоров;Debate Club
 weapon_name;dialogues_of_the_desert_sages;Диалог пустынных мудрецов;Dialogues of the Desert Sages
@@ -43,6 +47,7 @@ weapon_name;elegy_for_the_end;Элегия погибели;Elegy for the End
 weapon_name;emerald_orb;Изумрудный шар;Emerald Orb
 weapon_name;end_of_the_line;Иссушитель;End of the Line
 weapon_name;engulfing_lightning;Сияющая жатва;Engulfing Lightning
+weapon_name;etherlight_spindlelute;Лютня ткача света;Etherlight Spindlelute
 weapon_name;everlasting_moonglow;Вечное лунное сияние;Everlasting Moonglow
 weapon_name;eye_of_perception;Око сознания;Eye of Perception
 weapon_name;fading_twilight;Гаснущие сумерки;Fading Twilight
@@ -56,12 +61,14 @@ weapon_name;ferrous_shadow;Металлическая тень;Ferrous Shadow
 weapon_name;festering_desire;Осквернённое желание;Festering Desire
 weapon_name;fillet_blade;Филейный нож;Fillet Blade
 weapon_name;finale_of_the_deep;Грандиозный финал глубин;Finale of the Deep
+weapon_name;flame_forged_insight;Выкованное пламенем озарение;Flame-Forged Insight
 weapon_name;fleuve_cendre_ferryman;Перевозчик Флёв Сандр;Fleuve Cendre Ferryman
 weapon_name;flower_wreathed_feathers;Украшенные цветами перья;Flower-Wreathed Feathers
 weapon_name;flowing_purity;Сверкание чистых вод;Flowing Purity
 weapon_name;flute_of_ezpitzal;Флейта Эспицаль;Flute of Ezpitzal
 weapon_name;footprint_of_the_rainbow;След радуги;Footprint of the Rainbow
 weapon_name;forest_regalia;Регалия леса;Forest Regalia
+weapon_name;fractured_halo;Расколотый ореол;Fractured Halo
 weapon_name;freedom_sworn;Клятва свободы;Freedom-Sworn
 weapon_name;frostbearer;Плод вечной мерзлоты;Frostbearer
 weapon_name;fruit_of_fulfillment;Плод восполнения;Fruit of Fulfillment
@@ -92,22 +99,27 @@ weapon_name;magic_guide;Руководство по магии;Magic Guide
 weapon_name;mailed_flower;Цветок в латах;Mailed Flower
 weapon_name;makhaira_aquamarine;Аквамарин Махайры;Makhaira Aquamarine
 weapon_name;mappa_mare;Морской атлас;Mappa Mare
+weapon_name;master_key;Мастер-ключ;Master Key
 weapon_name;memory_of_dust;Память о пыли;Memory of Dust
 weapon_name;messenger;Посыльный;Messenger
 weapon_name;missive_windspear;Копьё послания ветров;Missive Windspear
 weapon_name;mistsplitter_reforged;Рассекающий туман;Mistsplitter Reforged
 weapon_name;mitternachts_waltz;Вальс Нирваны Ночи;Mitternachts Waltz
 weapon_name;moonpiercer;Пронзающий луну;Moonpiercer
+weapon_name;moonweavers_dawn;Рассвет прядильщицы луны;Moonweaver's Dawn
 weapon_name;mountain_bracing_bolt;Крепящий горы шип;Mountain-Bracing Bolt
 weapon_name;mouuns_moon;Луна Моун;Mouun's Moon
+weapon_name;nightweavers_looking_glass;Зеркало прядильщицы ночи;Nightweaver's Looking Glass
 weapon_name;oathsworn_eye;Око клятвы;Oathsworn Eye
 weapon_name;otherworldly_story;Потусторонняя история;Otherworldly Story
 weapon_name;peak_patrol_song;Песнь патруля пиков;Peak Patrol Song
 weapon_name;polar_star;Полярная звезда;Polar Star
 weapon_name;portable_power_saw;Переносная мотопила;Portable Power Saw
+weapon_name;predator;Хищник;Predator
 weapon_name;primordial_jade_cutter;Драгоценный омут;Primordial Jade Cutter
 weapon_name;primordial_jade_winged_spear;Нефритовый коршун;Primordial Jade Winged-Spear
 weapon_name;prospectors_drill;Бур рудоискателя;Prospector's Drill
+weapon_name;prospectors_shovel;Лопата старателя;Prospector's Shovel
 weapon_name;prototype_amber;Прототип: Янтарь;Prototype Amber
 weapon_name;prototype_archaic;Прототип: Архаичный;Prototype Archaic
 weapon_name;prototype_crescent;Прототип: Полумесяц;Prototype Crescent
@@ -118,6 +130,7 @@ weapon_name;range_gauge;Дальномер;Range Gauge
 weapon_name;raven_bow;Лук ворона;Raven Bow
 weapon_name;recurve_bow;Изогнутый лук;Recurve Bow
 weapon_name;redhorn_stonethresher;Краснорогий камнеруб;Redhorn Stonethresher
+weapon_name;reliquary_of_truth;Шкатулка истин;Reliquary of Truth
 weapon_name;rightful_reward;Справедливая награда;Rightful Reward
 weapon_name;ring_of_yaxche;Кольцо Яшче;Ring of Yaxche
 weapon_name;royal_bow;Королевский лук;Royal Bow
@@ -126,6 +139,7 @@ weapon_name;royal_grimoire;Королевский гримуар;Royal Grimoire
 weapon_name;royal_longsword;Меч аристократов;Royal Longsword
 weapon_name;royal_spear;Королевское копьё;Royal Spear
 weapon_name;rust;Ржавый лук;Rust
+weapon_name;sacrificers_staff;Посох жертвующей;Sacrificer's Staff
 weapon_name;sacrificial_bow;Церемониальный лук;Sacrificial Bow
 weapon_name;sacrificial_fragments;Церемониальные мемуары;Sacrificial Fragments
 weapon_name;sacrificial_greatsword;Церемониальный двуручный меч;Sacrificial Greatsword
@@ -133,6 +147,8 @@ weapon_name;sacrificial_jade;Жертвенный нефрит;Sacrificial Jade
 weapon_name;sacrificial_sword;Церемониальный меч;Sacrificial Sword
 weapon_name;sapwood_blade;Деревянный клинок;Sapwood Blade
 weapon_name;scion_of_the_blazing_sun;Наследник слепящего солнца;Scion of the Blazing Sun
+weapon_name;sequence_of_solitude;Каденция одиночества;Sequence of Solitude
+weapon_name;serenitys_call;Зов безмятежности;Serenity's Call
 weapon_name;serpent_spine;Меч драконьей кости;Serpent Spine
 weapon_name;sharpshooters_oath;Клятва стрелка;Sharpshooter's Oath
 weapon_name;silvershower_heartstrings;Сердечные струны дождя;Silvershower Heartstrings
@@ -144,6 +160,7 @@ weapon_name;skyward_harp;Небесное крыло;Skyward Harp
 weapon_name;skyward_pride;Небесное величие;Skyward Pride
 weapon_name;skyward_spine;Небесная ось;Skyward Spine
 weapon_name;slingshot;Рогатка;Slingshot
+weapon_name;snare_hook;Крюк силка;Snare Hook
 weapon_name;snow_tombed_starsilver;Заснеженное звёздное серебро;Snow-Tombed Starsilver
 weapon_name;solar_pearl;Солнечная жемчужина;Solar Pearl
 weapon_name;song_of_broken_pines;Песнь разбитых сосен;Song of Broken Pines
@@ -154,9 +171,13 @@ weapon_name;staff_of_the_scarlet_sands;Посох алых песков;Staff of
 weapon_name;starcallers_watch;Бдение взывающего к звёздам;Starcaller's Watch
 weapon_name;sturdy_bone;Крепкая кость;Sturdy Bone
 weapon_name;summit_shaper;Кромсатель пиков;Summit Shaper
+weapon_name;sunny_morning_sleep_in;Сон солнечным утром;Sunny Morning Sleep-In
 weapon_name;surfs_up;Лови волну;Surf's Up
+weapon_name;sword_of_descension;Меч нисхождения;Sword of Descension
 weapon_name;sword_of_narzissenkreuz;Меч Нарциссенкрейца;Sword of Narzissenkreuz
+weapon_name;symphonist_of_scents;Симфонист ароматов;Symphonist of Scents
 weapon_name;talking_stick;Говорящая палица;Talking Stick
+weapon_name;tamayuratei_no_ohanashi;Тамаюратэй но оханаси;Tamayuratei no Ohanashi
 weapon_name;the_alley_flash;Вспышка во тьме;The Alley Flash
 weapon_name;the_bell;Меч-колокол;The Bell
 weapon_name;the_black_sword;Чёрный меч;The Black Sword
@@ -179,6 +200,7 @@ weapon_name;twin_nephrite;Парный нефрит;Twin Nephrite
 weapon_name;ultimate_overlords_mega_magic_sword;«Магический супермеч высшего владыки»;"""Ultimate Overlord's Mega Magic Sword"""
 weapon_name;uraku_misugiri;Ураку мисугири;Uraku Misugiri
 weapon_name;verdict;Вердикт;Verdict
+weapon_name;vivid_notions;Переливающиеся чаяния;Vivid Notions
 weapon_name;vortex_vanquisher;Покоритель вихря;Vortex Vanquisher
 weapon_name;wandering_evenstar;Скитающаяся звезда;Wandering Evenstar
 weapon_name;wavebreakers_fin;Режущий волны плавник;Wavebreaker's Fin

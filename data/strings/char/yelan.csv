@@ -5,4 +5,4 @@ feature_burst;yelan_exquisite_throw_dmg;Урон Изысканного брос
 feature_burst;yelan_taking_all_comers_dmg;Принимаем всех желающих;Taking All Comers
 feature_skill;yelan_duration;Макс. длительность долгого нажатия;Max Duration (Hold)
 
-talent_tooltip;yelan_dmg_bonus;%{text_percent|0};%{text_percent}
+talent_tooltip;yelan_dmg_bonus;%{text_percent|0};%{text_percent|0}

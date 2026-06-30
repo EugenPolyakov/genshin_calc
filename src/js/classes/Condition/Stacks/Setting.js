@@ -1,4 +1,4 @@
-import { ConditionStacks } from "../Stacks"
+import { ConditionStacks } from "../Stacks.js"
 
 export class ConditionStacksSetting extends ConditionStacks {
     getType() {

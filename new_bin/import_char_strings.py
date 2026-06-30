@@ -40,10 +40,6 @@ lang_data = {
 
 lang_default = lang_data['eng']['lang']
 
-result_talents = []
-result_const = []
-result_names = []
-
 char_keys = {}
 uniq_skills = {}
 texts = {}
@@ -95,6 +91,7 @@ for char in char_data.get_list():
 
 hyperlinks = set()
 for char_key in sorted(char_keys):
+    result_hero_strings = []
     char = char_keys[char_key]
     char_id = char['char_id']
     eng_name = lang_data['eng']['lang'].get(char['nameTextMapHash'])
@@ -107,12 +104,13 @@ for char_key in sorted(char_keys):
         lang = lang_data[lang_name]['lang']
         res_item[lang_name] = lang.get(char['nameTextMapHash'])
 
-    result_names.append(res_item)
+    result_hero_strings.append(res_item)
 
     tpl_char = getattr(talents, f'char_{char_key}', None)
     # if not tpl_char:
     #     continue
 
+    #if not tpl_char: texts[eng_name] = []
     texts[eng_name] = []
 
     for depot_id in char['depot_ids']:
@@ -169,8 +167,8 @@ for char_key in sorted(char_keys):
                 res_item1[lang_name] = skill_name
                 res_item2[lang_name] = skill_descr
 
-            result_talents.append(res_item1)
-            result_talents.append(res_item2)
+            result_hero_strings.append(res_item1)
+            result_hero_strings.append(res_item2)
 
         talent_items = []
         const_num = 0
@@ -229,11 +227,13 @@ for char_key in sorted(char_keys):
                 skill_name = lang.get(talent['nameTextMapHash'])
                 res_item1[lang_name] = skill_name
 
+                #if not tpl_char: texts[eng_name].append(skill_name)
                 texts[eng_name].append(skill_name)
 
                 if talent['descTextMapHash']:
                     skill_descr = lang.get(talent['descTextMapHash'])
                     hyperlinks.update(collect_links(skill_descr))
+                    #if not tpl_char: texts[eng_name].append(skill_descr)
                     texts[eng_name].append(skill_descr)
 
                     tpl_names = lang_data[lang_name]['names']
@@ -241,20 +241,26 @@ for char_key in sorted(char_keys):
                     tpl_talents = lang_data[lang_name]['talents']
 
                     # skill_name = re.sub(r'^.*?:\s*', '', skill_name)
+                    #if talent_id=="citlali_teoiztacs_secret_pact": print(skill_descr, '\n-----------------\n')
                     skill_descr = tpl_talents.process(skill_descr)
+                    #if talent_id=="citlali_teoiztacs_secret_pact": print(skill_descr, '\n-----------------\n')
                     skill_descr = tpl_keywords.process(skill_descr)
-                    skill_descr = tpl_names.process(skill_descr)
+                    #if talent_id=="citlali_teoiztacs_secret_pact": print(skill_descr, '\n-----------------\n')
+                    skill_descr = tpl_names. process(skill_descr)
+                    #if talent_id=="citlali_teoiztacs_secret_pact": print(skill_descr, '\n-----------------\n')
                     if tpl_char:
                         skill_descr = tpl_char.process(lang_name, talent_short_id, skill_descr)
+                    #if talent_id=="citlali_teoiztacs_secret_pact": print(skill_descr, '\n-----------------\n')
 
                     if not isinstance(skill_descr, list):
                         skill_descr = [skill_descr]
 
                     descItems[lang_name] = skill_descr
+                #if not tpl_char: texts[eng_name].append('\n')
                 texts[eng_name].append('\n')
 
             if tpl_char:
-                result_const.append(res_item1)
+                result_hero_strings.append(res_item1)
 
                 if descItems and not talent.get('no_descr'):
                     index = 0
@@ -263,7 +269,7 @@ for char_key in sorted(char_keys):
                         namei = talent_id
                         if len(descItems['rus']) > 1:
                             namei = f'{talent_id}_{index}'
-                        result_const.append(
+                        result_hero_strings.append(
                             OrderedDict(
                                 category='talent_descr',
                                 name=namei,
@@ -271,6 +277,9 @@ for char_key in sorted(char_keys):
                                 eng=eng,
                             )
                         )
+    CsvDumper().dump(result_hero_strings, f'char/{char_key}.csv')
+
+result_talents = []
 
 for hl_id in sorted(hyperlinks):
     hl_item = hyperlink_data.get(int(hl_id))
@@ -302,8 +311,6 @@ for hl_id in sorted(hyperlinks):
         result_talents.append(res_item2)
 
 CsvDumper().dump(result_talents, 'char_skills.csv')
-CsvDumper().dump(result_const, 'char_talents.csv')
-CsvDumper().dump(result_names, 'char_names.csv')
 # CsvDumper().dump(result_names, '../../strings_casino/char_names.csv')
 # CsvDumper().dump(result_names, '../../strings_draft/char_names.csv')
 TextDumper().dump(texts, 'chat_texts.txt')

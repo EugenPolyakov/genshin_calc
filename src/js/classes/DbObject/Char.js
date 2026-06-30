@@ -9,6 +9,9 @@ export class DbObjectChar extends DbObject {
         this.element = data.element;
         this.weapon = data.weapon;
         this.origin = data.origin || '';
+        this.originList = data.originList || [];
+        if (this.origin != '')
+            this.originList.push(this.origin);
         this.partyData = data.partyData;
         this.talents = data.talents;
         this.gameId = [];

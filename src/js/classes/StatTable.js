@@ -4,7 +4,7 @@ export class StatTable {
         if (multi != undefined) {
             this.values = [];
             for (var val of values) {
-                new_values.push(val * multi);
+                this.values.push(val * multi);
             }
         } else
             this.values = values;

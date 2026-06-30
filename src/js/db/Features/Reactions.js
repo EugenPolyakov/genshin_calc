@@ -14,6 +14,7 @@ import { FeatureReactionRupture } from "../../classes/Feature2/Reaction/Transfor
 import { ConditionAnd } from "../../classes/Condition/And";
 import { ConditionNot } from "../../classes/Condition/Not";
 import { FeatureReactionLunarCharged } from "../../classes/Feature2/Reaction/Transformative/Lunar/Charged";
+import { FeatureReactionLunarBloom } from "../../classes/Feature2/Reaction/Transformative/Lunar/Bloom";
 
 const lunarchargedCond = new ConditionAnd([
     new ConditionBoolean({name: 'allowed_lunarcharged'}),
@@ -22,6 +23,16 @@ const lunarchargedCond = new ConditionAnd([
         new ConditionBoolean({name: 'allowed_infusion_hydro'}),
         new ConditionBoolean({name: 'allowed_infusion_anemo'}),
         new ConditionBoolean({name: 'allowed_infusion_electro'}),
+    ]),
+]);
+
+const lunarbloomCond = new ConditionAnd([
+    //new ConditionBoolean({ name: 'allowed_lunarbloom' }),
+    new ConditionOr([
+        new ConditionBooleanCharElement({ element: ['hydro', 'dendro', 'anemo'] }),
+        new ConditionBoolean({ name: 'allowed_infusion_hydro' }),
+        new ConditionBoolean({ name: 'allowed_infusion_dendro' }),
+        new ConditionBoolean({ name: 'allowed_infusion_anemo' }),
     ]),
 ]);
 
@@ -131,6 +142,12 @@ export const Reactions = [
             new ConditionBoolean({name: 'allowed_infusion_dendro'}),
             new ConditionBoolean({name: 'allowed_infusion_anemo'}),
         ]),
+    }),
+    new FeatureReactionLunarBloom({
+        name: 'lunarbloom',
+        element: 'dendro',
+        //cannotReact: false,
+        condition: lunarbloomCond,
     }),
     new FeatureReactionHyperBurgeon({
         name: 'burgeon',

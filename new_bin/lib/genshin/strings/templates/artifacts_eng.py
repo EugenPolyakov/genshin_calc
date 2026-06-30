@@ -553,7 +553,7 @@ flower_of_paradise_lost_2 = Template(
 
 flower_of_paradise_lost_4 = Template(
     sentences=[
-        ['dmg_reaction_bloom', 'dmg_reaction_lunar_bloom'],
+        ['dmg_reaction_bloom', 'dmg_reaction_lunarbloom'],
         ['ignore'],
         ['ignore'],
         ['ignore'],
@@ -755,13 +755,40 @@ long_nights_oath_4 = Template(
 )
 
 night_of_the_skys_unveiling_2 = Template(
+    sentences=[
+        ['80:mastery'],
+    ],
 )
 
 night_of_the_skys_unveiling_4 = Template(
+    names=[
+        'Gleaming Moon: Intent',
+        'Gleaming Moon',
+    ],
+    sentences=[
+        ['4:ignore', '15:format{text_number_f=1|{value}}:text_crit_rate_1',
+            '30:format{text_number_f=2|{value}}:text_crit_rate_2'],
+        ['10:text_lunar_reaction_dmg_percent'],
+        []
+    ],
 )
 
 silken_moons_serenade_2 = Template(
+    sentences=[
+        ['20:recharge'],
+    ],
 )
 
 silken_moons_serenade_4 = Template(
+    names=[
+        'Gleaming Moon: Devotion',
+        'Gleaming Moon',
+    ],
+    sentences=[
+        ['8:ignore', '60:format{text_number_f=1|{value}}:text_mastery_1',
+            '120:format{text_number_f=2|{value}}:text_mastery_2'],
+        [],
+        ['10:text_lunar_reaction_dmg_percent'],
+        []
+    ],
 )

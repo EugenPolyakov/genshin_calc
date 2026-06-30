@@ -50,7 +50,7 @@ char_nahida = TemplateList(
             ['crit_rate_bloom', 'crit_dmg_bloom'],
             [],
             ['ignore', 'enemy_def_reduce'],
-            ['crit_rate_lunar_bloom', 'crit_dmg_lunar_bloom'],
+            ['crit_rate_lunarbloom', 'crit_dmg_lunarbloom'],
         ],
         results=[
             [1, 2, 3, 5],

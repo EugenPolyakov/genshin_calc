@@ -42,10 +42,6 @@ class TemplateSentence:
         index = 0
         result = self.formatted
 
-        xx= ''
-        if xx:
-            print( xx =='ignore')
-
         for (own_value, ext_value) in itertools.zip_longest(self.values, values):
             ext_value = self.check_value(own_value, ext_value)
             index += 1
@@ -172,9 +168,9 @@ class Template:
         #     result = re.sub(r'(?:^|([^\{])\b)' + re.escape(name) + r'(?:\b([^\}])|$)', '\\1name{%s}\\2' % name, result)
             idx = 0
             cnt = 1
-            rx = re.compile(r'(^[^\{]*?|}[^\{]*?|{[^\{]*?})+\b(' + name + r')(?=\b[^\}]|$)')
+            rx = re.compile(r'((^[^\{]*?|}[^\{]*?|{[^\{]*?})+)\b(' + name + r')(?=\b[^\}]|$)')
             while cnt > 0:
-                (result, cnt) = rx.subn('\\1name{\\2}', result)
+                (result, cnt) = rx.subn('\\1name{\\3}', result)
                 idx+=1
                 if idx > 100:
                     break
@@ -186,9 +182,9 @@ class Template:
         #     result = re.sub(r'(?:^|([^\{])\b)(' + re.escape(keyword[0]) + r')(?:$|\b([^\}]))', '\\1' + keyword[1] + '{\\2}\\3', result)
             idx = 0
             cnt = 1
-            rx = re.compile(r'(^[^\{]*?|}[^\{]*?|{[^\{]*?})+\b(' + keyword[0] + r')(?=\b[^\}]|$)')
+            rx = re.compile(r'((^[^\{]*?|}[^\{]*?|{[^\{]*?})+)\b(' + keyword[0] + r')(?=\b[^\}]|$)')
             while cnt > 0:
-                (result, cnt) = rx.subn('\\1' + keyword[1] + '{\\2}', result)
+                (result, cnt) = rx.subn('\\1' + keyword[1] + '{\\3}', result)
                 idx+=1
                 if idx > 100:
                     break

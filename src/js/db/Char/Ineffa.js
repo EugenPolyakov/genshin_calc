@@ -158,7 +158,7 @@ export const Ineffa = new DbObjectChar({
     rarity: 5,
     element: 'electro',
     weapon: 'polearm',
-    origin: 'nodkrai',
+    originList: ['nodkrai', 'lunar'],
     talents: Talents,
     statTable: charTables.Ineffa,
     features: [

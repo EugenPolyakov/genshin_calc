@@ -111,7 +111,8 @@ export class CalcObjectCharacter extends CalcObject {
             charSettings.char_id = this.object.getId();
             charSettings.char_name = this.object.name;
             charSettings.char_element = this.object.element;
-            charSettings.char_origin = this.object.origin;
+            charSettings.char_origin = this.object.origin;//todo: remove this
+            charSettings.char_originList = this.object.originList;
         }
 
         result = Object.assign(result, charSettings);

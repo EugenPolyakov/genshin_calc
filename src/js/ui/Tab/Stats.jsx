@@ -24,6 +24,7 @@ import { Tab } from "../Tab";
 import { FeatureMultiplierReactionVaporize } from '../../classes/Feature2/Multiplier/Reaction/Amplifying/Vaporize';
 import { FeatureMultiplierReactionMelt } from '../../classes/Feature2/Multiplier/Reaction/Amplifying/Melt';
 import { FeatureReactionLunarCharged } from '../../classes/Feature2/Reaction/Transformative/Lunar/Charged';
+import { FeatureReactionLunarBloom } from '../../classes/Feature2/Reaction/Transformative/Lunar/Bloom';
 import { FeatureReactionLunar } from '../../classes/Feature2/Reaction/Transformative/Lunar';
 
 let lang = new Lang();
@@ -86,6 +87,7 @@ const reactionStatList = {
     '!dmg_reaction_spread': FeatureMultiplierReactionSpread,
     'dmg_reaction_lunar': FeatureReactionLunar,
     '!dmg_reaction_lunarcharged': FeatureReactionLunarCharged,
+    '!dmg_reaction_lunarbloom': FeatureReactionLunarBloom,
 
     'dmg_reaction_crystalize': FeatureReactionCrystallize,
 };
