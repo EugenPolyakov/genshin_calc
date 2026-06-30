@@ -37,6 +37,7 @@ feature_attack;plunge;В падении;Plunge
 feature_attack;second_aimed;Доп. прицельная;Additional aimed
 feature_attack;second_charged_aimed;Доп. заряженная прицельная;Add. charged aimed
 feature_attack;stamina_cost;Потребление выносливости;Charged Attack Stamina Cost
+feature_attack;additional_dmg;Дополнительный урон;Additional DMG
 feature_burst;additional_dmg;Дополнительный урон;Additional DMG
 feature_burst;anemoskill_cryo_dmg;Доп. урон Крио;Additional Cryo DMG
 feature_burst;anemoskill_dmg;Доп. элементальный урон;Additional Elemental DMG
@@ -79,6 +80,9 @@ feature_other;atk_bonus;Бонус cилы атаки;ATK Bonus
 feature_other;burst_dmg_bonus;Бонус урона взрыва стихий;Burst DMG Bonus
 feature_other;electro_dmg_bonus;Бонус электро урона;Electro DMG Bonus
 feature_other;mastery_bonus;Бонус мастерства стихий;Elemental Mastery Bonus
+feature_other;lunarcharged_base_bonus;Базовый урон Лунного заряда;Lunar-Charged Base Bonus
+feature_other;lunarbloom_base_bonus;Базовый урон Лунной бутонизации;Lunar-Bloom Base Bonus
+feature_other;heal;Лечение;Heal
 feature_reaction;amplifying;Мультипликативные реакции;Amplifying Reactions
 feature_reaction;transformative;Трансформативные реакции;Transformative Reactions
 feature_reaction;additive;Аддитивные реакции;Additive Reactions
@@ -196,6 +200,7 @@ feature_skill;skill_hit_2;Удар-2;Hit-2
 feature_skill;skill_hit_3;Удар-3;Hit-3
 feature_skill;stamina_consume;Потребление выносливости;Stamina Consumption
 feature_skill;stamina_cost;Потребление выносливости;Charged Attack Stamina Cost
+feature_skill;additional_dmg;Дополнительный урон;Additional DMG
 feature_skill;swing_dmg;Урон взмаха;Swing DMG
 feature_stats;atk;Сила атаки;ATK
 feature_stats;crit_dmg;Крит. урон;Crit. DMG

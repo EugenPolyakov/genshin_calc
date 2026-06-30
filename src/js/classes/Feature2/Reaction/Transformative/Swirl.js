@@ -1,6 +1,12 @@
 import { FeatureReactionTransformative } from "../Transformative";
 
 export class FeatureReactionSwirl extends FeatureReactionTransformative {
+    constructor (params) {
+        if (!Array.isArray(params.tags))
+            params.tags = [];
+        params.tags.push('swirl');
+        super(params);
+    }
     getReactionRate() { return 0.6 }
 
     /**

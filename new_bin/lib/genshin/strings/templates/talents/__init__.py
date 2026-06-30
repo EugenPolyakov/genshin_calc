@@ -55,6 +55,7 @@ from .klee import char_klee  # noqa
 from .kujou_sara import char_kujou_sara  # noqa
 from .kuki_shinobu import char_kuki_shinobu  # noqa
 from .lan_yan import char_lan_yan  # noqa
+from .lauma import char_lauma  # noqa
 from .layla import char_layla  # noqa
 from .lisa import char_lisa  # noqa
 from .lynette import char_lynette  # noqa

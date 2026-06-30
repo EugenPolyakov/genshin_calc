@@ -147,6 +147,7 @@ const Talents = new DbObjectTalents({
             },
         ],
     },
+    links: [11200001, 11190007],
 });
 
 const lunarPost = new PostEffectStatsAtk({
@@ -156,7 +157,7 @@ const lunarPost = new PostEffectStatsAtk({
 
 export const Flins = new DbObjectChar({
     name: 'flins',
-    serializeId: 109,
+    serializeId: 110,
     gameId: charTalentTables.Flins.char_id,
     iconClass: "char-icon-flins",
     rarity: 5,
@@ -449,7 +450,7 @@ export const Flins = new DbObjectChar({
         }),
         new FeaturePostEffectValue({
             category: 'other',
-            name: 'ineffa_lunar_bonus',
+            name: 'lunarcharged_base_bonus',
             postEffect: lunarPost,
             format: 'percent',
         }),
@@ -569,12 +570,12 @@ export const Flins = new DbObjectChar({
                     title: 'talent_name.flins_songs_and_dances_of_death',
                     description: 'talent_descr.flins_songs_and_dances_of_death',
                     stats: {
-                        dmg_raction_lunarcharged_bonus: charTalentTables.Flins.cons[5][0] * 100,
+                        dmg_reaction_lunarcharged_bonus: charTalentTables.Flins.cons[5][0] * 100,
                     },
                 }),
                 new ConditionMoonPhaseBuff({
                     realStats: {
-                        dmg_raction_lunarcharged_bonus: [0, 0, charTalentTables.Flins.cons[5][1] * 100],
+                        dmg_reaction_lunarcharged_bonus: [0, 0, charTalentTables.Flins.cons[5][1] * 100],
                     },
                     condition: new ConditionConstellation({ constellation: 6 }),
                 }),
@@ -596,7 +597,7 @@ export const Flins = new DbObjectChar({
             }),
             new ConditionMoonPhaseBuff({
                 realStats: {
-                    dmg_raction_lunarcharged_bonus: [0, 0, charTalentTables.Flins.cons[5][1] * 100],
+                    dmg_reaction_lunarcharged_bonus: [0, 0, charTalentTables.Flins.cons[5][1] * 100],
                 },
                 condition: new ConditionBoolean({ name: 'party.flins_songs_and_dances_of_death' }),
             }),

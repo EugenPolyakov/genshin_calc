@@ -13,8 +13,8 @@ talent_descr;xingqiu_blades_amidst_raindrops;Даёт name{Син Цю} %{dmg_hy
 talent_name;xingqiu_the_scent_remained;Запах дождя по утрам;The Scent Remained
 talent_descr;xingqiu_the_scent_remained;Увеличивает макс. количество name{Мечей дождя} на 1.;Increases the maximum number of name{Rain Swords} by 1.
 talent_name;xingqiu_rainbow_upon_the_azure_sky;Радужное небо;Rainbow Upon the Azure Sky
-talent_descr;xingqiu_rainbow_upon_the_azure_sky_1; Увеличивает длительность навыка skill{burst:Гухуа: Радужная стойка} на 3 сек.; Extends the duration of skill{burst:Guhua Sword: Raincutter} by 3s.
-talent_descr;xingqiu_rainbow_upon_the_azure_sky_2; Понижает на %{enemy_res_hydro} hydro{Гидро сопротивление} противников, получивших урон от name{Мечей Дождя}, на 4 сек.; Decreases the hydro{Hydro RES} of opponents hit by name{sword rain} attacks by %{enemy_res_hydro} for 4s.
+talent_descr;xingqiu_rainbow_upon_the_azure_sky_1;Увеличивает длительность навыка skill{burst:Гухуа: Радужная стойка} на 3 сек.;Extends the duration of skill{burst:Guhua Sword: Raincutter} by 3s.
+talent_descr;xingqiu_rainbow_upon_the_azure_sky_2;Понижает на %{enemy_res_hydro} hydro{Гидро сопротивление} противников, получивших урон от name{Мечей Дождя}, на 4 сек.;Decreases the hydro{Hydro RES} of opponents hit by name{sword rain} attacks by %{enemy_res_hydro} for 4s.
 talent_name;xingqiu_weaver_of_verses;Стихоплетение;Weaver of Verses
 talent_name;xingqiu_evilsoother;Укротитель зла;Evilsoother
 talent_descr;xingqiu_evilsoother;Увеличивает урон навыка skill{skill:Гухуа: Завеса дождя} на %{text_percent} во время действия навыка skill{burst:Гухуа: Радужная стойка}.;Throughout the duration of skill{burst:Guhua Sword: Raincutter}, the DMG dealt by skill{skill:Guhua Sword: Fatal Rainscreen} is increased by %{text_percent}.

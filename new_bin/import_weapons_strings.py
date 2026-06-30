@@ -6,7 +6,7 @@ from collections import OrderedDict
 
 from lib.genshin.datafiles.lang import LangData
 from lib.genshin.datafiles.weapons import IGNORED_WEAPONS, WeaponData, WeaponSkillData
-from lib.genshin.utils import convert_id
+from lib.genshin.utils import convert_id, add_array
 from lib.genshin.strings.templates import weapons as weapons_tpl
 from lib.genshin.strings.templates.talents import templates as common_tpl
 from lib.genshin.strings.templates.names import names_eng, names_rus, keywords_eng, keywords_rus, color_patterns
@@ -108,9 +108,9 @@ for (weapon_id, weapon) in sorted(weapons.items()):
             # tpl_patterns = lang_data[lang_name]['patterns']
 
             # item_descr[lang_name] = tpl_patterns.process(item_descr[lang_name])
-            item_descr[lang_name] = tpl_keywords.process(item_descr[lang_name])
-            item_descr[lang_name] = tpl_names.process(item_descr[lang_name])
-            item_descr[lang_name] = common_tpl.process(item_descr[lang_name])
+            item_descr[lang_name] = tpl_keywords.process(item_descr[lang_name])['descr'][0]
+            item_descr[lang_name] = tpl_names.process(item_descr[lang_name])['descr'][0]
+            item_descr[lang_name] = common_tpl.process(item_descr[lang_name])['descr'][0]
 
             tpl_weapon = getattr(weapons_tpl, f'{weapon_id}_{lang_name}', None) or getattr(weapons_tpl, weapon_id, None) or \
                 getattr(weapons_tpl, f'{skill_id}_{lang_name}', None) or getattr(weapons_tpl, skill_id, None)
@@ -124,37 +124,12 @@ for (weapon_id, weapon) in sorted(weapons.items()):
             if not isinstance(item_descr[lang_name], list):
                 item_descr[lang_name] = [item_descr[lang_name]]
 
-        index = 0
-        for (rus, eng) in zip(item_name['rus'], item_name['eng']):
-            index += 1
-            namei = talent_name
-            if len(item_name['rus']) > 1:
-                namei = f'{talent_name}_{index}'
-            result_talents.append(
-                OrderedDict(
-                    category='talent_name',
-                    name=namei,
-                    rus=rus,
-                    eng=eng,
-                )
-            )
+        add_array(item_name, result_talents, talent_name, 'talent_name')
+
         if has_tpl or len(item_descr['rus']) == len(item_descr['eng']):
             # result_talents.append(item_descr)
             if item_descr:
-                index = 0
-                for (rus, eng) in zip(item_descr['rus'], item_descr['eng']):
-                    index += 1
-                    namei = talent_name
-                    if len(item_descr['rus']) > 1:
-                        namei = f'{talent_name}_{index}'
-                    result_talents.append(
-                        OrderedDict(
-                            category='talent_descr',
-                            name=namei,
-                            rus=rus,
-                            eng=eng,
-                        )
-                    )
+                add_array(item_descr, result_talents, talent_name, 'talent_descr')
         else:
             result_talents.append(
                 OrderedDict(

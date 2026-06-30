@@ -55,6 +55,7 @@ import { Klee } from "./Char/Klee"
 import { Kokomi } from "./Char/Kokomi"
 import { KukiShinobu } from "./Char/Kuki"
 import { LanYan } from "./Char/LanYan"
+import { Lauma } from "./Char/Lauma"
 import { Layla } from "./Char/Layla"
 import { Lisa } from "./Char/Lisa"
 import { Lynette } from "./Char/Lynette"
@@ -217,6 +218,7 @@ export const Chars = new DbObjectListSerializeChars({
     Skirk: Skirk, // 106
     Dahlia: Dahlia, // 107
     Ineffa: Ineffa, // 108
-    Flins: Flins, // 109
-    Aino: Aino, // 110
+    Lauma: Lauma, //109
+    Flins: Flins, // 110
+    Aino: Aino, // 111
 });

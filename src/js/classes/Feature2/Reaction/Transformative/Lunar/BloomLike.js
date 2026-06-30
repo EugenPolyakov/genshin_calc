@@ -1,7 +1,11 @@
 import { BuildData } from "../../../../Build/Data";
 import { CConst } from "../../../Compile/Types/Item";
-import { CMultiplierAmplifying } from "../../../Compile/Types/Block";
+import { CMultiplierAmplifying, CSumPlusOne } from "../../../Compile/Types/Block";
 import { FeatureReactionLunarBloom } from "./Bloom";
+import { FeatureMultiplier } from "../../../Multiplier";
+import { CStaticValue } from "../../../Compile/Types/Damage";
+import { StatTable } from "../../../../StatTable";
+import { makeStatItem } from "../../../Compile/Helpers";
 
 export class FeatureReactionLunarBloomLike extends FeatureReactionLunarBloom {
     constructor(params) {
@@ -17,7 +21,7 @@ export class FeatureReactionLunarBloomLike extends FeatureReactionLunarBloom {
     getMultiplierReaction(data) {
         let result = super.getMultiplierReaction(data);
         result.push(
-            new CMultiplierAmplifying([new CConst({value: 3, comment: 'lunarbloom', percent: true})]),
+            new CSumPlusOne([makeStatItem('lunarbloom_multi', data.stats)])
         );
         return result;
     }

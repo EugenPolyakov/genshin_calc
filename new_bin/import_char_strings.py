@@ -12,7 +12,7 @@ from lib.genshin.datafiles.hyperlinks import HyperLinkData
 from lib.genshin.datafiles.lang import LangData
 from lib.genshin.strings.templates.names import keywords_eng, keywords_rus, names_eng, names_rus, patterns_eng
 from lib.genshin.strings.templates import talents
-from lib.genshin.utils import convert_id
+from lib.genshin.utils import convert_id, add_array
 from lib.genshin.strings.csv import CsvDumper
 from lib.genshin.strings.text import TextDumper  # noqa
 
@@ -103,22 +103,6 @@ for char in char_data.get_list():
             'depot_ids': [char['skillDepotId']],
         }
 
-def add_array(descItems, result_hero_strings, talent_id, categ):
-    index = 0
-    for (rus, eng) in zip(descItems['rus'], descItems['eng']):
-        index += 1
-        namei = talent_id
-        if len(descItems['rus']) > 1:
-            namei = f'{talent_id}_{index}'
-        result_hero_strings.append(
-            OrderedDict(
-                category=categ,
-                name=namei,
-                rus=rus,
-                eng=eng,
-            )
-        )
-
 hyperlinks = set()
 for char_key in sorted(char_keys):
     result_hero_strings = []
@@ -149,10 +133,12 @@ for char_key in sorted(char_keys):
             continue
         skill_ids = []
         burst_id = 0
+        attack_id = 0
         if depot.get('energySkill'):
             burst_id = depot.get('energySkill')
             skill_ids.append(burst_id)
         if depot.get('skills'):
+            attack_id = depot.get('skills')[0]
             skill_ids.extend(depot.get('skills'))
         # if depot.get('SubSkills'):
         #     skill_ids.extend(depot.get('SubSkills'))
@@ -173,11 +159,6 @@ for char_key in sorted(char_keys):
                 continue
             uniq_skills[skill_id] = 1
 
-            res_item1 = OrderedDict(
-                category='talent_name',
-                name=skill_id,
-            )
-
             proud_params = []
             proud = None
             passive_id = skill.get('proudSkillGroupId')
@@ -193,6 +174,7 @@ for char_key in sorted(char_keys):
                         #     print(skill_id)
 
             descItems = {}
+            nameItems = {}
             for lang_name in lang_data:
                 lang = lang_data[lang_name]['lang']
                 skill_name = lang.get(skill['nameTextMapHash'])
@@ -207,11 +189,11 @@ for char_key in sorted(char_keys):
                 skill_name = re.sub(r'^Normal Attack:\s*', '', skill_name)
                 # print('default:--------------------------')
                 # print(skill_descr)
-                skill_descr = tpl_patterns.process(skill_descr)
+                skill_descr = tpl_patterns.process(skill_descr)['descr'][0]
                 # skill_descr = tpl_keywords.process(skill_descr)
                 # print('patterns:--------------------------')
                 # print(skill_descr)
-                skill_descr = tpl_names.process(skill_descr)
+                skill_descr = tpl_names.process(skill_descr)['descr'][0]
                 # print('names:--------------------------')
                 # print(skill_descr)
                 if tpl_char:
@@ -219,11 +201,12 @@ for char_key in sorted(char_keys):
                     # print('char:--------------------------')
                     # print(skill_descr)
 
-                if not isinstance(skill_descr, list):
-                    skill_descr = [skill_descr]
+                if isinstance(skill_descr, str):
+                    skill_descr = {'descr': [skill_descr], 'names': []}
 
-                res_item1[lang_name] = skill_name
-                descItems[lang_name] = skill_descr
+                nameItems[lang_name] = [skill_name]
+                descItems[lang_name] = skill_descr['descr']
+                nameItems[lang_name].extend(skill_descr['names'])
 
             if proud:
                 values = {'rus':[], 'eng':[]}
@@ -232,9 +215,9 @@ for char_key in sorted(char_keys):
                         lang = lang_data[lang_name]['lang']
                         (name, params_str) = lang.get(proud['paramDescList'][param]).split('|')
                         values[lang_name].append(name)
-                add_array(values, result_hero_strings, skill_id, 'feature_burst' if id==burst_id else 'feature_skill')
+                add_array(values, result_hero_strings, skill_id, 'feature_burst' if id==burst_id else 'feature_attack' if id==attack_id else 'feature_skill')
 
-            result_hero_strings.append(res_item1)
+            add_array(nameItems, result_hero_strings, skill_id, 'talent_name')
             add_array(descItems, result_hero_strings, skill_id, 'talent_descr')
 
         talent_items = []
@@ -273,17 +256,13 @@ for char_key in sorted(char_keys):
                 continue
             uniq_skills[talent_id] = 1
 
-            res_item1 = OrderedDict(
-                category='talent_name',
-                name=talent_id,
-            )
-
             descItems = {}
+            nameItems = {}
 
             for lang_name in lang_data:
                 lang = lang_data[lang_name]['lang']
                 skill_name = lang.get(talent['nameTextMapHash'])
-                res_item1[lang_name] = skill_name
+                nameItems[lang_name] = [skill_name]
 
                 #if not tpl_char: texts[eng_name].append(skill_name)
                 texts[eng_name].append(skill_name)
@@ -300,24 +279,25 @@ for char_key in sorted(char_keys):
 
                     # skill_name = re.sub(r'^.*?:\s*', '', skill_name)
                     # if char_id=="flins": print(skill_descr, '\n-----------------\n')
-                    skill_descr = tpl_talents.process(skill_descr)
+                    skill_descr = tpl_talents.process(skill_descr)['descr'][0]
                     # if char_id=="flins": print(skill_descr, '\n-----------------\n')
-                    skill_descr = tpl_keywords.process(skill_descr)
+                    skill_descr = tpl_keywords.process(skill_descr)['descr'][0]
                     # if char_id=="flins": print(skill_descr, '\n-----------------\n')
-                    skill_descr = tpl_names. process(skill_descr)
+                    skill_descr = tpl_names. process(skill_descr)['descr'][0]
                     # if char_id=="flins": print(skill_descr, '\n-----------------\n')
                     if tpl_char:
                         skill_descr = tpl_char.process(lang_name, talent_short_id, skill_descr)
                     # if char_id=="flins": print(skill_descr, '\n-----------------\n')
 
-                    if not isinstance(skill_descr, list):
-                        skill_descr = [skill_descr]
+                    if isinstance(skill_descr, str):
+                        skill_descr = {'descr': [skill_descr], 'names': []}
 
-                    descItems[lang_name] = skill_descr
+                    descItems[lang_name] = skill_descr['descr']
+                    nameItems[lang_name].extend(skill_descr['names'])
                 #if not tpl_char: texts[eng_name].append('\n')
                 texts[eng_name].append('\n')
 
-            result_hero_strings.append(res_item1)
+            add_array(nameItems, result_hero_strings, talent_id, 'talent_name')
 
             if descItems and not talent.get('no_descr'):
                 add_array(descItems, result_hero_strings, talent_id, 'talent_descr')
@@ -346,7 +326,7 @@ for hl_id in sorted(hyperlinks):
             skill_descr = lang.get(hl_item['descTextMapHash'])
 
             tpl_patterns = lang_data[lang_name]['patterns']
-            skill_descr = tpl_patterns.process(skill_descr)
+            skill_descr = tpl_patterns.process(skill_descr)['descr'][0]
 
             res_item1[lang_name] = skill_name
             res_item2[lang_name] = skill_descr

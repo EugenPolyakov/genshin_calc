@@ -1,6 +1,6 @@
-import { FeatureReactionBloom } from "./Bloom";
+import { FeatureReactionBloom } from "../Bloom";
 
-export class FeatureReactionHyperBurgeon extends FeatureReactionBloom {
+export class FeatureReactionHyperBloom extends FeatureReactionBloom {
     getReactionRate() { return 3 }
 
     /**
@@ -8,7 +8,7 @@ export class FeatureReactionHyperBurgeon extends FeatureReactionBloom {
      */
     getStatsReactionBonus() {
         let result = super.getStatsReactionBonus();
-        result.push('dmg_reaction_burgeon');
+        result.push('dmg_reaction_hyperbloom');
         return result;
     }
 }

@@ -109,7 +109,7 @@ const Talents = new DbObjectTalents({
 
 export const Aino = new DbObjectChar({
     name: 'aino',
-    serializeId: 110,
+    serializeId: 111,
     gameId: charTalentTables.Aino.char_id,
     iconClass: "char-icon-aino",
     rarity: 4,

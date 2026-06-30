@@ -115,7 +115,8 @@ module.exports = (env, argv) => {
             minimizer: [
                 new CssMinimizerPlugin(),
                 new TerserPlugin({
-                    terserOptions: {
+                    terserOptions: env.min === 'false' ?
+                    {
                       compress: false, // отключаем сжатие
                       mangle: false,   // отключаем переименование переменных
                       keep_classnames: true,
@@ -124,7 +125,7 @@ module.exports = (env, argv) => {
                         beautify: true,
                         comments: true,
                       },
-                    },
+                    } : {},
                     test: /\.js(\?.*)?$/i,
                 }),
             ],

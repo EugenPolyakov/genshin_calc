@@ -324,7 +324,7 @@ export const Ineffa = new DbObjectChar({
         }),
         new FeaturePostEffectValue({
             category: 'other',
-            name: 'ineffa_lunar_bonus',
+            name: 'lunarcharged_base_bonus',
             postEffect: lunarPost,
             format: 'percent',
         }),

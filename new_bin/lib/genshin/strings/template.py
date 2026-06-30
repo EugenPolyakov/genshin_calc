@@ -122,7 +122,7 @@ class TemplateString:
 
 
 class Template:
-    def __init__(self, replace={}, names=[], sentences=[], patterns=[], keywords=[], skills={}, results=None, prouds=[]):
+    def __init__(self, replace={}, names=[], sentences=[], patterns=[], keywords=[], skills={}, results=None, prouds=[], extracted_names=None):
         self.replace = replace
         self.names = names
         self.sentences = sentences
@@ -133,6 +133,7 @@ class Template:
         self.results = results
         self.skills = skills
         self.prouds = prouds
+        self.extracted_names = extracted_names
 
     def process(self, string: str):
         result = string
@@ -141,13 +142,29 @@ class Template:
         result = self.apply_skills(result)
         result = self.apply_patterns(result)
         sen_result = self.apply_sentences(result)
+        out = {'names': [], 'descr': []}
         if isinstance(sen_result, list):
             ret = []
-            for sent in sen_result:
-                ret.append(self.apply_names(sent))
-            return ret
+            if isinstance(self.extracted_names, list):
+                for idx, v in enumerate(sen_result):
+                    if idx in self.extracted_names:
+                        out['names'].append(v)
+                    else:
+                        out['descr'].append(v)
+
+                if len(out['names']) > 0:
+                    for sent in out['descr']:
+                        ret.append(self.apply_custom_names(sent, out['names']))
+                    out['descr'] = []
+            else:
+                ret = sen_result
+
         else:
-            return self.apply_names(sen_result)
+            ret = [sen_result]
+
+        for sent in ret:
+            out['descr'].append(self.apply_names(sent))
+        return out
 
     def apply_replace(self, string):
         result = string
@@ -205,43 +222,6 @@ class Template:
                 result = result.replace(f'skill{{{name}}}', f'skill{{{skill}:{name}}}')
         return result
 
-class WeaponTemplate(Template):
-    def __init__(self, replace={}, names=[], sentences=[], patterns=[], keywords=[], skills={}, results=None, extracted_names=None):
-        super().__init__(replace, names, sentences, patterns, keywords, skills, results)
-        self.extracted_names = extracted_names
-
-    def process(self, string: str):
-        result = string
-        result = self.apply_replace(result)
-        result = self.apply_keywords(result)
-        result = self.apply_skills(result)
-        result = self.apply_patterns(result)
-        sen_result = self.apply_sentences(result)
-        out = {'names': [], 'descr': []}
-        if isinstance(sen_result, list):
-            ret = []
-            if isinstance(self.extracted_names, list):
-                for idx, v in enumerate(sen_result):
-                    if idx in self.extracted_names:
-                        out['names'].append(v)
-                    else:
-                        out['descr'].append(v)
-
-                if len(out['names']) > 0:
-                    for sent in out['descr']:
-                        ret.append(self.apply_custom_names(sent, out['names']))
-                    out['descr'] = []
-            else:
-                ret = sen_result
-
-        else:
-            ret = [sen_result]
-
-        for sent in ret:
-            out['descr'].append(self.apply_names(sent))
-        return out
-
-
 class TemplateList:
     def __init__(self, prouds = [], **templates):
         self.templates = dict(**templates)
@@ -253,5 +233,5 @@ class TemplateList:
         if default:
             result = default.process(result)
         if selected:
-            result = selected.process(result)
+            result = selected.process(result['descr'][0])
         return result

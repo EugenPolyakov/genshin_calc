@@ -582,4 +582,10 @@ export const Rotation = new DbObjectRotation({
     "burst.flins_cometh_the_night_5": 581,
     "skill.flins_arcane_light_1": 582,
     "other.flins_addition_burst_dmg": 583,
+    "attack.lauma_peregrination_of_linnunrata_6": 584,
+    "attack.additional_dmg": 585,
+    "skill.lauma_dawnless_rest_of_karsikko_1": 586,
+    "skill.lauma_dawnless_rest_of_karsikko_2": 587,
+    "skill.lauma_dawnless_rest_of_karsikko_3": 588,
+    "skill.lauma_frostgrove_sanctuary_additional_dmg": 589,
 });

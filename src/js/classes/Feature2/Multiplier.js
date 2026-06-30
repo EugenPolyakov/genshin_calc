@@ -130,16 +130,18 @@ export class FeatureMultiplier {
      * @param {BuildData} data
      * @returns {boolean}
      */
-    isMatchFeature(feature, data) {
-        return this.target ? this.target.isMatchFeature(feature, data) : true;
+    isMatchFeature(feature, data, def) {
+        def = def == undefined ? true : def;
+        return this.target ? this.target.isMatchFeature(feature, data) : def;
     }
 
     /**
      * @param {string} option
      * @returns {boolean}
      */
-    isMatchOption(option) {
-        return this.target ? this.target.isMatchOption(option) : true;
+    isMatchOption(option, def) {
+        def = def == undefined ? true : def;
+        return this.target ? this.target.isMatchOption(option, def) : def;
     }
 
     /**

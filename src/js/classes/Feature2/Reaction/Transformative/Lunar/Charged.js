@@ -3,6 +3,12 @@ import { CSumPlusOne } from "../../../Compile/Types/Block";
 import { makeStatItem } from "../../../Compile/Helpers";
 
 export class FeatureReactionLunarCharged extends FeatureReactionLunar {
+    constructor (params) {
+        if (!Array.isArray(params.tags))
+            params.tags = [];
+        params.tags.push('lunarcharged');
+        super(params);
+    }
     getReactionRate() { return 1.8 }
     getReactionPenalty() { return this.penalty }
     getScalingStat(data) { return 'lunarcharged_multi' }
@@ -15,17 +21,5 @@ export class FeatureReactionLunarCharged extends FeatureReactionLunar {
         result.push('dmg_reaction_lunar');
         result.push('dmg_reaction_lunarcharged');
         return result;
-    }
-
-    /**
-     * @param {BuildData} data
-     * @returns {Array}
-     */
-    getReactionMultipliers(data) {
-        let items = super.getReactionBonusMultipliers(data);
-
-        items.push(new CSumPlusOne([makeStatItem('dmg_raction_lunarcharged_bonus', data.stats)]));
-
-        return items;
     }
 }

@@ -4,10 +4,10 @@ export class StatTable {
         if (multi != undefined) {
             this.values = [];
             for (var val of values) {
-                this.values.push(val * multi);
+                this.values.push(parseFloat((parseFloat(val).toFixed(4) * multi).toFixed(4)));
             }
         } else
-            this.values = values;
+            this.values = values.map(x => parseFloat(parseFloat(x).toFixed(4)));
     }
 
     getName() {

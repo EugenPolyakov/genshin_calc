@@ -9,10 +9,10 @@ import { FeatureMultiplierReactionSpread } from '../../classes/Feature2/Multipli
 import { FeatureReactionBurning } from '../../classes/Feature2/Reaction/Transformative/Burning';
 import { FeatureReactionCrystallize } from '../../classes/Feature2/Reaction/Crystallize';
 import { FeatureReactionElectroCharged } from '../../classes/Feature2/Reaction/Transformative/ElectroCharged';
-import { FeatureReactionHyperBloom } from '../../classes/Feature2/Reaction/Transformative/HyperBloom';
-import { FeatureReactionHyperBurgeon } from '../../classes/Feature2/Reaction/Transformative/Burgeon';
+import { FeatureReactionHyperBloom } from '../../classes/Feature2/Reaction/Transformative/Bloom/HyperBloom';
+import { FeatureReactionHyperBurgeon } from '../../classes/Feature2/Reaction/Transformative/Bloom/Burgeon';
 import { FeatureReactionOverloaded } from '../../classes/Feature2/Reaction/Transformative/Overloaded';
-import { FeatureReactionRupture } from '../../classes/Feature2/Reaction/Transformative/Rupture';
+import { FeatureReactionRupture } from '../../classes/Feature2/Reaction/Transformative/Bloom/Rupture';
 import { FeatureReactionSuperConduct } from '../../classes/Feature2/Reaction/Transformative/SuperConduct';
 import { FeatureReactionSwirl } from '../../classes/Feature2/Reaction/Transformative/Swirl';
 import { FeatureReactionTransformative } from '../../classes/Feature2/Reaction/Transformative';

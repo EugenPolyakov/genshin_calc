@@ -105,7 +105,7 @@ function ConditionItem(props) {
                         subcond={subcond}
                     />
                 </div>}
-                <div className="title">{cond.getTitle(stats)}</div>
+                <div className="title" dangerouslySetInnerHTML={{ __html: cond.getTitle(stats) }} />
                 <ConditionLoadStat
                     stat={cond.params.loadPartyStat}
                     name={cond.getName()}

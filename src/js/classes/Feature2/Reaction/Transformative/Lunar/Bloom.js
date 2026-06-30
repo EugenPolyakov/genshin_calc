@@ -1,6 +1,13 @@
 import { FeatureReactionLunar } from "../Lunar";
 
 export class FeatureReactionLunarBloom extends FeatureReactionLunar {
+    constructor (params) {
+        if (!Array.isArray(params.tags))
+            params.tags = [];
+        params.tags.push('lunarbloom');
+        super(params);
+    }
+
     getReactionRate() { return 1.8 }
     getReactionPenalty() { return this.penalty }
     getScalingStat(data) { return 'lunarbloom_multi' }

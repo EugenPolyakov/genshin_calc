@@ -1,7 +1,7 @@
 from os import name
-from ..template import WeaponTemplate
+from ..template import Template
 
-hope_beyond_the_peaks = WeaponTemplate(
+hope_beyond_the_peaks = Template(
     sentences=[
         ['15:ignore', '12:dmg_skill'],
         ['12:dmg_skill', '8:ignore'],
@@ -12,7 +12,7 @@ hope_beyond_the_peaks = WeaponTemplate(
     ],
 )
 
-trappers_pride = WeaponTemplate(
+trappers_pride = Template(
     sentences=[
         ['15:ignore'],
         ['16:text_percent_dmg'],
@@ -20,7 +20,7 @@ trappers_pride = WeaponTemplate(
     ],
 )
 
-the_weight_of_falling_branches = WeaponTemplate(
+the_weight_of_falling_branches = Template(
     patterns=[
         ('; After', '. After'),
     ],
@@ -34,7 +34,7 @@ the_weight_of_falling_branches = WeaponTemplate(
     ],
 )
 
-halcyon_years_unending_rus = WeaponTemplate(
+halcyon_years_unending_rus = Template(
     names=['защиту', 'защиты'],
     sentences=[
         ['8:def_percent', '10:dmg_pyro'],
@@ -50,7 +50,7 @@ halcyon_years_unending_rus = WeaponTemplate(
     extracted_names=[2],
 )
 
-halcyon_years_unending_eng = WeaponTemplate(
+halcyon_years_unending_eng = Template(
     sentences=[
         ['8:def_percent', '10:dmg_pyro', '6:ignore'],
         ['2:ignore'],
@@ -65,7 +65,7 @@ halcyon_years_unending_eng = WeaponTemplate(
     extracted_names=[2],
 )
 
-sunset_reignites_the_dawn = WeaponTemplate(
+sunset_reignites_the_dawn = Template(
     patterns=[
         ('<br>', '<br>\n'),
     ],
@@ -83,7 +83,7 @@ sunset_reignites_the_dawn = WeaponTemplate(
     ],
 )
 
-sunset_reignites_the_dawn_eng = WeaponTemplate(
+sunset_reignites_the_dawn_eng = Template(
     patterns=[
         ('<br>', '<br>\n'),
     ],
@@ -101,7 +101,7 @@ sunset_reignites_the_dawn_eng = WeaponTemplate(
     ],
 )
 
-deathly_pact = WeaponTemplate(
+deathly_pact = Template(
     names=['урон', 'DMG'],
     sentences=[
         ['20:crit_dmg'],
@@ -114,7 +114,7 @@ deathly_pact = WeaponTemplate(
     ],
 )
 
-oppidan_ambush = WeaponTemplate(
+oppidan_ambush = Template(
     names=['урон'],
     sentences=[
         ['2:dmg_all'],
@@ -123,7 +123,7 @@ oppidan_ambush = WeaponTemplate(
     ],
 )
 
-oppidan_ambush_eng = WeaponTemplate(
+oppidan_ambush_eng = Template(
     names=['DMG'],
     sentences=[
         ['2:dmg_all', '20:text_percent_max'],
@@ -131,7 +131,7 @@ oppidan_ambush_eng = WeaponTemplate(
     ],
 )
 
-iwakura_succession = WeaponTemplate(
+iwakura_succession = Template(
     names=['семя наследия', 'Семя наследия', 'семян наследия'],
     sentences=[
         ['1:ignore'],
@@ -142,7 +142,7 @@ iwakura_succession = WeaponTemplate(
     ],
 )
 
-iwakura_succession_eng = WeaponTemplate(
+iwakura_succession_eng = Template(
     names=['Succession Seed', 'Succession Seeds'],
     sentences=[
         ['1:ignore'],
@@ -153,7 +153,7 @@ iwakura_succession_eng = WeaponTemplate(
     ],
 )
 
-strong_willed = WeaponTemplate(
+strong_willed = Template(
     names=['урон', 'обычной'],
     sentences=[
         ['12:dmg_normal'],
@@ -166,7 +166,7 @@ strong_willed = WeaponTemplate(
     ],
 )
 
-strong_willed_eng = WeaponTemplate(
+strong_willed_eng = Template(
     names=['DMG'],
     sentences=[
         ['12:dmg_normal'],
@@ -178,7 +178,7 @@ strong_willed_eng = WeaponTemplate(
     ],
 )
 
-the_cleansing_form = WeaponTemplate(
+the_cleansing_form = Template(
     names=['урон', 'DMG'],
     sentences=[
         ['16:hp_percent'],
@@ -191,7 +191,7 @@ the_cleansing_form = WeaponTemplate(
     ],
 )
 
-falcons_defiance_eng = WeaponTemplate(
+falcons_defiance_eng = Template(
     sentences=[
         ['20:atk_percent'],
         ['100:text_percent_hp', '200:text_percent_dmg'],
@@ -203,7 +203,7 @@ falcons_defiance_eng = WeaponTemplate(
     ],
 )
 
-falcons_defiance = WeaponTemplate(
+falcons_defiance = Template(
     sentences=[
         ['20:atk_percent'],
         [],
@@ -216,14 +216,14 @@ falcons_defiance = WeaponTemplate(
     ],
 )
 
-tupacs_grip_eng = WeaponTemplate(
+tupacs_grip_eng = Template(
     sentences=[
         ['40:text_percent_dmg'],
         ['15:ignore'],
     ],
 )
 
-tupacs_grip = WeaponTemplate(
+tupacs_grip = Template(
     sentences=[
         ['40:text_percent_dmg'],
         [],
@@ -231,7 +231,7 @@ tupacs_grip = WeaponTemplate(
     ],
 )
 
-the_moonring_sighted = WeaponTemplate(
+the_moonring_sighted = Template(
     sentences=[
         ['24:atk_percent', '12:ignore'],
         ['1:format{text_number_f=1|{value}}:ignore', '2:format{text_number_f=2|{value}}:ignore', 
@@ -246,7 +246,7 @@ the_moonring_sighted = WeaponTemplate(
     ],
 )
 
-the_moonring_sighted_eng = WeaponTemplate(
+the_moonring_sighted_eng = Template(
     sentences=[
         ['12:ignore', '24:atk_percent'],
         ['1:format{text_number_f=1|{value}}:ignore', '2:format{text_number_f=2|{value}}:ignore', 
@@ -261,7 +261,7 @@ the_moonring_sighted_eng = WeaponTemplate(
     ],
 )
 
-whitehills_bestowal = WeaponTemplate(
+whitehills_bestowal = Template(
     names=['энергия'],
     sentences=[
         ['12:ignore', '24:atk_percent'],
@@ -273,7 +273,7 @@ whitehills_bestowal = WeaponTemplate(
     ],
 )
 
-bane_of_flame_and_water = WeaponTemplate(
+bane_of_flame_and_water = Template(
     names=['урон', 'DMG'],
     patterns=[
         ('врагов', 'tab{enemy:врагов}'),
@@ -284,13 +284,13 @@ bane_of_flame_and_water = WeaponTemplate(
     ],
 )
 
-tales_of_the_tundra = WeaponTemplate(
+tales_of_the_tundra = Template(
     sentences=[
         ['3:ignore', '120:mastery'],
     ],
 )
 
-azure_skies = WeaponTemplate(
+azure_skies = Template(
     names=['обычной'],
     sentences=[
         ['6:ignore', '8:dmg_normal', '6:dmg_charged'],
@@ -298,7 +298,7 @@ azure_skies = WeaponTemplate(
     ],
 )
 
-azure_skies_eng = WeaponTemplate(
+azure_skies_eng = Template(
     sentences=[
         ['6:ignore', '8:dmg_normal', '6:dmg_charged'],
         ['3:ignore'],
@@ -306,7 +306,7 @@ azure_skies_eng = WeaponTemplate(
     ],
 )
 
-desert_watch = WeaponTemplate(
+desert_watch = Template(
     sentences=[
         ['20:atk_percent', '8:ignore'],
         ['20:atk_percent', '8:ignore'],
@@ -320,7 +320,7 @@ desert_watch = WeaponTemplate(
     ]
 )
 
-desert_watch_eng = WeaponTemplate(
+desert_watch_eng = Template(
     sentences=[
         ['20:atk_percent', '8:ignore'],
         ['20:atk_percent', '8:ignore'],
@@ -333,21 +333,21 @@ desert_watch_eng = WeaponTemplate(
     ]
 )
 
-bane_of_the_soft = WeaponTemplate(
+bane_of_the_soft = Template(
     names=['урон', 'DMG', 'слаймам', 'slimes'],
     sentences=[
         ['40:dmg_all'],
     ],
 )
 
-diffusing_boundary = WeaponTemplate(
+diffusing_boundary = Template(
     names=['обычной'],
     sentences=[
         ['20:dmg_normal', '8:crit_rate_normal'],
     ],
 )
 
-extinguishing_precept = WeaponTemplate(
+extinguishing_precept = Template(
     names=['урона всеми элементами', 'Совершенствование', 'Совершенствования', 'атаки', 'Consummation'],
     sentences=[
         ['12:dmg_pyro'],
@@ -362,7 +362,7 @@ extinguishing_precept = WeaponTemplate(
     ]
 )
 
-golden_blood_tide = WeaponTemplate(
+golden_blood_tide = Template(
     sentences=[
         ['16:atk_percent'],
         ['4:ignore', '16:dmg_normal', '14:dmg_charged'],
@@ -376,7 +376,7 @@ golden_blood_tide = WeaponTemplate(
     ]
 )
 
-golden_blood_tide_eng = WeaponTemplate(
+golden_blood_tide_eng = Template(
     sentences=[
         ['16:atk_percent'],
         ['16:dmg_normal', '14:dmg_charged', '4:ignore'],
@@ -391,7 +391,7 @@ golden_blood_tide_eng = WeaponTemplate(
     ]
 )
 
-spotless_heart = WeaponTemplate(
+spotless_heart = Template(
     names=['защиты', 'DMG'],
     sentences=[
         ['40:text_percent'],
@@ -399,21 +399,21 @@ spotless_heart = WeaponTemplate(
     ],
 )
 
-crag_chiseled_forge = WeaponTemplate(
+crag_chiseled_forge = Template(
     sentences=[
         ['40:mastery'],
         ['18:ignore', '2:ignore'],
     ],
 )
 
-crag_chiseled_forge_eng = WeaponTemplate(
+crag_chiseled_forge_eng = Template(
     sentences=[
         ['40:mastery', '18:ignore'],
         ['2:ignore'],
     ],
 )
 
-infusion_arrow = WeaponTemplate(
+infusion_arrow = Template(
     names=['обычной'],
     sentences=[
         ['4:atk_percent', '1.2:atk_speed_normal', '6:ignore'],
@@ -422,7 +422,7 @@ infusion_arrow = WeaponTemplate(
     ],
 )
 
-bane_of_water_and_ice = WeaponTemplate(
+bane_of_water_and_ice = Template(
     names=['урон', 'DMG'],
     patterns=[
         ('врагов', 'tab{enemy:врагов}'),
@@ -433,7 +433,7 @@ bane_of_water_and_ice = WeaponTemplate(
     ],
 )
 
-cloudfall_axiom = WeaponTemplate(
+cloudfall_axiom = Template(
     sentences=[
         ['28:dmg_plunge|28', '20:ignore'],
         ['2.5:text_decimal|0|2'],
@@ -446,7 +446,7 @@ cloudfall_axiom = WeaponTemplate(
     ]
 )
 
-cloudfall_axiom_eng = WeaponTemplate(
+cloudfall_axiom_eng = Template(
     sentences=[
         ['28:dmg_plunge|28', '20:ignore'],
         ['2.5:text_decimal|0|2'],
@@ -459,20 +459,20 @@ cloudfall_axiom_eng = WeaponTemplate(
     ]
 )
 
-infusion_needle = WeaponTemplate(
+infusion_needle = Template(
     names=['обычные'],
     sentences=[
         ['5:ignore', '20:text_percent'],
     ],
 )
 
-infusion_needle_eng = WeaponTemplate(
+infusion_needle_eng = Template(
     sentences=[
         ['20:text_percent', '5:ignore'],
     ],
 )
 
-ashen_suns_shadow = WeaponTemplate(
+ashen_suns_shadow = Template(
     sentences=[
         ['25:text_percent'],
         [],
@@ -488,7 +488,7 @@ ashen_suns_shadow = WeaponTemplate(
     ]
 )
 
-ashen_suns_shadow_eng = WeaponTemplate(
+ashen_suns_shadow_eng = Template(
     patterns=[
         ('; if the value', '\nif the value'),
     ],
@@ -505,13 +505,13 @@ ashen_suns_shadow_eng = WeaponTemplate(
     ]
 )
 
-overloaded = WeaponTemplate(
+overloaded = Template(
     sentences=[
         ['20:atk_percent', '12:ignore'],
     ],
 )
 
-gladiator = WeaponTemplate(
+gladiator = Template(
     names=[
         'защита',
     ],
@@ -531,7 +531,7 @@ gladiator = WeaponTemplate(
     extracted_names=[2, 3],
 )
 
-gladiator_eng = WeaponTemplate(
+gladiator_eng = Template(
     sentences=[
         ['2:ignore', '16:atk_percent', '16:def_percent'],
         ['2:ignore', '24:atk_percent'],
@@ -545,7 +545,7 @@ gladiator_eng = WeaponTemplate(
     extracted_names=[2, 3],
 )
 
-blunt_conclusion = WeaponTemplate(
+blunt_conclusion = Template(
     names=['Обычные'],
     sentences=[
         ['60:text_percent_dmg', '15:ignore'],
@@ -553,7 +553,7 @@ blunt_conclusion = WeaponTemplate(
     ],
 )
 
-blunt_conclusion_eng = WeaponTemplate(
+blunt_conclusion_eng = Template(
     sentences=[
         ['60:text_percent_dmg'],
         ['15:ignore'],
@@ -561,14 +561,14 @@ blunt_conclusion_eng = WeaponTemplate(
     ],
 )
 
-principle_of_equilibrium = WeaponTemplate(
+principle_of_equilibrium = Template(
     sentences=[
         ['8:text_number'],
         ['10:ignore'],
     ],
 )
 
-dodoventure = WeaponTemplate(
+dodoventure = Template(
     patterns=[
         (', а попадания', '\nПопадания'),
     ],
@@ -582,14 +582,14 @@ dodoventure = WeaponTemplate(
     ]
 )
 
-oath_of_qhapaq_nan = WeaponTemplate(
+oath_of_qhapaq_nan = Template(
     sentences=[
         ['16:dmg_skill', '8:ignore'],
         []
     ],
 )
 
-the_parting_refrain_rus = WeaponTemplate(
+the_parting_refrain_rus = Template(
     names=[
         'Талисман воспоминаний',
         'Талисмана воспоминаний',
@@ -615,7 +615,7 @@ the_parting_refrain_rus = WeaponTemplate(
     extracted_names=[2],
 )
 
-the_parting_refrain_eng = WeaponTemplate(
+the_parting_refrain_eng = Template(
     names=[
         'Sigils of Remembrance',
         'Sigil of Remembrance',
@@ -642,13 +642,13 @@ the_parting_refrain_eng = WeaponTemplate(
     extracted_names=[2],
 )
 
-rapids = WeaponTemplate(
+rapids = Template(
     sentences=[
         ['20:atk_percent', '12:ignore'],
     ],
 )
 
-byakuya_kougetsu = WeaponTemplate(
+byakuya_kougetsu = Template(
     names=['Энергию'],
     sentences=[
         ['10:healing', '1:normal_base_hp_percent'],
@@ -662,7 +662,7 @@ byakuya_kougetsu = WeaponTemplate(
     ]
 )
 
-byakuya_kougetsu_eng = WeaponTemplate(
+byakuya_kougetsu_eng = Template(
     sentences=[
         ['10:healing', '1:normal_base_hp_percent'],
         ['12:ignore', '0.6:'],
@@ -674,7 +674,7 @@ byakuya_kougetsu_eng = WeaponTemplate(
     ]
 )
 
-echo = WeaponTemplate(
+echo = Template(
     names=[
         'обычной', 'Око сознания', 'Bolt of Perception',
     ],
@@ -685,7 +685,7 @@ echo = WeaponTemplate(
     ],
 )
 
-windfall = WeaponTemplate(
+windfall = Template(
     names=[
         'Критические атаки', 'CRIT Hits', 'Elemental Particles', 'элементальные частицы',
     ],
@@ -695,13 +695,13 @@ windfall = WeaponTemplate(
     ],
 )
 
-undying_admiration = WeaponTemplate(
+undying_admiration = Template(
     sentences=[
         ['16:dmg_skill', '6:crit_rate_skill'],
     ],
 )
 
-gash = WeaponTemplate(
+gash = Template(
     names=[
         'урона'
     ],
@@ -711,7 +711,7 @@ gash = WeaponTemplate(
     ],
 )
 
-an_end_sublime = WeaponTemplate(
+an_end_sublime = Template(
     sentences=[
         ['12:atk_percent', '15:ignore', '25:ignore',],
         [],
@@ -726,7 +726,7 @@ an_end_sublime = WeaponTemplate(
     extracted_names=[2],
 )
 
-an_end_sublime_eng = WeaponTemplate(
+an_end_sublime_eng = Template(
     sentences=[
         ['12:atk_percent', '15:ignore', '25:ignore',],
         ['10:ignore', ],
@@ -740,21 +740,21 @@ an_end_sublime_eng = WeaponTemplate(
     extracted_names=[2],
 )
 
-mind_in_bloom = WeaponTemplate(
+mind_in_bloom = Template(
     sentences=[
         ['12:text_value', '15:ignore', '60:mastery',],
         ['15:ignore', ],
     ],
 )
 
-mind_in_bloom_eng = WeaponTemplate(
+mind_in_bloom_eng = Template(
     sentences=[
         ['12:text_value', '60:mastery', '15:ignore',],
         ['15:ignore', ],
     ],
 )
 
-ironbone = WeaponTemplate(
+ironbone = Template(
     sentences=[
         ['8:crit_rate_skill'],
         ['16:recharge', '5:ignore'],
@@ -765,7 +765,7 @@ ironbone = WeaponTemplate(
     ]
 )
 
-unfinished_masterpiece = WeaponTemplate(
+unfinished_masterpiece = Template(
     names=['бонус урона всеми элементами'],
     sentences=[
         ['8:dmg_pyro', '15:ignore', '24:ignore'],
@@ -781,7 +781,7 @@ unfinished_masterpiece = WeaponTemplate(
     ]
 )
 
-unfinished_masterpiece_eng = WeaponTemplate(
+unfinished_masterpiece_eng = Template(
     sentences=[
         ['8:dmg_pyro', '15:ignore', '24:ignore'],
         ['10:ignore'],
@@ -794,7 +794,7 @@ unfinished_masterpiece_eng = WeaponTemplate(
     ]
 )
 
-revolutionary_chorale_rus = WeaponTemplate(
+revolutionary_chorale_rus = Template(
     names=[
         'Талисман воодушевления',
         'Талисманы воодушевления',
@@ -822,7 +822,7 @@ revolutionary_chorale_rus = WeaponTemplate(
     extracted_names=[2],
 )
 
-revolutionary_chorale_eng = WeaponTemplate(
+revolutionary_chorale_eng = Template(
     names=[
         'Sigils of Rebellion',
         'Sigil of Rebellion',
@@ -847,33 +847,33 @@ revolutionary_chorale_eng = WeaponTemplate(
     extracted_names=[2],
 )
 
-heavy = WeaponTemplate(
+heavy = Template(
     sentences=[
         ['160:text_percent_dmg'],
         ['10:ignore'],
     ],
 )
 
-vigorous = WeaponTemplate(
+vigorous = Template(
     sentences=[
         ['14:crit_rate', '90:'],
     ],
 )
 
-vigorous_eng = WeaponTemplate(
+vigorous_eng = Template(
     sentences=[
         ['90:', '14:crit_rate'],
     ],
 )
 
-secret_wisdoms_favor = WeaponTemplate(
+secret_wisdoms_favor = Template(
     sentences=[
         ['40:mastery', '6:ignore'],
         ['2:ignore', '0.5:ignore'],
     ],
 )
 
-secret_wisdoms_favor_eng = WeaponTemplate(
+secret_wisdoms_favor_eng = Template(
     sentences=[
         ['40:mastery', '6:ignore'],
         ['2:ignore'],
@@ -881,7 +881,7 @@ secret_wisdoms_favor_eng = WeaponTemplate(
     ],
 )
 
-infusion_stinger = WeaponTemplate(
+infusion_stinger = Template(
     names=['весь наносимый урон', 'all DMG'],
     sentences=[
         ['6:dmg_all', '6:ignore'],
@@ -890,7 +890,7 @@ infusion_stinger = WeaponTemplate(
     ],
 )
 
-primordial_jade_regalia = WeaponTemplate(
+primordial_jade_regalia = Template(
     names=['Камня воли', 'создаёт щит'],
     sentences=[
         ['3:ignore', '2.5:ignore', '4.5:ignore', '0.3:text_percent|0|2', '1000:ignore'],
@@ -899,7 +899,7 @@ primordial_jade_regalia = WeaponTemplate(
     ],
 )
 
-primordial_jade_regalia_eng = WeaponTemplate(
+primordial_jade_regalia_eng = Template(
     names=['Primordial Jade Regalia', 'creating a shield'],
     sentences=[
         ['3:ignore', '4.5:ignore', '2.5:ignore', '0.3:text_percent|0|2', '1000:ignore', '12:text_percent_max'],
@@ -907,7 +907,7 @@ primordial_jade_regalia_eng = WeaponTemplate(
     ],
 )
 
-isshin_art_clarity = WeaponTemplate(
+isshin_art_clarity = Template(
     names=['Секущий ветер', 'Hewing Gale'],
     sentences=[
         ['180:text_percent', '15:atk_percent', '8:ignore'],
@@ -915,7 +915,7 @@ isshin_art_clarity = WeaponTemplate(
     ],
 )
 
-kagura_dance_of_the_sacred_sakura = WeaponTemplate(
+kagura_dance_of_the_sacred_sakura = Template(
     names=['Танец кагура'],
     sentences=[
         ['12:dmg_skill'],
@@ -928,7 +928,7 @@ kagura_dance_of_the_sacred_sakura = WeaponTemplate(
     ],
 )
 
-kagura_dance_of_the_sacred_sakura_eng = WeaponTemplate(
+kagura_dance_of_the_sacred_sakura_eng = Template(
     names=['Kagura Dance'],
     sentences=[
         ['12:dmg_skill', '16:ignore'],
@@ -941,7 +941,7 @@ kagura_dance_of_the_sacred_sakura_eng = WeaponTemplate(
     ],
 )
 
-whitemoon_bristle = WeaponTemplate(
+whitemoon_bristle = Template(
     names=['Лиственного выреза', 'Foliar Incision'],
     sentences=[
         ['4:crit_rate'],
@@ -955,7 +955,7 @@ whitemoon_bristle = WeaponTemplate(
     ],
 )
 
-aeon_wave = WeaponTemplate(
+aeon_wave = Template(
     sentences=[
         ['16:hp_percent'],
         ['14:dmg_charged', '4:ignore'],
@@ -970,7 +970,7 @@ aeon_wave = WeaponTemplate(
     ],
 )
 
-aeon_wave_eng = WeaponTemplate(
+aeon_wave_eng = Template(
     sentences=[
         ['16:hp_percent'],
         ['14:dmg_charged', '4:ignore'],
@@ -986,7 +986,7 @@ aeon_wave_eng = WeaponTemplate(
     ],
 )
 
-itinerant_hero = WeaponTemplate(
+itinerant_hero = Template(
     names=['урон', 'DMG'],
     sentences=[
         ['12:dmg_all'],
@@ -994,7 +994,7 @@ itinerant_hero = WeaponTemplate(
     ],
 )
 
-aqua_remembrance = WeaponTemplate(
+aqua_remembrance = Template(
     names=['Знойного лета'],
     sentences=[
         [],
@@ -1010,7 +1010,7 @@ aqua_remembrance = WeaponTemplate(
     ],
 )
 
-aqua_remembrance_eng = WeaponTemplate(
+aqua_remembrance_eng = Template(
     names=['Scorching Summer'],
     sentences=[
         ['20:hp_percent'],
@@ -1025,20 +1025,20 @@ aqua_remembrance_eng = WeaponTemplate(
     ],
 )
 
-arrowless_song = WeaponTemplate(
+arrowless_song = Template(
     sentences=[
         ['24:dmg_burst'],
     ],
 )
 
-archers_message = WeaponTemplate(
+archers_message = Template(
     sentences=[
         ['100:text_percent_dmg'],
         ['10:ignore'],
     ],
 )
 
-at_the_end_of_the_beast_paths = WeaponTemplate(
+at_the_end_of_the_beast_paths = Template(
     names=['Непрестанной охоты'],
     sentences=[
         ['12:dmg_anemo'],
@@ -1052,7 +1052,7 @@ at_the_end_of_the_beast_paths = WeaponTemplate(
     ],
 )
 
-at_the_end_of_the_beast_paths_eng = WeaponTemplate(
+at_the_end_of_the_beast_paths_eng = Template(
     names=['Tireless Hunt'],
     sentences=[
         ['12:dmg_anemo'],
@@ -1067,7 +1067,7 @@ at_the_end_of_the_beast_paths_eng = WeaponTemplate(
     ],
 )
 
-bane_of_fire_and_thunder = WeaponTemplate(
+bane_of_fire_and_thunder = Template(
     names=['DMG', 'урон'],
     patterns=[
         ('врагов', 'tab{enemy:врагов}'),
@@ -1078,7 +1078,7 @@ bane_of_fire_and_thunder = WeaponTemplate(
     ],
 )
 
-bane_of_storm_and_tide = WeaponTemplate(
+bane_of_storm_and_tide = Template(
     names=['DMG', 'урон'],
     patterns=[
         ('врагов', 'tab{enemy:врагов}'),
@@ -1089,7 +1089,7 @@ bane_of_storm_and_tide = WeaponTemplate(
     ],
 )
 
-benthic_pulse = WeaponTemplate(
+benthic_pulse = Template(
     names=['DMG', 'урон', 'лечения', 'healed'],
     sentences=[
         ['16:dmg_all', '8:ignore'],
@@ -1097,7 +1097,7 @@ benthic_pulse = WeaponTemplate(
     ],
 )
 
-black_wing = WeaponTemplate(
+black_wing = Template(
     names=['обычной',],
     sentences=[
         ['8:crit_rate', '12:atk_speed_normal'],
@@ -1110,7 +1110,7 @@ black_wing = WeaponTemplate(
     ]
 )
 
-boundless_blessing = WeaponTemplate(
+boundless_blessing = Template(
     sentences=[
         ['10:ignore'],
         ['8:dmg_pyro', '4:ignore'],
@@ -1119,7 +1119,7 @@ boundless_blessing = WeaponTemplate(
     ],
 )
 
-bright_dawn_overture = WeaponTemplate(
+bright_dawn_overture = Template(
     sentences=[
         ['15:atk_percent'],
         ['18:dmg_all'],
@@ -1134,7 +1134,7 @@ bright_dawn_overture = WeaponTemplate(
     ],
 )
 
-bright_dawn_overture_eng = WeaponTemplate(
+bright_dawn_overture_eng = Template(
     sentences=[
         ['15:atk_percent'],
         ['18:dmg_all'],
@@ -1149,7 +1149,7 @@ bright_dawn_overture_eng = WeaponTemplate(
     ],
 )
 
-brocade_bloom_shrine_sword = WeaponTemplate(
+brocade_bloom_shrine_sword = Template(
     names=['защита'],
     sentences=[
         ['16:dmg_normal', '24:dmg_skill'],
@@ -1163,7 +1163,7 @@ brocade_bloom_shrine_sword = WeaponTemplate(
     ],
 )
 
-bygone_azure_teardrop = WeaponTemplate(
+bygone_azure_teardrop = Template(
     sentences=[
         ['10:atk_speed_normal'],
         ['4.8:dmg_normal','14:ignore'],
@@ -1178,7 +1178,7 @@ bygone_azure_teardrop = WeaponTemplate(
     ],
 )
 
-chord = WeaponTemplate(
+chord = Template(
     names=['обычной', 'музыкальную ноту', 'нот', 'сила музыки', 'Ноты', 'ноту'],
     sentences=[
         [],
@@ -1188,7 +1188,7 @@ chord = WeaponTemplate(
     ],
 )
 
-chord_eng = WeaponTemplate(
+chord_eng = Template(
     names=['Harmonic', 'Harmonics', 'power of music'],
     sentences=[
         [],
@@ -1197,7 +1197,7 @@ chord_eng = WeaponTemplate(
     ],
 )
 
-composed = WeaponTemplate(
+composed = Template(
     names=['урон', 'damaging'],
     sentences=[
         ['40:text_percent'],
@@ -1205,7 +1205,7 @@ composed = WeaponTemplate(
     ],
 )
 
-courage = WeaponTemplate(
+courage = Template(
     names=['обычной'],
     sentences=[
         ['6:atk_percent', '6:ignore'],
@@ -1214,7 +1214,7 @@ courage = WeaponTemplate(
     ],
 )
 
-crush = WeaponTemplate(
+crush = Template(
     names=['обычной'],
     sentences=[
         ['50:text_percent_chance', '240:text_percent_dmg'],
@@ -1222,13 +1222,13 @@ crush = WeaponTemplate(
     ],
 )
 
-cull_the_weak = WeaponTemplate(
+cull_the_weak = Template(
     sentences=[
         ['8:text_percent'],
     ],
 )
 
-dawn_and_dusk_by_the_lake = WeaponTemplate(
+dawn_and_dusk_by_the_lake = Template(
     sentences=[
         ['8:dmg_skill', '6:ignore'],
         ['1:ignore', '0.2:ignore', '3:ignore'],
@@ -1243,7 +1243,7 @@ dawn_and_dusk_by_the_lake = WeaponTemplate(
     ],
 )
 
-dawn_and_dusk_by_the_lake_eng = WeaponTemplate(
+dawn_and_dusk_by_the_lake_eng = Template(
     sentences=[
         ['8:dmg_skill', '6:ignore'],
         ['3:ignore'],
@@ -1259,7 +1259,7 @@ dawn_and_dusk_by_the_lake_eng = WeaponTemplate(
     ],
 )
 
-daylights_augury = WeaponTemplate(
+daylights_augury = Template(
     names=['Звезда полярной ночи'],
     patterns=[
         ('1/2/3/4 ур.', 'действии'),
@@ -1277,7 +1277,7 @@ daylights_augury = WeaponTemplate(
     ],
 )
 
-daylights_augury_eng = WeaponTemplate(
+daylights_augury_eng = Template(
     names=['Ashen Nightstar'],
     patterns=[
         ('1/2/3/4 stacks', 'effect'),
@@ -1295,7 +1295,7 @@ daylights_augury_eng = WeaponTemplate(
     ],
 )
 
-debut = WeaponTemplate(
+debut = Template(
     patterns=[
         ('; ', '.\n'),
         (': у', '\nУ'),
@@ -1323,7 +1323,7 @@ debut = WeaponTemplate(
     extracted_names=[4, 5, 6],
 )
 
-descension = WeaponTemplate(
+descension = Template(
     names=[
         'путешественник',
         'Мечом нисхождения',
@@ -1345,7 +1345,7 @@ descension = WeaponTemplate(
     ],
 )
 
-descension_eng = WeaponTemplate(
+descension_eng = Template(
     names=[
         'Traveler',
         'Sword of Descension',
@@ -1367,7 +1367,7 @@ descension_eng = WeaponTemplate(
     ],
 )
 
-desert_pavilion = WeaponTemplate(
+desert_pavilion = Template(
     sentences=[
         ['10:ignore', '24:text_percent|24', '12:ignore'],
         ['30:ignore'],
@@ -1381,7 +1381,7 @@ desert_pavilion = WeaponTemplate(
     extracted_names=[1],
 )
 
-desert_pavilion_eng = WeaponTemplate(
+desert_pavilion_eng = Template(
     sentences=[
         ['10:ignore', '24:text_percent|24', '12:ignore', '30:ignore'],
         [],
@@ -1394,7 +1394,7 @@ desert_pavilion_eng = WeaponTemplate(
     extracted_names=[1],
 )
 
-wildling_nightstar = WeaponTemplate(
+wildling_nightstar = Template(
     sentences=[
         ['10:ignore', '24:text_percent', '12:ignore'],
         ['30:ignore'],
@@ -1403,7 +1403,7 @@ wildling_nightstar = WeaponTemplate(
     ],
 )
 
-wildling_nightstar_eng = WeaponTemplate(
+wildling_nightstar_eng = Template(
     sentences=[
         ['10:ignore', '24:text_percent', '12:ignore', '30:ignore'],
         [],
@@ -1411,13 +1411,13 @@ wildling_nightstar_eng = WeaponTemplate(
     ],
 )
 
-determination = WeaponTemplate(
+determination = Template(
     sentences=[
         ['12:atk_percent', '15:ignore'],
     ],
 )
 
-dryass_nocturne = WeaponTemplate(
+dryass_nocturne = Template(
     names=[
         'Снадобья'
     ],
@@ -1439,7 +1439,7 @@ dryass_nocturne = WeaponTemplate(
     ],
 )
 
-dryass_nocturne_eng = WeaponTemplate(
+dryass_nocturne_eng = Template(
     names=[
         'Remedy'
     ],
@@ -1460,7 +1460,7 @@ dryass_nocturne_eng = WeaponTemplate(
     ],
 )
 
-eagle_spear_of_justice = WeaponTemplate(
+eagle_spear_of_justice = Template(
     names=['урон'],
     sentences=[
         ['3.2:atk_percent', '6:ignore'],
@@ -1473,7 +1473,7 @@ eagle_spear_of_justice = WeaponTemplate(
     ],
 )
 
-eagle_spear_of_justice_eng = WeaponTemplate(
+eagle_spear_of_justice_eng = Template(
     names=['DMG'],
     sentences=[
         ['3.2:atk_percent', '6:ignore'],
@@ -1487,7 +1487,7 @@ eagle_spear_of_justice_eng = WeaponTemplate(
     ],
 )
 
-echoing_ballad = WeaponTemplate(
+echoing_ballad = Template(
     sentences=[
         ['20:crit_dmg'],
         ['60:text_percent_chance', '125:text_percent_dmg'],
@@ -1499,20 +1499,20 @@ echoing_ballad = WeaponTemplate(
     ],
 )
 
-energy_shower = WeaponTemplate(
+energy_shower = Template(
     sentences=[
         ['1:text_percent_hp|1|2'],
     ],
 )
 
-ever_changing = WeaponTemplate(
+ever_changing = Template(
     sentences=[
         ['14:text_percent', '5:ignore'],
         ['20:atk_percent', '5:ignore'],
     ],
 )
 
-evernight_duet = WeaponTemplate(
+evernight_duet = Template(
     patterns=[
         (', а п', '\nП'),
     ],
@@ -1526,7 +1526,7 @@ evernight_duet = WeaponTemplate(
     ],
 )
 
-fangs_flying_to_and_fro = WeaponTemplate(
+fangs_flying_to_and_fro = Template(
     sentences=[
         ['15:ignore'],
         [],
@@ -1543,7 +1543,7 @@ fangs_flying_to_and_fro = WeaponTemplate(
     ],
 )
 
-fangs_flying_to_and_fro_eng = WeaponTemplate(
+fangs_flying_to_and_fro_eng = Template(
     sentences=[
         ['15:ignore'],
         ['10:ignore','20:hp_percent'],
@@ -1557,7 +1557,7 @@ fangs_flying_to_and_fro_eng = WeaponTemplate(
     ],
 )
 
-focus = WeaponTemplate(
+focus = Template(
     names=[
         'урона',
         'damaging',
@@ -1571,7 +1571,7 @@ focus = WeaponTemplate(
     ],
 )
 
-forest_sanctuary = WeaponTemplate(
+forest_sanctuary = Template(
     names=['Семя сознания', 'Семени сознания'],
     sentences=[
         ['10:ignore'],
@@ -1582,7 +1582,7 @@ forest_sanctuary = WeaponTemplate(
     ],
 )
 
-forest_sanctuary_eng = WeaponTemplate(
+forest_sanctuary_eng = Template(
     names=['Leaf of Consciousness', 'Leaf'],
     sentences=[
         ['10:ignore'],
@@ -1593,7 +1593,7 @@ forest_sanctuary_eng = WeaponTemplate(
     ],
 )
 
-frost_burial = WeaponTemplate(
+frost_burial = Template(
     names=['обычной'],
     patterns=[
         ('противник', 'tab{enemy:противник}'),
@@ -1609,7 +1609,7 @@ frost_burial = WeaponTemplate(
     ],
 )
 
-frost_burial_eng = WeaponTemplate(
+frost_burial_eng = Template(
     patterns=[
         ('Opponents', '\ntab{enemy:Opponents}'),
     ],
@@ -1624,7 +1624,7 @@ frost_burial_eng = WeaponTemplate(
     ],
 )
 
-full_circle = WeaponTemplate(
+full_circle = Template(
     names=['Роста и убыли'],
     sentences=[
         ['24:mastery', '5:atk_percent'],
@@ -1634,7 +1634,7 @@ full_circle = WeaponTemplate(
     ],
 )
 
-full_circle_eng = WeaponTemplate(
+full_circle_eng = Template(
     names=['Wax and Wane'],
     sentences=[
         ['24:mastery', '5:atk_percent'],
@@ -1645,7 +1645,7 @@ full_circle_eng = WeaponTemplate(
     ],
 )
 
-full_draw = WeaponTemplate(
+full_draw = Template(
     sentences=[
         ['16:dmg_normal', '12:dmg_charged'],
         ['100:', '100:'],
@@ -1656,27 +1656,27 @@ full_draw = WeaponTemplate(
     ],
 )
 
-gilding = WeaponTemplate(
+gilding = Template(
     sentences=[
         ['6:ignore', '4:text_decimal', '2:ignore', '4:text_percent', '2:ignore'],
     ],
 )
 
-gilding_eng = WeaponTemplate(
+gilding_eng = Template(
     sentences=[
         ['4:text_decimal', '2:ignore', '6:ignore'],
         ['4:text_percent', '2:ignore'],
     ],
 )
 
-gokadaiou_otogibanashi = WeaponTemplate(
+gokadaiou_otogibanashi = Template(
     names=['Защита', 'обычных', 'защиты'],
     sentences=[
         ['28:def_percent', '40:normal_base_def_percent'],
     ],
 )
 
-gokadaiou_otogibanashi_eng = WeaponTemplate(
+gokadaiou_otogibanashi_eng = Template(
     names=['Защита', 'обычных', 'защиты'],
     sentences=[
         ['28:def_percent'],
@@ -1684,7 +1684,7 @@ gokadaiou_otogibanashi_eng = WeaponTemplate(
     ],
 )
 
-golden_majesty = WeaponTemplate(
+golden_majesty = Template(
     names=['защитой щита'],
     sentences=[
         ['20:shield'],
@@ -1699,7 +1699,7 @@ golden_majesty = WeaponTemplate(
     ]
 )
 
-golden_majesty_eng = WeaponTemplate(
+golden_majesty_eng = Template(
     names=['protected by a shield'],
     sentences=[
         ['20:shield'],
@@ -1715,13 +1715,13 @@ golden_majesty_eng = WeaponTemplate(
     ]
 )
 
-guerilla_tactics = WeaponTemplate(
+guerilla_tactics = Template(
     sentences=[
         ['12:atk_percent', '15:ignore'],
     ],
 )
 
-heat_haze_at_horizons_end = WeaponTemplate(
+heat_haze_at_horizons_end = Template(
     names=['Сном алых песков', 'атаки', 'Dream of the Scarlet Sands'],
     sentences=[
         ['52:text_percent'],
@@ -1734,7 +1734,7 @@ heat_haze_at_horizons_end = WeaponTemplate(
     ],
 )
 
-heros_blade = WeaponTemplate(
+heros_blade = Template(
     names=['архэ', 'Меча Нарциссенкрейца', 'пневмы', 'усии', 'Arkhe', 'Pneuma', 'Ousia', 'Sword of Narzissenkreuz'],
     replace={'name{Sword}':'Sword'},
     sentences=[
@@ -1744,7 +1744,7 @@ heros_blade = WeaponTemplate(
     ],
 )
 
-honed_flow = WeaponTemplate(
+honed_flow = Template(
     names=['урона всеми элементами', 'Волны-шипа'],
     sentences=[
         ['12:dmg_pyro'],
@@ -1762,7 +1762,7 @@ honed_flow = WeaponTemplate(
     extracted_names=[2],
 )
 
-honed_flow_eng = WeaponTemplate(
+honed_flow_eng = Template(
     names=['Wavespike'],
     sentences=[
         ['12:dmg_pyro'],
@@ -1779,7 +1779,7 @@ honed_flow_eng = WeaponTemplate(
     extracted_names=[2],
 )
 
-inflorescence_unattainable = WeaponTemplate(
+inflorescence_unattainable = Template(
     sentences=[
         ['15:text_percent'],
         ['6:dmg_charged', '0.5:ignore'],
@@ -1791,7 +1791,7 @@ inflorescence_unattainable = WeaponTemplate(
     ]
 )
 
-infusion_blade = WeaponTemplate(
+infusion_blade = Template(
     sentences=[
         ['6:atk_percent', '6:ignore'],
         ['4:ignore'],
@@ -1799,7 +1799,7 @@ infusion_blade = WeaponTemplate(
     ],
 )
 
-infusion_blade_eng = WeaponTemplate(
+infusion_blade_eng = Template(
     sentences=[
         ['6:atk_percent', '6:ignore'],
         ['4:ignore'],
@@ -1807,27 +1807,27 @@ infusion_blade_eng = WeaponTemplate(
     ],
 )
 
-infusion_scroll = WeaponTemplate(
+infusion_scroll = Template(
     sentences=[
         ['10:ignore', '8:dmg_pyro'],
         ['2:ignore'],
     ],
 )
 
-infusion_scroll_eng = WeaponTemplate(
+infusion_scroll_eng = Template(
     sentences=[
         ['8:dmg_pyro', '10:ignore'],
         ['2:ignore'],
     ],
 )
 
-journey = WeaponTemplate(
+journey = Template(
     sentences=[
         ['1:text_percent_hp|1|2'],
     ],
 )
 
-justice = WeaponTemplate(
+justice = Template(
     names=['DMG'],
     sentences=[
         ['20:dmg_normal'],
@@ -1836,14 +1836,14 @@ justice = WeaponTemplate(
     ],
 )
 
-magic_affinity = WeaponTemplate(
+magic_affinity = Template(
     sentences=[
         ['8:dmg_normal', '12:ignore'],
         ['2:ignore'],
     ],
 )
 
-many_oaths_of_dawn_and_dusk = WeaponTemplate(
+many_oaths_of_dawn_and_dusk = Template(
     names=['Печать', 'Печати'],
     sentences=[
         ['20:atk_percent'],
@@ -1858,7 +1858,7 @@ many_oaths_of_dawn_and_dusk = WeaponTemplate(
     ],
 )
 
-many_oaths_of_dawn_and_dusk_eng = WeaponTemplate(
+many_oaths_of_dawn_and_dusk_eng = Template(
     names=['Seal', 'Seals'],
     sentences=[
         ['20:atk_percent'],
@@ -1872,7 +1872,7 @@ many_oaths_of_dawn_and_dusk_eng = WeaponTemplate(
     ],
 )
 
-masons_ditty = WeaponTemplate(
+masons_ditty = Template(
     names=['Меткой единства', 'Меток', 'Метки', 'Отпора', 'Метку', 'Метки единства'],
     sentences=[
         ['30:ignore'],
@@ -1883,7 +1883,7 @@ masons_ditty = WeaponTemplate(
     ],
 )
 
-masons_ditty_eng = WeaponTemplate(
+masons_ditty_eng = Template(
     names=["Unity's Symbol", 'Symbols', 'Struggle'],
     sentences=[
         ['30:ignore', '3:ignore'],
@@ -1893,7 +1893,7 @@ masons_ditty_eng = WeaponTemplate(
     ],
 )
 
-melussistance = WeaponTemplate(
+melussistance = Template(
     sentences=[
         ['12:atk_percent'],
         ['12:text_percent'],
@@ -1904,7 +1904,7 @@ melussistance = WeaponTemplate(
     ],
 )
 
-jade_circulation = WeaponTemplate(
+jade_circulation = Template(
     sentences=[
         ['5:ignore'],
         ['32:hp_percent', '40:mastery'],
@@ -1912,14 +1912,14 @@ jade_circulation = WeaponTemplate(
     ],
 )
 
-jade_circulation_eng = WeaponTemplate(
+jade_circulation_eng = Template(
     sentences=[
         ['5:ignore', '32:hp_percent', '40:mastery'],
         ['10:ignore']
     ],
 )
 
-labyrinth_lords_instruction = WeaponTemplate(
+labyrinth_lords_instruction = Template(
     names=['Наставлений лесов'],
     sentences=[
         ['60:mastery', '12:ignore'],
@@ -1929,7 +1929,7 @@ labyrinth_lords_instruction = WeaponTemplate(
     ],
 )
 
-labyrinth_lords_instruction_eng = WeaponTemplate(
+labyrinth_lords_instruction_eng = Template(
     names=['Teachings of the Forest'],
     sentences=[
         ['60:mastery', '12:ignore'],
@@ -1939,7 +1939,7 @@ labyrinth_lords_instruction_eng = WeaponTemplate(
     ],
 )
 
-lithic_axiom_unity = WeaponTemplate(
+lithic_axiom_unity = Template(
     replace={'4':'4 (%{weapon_lithic_stacks})'},
     sentences=[
         ['7:atk_percent', '3:crit_rate'],
@@ -1947,7 +1947,7 @@ lithic_axiom_unity = WeaponTemplate(
     ],
 )
 
-mistsplitters_edge = WeaponTemplate(
+mistsplitters_edge = Template(
     replace={
         ': ': ':<br>•',
         '; ': '<br>•',
@@ -1968,7 +1968,7 @@ mistsplitters_edge = WeaponTemplate(
     ],
 )
 
-mistsplitters_edge_eng = WeaponTemplate(
+mistsplitters_edge_eng = Template(
     replace={
         ': ': ':<br>•',
         '; ': '<br>•',
@@ -1990,7 +1990,7 @@ mistsplitters_edge_eng = WeaponTemplate(
     ],
 )
 
-net_snapper = WeaponTemplate(
+net_snapper = Template(
     names=['Плывущего по течению'],
     sentences=[
         ['80:text_percent_dmg'],
@@ -1999,7 +1999,7 @@ net_snapper = WeaponTemplate(
     ],
 )
 
-net_snapper_eng = WeaponTemplate(
+net_snapper_eng = Template(
     names=['Flowrider'],
     sentences=[
         ['80:text_percent_dmg'],
@@ -2009,7 +2009,7 @@ net_snapper_eng = WeaponTemplate(
     ],
 )
 
-bathhouses_hawks_and_narukami = WeaponTemplate(
+bathhouses_hawks_and_narukami = Template(
     sentences=[
         ['6:ignore', '120:mastery'],
         ['9:ignore', '96:mastery'],
@@ -2022,7 +2022,7 @@ bathhouses_hawks_and_narukami = WeaponTemplate(
     ],
 )
 
-bathhouses_hawks_and_narukami_eng = WeaponTemplate(
+bathhouses_hawks_and_narukami_eng = Template(
     sentences=[
         ['120:mastery', '6:ignore', ],
         ['96:mastery', '9:ignore', ],
@@ -2035,7 +2035,7 @@ bathhouses_hawks_and_narukami_eng = WeaponTemplate(
     ],
 )
 
-northwind_wolf = WeaponTemplate(
+northwind_wolf = Template(
     sentences=[
         ['16:dmg_skill', ],
         ['2:crit_rate_skill', ],
@@ -2050,7 +2050,7 @@ northwind_wolf = WeaponTemplate(
     ],
 )
 
-northwind_wolf_eng = WeaponTemplate(
+northwind_wolf_eng = Template(
     sentences=[
         ['16:dmg_skill', ],
         ['2:crit_rate_skill', ],
@@ -2064,7 +2064,7 @@ northwind_wolf_eng = WeaponTemplate(
     ],
 )
 
-oceanic_victory = WeaponTemplate(
+oceanic_victory = Template(
     names=['Титанический тунец', 'huge onrush of tuna'],
     sentences=[
         ['12:dmg_burst', ],
@@ -2073,7 +2073,7 @@ oceanic_victory = WeaponTemplate(
     ],
 )
 
-offering_unto_wind_and_sun = WeaponTemplate(
+offering_unto_wind_and_sun = Template(
     names=['Зеркала ночи', 'Mirror of Night'],
     sentences=[
         ['100:mastery', ],
@@ -2086,7 +2086,7 @@ offering_unto_wind_and_sun = WeaponTemplate(
     ],
 )
 
-parsifal_the_great = WeaponTemplate(
+parsifal_the_great = Template(
     names=['Уловки', 'Актёрского мастерства'],
     sentences=[
         ['16:dmg_charged', ],
@@ -2115,7 +2115,7 @@ parsifal_the_great = WeaponTemplate(
     extracted_names=[3, 4],
 )
 
-parsifal_the_great_eng = WeaponTemplate(
+parsifal_the_great_eng = Template(
     sentences=[
         ['16:dmg_charged', ],
         ['1:ignore'],
@@ -2143,13 +2143,13 @@ parsifal_the_great_eng = WeaponTemplate(
     extracted_names=[3, 4],
 )
 
-people_of_the_faltering_light = WeaponTemplate(
+people_of_the_faltering_light = Template(
     sentences=[
         ['24:recharge', '10:ignore'],
     ],
 )
 
-press_the_advantage = WeaponTemplate(
+press_the_advantage = Template(
     sentences=[
         ['12:atk_percent'],
         ['30:ignore'],
@@ -2158,14 +2158,14 @@ press_the_advantage = WeaponTemplate(
     ],
 )
 
-press_the_advantage_eng = WeaponTemplate(
+press_the_advantage_eng = Template(
     sentences=[
         ['12:atk_percent', '30:ignore'],
         ['3:ignore'],
     ],
 )
 
-protectors_virtue = WeaponTemplate(
+protectors_virtue = Template(
     names=['атаки'],
     sentences=[
         ['20:hp_percent'],
@@ -2174,14 +2174,14 @@ protectors_virtue = WeaponTemplate(
     ],
 )
 
-protectors_virtue_eng = WeaponTemplate(
+protectors_virtue_eng = Template(
     sentences=[
         ['20:hp_percent'],
         ['1.2:text_percent', ],
     ],
 )
 
-purifying_crown = WeaponTemplate(
+purifying_crown = Template(
     names=['Электризующего эдикта', 'Electrifying Edict'],
     sentences=[
         ['24:atk_percent', '20:ignore'],
@@ -2193,7 +2193,7 @@ purifying_crown = WeaponTemplate(
     ],
 )
 
-falling_rainbows_wish = WeaponTemplate(
+falling_rainbows_wish = Template(
     names=['Первых цветов зари', 'Сияния сумерек'],
     sentences=[
         ['28:atk_percent'],
@@ -2211,7 +2211,7 @@ falling_rainbows_wish = WeaponTemplate(
     extracted_names=[3, 4],
 )
 
-falling_rainbows_wish_eng = WeaponTemplate(
+falling_rainbows_wish_eng = Template(
     sentences=[
         ['28:atk_percent'],
         ['28:crit_dmg_plunge'],
@@ -2228,7 +2228,7 @@ falling_rainbows_wish_eng = WeaponTemplate(
     extracted_names=[3, 4],
 )
 
-rebellious_guardian = WeaponTemplate(
+rebellious_guardian = Template(
     names=['защитой щита', 'урон', 'щит'],
     sentences=[
         ['10:ignore', '20:text_percent_hp'],
@@ -2242,7 +2242,7 @@ rebellious_guardian = WeaponTemplate(
     ],
 )
 
-rebellious_guardian_eng = WeaponTemplate(
+rebellious_guardian_eng = Template(
     names=['protected by the shield', 'shield', 'DMG'],
     sentences=[
         ['20:text_percent_hp'],
@@ -2255,7 +2255,7 @@ rebellious_guardian_eng = WeaponTemplate(
     ],
 )
 
-rebels_banner_hymn_rus = WeaponTemplate(
+rebels_banner_hymn_rus = Template(
     names=['Печать шёпота', 'Тысячелетней симфонии', 'Печати шёпота'],
     replace={'сек. «Тысячелетняя симфония: Гимн знамени» у':'сек. У'},
     sentences=[
@@ -2275,7 +2275,7 @@ rebels_banner_hymn_rus = WeaponTemplate(
     extracted_names=[2],
 )
 
-rebels_banner_hymn_eng = WeaponTemplate(
+rebels_banner_hymn_eng = Template(
     names=['Millennial Movement', 'Sigils of Whispers'],
     replace={'12s. "Millennial Movement: Banner-Hymn" i':'12s. I'},
     sentences=[
@@ -2295,7 +2295,7 @@ rebels_banner_hymn_eng = WeaponTemplate(
     extracted_names=[2],
 )
 
-reckless_cinnabar = WeaponTemplate(
+reckless_cinnabar = Template(
     sentences=[
         ['20:hp_percent'],
         ['0.8:text_percent'],
@@ -2309,7 +2309,7 @@ reckless_cinnabar = WeaponTemplate(
     ],
 )
 
-reckless_cinnabar_eng = WeaponTemplate(
+reckless_cinnabar_eng = Template(
     sentences=[
         ['20:hp_percent'],
         ['0.8:text_percent'],
@@ -2321,7 +2321,7 @@ reckless_cinnabar_eng = WeaponTemplate(
     ],
 )
 
-rule_by_thunder = WeaponTemplate(
+rule_by_thunder = Template(
     names=['Громовой эмблемы'],
     patterns=[
         ('12%, 24% или 40%', '40%'),
@@ -2343,7 +2343,7 @@ rule_by_thunder = WeaponTemplate(
     ],
 )
 
-rule_by_thunder_eng = WeaponTemplate(
+rule_by_thunder_eng = Template(
     names=['Thunder Emblem'],
     patterns=[
         ('12/24/40%', '40%'),
@@ -2366,13 +2366,13 @@ rule_by_thunder_eng = WeaponTemplate(
     ],
 )
 
-rapid_firing = WeaponTemplate(
+rapid_firing = Template(
     sentences=[
         ['40:dmg_normal', '10:text_percent'],
     ],
 )
 
-samurai_conduct = WeaponTemplate(
+samurai_conduct = Template(
     names=['энергии'],
     sentences=[
         ['6:dmg_skill'],
@@ -2386,7 +2386,7 @@ samurai_conduct = WeaponTemplate(
     ],
 )
 
-sea_shanty = WeaponTemplate(
+sea_shanty = Template(
     names=['Символом стойкости', 'Символы', 'Символов', 'Воодушевления', 'Символ'],
     sentences=[
         ['30:ignore'],
@@ -2397,7 +2397,7 @@ sea_shanty = WeaponTemplate(
     ],
 )
 
-sea_shanty_eng = WeaponTemplate(
+sea_shanty_eng = Template(
     names=['Stoic\'s Symbol', 'Symbols', 'Symbol', 'Roused'],
     sentences=[
         ['30:ignore', '3:ignore'],
@@ -2407,7 +2407,7 @@ sea_shanty_eng = WeaponTemplate(
     ],
 )
 
-seasoned_symphony = WeaponTemplate(
+seasoned_symphony = Template(
     names=['Сладких эхо', 'Sweet Echoes'],
     sentences=[
         ['12:atk_percent'],
@@ -2422,19 +2422,19 @@ seasoned_symphony = WeaponTemplate(
     ],
 )
 
-shanty = WeaponTemplate(
+shanty = Template(
     sentences=[
         ['16:dmg_burst', '6:crit_rate_burst'],
     ],
 )
 
-sharp = WeaponTemplate(
+sharp = Template(
     sentences=[
         ['24:dmg_normal'],
     ],
 )
 
-precise = WeaponTemplate(
+precise = Template(
     replace={
         '.': '.<br>Попадание в слабое место включается на вкладке tab{enemy:Противник}.'},
     sentences=[
@@ -2442,7 +2442,7 @@ precise = WeaponTemplate(
     ],
 )
 
-precise_eng = WeaponTemplate(
+precise_eng = Template(
     replace={
         '.': '.<br>Shots to weak spots can be activated at tab{enemy:Enemy} tab.'},
     sentences=[
@@ -2450,7 +2450,7 @@ precise_eng = WeaponTemplate(
     ],
 )
 
-silent_trigger = WeaponTemplate(
+silent_trigger = Template(
     sentences=[
         ['40:text_percent_dmg'],
         [],
@@ -2458,14 +2458,14 @@ silent_trigger = WeaponTemplate(
     ],
 )
 
-silent_trigger_eng = WeaponTemplate(
+silent_trigger_eng = Template(
     sentences=[
         ['40:text_percent_dmg'],
         ['15:ignore'],
     ],
 )
 
-sky_piercing_fang = WeaponTemplate(
+sky_piercing_fang = Template(
     sentences=[
         ['4:crit_rate'],
         ['10:atk_speed_normal', '20:text_percent'],
@@ -2477,7 +2477,7 @@ sky_piercing_fang = WeaponTemplate(
     ],
 )
 
-sky_piercing_fang_eng = WeaponTemplate(
+sky_piercing_fang_eng = Template(
     sentences=[
         ['4:crit_rate'],
         ['10:move_speed', '10:atk_speed_normal', '20:text_percent'],
@@ -2489,21 +2489,21 @@ sky_piercing_fang_eng = WeaponTemplate(
     ],
 )
 
-slingshot = WeaponTemplate(
+slingshot = Template(
     sentences=[
         ['0.3:ignore', '36:text_percent'],
         ['10:'],
     ],
 )
 
-smashed_stone = WeaponTemplate(
+smashed_stone = Template(
     sentences=[
         ['4:atk_percent', '6:ignore'],
         ['4:ignore', '0.3:ignore'],
     ],
 )
 
-smashed_stone_eng = WeaponTemplate(
+smashed_stone_eng = Template(
     sentences=[
         ['4:atk_percent', '6:ignore'],
         ['4:ignore'],
@@ -2511,7 +2511,7 @@ smashed_stone_eng = WeaponTemplate(
     ],
 )
 
-solar_shine = WeaponTemplate(
+solar_shine = Template(
     sentences=[
         ['20:dmg_burst', '6:ignore'],
         ['20:dmg_normal', '6:ignore'],
@@ -2522,7 +2522,7 @@ solar_shine = WeaponTemplate(
     ],
 )
 
-stillwood_moonshadow = WeaponTemplate(
+stillwood_moonshadow = Template(
     names=['Лист оживления'],
     sentences=[
         ['10:ignore'],
@@ -2532,7 +2532,7 @@ stillwood_moonshadow = WeaponTemplate(
     ],
 )
 
-stillwood_moonshadow_eng = WeaponTemplate(
+stillwood_moonshadow_eng = Template(
     names=['Leaf of Revival', 'Leaf'],
     sentences=[
         ['10:ignore'],
@@ -2542,7 +2542,7 @@ stillwood_moonshadow_eng = WeaponTemplate(
     ],
 )
 
-strong_strike = WeaponTemplate(
+strong_strike = Template(
     names=['Элой', 'Хищником', 'Aloy', 'Predator'],
     replace={
         '<br>': '\n'
@@ -2561,7 +2561,7 @@ strong_strike = WeaponTemplate(
     ],
 )
 
-sunken_song_of_the_sands = WeaponTemplate(
+sunken_song_of_the_sands = Template(
     names=['Великое сказание'],
     sentences=[
         ['20:hp_percent'],
@@ -2578,7 +2578,7 @@ sunken_song_of_the_sands = WeaponTemplate(
     ],
 )
 
-sunken_song_of_the_sands_eng = WeaponTemplate(
+sunken_song_of_the_sands_eng = Template(
     names=['Grand Hymn'],
     sentences=[
         ['20:hp_percent'],
@@ -2595,7 +2595,7 @@ sunken_song_of_the_sands_eng = WeaponTemplate(
     ],
 )
 
-the_silver_tongue = WeaponTemplate(
+the_silver_tongue = Template(
     sentences=[
         ['16:atk_percent', '15:ignore'],
         ['12:ignore'],
@@ -2608,7 +2608,7 @@ the_silver_tongue = WeaponTemplate(
     ],
 )
 
-the_silver_tongue_eng = WeaponTemplate(
+the_silver_tongue_eng = Template(
     sentences=[
         ['16:atk_percent', '15:ignore'],
         ['12:ignore'],
@@ -2621,7 +2621,7 @@ the_silver_tongue_eng = WeaponTemplate(
     ],
 )
 
-the_way_of_sunfire = WeaponTemplate(
+the_way_of_sunfire = Template(
     names=['Стрелу слепящего солнца', 'Стрелы слепящего солнца', 'Пылающего сердца', 'Стрела слепящего солнца'],
     sentences=[
         ['60:text_percent_dmg'],
@@ -2637,7 +2637,7 @@ the_way_of_sunfire = WeaponTemplate(
     extracted_names=[2],
 )
 
-the_way_of_sunfire_eng = WeaponTemplate(
+the_way_of_sunfire_eng = Template(
     names=['Sunfire Arrow'],
     sentences=[
         ['60:text_percent_dmg', '10:ignore'],
@@ -2652,13 +2652,13 @@ the_way_of_sunfire_eng = WeaponTemplate(
     extracted_names=[2],
 )
 
-the_wind_unattained = WeaponTemplate(
+the_wind_unattained = Template(
     sentences=[
         ['10:ignore', '12:atk_percent', '48:mastery'],
     ],
 )
 
-timeless_dream_eternal_stove = WeaponTemplate(
+timeless_dream_eternal_stove = Template(
     sentences=[
         ['28:text_percent', '100:'],
         ['80:text_percent_max'],
@@ -2670,14 +2670,14 @@ timeless_dream_eternal_stove = WeaponTemplate(
     ],
 )
 
-tip_of_the_spear = WeaponTemplate(
+tip_of_the_spear = Template(
     sentences=[
         ['8:text_number'],
         ['10:ignore'],
     ],
 )
 
-turquoise_hunt = WeaponTemplate(
+turquoise_hunt = Template(
     names=['Благоволения Крон', 'Благоволение Крон'],
     sentences=[
         ['1:ignore'],
@@ -2689,7 +2689,7 @@ turquoise_hunt = WeaponTemplate(
     ],
 )
 
-turquoise_hunt_eng = WeaponTemplate(
+turquoise_hunt_eng = Template(
     names=['Canopy\'s Favor'],
     sentences=[
         ['1:ignore'],
@@ -2702,27 +2702,27 @@ turquoise_hunt_eng = WeaponTemplate(
     ],
 )
 
-unbending = WeaponTemplate(
+unbending = Template(
     sentences=[
         ['70:text_percent_hp'],
         ['30:dmg_charged'],
     ],
 )
 
-unbending_eng = WeaponTemplate(
+unbending_eng = Template(
     sentences=[
         ['70:text_percent_hp', '30:dmg_charged'],
     ],
 )
 
-unreturning = WeaponTemplate(
+unreturning = Template(
     names=['weak points'],
     sentences=[
         ['10:move_speed', '36:atk_percent', '10:ignore'],
     ],
 )
 
-wandering_clouds = WeaponTemplate(
+wandering_clouds = Template(
     sentences=[
         ['12:dmg_pyro'],
         ['50:ignore', '15:ignore', '160:ignore'],
@@ -2730,14 +2730,14 @@ wandering_clouds = WeaponTemplate(
     ],
 )
 
-watatsumi_wavewalker = WeaponTemplate(
+watatsumi_wavewalker = Template(
     sentences=[
         ['0.12:text_percent_bonus'],
         ['40:text_percent_cap'],
     ],
 )
 
-wavesplitter = WeaponTemplate(
+wavesplitter = Template(
     names=['DMG'],
     sentences=[
         ['4:ignore', '6:dmg_all', '3:dmg_recieved'],
@@ -2745,26 +2745,26 @@ wavesplitter = WeaponTemplate(
     ],
 )
 
-whispers_of_wind_and_flower = WeaponTemplate(
+whispers_of_wind_and_flower = Template(
     sentences=[
         ['8:ignore', '12:atk_percent', '48:mastery'],
     ],
 )
 
-white_cruising_wave = WeaponTemplate(
+white_cruising_wave = Template(
     sentences=[
         ['24:atk_percent', '8:ignore'],
         [],
     ],
 )
 
-windblume_wish = WeaponTemplate(
+windblume_wish = Template(
     sentences=[
         ['16:atk_percent', '6:ignore'],
     ],
 )
 
-wolfish_tracker = WeaponTemplate(
+wolfish_tracker = Template(
     sentences=[
         ['20:atk_percent'],
         ['30:', '40:atk_percent|40', '12:ignore'],
@@ -2776,7 +2776,7 @@ wolfish_tracker = WeaponTemplate(
     ],
 )
 
-wolfish_tracker_eng = WeaponTemplate(
+wolfish_tracker_eng = Template(
     sentences=[
         ['20:atk_percent'],
         ['30:', '40:atk_percent|40', '12:ignore'],
@@ -2788,19 +2788,19 @@ wolfish_tracker_eng = WeaponTemplate(
     ],
 )
 
-busybodys_running_light = WeaponTemplate(
+busybodys_running_light = Template(
     sentences=[
         ['10:ignore', '20:atk_percent', '10:move_speed'],
     ],
 )
 
-busybodys_running_light_eng = WeaponTemplate(
+busybodys_running_light_eng = Template(
     sentences=[
         ['20:atk_percent', '10:move_speed', '10:ignore'],
     ],
 )
 
-echoes_of_the_plentiful_land = WeaponTemplate(
+echoes_of_the_plentiful_land = Template(
     names=['Нефритовой короны'],
     sentences=[
         ['0.6:text_percent', '1000:ignore'],
@@ -2809,7 +2809,7 @@ echoes_of_the_plentiful_land = WeaponTemplate(
     ],
 )
 
-echoes_of_the_plentiful_land_eng = WeaponTemplate(
+echoes_of_the_plentiful_land_eng = Template(
     names=['Jade-Forged Crown'],
     sentences=[
         ['1000:ignore', '0.6:text_percent', '10:ignore'],
@@ -2817,19 +2817,19 @@ echoes_of_the_plentiful_land_eng = WeaponTemplate(
     ],
 )
 
-smoke_and_mirror_mystery = WeaponTemplate(
+smoke_and_mirror_mystery = Template(
     sentences=[
         ['16:def_percent', '15:ignore'],
     ],
 )
 
-pact_of_flowing_springs = WeaponTemplate(
+pact_of_flowing_springs = Template(
     sentences=[
         ['16:def_percent', '15:ignore'],
     ],
 )
 
-flower_feather_song = WeaponTemplate(
+flower_feather_song = Template(
     sentences=[
         ['4.8:atk_percent'],
         ['3:ignore', '24:mastery'],
@@ -2840,7 +2840,7 @@ flower_feather_song = WeaponTemplate(
     ],
 )
 
-sky_ripping_dragon_spine = WeaponTemplate(
+sky_ripping_dragon_spine = Template(
     names=['урон', 'all DMG'],
     sentences=[
         ['8:dmg_all'],
@@ -2853,7 +2853,7 @@ sky_ripping_dragon_spine = WeaponTemplate(
     ],
 )
 
-kaidan_rainfall_earthbinder = WeaponTemplate(
+kaidan_rainfall_earthbinder = Template(
     names=['Проклятый зонт', 'Проклятым зонтом', 'Cursed Parasol'],
     sentences=[
         ['10:ignore'],
@@ -2863,7 +2863,7 @@ kaidan_rainfall_earthbinder = WeaponTemplate(
     ],
 )
 
-jinnis_whisper = WeaponTemplate(
+jinnis_whisper = Template(
     sentences=[
         ['10:ignore', '0,036:text_percent|0.036|3', '12:ignore'],
         ['30:ignore'],
@@ -2877,7 +2877,7 @@ jinnis_whisper = WeaponTemplate(
     extracted_names=[1],
 )
 
-jinnis_whisper_eng = WeaponTemplate(
+jinnis_whisper_eng = Template(
     sentences=[
         ['10:ignore', '0.036:text_percent|0.036|3', '12:ignore', '30:ignore'],
         [],
@@ -2890,7 +2890,7 @@ jinnis_whisper_eng = WeaponTemplate(
     extracted_names=[1],
 )
 
-a_thousand_nights_dawnsong = WeaponTemplate(
+a_thousand_nights_dawnsong = Template(
     names=['бонус урона'],
     sentences=[
         [],
@@ -2908,14 +2908,14 @@ a_thousand_nights_dawnsong = WeaponTemplate(
     ],
 )
 
-heritage = WeaponTemplate(
+heritage = Template(
     sentences=[
         ['24:text_percent|24', '10:ignore'],
         ['20:ignore'],
     ],
 )
 
-verdant_wind = WeaponTemplate(
+verdant_wind = Template(
     names=['Циклон', 'обычной', 'Cyclone'],
     sentences=[
         ['50:text_percent_chance', '40:text_percent_dmg', '0.5:ignore', '4:ignore'],
@@ -2923,7 +2923,7 @@ verdant_wind = WeaponTemplate(
     ],
 )
 
-sakura_saiguu = WeaponTemplate(
+sakura_saiguu = Template(
     names=['Элементальные бонусы урона','элемент', 'урона', 'Elemental Type'],
     sentences=[
         ['10:dmg_own|10', '6:ignore'],
@@ -2931,7 +2931,7 @@ sakura_saiguu = WeaponTemplate(
     ],
 )
 
-radiance_of_the_deeps_rus = WeaponTemplate(
+radiance_of_the_deeps_rus = Template(
     names=['урон'],
     replace={
         ' на 6%/10%/14% соответственно':'',
@@ -2951,7 +2951,7 @@ radiance_of_the_deeps_rus = WeaponTemplate(
     extracted_names=[2,3,4],
 )
 
-radiance_of_the_deeps_eng = WeaponTemplate(
+radiance_of_the_deeps_eng = Template(
     names=['DMG'],
     replace={
         ' by 6%/10%/14% respectively':'',

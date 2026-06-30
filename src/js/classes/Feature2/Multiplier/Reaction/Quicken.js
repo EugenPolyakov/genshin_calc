@@ -11,9 +11,9 @@ export class FeatureMultiplierReactionQuicken extends FeatureMultiplierReaction 
      * @param {BuildData} data
      * @returns {boolean}
      */
-    isMatchFeature(feature, data) {
+    isMatchFeature(feature, data, def) {
         if (feature && !feature.canReact()) return false
-        return super.isMatchFeature(feature, data);
+        return super.isMatchFeature(feature, data, def);
     }
 
     /**

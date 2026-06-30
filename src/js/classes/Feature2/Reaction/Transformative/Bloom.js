@@ -1,6 +1,13 @@
 import { FeatureReactionTransformative } from "../Transformative";
 
 export class FeatureReactionBloom extends FeatureReactionTransformative {
+    constructor (params) {
+        if (!Array.isArray(params.tags))
+            params.tags = [];
+        params.tags.push('bloom');
+        super(params);
+    }
+
     getReactionRate() { return 2 }
 
     /**

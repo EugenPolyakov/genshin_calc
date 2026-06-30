@@ -6,7 +6,7 @@ from collections import OrderedDict
 
 from lib.genshin.datafiles.lang import LangData
 from lib.genshin.datafiles.artifacts import ArtifactPieceBonusesData, ArtifactSetData
-from lib.genshin.utils import convert_id
+from lib.genshin.utils import convert_id, add_array
 from lib.genshin.strings.templates import artifacts_eng, artifacts_rus
 from lib.genshin.strings.templates.names import names_eng, names_rus, keywords_eng, keywords_rus
 from lib.genshin.strings.csv import CsvDumper
@@ -109,31 +109,16 @@ for set_id in sorted(set_data.keys()):
             tpl_names = lang_data[lang_name]['names']
             tpl_keywords = lang_data[lang_name]['keywords']
 
-            tpl_result = tpl_art.process(descr)
-            if not isinstance(tpl_result, list):
-                tpl_result = [tpl_result]
+            tpl_result = tpl_art.process(descr)['descr']
 
             for item in tpl_result:
                 if tpl_keywords:
-                    item = tpl_keywords.process(item)
+                    item = tpl_keywords.process(item)['descr'][0]
                 if tpl_names:
-                    item = tpl_names.process(item)
+                    item = tpl_names.process(item)['descr'][0]
                 res_lang[lang_name].append(item)
 
-        index = 0
-        for (rus, eng) in zip(res_lang['rus'], res_lang['eng']):
-            index += 1
-            namei = setnb
-            if len(res_lang['rus']) > 1:
-                namei = f'{setnb}_{index}'
-            result.append(
-                OrderedDict(
-                    category='set_descr',
-                    name=namei,
-                    rus=rus,
-                    eng=eng,
-                )
-            )
+        add_array(res_lang, result, setnb, 'set_descr')
 
 CsvDumper().dump(result, 'artifact_set_bonuses.csv')
 CsvDumper().dump(set_names, 'artifact_set_names.csv')

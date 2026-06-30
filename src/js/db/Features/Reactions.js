@@ -5,12 +5,12 @@ import { FeatureReactionSwirl } from "../../classes/Feature2/Reaction/Transforma
 import { FeatureReactionElectroCharged } from "../../classes/Feature2/Reaction/Transformative/ElectroCharged";
 import { FeatureReactionOverloaded } from "../../classes/Feature2/Reaction/Transformative/Overloaded";
 import { FeatureReactionSuperConduct } from "../../classes/Feature2/Reaction/Transformative/SuperConduct";
-import { FeatureReactionHyperBloom } from "../../classes/Feature2/Reaction/Transformative/HyperBloom";
+import { FeatureReactionHyperBloom } from "../../classes/Feature2/Reaction/Transformative/Bloom/HyperBloom";
 import { FeatureReactionShattered } from "../../classes/Feature2/Reaction/Transformative/Shattered";
 import { FeatureReactionBurning } from "../../classes/Feature2/Reaction/Transformative/Burning";
-import { FeatureReactionHyperBurgeon } from "../../classes/Feature2/Reaction/Transformative/Burgeon";
+import { FeatureReactionHyperBurgeon } from "../../classes/Feature2/Reaction/Transformative/Bloom/Burgeon";
 import { FeatureReactionCrystallize } from "../../classes/Feature2/Reaction/Crystallize";
-import { FeatureReactionRupture } from "../../classes/Feature2/Reaction/Transformative/Rupture";
+import { FeatureReactionRupture } from "../../classes/Feature2/Reaction/Transformative/Bloom/Rupture";
 import { ConditionAnd } from "../../classes/Condition/And";
 import { ConditionNot } from "../../classes/Condition/Not";
 import { FeatureReactionLunarCharged } from "../../classes/Feature2/Reaction/Transformative/Lunar/Charged";
@@ -27,7 +27,7 @@ const lunarchargedCond = new ConditionAnd([
 ]);
 
 const lunarbloomCond = new ConditionAnd([
-    //new ConditionBoolean({ name: 'allowed_lunarbloom' }),
+    new ConditionBoolean({ name: 'allowed_lunarbloom' }),
     new ConditionOr([
         new ConditionBooleanCharElement({ element: ['hydro', 'dendro', 'anemo'] }),
         new ConditionBoolean({ name: 'allowed_infusion_hydro' }),
@@ -40,7 +40,6 @@ export const Reactions = [
     new FeatureReactionSwirl({
         name: 'swirl_pyro',
         element: 'pyro',
-        tags: ['swirl'],
         condition: new ConditionOr([
             new ConditionBooleanCharElement({element: ['anemo']}),
             new ConditionBoolean({name: 'allowed_infusion_anemo'}),
@@ -50,7 +49,6 @@ export const Reactions = [
         name: 'swirl_hydro',
         cannotReact: true,
         element: 'hydro',
-        tags: ['swirl'],
         condition: new ConditionOr([
             new ConditionBooleanCharElement({element: ['anemo']}),
             new ConditionBoolean({name: 'allowed_infusion_anemo'}),
@@ -59,7 +57,6 @@ export const Reactions = [
     new FeatureReactionSwirl({
         name: 'swirl_electro',
         element: 'electro',
-        tags: ['swirl'],
         condition: new ConditionOr([
             new ConditionBooleanCharElement({element: ['anemo']}),
             new ConditionBoolean({name: 'allowed_infusion_anemo'}),
@@ -68,7 +65,6 @@ export const Reactions = [
     new FeatureReactionSwirl({
         name: 'swirl_cryo',
         element: 'cryo',
-        tags: ['swirl'],
         condition: new ConditionOr([
             new ConditionBooleanCharElement({element: ['anemo']}),
             new ConditionBoolean({name: 'allowed_infusion_anemo'}),

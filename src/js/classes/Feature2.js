@@ -119,6 +119,7 @@ export class Feature2 {
         }
 
         for (let item of data.multipliers) {
+            if (item.isMatchOption('reaction_flat', false)) continue;
             if (!item.isActive(data)) continue;
             if (!item.isMatchFeature(this, data)) continue;
             multipliers.push(item);

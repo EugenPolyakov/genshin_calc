@@ -1,4 +1,4 @@
-import { FeatureReactionBloom } from "./Bloom";
+import { FeatureReactionBloom } from "../Bloom";
 
 export class FeatureReactionRupture extends FeatureReactionBloom {
     /**

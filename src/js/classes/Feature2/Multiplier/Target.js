@@ -55,8 +55,8 @@ export class FeatureMultiplierTarget {
         return true;
     }
 
-    isMatchOption(option) {
-        if (this.options.length == 0) return true;
+    isMatchOption(option, def) {
+        if (this.options.length == 0) return def;
         return this.options.includes(option);
     }
 }

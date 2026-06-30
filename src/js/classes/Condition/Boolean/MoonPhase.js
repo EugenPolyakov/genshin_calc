@@ -10,6 +10,11 @@ export class ConditionMoonPhase extends ConditionBoolean {
 
         stats.add('text_number_f', level);
 
+        if (this.params.realStats) {
+            for (var i in this.params.realStats)
+                stats.add(i, this.params.realStats[i][level]);
+        }
+
         return stats;
     }
 }
