@@ -318,7 +318,7 @@ function workerCallReplace() {
                         let absoluteAssetPath = path.resolve(absoluteScriptDir, relativeAssetPath);
                         let test = path.relative(process.cwd(), absoluteAssetPath);
 
-                        if (test.startsWith("src\\js\\workers\\")) {
+                        if (/^src[\/\\]js[\/\\]workers[\/\\]/i.test(test)) {
                             replaceList.set(node.arguments[0].start, {
                                 end: node.arguments[0].end,
                                 replaceTo: absoluteAssetPath,
@@ -363,7 +363,7 @@ function workerInput(fileName) {
         input: './src/js/workers/' + fileName + '.js',
         output: {
             dir: 'dist/js',
-            entryFileNames: fileName + (process.env.mode === 'development' ? '' : '-[hash].js'),
+            entryFileNames: fileName + (process.env.mode === 'development' ? '.js' : '-[hash].js'),
             format: 'iife',
             banner: "importScripts('db.js?' + " + JSON.stringify(pkg.version) + ");",
             globals: {
@@ -485,7 +485,7 @@ export default [
                 minimize: !__DEVEL__,
                 plugins: [
                     postcssCopy({
-                        basePath: process.cwd() + '\\src',
+                        basePath: process.cwd() + '/src',
                         base: 'dist',
                         dest: 'dist',
                         template: '[path]/[name].[ext][query]',
