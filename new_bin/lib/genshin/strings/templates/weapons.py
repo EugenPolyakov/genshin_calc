@@ -355,7 +355,7 @@ golden_blood_tide = Template(
     sentences=[
         ['16:atk_percent'],
         ['4:ignore', '16:dmg_normal', '14:dmg_charged'],
-        ['3:ignore', '1:ignore', '0.3:ignore'],
+        ['3:ignore', '0.3:ignore'],
         ['3:ignore', '8:atk_speed_normal'],
     ],
     results=[
@@ -368,7 +368,7 @@ golden_blood_tide = Template(
 golden_blood_tide_eng = Template(
     sentences=[
         ['16:atk_percent'],
-        ['16:dmg_normal', '14:dmg_charged', '4:ignore'],
+        ['16:dmg_normal', '14:dmg_charged', '14:dmg_stellar_conduct', '4:ignore'],
         ['3:ignore'],
         ['0.3:ignore'],
         ['3:ignore', '8:atk_speed_normal'],
@@ -876,7 +876,7 @@ kagura_dance_of_the_sacred_sakura = Template(
     names=['Танец кагура'],
     sentences=[
         ['12:dmg_skill'],
-        ['16:ignore', '3:ignore'],
+        ['24:ignore', '3:ignore'],
         ['3:ignore', '12:dmg_pyro']
     ],
     results=[
@@ -888,7 +888,7 @@ kagura_dance_of_the_sacred_sakura = Template(
 kagura_dance_of_the_sacred_sakura_eng = Template(
     names=['Kagura Dance'],
     sentences=[
-        ['12:dmg_skill', '16:ignore'],
+        ['12:dmg_skill', '12:dmg_stellar_conduct', '24:ignore'],
         ['3:ignore'],
         ['12:dmg_pyro', '3:ignore']
     ],

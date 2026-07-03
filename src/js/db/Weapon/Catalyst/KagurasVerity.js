@@ -2,15 +2,15 @@ import { ConditionBooleanValue } from "../../../classes/Condition/Boolean/Value"
 import { ConditionStacks } from "../../../classes/Condition/Stacks";
 import { DbObjectWeapon } from "../../../classes/DbObject/Weapon";
 import { StatTable } from "../../../classes/StatTable";
-import { weaponStatTables } from "../../generated/WeaponStatTables";
+import { weaponDataTable, weaponStatTables } from "../../generated/WeaponStatTables";
 
 export const KagurasVerity = new DbObjectWeapon({
     name: 'kaguras_verity',
     serializeId: 119,
-    gameId: 14509,
+    gameId: weaponDataTable.KagurasVerity.gameId,
     iconClass: "weapon-icon-catalyst-kaguras-verity",
-    rarity: 5,
-    weapon: 'catalyst',
+    rarity: weaponDataTable.KagurasVerity.rarity,
+    weapon: weaponDataTable.KagurasVerity.weapon,
     statTable: weaponStatTables.KagurasVerity,
     settingsSets: [
         {
@@ -35,7 +35,8 @@ export const KagurasVerity = new DbObjectWeapon({
             maxStacks: 3,
             levelSetting: 'weapon_refine',
             stats: [
-                new StatTable('dmg_skill', [12, 15, 18, 21, 24]),
+                new StatTable('dmg_skill', weaponDataTable.KagurasVerity.kagura_dance_of_the_sacred_sakura.param1, 100),
+                new StatTable('dmg_stellar_conduct', weaponDataTable.KagurasVerity.kagura_dance_of_the_sacred_sakura.param4, 100),
             ],
         }),
         new ConditionBooleanValue({
@@ -47,13 +48,13 @@ export const KagurasVerity = new DbObjectWeapon({
             value: 3,
             setting: 'weapon_kaguras_verity',
             stats: [
-                new StatTable('dmg_anemo', [12, 15, 18, 21, 24]),
-                new StatTable('dmg_geo', [12, 15, 18, 21, 24]),
-                new StatTable('dmg_pyro', [12, 15, 18, 21, 24]),
-                new StatTable('dmg_electro', [12, 15, 18, 21, 24]),
-                new StatTable('dmg_hydro', [12, 15, 18, 21, 24]),
-                new StatTable('dmg_cryo', [12, 15, 18, 21, 24]),
-                new StatTable('dmg_dendro', [12, 15, 18, 21, 24]),
+                new StatTable('dmg_anemo', weaponDataTable.KagurasVerity.kagura_dance_of_the_sacred_sakura.param3, 100),
+                new StatTable('dmg_geo', weaponDataTable.KagurasVerity.kagura_dance_of_the_sacred_sakura.param3, 100),
+                new StatTable('dmg_pyro', weaponDataTable.KagurasVerity.kagura_dance_of_the_sacred_sakura.param3, 100),
+                new StatTable('dmg_electro', weaponDataTable.KagurasVerity.kagura_dance_of_the_sacred_sakura.param3, 100),
+                new StatTable('dmg_hydro', weaponDataTable.KagurasVerity.kagura_dance_of_the_sacred_sakura.param3, 100),
+                new StatTable('dmg_cryo', weaponDataTable.KagurasVerity.kagura_dance_of_the_sacred_sakura.param3, 100),
+                new StatTable('dmg_dendro', weaponDataTable.KagurasVerity.kagura_dance_of_the_sacred_sakura.param3, 100),
             ],
         }),
     ],

@@ -97,6 +97,8 @@ names_eng = Template(
 
 keywords_eng = Template(
     keywords=[
+        ('Stellar-Conduct', 'cryo'),
+
         ('Lunar-Bloom DMG', 'dendro'),
         ('Lunar-Bloom', 'dendro'),
         ('Lunar-Crystallize', 'geo'),
@@ -325,6 +327,8 @@ names_rus = Template(
 
 keywords_rus = Template(
     keywords=[
+        ('Звёздный [пП]роводник', 'cryo'),
+
         ('Лунная бутонизация', 'dendro'),
         ('Лунную бутонизацию', 'dendro'),
         ('Лунной бутонизации', 'dendro'),
@@ -370,15 +374,12 @@ keywords_rus = Template(
         ('Горение', 'pyro'),
         ('Горения', 'pyro'),
         ('Сверхпроводник', 'cryo'),
-        ('Крио Рассеивание', 'cryo'),
-        ('Гидро Рассеивание', 'hydro'),
-        ('Гидро рассеивание', 'hydro'),
-        ('Пиро Рассеивание', 'pyro'),
-        ('Электро Рассеивание', 'electro'),
+        ('Крио [Рр]ассеивание', 'cryo'),
+        ('Гидро [Рр]ассеивание', 'hydro'),
+        ('Пиро [Рр]ассеивание', 'pyro'),
+        ('Электро [Рр]ассеивание', 'electro'),
         ('Рассеивание', 'anemo'),
-        ('Рассеиваниe', 'anemo'),
         ('Рассеивания', 'anemo'),
-        ('Рассенивание', 'anemo'),
         ('Стимуляцию', 'dendro'),
         ('Стимуляция', 'dendro'),
         ('Бутонизацию', 'dendro'),

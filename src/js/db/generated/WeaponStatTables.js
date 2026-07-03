@@ -2994,8 +2994,9 @@ export const weaponDataTable = {
 		gameId: 14509,
 		kagura_dance_of_the_sacred_sakura: {
 			param1: [0.12, 0.15, 0.18, 0.21, 0.24],
-			param2: [16],
+			param2: [24],
 			param3: [0.12, 0.15, 0.18, 0.21, 0.24],
+			param4: [0.12, 0.15, 0.18, 0.21, 0.24],
 		},
 	},
 	ThousandFloatingDreams: {
@@ -3032,6 +3033,7 @@ export const weaponDataTable = {
 			param3: [0.16, 0.2, 0.24, 0.28, 0.32],
 			param4: [0.14, 0.175, 0.21, 0.245, 0.28],
 			param5: [0.08, 0.1, 0.12, 0.14, 0.16],
+			param6: [0.14, 0.175, 0.21, 0.245, 0.28],
 			atk_percent: [16.0, 20.0, 24.0, 28.0, 32.0],
 		},
 	},

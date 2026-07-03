@@ -269,6 +269,9 @@ export class StorageItemArtifacts extends StorageItem {
             });
         }
 
+        result.sort((a, b) => (a.art.set == sample.set && b.art.set == sample.set) ? 0 : (
+            a.art.set == sample.set ? -1 : (b.art.set == sample.set ? 1 : a.art.set.localeCompare(b.art.set))));
+
         return result;
     }
 

@@ -3,22 +3,22 @@ import { ConditionStacks } from "../../../classes/Condition/Stacks";
 import { ConditionStaticRefine } from "../../../classes/Condition/Static/Refine";
 import { DbObjectWeapon } from "../../../classes/DbObject/Weapon";
 import { StatTable } from "../../../classes/StatTable";
-import { weaponStatTables } from "../../generated/WeaponStatTables";
+import { weaponDataTable, weaponStatTables } from "../../generated/WeaponStatTables";
 
 export const CashflowSupervision = new DbObjectWeapon({
     name: 'cashflow_supervision',
     serializeId: 163,
-    gameId: 14513,
+    gameId: weaponDataTable.CashflowSupervision.gameId,
     iconClass: "weapon-icon-catalyst-cashflow-supervision",
-    rarity: 5,
-    weapon: 'catalyst',
+    rarity: weaponDataTable.CashflowSupervision.rarity,
+    weapon: weaponDataTable.CashflowSupervision.weapon,
     statTable: weaponStatTables.CashflowSupervision,
     conditions: [
         new ConditionStaticRefine({
             title: 'talent_name.weapon_golden_blood_tide',
             description: 'talent_descr.weapon_golden_blood_tide_1',
             stats: [
-                new StatTable('atk_percent', [16, 20, 24, 28, 32]),
+                new StatTable('atk_percent', weaponDataTable.CashflowSupervision.golden_blood_tide.atk_percent),
             ],
         }),
         new ConditionStacks({
@@ -29,8 +29,9 @@ export const CashflowSupervision = new DbObjectWeapon({
             maxStacks: 3,
             levelSetting: 'weapon_refine',
             stats: [
-                new StatTable('dmg_normal', [16, 20, 24, 28, 32]),
-                new StatTable('dmg_charged', [14, 17.5, 21, 24.5, 28]),
+                new StatTable('dmg_normal', weaponDataTable.CashflowSupervision.golden_blood_tide.param3, 100),
+                new StatTable('dmg_charged', weaponDataTable.CashflowSupervision.golden_blood_tide.param4, 100),
+                new StatTable('dmg_stellar_conduct', weaponDataTable.CashflowSupervision.golden_blood_tide.param6, 100),
             ],
         }),
         new ConditionBooleanValue({
@@ -41,7 +42,7 @@ export const CashflowSupervision = new DbObjectWeapon({
             value: 3,
             setting: 'weapon_cashflow_supervision',
             stats: [
-                new StatTable('atk_speed_normal', [8, 10, 12, 14, 16]),
+                new StatTable('atk_speed_normal', weaponDataTable.CashflowSupervision.golden_blood_tide.param5, 100),
             ],
         }),
     ],

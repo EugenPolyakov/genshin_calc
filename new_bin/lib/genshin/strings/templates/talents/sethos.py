@@ -9,6 +9,7 @@ char_sethos = TemplateList(
             'Тени палящих песков', 'Загадка чёрного коршуна', 'Болт сумрака',
         ],
         keywords=[
+            ('Звёздный [пП]роводник', 'cryo'),
             ('Лунный заряд', 'electro'),
             ('Заряжен', 'electro'),
             ('Сверхпроводник', 'cryo'),
@@ -16,7 +17,7 @@ char_sethos = TemplateList(
             ('Стимуляция', 'dendro'),
             ('Обострение', 'electro'),
             ('Вегетация', 'dendro'),
-            ('Электро Рассеивание', 'electro')
+            ('Электро Рассеивание', 'electro'),
         ],
         skills={
             'attack': ['Пронзающий тени выстрел', 'Пронзающего тени выстрела'],
@@ -31,6 +32,7 @@ char_sethos = TemplateList(
             'Black Kite\'s Enigma',
         ],
         keywords=[
+            ('Stellar-Conduct', 'cryo'),
             ('Lunar-Charged', 'electro'),
             ('Electro-Charged', 'electro'),
             ('Superconduct', 'cryo'),
@@ -38,7 +40,7 @@ char_sethos = TemplateList(
             ('Quicken', 'dendro'),
             ('Aggravate', 'electro'),
             ('Hyperbloom', 'dendro'),
-            ('Electro Swirl', 'electro')
+            ('Electro Swirl', 'electro'),
         ],
         skills={
             'attack': ['Shadowpiercing Shots', 'Shadowpiercing Shot'],

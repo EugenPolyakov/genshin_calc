@@ -338,7 +338,7 @@ def prepare_talents(talent_items, generate):
                     nameItems[lang_name].extend(skill_descr['names'])
                 except Exception as e:
                     logger.error(f'error on talent {talent_id}  [{talent["descTextMapHash"]}]')
-                    logger.error(e)
+                    logger.exception(e)
                     err = True
 
             if talent['descTextMapHash_hex'] and lang.get(talent['descTextMapHash_hex']):
@@ -349,7 +349,7 @@ def prepare_talents(talent_items, generate):
                     nameItems[lang_name].extend(skill_descr['names'])
                 except Exception as e:
                     logger.error(f'error on talent {talent_id}_hex  [{talent["descTextMapHash"]}]')
-                    logger.error(e)
+                    logger.exception(e)
                     err = True
             #if not tpl_char: texts[eng_name].append('\n')
             texts[eng_name].append('\n')
@@ -423,10 +423,10 @@ def processPassiveTalent(proud, paramList):
     talent_id = char_id + '_' + talent_short_id
     generator.condition(char_id, talent_id, passive.get(needAvatarPromoteLevel_fld) or 0)
 
-inherentProudSkillOpens_fld = 'LHNAJLJNBAH'#'inherentProudSkillOpens'
-hexProudSkillOpens_fld = 'NMKACHALCPO'
-needAvatarPromoteLevel_fld = 'KGGNNMEALJM'#'needAvatarPromoteLevel'
-hex_descr_fld = 'BDLFGGJDHLI'#'JDKOMPNCEMO'#'HCAOGPJPGLM' # 'IACNAENANDH'
+inherentProudSkillOpens_fld = 'BOIOJNENKHP'#'inherentProudSkillOpens'
+hexProudSkillOpens_fld = 'EIBOFEEGGID'
+needAvatarPromoteLevel_fld = 'CCHNLJKDDKI'#'needAvatarPromoteLevel'
+hex_descr_fld = 'OBHFOBHLHFK'#'JDKOMPNCEMO'#'HCAOGPJPGLM' # 'IACNAENANDH'
 extra_descr_fld = 'extraDescTextMapHash'
 
 for charVarName in sorted(char_keys):
@@ -529,7 +529,7 @@ for charVarName in sorted(char_keys):
                     nameItems[lang_name].extend(skill_descr['names'])
             except Exception as e:
                 logger.error(f'error on {skill_id} [{skill["descTextMapHash"]}]')
-                logger.error(e)
+                logger.exception(e)
                 err = True
         if err: continue
 
@@ -625,7 +625,7 @@ for charVarName in sorted(char_keys):
                     nameItems[lang_name].extend(skill_descr['names'])
                 except Exception as e:
                     logger.error(f'error on {char_id} {skill_id} [{hl_item["descTextMapHash"]}]')
-                    logger.error(e)
+                    logger.exception(e)
                     err = True
             if err: continue
             n_idx = add_array(nameItems, result_hero_strings, skill_id, 'talent_name', hyperlinks[hl_id])
@@ -664,6 +664,8 @@ if not do_single:
                     lang = lang_data[lang_name]['lang']
                     skill_name = lang.get(hl_item['nameTextMapHash'])
                     skill_descr = lang.get(hl_item['descTextMapHash'])
+                    # print("            ", hl_item['descTextMapHash'])
+                    # print("            ", lang.get(str(hl_item['descTextMapHash'])))
 
                     tpl_patterns = lang_data[lang_name]['patterns']
                     tpl_names = lang_data[lang_name]['names']
@@ -676,7 +678,7 @@ if not do_single:
                     res_item2[lang_name] = postprocess.process(skill_descr)['descr'][0]
                 except Exception as e:
                     logger.error(f'error on {skill_id} [{skill["descTextMapHash"]}]')
-                    logger.error(e)
+                    logger.exception(e)
                     err = True
 
             if not err:

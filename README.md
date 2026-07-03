@@ -1,5 +1,5 @@
 # About
-Source code of Genshin Impact damage calculator https://eugenpolyakov.github.io/genshin_calc/.
+Source code of Genshin Impact damage calculator https://eugenpolyakov.github.io/genshin_calc/ and https://genshin.hvdbs.ru/.
 
 # Disclaimer
 This project was not developed as open source and I am not a frontend developer. Keep it in mind when you reading code.
