@@ -1,10 +1,8 @@
 import { Condition } from "../../classes/Condition";
-import { ConditionAnd } from "../../classes/Condition/And";
+import { ConditionAnd } from "../../classes/Condition";
 import { ConditionAscensionChar } from "../../classes/Condition/Ascension/Char";
 import { ConditionBoolean } from "../../classes/Condition/Boolean";
-import { ConditionBooleanValue } from "../../classes/Condition/Boolean/Value";
 import { ConditionConstellation } from "../../classes/Condition/Constellation";
-import { ConditionGroup } from "../../classes/Condition/Group";
 import { ConditionHexCheck } from "../../classes/Condition/HexCheck";
 import { ConditionHexCurrent } from "../../classes/Condition/HexCurrent";
 import { ConditionNumber } from "../../classes/Condition/Number";

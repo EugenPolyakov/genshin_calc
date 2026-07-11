@@ -29,10 +29,29 @@ char_qiqi = TemplateList(
             ['healing_recv', 'ignore'],
         ],
     ),
-    a_glimpse_into_arcanum=Template(
+    seven_sacred_treasures=Template(
         sentences=[
-            ['ignore', 'ignore'],
-            ['ignore'],
+            ['15:ignore'],
+            [],
+            ['50:dmg_reaction_stellar_conduct'],
+            [],
+            [],
+        ],
+        results=[
+            [0],
+            [2, 3, 4],
+        ],
+    ),
+    a_glimpse_into_arcanum_hex=Template(
+        sentences=[
+            ['50:ignore', '6:ignore'],
+            ['30:ignore'],
+            [],
+            ['100:ignore', '15:ignore'],
+        ],
+        results=[
+            [0, 1],
+            [3],
         ],
     ),
     ascetics_of_frost=Template(
@@ -40,9 +59,15 @@ char_qiqi = TemplateList(
             ['ignore'],
         ],
     ),
-    frozen_to_the_bone=Template(
+    frozen_to_the_bone_hex=Template(
         sentences=[
             ['dmg_normal'],
+            [],
+            ['50:atk_percent'],
+        ],
+        results=[
+            [0],
+            [2],
         ],
     ),
     divine_suppression=Template(
@@ -50,11 +75,39 @@ char_qiqi = TemplateList(
             ['ignore'],
         ],
     ),
+    divine_suppression_hex=Template(
+        sentences=[
+            ['20:ignore'],
+            [],
+            ['180:'],
+        ],
+    ),
     rite_of_resurrection=Template(
         sentences=[
             ['ignore'],
             [],
             ['ignore'],
+        ],
+    ),
+    rite_of_resurrection_hex_rus=Template(
+        sentences=[
+            ['50:ignore'],
+            [],
+            ['15:ignore'],
+            [],
+            ['4:ignore'],
+            ['1:ignore', '600:'],
+            ['12:ignore'],
+        ],
+    ),
+    rite_of_resurrection_hex_eng=Template(
+        sentences=[
+            ['50:ignore'],
+            [],
+            ['15:ignore'],
+            [],
+            ['4:ignore', '1:ignore', '600:'],
+            ['12:ignore'],
         ],
     ),
 )

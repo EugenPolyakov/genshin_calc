@@ -172,7 +172,7 @@ export class FeatureRotation extends Feature2 {
 
         for (let element of Object.keys(elements)) {
             result.push({
-                id: 'rotation.total_' + element,
+                subItemId: 'rotation.total_' + element,
                 title: 'rotation.' + element,
                 isChild: true,
                 settings: {rotation_include: element},
@@ -182,7 +182,7 @@ export class FeatureRotation extends Feature2 {
 
         for (let datageType of Object.keys(damageTypes)) {
             result.push({
-                id: 'rotation.total_' + datageType,
+                subItemId: 'rotation.total_' + datageType,
                 title: 'rotation.' + datageType,
                 icon: 'multi',
                 isChild: true,

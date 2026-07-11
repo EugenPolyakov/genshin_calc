@@ -1,4 +1,4 @@
-import { Feature } from "../../../classes/Feature";
+import { Feature2 } from "../../../classes/Feature2";
 import { UI } from "../../../ui";
 import { formatNumber } from "../../../Utils";
 import { ResultTable } from "../ResultTable";
@@ -7,7 +7,7 @@ export class ResultTableFeatures extends ResultTable {
     getGroups(build) {
         let stats    = build.getStats();
         let features = build.getFeatures(stats, 1);
-        let tree     = Feature.getTree(features);
+        let tree     = Feature2.getTree(features);
 
         let groups = [];
 

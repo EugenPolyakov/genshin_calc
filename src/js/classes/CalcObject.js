@@ -214,7 +214,7 @@ export class CalcObject {
 
         for (let i = 1; i <= count; ++i) {
             let id = input.shift();
-            if (i < 1) return;
+            if (id < 1) return;
 
             let cond = match[id];
             if (!cond) return;

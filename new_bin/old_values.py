@@ -2449,6 +2449,9 @@ old_values = {
         3: "herald_of_frost", #WasChanged from herald_of_frost_dmg
         4: "duration", #Default
         5: "cd", #Default
+        6: "herald_of_frost_coordinated_attack_dmg",
+        7: "herald_of_frost_coordinated_attack_cd",
+        8: "cd", #Default
     },
     #preserver_of_fortune
     (10353, 3539): {
@@ -2457,6 +2460,7 @@ old_values = {
         2: "duration", #Default
         3: "cd", #Default
         4: "energy_cost", #Default
+        5: "stellar_conduct_dmg",
     },
 #raiden_shogun
     #origin

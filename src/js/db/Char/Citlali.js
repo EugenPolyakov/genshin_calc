@@ -18,7 +18,7 @@ import { FeatureDamagePlungeCollision } from "../../classes/Feature2/Damage/Plun
 import { FeatureDamageCharged } from "../../classes/Feature2/Damage/Charged";
 import { FeatureDamageSkill } from "../../classes/Feature2/Damage/Skill";
 import { ValueTable } from "../../classes/ValueTable";
-import { ConditionAnd } from "../../classes/Condition/And";
+import { ConditionAnd } from "../../classes/Condition";
 import { FeatureShield } from "../../classes/Feature2/Shield";
 import { FeatureMultiplierList } from "../../classes/Feature2/Multiplier/List";
 import { FeatureDamageBurst } from "../../classes/Feature2/Damage/Burst";

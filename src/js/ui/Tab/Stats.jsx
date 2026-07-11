@@ -21,15 +21,16 @@ import { Stats, isPercent } from '../../classes/Stats';
 import { Tab } from "../Tab";
 import { FeatureMultiplierReactionVaporize } from '../../classes/Feature2/Multiplier/Reaction/Amplifying/Vaporize';
 import { FeatureMultiplierReactionMelt } from '../../classes/Feature2/Multiplier/Reaction/Amplifying/Melt';
-import { FeatureReactionLunarCharged } from '../../classes/Feature2/Reaction/Transformative/Lunar/Charged';
-import { FeatureReactionLunarBloom } from '../../classes/Feature2/Reaction/Transformative/Lunar/Bloom';
-import { FeatureReactionLunar } from '../../classes/Feature2/Reaction/Transformative/Lunar';
-import { FeatureReactionLunarCrystallize } from '../../classes/Feature2/Reaction/Transformative/Lunar/Crystallize';
+import { FeatureReactionLunarCharged } from '../../classes/Feature2/Reaction/Extended/Lunar/Charged';
+import { FeatureReactionLunarBloom } from '../../classes/Feature2/Reaction/Extended/Lunar/Bloom';
+import { FeatureReactionLunar } from '../../classes/Feature2/Reaction/Extended/Lunar';
+import { FeatureReactionLunarCrystallize } from '../../classes/Feature2/Reaction/Extended/Lunar/Crystallize';
 import { FeatureReactionSwirlPyro } from '../../classes/Feature2/Reaction/Transformative/Swirl/Pyro';
 import { FeatureReactionSwirlHydro } from '../../classes/Feature2/Reaction/Transformative/Swirl/Hydro';
 import { FeatureReactionSwirlElectro } from '../../classes/Feature2/Reaction/Transformative/Swirl/Electro';
 import { FeatureReactionSwirlCryo } from '../../classes/Feature2/Reaction/Transformative/Swirl/Cryo';
 import { UI } from '../../ui';
+import { FeatureReactionStellarConduct } from '../../classes/Feature2/Reaction/Extended/StellarConduct';
 
 const secondaryStatsList = [
     'recharge',
@@ -40,10 +41,12 @@ const secondaryStatsList = [
     '!crit_rate_anemo', '!crit_rate_cryo', '!crit_rate_electro', '!crit_rate_geo', '!crit_rate_hydro', '!crit_rate_pyro', '!crit_rate_dendro', '!crit_rate_phys',
     '!crit_rate_burning', '!crit_rate_bloom',
     '!crit_rate_lunar', '!crit_rate_lunarcharged', '!crit_rate_lunarbloom', '!crit_rate_lunarcrystallize',
+    '!crit_rate_stellar_conduct',
     'crit_dmg', '!crit_dmg_skill', '!crit_dmg_anemo', '!crit_dmg_cryo', '!crit_dmg_electro', '!crit_dmg_geo',
     '!crit_dmg_hydro', '!crit_dmg_pyro', '!crit_dmg_dendro', '!crit_dmg_phys',
     '!crit_dmg_normal', '!crit_dmg_charged', '!crit_dmg_plunge', '!crit_dmg_neuvillette',
     '!crit_dmg_lunar', '!crit_dmg_lunarcharged', '!crit_dmg_lunarbloom', '!crit_dmg_lunarcrystallize',
+    '!crit_dmg_stellar_conduct',
     '!crit_dmg_charged_wriothesley', '!crit_dmg_burst',
     '!crit_dmg_navia', '!crit_dmg_xianyun', '!crit_dmg_gaming', '!crit_dmg_normal_arlecchino', '!crit_dmg_burst_arlecchino',
     '!crit_dmg_skill_kinich', '!crit_dmg_normal_mualani', '!crit_dmg_chasca',
@@ -101,6 +104,7 @@ const reactionStatList = {
     '!dmg_reaction_lunarcrystallize': FeatureReactionLunarCrystallize,
     '!dmg_reaction_lunarcharged': FeatureReactionLunarCharged,
     '!dmg_reaction_lunarbloom': FeatureReactionLunarBloom,
+    'dmg_reaction_stellar_conduct': FeatureReactionStellarConduct,
 
     'dmg_reaction_crystalize': FeatureReactionCrystallize,
 };

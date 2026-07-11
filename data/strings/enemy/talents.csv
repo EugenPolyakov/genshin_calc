@@ -27,7 +27,7 @@ talent_descr;ruin_drake_infusion;Увеличивает name{сопротивл�
 talent_descr;aeonblight_drake_infusion;Увеличивает name{сопротивление} соответствующему элементу на value{60%}.;Increase name{resistance} to corresponding element by value{60%}.
 talent_descr;legend_drake_infusion;Увеличивает name{сопротивление} соответствующему элементу на value{120%}.;Increase name{resistance} to corresponding element by value{120%}.
 
-talent_name;enemy_reaction_superconduct;Сверхпроводник;Superconduct
+talent_name;enemy_reaction_superconduct;Сверхпроводник или Звёздный проводник;Superconduct or Stellar-condact
 talent_descr;enemy_reaction_superconduct;Cнижает name{физическое сопротивление} на value{40%}.;Reduces the name{physical resistance} by value{40%}.
 talent_name;enemy_status;Элемент;Element
 talent_descr;enemy_status;Противник находится под действием выбранного элемента.<br>Для подсчёта урона name{Пара} и name{Таяния} используйте вкладку tab{rotation:Ротация}.;Enemy is affected by selected element. For name{Vaporize} and name{Melt} damage use tab{rotation:Rotation} tab.

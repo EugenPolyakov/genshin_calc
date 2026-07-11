@@ -1,5 +1,5 @@
 import { Condition } from "../../classes/Condition";
-import { ConditionAnd } from "../../classes/Condition/And";
+import { ConditionAnd } from "../../classes/Condition";
 import { ConditionAscensionChar } from "../../classes/Condition/Ascension/Char";
 import { ConditionBoolean } from "../../classes/Condition/Boolean";
 import { ConditionBooleanValue } from "../../classes/Condition/Boolean/Value";

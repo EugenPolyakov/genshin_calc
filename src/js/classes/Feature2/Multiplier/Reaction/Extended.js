@@ -3,7 +3,7 @@ import { CDivide, CMulti, CSum } from "../../Compile/Types/Block";
 import { CConst } from "../../Compile/Types/Item";
 import { FeatureMultiplierReaction } from "../Reaction";
 
-export class FeatureMultiplierReactionLunarCharged extends FeatureMultiplierReaction {
+export class FeatureMultiplierReactionExtended extends FeatureMultiplierReaction {
     static masteryMultiplier(data) {
         return new CMulti([
             new CConst({value: 6}),

@@ -154,7 +154,7 @@ function getDuplicatedIds(items) {
 
     for (const id of Object.keys(ids)) {
         if (ids[id].size > 1) {
-            result.push('id='+ id +' keys='+ ids[id].join(','));
+            result.push('id='+ id +' keys='+ Array.from(ids[id]).join(','));
         }
     }
 

@@ -69,10 +69,12 @@ stat;dmg_reaction_rupture;Урон Бутонизации;Bloom DMG
 stat;lunarcharged_multi;Бонус Базового урона Лунного заряда;Lunar-Charged Base Bonus
 stat;lunarbloom_multi;Бонус Базового урона Лунной бутонизации;Lunar-Bloom Base Bonus
 stat;lunarcrystallize_multi;Бонус Базового урона Лунной кристаллизации;Lunar-Crystallize Base Bonus
+stat;stellar_conduct_multi;Бонус Базового урона Звёздного проводника;Stellar-Conduct Base Bonus
 stat;dmg_reaction_lunar_bonus;Возвышение Лунных реакций;Lunar reactions Elevation
 stat;dmg_reaction_lunarbloom_bonus;Возвышение Лунной бутонизации;Lunar-Bloom Elevation
 stat;dmg_reaction_lunarcharged_bonus;Возвышение Лунного заряда;Lunar-Charged Elevation
 stat;dmg_reaction_lunarcrystallize_bonus;Возвышение Лунной кристаллизации;Lunar-Crystallize Elevation
+stat;dmg_reaction_stellar_conduct_bonus;Возвышение Звёздного проводника;Stellar-Conduct Elevation
 
 stat;dmg_reaction_electrocharged;Урон Заряжен;Electro-Charged DMG
 stat;dmg_reaction_vaporize;Урон Пара;Vaporize DMG
@@ -89,6 +91,7 @@ stat;dmg_reaction_hyperbloom;Урон Вегетации;Hyperbloom DMG
 stat;dmg_reaction_lunarbloom;Урон Лунной бутонизации;Lunar-Bloom DMG
 stat;dmg_reaction_lunarcharged;Урон Лунного заряда;Lunar-Charged DMG
 stat;dmg_reaction_lunarcrystallize;Урон Лунного кристалла;Lunar-Crystallize DMG
+stat;dmg_reaction_stellar_conduct;Урон Звёздного проводника;Stellar-Conduct DMG
 stat;dmg_reaction_crystalize;Кристаллизация;Crystallize
 
 stat_short;mastery;М. стихий;EM
@@ -102,6 +105,7 @@ stat_short;recharge;Восст. эн.;ER%
 stat_short;crit_rate;Крит. шанс;Crit. Rate
 stat_short;crit_dmg;Крит. урон;Crit. DMG
 stat_short;healing;Лечение;Healing
+stat_short;healing_base;Базовое лечение;Healing Base
 stat_short;healing_recv;Получ. лечение;Recv. Healing
 stat_short;dmg_anemo;Анемо урон;Anemo DMG
 stat_short;dmg_cryo;Крио урон;Cryo DMG
@@ -185,11 +189,13 @@ stat;crit_rate_lunar;Лунные реакции;Lunar Reactions
 stat;crit_rate_lunarcharged;Лунный заряд;Lunar-Charged
 stat;crit_rate_lunarbloom;Лунная бутонизация;Lunar-Bloom
 stat;crit_rate_lunarcrystallize;Лунный кристалл;Lunar-Crystallize
+stat;crit_rate_stellar_conduct;Звёздный проводник;Stellar-Conduct
 
 stat;crit_dmg_lunar;Лунные реакции;Lunar Reactions
 stat;crit_dmg_lunarcharged;Лунный заряд;Lunar-Charged
 stat;crit_dmg_lunarbloom;Лунная бутонизация;Lunar-Bloom
 stat;crit_dmg_lunarcrystallize;Лунный кристалл;Lunar-Crystallize
+stat;crit_dmg_stellar_conduct;Звёздный проводник;Stellar-Conduct
 
 stat;dmg_normal_elemental;Элементальный урон;Elemental DMG
 stat;enemy_def_reduce;Снижение защиты противника;Enemy DEF reduce

@@ -73,10 +73,12 @@ export class CharTalentComponent extends React.Component {
             let cData = this.char.getTalentTable(category);
             if (!cData) continue;
 
+            let settings = UI.Layout.app.current.getAllSettings({});
+
             this.tabs.push({
                 name: category,
                 title: UI.Lang.get(cData.title),
-                descr: UI.Lang.getTalent(cData.description),
+                descr: UI.Lang.getTalent(cData.getDescription ? cData.getDescription(settings) : cData.description),
                 data: cData,
             });
         }
@@ -189,7 +191,12 @@ function TalentTable(props) {
         );
     }
 
+    let settings = UI.Layout.app.current.getAllSettings({});
+
     for (let item of items) {
+        if (item.isHidden && item.isHidden(settings))
+            continue;
+
         let first = Array.isArray(item.table) ? item.table[0] : item.table;
         let talent = item.name || first.getName();
         let type = item.type || '';

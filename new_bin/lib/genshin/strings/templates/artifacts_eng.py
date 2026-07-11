@@ -865,13 +865,12 @@ disenchantment_in_deep_shadow_2 = Template(
 
 disenchantment_in_deep_shadow_4 = Template(
     sentences=[
-        ['80:dmg_reaction_superconduct'],
+        ['80:dmg_reaction_superconduct', '40:dmg_reaction_stellar_conduct'],
         ['16:'],
-        [],
     ],
     results=[
         [0],
-        [1, 2],
+        [1],
     ],
 )
 

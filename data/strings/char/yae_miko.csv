@@ -1,2 +1,5 @@
 category;name;rus;eng
 feature_other;yae_miko_skill_bonus;Бонус урона Сакуры сэссё;Sesshou Sakura DMG Bonus
+features_view;comment_yae_miko_edict_of_cleansing;Объявление святилища;Edict of Cleansing
+feature_skill;yae_miko_additional_sesshou_sakura_dmg;Дополнительный урон Сакуры сэссё;Additional Sesshou Sakura DMG
+feature_burst;yae_miko_additional_tenko_thunderbolt_dmg;Дополнительный урон молнии Небесной кицунэ;Additional Tenko Thunderbolt DMG

@@ -1,5 +1,5 @@
 import { Condition } from "../../classes/Condition";
-import { ConditionAnd } from "../../classes/Condition/And";
+import { ConditionAnd } from "../../classes/Condition";
 import { ConditionBoolean } from "../../classes/Condition/Boolean";
 import { ConditionDropdownElement } from "../../classes/Condition/Dropdown/Element";
 import { ConditionNot } from "../../classes/Condition/Not";

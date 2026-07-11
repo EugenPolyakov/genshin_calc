@@ -32,6 +32,7 @@ export const DisenchantmentInDeepShadow = new ArtifactSet({
                     description: 'set_descr.disenchantment_in_deep_shadow_4_1',
                     stats: {
                         dmg_reaction_superconduct: 80,
+                        dmg_reaction_stellar_conduct: 40,
                     },
                 }),
                 new ConditionBoolean({

@@ -2,7 +2,7 @@ import { Condition } from "../../classes/Condition";
 import { ConditionMoonPhaseBuff } from "../../classes/Condition/MoonPhaseBuff";
 import { ConditionMoonPhaseBoolean } from "../../classes/Condition/Boolean/MoonPhase";
 import { ConditionMoonPhaseSetting } from "../../classes/Condition/CustomOrigin/MoonPhaseSetting";
-import { ConditionAnd } from "../../classes/Condition/And";
+import { ConditionAnd } from "../../classes/Condition";
 import { ConditionArchaic } from "../../classes/Condition/Archaic";
 import { ConditionBoolean } from "../../classes/Condition/Boolean";
 import { ConditionBooleanCharElement } from "../../classes/Condition/Boolean/CharElement";

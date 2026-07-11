@@ -17,6 +17,8 @@ import { WorkerFactoryPotentialArtifactUsefulness } from '../../classes/WorkerFa
 import { Serializer } from '../../classes/Serializer';
 import { Artifact } from '../../classes/Artifact';
 import { RankResultItemList } from './RankArtifacts/RankResult';
+import { Accordion, AccordionItem } from '../Components/Accordion';
+import { AccordionSuggesterStats } from '../Components/Accordion/SuggesterStats';
 
 export class RankArtifactTab extends Tab {
     constructor(params) {
@@ -65,6 +67,7 @@ class RankArtifact extends React.Component {
             feature: props.feature,
             featureType: 'average',
             activeSlot: 'flower',
+            stats: {},
             artifacts: {
                 flower: [],
                 plume: [],
@@ -174,11 +177,9 @@ class RankArtifact extends React.Component {
 
         this.changeSort(this.state.featureType, result);
 
-        let state = {
-            artifacts: this.state.artifacts,
-        };
-        state.artifacts[this.state.activeSlot] = result;
-        this.setState(state);
+        let artifacts = this.state.artifacts;
+        artifacts[this.state.activeSlot] = result;
+        this.setState({ artifacts });
     }
 
     rankProgressCallback(data) {
@@ -212,6 +213,7 @@ class RankArtifact extends React.Component {
             arts: calculateList,
             feature: this.state.feature,
             build: UI.Layout.app.currentSet().serialize(),
+            stats: this.state.stats,
             actualValues: {
                 normal: feat1.normal,
                 crit: feat1.crit,
@@ -237,6 +239,12 @@ class RankArtifact extends React.Component {
 
     handleSlotChecked(slot) {
         this.setState({ activeSlot: slot });
+    }
+
+    handleStatSetting(stat, value) {
+        let stats = this.state.stats;
+        stats[stat] = validateStatValue(value);
+        this.setState({ stats: stats });
     }
 
     slotButtons() {
@@ -283,6 +291,14 @@ class RankArtifact extends React.Component {
                     loadingOverlay={ UI.Lang.get('pool_view.loading') }
                     maxHeight={ UI.Layout.isMobile() ? UI.Layout.windowHeight() - 170 : null }
                 >
+                    <Accordion allClosed={ true }>
+                        <AccordionItem id="stats" title={ UI.Lang.get('artifacts_ui.accordion_stats') }>
+                            <AccordionSuggesterStats
+                                values={ this.state.stats }
+                                onChange={ (stat, value) => this.handleStatSetting(stat, value) }
+                            />
+                        </AccordionItem>
+                    </Accordion>
                     <RankResultItemList sort={ this.state.featureType } artifacts={ this.state.artifacts[this.state.activeSlot] } />
                 </FullHeightScrollable>
             </>
@@ -321,4 +337,15 @@ class RankArtifact extends React.Component {
             </FullHeight>
         );
     }
+}
+
+function validateStatValue(value) {
+    value = '' + value;
+    value = value.replace(',', '.');
+    value = value.replace(/[^\d\.]/, '');
+    value = value.replace(/^(\d+(?:\.\d*)?).*$/, '$1');
+    if (value.length > 9) {
+        value = value.substring(0, 9);
+    }
+    return value || '';
 }

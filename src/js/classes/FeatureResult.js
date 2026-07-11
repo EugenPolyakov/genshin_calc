@@ -6,6 +6,7 @@ export class FeatureResult {
         if (data) {
             this.category = data.owner.category;
             this.name = data.owner.getName();
+            this.title = data.owner.getTitle();
             delete data["owner"];
             let keys = Object.keys(data);
             for (let i = 0; i < keys.length; ++i) {

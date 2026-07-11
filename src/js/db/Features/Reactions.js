@@ -1,7 +1,6 @@
 import { ConditionBoolean } from "../../classes/Condition/Boolean";
 import { ConditionBooleanCharElement } from "../../classes/Condition/Boolean/CharElement";
 import { ConditionOr } from "../../classes/Condition/Or";
-import { FeatureReactionSwirl } from "../../classes/Feature2/Reaction/Transformative/Swirl";
 import { FeatureReactionElectroCharged } from "../../classes/Feature2/Reaction/Transformative/ElectroCharged";
 import { FeatureReactionOverloaded } from "../../classes/Feature2/Reaction/Transformative/Overloaded";
 import { FeatureReactionSuperConduct } from "../../classes/Feature2/Reaction/Transformative/SuperConduct";
@@ -11,11 +10,11 @@ import { FeatureReactionBurning } from "../../classes/Feature2/Reaction/Transfor
 import { FeatureReactionHyperBurgeon } from "../../classes/Feature2/Reaction/Transformative/Bloom/Burgeon";
 import { FeatureReactionCrystallize } from "../../classes/Feature2/Reaction/Crystallize";
 import { FeatureReactionRupture } from "../../classes/Feature2/Reaction/Transformative/Bloom/Rupture";
-import { ConditionAnd } from "../../classes/Condition/And";
-import { FeatureReactionLunarCharged } from "../../classes/Feature2/Reaction/Transformative/Lunar/Charged";
+import { ConditionAnd } from "../../classes/Condition";
+import { FeatureReactionLunarCharged } from "../../classes/Feature2/Reaction/Extended/Lunar/Charged";
 import { FeatureMultiplierReaction } from "../../classes/Feature2/Multiplier/Reaction";
 import { reactionDamageValues, reactionShieldValues } from "../generated/ElementScale";
-import { FeatureReactionLunarCrystallize } from "../../classes/Feature2/Reaction/Transformative/Lunar/Crystallize";
+import { FeatureReactionLunarCrystallize } from "../../classes/Feature2/Reaction/Extended/Lunar/Crystallize";
 import { FeatureReactionSwirlHydro } from "../../classes/Feature2/Reaction/Transformative/Swirl/Hydro";
 import { FeatureReactionSwirlPyro } from "../../classes/Feature2/Reaction/Transformative/Swirl/Pyro";
 import { FeatureReactionSwirlElectro } from "../../classes/Feature2/Reaction/Transformative/Swirl/Electro";

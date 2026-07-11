@@ -659,11 +659,18 @@ if not do_single:
                 name=skill_id,
             )
 
+            texts[skill_id] = []
+
             for lang_name in lang_data:
                 try:
                     lang = lang_data[lang_name]['lang']
                     skill_name = lang.get(hl_item['nameTextMapHash'])
                     skill_descr = lang.get(hl_item['descTextMapHash'])
+
+                    texts[skill_id].append(skill_name)
+                    texts[skill_id].append('\n')
+                    texts[skill_id].append(skill_descr)
+                    texts[skill_id].append('\n')
                     # print("            ", hl_item['descTextMapHash'])
                     # print("            ", lang.get(str(hl_item['descTextMapHash'])))
 

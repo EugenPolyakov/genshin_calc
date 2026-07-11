@@ -13,16 +13,6 @@ packs = [
         'input': os.path.join(dirname, '../data/strings/**/*.csv'),
         'output': os.path.join(dirname, '../src/js/lang/%.js'),
     },
-    # {
-    #     'name': 'casino',
-    #     'input': os.path.join(dirname, '../data/strings_casino/*.csv'),
-    #     'output': os.path.join(dirname, '../src/js/lang/casino_%.js'),
-    # },
-    # {
-    #     'name': 'draft',
-    #     'input': os.path.join(dirname, '../data/strings_draft/*.csv'),
-    #     'output': os.path.join(dirname, '../draft/client/js/lang/%.js'),
-    # },
 ]
 
 for pack in packs:

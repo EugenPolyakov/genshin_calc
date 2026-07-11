@@ -28,7 +28,7 @@ export class FeatureHeal extends Feature2 {
      * @returns {Array.<string>}
      */
     getStatsHealBonus(data) {
-        let result = ['healing', 'healing_base'];
+        let result = ['healing*'];
         if (!data.settings.ignore_healing_recv) {
             result.push('healing_recv');
         }

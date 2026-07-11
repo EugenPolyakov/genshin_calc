@@ -700,4 +700,10 @@ export const Rotation = new DbObjectRotation({
 
     "burst.durin_dragon_of_white_flame_dmg": 684,
     "burst.durin_dragon_of_dark_decay_dmg": 685,
+
+    'burst.qiqi_stellar_conduct_dmg': 686,
+    'skill.qiqi_herald_of_frost_coordinated_attack_dmg': 687,
+
+    'burst.yae_miko_additional_tenko_thunderbolt_dmg': 695,
+    'skill.yae_miko_additional_sesshou_sakura_dmg': 696,
 });

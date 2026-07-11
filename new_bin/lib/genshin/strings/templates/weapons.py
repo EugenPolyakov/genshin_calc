@@ -368,7 +368,7 @@ golden_blood_tide = Template(
 golden_blood_tide_eng = Template(
     sentences=[
         ['16:atk_percent'],
-        ['16:dmg_normal', '14:dmg_charged', '14:dmg_stellar_conduct', '4:ignore'],
+        ['16:dmg_normal', '14:dmg_charged', '14:dmg_reaction_stellar_conduct', '4:ignore'],
         ['3:ignore'],
         ['0.3:ignore'],
         ['3:ignore', '8:atk_speed_normal'],
@@ -888,7 +888,7 @@ kagura_dance_of_the_sacred_sakura = Template(
 kagura_dance_of_the_sacred_sakura_eng = Template(
     names=['Kagura Dance'],
     sentences=[
-        ['12:dmg_skill', '12:dmg_stellar_conduct', '24:ignore'],
+        ['12:dmg_skill', '12:dmg_reaction_stellar_conduct', '24:ignore'],
         ['3:ignore'],
         ['12:dmg_pyro', '3:ignore']
     ],
@@ -1333,7 +1333,7 @@ desert_pavilion = Template(
     ],
     results=[
         [0,1,2,3],
-        ['Чертоги в пустыне (Всего МС)'],
+        ['$$$name$$$ (Всего МС)'],
     ],
     extracted_names=[1],
 )
@@ -1346,7 +1346,7 @@ desert_pavilion_eng = Template(
     ],
     results=[
         [0,1,2],
-        ['Desert Pavilion (Total EM)'],
+        ['$$$name$$$ (Total EM)'],
     ],
     extracted_names=[1],
 )
@@ -2495,7 +2495,9 @@ sunken_song_of_the_sands = Template(
         [0],
         [1, 2],
         [3],
+        ['$$$name$$$ (Макс HP)'],
     ],
+    extracted_names=[3],
 )
 
 sunken_song_of_the_sands_eng = Template(
@@ -2512,7 +2514,9 @@ sunken_song_of_the_sands_eng = Template(
         [0],
         [1, 2, 3],
         [4, 5],
+        ['$$$name$$$ (Max HP)'],
     ],
+    extracted_names=[3],
 )
 
 the_silver_tongue = Template(
@@ -3316,5 +3320,37 @@ disaster_and_remorse=Template(
         [6],
     ],
     extracted_names=[4, 5],
+)
+
+a_teaspoon_of_transcendence_rus = Template(
+    sentences=[
+        ['28:atk_percent'],
+        [],
+        ['16:dmg_reaction_stellar_conduct', '5:ignore'],
+        ['3:ignore', '0.2:ignore'],
+    ],
+    results=[
+        [0],
+        [2, 3],
+    ],
+    extracted_names=[
+        'Превосходство',
+    ],
+)
+
+a_teaspoon_of_transcendence_eng = Template(
+    sentences=[
+        ['28:atk_percent'],
+        [],
+        ['16:dmg_reaction_stellar_conduct', '5:ignore'],
+        ['0.2:ignore', '3:ignore'],
+    ],
+    results=[
+        [0],
+        [2, 3],
+    ],
+    extracted_names=[
+        'Transcendence',
+    ],
 )
 

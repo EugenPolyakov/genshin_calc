@@ -36,7 +36,7 @@ export const KagurasVerity = new DbObjectWeapon({
             levelSetting: 'weapon_refine',
             stats: [
                 new StatTable('dmg_skill', weaponDataTable.KagurasVerity.kagura_dance_of_the_sacred_sakura.param1, 100),
-                new StatTable('dmg_stellar_conduct', weaponDataTable.KagurasVerity.kagura_dance_of_the_sacred_sakura.param4, 100),
+                new StatTable('dmg_reaction_stellar_conduct', weaponDataTable.KagurasVerity.kagura_dance_of_the_sacred_sakura.param4, 100),
             ],
         }),
         new ConditionBooleanValue({

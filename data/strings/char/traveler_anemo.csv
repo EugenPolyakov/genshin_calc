@@ -27,4 +27,4 @@ talent_name;traveler_swordfighting_techniques;Техника фехтовани�
 talent_descr;traveler_swordfighting_techniques;name{Базовая сила атаки} увеличивается на %{atk_base}.;name{Base ATK} increased by %{atk_base}.
 talent_name;traveler_special_training;Особая тренировка Скирк;Skirk's Special Training
 talent_descr;traveler_special_training;name{Базовая сила атаки} увеличивается на %{atk_base}, name{мастрество стихий} на %{mastery} и базовое name{HP} на %{hp_base}.;name{Base ATK} increased by %{atk_base}, name{elemental mastery} by %{mastery} and name{base HP} by %{hp_base}.
-features_view;stat_traveler_elevation;Дополнительное<br>усиление;Additional<br>Buff Effect
+features_view;stat_traveler_elevation;Доп. усиление;Additional<br>Buff Effect

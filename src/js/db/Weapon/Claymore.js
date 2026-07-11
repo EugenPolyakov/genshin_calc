@@ -39,6 +39,7 @@ import { AThousandBlazingSuns } from "./Claymore/AThousandBlazingSuns";
 import { FlameForgedInsight } from "./Claymore/FlameForgedInsight";
 import { master_key } from "./Claymore/master_key";
 import { gest_of_the_mighty_wolf } from "./Claymore/gest_of_the_mighty_wolf";
+import { a_teaspoon_of_transcendence } from "./Claymore/a_teaspoon_of_transcendence";
 
 export const Claymore = new DbObjectListSerializeStats({
     Bell: Bell, // 71
@@ -81,4 +82,5 @@ export const Claymore = new DbObjectListSerializeStats({
     FlameForgedInsight: FlameForgedInsight, // 223 ??
     master_key: master_key, // 225
     gest_of_the_mighty_wolf: gest_of_the_mighty_wolf, // 241
+    a_teaspoon_of_transcendence: a_teaspoon_of_transcendence, // 245
 });

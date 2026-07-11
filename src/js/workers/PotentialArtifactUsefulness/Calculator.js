@@ -334,7 +334,7 @@ export class chanceCalculator extends CalcBuildFastPermutations {
                 values: newArt.subStats[stat].values.slice(),
             };
         }
-        let dbgVal = Object.fromEntries(this.atrKeys.map(x => [x, []]));
+        //let dbgVal = Object.fromEntries(this.atrKeys.map(x => [x, []]));
         let evrVal = this.lowComb.getFree();
         //получаем реальные статы c проками
         for (let v of otherCombList) {
@@ -362,7 +362,7 @@ export class chanceCalculator extends CalcBuildFastPermutations {
                 stats[k].value = statData.rollsToValue[this.rarity][lst];
         }
 
-        let realCombCount = factor(this.customStats, 1) / coef;
+        //let realCombCount = factor(this.customStats, 1) / coef;
         //dbgStr += realCombCount + ";";
         let isGood = new Set();
         if (this.lowComb.isActual(evrVal)) {
@@ -393,18 +393,23 @@ export class chanceCalculator extends CalcBuildFastPermutations {
             variation = variation.sort().join('-') || 'default';
 
             let compiler = this.featureVariants[variation];
-            this.buildData.stats = artStats;
-            let feat2 = compiler.execute(this.buildData);
+            // check for stat requirements
+            if (!compiler.checkFunc || compiler.checkFunc(artStats)) {
+                this.buildData.stats = artStats;
+                let feat2 = compiler.execute(this.buildData);
 
-            for (let key of ['normal', 'crit', 'average']) {
-                let val1 = this.actualValues[key];
-                let val2 = feat2[FEATURE_TYPE_INDEX[key]];
-                let diff = Math.round(val2 / val1 * 1000) / 10 - 100;
-                if (diff > 0) {
-                    if (val2 > this.maxVal[key])
-                        this.maxVal[key] = val2;
-                    isGood.add(key);
+                for (let key of ['normal', 'crit', 'average']) {
+                    let val1 = this.actualValues[key];
+                    let val2 = feat2[FEATURE_TYPE_INDEX[key]];
+                    let diff = Math.round(val2 / val1 * 1000) / 10 - 100;
+                    if (diff > 0) {
+                        if (val2 > this.maxVal[key])
+                            this.maxVal[key] = val2;
+                        isGood.add(key);
+                    }
                 }
+            } else {
+                ++this.skippedCombinations;
             }
             this.calcCount++;
             if (isGood.size == 0) {

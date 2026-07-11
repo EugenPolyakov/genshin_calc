@@ -19,7 +19,7 @@ import { FeatureDamagePlungeCollision } from "../../classes/Feature2/Damage/Plun
 import { FeatureDamagePlungeShockWave } from "../../classes/Feature2/Damage/Plunge/ShockWave";
 import { FeatureDamageCharged } from "../../classes/Feature2/Damage/Charged";
 import { ValueTable } from "../../classes/ValueTable";
-import { ConditionAnd } from "../../classes/Condition/And";
+import { ConditionAnd } from "../../classes/Condition";
 import { FeatureHeal } from "../../classes/Feature2/Heal";
 import { FeatureMultiplierBondOfLife } from "../../classes/Feature2/Multiplier/BondOfLife";
 import { FeatureDamageSkill } from "../../classes/Feature2/Damage/Skill";

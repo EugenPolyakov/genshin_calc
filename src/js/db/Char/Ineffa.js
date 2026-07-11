@@ -1,5 +1,5 @@
 import { Condition } from "../../classes/Condition";
-import { ConditionAnd } from "../../classes/Condition/And";
+import { ConditionAnd } from "../../classes/Condition";
 import { ConditionAscensionChar } from "../../classes/Condition/Ascension/Char";
 import { ConditionBoolean } from "../../classes/Condition/Boolean";
 import { ConditionConstellation } from "../../classes/Condition/Constellation";
@@ -18,10 +18,9 @@ import { FeatureDamageSkill } from "../../classes/Feature2/Damage/Skill";
 import { FeatureMultiplier } from "../../classes/Feature2/Multiplier";
 import { FeatureMultiplierList } from "../../classes/Feature2/Multiplier/List";
 import { FeaturePostEffectValue } from "../../classes/Feature2/PostEffectValue";
-import { FeatureReactionLunarChargedLike } from "../../classes/Feature2/Reaction/Transformative/Lunar/ChargedLike";
+import { FeatureReactionLunarChargedLike } from "../../classes/Feature2/Reaction/Extended/Lunar/ChargedLike";
 import { FeatureShield } from "../../classes/Feature2/Shield";
 import { PostEffectStats } from "../../classes/PostEffect/Stats";
-import { PostEffectStatsTotal } from "../../classes/PostEffect/Stats/Total";
 import { StatTable } from "../../classes/StatTable";
 import { ValueTable } from "../../classes/ValueTable";
 import { charTables } from "../generated/CharTables";

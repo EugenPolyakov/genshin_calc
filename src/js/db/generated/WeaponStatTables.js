@@ -750,6 +750,10 @@ export const weaponStatTables = {
 		enumStatTables.atk46,
 		enumStatTables.crit7,
 	],
+	a_teaspoon_of_transcendence: [
+		enumStatTables.atk48,
+		enumStatTables.cdmg10_3,
+	],
 	WhiteTassel: [
 		enumStatTables.atk39,
 		enumStatTables.crit5_4,
@@ -2229,6 +2233,16 @@ export const weaponDataTable = {
 			param4: [4],
 			param5: [4],
 			param6: [0.01],
+		},
+	},
+	a_teaspoon_of_transcendence: {
+		rarity: 5,
+		weapon: "claymore",
+		gameId: 12516,
+		a_teaspoon_of_transcendence: {
+			param1: [0.28, 0.35, 0.42, 0.49, 0.56],
+			param2: [0.16, 0.2, 0.24, 0.28, 0.32],
+			param3: [5],
 		},
 	},
 	WhiteTassel: {

@@ -33,7 +33,7 @@ self.onmessage = function (input) {
         settings: {
             setMinValues: {},
             setMaxValues: {},
-            stats: {},
+            stats: input.data.stats || {},
         },
     });
 

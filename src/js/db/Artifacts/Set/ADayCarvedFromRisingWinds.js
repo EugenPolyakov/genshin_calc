@@ -1,5 +1,5 @@
 import { ArtifactSet } from "../../../classes/ArtifactSet";
-import { ConditionAnd } from "../../../classes/Condition/And";
+import { ConditionAnd } from "../../../classes/Condition";
 import { ConditionBoolean } from "../../../classes/Condition/Boolean";
 import { ConditionHexCurrent } from "../../../classes/Condition/HexCurrent";
 import { ConditionStatic } from "../../../classes/Condition/Static";

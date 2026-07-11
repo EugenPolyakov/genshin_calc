@@ -1,5 +1,5 @@
 import { Condition } from "../../classes/Condition";
-import { ConditionAnd } from "../../classes/Condition/And";
+import { ConditionAnd } from "../../classes/Condition";
 import { ConditionAscensionChar } from "../../classes/Condition/Ascension/Char";
 import { ConditionBoolean } from "../../classes/Condition/Boolean";
 import { ConditionHexCheck } from "../../classes/Condition/HexCheck";
@@ -21,6 +21,7 @@ import { FeatureMultiplier } from "../../classes/Feature2/Multiplier";
 import { FeatureMultiplierTarget } from "../../classes/Feature2/Multiplier/Target";
 import { FeaturePostEffectValue } from "../../classes/Feature2/PostEffectValue";
 import { FeatureStatic } from "../../classes/Feature2/Static";
+import { PRIORITIES } from "../../classes/PostEffect";
 import { PostEffectStats } from "../../classes/PostEffect/Stats";
 import { PostEffectStatsStatic } from "../../classes/PostEffect/Stats/Static";
 import { StatTable } from "../../classes/StatTable";
@@ -242,6 +243,7 @@ export const Prune = new DbObjectChar({
                 percent: new StatTable('', [charTalentTables.Prune.passsive[1][0]], 100),
                 exceed: charTalentTables.Prune.passsive[1][3],
                 statCap: new ValueTable([charTalentTables.Prune.passsive[1][2]], 100),
+                priority: PRIORITIES.STAT_DMG_BONUS,
             }),
             condition: new ConditionAscensionChar({ ascension: 4 }),
         }),

@@ -153,8 +153,8 @@ class CharGenerator(EmptyCharGenerator):
             print(f"            title: 'talent_name.{talent_id}',")
             print(f"            description: 'talent_descr.{talent_id}',")
             if needAvatarPromoteLevel > 0:
-                print(f"            info: {{ascension: {needAvatarPromoteLevel}}},")
-                print(f"            condition: new ConditionAscensionChar({{ascension: {needAvatarPromoteLevel}}}),")
+                print(f"            info: {{ ascension: {needAvatarPromoteLevel} }},")
+                print(f"            condition: new ConditionAscensionChar({{ ascension: {needAvatarPromoteLevel} }}),")
             print("        }),")
 
     def begin_constellation(self, char_id):

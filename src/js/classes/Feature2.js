@@ -54,8 +54,12 @@ export class Feature2 {
         return this.element;
     }
 
+    getTitle() {
+        return this.fullName ? this.fullName : this.getName();
+    }
+
     getName() {
-        return this.fullName ? this.fullName : this.category + '.' + this.name;
+        return this.category + '.' + this.name;
     }
 
     getIsChild() {
@@ -302,7 +306,7 @@ export class Feature2 {
                 }
 
                 let value = featureData.getName();
-                let title = 'feature_'+ featureData.getName();
+                let title = 'feature_'+ featureData.getTitle();
 
                 title = UI.Lang.get(title)
                 if (featureData.isChild) {

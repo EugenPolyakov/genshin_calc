@@ -8,7 +8,7 @@ export class Accordion extends React.Component {
         let firstChild = this.props.children && Array.isArray(this.props.children) ? this.props.children[0] : this.props.children;
 
         this.state = {
-            openedId: firstChild ? firstChild.props.id : '',
+            openedId: this.props.allClosed ? '' : (firstChild ? firstChild.props.id : ''),
         };
     }
 

@@ -37,6 +37,7 @@ export class WorkerFactoryPotentialArtifactUsefulness extends WorkerFactory {
                     feature: data.feature,
                     build: data.build,
                     actualValues: data.actualValues,
+                    stats: data.stats,
                     arts: [],
                     returnProgress: data.returnProgress,
                 };

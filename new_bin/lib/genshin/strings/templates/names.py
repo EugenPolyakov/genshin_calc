@@ -14,6 +14,8 @@ names_eng = Template(
         'Nightsoul Bursts',
         'Verdant Dew',
 
+        'Moonsign( -|:) Nascent Gleam',
+        'Moonsign( -|:) Ascendant Gleam',
         'Moonsign',
         'Moondrifts',
         'Nascent Gleam',
@@ -97,7 +99,7 @@ names_eng = Template(
 
 keywords_eng = Template(
     keywords=[
-        ('Stellar-Conduct', 'cryo'),
+        ('Stellar-Conduct', 'stcond'),
 
         ('Lunar-Bloom DMG', 'dendro'),
         ('Lunar-Bloom', 'dendro'),
@@ -238,6 +240,8 @@ names_rus = Template(
         'частицы',
         'элементальные сферы',
         'частицы',
+        'Лунное знамение( -|:) Зарождающееся сияние',
+        'Лунное знамение( -|:) Высшее сияние',
         'Лунное знамение',
         'Лунная пелена',
         'Зарождающееся сияние',
@@ -327,7 +331,7 @@ names_rus = Template(
 
 keywords_rus = Template(
     keywords=[
-        ('Звёздный [пП]роводник', 'cryo'),
+        ('Звёздный [пП]роводник', 'stcond'),
 
         ('Лунная бутонизация', 'dendro'),
         ('Лунную бутонизацию', 'dendro'),

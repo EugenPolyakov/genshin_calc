@@ -1,4 +1,4 @@
-import { ConditionAnd } from "../../../classes/Condition/And";
+import { ConditionAnd } from "../../../classes/Condition";
 import { ConditionBoolean } from "../../../classes/Condition/Boolean";
 import { ConditionBooleanRefine } from "../../../classes/Condition/Boolean/Refine";
 import { ConditionHexCheck } from "../../../classes/Condition/HexCheck";

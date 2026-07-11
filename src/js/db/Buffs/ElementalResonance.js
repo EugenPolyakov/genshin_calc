@@ -1,4 +1,5 @@
-import { ConditionAnd } from "../../classes/Condition/And";
+import { Condition } from "../../classes/Condition";
+import { ConditionAnd } from "../../classes/Condition";
 import { ConditionBoolean } from "../../classes/Condition/Boolean";
 import { ConditionEnemyStatus } from "../../classes/Condition/Boolean/EnemyStatus";
 import { ConditionBooleanResonanceEnabled } from "../../classes/Condition/Boolean/ResonanceEnabled";
@@ -8,12 +9,14 @@ import { ConditionCustomBuffs } from "../../classes/Condition/CustomBuffs";
 import { ConditionMoonPhaseSetting } from "../../classes/Condition/CustomOrigin/MoonPhaseSetting";
 import { ConditionDropdownElement } from "../../classes/Condition/Dropdown/Element";
 import { ConditionGroup } from "../../classes/Condition/Group";
+import { ConditionLevels } from "../../classes/Condition/Levels";
 import { ConditionMoonPhaseCheck } from "../../classes/Condition/MoonPhaseCheck";
 import { ConditionNonLunarElement } from "../../classes/Condition/NonLunarElement";
 import { ConditionNot } from "../../classes/Condition/Not";
 import { ConditionNumber } from "../../classes/Condition/Number";
 import { ConditionOr } from "../../classes/Condition/Or";
 import { ConditionResonance } from "../../classes/Condition/Resonance";
+import { ConditionStacks } from "../../classes/Condition/Stacks";
 import { ConditionStatic } from "../../classes/Condition/Static";
 import { DbObjectBuff } from "../../classes/DbObject/Buff";
 import { PostEffectStats } from "../../classes/PostEffect/Stats";
@@ -366,11 +369,13 @@ export const ElementalResonance = new DbObjectBuff({
             serializeId: 62,
             title: 'buffs_name.ascendant_gleam_PEC',
             description: 'buffs_descr.ascendant_gleam_PEC',
+            rotation: 'buffs',
             hideInactive: true,
             customStats: [
                 new ConditionNumber({
                     name: 'ascendant_gleam_atk',
                     serializeId: 66,
+                    max: 10000,
                     title: 'pool_stat.atk',
                 }),
             ],
@@ -385,7 +390,7 @@ export const ElementalResonance = new DbObjectBuff({
         }),
         new ConditionGroup({
             name: 'buffs.ascendant_gleam',
-            serializeId: 62,
+            serializeId: 83,
             group: 2,
             title: 'buffs_name.ascendant_gleam_AD',
             description: 'buffs_descr.ascendant_gleam_AD',
@@ -395,6 +400,7 @@ export const ElementalResonance = new DbObjectBuff({
                 new ConditionNumber({
                     name: 'ascendant_gleam_mastery',
                     serializeId: 67,
+                    max: 10000,
                     title: 'pool_stat.mastery',
                 }),
             ],
@@ -408,7 +414,7 @@ export const ElementalResonance = new DbObjectBuff({
         }),
         new ConditionGroup({
             name: 'buffs.ascendant_gleam',
-            serializeId: 62,
+            serializeId: 84,
             group: 3,
             title: 'buffs_name.ascendant_gleam_hydro',
             description: 'buffs_descr.ascendant_gleam_hydro',
@@ -418,6 +424,7 @@ export const ElementalResonance = new DbObjectBuff({
                 new ConditionNumber({
                     name: 'ascendant_gleam_hp',
                     serializeId: 68,
+                    max: 100000,
                     title: 'pool_stat.hp',
                 }),
             ],
@@ -428,7 +435,7 @@ export const ElementalResonance = new DbObjectBuff({
         }),
         new ConditionGroup({
             name: 'buffs.ascendant_gleam',
-            serializeId: 62,
+            serializeId: 85,
             group: 4,
             title: 'buffs_name.ascendant_gleam_geo',
             description: 'buffs_descr.ascendant_gleam_geo',
@@ -438,6 +445,7 @@ export const ElementalResonance = new DbObjectBuff({
                 new ConditionNumber({
                     name: 'ascendant_gleam_def',
                     serializeId: 69,
+                    max: 10000,
                     title: 'pool_stat.def',
                 }),
             ],
@@ -445,6 +453,45 @@ export const ElementalResonance = new DbObjectBuff({
                 new ConditionMoonPhaseCheck({ moonphase: 2 }),
                 new ConditionNonLunarElement({ element: 'geo' }),
             ]),
+        }),
+        new ConditionBoolean({
+            name: 'common.enemy_superconduct',
+            serializeId: 82,
+            title: 'talent_name.n11330003',
+            description: 'talent_descr.n11330003',
+            rotation: 'buffs',
+            hideInactive: true,
+            stats: {
+                dmg_cryo: 20,
+                dmg_electro: 20,
+            },
+            customStats: [
+                new ConditionStacks({
+                    name: 'common.polestar_field_stacks',
+                    serializeId: 86,
+                    title: 'buff_view.stacks_count',
+                    maxStacks: 12,
+                    stats: [
+                        new StatTable('dmg_cryo', [1]),
+                        new StatTable('dmg_electro', [1]),
+                        new StatTable('polestar_field', [5]),
+                    ],
+                }),
+                new Condition({
+                    stats: {
+                        dmg_cryo: 8,
+                        dmg_electro: 8,
+                        polestar_field: 40,
+                    },
+                    isHidden: true,
+                    condition: new ConditionBooleanValue({
+                        setting: 'common.polestar_field_stacks',
+                        cond: 'ge',
+                        value: 1,
+                    }),
+                }),
+            ],
+            condition: new ConditionBoolean({ name: 'allowed_stellar_conduct' }),
         }),
     ],
     postEffects: [

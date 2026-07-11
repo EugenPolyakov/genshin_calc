@@ -36,6 +36,7 @@ const REACTION_BONUS_STATS = [
     'dmg_reaction_lunarcrystallize',
     'dmg_reaction_lunarcharged',
     'dmg_reaction_lunarbloom',
+    'dmg_reaction_stellar_conduct',
     //'dmg_reaction_crystalize',
 ];
 

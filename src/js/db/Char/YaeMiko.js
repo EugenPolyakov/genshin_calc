@@ -1,7 +1,9 @@
-import { Condition } from "../../classes/Condition";
+import { Condition, ConditionAnd } from "../../classes/Condition";
 import { ConditionAscensionChar } from "../../classes/Condition/Ascension/Char";
 import { ConditionBoolean } from "../../classes/Condition/Boolean";
 import { ConditionConstellation } from "../../classes/Condition/Constellation";
+import { ConditionLevelSelect } from "../../classes/Condition/LevelSelect";
+import { ConditionOr } from "../../classes/Condition/Or";
 import { ConditionStatic } from "../../classes/Condition/Static";
 import { DbObjectChar } from "../../classes/DbObject/Char";
 import { DbObjectConstellation } from "../../classes/DbObject/Constellation";
@@ -13,9 +15,12 @@ import { FeatureDamagePlungeCollision } from "../../classes/Feature2/Damage/Plun
 import { FeatureDamagePlungeShockWave } from "../../classes/Feature2/Damage/Plunge/ShockWave";
 import { FeatureDamageSkill } from "../../classes/Feature2/Damage/Skill";
 import { FeatureMultiplier } from "../../classes/Feature2/Multiplier";
+import { FeatureMultiplierTarget } from "../../classes/Feature2/Multiplier/Target";
 import { FeaturePostEffectValue } from "../../classes/Feature2/PostEffectValue";
+import { FeatureReactionStellarConduct } from "../../classes/Feature2/Reaction/Extended/StellarConduct";
 import { PostEffectStatsMastery } from "../../classes/PostEffect/Stats/Mastery";
 import { StatTable } from "../../classes/StatTable";
+import { ValueTable } from "../../classes/ValueTable";
 import { charTables } from "../generated/CharTables";
 import { charTalentTables } from "../generated/CharTalentTables";
 
@@ -83,7 +88,11 @@ const Talents = new DbObjectTalents({
     burst: {
         gameId: charTalentTables.YaeMiko.s3_id,
         title: 'talent_name.yae_miko_tenko_kenshin',
-        description: 'talent_descr.yae_miko_tenko_kenshin',
+        getDescription(settings) {
+            if (settings.yae_miko_edict_of_cleansing)
+                return 'talent_descr.yae_miko_tenko_kenshin_hex';
+            return 'talent_descr.yae_miko_tenko_kenshin';
+        },
         items: [
             {
                 table: new StatTable('burst_dmg', charTalentTables.YaeMiko.s3.p1),
@@ -225,13 +234,36 @@ export const YaeMiko = new DbObjectChar({
                     values: Talents.get('skill.yae_miko_level_4'),
                 }),
             ],
-            condition: new ConditionConstellation({constellation: 2}),
+            condition: new ConditionConstellation({ constellation: 2 }),
+        }),
+        new FeatureReactionStellarConduct({
+            element: 'electro',
+            category: 'skill',
+            name: 'yae_miko_additional_sesshou_sakura_dmg',
+            //damageBonuses: ['dmg_skill_yaemiko'],
+            multipliers: [
+                new FeatureMultiplier({
+                    values: new ValueTable([charTalentTables.YaeMiko.passsive[2][2]], 100),
+                }),
+            ],
+            condition: new ConditionAnd([
+                new ConditionBoolean({ name: 'yae_miko_edict_of_cleansing' }),
+                new ConditionBoolean({ name: 'yae_miko_edict_of_cleansing_superconduct' }),
+                new ConditionBoolean({ name: 'common.enemy_superconduct' }),
+                new ConditionBoolean({ name: 'allowed_stellar_conduct' }),
+            ]),
         }),
         new FeatureDamageBurst({
             element: 'electro',
             multipliers: [
                 new FeatureMultiplier({
                     leveling: 'char_skill_burst',
+                    scalingMultiplier: 2,
+                    scalingMultiplierCondition: new ConditionAnd([
+                        new ConditionBoolean({ name: 'yae_miko_edict_of_cleansing' }),
+                        new ConditionConstellation({ constellation: 4 }),
+                    ]),
+                    scalingSource: 'constellation4',
                     values: Talents.get('burst.burst_dmg'),
                 }),
             ],
@@ -241,9 +273,50 @@ export const YaeMiko = new DbObjectChar({
             multipliers: [
                 new FeatureMultiplier({
                     leveling: 'char_skill_burst',
+                    scalingMultiplier: 2,
+                    scalingMultiplierCondition: new ConditionAnd([
+                        new ConditionBoolean({ name: 'yae_miko_edict_of_cleansing' }),
+                        new ConditionConstellation({ constellation: 4 }),
+                    ]),
+                    scalingSource: 'constellation4',
                     values: Talents.get('burst.yae_miko_tenko_thunderbolt_dmg'),
                 }),
             ],
+        }),
+        new FeatureDamageBurst({
+            element: 'electro',
+            name: 'yae_miko_additional_tenko_thunderbolt_dmg',
+            multipliers: [
+                new FeatureMultiplier({
+                    source: 'ascension1',
+                    values: new ValueTable([charTalentTables.YaeMiko.passsive[0][0]], 100),
+                }),
+            ],
+            condition: new ConditionAnd([
+                new ConditionBoolean({ name: 'yae_miko_edict_of_cleansing' }),
+                new ConditionAscensionChar({ ascension: 1 }),
+                new ConditionOr([
+                    new ConditionBoolean({ name: 'allowed_stellar_conduct', invert: 1 }),
+                    new ConditionBoolean({ name: 'common.enemy_superconduct', invert: 1 }),
+                ]),
+            ]),
+        }),
+        new FeatureReactionStellarConduct({
+            element: 'electro',
+            category: 'burst',
+            name: 'yae_miko_additional_tenko_thunderbolt_dmg',
+            multipliers: [
+                new FeatureMultiplier({
+                    source: 'ascension1',
+                    values: new ValueTable([charTalentTables.YaeMiko.passsive[0][1]], 100),
+                }),
+            ],
+            condition: new ConditionAnd([
+                new ConditionBoolean({ name: 'yae_miko_edict_of_cleansing' }),
+                new ConditionAscensionChar({ ascension: 1 }),
+                new ConditionBoolean({ name: 'common.enemy_superconduct' }),
+                new ConditionBoolean({ name: 'allowed_stellar_conduct' }),
+            ]),
         }),
         new FeaturePostEffectValue({
             category: 'other',
@@ -254,13 +327,48 @@ export const YaeMiko = new DbObjectChar({
         }),
     ],
     conditions: [
+        new ConditionBoolean({
+            name: 'yae_miko_edict_of_cleansing',
+            title: 'talent_name.yae_miko_edict_of_cleansing',
+            description: 'talent_descr.yae_miko_edict_of_cleansing_1',
+            serializeId: 2,
+        }),
+        new ConditionBoolean({
+            name: 'yae_miko_edict_of_cleansing_superconduct',
+            title: 'talent_name.yae_miko_edict_of_cleansing',
+            description: 'talent_descr.yae_miko_edict_of_cleansing_2',
+            serializeId: 3,
+            condition: new ConditionBoolean({ name: 'yae_miko_edict_of_cleansing' }),
+        }),
+        new ConditionStatic({
+            title: 'talent_name.yae_miko_edict_of_cleansing',
+            description: 'talent_descr.yae_miko_edict_of_cleansing_3',
+            condition: new ConditionAnd([
+                new ConditionBoolean({ name: 'yae_miko_edict_of_cleansing' }),
+                new ConditionBoolean({ name: 'yae_miko_edict_of_cleansing_superconduct' }),
+                new ConditionBoolean({ name: 'common.enemy_superconduct' }),
+                new ConditionBoolean({ name: 'allowed_stellar_conduct' }),
+            ]),
+        }),
         new ConditionStatic({
             title: 'talent_name.yae_miko_the_shrines_sacred_shade',
             description: 'talent_descr.yae_miko_the_shrines_sacred_shade',
-            info: {ascension: 1},
-            subConditions: [
-                new ConditionAscensionChar({ascension: 1}),
-            ],
+            info: { ascension: 1 },
+            hideCondition: new ConditionBoolean({ name: 'yae_miko_edict_of_cleansing' }),
+            condition: new ConditionAnd([
+                new ConditionBoolean({ name: 'yae_miko_edict_of_cleansing', invert: 1 }),
+                new ConditionAscensionChar({ ascension: 1 }),
+            ]),
+        }),
+        new ConditionStatic({
+            title: 'talent_name.yae_miko_the_shrines_sacred_shade',
+            description: 'talent_descr.yae_miko_the_shrines_sacred_shade_hex',
+            info: { ascension: 1 },
+            hideCondition: new ConditionBoolean({ name: 'yae_miko_edict_of_cleansing', invert: 1 }),
+            condition: new ConditionAnd([
+                new ConditionBoolean({ name: 'yae_miko_edict_of_cleansing' }),
+                new ConditionAscensionChar({ ascension: 1 }),
+            ]),
         }),
         new ConditionStatic({
             title: 'talent_name.yae_miko_enlightened_blessing',
@@ -274,12 +382,34 @@ export const YaeMiko = new DbObjectChar({
             ],
         }),
     ],
+    multipliers: [
+        new FeatureMultiplier({
+            target: new FeatureMultiplierTarget({
+                damageTypes: 'skill',
+            }),
+            source: 'yae_miko_edict_of_cleansing',
+            values: new ValueTable([charTalentTables.YaeMiko.passsive[2][0]], 100),
+            condition: new ConditionAnd([
+                new ConditionBoolean({ name: 'yae_miko_edict_of_cleansing' }),
+                new ConditionBoolean({ name: 'yae_miko_edict_of_cleansing_superconduct' }),
+            ]),
+        }),
+    ],
     constellation: new DbObjectConstellation([
         {
             conditions: [
                 new ConditionStatic({
                     title: 'talent_name.yae_miko_yakan_offering',
                     description: 'talent_descr.yae_miko_yakan_offering',
+                    hideCondition: new ConditionBoolean({ name: 'yae_miko_edict_of_cleansing' }),
+                }),
+                new ConditionStatic({
+                    title: 'talent_name.yae_miko_yakan_offering',
+                    description: 'talent_descr.yae_miko_yakan_offering_hex_1',
+                    hideCondition: new ConditionBoolean({ name: 'yae_miko_edict_of_cleansing', invert: 1 }),
+                    stats: {
+                        text_dmg_electro: charTalentTables.YaeMiko.cons[0][1] * 100,
+                    }
                 }),
             ],
         },
@@ -288,9 +418,23 @@ export const YaeMiko = new DbObjectChar({
                 new ConditionStatic({
                     title: 'talent_name.yae_miko_foxs_mooncall',
                     description: 'talent_descr.yae_miko_foxs_mooncall',
-                    stats: {
-                        text_percent: 60,
-                    },
+                    hideCondition: new ConditionBoolean({ name: 'yae_miko_edict_of_cleansing' }),
+                }),
+                new ConditionLevelSelect({
+                    name: 'yae_miko_foxs_mooncall',
+                    serializeId: 4,
+                    title: 'talent_name.yae_miko_foxs_mooncall',
+                    description: 'talent_descr.yae_miko_foxs_mooncall_hex_1',
+                    hideCondition: new ConditionBoolean({ name: 'yae_miko_edict_of_cleansing', invert: 1 }),
+                    maxStacks: 4,
+                    stats: [
+                        new StatTable('mastery', [
+                            charTalentTables.YaeMiko.cons[1][3],
+                            charTalentTables.YaeMiko.cons[1][4],
+                            charTalentTables.YaeMiko.cons[1][5],
+                            charTalentTables.YaeMiko.cons[1][6],
+                        ])
+                    ],
                 }),
             ],
         },
@@ -310,6 +454,19 @@ export const YaeMiko = new DbObjectChar({
                     serializeId: 1,
                     title: 'talent_name.yae_miko_sakura_channeling',
                     description: 'talent_descr.yae_miko_sakura_channeling',
+                    hideCondition: new ConditionBoolean({ name: 'yae_miko_edict_of_cleansing' }),
+                    condition: new ConditionBoolean({ name: 'yae_miko_edict_of_cleansing', invert: 1 }),
+                    stats: {
+                        dmg_electro: 20,
+                    },
+                }),
+                new ConditionBoolean({
+                    name: 'miko_sakura_channeling',
+                    serializeId: 1,
+                    title: 'talent_name.yae_miko_sakura_channeling',
+                    description: 'talent_descr.yae_miko_sakura_channeling_hex',
+                    hideCondition: new ConditionBoolean({ name: 'yae_miko_edict_of_cleansing', invert: 1 }),
+                    condition: new ConditionBoolean({ name: 'yae_miko_edict_of_cleansing' }),
                     stats: {
                         dmg_electro: 20,
                     },
@@ -330,8 +487,20 @@ export const YaeMiko = new DbObjectChar({
                 new ConditionStatic({
                     title: 'talent_name.yae_miko_daisesshou',
                     description: 'talent_descr.yae_miko_daisesshou',
+                    hideCondition: new ConditionBoolean({ name: 'yae_miko_edict_of_cleansing' }),
+                    condition: new ConditionBoolean({ name: 'yae_miko_edict_of_cleansing', invert: 1 }),
                     stats: {
-                        enemy_def_ignore_skill: 60,
+                        enemy_def_ignore_skill: charTalentTables.YaeMiko.cons[5][0] * 100,
+                    },
+                }),
+                new ConditionStatic({
+                    title: 'talent_name.yae_miko_daisesshou',
+                    description: 'talent_descr.yae_miko_daisesshou_hex',
+                    hideCondition: new ConditionBoolean({ name: 'yae_miko_edict_of_cleansing', invert: 1 }),
+                    condition: new ConditionBoolean({ name: 'yae_miko_edict_of_cleansing' }),
+                    stats: {
+                        enemy_def_ignore_skill: charTalentTables.YaeMiko.cons[5][0] * 100,
+                        crit_dmg_stellar_conduct: charTalentTables.YaeMiko.cons[5][1] * 100,
                     },
                 }),
             ],
@@ -342,6 +511,37 @@ export const YaeMiko = new DbObjectChar({
     ],
     partyData: {
         conditions: [
+            new ConditionBoolean({
+                name: 'party.yae_miko_yakan_offering',
+                serializeId: 2,
+                title: 'talent_name.yae_miko_yakan_offering',
+                description: 'talent_descr.yae_miko_yakan_offering_hex_2',
+                info: { constellation: 2 },
+                //hideCondition: new ConditionBoolean({ name: 'yae_miko_edict_of_cleansing', invert: 1 }),
+                stats: {
+                    text_dmg_electro: charTalentTables.YaeMiko.cons[0][1] * 100,
+                    dmg_electro: charTalentTables.YaeMiko.cons[0][1] * 100,
+                    dmg_reaction_stellar_conduct: charTalentTables.YaeMiko.cons[0][1] * 100,
+                }
+            }),
+            new ConditionLevelSelect({
+                name: 'party.yae_miko_foxs_mooncall',
+                serializeId: 3,
+                title: 'talent_name.yae_miko_foxs_mooncall',
+                description: 'talent_descr.yae_miko_foxs_mooncall_hex_2',
+                //hideCondition: new ConditionBoolean({ name: 'yae_miko_edict_of_cleansing', invert: 1 }),
+                maxStacks: 4,
+                info: { constellation: 3 },
+                condition: new ConditionBoolean({ name: 'common.off_field', invert: 1 }),
+                stats: [
+                    new StatTable('mastery', [
+                        charTalentTables.YaeMiko.cons[1][3],
+                        charTalentTables.YaeMiko.cons[1][4],
+                        charTalentTables.YaeMiko.cons[1][5],
+                        charTalentTables.YaeMiko.cons[1][6],
+                    ])
+                ],
+            }),
             new ConditionBoolean({
                 name: 'party.miko_sakura_channeling',
                 serializeId: 1,

@@ -19,7 +19,7 @@ import { charTables } from "../generated/CharTables";
 import { charTalentTables } from "../generated/CharTalentTables";
 import { FeatureDamage } from "../../classes/Feature2/Damage";
 import { ConditionCalcElementsVarka } from "../../classes/Condition/CalcElementsVarka";
-import { ConditionAnd } from "../../classes/Condition/And";
+import { ConditionAnd } from "../../classes/Condition";
 import { ConditionHexCheck } from "../../classes/Condition/HexCheck";
 import { ConditionVarkaStatic } from "../../classes/Condition/Static/Varka";
 import { ConditionHexCurrent } from "../../classes/Condition/HexCurrent";

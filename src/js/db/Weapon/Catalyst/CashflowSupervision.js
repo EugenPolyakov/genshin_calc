@@ -31,7 +31,7 @@ export const CashflowSupervision = new DbObjectWeapon({
             stats: [
                 new StatTable('dmg_normal', weaponDataTable.CashflowSupervision.golden_blood_tide.param3, 100),
                 new StatTable('dmg_charged', weaponDataTable.CashflowSupervision.golden_blood_tide.param4, 100),
-                new StatTable('dmg_stellar_conduct', weaponDataTable.CashflowSupervision.golden_blood_tide.param6, 100),
+                new StatTable('dmg_reaction_stellar_conduct', weaponDataTable.CashflowSupervision.golden_blood_tide.param6, 100),
             ],
         }),
         new ConditionBooleanValue({

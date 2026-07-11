@@ -148,6 +148,7 @@ weapon_names = {
     12513: 'MountainKingsFang',
     12514: 'AThousandBlazingSuns',
     12515: 'gest_of_the_mighty_wolf',
+    12516: 'a_teaspoon_of_transcendence',
 
     #POLEARMS
     13301: "WhiteTassel",

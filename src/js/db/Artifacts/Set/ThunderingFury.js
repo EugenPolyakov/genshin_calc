@@ -38,6 +38,7 @@ export const ThunderingFury = new ArtifactSet({
                         dmg_reaction_hyperbloom: 40,
                         dmg_reaction_aggravate: 20,
                         dmg_reaction_lunarcharged: 20,
+                        dmg_reaction_stellar_conduct: 20,
                     },
                 }),
             ],

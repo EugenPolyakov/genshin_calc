@@ -1,4 +1,4 @@
-import { BuildSettings, getSkillLevelByName } from "./Build/Settings";
+import { getSkillLevelByName } from "./Build/Settings";
 import {Stats} from "./Stats";
 
 export class Condition {
@@ -20,7 +20,10 @@ export class Condition {
     }
 
     getNamesList() {
-        return [this.getName()];
+        if (!this.params.customStats)
+            return [this.getName()];
+        else
+            return [this.getName()].concat(this.customStats.flatMap(x => x.getNamesList()));
     }
 
     getType() {
@@ -32,7 +35,12 @@ export class Condition {
             return '';
         }
 
-        return UI.Lang.getTalent(this.params.title, stats);
+        let val = this.params.title.split(';');
+        if (val.length > 1) {
+            let result = val.map(x => UI.Lang.getTalent(x, stats)).join(' ');
+            return result;
+        } else
+            return UI.Lang.getTalent(this.params.title, stats);
     }
 
     getIcon() {
@@ -121,7 +129,7 @@ export class Condition {
 
     getDefaultStats(settings) {
         let stat = new Stats(this.params.stats || new Stats());
-        let list = this.getCondtitionList();
+        let list = this.getSubConditions();
         if (list)
             for (let c of list)
                 stat.concat(c.getActualStats(settings));
@@ -149,11 +157,54 @@ export class Condition {
         return this.params.rotation || '';
     }
 
-    getCondtitionList() {
-        if (this.params.customStats)
-            return this.params.customStats;
+    getSubConditions() {
+        return this.params.customStats || [];
+    }
 
-        return null;
+    getCondtitionList() {
+        if (!this.params.customStats)
+            return null;
+
+        if (this.cachedItems) {
+            return this.cachedItems;
+        }
+
+        let main = this.createMainCond();
+        let result;
+        if (main)
+            result = [main].concat(this.params.customStats.map(x => this.createSubcondition(x)));
+        else
+            result = this.params.customStats.map(x => this.createSubcondition(x));
+
+        this.cachedItems = result;
+        return result;
+    }
+
+    createSubcondition(parent) {
+        let params = Object.assign({}, parent.params);
+        if (this.params.hideCondition) {
+            if (params.hideCondition)
+                params.hideCondition = new ConditionAnd([this.params.hideCondition, params.hideCondition]);
+            else
+                params.hideCondition = this.params.hideCondition;
+        }
+        if (this.params.condition) {
+            if (params.condition)
+                params.condition = new ConditionAnd([this.params.condition, params.condition]);
+            else
+                params.condition = this.params.condition;
+        }
+        params.title = this.params.title + ';' + params.title;
+        params.rotation = this.params.rotation;
+        let constructor = Object.getPrototypeOf(parent).constructor;
+        return new constructor(params);
+    }
+
+    createMainCond() {
+        let params = Object.assign({}, this.params);
+        delete params.customStats;
+        let constructor = Object.getPrototypeOf(this).constructor;
+        return new constructor(params);
     }
 
     static allConditionsOn(conditions, buildSettings) {
@@ -224,10 +275,25 @@ export class Condition {
                         result.push(subItem);
                     }
                 }
-                if (item.params.serializeId)
-                    result.push(item);
             } else
                 result.push(item);
+        }
+
+        return result;
+    }
+}
+
+export class ConditionAnd extends Condition {
+    constructor (items) {
+        super({})
+        this.items = items;
+    }
+
+    isActive(settings) {
+        let result = true;
+
+        for (let cond of this.items) {
+            result = result && cond.isActive(settings);
         }
 
         return result;

@@ -1,4 +1,4 @@
-import { ConditionAnd } from "../../classes/Condition/And";
+import { ConditionAnd } from "../../classes/Condition";
 import { ConditionBoLStat } from "../../classes/Condition/BoLStat";
 import { ConditionBoolean } from "../../classes/Condition/Boolean";
 import { ConditionMillenialMovement } from "../../classes/Condition/MillenialMovement";

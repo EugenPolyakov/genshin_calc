@@ -214,7 +214,7 @@ function RotationListFeature(props) {
                     feature={props.feature}
                 />
                 <FeatureLine
-                    feature={ props.item.feature }
+                    feature={ props.feature.result.title }
                 />
             </div>
             <RotationLineValues
@@ -340,7 +340,7 @@ function RotationListCondition(props) {
         items.push(<div key="team" className="icon icon-team"/>);
     }
 
-    if (type == 'checkbox') {
+    if (type == 'checkbox' || type == 'groupbox') {
         if (props.item.value) {
             items.push(<div key="disabled" className="condition-flag enabled"></div>);
         } else {

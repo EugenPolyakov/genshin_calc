@@ -1,4 +1,4 @@
-import { ConditionAnd } from "../../classes/Condition/And";
+import { ConditionAnd } from "../../classes/Condition";
 import { ConditionBoolean } from "../../classes/Condition/Boolean";
 import { ConditionHexCheck } from "../../classes/Condition/HexCheck";
 import { ConditionHexCurrent } from "../../classes/Condition/HexCurrent";
@@ -211,8 +211,8 @@ export const Weapons = new DbObjectBuff({
             statClass: 'inputs-6digit',
             partyStat: 'hp',
             statMax: CHARACTER_MAX_POSSIBLE_HP,
-            title: 'talent_name.weapon_sunken_song_of_the_sands',
-            statTitle: 'talent_name.weapon_sunken_song_of_the_sands',
+            title: 'talent_name.weapon_sunken_song_of_the_sands_1',
+            statTitle: 'talent_name.weapon_sunken_song_of_the_sands_2',
             description: 'talent_descr.weapon_sunken_song_of_the_sands_3',
             icon: {
                 rarity: 5,

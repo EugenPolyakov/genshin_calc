@@ -1,5 +1,5 @@
 import { Condition } from "../../classes/Condition";
-import { ConditionAnd } from "../../classes/Condition/And";
+import { ConditionAnd } from "../../classes/Condition";
 import { ConditionBoolean } from "../../classes/Condition/Boolean";
 import { ConditionBooleanSkirkParty } from "../../classes/Condition/Boolean/SkirkParty";
 import { ConditionBooleanValue } from "../../classes/Condition/Boolean/Value";

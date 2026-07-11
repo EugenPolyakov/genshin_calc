@@ -262,7 +262,7 @@ export class RotationConditionModal extends React.PureComponent {
                     cItemId = cond.getEntityId();
                 }
 
-                let condId = cSection +':'+ cItemId +':'+ cCondId;
+                let condId = cSection + ':' + cItemId + ':' + cCondId;
                 if (!this.state.selected) {
                     this.state.selected = condId;
                 }

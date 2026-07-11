@@ -3,7 +3,7 @@ import { ArtifactsSuggest } from "./classes/ArtifactsSuggest";
 import { ArtifactsSuggestSort } from "./classes/ArtifactsSuggestSort";
 import { CalcSet } from "./classes/CalcSet";
 import { Condition } from "./classes/Condition";
-import { ConditionAnd } from "./classes/Condition/And";
+import { ConditionAnd } from "./classes/Condition";
 import { ConditionBoolean } from "./classes/Condition/Boolean";
 import { ConditionBooleanCharElement } from "./classes/Condition/Boolean/CharElement";
 import { ConditionBooleanPiecesCount } from "./classes/Condition/Boolean/PiecesCount";

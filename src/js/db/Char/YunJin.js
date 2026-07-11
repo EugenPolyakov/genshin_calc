@@ -15,7 +15,7 @@ import { ConditionBooleanYunJin } from "../../classes/Condition/Boolean/YunJin";
 import { ConditionNumberTalent } from "../../classes/Condition/Number/Talent";
 import { ValueTable } from "../../classes/ValueTable";
 import { FeatureMultiplierTarget } from "../../classes/Feature2/Multiplier/Target";
-import { ConditionAnd } from "../../classes/Condition/And";
+import { ConditionAnd } from "../../classes/Condition";
 import { FeatureMultiplier } from "../../classes/Feature2/Multiplier";
 import { FeatureDamagePlungeShockWave } from "../../classes/Feature2/Damage/Plunge/ShockWave";
 import { FeatureDamagePlungeCollision } from "../../classes/Feature2/Damage/Plunge/Collision";

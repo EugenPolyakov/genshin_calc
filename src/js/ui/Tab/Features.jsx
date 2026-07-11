@@ -4,7 +4,6 @@ import "../../../css/Components/Tab/Features.css"
 
 import { ControlsBar, ControlsBarDivider } from '../Components/ControlsBar';
 import { Dropdown } from '../Components/Inputs/Dropdown';
-import { Feature } from '../../classes/Feature';
 import { FeatureTableHeader, FeatureTableValues } from '../Components/FeatureTable';
 import { FeatureViewTree } from './Features/Tree';
 import { FullHeight, FullHeightStatic, FullHeightFloatTitle, FloatTitleBlock, FullHeightScrollable } from '../Components/FullHeight';
@@ -79,7 +78,7 @@ class FeaturesView extends React.Component {
         let build = UI.Layout.app.currentSet();
         let buildData = build.getBuildData();
         let featuresHash = build.getFeaturesHash(buildData);
-        let tree = Feature.getTree(featuresHash);
+        let tree = Feature2.getTree(featuresHash);
         let groups = [];
 
         for (const section in tree) {
@@ -120,9 +119,8 @@ class FeaturesView extends React.Component {
                         }
 
                         rows.push({
-                            id: item.id || featureName + (item.title ? '.' + item.title : ''),
-                            subItemId: item.subItemId,
-                            name: item.title || featureName,
+                            key: item.subItemId || featureName + (item.title ? '.' + item.title : ''),
+                            title: item.title || feature.getTitle(),
                             hits: item.hits,
                             isChild: item.isChild,
                             feature: featureValue,
@@ -140,7 +138,8 @@ class FeaturesView extends React.Component {
                     let result = feature.getResult(localBuildData);
                     for (let resultName of Object.keys(result)) {
                         rows.push({
-                            name: resultName,
+                            key: resultName,
+                            title: result[resultName].title || resultName,
                             isChild: feature.getIsChild(),
                             hits: feature.getHits(),
                             feature: result[resultName],
@@ -289,7 +288,7 @@ function FeaturesTableBlock(props) {
             classes.push('odd');
         }
 
-        let str = 'feature_' + item.name;
+        let str = 'feature_' + item.title;
 
         let title = UI.Lang.get(str);
 
@@ -303,7 +302,7 @@ function FeaturesTableBlock(props) {
         }
 
         items.push(
-            <div className={classes.join(' ')} key={item.subItemId || item.name}>
+            <div className={ classes.join(' ') } key={ item.key }>
                 <div className="title">
                     <span className="flex-spacer">{parse(title)}</span>
                     {item.portion ? <span>{item.portion.toFixed(1)}%</span> : ''}

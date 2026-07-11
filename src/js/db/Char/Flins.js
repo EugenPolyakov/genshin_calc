@@ -18,7 +18,7 @@ import { FeatureDamagePlungeCollision } from "../../classes/Feature2/Damage/Plun
 import { FeatureDamagePlungeShockWave } from "../../classes/Feature2/Damage/Plunge/ShockWave";
 import { FeatureDamageSkill } from "../../classes/Feature2/Damage/Skill";
 import { FeaturePostEffectValue } from "../../classes/Feature2/PostEffectValue";
-import { FeatureReactionLunarChargedLike } from "../../classes/Feature2/Reaction/Transformative/Lunar/ChargedLike";
+import { FeatureReactionLunarChargedLike } from "../../classes/Feature2/Reaction/Extended/Lunar/ChargedLike";
 import { FeatureMultiplier } from "../../classes/Feature2/Multiplier";
 import { FeatureDamageMultihit } from "../../classes/Feature2/Damage/Multihit";
 import { StatTable } from "../../classes/StatTable";
@@ -26,7 +26,7 @@ import { ValueTable } from "../../classes/ValueTable";
 import { charTables } from "../generated/CharTables";
 import { charTalentTables } from "../generated/CharTalentTables";
 import { PostEffectStats } from "../../classes/PostEffect/Stats";
-import { ConditionAnd } from "../../classes/Condition/And";
+import { ConditionAnd } from "../../classes/Condition";
 import { ConditionNumber } from "../../classes/Condition/Number";
 import { PostEffectStatsTotal } from "../../classes/PostEffect/Stats/Total";
 import { ConditionMoonPhaseCheck } from "../../classes/Condition/MoonPhaseCheck";

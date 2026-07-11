@@ -163,6 +163,9 @@ class Template:
                         out['names'].append(v)
                     else:
                         out['descr'].append(v)
+                for name in self.extracted_names:
+                    if isinstance(name, str):
+                        out['names'].append(name)
 
             ret = []
             if len(out['names']) > 0:

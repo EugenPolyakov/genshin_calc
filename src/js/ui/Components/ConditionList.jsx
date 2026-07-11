@@ -88,7 +88,7 @@ function ConditionItem(props) {
     }
 
     let stats = cond.getDisplayStats(props.settings);
-    let list = (!props.hideControls ? (cond.getCondtitionList() || []) : []).filter(a => !a.isHidden(props.settings));
+    let list = (!props.hideControls ? cond.getSubConditions() : []).filter(a => !a.isHidden(props.settings));
     let result = (
         <div
             className="condition-list-item"
