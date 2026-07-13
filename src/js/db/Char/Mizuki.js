@@ -118,6 +118,7 @@ const Talents = new DbObjectTalents({
             },
         ],
     },
+    links: charTalentTables.Mizuki.links,
 });
 
 const A4Mastery = 100;
@@ -240,6 +241,22 @@ export const Mizuki = new DbObjectChar({
                 }),
             ],
         }),
+        new FeatureDamageSkill({
+            element: 'anemo',
+            name: 'yumemizuki_mizuki_enhanced_continuous_attack_dmg',
+            multipliers: [
+                new FeatureMultiplier({
+                    leveling: 'char_skill_elemental',
+                    values: Talents.get('skill.yumemizuki_mizuki_continuous_attack_dmg'),
+                }),
+                new FeatureMultiplier({
+                    source: 'yumemizuki_mizuki_vast_be_the_dream',
+                    scaling: 'mastery*',
+                    values: new ValueTable([charTalentTables.Mizuki.passsive[2][0]], 100),
+                }),
+            ],
+            condition: new ConditionBoolean({ name: 'yumemizuki_mizuki_vast_be_the_dream' }),
+        }),
         new FeatureDamageBurst({
             element: 'anemo',
             multipliers: [
@@ -288,6 +305,23 @@ export const Mizuki = new DbObjectChar({
             postEffect: buffSwirl,
             format: 'percent',
         }),
+        new FeatureDamageSkill({
+            element: 'anemo',
+            name: 'mizuki_twenty_three_nights_awaiting',
+            category: 'other',
+            multipliers: [
+                new FeatureMultiplier({
+                    source: 'yumemizuki_mizuki_vast_be_the_dream',
+                    scaling: 'mastery*',
+                    values: new ValueTable([charTalentTables.Mizuki.cons[0][3]], 100),
+                }),
+            ],
+            condition: new ConditionAnd([
+                new ConditionBoolean({ name: 'yumemizuki_mizuki_vast_be_the_dream' }),
+                new ConditionBoolean({ name: 'mizuki_dreamdrifter' }),
+                new ConditionConstellation({ constellation: 1 }),
+            ]),
+        }),
         new FeaturePostEffectValue({
             category: 'other',
             name: 'mizuki_elemental_bonus',
@@ -297,6 +331,12 @@ export const Mizuki = new DbObjectChar({
         }),
     ],
     conditions: [
+        new ConditionBoolean({
+            name: 'yumemizuki_mizuki_vast_be_the_dream',
+            serializeId: 4,
+            title: 'talent_name.yumemizuki_mizuki_vast_be_the_dream',
+            description: 'talent_descr.yumemizuki_mizuki_vast_be_the_dream',
+        }),
         new ConditionBoolean({
             name: 'mizuki_dreamdrifter',
             serializeId: 1,
@@ -344,6 +384,26 @@ export const Mizuki = new DbObjectChar({
     postEffects: [
         buffSwirl,
         buffElemental,
+        new PostEffectStats({
+            from: 'mastery*',
+            exceed: charTalentTables.Mizuki.cons[5][1],
+            percent: new StatTable('crit_rate', [charTalentTables.Mizuki.cons[5] [2]], 100),
+            statCap: new ValueTable([charTalentTables.Mizuki.cons[5] [4]], 100),
+            condition: new ConditionAnd([
+                new ConditionBoolean({ name: 'yumemizuki_mizuki_vast_be_the_dream' }),
+                new ConditionConstellation({ constellation: 6 }),
+            ]),
+        }),
+        new PostEffectStats({
+            from: 'mastery*',
+            exceed: charTalentTables.Mizuki.cons[5][1],
+            percent: new StatTable('crit_dmg', [charTalentTables.Mizuki.cons[5] [3]], 100),
+            statCap: new ValueTable([charTalentTables.Mizuki.cons[5] [5]], 100),
+            condition: new ConditionAnd([
+                new ConditionBoolean({ name: 'yumemizuki_mizuki_vast_be_the_dream' }),
+                new ConditionConstellation({ constellation: 6 }),
+            ]),
+        }),
     ],
     constellation: new DbObjectConstellation([
         {
@@ -353,12 +413,16 @@ export const Mizuki = new DbObjectChar({
                     serializeId: 3,
                     title: 'talent_name.yumemizuki_mizuki_in_mist_like_waters',
                     description: 'talent_descr.yumemizuki_mizuki_in_mist_like_waters',
-                    stats: {
-                        text_percent_dmg: C1SwirlBonus,
-                    },
-                    subConditions: [
-                        new ConditionBoolean({name: 'mizuki_dreamdrifter'}),
-                    ],
+                    hideCondition: new ConditionBoolean({ name: 'yumemizuki_mizuki_vast_be_the_dream' }),
+                    condition: new ConditionBoolean({ name: 'mizuki_dreamdrifter' }),
+                }),
+                new ConditionBoolean({
+                    name: 'mizuki_in_mist_like_waters',
+                    serializeId: 3,
+                    title: 'talent_name.yumemizuki_mizuki_in_mist_like_waters',
+                    description: 'talent_descr.yumemizuki_mizuki_in_mist_like_waters_hex',
+                    hideCondition: new ConditionBoolean({ name: 'yumemizuki_mizuki_vast_be_the_dream', invert: 1 }),
+                    condition: new ConditionBoolean({ name: 'mizuki_dreamdrifter' }),
                 }),
             ],
         },
@@ -367,9 +431,24 @@ export const Mizuki = new DbObjectChar({
                 new ConditionStatic({
                     title: 'talent_name.yumemizuki_mizuki_your_echo_i_meet_in_dreams',
                     description: 'talent_descr.yumemizuki_mizuki_your_echo_i_meet_in_dreams',
+                    hideCondition: new ConditionBoolean({ name: 'yumemizuki_mizuki_vast_be_the_dream' }),
+                    condition: new ConditionBoolean({ name: 'mizuki_dreamdrifter' }),
+                }),
+                new ConditionStatic({
+                    title: 'talent_name.yumemizuki_mizuki_your_echo_i_meet_in_dreams',
+                    description: 'talent_descr.yumemizuki_mizuki_your_echo_i_meet_in_dreams_hex',
                     stats: {
-                        text_percent_dmg: C2ElemBonus / 100,
+                        enemy_res_pyro: -charTalentTables.Mizuki.cons[1][1] * 100,
+                        enemy_res_cryo: -charTalentTables.Mizuki.cons[1][1] * 100,
+                        enemy_res_electro: -charTalentTables.Mizuki.cons[1][1] * 100,
+                        enemy_res_hydro: -charTalentTables.Mizuki.cons[1][1] * 100,
+                        enemy_res_anemo: -charTalentTables.Mizuki.cons[1][1] * 100,
                     },
+                    hideCondition: new ConditionBoolean({ name: 'yumemizuki_mizuki_vast_be_the_dream', invert: 1 }),
+                    condition: new ConditionAnd([
+                        new ConditionBoolean({ name: 'mizuki_dreamdrifter' }),
+                        new ConditionBoolean({ name: 'yumemizuki_mizuki_vast_be_the_dream' }),
+                    ]),
                 }),
             ],
         },
@@ -387,6 +466,12 @@ export const Mizuki = new DbObjectChar({
                 new ConditionStatic({
                     title: 'talent_name.yumemizuki_mizuki_buds_warm_lucid_springs',
                     description: 'talent_descr.yumemizuki_mizuki_buds_warm_lucid_springs',
+                    hideCondition: new ConditionBoolean({ name: 'yumemizuki_mizuki_vast_be_the_dream' }),
+                }),
+                new ConditionStatic({
+                    title: 'talent_name.yumemizuki_mizuki_buds_warm_lucid_springs',
+                    description: 'talent_descr.yumemizuki_mizuki_buds_warm_lucid_springs_hex',
+                    hideCondition: new ConditionBoolean({ name: 'yumemizuki_mizuki_vast_be_the_dream', invert: 1 }),
                 }),
             ],
         },
@@ -408,9 +493,30 @@ export const Mizuki = new DbObjectChar({
                         crit_rate_swirl: C6SwirlCritRate,
                         crit_dmg_swirl: C6SwirlCritDmg,
                     },
-                    subConditions: [
-                        new ConditionBoolean({name: 'mizuki_dreamdrifter'}),
-                    ],
+                    hideCondition: new ConditionBoolean({ name: 'yumemizuki_mizuki_vast_be_the_dream' }),
+                    condition: new ConditionAnd([
+                        new ConditionBoolean({ name: 'mizuki_dreamdrifter' }),
+                        new ConditionBoolean({ name: 'yumemizuki_mizuki_vast_be_the_dream', invert: 1 }),
+                    ]),
+                }),
+                new ConditionStatic({
+                    title: 'talent_name.yumemizuki_mizuki_the_heart_lingers_long',
+                    description: 'talent_descr.yumemizuki_mizuki_the_heart_lingers_long_hex_1',
+                    stats: {
+                        crit_rate_swirl: C6SwirlCritRate,
+                        crit_dmg_swirl: C6SwirlCritDmg,
+                    },
+                    hideCondition: new ConditionBoolean({ name: 'yumemizuki_mizuki_vast_be_the_dream', invert: 1 }),
+                    condition: new ConditionAnd([
+                        new ConditionBoolean({ name: 'mizuki_dreamdrifter' }),
+                        new ConditionBoolean({ name: 'yumemizuki_mizuki_vast_be_the_dream' }),
+                    ]),
+                }),
+                new ConditionStatic({
+                    title: 'talent_name.yumemizuki_mizuki_the_heart_lingers_long',
+                    description: 'talent_descr.yumemizuki_mizuki_the_heart_lingers_long_hex_2',
+                    hideCondition: new ConditionBoolean({ name: 'yumemizuki_mizuki_vast_be_the_dream', invert: 1 }),
+                    condition: new ConditionBoolean({ name: 'yumemizuki_mizuki_vast_be_the_dream' }),
                 }),
             ],
         },
@@ -421,8 +527,11 @@ export const Mizuki = new DbObjectChar({
             settings: ['char_skill_elemental'],
         },
         conditions: [
-            new Condition({
-                stats: {party_burst_energy_cost: Talents.get('burst.energy_cost').getValue()},
+            new ConditionBoolean({
+                name: 'party.yumemizuki_mizuki_vast_be_the_dream',
+                serializeId: 8,
+                title: 'talent_name.yumemizuki_mizuki_vast_be_the_dream',
+                description: 'talent_descr.yumemizuki_mizuki_vast_be_the_dream',
             }),
             new Condition({
                 settings: {
@@ -473,13 +582,29 @@ export const Mizuki = new DbObjectChar({
                 title: 'talent_name.yumemizuki_mizuki_your_echo_i_meet_in_dreams',
                 description: 'talent_descr.yumemizuki_mizuki_your_echo_i_meet_in_dreams',
                 rotation: 'party',
-                info: {constellation: 2},
+                info: { constellation: 2 },
+                hideCondition: new ConditionBoolean({ name: 'party.yumemizuki_mizuki_vast_be_the_dream' }),
+                condition: new ConditionBoolean({ name: 'party.mizuki_dreamdrifter' }),
+            }),
+            new ConditionBoolean({
+                name: 'party.mizuki_your_echo_i_meet_in_dreams',
+                serializeId: 5,
+                title: 'talent_name.yumemizuki_mizuki_your_echo_i_meet_in_dreams',
+                description: 'talent_descr.yumemizuki_mizuki_your_echo_i_meet_in_dreams_hex',
+                rotation: 'party',
+                info: { constellation: 2 },
                 stats: {
-                    text_percent_dmg: C2ElemBonus / 100,
+                    enemy_res_pyro: -charTalentTables.Mizuki.cons[1][1] * 100,
+                    enemy_res_cryo: -charTalentTables.Mizuki.cons[1][1] * 100,
+                    enemy_res_electro: -charTalentTables.Mizuki.cons[1][1] * 100,
+                    enemy_res_hydro: -charTalentTables.Mizuki.cons[1][1] * 100,
+                    enemy_res_anemo: -charTalentTables.Mizuki.cons[1][1] * 100,
                 },
-                subConditions: [
-                    new ConditionBoolean({name: 'party.mizuki_dreamdrifter'}),
-                ],
+                hideCondition: new ConditionBoolean({ name: 'party.yumemizuki_mizuki_vast_be_the_dream', invert: 1 }),
+                condition: new ConditionAnd([
+                    new ConditionBoolean({ name: 'party.mizuki_dreamdrifter' }),
+                    new ConditionBoolean({ name: 'party.yumemizuki_mizuki_vast_be_the_dream' }),
+                ]),
             }),
             new ConditionBoolean({
                 name: 'party.mizuki_constellation_3',

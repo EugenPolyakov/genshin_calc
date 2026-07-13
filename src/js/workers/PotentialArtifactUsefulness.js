@@ -39,23 +39,9 @@ self.onmessage = function (input) {
 
     calc.prepare();
 
-    for (let i = calc.artifacts.length - 1; i >= 0; i--) {
+    for (let i = 0, cnt = calc.artifacts.length; i < cnt; i++) {
         calc.initArt(i);
         artsResult.push(calc.doCalculate());
-        //artsResult.push({
-        //    currentArtifact: packed,
-        //    values: {
-        //        normal: 0,
-        //        crit: 0,
-        //        average: 0,
-        //    },
-        //    goodCount: {
-        //        normal: 0,
-        //        crit: 0,
-        //        average: 0,
-        //    },
-        //    combCount: 0,
-        //});
 
         self.postMessage({
             progress: {

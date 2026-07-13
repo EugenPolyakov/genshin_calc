@@ -109,14 +109,14 @@ class RankArtifact extends React.Component {
     }
 
     dataArtifactsList(slot) {
-        let list = this.storage.listArtifacts().slice(0);
-
-        for (let j = list.length - 1; j >= 0; j--) {
-            if (DB.Artifacts.Rarity[list[j].getRarity() - 1].maxLevel == list[j].getLevel() || list[j].getSlot() != slot)
-                list.splice(j, 1);
+        let list = this.storage.listArtifacts();
+        let result = [];
+        for (let j = 0, cnt = list.length; j < cnt; j++) {
+            if (DB.Artifacts.Rarity[list[j].getRarity() - 1].maxLevel != list[j].getLevel() && list[j].getSlot() == slot)
+                result.push(list[j]);
         }
 
-        return list;
+        return result;
     }
 
     handleFeature(selectedItem) {
@@ -206,6 +206,7 @@ class RankArtifact extends React.Component {
         if (calculateList.length == 0)
             return;
 
+        calculateList.sort((a, b) => (a.getSetName() > b.getSetName()) - (a.getSetName() < b.getSetName()));
         let build = UI.Layout.app.currentSet().clone();
         let feat1 = build.calcFeatures(1)[this.state.feature];
 

@@ -223,6 +223,8 @@ export class CalcObject {
 
             if (type == 'checkbox') {
                 result[cond.getName()] = true;
+            } else if (type == 'converter') {
+                cond.doConvert(result, input);
             } else if (type == 'groupbox') {
                 let value = input.shift();
                 result[cond.getName()] = value;

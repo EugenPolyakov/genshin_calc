@@ -73,7 +73,7 @@ export class Stats {
     }
 
     isEmpty() {
-        return Object.keys(this).length == 0;
+        return !Object.keys(this).some(x => this.get(x) > 0);
     }
 
     /**

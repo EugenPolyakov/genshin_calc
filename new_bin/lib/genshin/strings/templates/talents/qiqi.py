@@ -90,24 +90,40 @@ char_qiqi = TemplateList(
         ],
     ),
     rite_of_resurrection_hex_rus=Template(
+        replace= {
+            'Кроме того, после': 'Кроме того, после\n',
+        },
         sentences=[
             ['50:ignore'],
             [],
             ['15:ignore'],
+            [],
             [],
             ['4:ignore'],
             ['1:ignore', '600:'],
             ['12:ignore'],
         ],
+        results=[
+            list(range(0, 8)),
+            ['После', 5, 6, 7],
+        ],
     ),
     rite_of_resurrection_hex_eng=Template(
+        replace= {
+            'Additionally, after': 'Additionally, after\n',
+        },
         sentences=[
             ['50:ignore'],
             [],
             ['15:ignore'],
             [],
+            [],
             ['4:ignore', '1:ignore', '600:'],
             ['12:ignore'],
+        ],
+        results=[
+            list(range(0, 7)),
+            ['After', 5, 6],
         ],
     ),
 )

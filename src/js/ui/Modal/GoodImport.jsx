@@ -111,6 +111,8 @@ export class GoodImportComponent extends React.Component {
                 item.setGroups(this.state.groupNames);
             }
             this.props.storage.addArtifacts(this.items.added);
+
+            this.props.storage.updateInitialValues(this.items.matched);
         }
 
         if (this.state.actionMissing) {
@@ -160,7 +162,7 @@ export class GoodImportComponent extends React.Component {
             let hash = artifact.getLexHash();
 
             if (existedHashes[hash]) {
-                this.items.matched.push(existedHashes[hash].data);
+                this.items.matched.push({ oldArt: existedHashes[hash].data, newArt: artifact });
                 delete existedHashes[hash];
             } else {
                 this.items.added.push(artifact);

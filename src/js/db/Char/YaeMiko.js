@@ -110,6 +110,7 @@ const Talents = new DbObjectTalents({
             },
         ],
     },
+    links: charTalentTables.YaeMiko.links,
 });
 
 const skillDmgPost = new PostEffectStatsMastery({
@@ -532,7 +533,7 @@ export const YaeMiko = new DbObjectChar({
                 //hideCondition: new ConditionBoolean({ name: 'yae_miko_edict_of_cleansing', invert: 1 }),
                 maxStacks: 4,
                 info: { constellation: 3 },
-                condition: new ConditionBoolean({ name: 'common.off_field', invert: 1 }),
+                condition: new ConditionBoolean({ name: 'common.char_status_off_field', invert: 1 }),
                 stats: [
                     new StatTable('mastery', [
                         charTalentTables.YaeMiko.cons[1][3],

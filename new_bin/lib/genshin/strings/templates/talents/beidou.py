@@ -83,4 +83,15 @@ char_beidou = TemplateList(
             ['enemy_res_electro'],
         ],
     ),
+    bane_of_evil_hex=Template(
+        sentences=[
+            ['15:enemy_res_electro'],
+            [],
+            ['15:enemy_res_cryo', '200:mastery'],
+        ],
+        results=[
+            [0],
+            [2],
+        ],
+    ),
 )

@@ -357,7 +357,7 @@ export const Weapons = new DbObjectBuff({
                 new StatTable('text_percent', weaponDataTable.athame_artis.athame_artis.param4, 100),
                 new StatTableConditions('atk_percent', weaponDataTable.athame_artis.athame_artis.param4, new ConditionHexCheck({ hex: 2 }), 75),
             ],
-            condition: new ConditionBoolean({ name: 'common.char_status_shield_off_field', invert: 1 }),
+            condition: new ConditionBoolean({ name: 'common.char_status_off_field', invert: 1 }),
         }),
         new ConditionLevelSelect({
             name: 'weapon_other.weapon_golden_frostbound_oath',
@@ -484,7 +484,7 @@ export const Weapons = new DbObjectBuff({
             statCap: new StatTable('dmg_all', weaponDataTable.angelos_heptades.angelos_heptades.param4, 100),
             condition: new ConditionAnd([
                 new ConditionBoolean({ name: 'weapon_angelos_heptades', invert: 1 }),
-                new ConditionBoolean({ name: 'common.char_status_shield_off_field', invert: 1 }),
+                new ConditionBoolean({ name: 'common.char_status_off_field', invert: 1 }),
             ]),
         }),
         new PostEffectStats({
@@ -496,7 +496,7 @@ export const Weapons = new DbObjectBuff({
                 new ConditionHexCheck({ hex: 2 }),
                 new ConditionHexCurrent(),
                 new ConditionBoolean({ name: 'weapon_angelos_heptades', invert: 1 }),
-                new ConditionBoolean({ name: 'common.char_status_shield_off_field' }),
+                new ConditionBoolean({ name: 'common.char_status_off_field' }),
             ]),
         }),
     ]

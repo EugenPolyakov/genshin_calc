@@ -81,4 +81,42 @@ char_diona = TemplateList(
             [0, 1, 2],
         ],
     ),
+    cats_tail_closing_time_hex=Template(
+        sentences=[
+            [],
+            [],
+            ['50:healing_recv', '30:ignore'],
+            [],
+            ['50:ignore', '200:mastery'],
+            [],
+            ['25:hp_percent'],
+            [],
+            ['40:dmg_reaction_superconduct'],
+        ],
+        results=[
+            [0, 1, 4],
+            [0, 1, 2],
+            [6],
+            [8],
+        ],
+    ),
+    cats_tail_closing_time_hex_eng=Template(
+        sentences=[
+            [],
+            [],
+            ['30:ignore', '50:healing_recv'],
+            [],
+            ['200:mastery', '50:ignore'],
+            [],
+            ['25:hp_percent'],
+            [],
+            ['40:dmg_reaction_superconduct'],
+        ],
+        results=[
+            [0, 1, 4],
+            [0, 1, 2],
+            [6],
+            [8],
+        ],
+    ),
 )

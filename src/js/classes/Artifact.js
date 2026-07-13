@@ -30,7 +30,7 @@ export class Artifact {
         this.calculated = null;
     }
 
-    addStatByProcs(stat, values, unactivated) {
+    addStatByProcs(stat, values, unactivated, firstValue) {
         let substat = DB.Artifacts.Substats.get(stat);
         if (!substat) {
             this.subStats[stat] = {
@@ -38,6 +38,7 @@ export class Artifact {
                 value: 0,
                 values: [],
                 unactivated: unactivated,
+                initialValue: firstValue,
             };
         } else {
             values = values.sort((a, b) => a - b);
@@ -50,6 +51,7 @@ export class Artifact {
                 value: value,
                 values: values,
                 unactivated: unactivated,
+                initialValue: firstValue,
             };
         }
 
@@ -216,7 +218,7 @@ export class Artifact {
     }
 
     getSetName() {
-        return ''+ this.set;
+        return this.set || '';
     }
 
     getSlot() {
@@ -449,7 +451,7 @@ export class Artifact {
     }
 
     serialize(lex) {
-        let result = [2];
+        let result = [3];
 
         result.push(DB.Artifacts.Sets.getId(this.set));
         result.push(this.rarity);
@@ -493,6 +495,8 @@ export class Artifact {
                 }
                 result.push(value << 1);
             }
+            if (!lex)
+                result.push(statData.initialValue || 0);
         });
 
         return result;
@@ -544,6 +548,10 @@ export class Artifact {
                     let substat = DB.Artifacts.Substats.get(statKey);
                     if (!substat) return null;
 
+                    let initialValue = 0;
+                    if (version >= 3)
+                        initialValue = input.shift();
+
                     let isStacks = value % 2;
                     value = value >> 1;
                     if (isStacks) {
@@ -553,7 +561,7 @@ export class Artifact {
                             value = value >> 3;
                         } while (value > 0);
 
-                        result.addStatByProcs(statKey, values, unactivated);
+                        result.addStatByProcs(statKey, values, unactivated, initialValue);
                     } else {
                         if (substat.type == 'percent') {
                             value = parseFloat(value) / 10;
@@ -561,7 +569,7 @@ export class Artifact {
                             value = parseInt(value)
                         }
 
-                        result.addStat(statKey, value, unactivated);
+                        result.addStat(statKey, value, unactivated, initialValue);
                     }
                 }
             } else {
@@ -625,8 +633,12 @@ export class Artifact {
 
             let value = item.value;
             let initialValue = 0;
-            if (item.initialValue) {
-                let fixed = item.initialValue.toFixed(1);
+            if (item.initialValue || unactivated) {
+                let fixed;
+                if (item.initialValue)
+                    fixed = item.initialValue.toFixed(1);
+                else
+                    fixed = value.toFixed(1);
                 let ss = DB.Artifacts.Substats.get(subStat);
                 for (let i = 0; i < ss.rolls[data.rarity - 1].length; i++)
                     if (fixed == ss.rolls[data.rarity - 1][i].toFixed(1)) {

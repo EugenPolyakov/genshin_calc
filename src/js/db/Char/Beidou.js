@@ -1,4 +1,4 @@
-import { Condition } from "../../classes/Condition";
+import { Condition, ConditionAnd } from "../../classes/Condition";
 import { ConditionAscensionChar } from "../../classes/Condition/Ascension/Char";
 import { ConditionBoolean } from "../../classes/Condition/Boolean";
 import { ConditionConstellation } from "../../classes/Condition/Constellation";
@@ -122,6 +122,7 @@ const Talents = new DbObjectTalents({
             },
         ],
     },
+    links: charTalentTables.Beidou.links,
 });
 
 const TalentValues = {
@@ -130,7 +131,6 @@ const TalentValues = {
     A4SpeedBonus: 15,
     C1Shield: 16,
     C4Damage: 20,
-    C6ElectroRes: -15,
 };
 
 export const Beidou = new DbObjectChar({
@@ -346,6 +346,12 @@ export const Beidou = new DbObjectChar({
         }),
     ],
     conditions: [
+        new ConditionBoolean({
+            name: 'beidou_polaris',
+            serializeId: 4,
+            title: 'talent_name.beidou_polaris',
+            description: 'talent_descr.beidou_polaris',
+        }),
         new ConditionStatic({
             title: 'talent_name.beidou_retribution',
             description: 'talent_descr.beidou_retribution',
@@ -427,10 +433,24 @@ export const Beidou = new DbObjectChar({
                     name: 'beidou_bane_of_the_evil',
                     serializeId: 3,
                     title: 'talent_name.beidou_bane_of_evil',
-                    description: 'talent_descr.beidou_bane_of_evil',
+                    description: 'talent_descr.beidou_bane_of_evil_hex_1',
                     stats: {
-                        enemy_res_electro: TalentValues.C6ElectroRes,
+                        enemy_res_electro: - charTalentTables.Beidou.cons[5][0] * 100,
                     },
+                }),
+                new ConditionStatic({
+                    title: 'talent_name.beidou_bane_of_evil',
+                    description: 'talent_descr.beidou_bane_of_evil_hex_2',
+                    stats: {
+                        enemy_res_cryo: - charTalentTables.Beidou.cons[5][1] * 100,
+                        mastery: charTalentTables.Beidou.cons[5][2],
+                    },
+                    condition: new ConditionAnd([
+                        new ConditionBoolean({ name: 'beidou_polaris' }),
+                        new ConditionBoolean({ name: 'common.enemy_superconduct' }),
+                        new ConditionBoolean({ name: 'allowed_stellar_conduct' }),
+                        new ConditionBoolean({ name: 'beidou_bane_of_the_evil' }),
+                    ])
                 }),
             ],
         },
@@ -442,11 +462,41 @@ export const Beidou = new DbObjectChar({
                 serializeId: 1,
                 rotation: 'party',
                 title: 'talent_name.beidou_bane_of_evil',
-                description: 'talent_descr.beidou_bane_of_evil',
-                info: {constellation: 6},
+                description: 'talent_descr.beidou_bane_of_evil_hex_1',
+                info: { constellation: 6 },
                 stats: {
-                    enemy_res_electro: TalentValues.C6ElectroRes,
+                    enemy_res_electro: -charTalentTables.Beidou.cons[5][0] * 100,
                 },
+            }),
+            new ConditionBoolean({
+                name: 'party.beidou_bane_of_the_evil_hex',
+                serializeId: 2,
+                rotation: 'party',
+                title: 'talent_name.beidou_bane_of_evil',
+                description: 'talent_descr.beidou_bane_of_evil_hex_2',
+                info: { constellation: 6 },
+                stats: {
+                    enemy_res_cryo: - charTalentTables.Beidou.cons[5][1] * 100,
+                    mastery: charTalentTables.Beidou.cons[5][2],
+                },
+                condition: new ConditionAnd([
+                    new ConditionBoolean({ name: 'party.beidou_bane_of_the_evil' }),
+                    new ConditionBoolean({ name: 'common.enemy_superconduct' }),
+                    new ConditionBoolean({ name: 'allowed_stellar_conduct' }),
+                ]),
+            }),
+            new Condition({
+                isHidden: true,
+                stats: {
+                    mastery: charTalentTables.Beidou.cons[5][2],
+                },
+                condition: new ConditionAnd([
+                    new ConditionBoolean({ name: 'party.beidou_bane_of_the_evil' }),
+                    new ConditionBoolean({ name: 'party.beidou_bane_of_the_evil_hex' }),
+                    new ConditionBoolean({ name: 'common.enemy_superconduct' }),
+                    new ConditionBoolean({ name: 'allowed_stellar_conduct' }),
+                    new ConditionBoolean({ name: 'common.char_status_off_field', invert: 1 }),
+                ]),
             }),
         ],
     },

@@ -16,14 +16,12 @@ export const SymphonistofScents = new DbObjectWeapon({
         {
             name: 'no_heal',
             settings: {
-                "symphonist_of_scents_2": 1,
                 "symphonist_of_scents_3": 0,
             },
         },
         {
             name: 'with_heal',
             settings: {
-                "symphonist_of_scents_2": 1,
                 "symphonist_of_scents_3": 1,
             },
         },
@@ -37,7 +35,7 @@ export const SymphonistofScents = new DbObjectWeapon({
             ],
         }),
         new ConditionBooleanRefine({
-            name: 'symphonist_of_scents_2',
+            name: 'common.char_status_off_field',
             serializeId: 1,
             title: 'talent_name.weapon_seasoned_symphony',
             description: 'talent_descr.weapon_seasoned_symphony_2',

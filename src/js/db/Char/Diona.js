@@ -1,7 +1,9 @@
-import { Condition } from "../../classes/Condition";
+import { Condition, ConditionAnd } from "../../classes/Condition";
 import { ConditionAscensionChar } from "../../classes/Condition/Ascension/Char";
 import { ConditionBoolean } from "../../classes/Condition/Boolean";
 import { ConditionConstellation } from "../../classes/Condition/Constellation";
+import { ConditionConverter } from "../../classes/Condition/Converter";
+import { ConditionGroup } from "../../classes/Condition/Group";
 import { ConditionNot } from "../../classes/Condition/Not";
 import { ConditionStatic } from "../../classes/Condition/Static";
 import { DbObjectChar } from "../../classes/DbObject/Char";
@@ -123,6 +125,7 @@ const Talents = new DbObjectTalents({
             },
         ],
     },
+    links: charTalentTables.Diona.links,
 });
 
 const TalentValues = {
@@ -367,6 +370,12 @@ export const Diona = new DbObjectChar({
     ],
     conditions: [
         new ConditionBoolean({
+            name: 'diona_choice_treasures',
+            serializeId: 3,
+            title: 'talent_name.diona_choice_treasures',
+            description: 'talent_descr.diona_choice_treasures',
+        }),
+        new ConditionBoolean({
             name: 'diona_secret_menu',
             serializeId: 1,
             title: 'talent_name.diona_cats_tail_secret_menu',
@@ -448,7 +457,7 @@ export const Diona = new DbObjectChar({
             conditions: [
                 new ConditionStatic({
                     title: 'talent_name.diona_cats_tail_closing_time',
-                    description: 'talent_descr.diona_cats_tail_closing_time_1',
+                    description: 'talent_descr.diona_cats_tail_closing_time_hex_1',
                     stats: {
                         mastery: TalentValues.C6Mastery,
                     },
@@ -462,10 +471,33 @@ export const Diona = new DbObjectChar({
                     name: 'diona_cats_tail',
                     serializeId: 2,
                     title: 'talent_name.diona_cats_tail_closing_time',
-                    description: 'talent_descr.diona_cats_tail_closing_time_2',
+                    description: 'talent_descr.diona_cats_tail_closing_time_hex_2',
                     stats: {
                         healing_recv: TalentValues.C6Healing,
                     },
+                }),
+                new ConditionStatic({
+                    title: 'talent_name.diona_cats_tail_closing_time',
+                    description: 'talent_descr.diona_cats_tail_closing_time_hex_3',
+                    stats: {
+                        hp_percent: charTalentTables.Diona.cons[5][2] * 100,
+                    },
+                    hideCondition: new ConditionBoolean({ name: 'diona_choice_treasures', invert: 1 }),
+                    condition: new ConditionBoolean({ name: 'diona_choice_treasures' }),
+                }),
+                new ConditionStatic({
+                    title: 'talent_name.diona_cats_tail_closing_time',
+                    description: 'talent_descr.diona_cats_tail_closing_time_hex_4',
+                    stats: {
+                        dmg_reaction_superconduct: charTalentTables.Diona.cons[5][3] * 100,
+                        dmg_reaction_stellar_conduct: charTalentTables.Diona.cons[5][3] * 100,
+                    },
+                    hideCondition: new ConditionBoolean({ name: 'diona_choice_treasures', invert: 1 }),
+                    condition: new ConditionAnd([
+                        new ConditionBoolean({ name: 'diona_choice_treasures' }),
+                        new ConditionBoolean({ name: 'common.enemy_superconduct' }),
+                        new ConditionBoolean({ name: 'allowed_stellar_conduct' }),
+                    ]),
                 }),
             ],
         },
@@ -484,9 +516,24 @@ export const Diona = new DbObjectChar({
                     stamina_consume: TalentValues.A1StanimaConsume,
                 },
             }),
-            new ConditionBoolean({
-                name: 'party.diona_cats_tail_1',
+            new ConditionConverter({
+                name: 'party.diona_cats_tail',
                 serializeId: 2,
+                oldType: 'checkbox',
+                newType: 'int',
+                value: 1,
+            }),
+            new ConditionConverter({
+                name: 'party.diona_cats_tail',
+                serializeId: 3,
+                oldType: 'checkbox',
+                newType: 'int',
+                value: 2,
+            }),
+            new ConditionGroup({
+                name: 'party.diona_cats_tail',
+                serializeId: 5,
+                group: 1,
                 rotation: 'party',
                 title: 'talent_name.diona_cats_tail_closing_time',
                 description: 'talent_descr.diona_cats_tail_closing_time_1',
@@ -495,9 +542,10 @@ export const Diona = new DbObjectChar({
                     mastery: TalentValues.C6Mastery,
                 },
             }),
-            new ConditionBoolean({
-                name: 'party.diona_cats_tail_2',
-                serializeId: 3,
+            new ConditionGroup({
+                name: 'party.diona_cats_tail',
+                serializeId: 6,
+                group: 2,
                 rotation: 'party',
                 title: 'talent_name.diona_cats_tail_closing_time',
                 description: 'talent_descr.diona_cats_tail_closing_time_2',
@@ -505,11 +553,21 @@ export const Diona = new DbObjectChar({
                 stats: {
                     healing_recv: TalentValues.C6Healing,
                 },
-                subConditions: [
-                    new ConditionNot([
-                        new ConditionBoolean({name: 'party.diona_cats_tail_1'}),
-                    ]),
-                ],
+            }),
+            new ConditionBoolean({
+                name: 'party.diona_cats_tail_3',
+                serializeId: 4,
+                title: 'talent_name.diona_cats_tail_closing_time',
+                description: 'talent_descr.diona_cats_tail_closing_time_hex_4',
+                info: { constellation: 6 },
+                stats: {
+                    dmg_reaction_superconduct: charTalentTables.Diona.cons[5][3] * 100,
+                    dmg_reaction_stellar_conduct: charTalentTables.Diona.cons[5][3] * 100,
+                },
+                condition: new ConditionAnd([
+                    new ConditionBoolean({ name: 'common.enemy_superconduct' }),
+                    new ConditionBoolean({ name: 'allowed_stellar_conduct' }),
+                ]),
             }),
         ],
     },

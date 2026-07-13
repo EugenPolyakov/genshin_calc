@@ -51,6 +51,7 @@ const secondaryStatsList = [
     '!crit_dmg_navia', '!crit_dmg_xianyun', '!crit_dmg_gaming', '!crit_dmg_normal_arlecchino', '!crit_dmg_burst_arlecchino',
     '!crit_dmg_skill_kinich', '!crit_dmg_normal_mualani', '!crit_dmg_chasca',
     '!crit_dmg_c2_lumi',
+    '!crit_dmg_condensed_beam',
     'healing', 'healing_recv', 'recovery', 'shield',
 ];
 
@@ -77,6 +78,7 @@ const dmgStatsList = [
     '!dmg_reaction_lunarcrystallize_bonus',
     '!dmg_reaction_lunarbloom_bonus',
     '!dmg_reaction_lunarcharged_bonus',
+    'dmg_reaction_stellar_conduct_bonus',
 ];
 
 const reactionStatList = {

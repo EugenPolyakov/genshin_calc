@@ -560,7 +560,7 @@ export const Qiqi = new DbObjectChar({
                 }),
                 new ConditionStatic({
                     title: 'talent_name.qiqi_rite_of_resurrection',
-                    description: 'talent_descr.qiqi_rite_of_resurrection_hex',
+                    description: 'talent_descr.qiqi_rite_of_resurrection_hex_1',
                     hideCondition: new ConditionBoolean({ name: 'qiqi_seven_sacred_treasures', invert: 1 }),
                 }),
             ],
@@ -613,7 +613,7 @@ export const Qiqi = new DbObjectChar({
                 name: 'party.qiqi_rite_of_resurrection',
                 serializeId: 2,
                 title: 'talent_name.qiqi_rite_of_resurrection',
-                description: 'talent_descr.qiqi_rite_of_resurrection_hex',
+                description: 'talent_descr.qiqi_rite_of_resurrection_hex_2',
                 info: { constellation: 6 },
                 condition: new ConditionAnd([
                     new ConditionBoolean({ name: 'party.qiqi_seven_sacred_treasures' }),

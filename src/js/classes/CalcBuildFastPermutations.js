@@ -248,62 +248,62 @@ export class CalcBuildFastPermutations {
             let set = DB.Artifacts.Sets.get(setId);
             let bonuses = set.getConditionsByPieces();
 
-            let setStats = new Stats();
-            let setPostStats;
-            let setTotalSettings = {};
             let artPiecesName = Artifact.settingNameShort(setId);
             let maxPieces = setMaxPieces[setId] || 0;
+            let lastStats = new Stats();
 
-            let buildData = this.build.getBuildData();
             let prevActivePostEffects = activePostEffects;
             let featureVariation = '';
+            let conditions = [];
 
             for (let pieces = 1; pieces < bonuses.length; ++pieces) {
                 if (pieces > maxPieces) {
                     break
                 }
 
-                buildData.addSettings({[Artifact.settingName(setId)]: pieces});
+                let buildData = this.build.getBuildData();
+                conditions = conditions.concat(bonuses[pieces]);
 
-                let conditions = bonuses[pieces];
-                let pieceSettings = {};
-
-                if (conditions.length) {
-                    pieceSettings = Condition.allConditionsOn(conditions, baseSettings);
-                    for (let key of Object.keys(pieceSettings)) {
-                        if (baseSettings.hasOwnProperty(key)) {
-                            pieceSettings[key] = baseSettings[key];
-                        }
+                let pieceSettings = Condition.allConditionsOn(conditions, baseSettings);
+                //выглядит как масло маслянное
+                for (let key of Object.keys(pieceSettings)) {
+                    if (baseSettings.hasOwnProperty(key)) {
+                        pieceSettings[key] = baseSettings[key];
                     }
-                    let localSettings = Object.assign({}, pieceSettings, baseSettings);
-
-                    let stats = new Stats();
-
-                    conditions = conditions.concat(defaultCond);
-                    for (let cond of conditions) {
-                        let data = cond.getActualStats(localSettings);
-                        stats.concat(data);
-                    }
-
-                    stats.exclude(defaultStats);
-
-                    setStats.concat(stats);
-                    Object.assign(setTotalSettings, pieceSettings);
-                    buildData.addSettings(pieceSettings);
                 }
+                pieceSettings[Artifact.settingName(setId)] = pieces;
+                let localSettings = Object.assign({}, pieceSettings, baseSettings);
+
+                let stats = new Stats();
+
+                for (let cond of conditions) {
+                    let data = cond.getActualStats(localSettings);
+                    stats.concat(data);
+                }
+                for (let cond of defaultCond) {
+                    let data = cond.getActualStats(localSettings);
+                    stats.concat(data);
+                }
+
+                stats.exclude(defaultStats);
+                buildData.addSettings(pieceSettings);
+
+                let compareStats = new Stats(stats);
+                compareStats.exclude(lastStats);
 
                 // change variation if new togglable condition or post effect appears
                 let curActivePostEffects = buildData.getActivePostEffects().length;
-                let curSerializableConditions = conditions.filter((i) => {return i.isSerializable()}).length
                 if (curActivePostEffects > prevActivePostEffects) {
                     prevActivePostEffects = curActivePostEffects;
                     featureVariation = artPiecesName + pieces;
-                } else if (curSerializableConditions) {
+                } else if (!compareStats.isEmpty()) {
+                    lastStats = new Stats(stats);
                     featureVariation = artPiecesName + pieces;
-                }
+                } else if (featureVariation == '' && !stats.isEmpty())
+                    featureVariation = artPiecesName + pieces;
 
-                if (Object.keys(setStats).length || setPostStats || featureVariation) {
-                    let s = new Stats(setStats);
+                if (!stats.isEmpty() || featureVariation) {
+                    let s = new Stats(stats);
                     s.processPercent();
 
                     if (!this.setData[setId]) {

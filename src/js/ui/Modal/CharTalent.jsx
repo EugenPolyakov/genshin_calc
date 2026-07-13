@@ -73,12 +73,10 @@ export class CharTalentComponent extends React.Component {
             let cData = this.char.getTalentTable(category);
             if (!cData) continue;
 
-            let settings = UI.Layout.app.current.getAllSettings({});
-
             this.tabs.push({
                 name: category,
                 title: UI.Lang.get(cData.title),
-                descr: UI.Lang.getTalent(cData.getDescription ? cData.getDescription(settings) : cData.description),
+                descr: () => UI.Lang.getTalent(cData.getDescription ? cData.getDescription(UI.Layout.app.current.getAllSettings({})) : cData.description),
                 data: cData,
             });
         }
@@ -167,7 +165,7 @@ function SkillDescription(props) {
 
     return (
         <GroupBox addClass="gi-talent-description">
-            {parse(active.descr)}
+            {parse(active.descr())}
             <TalentTable item={active} />
         </GroupBox>
     );

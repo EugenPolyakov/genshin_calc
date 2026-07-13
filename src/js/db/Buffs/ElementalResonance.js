@@ -59,7 +59,7 @@ export const ElementalResonance = new DbObjectBuff({
     type: 'elemental_resonance',
     conditions: [
         new ConditionBoolean({
-            name: 'common.char_status_shield_off_field',
+            name: 'common.char_status_off_field',
             title: 'weapon_settings.off_field',
             serializeId: 81,
             rotation: 'buffs',

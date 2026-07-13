@@ -222,10 +222,6 @@ export class chanceCalculator extends CalcBuildFastPermutations {
 
         this.actualValues = data.actualValues;
         this.slot = data.artifacts[0].slot;
-        this.allSubStats = new Set([
-            'atk', 'atk_percent', 'def', 'def_percent', 'hp', 'hp_percent',
-            'crit_rate', 'crit_dmg', 'mastery', 'recharge'
-        ]);
 
         this.maxVal = {
             normal: 0,
@@ -238,6 +234,7 @@ export class chanceCalculator extends CalcBuildFastPermutations {
             average: 0,
         };
         this.lowComb = new lowestComb();
+        this.mainStatConcatList = {};
     }
 
     initArt(index) {
@@ -295,12 +292,23 @@ export class chanceCalculator extends CalcBuildFastPermutations {
 
         let mainData = DB.Artifacts.Mainstats.get(mainStat);
         let statTable = mainData.values[this.rarity];
-        if (isPercent(mainStat))
-            this.addMainStat = Function('stats', `stats.${ this.currentArtifact.mainStat } += ${ statTable.getValue(this.maxLevel) / 100 }`);
-        else
-            this.addMainStat = Function('stats', `stats.${ this.currentArtifact.mainStat } += ${ statTable.getValue(this.maxLevel) }`);
+        if (this.usedStats.has(mainStat)) {
+            let funcName = mainStat + ':' + this.maxLevel;
+            if (!this.mainStatConcatList[funcName])
+                if (isPercent(mainStat))
+                    this.mainStatConcatList[funcName] = Function('stats', `stats.${ this.currentArtifact.mainStat } += ${ statTable.getValue(this.maxLevel) / 100 }`);
+                else
+                    this.mainStatConcatList[funcName] = Function('stats', `stats.${ this.currentArtifact.mainStat } += ${ statTable.getValue(this.maxLevel) }`);
+            this.addMainStat = this.mainStatConcatList[funcName];
+        } else
+            this.addMainStat = () => { };
 
-        this.supportedStats = Array.from(this.allSubStats.delete(mainStat));
+        let allSubStats = new Set([
+            'atk', 'atk_percent', 'def', 'def_percent', 'hp', 'hp_percent',
+            'crit_rate', 'crit_dmg', 'mastery', 'recharge'
+        ]);
+        allSubStats.delete(mainStat);
+        this.supportedStats = Array.from(allSubStats);
         this.newStatsCount = rarity.maxSubstats - Object.keys(this.currentArtifact.getSubStats()).length;
         this.customStats -= this.newStatsCount + (this.currentArtifact.getLevel() < 4 ? Object.entries(this.currentArtifact.getSubStats()).reduce((a, x) => x[1].unactivated ? a + 1 : a, 0) : 0);
         this.newStatsCombCount = factor(this.supportedStats.length, this.supportedStats.length - this.newStatsCount) * Math.pow(this.subStatsRollsCount, this.newStatsCount);
@@ -324,6 +332,8 @@ export class chanceCalculator extends CalcBuildFastPermutations {
             this.flatStatValues = [8, 10];
             this.flatStep = 2;
         }
+
+        //this.valList = [];
     }
 
     justCheckArtifact(otherCombList, inverted, coef) {
@@ -348,7 +358,7 @@ export class chanceCalculator extends CalcBuildFastPermutations {
             //dbgVal[stat].push(m);
             evrVal[stat] += this.flatStatValues[m];
         }
-        let dbgStr = "";
+        //let dbgStr = "";
         for (let k of this.atrKeys) {
             stats[k].values = stats[k].values.sort((a, b) => a - b);
             //dbgVal[k] = dbgVal[k].sort();
@@ -422,7 +432,7 @@ export class chanceCalculator extends CalcBuildFastPermutations {
             //dbgStr += " skipped";
         }
 
-        //valList.push(dbgStr);
+        //this.valList.push(dbgStr);
 
         return isGood;
     }
@@ -530,7 +540,7 @@ export class chanceCalculator extends CalcBuildFastPermutations {
         for (let stat of params)
             this.goodCount[stat] += realCombination;
 
-        //valList.push(Array.from(params).toString() + " " + realCombination);
+        //this.valList.push(Array.from(params).toString() + " " + realCombination);
     }
 
     findStat(ofs, min, max, maxCombVal, filterParams, linePermutations, tail, otherM) {
@@ -608,12 +618,8 @@ export class chanceCalculator extends CalcBuildFastPermutations {
             this.calcCount = 0;
             this.fastIterations = 0;
 
-            let halfProcs = Math.floor(this.customStats / 2);
-            let maxProcs = halfProcs;
-            if (maxProcs == this.customStats - halfProcs)
-                maxProcs--;
-
-            for (let procs = this.customStats; procs > 2; procs--) {
+            let procs = this.customStats;
+            for (; procs > 0 && (this.customStats - procs < procs); procs--) {
                 let headLinePermutations = Math.pow(this.subStatsRollsCount, procs);
                 let headLineCombinations = comb2(this.subStatsRollsCount, procs);
                 for (let i = 0, cnt = this.atrKeys.length; i < cnt; i++) {
@@ -637,39 +643,42 @@ export class chanceCalculator extends CalcBuildFastPermutations {
             }
 
             //отдельный блок для 2+
-            //valList.push("custom");
-            let procs = 2;
-            let headLinePermutations = Math.pow(this.subStatsRollsCount, procs);
-            let headLineCombinations = comb2(this.subStatsRollsCount, procs);
-            let skip = new Array(this.atrKeys.length).fill(0);
-            for (let i = 0, cnt = this.atrKeys.length; i < cnt; i++) {
-                let ofs = i * this.subStatsRollsCount;
+            //this.valList.push("custom");
+            if (procs > 0) {
+                let headLinePermutations = Math.pow(this.subStatsRollsCount, procs);
+                let headLineCombinations = comb2(this.subStatsRollsCount, procs);
+                let skip = new Array(this.atrKeys.length);
+                for (let i = 0, cnt = this.atrKeys.length; i < cnt; i++) {
+                    let ofs = i * this.subStatsRollsCount;
 
-                let otherN = (cnt - 1) * this.subStatsRollsCount;
-                let otherM = this.customStats - procs;
-                let otherLineCombinations = comb2(otherN, otherM);
-                for (let otherCombinations = otherLineCombinations - 1; otherCombinations >= 0; otherCombinations--) {
-                    generateCombByIndex(0, otherCombinations, otherN, otherM, this.currentComb);
-                    for (let j = otherM - 1; j >= 0; j--)
-                        if (this.currentComb[j] >= ofs)
-                            this.currentComb[j] += this.subStatsRollsCount;
-                        else
-                            break;
-                    for (let j = otherM - 1; j >= 0; j--)
-                        skip[Math.floor(this.currentComb[j] / this.subStatsRollsCount)]++;
-                    //пропускаем уже обработанную ранее комбинацию с 2 проками в прошлые статы или 3 прока в один стат
-                    if (skip.some((x, idx) => x >= 3 || (x >= 2 && idx < i)))
-                        continue;
-                    this.calculate(this.currentComb, procs, ofs, headLineCombinations, headLinePermutations, otherM);
+                    let otherN = (cnt - 1) * this.subStatsRollsCount;
+                    let otherM = this.customStats - procs;
+                    let otherLineCombinations = comb2(otherN, otherM);
+                    for (let otherCombinations = otherLineCombinations - 1; otherCombinations >= 0; otherCombinations--) {
+                        generateCombByIndex(0, otherCombinations, otherN, otherM, this.currentComb);
+                        for (let j = otherM - 1; j >= 0; j--)
+                            if (this.currentComb[j] >= ofs)
+                                this.currentComb[j] += this.subStatsRollsCount;
+                            else
+                                break;
+                        skip.fill(0);
+                        for (let j = otherM - 1; j >= 0; j--)
+                            skip[Math.floor(this.currentComb[j] / this.subStatsRollsCount)]++;
+                        //пропускаем уже обработанную ранее комбинацию с 2 проками в прошлые статы или 3 прока в один стат
+                        if (skip.some((x, idx) => x >= 3 || (x >= 2 && idx < i)))
+                            continue;
+                        this.calculate(this.currentComb, procs, ofs, headLineCombinations, headLinePermutations, otherM);
+                    }
+
+                    this.sendProgress();
                 }
-
-                this.sendProgress();
             }
 
             if (this.customStats <= this.atrKeys.length)
                 this.calcChance(this.customStats, 0, 0, 1);
             //this.calcChance(customStats, 0, 0, customStats);
 
+            //debugLog(this.valList);
             debugLog("calculated: " + this.calcCount + " fast iterations: " + this.fastIterations);
         }
 

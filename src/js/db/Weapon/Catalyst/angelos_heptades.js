@@ -52,7 +52,7 @@ export const angelos_heptades = new DbObjectWeapon({
             statCap: new StatTable('dmg_all', weaponDataTable.angelos_heptades.angelos_heptades.param4, 100),
             condition: new ConditionAnd([
                 new ConditionBoolean({ name: 'weapon_angelos_heptades' }),
-                new ConditionBoolean({ name: 'common.char_status_shield_off_field', invert: 1 }),
+                new ConditionBoolean({ name: 'common.char_status_off_field', invert: 1 }),
             ]),
         }),
         new PostEffectStats({
@@ -64,7 +64,7 @@ export const angelos_heptades = new DbObjectWeapon({
                 new ConditionHexCheck({ hex: 2 }),
                 new ConditionHexCurrent(),
                 new ConditionBoolean({ name: 'weapon_angelos_heptades' }),
-                new ConditionBoolean({ name: 'common.char_status_shield_off_field' }),
+                new ConditionBoolean({ name: 'common.char_status_off_field' }),
             ]),
         }),
     ],

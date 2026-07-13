@@ -154,6 +154,40 @@ export class StorageItemArtifacts extends StorageItem {
         }
     }
 
+    updateInitialValues(itemList) {
+        let anyUpdated = false;
+        nextItem: for (let item of itemList) {
+            let newSubs = item.newArt.getSubStats();
+            let keys = Object.keys(newSubs);
+            if (newSubs[keys[0]].initialValue) {
+                let oldSubs = item.oldArt.getSubStats();
+                let oldHash = item.oldArt.getHash();
+                if (!oldSubs[keys[0]].initialValue) {
+                    let upd = this.getItemByHash(oldHash);
+                    if (upd) {
+                        upd.data = Serializer.pack(item.newArt);
+                        anyUpdated = true;
+                    }
+                } else {
+                    //нужно ли обновление?? может у нас уже более правильные начальные значения стоят?
+                    /*for (let k of keys) {
+                        if (oldSubs[k].values.includes(newSubs[k].initialValue))
+                            oldSubs[k].initialValue = newSubs[k].initialValue;
+                        else
+                            continue newxtItem;
+                    }
+                    let upd = this.getItemByHash(oldHash);
+                    if (upd) {
+                        upd.data = Serializer.pack(item.oldArt);
+                        anyUpdated = true;
+                    }*/
+                }
+            }
+        }
+        if (anyUpdated)
+            this.save();
+    }
+
     updateGroup(oldName, newName) {
         for (let item of this.items) {
             let newGroups = [];
