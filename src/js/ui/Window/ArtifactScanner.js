@@ -160,6 +160,7 @@ export class ArtifactScanner extends Window {
         result.level = this.processResultLevel(data, result);
 
         this.art = new Artifact(data.rarity, result.level, result.slot, result.set, result.mainStat, result.subStats);
+        this.art.tryDoRightSubstats();
         this.refreshResult();
     }
 

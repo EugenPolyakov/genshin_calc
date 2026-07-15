@@ -3,10 +3,14 @@ category;name;rus;eng
 stat;crit_rate_charged_wriothesley;Взыскания: Морозный кулак в прыжке;Rebuke: Vaulting Fist
 stat;crit_dmg_charged_wriothesley;Взыскания: Морозный кулак в прыжке;Rebuke: Vaulting Fist
 stat;dmg_charged_wriothesley;Взыскания: Морозный кулак в прыжке;Rebuke: Vaulting Fist
+stat;crit_rate_enhancement_wriothesley;Леденящее наказание;Chilling Penalty
+stat;crit_dmg_enhancement_wriothesley;Леденящее наказание;Chilling Penalty
 stat;dmg_burst_wriothesley;Укус чернозлатого волка;Darkgold Wolfbite
+stat;dmg_reaction_stellar_conduct_wriothesley_hit_5;Усиление 5-й атаки;5-hit enhancement
+stat;dmg_reaction_stellar_conduct_wriothesley_fist;Усиление Сияния;Luster enhancement
 
 feature_attack;wriothesley_vaulting_fist_dmg;Взыскания: Морозный кулак в прыжке;Rebuke: Vaulting Fist DMG
-feature_attack;wriothesley_vaulting_fist_heal;Лечение Морозный кулак в прыжке;Rebuke: Vaulting Fist Heal
-
-talent_name;wriothesley_redemption_for_the_suffering_2;Принести спасение страждущим (На поле);Redemption for the Suffering (On-field)
-talent_name;wriothesley_redemption_for_the_suffering_3;Принести спасение страждущим (вне поля);Redemption for the Suffering (Off-field)
+feature_attack;wriothesley_vaulting_fist_stellar_dmg;Сияния: Морозный кулак в прыжке;Luster: Vaulting Fist DMG
+feature_attack;wriothesley_vaulting_fist_heal;Лечение Морозный кулак в прыжке;Vaulting Fist Heal
+feature_attack;wriothesley_normal_hit_5_icicle;Урон сосульки 5 атаки;Icicle 5-Hit DMG
+feature_attack;wriothesley_vaulting_fist_stellar_icicle_dmg;Урон сосульки Сияния: Морозный кулак в прыжке;Icicle Luster: Vaulting Fist DMG

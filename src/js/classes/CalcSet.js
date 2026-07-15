@@ -233,10 +233,9 @@ export class CalcSet {
                 continue;
             }
 
-            let settings = this[i].getSettings();
             let conditions = this.getActiveConditions(allSettings, {objects: [i]});
-            Condition.setCommonValues(settings, conditions);
-            this[i].setSettings(settings);
+            let common = Condition.setCommonValues(allSettings, conditions);
+            this[i].addSettings(common);
         }
     }
 

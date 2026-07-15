@@ -99,6 +99,7 @@ NEED_PASSIVE_TALENTS = [
     'zibai',
     'linnea',
     'arlecchino',
+    'sandrone',
 ]
 
 skiped_features = set([

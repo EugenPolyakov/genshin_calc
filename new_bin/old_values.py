@@ -2562,6 +2562,33 @@ old_values = {
         3: "cd", #Default
         4: "energy_cost", #Default
     },
+#sandrone
+    #self_evident_proposition
+    (11331, 13331): {
+        0: "normal_hit_1", #Default
+        1: "normal_hit_2", #Default
+        2: "normal_hit_3", #Default
+        3: "charged_attack_sweeping_fire_dmg",
+        4: "charged_attack_condensed_beam_dmg",
+        5: "charged_attack_condensed_beam_stellar_conduct_dmg",
+        6: "dmg_when_in_power_overdrive",
+        7: "plunge", #Default
+        8: "plunge_low/plunge_high", #Default
+    },
+    #differential_analysis
+    (11332, 13332): {
+        0: "prism_shot_dmg",
+        1: "prism_shot_stellar_conduct_dmg",
+        2: "cd", #Default
+    },
+    #q_e_d
+    (11335, 13339): {
+        0: "bombardment_dmg",
+        1: "convective_inhibition_ray_dmg",
+        2: "convective_inhibition_ray_stellar_conduct_dmg",
+        3: "cd", #Default
+        4: "energy_cost", #Default
+    },
 #kujou_sara
     #tengu_bowmanship
     (10561, 5631): {

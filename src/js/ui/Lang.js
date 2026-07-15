@@ -39,7 +39,7 @@ export class Lang {
         result = result.replace(/skill\{([a-z0-9_]+):(.*?)\}/g, '<span class="text-name gi-skill-info" data-skill="$1">$2</span>');
         result = result.replace(/tab\{([\w\-]+):(.*?)\}/g, '<span class="text-name gi-tab-change" data-tab="$1">$2</span>');
 
-        result = result.replace(/format\{(\w+)(=|<|>)(\w+)\|([\w\.\%\{\}]+)\}/g, function(all_str, stat, cmp, value, str) {
+        result = result.replace(/format\{([\w.]+)(=|<|>)(\w+)\|([\w\.\%\{\}]+)\}/g, function(all_str, stat, cmp, value, str) {
             let statValue = stats.get(stat);
             if (((cmp == '=') && (statValue == value))
                     || ((cmp == '>') && (statValue > value))

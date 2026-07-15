@@ -16,6 +16,7 @@ import { FeatureDamagePlungeShockWave } from "../../classes/Feature2/Damage/Plun
 import { FeatureDamageSkill } from "../../classes/Feature2/Damage/Skill";
 import { FeatureMultiplier } from "../../classes/Feature2/Multiplier";
 import { FeatureMultiplierTarget } from "../../classes/Feature2/Multiplier/Target";
+import { FeatureReactionStellarConduct } from "../../classes/Feature2/Reaction/Extended/StellarConduct";
 import { StatTable } from "../../classes/StatTable";
 import { ValueTable } from "../../classes/ValueTable";
 import { charTables } from "../generated/CharTables";
@@ -62,7 +63,11 @@ const Talents = new DbObjectTalents({
     skill: {
         gameId: charTalentTables.Cyno.s2_id,
         title: 'talent_name.cyno_chasmic_soulfarer',
-        description: 'talent_descr.cyno_chasmic_soulfarer',
+        getDescription(settings) {
+            if (settings.cyno_a_star_with_which_to_start_the_journey)
+                return 'talent_descr.cyno_chasmic_soulfarer_hex';
+            return 'talent_descr.cyno_chasmic_soulfarer';
+        },
         items: [
             {
                 table: new StatTable('skill_dmg', charTalentTables.Cyno.s2.p1),
@@ -140,16 +145,13 @@ const Talents = new DbObjectTalents({
             },
         ],
     },
+    links: charTalentTables.Cyno.links,
 });
 
 const TalentValues = {
     BurstMastery: 100,
     A1SkillDmgBonus: 35,
     A1DustStalkerDmg: 100,
-    A4NormalMasteryDmg: 150,
-    A4DustStalkerMasteryDmg: 250,
-    C1AtkSpeed: 20,
-    C2ElectroDmg: 10,
 };
 
 export const Cyno = new DbObjectChar({
@@ -173,7 +175,7 @@ export const Cyno = new DbObjectChar({
                 }),
             ],
             condition: new ConditionNot([
-                new ConditionBoolean({name: 'cyno_wolfs_swiftness'}),
+                new ConditionBoolean({ name: 'cyno_wolfs_swiftness' }),
             ]),
         }),
         new FeatureDamageNormal({
@@ -185,7 +187,7 @@ export const Cyno = new DbObjectChar({
                 }),
             ],
             condition: new ConditionNot([
-                new ConditionBoolean({name: 'cyno_wolfs_swiftness'}),
+                new ConditionBoolean({ name: 'cyno_wolfs_swiftness' }),
             ]),
         }),
         new FeatureDamageMultihit({
@@ -205,7 +207,7 @@ export const Cyno = new DbObjectChar({
                 },
             ],
             condition: new ConditionNot([
-                new ConditionBoolean({name: 'cyno_wolfs_swiftness'}),
+                new ConditionBoolean({ name: 'cyno_wolfs_swiftness' }),
             ]),
         }),
         new FeatureDamageNormal({
@@ -219,7 +221,7 @@ export const Cyno = new DbObjectChar({
                 }),
             ],
             condition: new ConditionNot([
-                new ConditionBoolean({name: 'cyno_wolfs_swiftness'}),
+                new ConditionBoolean({ name: 'cyno_wolfs_swiftness' }),
             ]),
         }),
         new FeatureDamageNormal({
@@ -231,7 +233,7 @@ export const Cyno = new DbObjectChar({
                 }),
             ],
             condition: new ConditionNot([
-                new ConditionBoolean({name: 'cyno_wolfs_swiftness'}),
+                new ConditionBoolean({ name: 'cyno_wolfs_swiftness' }),
             ]),
         }),
         new FeatureDamageCharged({
@@ -243,7 +245,7 @@ export const Cyno = new DbObjectChar({
                 }),
             ],
             condition: new ConditionNot([
-                new ConditionBoolean({name: 'cyno_wolfs_swiftness'}),
+                new ConditionBoolean({ name: 'cyno_wolfs_swiftness' }),
             ]),
         }),
         new FeatureDamagePlungeCollision({
@@ -255,7 +257,7 @@ export const Cyno = new DbObjectChar({
                 }),
             ],
             condition: new ConditionNot([
-                new ConditionBoolean({name: 'cyno_wolfs_swiftness'}),
+                new ConditionBoolean({ name: 'cyno_wolfs_swiftness' }),
             ]),
         }),
         new FeatureDamagePlungeShockWave({
@@ -267,7 +269,7 @@ export const Cyno = new DbObjectChar({
                 }),
             ],
             condition: new ConditionNot([
-                new ConditionBoolean({name: 'cyno_wolfs_swiftness'}),
+                new ConditionBoolean({ name: 'cyno_wolfs_swiftness' }),
             ]),
         }),
         new FeatureDamagePlungeShockWave({
@@ -279,7 +281,7 @@ export const Cyno = new DbObjectChar({
                 }),
             ],
             condition: new ConditionNot([
-                new ConditionBoolean({name: 'cyno_wolfs_swiftness'}),
+                new ConditionBoolean({ name: 'cyno_wolfs_swiftness' }),
             ]),
         }),
         new FeatureDamageNormal({
@@ -291,7 +293,7 @@ export const Cyno = new DbObjectChar({
                     values: Talents.get('burst.normal_hit_1'),
                 }),
             ],
-            condition: new ConditionBoolean({name: 'cyno_wolfs_swiftness'}),
+            condition: new ConditionBoolean({ name: 'cyno_wolfs_swiftness' }),
         }),
         new FeatureDamageNormal({
             name: 'normal_hit_2',
@@ -302,7 +304,7 @@ export const Cyno = new DbObjectChar({
                     values: Talents.get('burst.normal_hit_2'),
                 }),
             ],
-            condition: new ConditionBoolean({name: 'cyno_wolfs_swiftness'}),
+            condition: new ConditionBoolean({ name: 'cyno_wolfs_swiftness' }),
         }),
         new FeatureDamageNormal({
             name: 'normal_hit_3',
@@ -313,7 +315,7 @@ export const Cyno = new DbObjectChar({
                     values: Talents.get('burst.normal_hit_3'),
                 }),
             ],
-            condition: new ConditionBoolean({name: 'cyno_wolfs_swiftness'}),
+            condition: new ConditionBoolean({ name: 'cyno_wolfs_swiftness' }),
         }),
         new FeatureDamageMultihit({
             name: 'normal_hit_4',
@@ -332,7 +334,7 @@ export const Cyno = new DbObjectChar({
                     ],
                 },
             ],
-            condition: new ConditionBoolean({name: 'cyno_wolfs_swiftness'}),
+            condition: new ConditionBoolean({ name: 'cyno_wolfs_swiftness' }),
         }),
         new FeatureDamageNormal({
             name: 'normal_hit_4_1',
@@ -345,7 +347,7 @@ export const Cyno = new DbObjectChar({
                     values: Talents.get('burst.normal_hit_4'),
                 }),
             ],
-            condition: new ConditionBoolean({name: 'cyno_wolfs_swiftness'}),
+            condition: new ConditionBoolean({ name: 'cyno_wolfs_swiftness' }),
         }),
         new FeatureDamageNormal({
             name: 'normal_hit_5',
@@ -356,7 +358,7 @@ export const Cyno = new DbObjectChar({
                     values: Talents.get('burst.normal_hit_5'),
                 }),
             ],
-            condition: new ConditionBoolean({name: 'cyno_wolfs_swiftness'}),
+            condition: new ConditionBoolean({ name: 'cyno_wolfs_swiftness' }),
         }),
         new FeatureDamageCharged({
             name: 'charged_hit',
@@ -367,7 +369,7 @@ export const Cyno = new DbObjectChar({
                     values: Talents.get('burst.charged_hit'),
                 }),
             ],
-            condition: new ConditionBoolean({name: 'cyno_wolfs_swiftness'}),
+            condition: new ConditionBoolean({ name: 'cyno_wolfs_swiftness' }),
         }),
         new FeatureDamagePlungeCollision({
             name: 'plunge',
@@ -378,7 +380,7 @@ export const Cyno = new DbObjectChar({
                     values: Talents.get('burst.plunge'),
                 }),
             ],
-            condition: new ConditionBoolean({name: 'cyno_wolfs_swiftness'}),
+            condition: new ConditionBoolean({ name: 'cyno_wolfs_swiftness' }),
         }),
         new FeatureDamagePlungeShockWave({
             name: 'plunge_low',
@@ -389,7 +391,7 @@ export const Cyno = new DbObjectChar({
                     values: Talents.get('burst.plunge_low'),
                 }),
             ],
-            condition: new ConditionBoolean({name: 'cyno_wolfs_swiftness'}),
+            condition: new ConditionBoolean({ name: 'cyno_wolfs_swiftness' }),
         }),
         new FeatureDamagePlungeShockWave({
             name: 'plunge_high',
@@ -400,7 +402,7 @@ export const Cyno = new DbObjectChar({
                     values: Talents.get('burst.plunge_high'),
                 }),
             ],
-            condition: new ConditionBoolean({name: 'cyno_wolfs_swiftness'}),
+            condition: new ConditionBoolean({ name: 'cyno_wolfs_swiftness' }),
         }),
         new FeatureDamageSkill({
             name: 'skill_dmg',
@@ -435,13 +437,43 @@ export const Cyno = new DbObjectChar({
                 new FeatureMultiplier({
                     scaling: 'mastery*',
                     source: 'ascension4',
-                    values: new ValueTable([TalentValues.A4DustStalkerMasteryDmg]),
-                    condition: new ConditionAscensionChar({ascension: 4}),
+                    values: new ValueTable([charTalentTables.Cyno.passsive[1][1]], 100),
+                    condition: new ConditionAscensionChar({ ascension: 4 }),
                 }),
             ],
             condition: new ConditionAnd([
-                new ConditionBoolean({name: 'cyno_wolfs_swiftness'}),
-                new ConditionAscensionChar({ascension: 1}),
+                new ConditionBoolean({ name: 'cyno_wolfs_swiftness' }),
+                new ConditionAscensionChar({ ascension: 1 }),
+                new ConditionNot([
+                    new ConditionBoolean({ name: 'cyno_a_star_with_which_to_start_the_journey' }),
+                    new ConditionBoolean({ name: 'common.enemy_superconduct' }),
+                    new ConditionBoolean({ name: 'allowed_stellar_conduct' }),
+                ]),
+            ]),
+        }),
+        new FeatureReactionStellarConduct({
+            name: 'cyno_duststalker_bolt_dmg',
+            category: 'skill',
+            fullName: 'skill.cyno_duststalker_bolt_starsame_dmg',
+            element: 'electro',
+            multipliers: [
+                new FeatureMultiplier({
+                    source: 'ascension1',
+                    values: new ValueTable([TalentValues.A1DustStalkerDmg]),
+                }),
+                new FeatureMultiplier({
+                    scaling: 'mastery*',
+                    source: 'ascension4',
+                    values: new ValueTable([charTalentTables.Cyno.passsive[1][2]], 100),
+                    condition: new ConditionAscensionChar({ ascension: 4 }),
+                }),
+            ],
+            condition: new ConditionAnd([
+                new ConditionBoolean({ name: 'cyno_wolfs_swiftness' }),
+                new ConditionAscensionChar({ ascension: 1 }),
+                new ConditionBoolean({ name: 'cyno_a_star_with_which_to_start_the_journey' }),
+                new ConditionBoolean({ name: 'common.enemy_superconduct' }),
+                new ConditionBoolean({ name: 'allowed_stellar_conduct' }),
             ]),
         }),
     ],
@@ -449,10 +481,10 @@ export const Cyno = new DbObjectChar({
         new FeatureMultiplier({
             scaling: 'mastery*',
             source: 'ascension4',
-            values: new ValueTable([TalentValues.A4NormalMasteryDmg]),
+            values: new ValueTable([charTalentTables.Cyno.passsive[1][0]], 100),
             condition: new ConditionAnd([
-                new ConditionBoolean({name: 'cyno_wolfs_swiftness'}),
-                new ConditionAscensionChar({ascension: 4}),
+                new ConditionBoolean({ name: 'cyno_wolfs_swiftness' }),
+                new ConditionAscensionChar({ ascension: 4 }),
             ]),
             target: new FeatureMultiplierTarget({
                 damageElements: ['electro'],
@@ -461,6 +493,12 @@ export const Cyno = new DbObjectChar({
         }),
     ],
     conditions: [
+        new ConditionBoolean({
+            name: 'cyno_a_star_with_which_to_start_the_journey',
+            serializeId: 4,
+            title: 'talent_name.cyno_a_star_with_which_to_start_the_journey',
+            description: 'talent_descr.cyno_a_star_with_which_to_start_the_journey',
+        }),
         new ConditionBoolean({
             name: 'cyno_wolfs_swiftness',
             serializeId: 1,
@@ -475,28 +513,67 @@ export const Cyno = new DbObjectChar({
             serializeId: 2,
             title: 'talent_name.cyno_featherfall_judgment',
             description: 'talent_descr.cyno_featherfall_judgment',
-            info: {ascension: 1},
+            info: { ascension: 1 },
             stats: {
                 dmg_skill_cyno: TalentValues.A1SkillDmgBonus,
                 text_percent_dmg: TalentValues.A1DustStalkerDmg,
             },
-            subConditions: [
-                new ConditionAscensionChar({ascension: 1}),
-                new ConditionBoolean({name: 'cyno_wolfs_swiftness'}),
-            ],
+            hideCondition: new ConditionBoolean({ name: 'cyno_a_star_with_which_to_start_the_journey' }),
+            condition: new ConditionAnd([
+                new ConditionAscensionChar({ ascension: 1 }),
+                new ConditionBoolean({ name: 'cyno_wolfs_swiftness' }),
+                new ConditionBoolean({ name: 'cyno_a_star_with_which_to_start_the_journey', invert: 1 }),
+            ]),
+        }),
+        new ConditionBoolean({
+            name: 'cyno_featherfall_judgment',
+            serializeId: 2,
+            title: 'talent_name.cyno_featherfall_judgment',
+            description: 'talent_descr.cyno_featherfall_judgment_hex_1',
+            info: { ascension: 1 },
+            stats: {
+                dmg_skill_cyno: TalentValues.A1SkillDmgBonus,
+                text_percent_dmg: TalentValues.A1DustStalkerDmg,
+            },
+            hideCondition: new ConditionBoolean({ name: 'cyno_a_star_with_which_to_start_the_journey', invert: 1 }),
+            condition: new ConditionAnd([
+                new ConditionAscensionChar({ ascension: 1 }),
+                new ConditionBoolean({ name: 'cyno_wolfs_swiftness' }),
+                new ConditionBoolean({ name: 'cyno_a_star_with_which_to_start_the_journey' }),
+            ]),
+        }),
+        new ConditionStatic({
+            title: 'talent_name.cyno_featherfall_judgment',
+            description: 'talent_descr.cyno_featherfall_judgment_hex_2',
+            info: { ascension: 1 },
+            hideCondition: new ConditionBoolean({ name: 'cyno_a_star_with_which_to_start_the_journey', invert: 1 }),
+            condition: new ConditionAnd([
+                new ConditionAscensionChar({ ascension: 1 }),
+                new ConditionBoolean({ name: 'cyno_wolfs_swiftness' }),
+                new ConditionBoolean({ name: 'cyno_a_star_with_which_to_start_the_journey' }),
+                new ConditionBoolean({ name: 'common.enemy_superconduct' }),
+                new ConditionBoolean({ name: 'allowed_stellar_conduct' }),
+            ]),
         }),
         new ConditionStatic({
             title: 'talent_name.cyno_authority_over_the_nine_bows',
             description: 'talent_descr.cyno_authority_over_the_nine_bows',
-            info: {ascension: 4},
-            stats: {
-                text_percent_dmg: TalentValues.A4NormalMasteryDmg,
-                text_percent_dmg2: TalentValues.A4DustStalkerMasteryDmg,
-            },
-            subConditions: [
-                new ConditionAscensionChar({ascension: 4}),
-                new ConditionBoolean({name: 'cyno_wolfs_swiftness'}),
-            ],
+            info: { ascension: 4 },
+            hideCondition: new ConditionBoolean({ name: 'cyno_a_star_with_which_to_start_the_journey' }),
+            condition: new ConditionAnd([
+                new ConditionAscensionChar({ ascension: 4 }),
+                new ConditionBoolean({ name: 'cyno_wolfs_swiftness' }),
+            ]),
+        }),
+        new ConditionStatic({
+            title: 'talent_name.cyno_authority_over_the_nine_bows',
+            description: 'talent_descr.cyno_authority_over_the_nine_bows_hex',
+            info: { ascension: 4 },
+            hideCondition: new ConditionBoolean({ name: 'cyno_a_star_with_which_to_start_the_journey', invert: 1 }),
+            condition: new ConditionAnd([
+                new ConditionAscensionChar({ ascension: 4 }),
+                new ConditionBoolean({ name: 'cyno_wolfs_swiftness' }),
+            ]),
         }),
     ],
     constellation: new DbObjectConstellation([
@@ -506,13 +583,44 @@ export const Cyno = new DbObjectChar({
                     title: 'talent_name.cyno_unceasing_vigil',
                     description: 'talent_descr.cyno_unceasing_vigil',
                     stats: {
-                        atk_speed_normal: TalentValues.C1AtkSpeed,
+                        atk_speed_normal: charTalentTables.Cyno.cons[0][0] * 100,
                     },
-                    subConditions: [
-                        new ConditionBoolean({name: 'cyno_wolfs_swiftness'}),
-                        new ConditionBoolean({name: 'cyno_featherfall_judgment'}),
-                        new ConditionAscensionChar({ascension: 1}),
-                    ],
+                    hideCondition: new ConditionBoolean({ name: 'cyno_a_star_with_which_to_start_the_journey' }),
+                    condition: new ConditionAnd([
+                        new ConditionBoolean({ name: 'cyno_wolfs_swiftness' }),
+                        new ConditionBoolean({ name: 'cyno_featherfall_judgment' }),
+                        new ConditionAscensionChar({ ascension: 1 }),
+                        new ConditionBoolean({ name: 'cyno_a_star_with_which_to_start_the_journey', invert: 1 }),
+                    ]),
+                }),
+                new ConditionStatic({
+                    title: 'talent_name.cyno_unceasing_vigil',
+                    description: 'talent_descr.cyno_unceasing_vigil_hex_1',
+                    stats: {
+                        atk_speed_normal: charTalentTables.Cyno.cons[0][0] * 100,
+                    },
+                    hideCondition: new ConditionBoolean({ name: 'cyno_a_star_with_which_to_start_the_journey', invert: 1 }),
+                    condition: new ConditionAnd([
+                        new ConditionBoolean({ name: 'cyno_wolfs_swiftness' }),
+                        new ConditionBoolean({ name: 'cyno_featherfall_judgment' }),
+                        new ConditionAscensionChar({ ascension: 1 }),
+                        new ConditionBoolean({ name: 'cyno_a_star_with_which_to_start_the_journey' }),
+                    ]),
+                }),
+                new ConditionStatic({
+                    title: 'talent_name.cyno_unceasing_vigil',
+                    description: 'talent_descr.cyno_unceasing_vigil_hex_2',
+                    stats: {
+                        mastery: charTalentTables.Cyno.cons[0][2],
+                    },
+                    hideCondition: new ConditionBoolean({ name: 'cyno_a_star_with_which_to_start_the_journey', invert: 1 }),
+                    condition: new ConditionAnd([
+                        new ConditionBoolean({ name: 'cyno_wolfs_swiftness' }),
+                        new ConditionAscensionChar({ ascension: 1 }),
+                        new ConditionBoolean({ name: 'cyno_a_star_with_which_to_start_the_journey' }),
+                        new ConditionBoolean({ name: 'common.enemy_superconduct' }),
+                        new ConditionBoolean({ name: 'allowed_stellar_conduct' }),
+                    ]),
                 }),
             ],
         },
@@ -523,10 +631,37 @@ export const Cyno = new DbObjectChar({
                     serializeId: 3,
                     title: 'talent_name.cyno_homecoming_of_spirits',
                     description: 'talent_descr.cyno_homecoming_of_spirits',
+                    hideCondition: new ConditionBoolean({ name: 'cyno_a_star_with_which_to_start_the_journey' }),
                     maxStacks: 5,
                     stats: [
-                        new StatTable('dmg_electro', [TalentValues.C2ElectroDmg]),
+                        new StatTable('dmg_electro', [charTalentTables.Cyno.cons[1][0]], 100),
                     ],
+                }),
+                new ConditionStacks({
+                    name: 'cyno_homecoming_of_spirits',
+                    serializeId: 3,
+                    title: 'talent_name.cyno_homecoming_of_spirits',
+                    description: 'talent_descr.cyno_homecoming_of_spirits_hex_1',
+                    hideCondition: new ConditionBoolean({ name: 'cyno_a_star_with_which_to_start_the_journey', invert: 1 }),
+                    maxStacks: 5,
+                    stats: [
+                        new StatTable('dmg_electro', [charTalentTables.Cyno.cons[1][0]], 100),
+                    ],
+                }),
+                new ConditionStacks({
+                    name: 'cyno_homecoming_of_spirits_2',
+                    serializeId: 5,
+                    title: 'talent_name.cyno_homecoming_of_spirits',
+                    description: 'talent_descr.cyno_homecoming_of_spirits_hex_2',
+                    hideCondition: new ConditionBoolean({ name: 'cyno_a_star_with_which_to_start_the_journey', invert: 1 }),
+                    maxStacks: 5,
+                    stats: [
+                        new StatTable('dmg_reaction_stellar_conduct', [charTalentTables.Cyno.cons[1][4]], 100),
+                    ],
+                    condition: new ConditionAnd([
+                        new ConditionBoolean({ name: 'cyno_a_star_with_which_to_start_the_journey' }),
+                        new ConditionBoolean({ name: 'cyno_wolfs_swiftness' }),
+                    ]),
                 }),
             ],
         },
@@ -544,6 +679,12 @@ export const Cyno = new DbObjectChar({
                 new ConditionStatic({
                     title: 'talent_name.cyno_forbidding_guard',
                     description: 'talent_descr.cyno_forbidding_guard',
+                    hideCondition: new ConditionBoolean({ name: 'cyno_a_star_with_which_to_start_the_journey' }),
+                }),
+                new ConditionStatic({
+                    title: 'talent_name.cyno_forbidding_guard',
+                    description: 'talent_descr.cyno_forbidding_guard_hex',
+                    hideCondition: new ConditionBoolean({ name: 'cyno_a_star_with_which_to_start_the_journey', invert: 1 }),
                 }),
             ],
         },
@@ -561,8 +702,31 @@ export const Cyno = new DbObjectChar({
                 new ConditionStatic({
                     title: 'talent_name.cyno_just_scales',
                     description: 'talent_descr.cyno_just_scales',
+                    hideCondition: new ConditionBoolean({ name: 'cyno_a_star_with_which_to_start_the_journey' }),
+                }),
+                new ConditionStatic({
+                    title: 'talent_name.cyno_just_scales',
+                    description: 'talent_descr.cyno_just_scales_hex',
+                    hideCondition: new ConditionBoolean({ name: 'cyno_a_star_with_which_to_start_the_journey', invert: 1 }),
                 }),
             ],
         },
     ]),
+    partyData: {
+        conditions: [
+            new ConditionBoolean({
+                name: 'party.talent_name.cyno_unceasing_vigil',
+                title: 'talent_name.cyno_unceasing_vigil',
+                description: 'talent_descr.cyno_unceasing_vigil_hex_2',
+                info: { constellation: 1 },
+                stats: {
+                    mastery: charTalentTables.Cyno.cons[0][2],
+                },
+                condition: new ConditionAnd([
+                    new ConditionBoolean({ name: 'common.enemy_superconduct' }),
+                    new ConditionBoolean({ name: 'allowed_stellar_conduct' }),
+                ]),
+            }),
+        ],
+    },
 });

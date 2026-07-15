@@ -18,7 +18,7 @@ export class FeatureReaction extends FeatureDamage {
     /**
      * @returns {Array.<string>}
      */
-    getStatsReactionBonus() {return [] }
+    getStatsReactionBonus() { return this.damageBonuses.slice(); }
 
     /**
      * @returns {Array.<string>}

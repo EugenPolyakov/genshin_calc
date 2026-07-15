@@ -17,7 +17,9 @@ export class ConditionConverter extends Condition {
 
     doConvert(result, input) {
         if (this.params.oldType == 'checkbox') {
-            if (this.params.newType == 'int')
+            if (typeof this.params.newType == "function")
+                this.params.newType(result);
+            else if (this.params.newType == 'int')
                 result[this.getName()] = this.params.value;
         }
     }

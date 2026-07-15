@@ -704,6 +704,19 @@ export const Rotation = new DbObjectRotation({
     'burst.qiqi_stellar_conduct_dmg': 686,
     'skill.qiqi_herald_of_frost_coordinated_attack_dmg': 687,
 
+    'attack.sandrone_charged_attack_sweeping_fire_dmg': 688,
+    'attack.sandrone_charged_attack_condensed_beam_dmg': 689,
+    'attack.sandrone_dmg_when_in_power_overdrive': 690,
+    'skill.sandrone_prism_shot_dmg': 691,
+    'skill.sandrone_prism_shot_stellar_conduct_dmg': 692,
+    'burst.sandrone_bombardment_dmg': 693,
+    'burst.sandrone_convective_inhibition_ray_dmg': 694,
+
     'burst.yae_miko_additional_tenko_thunderbolt_dmg': 695,
     'skill.yae_miko_additional_sesshou_sakura_dmg': 696,
+
+    'attack.sandrone_charged_attack_enhanced_condensed_beam_dmg': 697,
+
+    'attack.wriothesley_normal_hit_5_icicle': 698,
+    'attack.wriothesley_vaulting_fist_stellar_icicle_dmg': 698,
 });

@@ -76,7 +76,9 @@ export class CharTalentComponent extends React.Component {
             this.tabs.push({
                 name: category,
                 title: UI.Lang.get(cData.title),
-                descr: () => UI.Lang.getTalent(cData.getDescription ? cData.getDescription(UI.Layout.app.current.getAllSettings({})) : cData.description),
+                descr() {
+                    return UI.Lang.getTalent(this.data.getDescription ? this.data.getDescription(UI.Layout.app.current.getAllSettings({})) : this.data.description);
+                },
                 data: cData,
             });
         }
@@ -84,11 +86,13 @@ export class CharTalentComponent extends React.Component {
         let links = this.char.getTalentTable('links');
         if (Array.isArray(links)) {
             for (const link_id of links) {
-                let category = 'n'+ link_id;
+                let category = 'n' + link_id;
                 this.links.push({
                     name: category,
                     title: UI.Lang.get('talent_name.'+ category),
-                    descr: UI.Lang.getTalent('talent_descr.'+ category),
+                    descr() {
+                        return UI.Lang.getTalent('talent_descr.' + this.name);
+                    },
                 });
             }
         }

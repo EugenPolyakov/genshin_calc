@@ -3994,6 +3994,47 @@ export const charTables = {
 			base: 100,
 		}),
 	],
+	Sandrone: [
+		new StatTableAscensionScale({
+			stat: 'atk_base',
+			base: 26.62660026550293,
+			ascension: new StatTable('', [22.82823371887207, 39.04829406738281, 60.67504119873047, 76.89510345458984, 93.11516571044922, 109.3352279663086]),
+			scale: charScales.s5atk,
+		}),
+		new StatTableAscensionScale({
+			stat: 'burst_energy_cost',
+			base: 60,
+		}),
+		new StatTableAscensionScale({
+			stat: 'crit_dmg_base',
+			base: 50,
+		}),
+		new StatTableAscensionScale({
+			stat: 'crit_rate_base',
+			base: 5.000000074505806,
+			ascension: new StatTable('', [0, 4.800000190734863, 9.600000381469727, 9.600000381469727, 14.399999618530273, 19.200000762939453]),
+		}),
+		new StatTableAscensionScale({
+			stat: 'def_base',
+			base: 58.573570251464844,
+			ascension: new StatTable('', [50.22269821166992, 85.9072494506836, 133.4866485595703, 169.17120361328125, 204.85574340820312, 240.54029846191406]),
+			scale: charScales.s5hp,
+		}),
+		new StatTableAscensionScale({
+			stat: 'hp_base',
+			base: 1029.5855712890625,
+			ascension: new StatTable('', [882.7765502929688, 1510.0125732421875, 2346.3271484375, 2973.563232421875, 3600.799072265625, 4228.03515625]),
+			scale: charScales.s5hp,
+		}),
+		new StatTableAscensionScale({
+			stat: 'mastery_base',
+			base: 0,
+		}),
+		new StatTableAscensionScale({
+			stat: 'recharge_base',
+			base: 100,
+		}),
+	],
 	Sara: [
 		new StatTableAscensionScale({
 			stat: 'atk_base',

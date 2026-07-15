@@ -84,6 +84,7 @@ from .qiqi import char_qiqi  # noqa
 from .raiden_shogun import char_raiden_shogun  # noqa
 from .razor import char_razor  # noqa
 from .rosaria import char_rosaria  # noqa
+from .sandrone import char_sandrone  # noqa
 from .sangonomiya_kokomi import char_sangonomiya_kokomi  # noqa
 from .sayu import char_sayu  # noqa
 from .sethos import char_sethos  # noqa

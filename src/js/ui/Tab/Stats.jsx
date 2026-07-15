@@ -39,7 +39,7 @@ const secondaryStatsList = [
     '!crit_rate_navia', '!crit_rate_gaming', '!crit_rate_normal_arlecchino', '!crit_rate_burst_arlecchino', '!crit_rate_sethos',
     '!crit_rate_amber', '!crit_rate_normal_mualani',
     '!crit_rate_anemo', '!crit_rate_cryo', '!crit_rate_electro', '!crit_rate_geo', '!crit_rate_hydro', '!crit_rate_pyro', '!crit_rate_dendro', '!crit_rate_phys',
-    '!crit_rate_burning', '!crit_rate_bloom',
+    '!crit_rate_burning', '!crit_rate_bloom', '!crit_rate_enhancement_wriothesley',
     '!crit_rate_lunar', '!crit_rate_lunarcharged', '!crit_rate_lunarbloom', '!crit_rate_lunarcrystallize',
     '!crit_rate_stellar_conduct',
     'crit_dmg', '!crit_dmg_skill', '!crit_dmg_anemo', '!crit_dmg_cryo', '!crit_dmg_electro', '!crit_dmg_geo',
@@ -50,7 +50,7 @@ const secondaryStatsList = [
     '!crit_dmg_charged_wriothesley', '!crit_dmg_burst',
     '!crit_dmg_navia', '!crit_dmg_xianyun', '!crit_dmg_gaming', '!crit_dmg_normal_arlecchino', '!crit_dmg_burst_arlecchino',
     '!crit_dmg_skill_kinich', '!crit_dmg_normal_mualani', '!crit_dmg_chasca',
-    '!crit_dmg_c2_lumi',
+    '!crit_dmg_c2_lumi', '!crit_dmg_enhancement_wriothesley',
     '!crit_dmg_condensed_beam',
     'healing', 'healing_recv', 'recovery', 'shield',
 ];

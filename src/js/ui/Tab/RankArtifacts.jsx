@@ -9,7 +9,7 @@ import { Feature2 } from '../../classes/Feature2';
 import { FullHeight, FullHeightStatic, FullHeightScrollable } from '../Components/FullHeight';
 import { ReactTab } from '../Components/Tab';
 import { Tab } from "../Tab";
-import { TitledButton, ToggleRoundButton } from '../Components/Inputs/Buttons';
+import { RoundButton, TitledButton, ToggleRoundButton } from '../Components/Inputs/Buttons';
 import { DB } from '../../db/DB';
 import { UI } from '../../ui';
 import { RankProgressModal } from '../Components/Dialog/RankProgressModal';
@@ -276,6 +276,17 @@ class RankArtifact extends React.Component {
         return items;
     }
 
+    handleScannerOpen() {
+        UI.ArtifactScanner.show((art) => {
+            if (art) {
+                this.storage.addArtifacts([art]);
+                UI.Layout.app.refresh({
+                    objects: ['storage.artifacts'],
+                });
+            }
+        }, { groups: this.storage.listGroups() });
+    }
+
     tabContent() {
         let content;
         let artCount = this.dataArtifactsList(this.state.activeSlot).length;
@@ -326,6 +337,11 @@ class RankArtifact extends React.Component {
                     <ControlsBar>
                         { this.slotButtons() }
                         <ControlsBarDivider />
+                        <RoundButton
+                            icon={ 'icon-scan' }
+                            tooltip={ UI.Lang.get('tooltip.scan_artifact') }
+                            onClick={ () => this.handleScannerOpen() }
+                        />
                         <TitledButton
                             icon="icon-ok"
                             title={ UI.Lang.get('artifacts_ui.start') }

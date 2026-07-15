@@ -1,0 +1,7 @@
+category;name;rus;eng
+talent_name;sandrone_refined_tactics;Усовершенствованная тактика;Refined Tactics
+stat;crit_dmg_condensed_beam;Конденсационный луч заряженной атаки: урон Звёздного проводника;Charged Attack Condensed Beam Stellar-Conduct DMG
+stat_short;sandrone_refined_tactics;Усов. тактика;Refined Tactics
+feature_other;sandrone_additional_condensed_beam_dmg;Урон дополнительного конденсационного луча;Additional Condensed Beam DMG
+feature_attack;sandrone_charged_attack_enhanced_condensed_beam_dmg;Урон усиленного конденсационного луча заряженной атаки;Charged Attack Enhanced Condensed Beam DMG
+feature_attack;sandrone_charged_attack_enhanced_condensed_beam_stellar_conduct_dmg;Усиленный конденсационный луч заряженной атаки: урон Звёздного проводника;Charged Attack Enhanced Condensed Beam Stellar-Conduct DMG
