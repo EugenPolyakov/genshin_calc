@@ -310,7 +310,7 @@ export const Wriothesley = new DbObjectChar({
             multipliers: [
                 new FeatureMultiplierWriothesley({
                     leveling: 'char_skill_attack',
-                    values: Talents.getAlias('attack.normal_hit_5', '', 0.6),
+                    values: Talents.getAlias('attack.normal_hit_5', '', 0.2),
                     scalingValues: Talents.get('skill.wriothesley_enhanced_repelling_fist'),
                     scalingSource: 'ascension1',
                     scalingMultiplier: 0.8,
@@ -399,7 +399,7 @@ export const Wriothesley = new DbObjectChar({
                     scalingMultiplier: 1.5,
                     scalingSource: 'constellation2',
                     scalingMultiplierCondition: new ConditionConstellation({ constellation: 2 }),
-                    values: Talents.getAlias('attack.charged_hit', '', 0.6),
+                    values: Talents.getAlias('attack.charged_hit', '', 0.2),
                 }),
             ],
             condition: new ConditionAnd([

@@ -64,6 +64,7 @@ class RankArtifact extends React.Component {
 
         this.state = {
             isLoading: false,
+            filterSet: '',
             feature: props.feature,
             featureType: 'average',
             activeSlot: 'flower',
@@ -172,6 +173,9 @@ class RankArtifact extends React.Component {
                 hash: item.currentArtifact,
                 art: art,
                 artProfit,
+                getSet() {
+                    return this.art.getSet();
+                },
             });
         }
 
@@ -287,6 +291,60 @@ class RankArtifact extends React.Component {
         }, { groups: this.storage.listGroups() });
     }
 
+    handleFilterSet(item) {
+        this.setState({ filterSet: item.value });
+    }
+
+    getFilteredArtifacts() {
+        if (this.state.filterSet == '')
+            return this.state.artifacts[this.state.activeSlot];
+
+        let result = [];
+        for (let item of this.state.artifacts[this.state.activeSlot])
+            if (item.getSet() == this.state.filterSet)
+                result.push(item);
+        return result;
+    }
+
+    dataArtifactSets() {
+        let setData = {};
+        let items = this.state.artifacts[this.state.activeSlot];
+        let result = [
+            {
+                value: '',
+                text: UI.Lang.get('pool_view.all_sets'),
+                number: items.length,
+            }
+        ];
+
+        for (let item of items) {
+            let set = item.getSet();
+            if (!setData[set]) {
+                setData[set] = 1;
+            } else {
+                ++setData[set]
+            }
+        }
+
+        for (let setId of DB.Artifacts.Sets.getKeysSorted(null, 1)) {
+            if (!setData[setId]) {
+                continue;
+            }
+
+            let set = DB.Artifacts.Sets.get(setId);
+            if (set) {
+                result.push({
+                    value: setId,
+                    optionIcons: [' sprite sprite-artifact sprite-24 flower ' + set.getImage()],
+                    text: UI.Lang.get(set.getName()),
+                    number: setData[setId],
+                });
+            }
+        }
+
+        return result;
+    }
+
     tabContent() {
         let content;
         let artCount = this.dataArtifactsList(this.state.activeSlot).length;
@@ -298,6 +356,15 @@ class RankArtifact extends React.Component {
             content = (<>
                 <div>{ artCount } кандидатов</div>
                 { this.isCurrentFilterActual() ? "" : (<div className="tab-message">{ parse(UI.Lang.getTalent('artifacts_ui.data_out_of_date')) }</div>) }
+                <ControlsBar>
+                    <Dropdown
+                        barClass="resizable"
+                        items={ this.dataArtifactSets() }
+                        textIcon="filter"
+                        selected={ this.state.filterSet }
+                        onChange={ (value) => this.handleFilterSet(value) }
+                    />
+                </ControlsBar>
                 <FullHeightScrollable
                     isLoading={ this.state.isLoading }
                     loadingOverlay={ UI.Lang.get('pool_view.loading') }
@@ -311,7 +378,7 @@ class RankArtifact extends React.Component {
                             />
                         </AccordionItem>
                     </Accordion>
-                    <RankResultItemList sort={ this.state.featureType } artifacts={ this.state.artifacts[this.state.activeSlot] } />
+                    <RankResultItemList sort={ this.state.featureType } artifacts={ this.getFilteredArtifacts() } />
                 </FullHeightScrollable>
             </>
             );
