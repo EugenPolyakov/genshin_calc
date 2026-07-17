@@ -26,7 +26,7 @@ export class HelpComponent extends React.Component {
     }
 
     show(title, name) {
-        let url = '/help/'+ UI.Lang.getLang() +'/'+ name +'.html?v='+ UI.Layout.app.getVersion();
+        let url = 'help/'+ UI.Lang.getLang() +'/'+ name +'.html?v='+ UI.Layout.app.getVersion();
 
         this.setState({
             title: title,
