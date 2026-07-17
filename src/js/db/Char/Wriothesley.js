@@ -651,7 +651,7 @@ export const Wriothesley = new DbObjectChar({
         {
             conditions: [
                 new ConditionStatic({
-                    title: 'talent_name.wriothesley_redemption_for_the_suffering',
+                    title: 'talent_name.wriothesley_redemption_for_the_suffering_1',
                     description: 'talent_descr.wriothesley_redemption_for_the_suffering_1',
                     settings: {
                         wriothesley_heal_level: 2,
@@ -679,7 +679,7 @@ export const Wriothesley = new DbObjectChar({
                 new ConditionBoolean({
                     name: 'wriothesley_redemption_for_the_suffering',
                     serializeId: 8,
-                    title: 'talent_name.wriothesley_redemption_for_the_suffering',
+                    title: 'talent_name.wriothesley_redemption_for_the_suffering_1',
                     description: 'talent_descr.wriothesley_redemption_for_the_suffering_2',
                     condition: new ConditionNot([
                         new ConditionBoolean({ name: 'wriothesley_there_shall_be_an_unveiling_for_injustice' }),
@@ -723,8 +723,8 @@ export const Wriothesley = new DbObjectChar({
                     ]),
                 }),
                 new ConditionStatic({
-                    title: 'talent_name.wriothesley_redemption_for_the_suffering',
-                    description: 'talent_descr.wriothesley_redemption_for_the_suffering_hex',
+                    title: 'talent_name.wriothesley_redemption_for_the_suffering_1',
+                    description: 'talent_descr.wriothesley_redemption_for_the_suffering_hex_1',
                     stats: {
                         atk_speed_normal: 20,
                     },
@@ -785,8 +785,8 @@ export const Wriothesley = new DbObjectChar({
             new ConditionBoolean({
                 name: 'party.wriothesley_redemption_for_the_suffering_2',
                 serializeId: 1,
-                title: 'talent_name.wriothesley_redemption_for_the_suffering_3',
-                description: 'talent_descr.wriothesley_redemption_for_the_suffering_4',
+                title: 'talent_name.wriothesley_redemption_for_the_suffering_2',
+                description: 'talent_descr.wriothesley_redemption_for_the_suffering_hex_2',
                 info: {constellation: 4},
                 stats: {
                     atk_speed_normal: 10,

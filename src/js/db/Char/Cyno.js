@@ -716,6 +716,7 @@ export const Cyno = new DbObjectChar({
         conditions: [
             new ConditionBoolean({
                 name: 'party.talent_name.cyno_unceasing_vigil',
+                serializeId: 1,
                 title: 'talent_name.cyno_unceasing_vigil',
                 description: 'talent_descr.cyno_unceasing_vigil_hex_2',
                 info: { constellation: 1 },

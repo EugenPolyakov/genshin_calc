@@ -718,5 +718,5 @@ export const Rotation = new DbObjectRotation({
     'attack.sandrone_charged_attack_enhanced_condensed_beam_dmg': 697,
 
     'attack.wriothesley_normal_hit_5_icicle': 698,
-    'attack.wriothesley_vaulting_fist_stellar_icicle_dmg': 698,
+    'attack.wriothesley_vaulting_fist_stellar_icicle_dmg': 699,
 });

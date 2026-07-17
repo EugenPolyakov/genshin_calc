@@ -334,7 +334,7 @@ def prepare_talents(talent_items, generate):
             if talent['descTextMapHash']:
                 try:
                     texts[eng_name].append(lang.get(talent['descTextMapHash']))
-                    skill_descr = process_talent_desc(lang_name, lang.get(talent['descTextMapHash']), talent_short_id, tpl_talents, talent['no_descr'], None, tpl_keywords)
+                    skill_descr = process_talent_desc(skill_name, lang_name, lang.get(talent['descTextMapHash']), talent_short_id, tpl_talents, talent['no_descr'], None, tpl_keywords)
                     descItems[lang_name] = skill_descr['descr']
                     nameItems[lang_name].extend(skill_descr['names'])
                 except Exception as e:
@@ -345,7 +345,7 @@ def prepare_talents(talent_items, generate):
             if talent['descTextMapHash_hex'] and lang.get(talent['descTextMapHash_hex']):
                 try:
                     texts[eng_name].append(lang.get(talent['descTextMapHash_hex']))
-                    skill_descr = process_talent_desc(lang_name, lang.get(talent['descTextMapHash_hex']), talent_short_id, tpl_talents, talent['no_descr'], talent_short_id + '_hex', tpl_keywords)
+                    skill_descr = process_talent_desc(skill_name, lang_name, lang.get(talent['descTextMapHash_hex']), talent_short_id, tpl_talents, talent['no_descr'], talent_short_id + '_hex', tpl_keywords)
                     descItems_hex[lang_name] = skill_descr['descr']
                     nameItems[lang_name].extend(skill_descr['names'])
                 except Exception as e:
@@ -363,7 +363,7 @@ def prepare_talents(talent_items, generate):
         if descItems_hex:
             add_array(descItems_hex, result_hero_strings, talent_id + '_hex', 'talent_descr')
 
-def process_talent_desc(lang_name, skill_descr, talent_short_id, tpl_patterns, no_descr, talent_hex = None, tpl_keywords = None):
+def process_talent_desc(name, lang_name, skill_descr, talent_short_id, tpl_patterns, no_descr, talent_hex = None, tpl_keywords = None):
     locallinks.update(collect_links(skill_descr))
 
     tpl_names = lang_data[lang_name]['names']
@@ -389,6 +389,10 @@ def process_talent_desc(lang_name, skill_descr, talent_short_id, tpl_patterns, n
                 skill_descr = tpl_char.process(lang_name, talent_hex, skill_descr)
             else:
                 skill_descr = tpl_char.process(lang_name, talent_short_id, skill_descr)
+            values = skill_descr['names']
+            skill_descr['names'] = []
+            for i in values:
+                skill_descr['names'].append(i.replace('$$$name$$$', name));
         # print('char:--------------------------')
         # print(skill_descr)
     elif no_descr:
@@ -521,11 +525,11 @@ for charVarName in sorted(char_keys):
                 tpl_patterns = lang_data[lang_name]['patterns']
                 tpl_keywords = None # lang_data[lang_name]['keywords']
                 extraDescr = lang.get(skill[extra_descr_fld]) or ''
-                skill_descr = process_talent_desc(lang_name, lang.get(skill['descTextMapHash']) + extraDescr, talent_short_id, tpl_patterns, False, None, tpl_keywords)
+                skill_descr = process_talent_desc(skill_name, lang_name, lang.get(skill['descTextMapHash']) + extraDescr, talent_short_id, tpl_patterns, False, None, tpl_keywords)
                 descItems[lang_name] = skill_descr['descr']
                 nameItems[lang_name].extend(skill_descr['names'])
                 if skill[hex_descr_fld] and lang.get(skill[hex_descr_fld]):
-                    skill_descr = process_talent_desc(lang_name, lang.get(skill[hex_descr_fld]) + extraDescr, talent_short_id, tpl_patterns, False, talent_short_id + '_hex', tpl_keywords)
+                    skill_descr = process_talent_desc(skill_name, lang_name, lang.get(skill[hex_descr_fld]) + extraDescr, talent_short_id, tpl_patterns, False, talent_short_id + '_hex', tpl_keywords)
                     descItems_hex[lang_name] = skill_descr['descr']
                     nameItems[lang_name].extend(skill_descr['names'])
             except Exception as e:
@@ -619,9 +623,10 @@ for charVarName in sorted(char_keys):
                 nameItems[lang_name] = []
                 try:
                     lang = lang_data[lang_name]['lang']
+                    skill_name = lang.get(hl_item['nameTextMapHash'])
                     tpl_patterns = lang_data[lang_name]['patterns']
                     tpl_keywords = None # lang_data[lang_name]['keywords']
-                    skill_descr = process_talent_desc(lang_name, lang.get(hl_item['descTextMapHash']), skill_id, tpl_patterns, False, None, tpl_keywords)
+                    skill_descr = process_talent_desc(skill_name, lang_name, lang.get(hl_item['descTextMapHash']), skill_id, tpl_patterns, False, None, tpl_keywords)
                     descItems[lang_name] = skill_descr['descr']
                     nameItems[lang_name].extend(skill_descr['names'])
                 except Exception as e:

@@ -291,9 +291,29 @@ char_wriothesley = TemplateList(
             [],
         ],
     ),
-    redemption_for_the_suffering=Template(
+    redemption_for_the_suffering_rus=Template(
         replace = {
             'Кроме того, когда ': 'Когда ',
+        },
+        sentences=[
+            ['50:ignore'],
+            [],
+            [],
+            [],
+            ['20:', '4:ignore'],
+            ['10:', '6:ignore'],
+            [],
+        ],
+        results=[
+            [0, 1, 2],
+            [3, 4, 5, 6],
+        ],
+        extracted_names=[
+            '$$$name$$$ (вне поля)',
+        ],
+    ),
+    redemption_for_the_suffering_eng=Template(
+        replace = {
             'Additionally, when ': 'When ',
         },
         sentences=[
@@ -309,8 +329,15 @@ char_wriothesley = TemplateList(
             [0, 1, 2],
             [3, 4, 5, 6],
         ],
+        extracted_names=[
+            '$$$name$$$ (Off-field)',
+        ],
     ),
     redemption_for_the_suffering_hex=Template(
+        replace = {
+            'Кроме того, когда ': 'Когда ',
+            'Additionally, when ': 'When ',
+        },
         sentences=[
             ['50:ignore'],
             [],
@@ -327,6 +354,7 @@ char_wriothesley = TemplateList(
         ],
         results=[
             [8, 9, 10, 11],
+            [3, 5, 9, 8, 9, 11]
         ],
     ),
     esteem_for_the_innocent=Template(
