@@ -4,7 +4,7 @@ export class StatTableAscensionScale extends StatTable {
     constructor(data) {
         super(data.stat, []);
 
-        this.baseValue = data.base;
+        this.baseValue = Math.fround(data.base) * (data.multi || 1);
         this.ascensionTable = data.ascension;
         this.levelScaling = data.scale;
     }

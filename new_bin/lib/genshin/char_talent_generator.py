@@ -14,7 +14,7 @@ def parse_ascension():
         for prop in item['addProps']:
             type = prop.get('propType')
 
-            values[static.getStatByName(type)] = static.getStatValue(type, prop.get('value', 0))
+            values[static.getStatByName(type)] = str(prop.get('value', 0))
 
         if not item['avatarPromoteId'] in table:
             table[item['avatarPromoteId']] = {}
@@ -29,7 +29,7 @@ def parse_ascension():
             for level in range(1, 7):
                 item = table[id].get(level)
                 if item:
-                    result[id][stat].append(static.trimValue(item.get(stat)))
+                    result[id][stat].append(item.get(stat))
                 else:
                     result[id][stat].append("0")
 
@@ -42,13 +42,13 @@ class StatGenerator:
         self.out = open(fileName, 'w', encoding='utf-8')
 
     def prepareChar(self, jsonData):
-        self.values['hp_base'] = static.trimValue(jsonData["hpBase"])
-        self.values['atk_base'] = static.trimValue(jsonData["attackBase"])
-        self.values['def_base'] = static.trimValue(jsonData["defenseBase"])
-        self.values['mastery_base'] = static.trimValue(jsonData["elementMastery"])
-        self.values['crit_rate_base'] = static.trimValue(jsonData["critical"], 100)
-        self.values['crit_dmg_base'] = static.trimValue(jsonData["criticalHurt"], 100)
-        self.values['recharge_base'] = static.trimValue(jsonData["chargeEfficiency"], 100)
+        self.values['hp_base'] = jsonData["hpBase"]
+        self.values['atk_base'] = jsonData["attackBase"]
+        self.values['def_base'] = jsonData["defenseBase"]
+        self.values['mastery_base'] = jsonData["elementMastery"]
+        self.values['crit_rate_base'] = jsonData["critical"]
+        self.values['crit_dmg_base'] = jsonData["criticalHurt"]
+        self.values['recharge_base'] = jsonData["chargeEfficiency"]
         self.values.pop('charged_stamina_cost', None)
         self.values.pop('burst_energy_cost', None)
         self.grows = {}
@@ -88,9 +88,12 @@ class StatGenerator:
             self.out.write("\t\tnew StatTableAscensionScale({\n")
             self.out.write("\t\t\tstat: '%s',\n" % (stat))
             self.out.write("\t\t\tbase: %s,\n" % (self.values.get(stat, 0)))
+            if stat in ['crit_rate_base', 'crit_dmg_base', 'recharge_base']:
+                self.out.write("\t\t\tmulti: 100,\n")
 
             if stat in self.ascension:
-                self.out.write("\t\t\tascension: new StatTable('', [" + ', '.join(self.ascension[stat]) + "]),\n")
+                self.out.write("\t\t\tascension: new StatTable('', [" + ', '.join(self.ascension[stat]) + "]" + 
+                               (', 100' if stat in ['crit_rate_base', 'crit_dmg_base', 'recharge_base', 'hp_percent', 'atk_percent', 'def_percent'] else '') + "),\n")
 
             if stat in self.grows:
                 self.out.write("\t\t\tscale: charScales." + self.grows[stat] + ",\n")

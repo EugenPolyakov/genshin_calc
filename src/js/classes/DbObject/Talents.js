@@ -75,7 +75,7 @@ export class DbObjectTalents {
 
         for (const t of tables) {
             result.push(
-                new StatTable(data.name, t.getValues().map(function(val) {return val * multi}))
+                new StatTable(data.name, t.getValues(), multi)
             );
         }
 

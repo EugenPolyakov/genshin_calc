@@ -38,6 +38,11 @@ class TeamResonanceExcelConfigData(ListParser):
     id_field = False
     filename = 'TeamResonanceExcelConfigData.json'
 
+
+class AvatarCurveExcelConfigData(ListParser):
+    id_field = False
+    filename = 'AvatarCurveExcelConfigData.json'
+
 # AvatarExcelConfigData
 #   skillDepotId -> AvatarSkillDepotExcelConfigData
 # AvatarSkillDepotExcelConfigData

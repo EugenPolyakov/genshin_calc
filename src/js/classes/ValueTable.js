@@ -3,10 +3,10 @@ export class ValueTable {
      * @param {Array.<number>} values
      */
     constructor (values, multi) {
-        if (multi != undefined) {
-            this.values = values.map(x => x instanceof ValueTable ? x.multiply(multi) : multi * Math.fround(parseFloat(x)));
+        if (multi != undefined && multi != 1) {
+            this.values = values.map(x => x instanceof ValueTable ? x.multiply(multi) : multi * Math.fround(x));
         } else
-            this.values = values.map(x => x instanceof ValueTable ? x : Math.fround(parseFloat(x)));
+            this.values = values.map(x => x instanceof ValueTable ? x : Math.fround(x));
     }
 
      /**
