@@ -74,7 +74,7 @@ class StatGenerator:
 
     def generateHeader(self):
         self.out.write('// This file is auto generated\n')
-        self.out.write('import { StatTable } from "../../classes/StatTable";\n')
+        self.out.write('import { ValueTable } from "../../classes/ValueTable";\n')
         self.out.write('import { StatTableAscensionScale } from "../../classes/StatTable/Ascension/Scale";\n')
         self.out.write('import { charScales } from "./CharScale";\n\n')
         self.out.write('export const charTables = {\n')
@@ -92,7 +92,7 @@ class StatGenerator:
                 self.out.write("\t\t\tmulti: 100,\n")
 
             if stat in self.ascension:
-                self.out.write("\t\t\tascension: new StatTable('', [" + ', '.join(self.ascension[stat]) + "]" + 
+                self.out.write("\t\t\tascension: new ValueTable([" + ', '.join(self.ascension[stat]) + "]" + 
                                (', 100' if stat in ['crit_rate_base', 'crit_dmg_base', 'recharge_base', 'hp_percent', 'atk_percent', 'def_percent'] else '') + "),\n")
 
             if stat in self.grows:
