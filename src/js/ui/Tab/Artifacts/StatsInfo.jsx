@@ -2,11 +2,11 @@ import React from 'react';
 import parse from 'html-react-parser';
 import "../../../../css/Components/Tab/Artifacts/StatsInfo.css"
 
-import { Stats } from '../../../classes/Stats';
 import { GroupBox } from '../../Components/Inputs/GroupBox';
 import { FeatureCompiler } from '../../../classes/Feature2/Compiler';
 import { CBlock } from '../../../classes/Feature2/Compile/Types';
 import { UI } from '../../../ui';
+import { formatStat } from '../../Utils';
 
 const statsList1 = ['hp', 'atk', 'def'];
 const statsList2 = [
@@ -102,7 +102,7 @@ export function StatLine(props) {
         <div className="arifacts-stat-info-line">
             <div className="si-name">{props.title || parse(UI.Lang.get('stat.'+ props.stat))}</div>
             <div className="si-value">
-                {props.strValue || Stats.format(props.stat, props.value, {signed: props.unsigned ? false : true})}
+                { props.strValue || formatStat(props.stat, props.value, {/*digits: 4, */signed: props.unsigned ? false : true})}
             </div>
         </div>
     );
@@ -113,12 +113,12 @@ function StatLineWithBase(props) {
         <div className="arifacts-stat-info-line">
             <div className="si-name">{UI.Lang.get('stat.'+ props.stat)}</div>
             <div className="si-value">
-                {Stats.format(props.stat, props.total, {signed: true})}
+                { formatStat(props.stat, props.total, {signed: true})}
                 <span className="si-remark">
                     (
-                    {Stats.format(props.stat, props.flat, {zero: true})}
+                    { formatStat(props.stat, props.flat, {zero: true})}
                     <span className="si-plus">+</span>
-                    {Stats.format(props.stat +'_percent', props.percent, {zero: true})}
+                    { formatStat(props.stat +'_percent', props.percent, {zero: true})}
                     )
                 </span>
             </div>

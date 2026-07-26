@@ -10,7 +10,7 @@ import { Rotation } from "../../../classes/Rotation";
 import { CharIcon } from "../Icons";
 import { ResultTableButton } from "../Inputs/Buttons";
 import { Serializer } from "../../../classes/Serializer";
-import { makeShareUrl } from "../../../Utils";
+import { makeShareUrl } from "../../Utils";
 import { DB } from "../../../db/DB";
 import { UI } from "../../../ui";
 
@@ -177,9 +177,10 @@ export class RotationList extends React.PureComponent {
             return a.title.toUpperCase().localeCompare(b.title.toUpperCase());
         });
 
+        let idx = 0;
         for (let item of items) {
             renderItems.push(
-                <div className={item.isVisible ? '' : 'hidden'}>
+                <div className={ item.isVisible ? '' : 'hidden' } key={ idx }>
                     <RotationListItem
                         title={item.title}
                         item={item.rotation}
@@ -193,6 +194,7 @@ export class RotationList extends React.PureComponent {
                     />
                 </div>
             );
+            idx++;
         }
 
         return (

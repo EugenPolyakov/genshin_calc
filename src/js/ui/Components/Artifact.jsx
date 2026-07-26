@@ -1,9 +1,9 @@
 import React from "react";
 import "../../../css/Components/Artifact.css"
 
-import { Stats } from "../../classes/Stats";
 import { ArtifactSetIcon } from "./Icons";
 import { UI } from "../../ui";
+import { formatStat } from "../Utils";
 export function ArtifactList(props) {
     let items = [];
 
@@ -94,7 +94,7 @@ export class ArtifactListItem extends React.Component {
             substats[value.index] = (
                 <div key={item} className={'substat'+ (item == this.props.highlightStat ? ' highlight' : '') + (value.unactivated ? ' unactivated' : '')}>
                     <span className="stat">{UI.Lang.get('stat_mini.'+ stat)}</span>
-                    <span className="value">{Stats.format(item, value.value, {signed: false})}</span>
+                    <span className="value">{ formatStat(item, value.value, {signed: false})}</span>
                 </div>
             );
         }
@@ -132,7 +132,7 @@ export class ArtifactListItem extends React.Component {
                         </div>
                         <div className={'main-stat'+ (statOriginal == this.props.highlightStat ? ' highlight' : '')}>
                             <span className="main-value">
-                                {Stats.format(statOriginal, art.getMainStatValue(), {signed: true})}
+                                { formatStat(statOriginal, art.getMainStatValue(), {signed: true})}
                             </span>
                             (+{art.getLevel()})
                         </div>

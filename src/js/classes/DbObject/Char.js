@@ -1,3 +1,4 @@
+import { DB } from "../../db/DB";
 import { Condition } from "../Condition";
 import { DbObject } from "../DbObject";
 
@@ -66,6 +67,7 @@ export class DbObjectChar extends DbObject {
         if (this.constellation) {
             result = result.concat(this.constellation.getConditions(6));
         }
+        result = result.concat(DB.Conditions.Character);
 
         return result;
     }

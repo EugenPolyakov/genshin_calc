@@ -1,7 +1,6 @@
 import { ConditionStacks } from "../../../classes/Condition/Stacks";
 import { ConditionStaticRefine } from "../../../classes/Condition/Static/Refine";
 import { DbObjectWeapon } from "../../../classes/DbObject/Weapon";
-import { Stats } from "../../../classes/Stats";
 import { StatTable } from "../../../classes/StatTable";
 import { weaponStatTables } from "../../generated/WeaponStatTables";
 
@@ -33,7 +32,7 @@ export const TulaytullahsRemembrance = new DbObjectWeapon({
             dropdownClass: 'stack-percent',
             titleFunc: function(value, stats) {
                 if (value) {
-                    return Stats.format('dmg_normal', stats.get('dmg_normal'))
+                    return App.formatStat('dmg_normal', stats.get('dmg_normal'))
                 }
             },
             stats: [

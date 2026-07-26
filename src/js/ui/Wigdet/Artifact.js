@@ -1,8 +1,8 @@
 import $ from "jquery";
 import "../../../css/ui/Widget/Artifact.css"
-import { Stats } from "../../classes/Stats";
 import { DB } from "../../db/DB";
 import { UI } from "../../ui";
+import { formatStat } from "../Utils";
 
 const defaultOpts = {
     showWeapon: true,
@@ -69,7 +69,7 @@ export class ArtifactWidget {
 
         html += '</span></div>';
         html += '<div class="artifact-list-box-mainstat"><span class="value '+ (mainStat == opts.selectedStat ? 'selected' : '') +'">';
-        html += Stats.format(mainStat, art.getMainStatValue(), {signed: true});
+        html += formatStat(mainStat, art.getMainStatValue(), {signed: true});
         html += '</span><span class="stat"> (+'+ art.getLevel() +')</span></div></div></div>';
         return html;
     }
@@ -79,7 +79,7 @@ export class ArtifactWidget {
         let stat = UI.Lang.get('stat_mini.' + substat.replace('_percent', ''));
         html += '<div class="artifact-list-box-substat' + (unactivated ? ' unactivated' : '') + '"><span class="stat">' + stat + '</span> ';
         html += '<span class="value ' + (selected ? 'selected' : '') + '">';
-        html += Stats.format(substat, value, { signed: false }) + '</span></div>';
+        html += formatStat(substat, value, { signed: false }) + '</span></div>';
 
         return html;
     }

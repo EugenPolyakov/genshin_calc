@@ -12,6 +12,7 @@ import { FeatureTableHeader, FeatureTableValues } from '../Components/FeatureTab
 import { Feature2 } from '../../classes/Feature2';
 import { DB } from '../../db/DB';
 import { UI } from '../../ui';
+import { formatStat } from '../Utils';
 
 export class ArtifactSubstatTab extends Tab {
     constructor(params) {
@@ -174,7 +175,7 @@ function ArtifactSubstatItem(props) {
     return (
         <div className={'line' + (props.odd ? ' odd': '')}>
             <div className="name">{UI.Lang.get('stat.' + props.stat)}</div>
-            <div className="value">{Stats.format(props.stat, props.value, {signed: true})}</div>
+            <div className="value">{ formatStat(props.stat, props.value, {signed: true})}</div>
             <FeatureTableValues
                 result={props.feature}
                 base={props.baseFeature}

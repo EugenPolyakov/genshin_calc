@@ -376,7 +376,7 @@ function deserializeItems(input, counter, version) {
             let data = Rotation.getConditionData(item);
             let value = input.shift();
             if (data && data.cond && data.cond.params.format == 'decimal') {
-                value = Stats.format('text_decimal', value / 10, {no_decimal_zero: true});
+                value /= 10;
             }
             item.value = value;
         } else if (type == ITEM_TYPE_REPEAT) {

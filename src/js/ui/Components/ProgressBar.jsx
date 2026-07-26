@@ -1,6 +1,5 @@
-import React from "react";
 import "../../../css/Components/ProgressBar.css"
-import { Stats } from "../../classes/Stats";
+import { formatNumber } from "../Utils";
 
 export function ProgressBar(props) {
     let percent = (props.total ? props.count * 100 / props.total : 0).toFixed(1);
@@ -10,9 +9,9 @@ export function ProgressBar(props) {
         <div className={'progress-bar' + (props.addClass ? ' '+ props.addClass : '')}>
             <div className="bar" style={{width: percent +'%'}} />
             <div className="line">
-                <div className="value left">{Stats.format('text_value', props.count) || 0}</div>
+                <div className="value left">{ formatNumber(props.count, { zero: 1 })}</div>
                 <div className="sep">/</div>
-                <div className="value right">{Stats.format('text_value', props.total) || 0} ({displayPercent}%)</div>
+                <div className="value right">{ formatNumber(props.total, { zero: 1 })} ({displayPercent}%)</div>
             </div>
         </div>
     );

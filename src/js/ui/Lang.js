@@ -1,4 +1,5 @@
 import { Stats } from "../classes/Stats";
+import { formatStat } from "./Utils";
 
 export class Lang {
     constructor () {
@@ -61,7 +62,7 @@ export class Lang {
                 return '?';
             }
 
-            let result = Stats.format(stat, value, {
+            let result = formatStat(stat, value, {
                 signed: !!signed,
                 no_decimal_zero: 1,
                 decimal_digits: digits || 1,

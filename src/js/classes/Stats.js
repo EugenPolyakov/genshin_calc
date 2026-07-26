@@ -1,6 +1,3 @@
-import { Lang } from "../ui/Lang";
-
-const lang = new Lang();
 export class Stats {
     constructor(data) {
         if (data) {
@@ -253,10 +250,6 @@ export class Stats {
         }
     }
 
-    getFormatted(stat, opts) {
-        return Stats.format(stat, this.get(stat), opts);
-    }
-
     revert() {
         let result = new Stats();
 
@@ -279,52 +272,6 @@ export class Stats {
         return Math.round(value);
     }
 
-    static format(stat, value, opts) {
-        opts ||= {};
-        let result = value;
-        let percent = isPercent(stat);
-
-        if (Math.abs(value) < 0.0000001) {
-            return opts.zero ? (percent ? '0%' : '0') : '';
-        }
-
-        if (isDecimal(stat)) {
-            result += 0.00000001;
-            let opt = { maximumFractionDigits: opts.decimal_digits || 1 };
-            if (!opts.no_decimal_zero)
-                opt.minimumFractionDigits = opt.maximumFractionDigits;
-
-            result = result.toLocaleString(lang.getLocale(), opt);
-
-            if (percent) {
-                result = result + '%';
-            }
-        } else {
-            result = Math.round(result);
-
-            if (opts.minimize) {
-                if (result > 10000000) {
-                    result = (result / 1000000).toLocaleString(lang.getLocale(), { maximumFractionDigits: 2 }) + 'm'
-                } else if (result > 1000000) {
-                    result = (result / 1000000).toLocaleString(lang.getLocale(), { maximumFractionDigits: 3 }) + 'm'
-                }
-            } else
-                result = result.toLocaleString(lang.getLocale());
-        }
-
-        if (opts.signed) {
-            if (value < 0) {
-                if (result == '0') {
-                    result = '-0';
-                }
-            } else {
-                result = '+'+ result;
-            }
-        }
-
-        return result;
-    }
-
     static diff(stats1, stats2) {
         let allStats = Object.assign({}, stats1, stats2);
 
@@ -342,7 +289,7 @@ export class Stats {
     }
 }
 
-function isDecimal(stat) {
+export function isDecimal(stat) {
     if (isPercent(stat)) return true;
 
     if (stat.match(/(_cooldown|_decimal)/)) {

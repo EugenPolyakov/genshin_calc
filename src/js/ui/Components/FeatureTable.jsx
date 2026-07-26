@@ -1,8 +1,7 @@
 import React from 'react';
 import "../../../css/Components/FeatureTable.css"
 
-import { Stats } from '../../classes/Stats';
-import { formatNumber } from '../../Utils';
+import { formatNumber } from '../Utils';
 import { UI } from '../../ui';
 
 const FEATURE_VALUES = ['normal', 'crit', 'average'];
@@ -58,15 +57,15 @@ export function FeatureTableValue(props) {
     } else if (format == 'decimal') {
         value = formatNumber(props.value, {digits: props.format.digits});
     } else {
-        value = Stats.format('', props.value);
+        value = formatNumber(props.value);
     }
 
     if (props.base) {
         if (props.displayMode == 'percent') {
-            subValue = Stats.format('text_percent', props.value / props.base * 100, {decimal_digits: 1, no_decimal_zero: 1});
+            subValue = formatNumber(props.value / props.base * 100, {percent: 1, digits: 1, no_decimal_zero: 1});
         } else if (props.displayMode == 'absolute') {
             let diff = Math.round(props.value - props.base, 5);
-            subValue = Stats.format('', diff, {signed: true, minimize: true}) || '-';
+            subValue = formatNumber(diff, {signed: true, minimize: true, zero: '-'});
             addClass = diff > 0 ? ' positive' : (diff < 0 ? ' negative' : '');
         }
     }

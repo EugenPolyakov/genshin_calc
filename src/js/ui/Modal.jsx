@@ -1,5 +1,5 @@
 import ReactDOM from 'react-dom/client'
-import { waitForCondition } from '../Utils';
+import { waitForCondition } from './Utils';
 
 export class NonAppModal {
     constructor() {

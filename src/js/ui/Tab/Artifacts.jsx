@@ -1,7 +1,6 @@
 import React from 'react';
 import "../../../css/Components/Tab/Artifacts.css"
 
-import { Stats } from '../../classes/Stats';
 import { ConditionList } from '../Components/ConditionList';
 import { ControlsBar, ControlsBarDivider } from '../Components/ControlsBar';
 import { FullHeight, FullHeightScrollable, FullHeightStatic } from '../Components/FullHeight';
@@ -13,6 +12,7 @@ import { StatsInfo } from './Artifacts/StatsInfo';
 import { RollsInfo } from './Artifacts/RollsInfo';
 import { DB } from '../../db/DB';
 import { UI } from '../../ui';
+import { formatStat } from '../Utils';
 
 export class ArtifactsTab extends Tab {
     constructor(params) {
@@ -259,7 +259,7 @@ function ArtifactBlock(props) {
         substats[art.getSubStats()[subStat].index] = (
             <div key={subStat} className="value">
                 <span className="stat-name">{UI.Lang.get('stat.'+ subStat)} </span>
-                { Stats.format( subStat, art.getSubStats()[subStat].value, {signed: true})}
+                { formatStat( subStat, art.getSubStats()[subStat].value, {signed: true})}
             </div>
         );
     }
@@ -303,7 +303,7 @@ function ArtifactBlock(props) {
                         <div className="level">+{art.getLevel()}</div>
                         <div className="value">
                             <span className="stat-name">({UI.Lang.get('stat.'+ art.getMainStat())} </span>
-                            +{Stats.format(art.getMainStat(), art.getMainStatValue())}
+                            +{ formatStat(art.getMainStat(), art.getMainStatValue())}
                             <span className="stat-name">)</span>
                         </div>
                     </div>

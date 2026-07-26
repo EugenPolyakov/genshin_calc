@@ -4,6 +4,7 @@ import "../../../css/Components/ResistanceBlock.css"
 import { Feature } from '../../classes/Feature';
 import { Stats } from '../../classes/Stats';
 import { GroupBox } from './Inputs/GroupBox';
+import { formatNumber } from '../Utils';
 
 export function ResistanceBlock(props) {
     return (
@@ -65,8 +66,8 @@ function ResistanceBlockItem(props) {
         addClass = 'red';
     }
 
-    value = Stats.format('text_percent', value, {no_decimal_zero: true});
-    multiplier = Stats.format('text_decimal', multiplier, {decimal_digits: 3, no_decimal_zero: 1});
+    value = formatNumber(value, { percent: 1, no_decimal_zero: true });
+    multiplier = formatNumber(multiplier, {digits: 3, no_decimal_zero: 1});
 
     return (
         <>
@@ -104,7 +105,7 @@ function ResistanceBlockMiniItem(props) {
         addClass = 'red';
     }
 
-    multiplier = Stats.format('text_decimal', multiplier, {decimal_digits: 3, no_decimal_zero: 1});
+    multiplier = formatNumber(multiplier, {digits: 3, no_decimal_zero: 1});
 
     return (
         <>

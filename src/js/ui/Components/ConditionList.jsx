@@ -8,6 +8,7 @@ import { Dropdown } from "./Inputs/Dropdown";
 import { GroupBox } from "./Inputs/GroupBox";
 import { Stats } from "../../classes/Stats";
 import { UI } from "../../ui";
+import { formatStat } from "../Utils";
 
 export class ConditionList extends React.Component {
     render() {
@@ -184,7 +185,7 @@ class PartyWeaponItem extends React.Component {
                 stats: [statName + '_total'],
                 callback: (data) => {
                     let value = data.stats.getTotal(statName);
-                    value = Stats.format(statName, value);
+                    value = formatStat(statName, value);
                     value = value.replace(/[^\d\.]/g, '');
 
                     this.props.onChange(statCond.getName(), value);
@@ -284,7 +285,7 @@ function ConditionControl(props) {
 
             if (cond.params.titleFunc) {
                 let localSettings = Object.assign({}, props.settings, {[cond.getName()]: i});
-                let condData = cond.getDisplayStats(localSettings);
+                let condData = cond.getAllStats(localSettings);
 
                 let titleData = cond.params.titleFunc(i, condData);
                 if (typeof titleData == 'object') {
@@ -439,7 +440,7 @@ class ConditionLoadStat extends React.Component {
                 } else {
                     value = data.stats.get(stat);
                 }
-                value = Stats.format(stat, value);
+                value = formatStat(stat, value);
                 value = value.replace(/[^\d\.]/g, '');
 
                 this.props.onChange(this.props.name, value);

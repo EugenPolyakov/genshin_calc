@@ -1,7 +1,7 @@
 import "../../../../css/ui/Widget/Food/Stats.css"
 
-import { Stats } from "../../../classes/Stats";
 import { UI } from "../../../ui";
+import { formatStat } from "../../Utils";
 
 const defaultOpts = {};
 
@@ -29,7 +29,7 @@ export class WidgetFoodStats {
             for (const stat of Object.keys(stats)) {
                 html += '<div class="gi-food-stat">';
                 html += '<span class="gi-food-stat-name">'+ UI.Lang.get('stat_short.'+ stat) +'</span>';
-                html += '<span class="gi-food-stat-value">'+ Stats.format(stat, stats.get(stat), {signed: 1, no_decimal_zero: 1}) +'</span>';
+                html += '<span class="gi-food-stat-value">' + formatStat(stat, stats.get(stat), {signed: 1, no_decimal_zero: 1}) +'</span>';
                 html += '</div>';
             }
         } else {

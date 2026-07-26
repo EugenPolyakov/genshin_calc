@@ -3,8 +3,8 @@ import SimpleBar from 'simplebar-react';
 import { InView } from 'react-intersection-observer';
 
 import "../../../css/Components/FullHeight.css"
-import { Stats } from '../../classes/Stats';
 import { TabLoading } from './Tab';
+import { formatNumber } from '../Utils';
 
 const OVERLAY_DELAY = 100;
 
@@ -78,7 +78,7 @@ export class FullHeightScrollable extends React.Component {
                 let item = items[i]
                 progressMessages.push(
                     <div key={'item'+ i} className="loading-progress">
-                        {Stats.format('text', item.completed) || 0}/{Stats.format('text', item.total)} ({item.total ? Math.round(100 * item.completed / item.total) : 0}%)
+                        { formatNumber(item.completed, { zero: 1 }) }/{ formatNumber(item.total)} ({item.total ? Math.round(100 * item.completed / item.total) : 0}%)
                     </div>
                 )
             }

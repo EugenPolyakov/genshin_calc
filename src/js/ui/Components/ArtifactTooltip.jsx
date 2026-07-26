@@ -5,8 +5,7 @@ import parse from 'html-react-parser';
 import "../../../css/ui/Tooltip/Artifact.css"
 
 import { Modal } from '../Modal';
-import { waitForCondition } from '../../Utils';
-import { Stats } from '../../classes/Stats';
+import { waitForCondition, formatNumber, formatStat } from '../Utils';
 import { DB } from '../../db/DB';
 import { UI } from '../../ui';
 import { ArtifactSet } from '../../classes/ArtifactSet';
@@ -139,7 +138,7 @@ class ArtifactTooltipWindow extends React.PureComponent {
             return (
                 <table className="gi-tooltip-artifact-feature">
                     <tbody>
-                        <tr><th>{ UI.Lang.get('artifacts_ui.calculation_progress') }{ Stats.format('text_percent', result.progress, { decimal_digits: 2, no_decimal_zero: 1, zero: 1 }) }</th></tr>
+                        <tr><th>{ UI.Lang.get('artifacts_ui.calculation_progress') }{ formatNumber(result.progress, { percent: 1, digits: 2, no_decimal_zero: 1, zero: 1 }) }</th></tr>
                     </tbody>
                 </table>
             );
@@ -150,18 +149,18 @@ class ArtifactTooltipWindow extends React.PureComponent {
             let val1 = result.actualValues[key];
             let val2 = result.profitValues[key];
             let diff = Math.round(val2 / val1 * 1000) / 10 - 100;
-            diff = Stats.format('text_percent', diff, { decimal_digits: 1, no_decimal_zero: 1 });
+            diff = formatNumber(diff, { percent: 1, digits: 1, no_decimal_zero: 1 });
 
             values.push(
                 <td key={ key }>
-                    { formatNumber(val2) }<br />
-                    { val2 ? formatNumber(val2 - val1, { signed: 1 }) : '' }<br />
+                    { formatNumber(val2, { zero: "-" }) }<br />
+                    { val2 ? formatNumber(val2 - val1, { signed: 1, zero: "-" }) : '' }<br />
                     { val2 ? diff : '' }
                 </td>
             );
             values2.push(
                 <td key={ key }>
-                    { Stats.format('text_percent', result.goodCount[key] / result.combCount * 100, { decimal_digits: 2, no_decimal_zero: 1 }) }
+                    { formatNumber(result.goodCount[key] / result.combCount * 100, { percent: 1, digits: 2, no_decimal_zero: 1 }) }
                 </td>
             );
         }
@@ -203,7 +202,7 @@ class ArtifactTooltipWindow extends React.PureComponent {
         for (let item in art.getSubStats()) {
             subStats[art.getSubStats()[item].index] =(
                 <li key={ "stat" + (art.getSubStats()[item].index - 1)}>
-                    { UI.Lang.getStat( 'stat.' + item ) }&nbsp;{ Stats.format( item, art.getSubStats()[item].value, {signed: 1})}
+                    { UI.Lang.getStat('stat.' + item) }&nbsp;{ formatStat( item, art.getSubStats()[item].value, {signed: 1})}
                 </li>
             );
         }
@@ -265,12 +264,12 @@ class ArtifactTooltipWindow extends React.PureComponent {
                     let val1 = feat1[key];
                     let val2 = feat2[key];
                     let diff = Math.round(val2 / val1 * 1000) / 10 - 100;
-                    diff = Stats.format('text_percent', diff, { decimal_digits: 1, no_decimal_zero: 1 });
+                    diff = formatNumber(diff, { percent: 1, digits: 1, no_decimal_zero: 1 });
 
                     values.push(
                         <td key={ key }>
-                            { formatNumber(val2) }<br />
-                            { val2 ? formatNumber(val2 - val1, { signed: 1 }) : '' }<br />
+                            { formatNumber(val2, { zero: "-" }) }<br />
+                            { val2 ? formatNumber(val2 - val1, { signed: 1, zero: "-" }) : '' }<br />
                             { val1 ? diff : '' }
                         </td>
                     );
@@ -303,7 +302,7 @@ class ArtifactTooltipWindow extends React.PureComponent {
                 </div>
                 <div className="gi-tooltip-artifact-stats">
                     <div className="gi-tooltip-artifact-mainstat-name">{UI.Lang.getStat('stat.'+ mainStat)}</div>
-                    <div className="gi-tooltip-artifact-mainstat-value">{Stats.format(mainStat, art.getMainStatValue())}</div>
+                    <div className="gi-tooltip-artifact-mainstat-value">{ formatStat(mainStat, art.getMainStatValue())}</div>
                 </div>
                 <div className="gi-tooltip-artifact-substats">
                     <ul>{subStats}</ul>
@@ -314,20 +313,4 @@ class ArtifactTooltipWindow extends React.PureComponent {
             </div>
         );
     }
-}
-
-function formatNumber(value, opts) {
-    opts ||= {};
-
-    let result = Math.round(value);
-    if (result == 0) {
-        return '-';
-    }
-
-    result = result.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ");
-    if (opts.signed && value >= 0) {
-        result = '+'+ result;
-    }
-
-    return result;
 }

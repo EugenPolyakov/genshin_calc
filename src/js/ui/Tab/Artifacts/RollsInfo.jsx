@@ -3,8 +3,8 @@ import parse from 'html-react-parser';
 
 import { GroupBox } from '../../Components/Inputs/GroupBox';
 import { substatCheck } from '../../../classes/SubstatCheck';
-import { Stats } from '../../../classes/Stats';
 import { UI } from '../../../ui';
+import { formatNumber } from '../../Utils';
 
 export class RollsInfo extends React.Component {
     getSubstatRolls() {
@@ -87,7 +87,7 @@ export class RollsInfo extends React.Component {
                     <div className="si-value">
                         {item.count}
                         <span className="si-remark">
-                            ({Stats.format('text_percent', item.efficency * 100)})
+                            ({ formatNumber(item.efficency * 100, { percent: 1 })})
                         </span>
                     </div>
                 </div>

@@ -2,8 +2,7 @@ import React from "react";
 import "../../../../css/Components/RankResult.css"
 
 import { ArtifactSetIcon } from "../../Components/Icons";
-import { Stats } from "../../../classes/Stats";
-import { formatNumber } from "../../../Utils";
+import { formatStat, formatNumber } from "../../Utils";
 import { DB } from "../../../db/DB";
 
 export function RankResultItemList(props) {
@@ -42,7 +41,7 @@ export function RankResultItem(props) {
         substats[value.index] = (
             <div key={ item } className={ 'substat' + (value.unactivated ? ' unactivated' : '') }>
                 <span className="stat">{ UI.Lang.get('stat_mini.' + stat) }</span>
-                <span className="value">{ Stats.format(item, value.value, { signed: false }) }</span>
+                <span className="value">{ formatStat(item, value.value, { signed: false }) }</span>
             </div>
         );
     }
@@ -67,7 +66,7 @@ export function RankResultItem(props) {
                             <div className="main-stat">
                                 { UI.Lang.get('stat_short.' + stat) + " " }
                                 <span className="main-value">
-                                    { Stats.format(statOriginal, art.getMainStatValue(), { }) }
+                                    { formatStat(statOriginal, art.getMainStatValue(), { }) }
                                 </span>
                                 (+{ art.getLevel() })
                             </div>
@@ -94,9 +93,9 @@ function RankFeatures(props) {
 
         let diff = Math.round(val2 / val1 * 1000) / 10 - 100;
         if (diff > 0) {
-            mainValues[key] = formatNumber(val2 - val1, { signed: 1 });
-            percentValues[key] = Stats.format('text_percent', diff, { decimal_digits: 1, no_decimal_zero: 1, signed: 1 });
-            chanceValues[key] = Stats.format('text_percent', props.profit.goodCount[key] / props.profit.combCount * 100, { decimal_digits: 2, zero: 1 });
+            mainValues[key] = formatNumber(val2 - val1, { signed: 1, zero: 1 });
+            percentValues[key] = formatNumber(diff, { percent: 1, digits: 1, no_decimal_zero: 1, signed: 1, zero: 1 });
+            chanceValues[key] = formatNumber(props.profit.goodCount[key] / props.profit.combCount * 100, { percent: 1, digits: 2, zero: 1 });
         } else {
             mainValues[key] = "-";
             percentValues[key] = "-";

@@ -102,6 +102,7 @@ export class ConditionStacks extends Condition {
 
             if (this.params.stats) {
                 for (const stat of this.params.stats) {
+                    //todo: проблема с DisplayStats может что-то не добавиться
                     if (stat instanceof StatTableConditions) {
                         if (!stat.isActive(settings)) {
                             continue;

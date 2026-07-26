@@ -1,10 +1,10 @@
 import React from 'react';
 import "../../../../css/Components/Tab/Food/List.css"
-import { Stats } from '../../../classes/Stats';
 
 import { FeatureTableValues } from '../../Components/FeatureTable';
 import { DB } from '../../../db/DB';
 import { UI } from '../../../ui';
+import { formatStat } from '../../Utils';
 
 export class FoodList extends React.Component {
     render() {
@@ -100,7 +100,7 @@ function FoodListItemStats(props) {
         items.push(
             <div key={stat} className="stat">
                 <span className="name">{UI.Lang.get('stat_short.'+ stat)}</span>
-                <span className="value">{Stats.format(stat, stats[stat], {signed: 1, no_decimal_zero: 1})}</span>
+                <span className="value">{ formatStat(stat, stats[stat], {signed: 1, no_decimal_zero: 1})}</span>
             </div>
         );
     }

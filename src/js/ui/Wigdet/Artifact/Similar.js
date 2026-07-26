@@ -1,5 +1,5 @@
-import { Stats } from "../../../classes/Stats";
 import { UI } from "../../../ui";
+import { formatStat } from "../../Utils";
 import { ArtifactWidget } from "../Artifact";
 
 export class ArtifactWidgetSimilar extends ArtifactWidget {
@@ -26,7 +26,7 @@ export class ArtifactWidgetSimilar extends ArtifactWidget {
         let html = '<div class="artifact-list-box-mainstat"><span class="stat">';
         html += UI.Lang.get('stat_short.'+ mainStat.replace('_percent', '')) +'</span></div>';
         html += '<div class="artifact-list-box-mainstat"><span class="value '+ (selected ? 'selected' : '') +'">';
-        html += Stats.format(mainStat, art.getMainStatValue(), {signed: true});
+        html += formatStat(mainStat, art.getMainStatValue(), {signed: true});
         html += '</span><span class="stat"> (+'+ art.getLevel() +')</span></div></div></div>';
         return html;
     }

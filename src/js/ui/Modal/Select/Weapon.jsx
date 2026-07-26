@@ -10,6 +10,7 @@ import { ToggleRoundButton } from "../../Components/Inputs/Buttons";
 import { WeaponIcon } from "../../Components/Icons";
 import { DB } from "../../../db/DB";
 import { UI } from "../../../ui";
+import { formatStat } from "../../Utils";
 
 export class ModalSelectWeapon extends Modal {
     createContent() {
@@ -243,9 +244,9 @@ class WeaponSelectItem extends React.PureComponent {
                 <div key={stat.getName()} className="stat-line">
                     <div className="stat">{UI.Lang.getStat('stat_short.'+ name.replace('_percent', ''))}</div>
                     <div className="value">
-                        {Stats.format(name, stat.getValue(1, 0))}
+                        { formatStat(name, stat.getValue(1, 0))}
                         &nbsp;-&nbsp;
-                        {Stats.format(name, stat.getValue(90, 6))}
+                        { formatStat(name, stat.getValue(90, 6))}
                     </div>
                 </div>
             );

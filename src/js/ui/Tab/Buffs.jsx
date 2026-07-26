@@ -1,7 +1,6 @@
 import React from 'react';
 import "../../../css/Components/Tab/Buffs.css"
 import { Condition } from '../../classes/Condition';
-import { Stats } from '../../classes/Stats';
 
 import { Accordion, AccordionItem } from '../Components/Accordion';
 import { ConditionList } from '../Components/ConditionList';
@@ -14,6 +13,7 @@ import { CustomStats } from './Buffs/CustomStats';
 import { PartyList } from './Buffs/PartyList';
 import { DB } from '../../db/DB';
 import { UI } from '../../ui';
+import { formatStat } from '../Utils';
 
 export class BuffsTab extends Tab {
     constructor(params) {
@@ -246,7 +246,7 @@ function partyCharSettings(char, data) {
 
         if (cond.params.partyStat) {
             let value = data.stats.get(cond.params.partyStat) || totals.get(cond.params.partyStat);
-            value = Stats.format(cond.params.partyStat, value);
+            value = formatStat(cond.params.partyStat, value);
             value = value.replace(/[^\d\.]/, '');
             settings[cond.getName()] = value;
         } else if (cond.params.partySetting) {

@@ -1,13 +1,13 @@
 import React from 'react';
 import "../../../css/Components/ObjectBlock.css"
 
-import { Stats } from '../../classes/Stats';
 import { CharIcon, EnemyIcon, WeaponIcon } from './Icons';
 import { NumberInput } from './Inputs/Input';
 import { Slider } from './Inputs/Slider';
 import { BetaWarning } from './TextBlocks';
 import { getSkillLevelByName } from '../../classes/Build/Settings';
 import { UI } from '../../ui';
+import { formatStat } from '../Utils';
 
 export const levelItemsChar = [
     {level: 1,  ascension: 0, maxLevel: 20},
@@ -133,7 +133,7 @@ export class WeaponObjectBlock extends React.Component {
             stats.push(
                 <tr key={name} className="weapon-stats">
                     <td className="name">{UI.Lang.getStat('stat.'+ name)}</td>
-                    <td className="value">{Stats.format(name, stat.getValue(level, ascension))}</td>
+                    <td className="value">{ formatStat(name, stat.getValue(level, ascension))}</td>
                 </tr>
             );
         }

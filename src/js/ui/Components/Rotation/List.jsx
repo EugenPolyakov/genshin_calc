@@ -9,6 +9,7 @@ import { MAX_DEPTH, Rotation } from "../../../classes/Rotation";
 import { Stats } from "../../../classes/Stats";
 import { BlockRemark } from "../TextBlocks";
 import { UI } from "../../../ui";
+import { formatNumber } from "../../Utils";
 
 const reactionNames = {
     1: 'melt',
@@ -280,7 +281,7 @@ function RotationLineValues(props) {
             items.push(
                 <React.Fragment key={type}>
                     <div className="name">{UI.Lang.get('stat_view.' + type)}</div>
-                    <div className="value">{Stats.format('', props.count * props.result[type])}</div>
+                    <div className="value">{ formatNumber(props.count * props.result[type])}</div>
                 </React.Fragment>
             );
         }

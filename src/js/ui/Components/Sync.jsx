@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom/client'
 
 import "../../../css/ui/Sync.css"
 
-import { waitForCondition } from "../../Utils";
+import { waitForCondition } from "../Utils";
 import { UI } from "../../ui";
 
 export class Sync extends React.Component {

@@ -1,10 +1,10 @@
 import "../../../../css/ui/Widget/ResultTable/Food.css"
 
 import { ResultTableSuggester } from "./Suggester";
-import { Stats } from "../../../classes/Stats";
 import { WidgetFoodStats } from "../Food/Stats";
 import { DB } from "../../../db/DB";
 import { UI } from "../../../ui";
+import { formatNumber } from "../../Utils";
 
 const statWidget = new WidgetFoodStats({});
 
@@ -79,7 +79,7 @@ export class ResultTableFood extends ResultTableSuggester {
                         let diffLine = this.formatFeatureDiff(value, max[key], opts);
 
                         values[key] = [
-                            Stats.format('', item.feature[key], {minimize: true}),
+                            formatNumber(item.feature[key], {minimize: true}),
                             diffLine,
                         ];
                     }

@@ -3,11 +3,12 @@ import parse from 'html-react-parser';
 
 import "../../../../css/Components/Tab/Feature/Tree.css";
 
-import { Stats, isPercent } from "../../../classes/Stats";
+import { isPercent } from "../../../classes/Stats";
 import { FeatureCompiler } from "../../../classes/Feature2/Compiler";
 import { CConst } from "../../../classes/Feature2/Compile/Types/Item";
 import { CSum } from "../../../classes/Feature2/Compile/Types/Block";
 import { UI } from "../../../ui";
+import { formatNumber } from "../../Utils";
 
 const ROOT_TYPES = {
     'base_damage': LeafRoot,
@@ -514,16 +515,16 @@ function LeafInlineConst(props) {
     if (props.tree.stat) {
         comment = langStat(props.tree.stat, props.data);
         if (isPercent(props.tree.stat)) {
-            value = Stats.format('text_percent', props.tree.value * 100, {decimal_digits: digits, no_decimal_zero: true});
+            value = formatNumber(props.tree.value * 100, {percent: 1, digits: digits, no_decimal_zero: true});
         }
     } else if (props.tree.comment) {
         comment = langStat(props.tree.comment, props.data);
         if (props.tree.percent) {
-            value = Stats.format('text_percent', props.tree.value * 100, {decimal_digits: digits, no_decimal_zero: true});
+            value = formatNumber(props.tree.value * 100, {percent: 1, digits: digits, no_decimal_zero: true});
         }
     }
 
-    value ||= Stats.format('value_decimal', props.tree.value, {decimal_digits: digits, no_decimal_zero: true}) || 0;
+    value ||= formatNumber(props.tree.value, {digits: digits, no_decimal_zero: true});
 
     if (!value && !props.collapsable) {
         return '';
@@ -561,15 +562,11 @@ function TreeValue(props) {
         value = value[0];
     }
 
-    let stat = 'value_decimal';
     if (percent) {
         value *= 100;
-        stat = 'value_percent';
     }
 
-    value ||= 0;
-
-    return Stats.format(stat, value, {decimal_digits: props.tree.digits || 2, no_decimal_zero: true, zero: true});
+    return formatNumber(value, {percent: percent, digits: props.tree.digits || 2, no_decimal_zero: true, zero: true});
 }
 
 function langStat(name, data) {

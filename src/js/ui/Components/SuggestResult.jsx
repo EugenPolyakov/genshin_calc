@@ -4,10 +4,9 @@ import "../../../css/Components/SuggestResult.css"
 import { ArtifactList } from "./Artifact";
 import { ArtifactSetIcon } from "./Icons";
 import { ControlsBar, ControlsBarDivider } from "./ControlsBar";
-import { formatNumber } from "../../Utils";
+import { formatNumber } from "../Utils";
 import { ResultTableButton, RoundButton } from "./Inputs/Buttons";
 import { Dropdown } from "./Inputs/Dropdown";
-import { Stats } from "../../classes/Stats";
 import { FullHeight, FullHeightScrollable, FullHeightStatic } from "./FullHeight";
 import { TabDisclaimer } from "./Tab";
 import { DB } from "../../db/DB";
@@ -275,11 +274,11 @@ function formatFeatureDiff(current, max, opts) {
 
     if (opts.displayMode == 'absolute') {
         let rawDiff = Math.round(current - max, 5);
-        let diff = Stats.format('', rawDiff, {signed: true, minimize: true}) || '-';
+        let diff = formatNumber(rawDiff, {signed: true, minimize: true, zero:'-'});
         let diffClass = rawDiff > 0 ? 'positive' : (rawDiff < 0 ? 'negative' : '');
         result = <span className={'remark '+ diffClass}>{diff}</span>;
     } else {
-        let percent = Stats.format('text_percent', current / max * 100, {decimal_digits: 1, no_decimal_zero: 1});
+        let percent = formatNumber(current / max * 100, {percent: 1, digits: 1, no_decimal_zero: 1});
         result = <span className="remark">{percent}</span>
     }
 

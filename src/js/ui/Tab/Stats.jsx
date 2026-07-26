@@ -17,7 +17,7 @@ import { FeatureReactionSuperConduct } from '../../classes/Feature2/Reaction/Tra
 import { FeatureReactionTransformative } from '../../classes/Feature2/Reaction/Transformative';
 import { FullHeight, FullHeightStatic, FullHeightFloatTitle, FloatTitleBlock } from '../Components/FullHeight';
 import { ReactTab } from '../Components/Tab';
-import { Stats, isPercent } from '../../classes/Stats';
+import { isPercent } from '../../classes/Stats';
 import { Tab } from "../Tab";
 import { FeatureMultiplierReactionVaporize } from '../../classes/Feature2/Multiplier/Reaction/Amplifying/Vaporize';
 import { FeatureMultiplierReactionMelt } from '../../classes/Feature2/Multiplier/Reaction/Amplifying/Melt';
@@ -31,6 +31,7 @@ import { FeatureReactionSwirlElectro } from '../../classes/Feature2/Reaction/Tra
 import { FeatureReactionSwirlCryo } from '../../classes/Feature2/Reaction/Transformative/Swirl/Cryo';
 import { UI } from '../../ui';
 import { FeatureReactionStellarConduct } from '../../classes/Feature2/Reaction/Extended/StellarConduct';
+import { formatStat } from '../Utils';
 
 const secondaryStatsList = [
     'recharge',
@@ -150,9 +151,9 @@ class StatsView extends React.Component {
                 stat: stat,
                 icon: 'icon-'+ stat,
                 title: UI.Lang.getStat('stat.'+ stat),
-                base: Stats.format(stat, base, {zero: 1}),
-                bonus: Stats.format(stat, bonus, {signed: 1, zero: 1}),
-                total: Stats.format(stat, total, {zero: 1}),
+                base: formatStat(stat, base, {zero: 1}),
+                bonus: formatStat(stat, bonus, {signed: 1, zero: 1}),
+                total: formatStat(stat, total, {zero: 1}),
             });
         }
 
@@ -196,11 +197,11 @@ class StatsView extends React.Component {
             };
 
             if (optional) {
-                item.total = Stats.format(stat, total, {signed: 1, zero: 1});
+                item.total = formatStat(stat, total, {signed: 1, zero: 1});
             } else {
-                item.base  = Stats.format(stat, base,  {zero: 1})
-                item.bonus = Stats.format(stat, bonus, {signed: 1, zero: 1})
-                item.total = Stats.format(stat, total, {zero: 1})
+                item.base = formatStat(stat, base,  {zero: 1})
+                item.bonus = formatStat(stat, bonus, {signed: 1, zero: 1})
+                item.total = formatStat(stat, total, {zero: 1})
             }
 
             rows.push(item);
@@ -229,9 +230,9 @@ class StatsView extends React.Component {
                     stat: stat,
                     icon: 'icon-'+ name,
                     title: UI.Lang.getStat('stat.'+ name),
-                    base: Stats.format(name, base, {zero: 1}),
-                    bonus: Stats.format(name, bonus, {signed: 1, zero: 1}),
-                    total: Stats.format(name, total, {zero: 1}),
+                    base: formatStat(name, base, {zero: 1}),
+                    bonus: formatStat(name, bonus, {signed: 1, zero: 1}),
+                    total: formatStat(name, total, {zero: 1}),
                 });
             }
         }
@@ -252,9 +253,9 @@ class StatsView extends React.Component {
             rows.push({
                 stat: stat,
                 title: UI.Lang.getStat('stat.'+ stat),
-                base: Stats.format(stat, 0, {zero: 1}),
-                bonus: Stats.format(stat, value, {signed: 1, zero: 1}),
-                total: Stats.format(stat, value, {zero: 1}),
+                base: formatStat(stat, 0, {zero: 1}),
+                bonus: formatStat(stat, value, {signed: 1, zero: 1}),
+                total: formatStat(stat, value, {zero: 1}),
             });
         }
 
@@ -280,9 +281,9 @@ class StatsView extends React.Component {
                 stat: stat,
                 optional: !!optional,
                 title: title,
-                base: Stats.format(stat, 0, {zero: 1}),
-                bonus: Stats.format(stat, value, {signed: 1, zero: 1}),
-                total: Stats.format(stat, value, {zero: 1}),
+                base: formatStat(stat, 0, {zero: 1}),
+                bonus: formatStat(stat, value, {signed: 1, zero: 1}),
+                total: formatStat(stat, value, {zero: 1}),
             });
         }
 
@@ -322,17 +323,17 @@ class StatsView extends React.Component {
                     optional: !!optional,
                     title: '• '+ title,
                     base: '',
-                    bonus: Stats.format(stat, bonus, {signed: 1, zero: 1}),
-                    total: Stats.format(stat, base + bonus, {zero: 1}),
+                    bonus: formatStat(stat, bonus, {signed: 1, zero: 1}),
+                    total: formatStat(stat, base + bonus, {zero: 1}),
                 });
             } else {
                 rows.push({
                     stat: stat,
                     optional: !!optional,
                     title: title,
-                    base: Stats.format(stat, base, {zero: 1}),
-                    bonus: Stats.format(stat, bonus, {signed: 1, zero: 1}),
-                    total: Stats.format(stat, base + bonus, {zero: 1}),
+                    base: formatStat(stat, base, {zero: 1}),
+                    bonus: formatStat(stat, bonus, {signed: 1, zero: 1}),
+                    total: formatStat(stat, base + bonus, {zero: 1}),
                 });
             }
         }
@@ -357,9 +358,9 @@ class StatsView extends React.Component {
             rows.push({
                 stat: stat,
                 title: UI.Lang.getStat('stat.'+ stat),
-                base: Stats.format(stat, value, {zero: 1}),
-                bonus: Stats.format('stamina_consume', multi, {signed: 1, zero: 1}),
-                total: Stats.format(stat, total, {zero: 1}),
+                base: formatStat(stat, value, {zero: 1}),
+                bonus: formatStat('stamina_consume', multi, {signed: 1, zero: 1}),
+                total: formatStat(stat, total, {zero: 1}),
             });
         }
 
@@ -369,9 +370,9 @@ class StatsView extends React.Component {
             rows.push({
                 stat: stat,
                 title: UI.Lang.getStat('stat.'+ stat),
-                base: Stats.format(stat, value, {zero: 1}),
+                base: formatStat(stat, value, {zero: 1}),
                 bonus: '',
-                total: Stats.format(stat, value, {zero: 1}),
+                total: formatStat(stat, value, {zero: 1}),
             });
         }
 
@@ -386,9 +387,9 @@ class StatsView extends React.Component {
             rows.push({
                 stat: stat,
                 title: UI.Lang.getStat('stat.'+ stat),
-                base: Stats.format(stat, 0, {zero: 1}),
-                bonus: Stats.format(stat, value, {signed: 1, zero: 1}),
-                total: Stats.format(stat, value, {signed: 1, zero: 1}),
+                base: formatStat(stat, 0, {zero: 1}),
+                bonus: formatStat(stat, value, {signed: 1, zero: 1}),
+                total: formatStat(stat, value, {signed: 1, zero: 1}),
             });
         }
 

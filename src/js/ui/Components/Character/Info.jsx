@@ -10,6 +10,7 @@ import { GroupBox } from '../Inputs/GroupBox';
 import { getLevelData, levelItemsChar } from '../ObjectBlock';
 import { DB } from '../../../db/DB';
 import { UI } from '../../../ui';
+import { formatStat } from '../../Utils';
 
 export class CharInfo extends React.Component {
     constructor(props) {
@@ -239,7 +240,7 @@ function CharInfoStats(props) {
         items.push(
             <div key={stat} className="line">
                 <div className="line-name">{UI.Lang.get('stat.'+ statTrim)}</div>
-                <div className="line-value">{Stats.format(statTrim, value) || 0}</div>
+                <div className="line-value">{ formatStat(statTrim, value) || 0}</div>
             </div>
         );
     }

@@ -5,6 +5,7 @@ import { Rotation } from "./classes/Rotation";
 import { Serializer } from "./classes/Serializer";
 import { Storage } from "./ui/classes/Storage";
 import { UI } from "./ui.js";
+export { formatStat } from "./ui/Utils";
 
 const DEFAULT_CHAR_BUILD = 'bbbaabbbabbabaaabcbabradaadaaa';
 
