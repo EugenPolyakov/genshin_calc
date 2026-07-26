@@ -15,7 +15,7 @@ import { FeatureReactionOverloaded } from '../../classes/Feature2/Reaction/Trans
 import { FeatureReactionRupture } from '../../classes/Feature2/Reaction/Transformative/Bloom/Rupture';
 import { FeatureReactionSuperConduct } from '../../classes/Feature2/Reaction/Transformative/SuperConduct';
 import { FeatureReactionTransformative } from '../../classes/Feature2/Reaction/Transformative';
-import { FullHeight, FullHeightStatic, FullHeightFloatTitle, FloatTitleBlock } from '../Components/FullHeight';
+import { FullHeight, FullHeightScrollable } from '../Components/FullHeight';
 import { ReactTab } from '../Components/Tab';
 import { isPercent } from '../../classes/Stats';
 import { Tab } from "../Tab";
@@ -31,6 +31,7 @@ import { FeatureReactionSwirlElectro } from '../../classes/Feature2/Reaction/Tra
 import { FeatureReactionSwirlCryo } from '../../classes/Feature2/Reaction/Transformative/Swirl/Cryo';
 import { UI } from '../../ui';
 import { FeatureReactionStellarConduct } from '../../classes/Feature2/Reaction/Extended/StellarConduct';
+import { FloatTitleBlock, StickyTableBlock, StickyTableHeader } from '../Components/ScrolledTable';
 import { formatStat } from '../Utils';
 
 const secondaryStatsList = [
@@ -403,31 +404,19 @@ class StatsView extends React.Component {
         buildData.applyPostEffects();
 
         return (
-            <ReactTab title={this.props.title}>
+            <ReactTab title={ this.props.title }>
                 <FullHeight>
-                    <FullHeightStatic>
-                        <StatsTableHeader />
-                    </FullHeightStatic>
-                    <FullHeightFloatTitle noPadding={true}>
-                        <FloatTitleBlock title={UI.Lang.get('stat_view.base_stats')}>
-                            <StatsTableBlock items={this.getBaseStats(stats)} />
-                        </FloatTitleBlock>
-                        <FloatTitleBlock title={UI.Lang.get('stat_view.secondary_stats')}>
-                            <StatsTableBlock items={this.getSecondaryStats(stats)} />
-                        </FloatTitleBlock>
-                        <FloatTitleBlock title={UI.Lang.get('stat_view.elemental_stats')}>
-                            <StatsTableBlock items={this.getElementalStats(stats)} />
-                        </FloatTitleBlock>
-                        <FloatTitleBlock title={UI.Lang.get('stat_view.damage_bonus')}>
-                            <StatsTableBlock items={this.getModifierStats(stats)} />
-                        </FloatTitleBlock>
-                        <FloatTitleBlock title={UI.Lang.get('stat_view.reaction_bonus')}>
-                            <StatsTableBlock items={this.getReactionStats(buildData)} />
-                        </FloatTitleBlock>
-                        <FloatTitleBlock title={UI.Lang.get('stat_view.other')}>
-                            <StatsTableBlock items={this.getOtherStats(stats)} />
-                        </FloatTitleBlock>
-                    </FullHeightFloatTitle>
+                    <FullHeightScrollable>
+                        <StickyTableBlock addClass="stats-table">
+                            <StatsTableHeader />
+                            <StatsTableBlock items={ this.getBaseStats(stats) } title={ UI.Lang.get('stat_view.base_stats') } />
+                            <StatsTableBlock items={ this.getSecondaryStats(stats) } title={ UI.Lang.get('stat_view.secondary_stats') } />
+                            <StatsTableBlock items={ this.getElementalStats(stats) } title={ UI.Lang.get('stat_view.elemental_stats') } />
+                            <StatsTableBlock items={ this.getModifierStats(stats) } title={ UI.Lang.get('stat_view.damage_bonus') } />
+                            <StatsTableBlock items={ this.getReactionStats(buildData) } title={ UI.Lang.get('stat_view.reaction_bonus') } />
+                            <StatsTableBlock items={ this.getOtherStats(stats) } title={ UI.Lang.get('stat_view.other') } />
+                        </StickyTableBlock>
+                    </FullHeightScrollable>
                 </FullHeight>
             </ReactTab>
         );
@@ -436,45 +425,42 @@ class StatsView extends React.Component {
 
 function StatsTableHeader(props) {
     return (
-        <div className="stats-table-block header">
-            <div className="flex-spacer"/>
-            <div className="item">{UI.Lang.get('stat_view.base')}</div>
-            <div className="item green">{UI.Lang.get('stat_view.bonus')}</div>
-            <div className="item">{UI.Lang.get('stat_view.total')}</div>
-        </div>
+        <StickyTableHeader>
+            <tr>
+                <th colSpan="2" />
+                <th>{ UI.Lang.get('stat_view.base') }</th>
+                <th className="green">{ UI.Lang.get('stat_view.bonus') }</th>
+                <th>{ UI.Lang.get('stat_view.total') }</th>
+            </tr>
+        </StickyTableHeader>
     );
 }
 
 function StatsTableBlock(props) {
     let items = [];
-    let index = 0;
 
     for (let item of props.items) {
-        let classes = ['line'];
-
-        if (++index % 2) {
-            classes.push('odd');
-        }
+        let classes = [];
 
         if (item.optional) {
             classes.push('optional')
         }
 
         items.push(
-            <div className={classes.join(' ')} key={item.stat}>
-                <div className="icon">{item.icon ? <div className={item.icon} /> : ''}</div>
-                <div className="name">{item.title}</div>
-                <div className="item">{item.base}</div>
-                <div className="item green">{item.bonus}</div>
-                <div className="item">{item.total}</div>
-            </div>
+            <tr className={classes.join(' ')} key={item.stat}>
+                <td className="icon">{item.icon ? <div className={item.icon} /> : ''}</td>
+                <td>{item.title}</td>
+                <td>{item.base}</td>
+                <td className="green">{item.bonus}</td>
+                <td>{item.total}</td>
+            </tr>
         );
     }
 
     return (
-        <div className="stats-table-block">
+        <FloatTitleBlock title={ props.title }>
             {items}
-        </div>
+        </FloatTitleBlock>
     );
 }
 

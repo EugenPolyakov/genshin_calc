@@ -6,7 +6,7 @@ import "../../../css/Components/Tab/RankArtifact.css"
 import { ControlsBar, ControlsBarDivider } from '../Components/ControlsBar';
 import { Dropdown } from '../Components/Inputs/Dropdown';
 import { Feature2 } from '../../classes/Feature2';
-import { FullHeight, FullHeightStatic, FullHeightScrollable } from '../Components/FullHeight';
+import { FullHeight, FullHeightScrollable, FullHeightHeader } from '../Components/FullHeight';
 import { ReactTab } from '../Components/Tab';
 import { Tab } from "../Tab";
 import { RoundButton, TitledButton, ToggleRoundButton } from '../Components/Inputs/Buttons';
@@ -346,47 +346,11 @@ class RankArtifact extends React.Component {
     }
 
     tabContent() {
-        let content;
         let artCount = this.dataArtifactsList(this.state.activeSlot).length;
-        if (artCount == 0) {
-            content = (
-                <div className="tab-message">{ parse(UI.Lang.getTalent('artifacts_ui.no_suitable_artifacts')) }</div>
-            );
-        } else {
-            content = (<>
-                <div>{ artCount } кандидатов</div>
-                { this.isCurrentFilterActual() ? "" : (<div className="tab-message">{ parse(UI.Lang.getTalent('artifacts_ui.data_out_of_date')) }</div>) }
-                <ControlsBar>
-                    <Dropdown
-                        barClass="resizable"
-                        items={ this.dataArtifactSets() }
-                        textIcon="filter"
-                        selected={ this.state.filterSet }
-                        onChange={ (value) => this.handleFilterSet(value) }
-                    />
-                </ControlsBar>
-                <FullHeightScrollable
-                    isLoading={ this.state.isLoading }
-                    loadingOverlay={ UI.Lang.get('pool_view.loading') }
-                    maxHeight={ UI.Layout.isMobile() ? UI.Layout.windowHeight() - 170 : null }
-                >
-                    <Accordion allClosed={ true }>
-                        <AccordionItem id="stats" title={ UI.Lang.get('artifacts_ui.accordion_stats') }>
-                            <AccordionSuggesterStats
-                                values={ this.state.stats }
-                                onChange={ (stat, value) => this.handleStatSetting(stat, value) }
-                            />
-                        </AccordionItem>
-                    </Accordion>
-                    <RankResultItemList sort={ this.state.featureType } artifacts={ this.getFilteredArtifacts() } />
-                </FullHeightScrollable>
-            </>
-            );
-        }
 
         return (
             <FullHeight>
-                <FullHeightStatic>
+                <FullHeightHeader>
                     <ControlsBar>
                         <Dropdown
                             barClass="resizable"
@@ -416,8 +380,36 @@ class RankArtifact extends React.Component {
                             disabled={ artCount == 0 }
                         />
                     </ControlsBar>
-                </FullHeightStatic>
-                { content }
+                    { artCount && <div>{ artCount } кандидатов</div> }
+                    { artCount && !this.isCurrentFilterActual() && <div className="tab-message">{ parse(UI.Lang.getTalent('artifacts_ui.data_out_of_date')) }</div> }
+                    { artCount && <ControlsBar>
+                        <Dropdown
+                            barClass="resizable"
+                            items={ this.dataArtifactSets() }
+                            textIcon="filter"
+                            selected={ this.state.filterSet }
+                            onChange={ (value) => this.handleFilterSet(value) }
+                        />
+                    </ControlsBar> }
+                    { artCount &&
+                        <Accordion allClosed={ true }>
+                            <AccordionItem id="stats" title={ UI.Lang.get('artifacts_ui.accordion_stats') }>
+                                <AccordionSuggesterStats
+                                    values={ this.state.stats }
+                                    onChange={ (stat, value) => this.handleStatSetting(stat, value) }
+                                />
+                            </AccordionItem>
+                        </Accordion> }
+                    { !artCount && <div className="tab-message">{ parse(UI.Lang.getTalent('artifacts_ui.no_suitable_artifacts')) }</div> }
+                </FullHeightHeader>
+                { artCount &&
+                    <FullHeightScrollable
+                        isLoading={ this.state.isLoading }
+                        loadingOverlay={ UI.Lang.get('pool_view.loading') }
+                        maxHeight={ UI.Layout.isMobile() ? UI.Layout.windowHeight() - 170 : null }
+                    >
+                        <RankResultItemList sort={ this.state.featureType } artifacts={ this.getFilteredArtifacts() } />
+                    </FullHeightScrollable> }
             </FullHeight>
         );
     }

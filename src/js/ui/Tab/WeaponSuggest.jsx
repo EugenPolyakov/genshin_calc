@@ -7,7 +7,7 @@ import { ControlsBar, ControlsBarDivider } from '../Components/ControlsBar';
 import { Dropdown } from '../Components/Inputs/Dropdown';
 import { Feature2 } from '../../classes/Feature2';
 import { FeatureTableHeader } from '../Components/FeatureTable';
-import { FullHeight, FullHeightScrollable, FullHeightStatic } from '../Components/FullHeight';
+import { FullHeight, FullHeightHeader, FullHeightScrollable } from '../Components/FullHeight';
 import { generatorSettings, getDefaultSettings } from '../Components/ArtifactGenerator';
 import { ReactTab } from '../Components/Tab';
 import { RoundButton, TitledButton } from '../Components/Inputs/Buttons';
@@ -543,7 +543,7 @@ export class WeaponSuggestView extends React.Component {
                 title={UI.Lang.get(this.props.title)}
             >
                 <FullHeight>
-                    <FullHeightStatic>
+                    <FullHeightHeader>
                         <ControlsBar>
                             <RoundButton
                                 icon="icon-settings"
@@ -588,7 +588,7 @@ export class WeaponSuggestView extends React.Component {
                             </ControlsBar>
                         }
                         <FeatureTableHeader />
-                    </FullHeightStatic>
+                    </FullHeightHeader>
                     <FullHeightScrollable
                         isLoading={this.state.isLoading}
                         loadingOverlay={UI.Lang.get('weapon_suggest.loading')}

@@ -14,8 +14,8 @@ import { Condition } from '../../classes/Condition';
 import { ControlsBar } from '../Components/ControlsBar';
 import { Dropdown } from '../Components/Inputs/Dropdown';
 import { Feature2 } from '../../classes/Feature2';
-import { FullHeight, FullHeightStatic, FullHeightScrollable } from '../Components/FullHeight';
 import { formatNumber } from '../Utils';
+import { FullHeight, FullHeightScrollable, FullHeightHeader } from '../Components/FullHeight';
 import { GroupBox } from '../Components/Inputs/GroupBox';
 import { NumberInput } from '../Components/Inputs/Input';
 import { ReactTab } from '../Components/Tab';
@@ -648,7 +648,7 @@ class BestArtifact extends React.Component {
 
         return (
             <FullHeight>
-                <FullHeightStatic>
+                <FullHeightHeader>
                     <ControlsBar>
                         <Dropdown
                             barClass="resizable"
@@ -726,7 +726,7 @@ class BestArtifact extends React.Component {
                             onClick={() => this.handleLockWindowOpen()}
                         />
                     </GroupBox>
-                </FullHeightStatic>
+                </FullHeightHeader>
                 <FullHeightScrollable>
                     <Accordion>
                         <AccordionItem id="stats" title={this.strings.item_stats}>

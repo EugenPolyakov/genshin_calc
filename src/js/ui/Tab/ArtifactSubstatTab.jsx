@@ -4,7 +4,7 @@ import "../../../css/Components/Tab/ArtifactSubstatTab.css"
 
 import { ControlsBar } from '../Components/ControlsBar';
 import { Dropdown } from '../Components/Inputs/Dropdown';
-import { FullHeight, FullHeightStatic, FullHeightScrollable } from '../Components/FullHeight';
+import { FullHeight, FullHeightScrollable, FullHeightHeader } from '../Components/FullHeight';
 import { ReactTab } from '../Components/Tab';
 import { Tab } from "../Tab";
 import { Stats, isPercent } from '../../classes/Stats';
@@ -118,7 +118,7 @@ class ArtifactSubstatView extends React.Component {
         return (
             <ReactTab title={UI.Lang.get('tab_header.suggest-artifact-substat')}>
                 <FullHeight>
-                    <FullHeightStatic>
+                    <FullHeightHeader>
                         <ControlsBar>
                             <Dropdown
                                 barClass="resizable"
@@ -137,7 +137,7 @@ class ArtifactSubstatView extends React.Component {
                             />
                         </ControlsBar>
                         <FeatureTableHeader title={UI.Lang.get('stat_view.average_roll')}/>
-                    </FullHeightStatic>
+                    </FullHeightHeader>
                     <FullHeightScrollable noPadding={true}>
                         <ArtifactSubstatList
                             items={items}

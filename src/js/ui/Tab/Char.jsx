@@ -3,7 +3,7 @@ import React from 'react';
 import "../../../css/Components/Tab/Char.css"
 
 import { ConditionList } from '../Components/ConditionList';
-import { FullHeight, FullHeightScrollable, FullHeightStatic } from '../Components/FullHeight';
+import { FullHeight, FullHeightHeader, FullHeightScrollable } from '../Components/FullHeight';
 import { CharObjectBlock } from '../Components/ObjectBlock';
 import { ReactTab } from '../Components/Tab';
 import { Tab } from "../Tab";
@@ -128,7 +128,7 @@ export class CharView extends React.Component {
 
         return (
             <FullHeight>
-                <FullHeightStatic>
+                <FullHeightHeader>
                     <CharObjectBlock
                         char={char}
                         settings={settings}
@@ -138,7 +138,7 @@ export class CharView extends React.Component {
                         onLevelChange={(data) => this.handleLevelChange(data)}
                         onSkillChange={(data) => this.handleSkillChange(data)}
                     />
-                </FullHeightStatic>
+                </FullHeightHeader>
                 <FullHeightScrollable>
                     <ConditionList
                         addClass="last"

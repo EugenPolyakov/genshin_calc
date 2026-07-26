@@ -3,7 +3,7 @@ import "../../../css/Components/Tab/Artifacts.css"
 
 import { ConditionList } from '../Components/ConditionList';
 import { ControlsBar, ControlsBarDivider } from '../Components/ControlsBar';
-import { FullHeight, FullHeightScrollable, FullHeightStatic } from '../Components/FullHeight';
+import { FullHeight, FullHeightHeader, FullHeightScrollable } from '../Components/FullHeight';
 import { ArtifactIcon } from '../Components/Icons';
 import { TitledButton } from '../Components/Inputs/Buttons';
 import { ReactTab } from '../Components/Tab';
@@ -172,7 +172,7 @@ export class ArtifactsView extends React.Component {
 
         return (
             <FullHeight>
-                <FullHeightStatic>
+                <FullHeightHeader>
                     <ControlsBar>
                         <TitledButton
                             icon="icon-scan"
@@ -191,7 +191,7 @@ export class ArtifactsView extends React.Component {
                             onClick={() => this.handleClearClick()}
                         />
                     </ControlsBar>
-                </FullHeightStatic>
+                </FullHeightHeader>
                 <FullHeightScrollable>
                     <ArtifactsList
                         artifacts={artifacts}

@@ -267,10 +267,8 @@ export class Layout {
             that.showRightTab($(this).data('tab'));
         });
 
-        $('.gi-main-container').height( $(window).height() - 35 );
 
         $(window).resize(function() {
-            $('.gi-main-container').height( $(window).height() - 35 );
             $('.tooltip-wrapper').hide();
             that.toggleLayout($(window).width() < 1150)
         })

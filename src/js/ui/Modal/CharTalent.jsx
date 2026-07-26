@@ -1,5 +1,4 @@
 import React from "react";
-import SimpleBar from 'simplebar-react';
 import parse from 'html-react-parser';
 
 import "../../../css/modal/CharTalent.css"
@@ -9,9 +8,10 @@ import { DialogContainer } from "../Components/Dialog/Container";
 import { Modal } from "../Modal";
 import { BetaWarning } from "../Components/TextBlocks";
 import { GroupBox } from "../Components/Inputs/GroupBox";
-import { FullHeight, FullHeightScrollable, FullHeightStatic } from "../Components/FullHeight";
+import { FullHeight, FullHeightScrollable } from "../Components/FullHeight";
 import { DB } from "../../db/DB";
 import { UI } from "../../ui";
+import { StickyTableBlock, StickyTableHeader } from "../Components/ScrolledTable";
 
 const maxLevels = {
     attack: 15,
@@ -117,8 +117,8 @@ export class CharTalentComponent extends React.Component {
                 closeCallback={() => this.handleClose()}
                 data-char={ this.char ? this.char.getId() : "" }
             >
-                <FullHeight>
-                    <FullHeightStatic>
+                <div className="gi-window-talent-content">
+                    <div>
                         <SkillNameTabs
                             active={this.state.name}
                             items={this.tabs}
@@ -131,11 +131,11 @@ export class CharTalentComponent extends React.Component {
                             onTabChange={(name) => this.handleTabChange(name)}
                         />
                         {this.char && this.char.isBeta() ? <BetaWarning /> : ''}
-                    </FullHeightStatic>
-                    <FullHeightScrollable>
+                    </div>
+                    <div>
                         <SkillDescription active={this.state.name} items={[...this.tabs, ...this.links]} />
-                    </FullHeightScrollable>
-                </FullHeight>
+                    </div>
+                </div>
             </DialogContainer>
         );
     }
@@ -164,13 +164,21 @@ function SkillNameTabs(props) {
 }
 
 function SkillDescription(props) {
-    let active = props.items.filter((i) => {return i.name == props.active})[0];
+    let active = props.items.filter((i) => { return i.name == props.active })[0];
     if (!active) { return '' }
 
     return (
         <GroupBox addClass="gi-talent-description">
-            {parse(active.descr())}
-            <TalentTable item={active} />
+            <FullHeight>
+                <FullHeightScrollable>
+                    { parse(active.descr()) }
+                </FullHeightScrollable>
+            </FullHeight>
+            <FullHeight>
+                <FullHeightScrollable>
+                    <TalentTable item={ active } />
+                </FullHeightScrollable>
+            </FullHeight>
         </GroupBox>
     );
 }
@@ -186,10 +194,10 @@ function TalentTable(props) {
 
     for (let i = 1; i <= max; ++i) {
         captionItems.push(
-            <div key={'lvl'+i} className="gi-talent-table-line-caption">
+            <th key={ i }>
                 <span className="gi-foreground-text">{UI.Lang.get('char_talent.level')}</span>
                 {i}
-            </div>
+            </th>
         );
     }
 
@@ -223,10 +231,10 @@ function TalentTable(props) {
             if (type == 'multihit') {
                 let hits = item.hits || 1;
                 cols.push(
-                    <div key={'lvl'+ i} className="gi-talent-table-line-value">
+                    <td key={ i }>
                         {formatValue(first.getValue(i), formatOpts)}
                         <span className="gi-foreground-text">{unit} *&nbsp;{hits}</span>
-                    </div>
+                    </td>
                 );
             } else if (type == 'multihit_sum') {
                 let hits = item.hits || 1;
@@ -244,9 +252,9 @@ function TalentTable(props) {
                 }
 
                 cols.push(
-                    <div key={'lvl'+ i} className="gi-talent-table-line-value">
+                    <td key={ i }>
                         {values}
-                    </div>
+                    </td>
                 );
             } else if (type == 'hits') {
                 let values = [];
@@ -268,19 +276,19 @@ function TalentTable(props) {
                 }
 
                 cols.push(
-                    <div key={'lvl'+ i} className="gi-talent-table-line-value">
+                    <td key={ i }>
                         {values}
-                    </div>
+                    </td>
                 );
             } else if (type == 'shield') {
                 let second = item.table[1];
 
                 cols.push(
-                    <div key={'lvl'+ i} className="gi-talent-table-line-value">
+                    <td key={ i }>
                         {formatValue(first.getValue(i), formatOpts)}
                         <span className="gi-foreground-text">{unit} </span>
                         +{Math.round(second.getValue(i))}
-                    </div>
+                    </td>
                 );
             } else if (type == 'separated') {
                 let tables = Array.isArray(item.table) ? item.table : [item.table];
@@ -314,9 +322,9 @@ function TalentTable(props) {
                 }
 
                 cols.push(
-                    <div key={'lvl'+ i} className="gi-talent-table-line-value">
+                    <td key={ i }>
                         {values}
-                    </div>
+                    </td>
                 );
             } else if (type == 'multivalue') {
                 let tables = Array.isArray(item.table) ? item.table : [item.table];
@@ -357,40 +365,40 @@ function TalentTable(props) {
                 }
 
                 cols.push(
-                    <div key={'lvl'+ i} className="gi-talent-table-line-value">
+                    <td key={ i }>
                         {values}
-                    </div>
+                    </td>
                 );
             } else {
                 cols.push(
-                    <div key={'lvl'+ i} className="gi-talent-table-line-value">
+                    <td key={ i }>
                         {formatValue(first.getValue(i), formatOpts)}
                         <span className="gi-foreground-text">{unit}</span>
-                    </div>
+                    </td>
                 );
             }
         }
 
         lineItems.push(
-            <div className="gi-talent-table-line" key={talent}>
-                <div className="gi-talent-table-line-name">{title}</div>
+            <tr>
+                <td>{title}</td>
                 {cols}
-                <div className="flex-spacer" />
-            </div>
+            </tr>
         );
     }
 
     return (
-        <div className="gi-talent-table">
-            <SimpleBar autoHide={true}>
-                <div className="gi-talent-table-line">
-                    <div className="gi-talent-table-line-name" />
-                    {captionItems}
-                    <div className="flex-spacer" />
-                </div>
-                {lineItems}
-            </SimpleBar>
-        </div>
+        <StickyTableBlock addClass="gi-talent-table">
+            <StickyTableHeader>
+                <tr>
+                    <th></th>
+                    { captionItems }
+                </tr>
+            </StickyTableHeader>
+            <tbody>
+                { lineItems }
+            </tbody>
+        </StickyTableBlock>
     );
 }
 

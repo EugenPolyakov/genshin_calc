@@ -39,49 +39,49 @@
     padding: 3px;
 }
 
-.features-table-block .icon > div {
+.features-table .icon > div {
     width: 20px;
     height: 20px;
     background-size: 120px 40px;
     background-image: url("../../../images/icons/element_40_v2.png");
 }
 
-.features-table-block .stat-anemo {
+.features-table .stat-anemo {
     background-position: -60px 0px;
 }
-.features-table-block .stat-cryo {
+.features-table .stat-cryo {
     background-position: -40px -20px;
 }
-.features-table-block .stat-dendro {
+.features-table .stat-dendro {
     background-position: -60px -20px;
 }
-.features-table-block .stat-electro {
+.features-table .stat-electro {
     background-position: -40px 0px;
 }
-.features-table-block .stat-geo {
+.features-table .stat-geo {
     background-position: 0px -20px;
 }
-.features-table-block .stat-hydro {
+.features-table .stat-hydro {
     background-position: -20px -20px;
 }
-.features-table-block .stat-pyro {
+.features-table .stat-pyro {
     background-position: -20px 0px;
 }
-.features-table-block .stat-phys {
+.features-table .stat-phys {
     background-position: 0px 0px;
 }
-.features-table-block .stat-heal {
+.features-table .stat-heal {
     background-position: -80px 0px;
 }
-.features-table-block .stat-multi {
+.features-table .stat-multi {
     background-position: -100px 0px;
 }
-.features-table-block .stat-buff {
+.features-table .stat-buff {
     background-position: -100px -20px;
 }
-.features-table-block .stat-hp {
+.features-table .stat-hp {
     background-position: -80px 0px;
 }
-.stat-shield {
+.features-table .stat-shield {
     background-position: -80px -20px;
 }

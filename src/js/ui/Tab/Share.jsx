@@ -4,7 +4,7 @@ import "../../../css/Components/Tab/Share.css"
 import { Serializer } from '../../classes/Serializer';
 import { CharacterList } from '../Components/Character/List';
 import { ControlsBar, ControlsBarDivider } from '../Components/ControlsBar';
-import { FullHeight, FullHeightScrollable, FullHeightStatic } from '../Components/FullHeight';
+import { FullHeight, FullHeightHeader, FullHeightScrollable } from '../Components/FullHeight';
 import { TitledButton } from '../Components/Inputs/Buttons';
 import { TextInputWithButton, TextInputWithCopy } from '../Components/Inputs/Input';
 import { ReactTab } from '../Components/Tab';
@@ -162,7 +162,7 @@ export class ShareView extends React.Component {
         return (
             <ReactTab title={UI.Lang.get('tab_header.share_view')}>
                 <FullHeight>
-                    <FullHeightStatic>
+                    <FullHeightHeader>
                         <ControlsBar>
                             <TextInputWithCopy
                                 barClass="resizable"
@@ -195,7 +195,7 @@ export class ShareView extends React.Component {
                                 onChange={(value) => this.handleFilterString(value)}
                             />
                         </ControlsBar>
-                    </FullHeightStatic>
+                    </FullHeightHeader>
                     <FullHeightScrollable noPadding={true}>
                         <CharacterList
                             items={this.items}

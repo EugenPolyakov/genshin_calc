@@ -6,7 +6,7 @@ import { Checkbox } from "../../Components/Inputs/Input";
 import { ControlsBar, ControlsBarDivider } from "../../Components/ControlsBar";
 import { DialogContainer } from "../../Components/Dialog/Container";
 import { Feature2 } from "../../../classes/Feature2";
-import { FullHeight, FullHeightScrollable, FullHeightStatic } from "../../Components/FullHeight";
+import { FullHeight, FullHeightFooter, FullHeightScrollable } from "../../Components/FullHeight";
 import { Modal } from "../../Modal";
 import { TitledButton } from "../../Components/Inputs/Buttons";
 import { UI } from "../../../ui";
@@ -90,7 +90,7 @@ class FeatureListComponent extends React.Component {
                             onChange={(name) => this.handleSelectName(name)}
                         />
                     </FullHeightScrollable>
-                    <FullHeightStatic>
+                    <FullHeightFooter>
                         <div className="gi-hr" />
                         <ControlsBar>
                             <TitledButton
@@ -110,7 +110,7 @@ class FeatureListComponent extends React.Component {
                                 onClick={() => this.handleClose()}
                             />
                         </ControlsBar>
-                    </FullHeightStatic>
+                    </FullHeightFooter>
                 </FullHeight>
             </DialogContainer>
         );

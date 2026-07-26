@@ -3,7 +3,7 @@ import "../../../../css/Components/Tab/WeaponSuggest/ListModal.css"
 
 import { ControlsBar, ControlsBarDivider } from "../../Components/ControlsBar";
 import { DialogContainer } from "../../Components/Dialog/Container";
-import { FullHeight, FullHeightScrollable, FullHeightStatic } from "../../Components/FullHeight";
+import { FullHeight, FullHeightFooter, FullHeightScrollable } from "../../Components/FullHeight";
 import { WeaponIcon } from "../../Components/Icons";
 import { TitledButton, ToggleRoundButton } from "../../Components/Inputs/Buttons";
 import { Checkbox } from "../../Components/Inputs/Input";
@@ -101,7 +101,7 @@ export class WeaponSuggestListModal extends React.Component {
                     <FullHeightScrollable maxHeight={maxHeight}>
                         {this.weaponList()}
                     </FullHeightScrollable>
-                    <FullHeightStatic>
+                    <FullHeightFooter>
                         <ControlsBar>
                             <TitledButton
                                 icon="icon-delete"
@@ -120,7 +120,7 @@ export class WeaponSuggestListModal extends React.Component {
                                 onClick={() => this.handleClose()}
                             />
                         </ControlsBar>
-                    </FullHeightStatic>
+                    </FullHeightFooter>
                 </FullHeight>
             </DialogContainer>
         );

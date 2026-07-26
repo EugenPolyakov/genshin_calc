@@ -1,43 +1,41 @@
-.gi-talent-table {
-    width: 100%;
+.gi-talent-table.sticky-table {
+    width: 1600px;
     padding-bottom: 20px;
-    overflow-x: none;
-    overflow-y: auto;
-}
-
-.gi-talent-table-line {
-    display: inline-flex;
-    align-items: center;
-    min-width: 100%;
     font-size: 13px;
 }
 
-.gi-talent-table-line > div {
+.gi-talent-table.sticky-table td:nth-child(1), .gi-talent-table.sticky-table th:nth-child(1) {
+    position: sticky;
+    background: #2e313a;
+    z-index: 11;
+    left: 0;
+}
+
+.gi-talent-table.sticky-table th:nth-child(1) {
+    z-index: 12;
+}
+
+.gi-talent-table.sticky-table tr:nth-child(2n) td:nth-child(1){
+    background: #232125;
+}
+
+.gi-talent-table.sticky-table th {
+    text-align: center;
+    background: #2e313a;
+}
+
+.gi-talent-table td {
     padding: 4px;
     box-sizing: border-box;
     min-height: 24px;
 }
 
-.gi-talent-table-line-name {
-    width: 200px;
-    flex-shrink: 0;
+.gi-talent-table.sticky-table tr td:nth-child(1) {
     color: #D3BC8E;
 }
 
-.gi-talent-table-line-caption {
-    flex-shrink: 0;
+.gi-talent-table.sticky-table tr td:nth-child(n+2) {
     text-align: center;
-}
-
-.gi-talent-table-line-value {
-    flex-shrink: 0;
-    text-align: center;
-}
-
-.gi-talent-table-line-caption, .gi-talent-table-line-value {
-    width: 80px;
-}
-
-.gi-talent-table-line:nth-child(2n) {
-    background-color: rgba(23, 17, 16, 0.5);
+    white-space: initial;
+    min-width: 93px;
 }

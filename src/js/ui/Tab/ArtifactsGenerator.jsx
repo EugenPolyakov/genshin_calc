@@ -8,7 +8,7 @@ import { ControlsBar } from '../Components/ControlsBar';
 import { Dropdown } from '../Components/Inputs/Dropdown';
 import { Feature2 } from '../../classes/Feature2';
 import { FeatureTableHeader } from '../Components/FeatureTable';
-import { FullHeight, FullHeightScrollable, FullHeightStatic } from '../Components/FullHeight';
+import { FullHeight, FullHeightHeader, FullHeightScrollable } from '../Components/FullHeight';
 import { generatorSettings, getDefaultSettings } from '../Components/ArtifactGenerator';
 import { ReactTab } from '../Components/Tab';
 import { RoundButton } from '../Components/Inputs/Buttons';
@@ -197,7 +197,7 @@ export class ArtifactsGeneratorView extends React.Component {
         return (
             <ReactTab title={UI.Lang.get('art_gen.title')}>
                 <FullHeight>
-                    <FullHeightStatic>
+                    <FullHeightHeader>
                         <ControlsBar>
                             <RoundButton
                                 icon="icon-settings"
@@ -220,7 +220,7 @@ export class ArtifactsGeneratorView extends React.Component {
                             />
                         </ControlsBar>
                         <FeatureTableHeader />
-                    </FullHeightStatic>
+                    </FullHeightHeader>
                     <FullHeightScrollable
                         isLoading={this.state.isLoading}
                         loadingOverlay={!this.settings ? UI.Lang.get('art_gen.set_settings') : UI.Lang.get('art_gen.loading')}

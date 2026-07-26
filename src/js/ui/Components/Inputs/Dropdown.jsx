@@ -1,8 +1,8 @@
-import SimpleBar from 'simplebar-react';
 import React from 'react';
 import parse from 'html-react-parser';
 
 import "../../../../css/Components/Inputs/Dropdown.css"
+import { ScrolledPanel } from '../ScrolledPanel';
 
 const MAX_HEIGHT = 350;
 
@@ -94,8 +94,7 @@ export class Dropdown extends React.Component {
             let itemsHeight = this.props.items.length * 26 + 10;
             let height = Math.min(itemsHeight, MAX_HEIGHT) + 30;
 
-            this.optionsRef.classList.toggle('scroll', itemsHeight > MAX_HEIGHT);
-
+            //переделать на автоматические стили
             if (this.state.clickY > height && this.state.clickY + height > window.innerHeight) {
                 this.optionsRef.classList.add('up');
             } else {
@@ -166,13 +165,11 @@ export class Dropdown extends React.Component {
                     {currentItems}
                 </div>
                 <div ref={obj => {this.optionsRef = obj}} className="dropdown-options">
-                    <SimpleBar
-                        ref={(obj) => {this.bar = obj}}
+                    <ScrolledPanel
                         style={{ maxHeight: this.state.maxHeight ? this.state.maxHeight : this.props.height || 350 }}
-                        autoHide={true}
                     >
                         {options}
-                    </SimpleBar>
+                    </ScrolledPanel>
                 </div>
             </DropdownWrapper>
         )
