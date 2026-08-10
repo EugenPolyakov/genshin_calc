@@ -83,6 +83,8 @@ feature_reaction;lunarcharged;Лунный заряд;Lunar-Charged
 feature_reaction;lunarbloom;Лунная бутонизация;Lunar-Bloom
 feature_reaction;lunarcrystallize;Лунный кристалл;Lunar-Crystallize
 feature_reaction;stellar_conduct;Звёздный проводник;Stellar-Conduct
+feature_reaction;stellar_swirl;Звёздное рассеивание;Stellar Swirl
+feature_reaction;stellar_glimmer;Звёздный блеск;Stellar Glimmer
 feature_rotation;anemo;Анемо урон;Anemo DMG
 feature_rotation;attack;Атака;Attack
 feature_rotation;normal;Обычная атака;Normal attack

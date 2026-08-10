@@ -1,7 +1,5 @@
 import { isDecimal, isPercent } from "../classes/Stats";
-import { Lang } from "./Lang";
 
-const lang = new Lang();
 export function formatNumber(value, opts) {
     opts ||= {};
     let result = value || 0;
@@ -17,18 +15,18 @@ export function formatNumber(value, opts) {
         if (!opts.no_decimal_zero)
             opt.minimumFractionDigits = opt.maximumFractionDigits;
 
-        result = result.toLocaleString(lang.getLocale(), opt);
+        result = result.toLocaleString(UI.Lang.getLocale(), opt);
     } else {
         result = Math.round(result);
 
         if (opts.minimize) {
             if (result > 10000000) {
-                result = (result / 1000000).toLocaleString(lang.getLocale(), { maximumFractionDigits: 2 }) + 'm'
+                result = (result / 1000000).toLocaleString(UI.Lang.getLocale(), { maximumFractionDigits: 2 }) + 'm'
             } else if (result > 1000000) {
-                result = (result / 1000000).toLocaleString(lang.getLocale(), { maximumFractionDigits: 3 }) + 'm'
+                result = (result / 1000000).toLocaleString(UI.Lang.getLocale(), { maximumFractionDigits: 3 }) + 'm'
             }
         } else
-            result = result.toLocaleString(lang.getLocale());
+            result = result.toLocaleString(UI.Lang.getLocale());
     }
 
     if (opts.signed) {

@@ -7,13 +7,6 @@ berserker_4 = Template(
     ]
 )
 
-adventurer_2 = Template(
-    sentences=[
-        [],
-        ['hp'],
-    ]
-)
-
 crimson_witch_of_flames_4 = Template(
     sentences=[
         ['dmg_reaction_overloaded', 'dmg_reaction_vaporize'],
@@ -100,8 +93,8 @@ vermillion_hereafter_4 = Template(
 
 gilded_dreams_4 = Template(
     replace={
-        'следующие усиления: сила': ' усиления. Cила',
-        'персонажа; мастерство': 'персонажа. Мастерство',
+        'следующие усиления: name{сила': 'усиления. name{Cила',
+        'персонажа; name{мастерство': 'персонажа. name{Мастерство',
         'как у экипированного персонажа.': 'как у экипированного персонажа (%{text_value}).',
         'с иным элементом.': 'с иным элементом (%{text_value2}).',
     },
@@ -255,3 +248,26 @@ a_day_carved_from_rising_winds_4 = Template(
         [1, 2],
     ],
 )
+
+heart_of_the_furnace_4 = Template(
+    replace= {
+        ', а урон': '. Урон'
+    },
+    sentences=[
+        ['12:ignore', '12:atk_percent'],
+        ['50:'],
+        [],
+        [],
+    ],
+    results=[
+        [0],
+        [1, 2, 3],
+    ],
+)
+
+scarlet_proof_4 = Template(
+    sentences=[
+        ['10:ignore', '16:crit_rate', '40:dmg_reaction_stellar_swirl'],
+    ],
+)
+

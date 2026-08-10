@@ -30,8 +30,10 @@ import { FeatureReactionSwirlHydro } from '../../classes/Feature2/Reaction/Trans
 import { FeatureReactionSwirlElectro } from '../../classes/Feature2/Reaction/Transformative/Swirl/Electro';
 import { FeatureReactionSwirlCryo } from '../../classes/Feature2/Reaction/Transformative/Swirl/Cryo';
 import { UI } from '../../ui';
-import { FeatureReactionStellarConduct } from '../../classes/Feature2/Reaction/Extended/StellarConduct';
 import { formatStat } from '../Utils';
+import { FeatureReactionStellarGlimmer } from '../../classes/Feature2/Reaction/Extended/StellarGlimmer';
+import { FeatureReactionStellarConduct } from '../../classes/Feature2/Reaction/Extended/Stellar/Conduct';
+import { FeatureReactionStellarSwirl } from '../../classes/Feature2/Reaction/Extended/Stellar/Swirl';
 
 const secondaryStatsList = [
     'recharge',
@@ -107,7 +109,9 @@ const reactionStatList = {
     '!dmg_reaction_lunarcrystallize': FeatureReactionLunarCrystallize,
     '!dmg_reaction_lunarcharged': FeatureReactionLunarCharged,
     '!dmg_reaction_lunarbloom': FeatureReactionLunarBloom,
-    'dmg_reaction_stellar_conduct': FeatureReactionStellarConduct,
+    'dmg_reaction_stellar_glimmer': FeatureReactionStellarGlimmer,
+    '!dmg_reaction_stellar_conduct': FeatureReactionStellarConduct,
+    '!dmg_reaction_stellar_swirl': FeatureReactionStellarSwirl,
 
     'dmg_reaction_crystalize': FeatureReactionCrystallize,
 };

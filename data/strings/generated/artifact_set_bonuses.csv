@@ -90,8 +90,8 @@ set_descr;gambler_4;Победа над противником со value{100%} 
 set_bonus;gilded_dreams_2;Позолоченные сны (2 предмета);Gilded Dreams (2-Piece bonus)
 set_descr;gilded_dreams_2;Увеличивает name{мастерство стихий} на %{mastery} ед.;Increases name{Elemental Mastery} by %{mastery}.
 set_bonus;gilded_dreams_4;Позолоченные сны (4 предмета);Gilded Dreams (4-Piece bonus)
-set_descr;gilded_dreams_4_1;На 8 сек. после вызова name{элементальной реакции} согласно элементам других персонажей в отряде экипированный этими артефактами персонаж получает  усиления. Каждое из этих усилений при подсчёте включает до 3 персонажей. Эффект может возникнуть один раз в 8 сек.;Within 8s of triggering an name{Elemental Reaction}, the character equipping this will obtain buffs based on the Elemental Type of the other party members. Each of the aforementioned buffs will count up to 3 characters. This effect can be triggered once every 8s. The character who equips this can still trigger its effects when not on the field.
-set_descr;gilded_dreams_4_2;Cила атаки повышается на %{text_percent} за каждого персонажа с таким же элементом, как у экипированного персонажа (%{text_value}).;name{ATK} is increased by %{text_percent} for each party member whose Elemental Type is the same as the equipping character (%{text_value}).
+set_descr;gilded_dreams_4_1;На 8 сек. после вызова name{элементальной реакции} согласно элементам других персонажей в отряде экипированный этими артефактами персонаж получает усиления. Каждое из этих усилений при подсчёте включает до 3 персонажей. Эффект может возникнуть один раз в 8 сек.;Within 8s of triggering an name{Elemental Reaction}, the character equipping this will obtain buffs based on the Elemental Type of the other party members. Each of the aforementioned buffs will count up to 3 characters. This effect can be triggered once every 8s. The character who equips this can still trigger its effects when not on the field.
+set_descr;gilded_dreams_4_2;name{Cила атаки} повышается на %{text_percent} за каждого персонажа с таким же элементом, как у экипированного персонажа (%{text_value}).;name{ATK} is increased by %{text_percent} for each party member whose Elemental Type is the same as the equipping character (%{text_value}).
 set_descr;gilded_dreams_4_3;name{Мастерство стихий} повышается на %{text_value} ед. за каждого персонажа с иным элементом (%{text_value2}).;name{Elemental Mastery} is increased by %{text_value} for every party member with a different Elemental Type (%{text_value2}).
 set_bonus;gladiators_finale_2;Конец гладиатора (2 предмета);Gladiator's Finale (2-Piece bonus)
 set_descr;gladiators_finale_2;Увеличивает name{силу атаки} на %{atk_percent}.;name{ATK} +%{atk_percent}.
@@ -105,7 +105,12 @@ set_descr;golden_troupe_4_2;Кроме того, когда персонаж н�
 set_bonus;heart_of_depth_2;Сердце глубин (2 предмета);Heart of Depth (2-Piece bonus)
 set_descr;heart_of_depth_2;Даёт %{dmg_hydro} бонус hydro{Гидро урона}.;hydro{Hydro DMG Bonus} +%{dmg_hydro}
 set_bonus;heart_of_depth_4;Сердце глубин (4 предмета);Heart of Depth (4-Piece bonus)
-set_descr;heart_of_depth_4;Увеличивает урон name{обычной} и name{заряженной атаки} на %{dmg_normal} в течение 15 сек. после использования name{элементального навыка}.;After using name{Elemental Skill}, increases name{Normal Attack} and name{Charged Attack DMG} by %{dmg_normal} for 15s.
+set_descr;heart_of_depth_4;Увеличивает name{урон обычной} и name{заряженной атаки} на %{dmg_normal} в течение 15 сек. после использования name{элементального навыка}.;After using name{Elemental Skill}, increases name{Normal Attack} and name{Charged Attack DMG} by %{dmg_normal} for 15s.
+set_bonus;heart_of_the_furnace_2;Сердце горна (2 предмета);Heart of the Furnace (2-Piece bonus)
+set_descr;heart_of_the_furnace_2;name{Сила атаки} увеличивается на %{atk_percent}.;name{ATK} +%{atk_percent}.
+set_bonus;heart_of_the_furnace_4;Сердце горна (4 предмета);Heart of the Furnace (4-Piece bonus)
+set_descr;heart_of_the_furnace_4_1;На 12 сек. после того как экипированный персонаж активирует реакции stcond{Звёздного блеска} или наносит ими урон, его name{сила атаки} повышается на %{atk_percent}.;Increases the equipping character's name{ATK} by %{atk_percent} for 12s when they trigger a stcond{Stellar Glimmer} reaction or deal stcond{Stellar Glimmer} reaction DMG.
+set_descr;heart_of_the_furnace_4_2;Урон реакций stcond{Звёздного блеска} всех персонажей отряда поблизости увеличивается на value{50%}. Перечисленные эффекты могут возникнуть, даже если экипированный персонаж не находится на поле боя. Бонусы урона одноимённых наборов артефактов не суммируются.;Also increases stcond{Stellar Glimmer} reaction DMG dealt by all nearby party members by value{50%}. The above effects can trigger even when the equipping character is not on the field, and he DMG bonus from multiple Artifact Sets with the same name do not stack.
 set_bonus;husk_of_opulent_dreams_2;Кокон сладких грёз (2 предмета);Husk of Opulent Dreams (2-Piece bonus)
 set_descr;husk_of_opulent_dreams_2;Увеличивает защиту на %{def_percent}.;name{DEF} +%{def_percent}
 set_bonus;husk_of_opulent_dreams_4;Кокон сладких грёз (4 предмета);Husk of Opulent Dreams (4-Piece bonus)
@@ -135,9 +140,9 @@ set_descr;marechaussee_hunter_2;Увеличивает name{урон обычн�
 set_bonus;marechaussee_hunter_4;Охотник Сумеречного двора (4 предмета);Marechaussee Hunter (4-Piece bonus)
 set_descr;marechaussee_hunter_4;Увеличивает name{шанс крит. попадания} на %{crit_rate} на 5 сек., когда текущее name{HP} увеличивается или снижается. Эффект может складываться до 3 раз.;When current name{HP} increases or decreases, name{CRIT Rate} will be increased by %{crit_rate} for 5s. Max 3 stacks.
 set_bonus;martial_artist_2;Воин (2 предмета);Martial Artist (2-Piece bonus)
-set_descr;martial_artist_2;Увеличивает урон name{обычной} и name{заряженной атаки} на %{dmg_normal}.;name{Normal} and name{Charged Attack DMG} +%{dmg_normal}
+set_descr;martial_artist_2;Увеличивает name{урон обычной} и name{заряженной атаки} на %{dmg_normal}.;name{Normal} and name{Charged Attack DMG} +%{dmg_normal}
 set_bonus;martial_artist_4;Воин (4 предмета);Martial Artist (4-Piece bonus)
-set_descr;martial_artist_4;Увеличивает урон name{обычной} и name{заряженной атаки} на %{dmg_normal} в течение 8 сек. после использования name{элементального навыка}.;After using name{Elemental Skill}, increases name{Normal Attack} and name{Charged Attack DMG} by %{dmg_normal} for 8s.
+set_descr;martial_artist_4;Увеличивает name{урон обычной} и name{заряженной атаки} на %{dmg_normal} в течение 8 сек. после использования name{элементального навыка}.;After using name{Elemental Skill}, increases name{Normal Attack} and name{Charged Attack DMG} by %{dmg_normal} for 8s.
 set_bonus;night_of_the_skys_unveiling_2;Ночь открытия неба (2 предмета);Night of the Sky's Unveiling (2-Piece bonus)
 set_descr;night_of_the_skys_unveiling_2;Увеличивает name{мастерство стихий} на %{mastery} ед.;Increases name{Elemental Mastery} by %{mastery}.
 set_bonus;night_of_the_skys_unveiling_4;Ночь открытия неба (4 предмета);Night of the Sky's Unveiling (4-Piece bonus)
@@ -182,7 +187,11 @@ set_descr;resolution_of_sojourner_4;Увеличивает name{шанс кри�
 set_bonus;retracing_bolide_2;Встречная комета (2 предмета);Retracing Bolide (2-Piece bonus)
 set_descr;retracing_bolide_2;Увеличивает name{прочность щита} на %{shield}.;Increases name{Shield Strength} by %{shield}.
 set_bonus;retracing_bolide_4;Встречная комета (4 предмета);Retracing Bolide (4-Piece bonus)
-set_descr;retracing_bolide_4;Под защитой щита увеличивает урон name{обычной} и name{заряженной атаки} на %{dmg_normal}.;While protected by a shield, gain an additional %{dmg_normal} name{Normal} and name{Charged Attack DMG}.
+set_descr;retracing_bolide_4;Под защитой щита увеличивает name{урон обычной} и name{заряженной атаки} на %{dmg_normal}.;While protected by a shield, gain an additional %{dmg_normal} name{Normal} and name{Charged Attack DMG}.
+set_bonus;scarlet_proof_2;Багряное доказательство (2 предмета);Scarlet Proof (2-Piece bonus)
+set_descr;scarlet_proof_2;name{Сила атаки} увеличивается на %{atk_percent}.;name{ATK} +%{atk_percent}.
+set_bonus;scarlet_proof_4;Багряное доказательство (4 предмета);Scarlet Proof (4-Piece bonus)
+set_descr;scarlet_proof_4;На 10 сек. после того как экипированный персонаж вызывает stcond{Звёздное рассеивание}, его name{шанс крит. попадания} повышается на %{crit_rate}, а урон stcond{Звёздного рассеивания} увеличивается на %{dmg_reaction_stellar_swirl}.;Increases the equipping character's name{CRIT Rate} by %{crit_rate}, and their stcond{Stellar Swirl} reaction dealt by %{dmg_reaction_stellar_swirl}, for 10s after they trigger a stcond{Stellar Swirl} reaction.
 set_bonus;scholar_2;Учёный (2 предмета);Scholar (2-Piece bonus)
 set_descr;scholar_2;Увеличивает скорость name{восстановления энергии} на %{recharge}.;name{Energy Recharge} +%{recharge}
 set_bonus;scholar_4;Учёный (4 предмета);Scholar (4-Piece bonus)
@@ -240,8 +249,8 @@ set_descr;vermillion_hereafter_4_2;name{Сила атаки} персонажа 
 set_bonus;viridescent_venerer_2;Изумрудная тень (2 предмета);Viridescent Venerer (2-Piece bonus)
 set_descr;viridescent_venerer_2;Даёт %{dmg_anemo} бонус anemo{Анемо урона}.;anemo{Anemo DMG Bonus} +%{dmg_anemo}
 set_bonus;viridescent_venerer_4;Изумрудная тень (4 предмета);Viridescent Venerer (4-Piece bonus)
-set_descr;viridescent_venerer_4_1;Увеличивает урон anemo{Рассеивания} на %{dmg_reaction_swirl}.;Increases anemo{Swirl} DMG by %{dmg_reaction_swirl}.
-set_descr;viridescent_venerer_4_2;При взаимодействии anemo{Рассеивания} с другим элементом, также понижает name{сопротивление} противника к соответствующему элементу на %{text_percent|40} в течение 10 сек.;Decreases opponent's name{Elemental RES} to the element infused in the anemo{Swirl} by %{text_percent|40} for 10s.
+set_descr;viridescent_venerer_4_1;Повышает урон anemo{Рассеивания} на %{dmg_reaction_swirl}, stcond{Звёздного рассеивания} - на %{dmg_reaction_stellar_swirl}.;Increases anemo{Swirl} reaction DMG dealt by %{dmg_reaction_swirl}, and stcond{Stellar Swirl} reaction DMG dealt by %{dmg_reaction_stellar_swirl}.
+set_descr;viridescent_venerer_4_2;В зависимости от элемента anemo{Рассеивания} снижает соответствующее элементальное name{сопротивление} поражённого врага на value{40%} на 10 сек. Активация stcond{Звёздного рассеивания} на враге также понижает его cryo{Крио сопротивление} на value{40%}. Снижение сопротивления одним и тем же элементам не суммируется.;Decreases opponent's name{Elemental RES} to the element infused in the anemo{Swirl} by value{40%} for 10s. Upon triggering a stcond{Stellar Swirl} in the opponent, will also decrease their cryo{Cryo RES} by value{40%}. RES debuffs of the same elemental type do not stack.
 set_bonus;vourukashas_glow_2;Сияние Вурукаши (2 предмета);Vourukasha's Glow (2-Piece bonus)
 set_descr;vourukashas_glow_2;Увеличивает name{НР} на %{hp_percent}.;name{HP} +%{hp_percent}
 set_bonus;vourukashas_glow_4;Сияние Вурукаши (4 предмета);Vourukasha's Glow (4-Piece bonus)

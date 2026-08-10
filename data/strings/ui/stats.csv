@@ -92,6 +92,8 @@ stat;dmg_reaction_lunarbloom;Урон Лунной бутонизации;Lunar-
 stat;dmg_reaction_lunarcharged;Урон Лунного заряда;Lunar-Charged DMG
 stat;dmg_reaction_lunarcrystallize;Урон Лунного кристалла;Lunar-Crystallize DMG
 stat;dmg_reaction_stellar_conduct;Урон Звёздного проводника;Stellar-Conduct DMG
+stat;dmg_reaction_stellar_swirl;Урон Звёздного рассеивания;Stellar Swirl DMG
+stat;dmg_reaction_stellar_glimmer;Урон Звёздного блеска;Stellar Glimmer DMG
 stat;dmg_reaction_crystalize;Кристаллизация;Crystallize
 
 stat_short;mastery;М. стихий;EM

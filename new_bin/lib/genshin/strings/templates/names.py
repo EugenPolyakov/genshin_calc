@@ -100,6 +100,8 @@ names_eng = Template(
 keywords_eng = Template(
     keywords=[
         ('Stellar-Conduct', 'stcond'),
+        ('Stellar Swirl', 'stcond'),
+        ('Stellar Glimmer', 'stcond'),
 
         ('Lunar-Bloom DMG', 'dendro'),
         ('Lunar-Bloom', 'dendro'),
@@ -332,6 +334,8 @@ names_rus = Template(
 keywords_rus = Template(
     keywords=[
         ('Звёздный [пП]роводник', 'stcond'),
+        ('Звёздн(ый|ого) [бБ]леск[а]', 'stcond'),
+        ('Звёздн(ое|ого) [рР]ассеивани[ея]', 'stcond'),
 
         ('Лунная бутонизация', 'dendro'),
         ('Лунную бутонизацию', 'dendro'),

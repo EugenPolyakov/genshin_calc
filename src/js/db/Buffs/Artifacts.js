@@ -507,6 +507,26 @@ export const Artifacts = new DbObjectBuff({
                 ]),
             })
         }),
+        new ConditionBoolean({
+            name: 'set_other.heart_of_the_furnace_4',
+            rotation: 'buffs',
+            serializeId: 87,
+            title: 'set_bonus.heart_of_the_furnace_4',
+            description: 'set_descr.heart_of_the_furnace_4_2',
+            icon: {
+                rarity: 5,
+                name: 'sprite-artifact artifact-icon-heart-of-the-furnace flower',
+            },
+        }),
+        new Condition({
+            stats: {
+                dmg_reaction_stellar_glimmer: 50,
+            },
+            condition: new ConditionOr([
+                new ConditionBoolean({ name: 'set_other.heart_of_the_furnace_4' }),
+                new ConditionBoolean({ name: 'set.heart_of_the_furnace_4' }),
+            ])
+        }),
     ],
     postEffects: [],
     multipliers: [
