@@ -67,7 +67,7 @@ export class CalcObjectCharacter extends CalcObject {
     }
 
     getConditions() {
-        return (this.object && this.object.getAllConditions()) || [];
+        return (this.object && this.object.getAllConditions(this.levels.constellation)) || [];
     }
 
     getFeatures() {
