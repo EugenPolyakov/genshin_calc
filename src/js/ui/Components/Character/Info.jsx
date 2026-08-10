@@ -77,10 +77,11 @@ export class CharInfo extends React.Component {
             for (let item of this.props.buttons) {
                 buttons.push(
                     <div
-                        key={++buttonCounter}
-                        className={`line-button ${item.icon}`}
-                        data-tooltip={item.tooltip}
-                        onClick={() => item.callback(this.props.set, this.props.callbackData)}
+                        key={ ++buttonCounter }
+                        className={ `line-button ${ item.icon }` }
+                        data-tooltip={ item.tooltip }
+                        onClick={ () => item.callback(this.props.set, this.props.callbackData) }
+                        { ...UI.SimpleTooltip }
                     />
                 );
             }

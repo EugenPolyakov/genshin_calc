@@ -334,7 +334,8 @@ function ArtifactButton(props) {
         <div
             className={'button '+ props.icon}
             onClick={props.onClick}
-            data-tooltip={props.tooltip}
+            data-tooltip={ props.tooltip }
+            { ...UI.SimpleTooltip }
         />
     );
 }

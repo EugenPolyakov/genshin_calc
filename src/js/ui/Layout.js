@@ -4,6 +4,7 @@ import 'simplebar/dist/simplebar.css';
 import "../../css/ui/Layout.css"
 import "../../css/ui/LayoutTouch.css"
 import { UI } from "../ui";
+import { SimpleTooltip } from "./Components/SimpleTooltip";
 
 const beforeUnloadHandler = (event) => {
     event.preventDefault();
@@ -25,6 +26,12 @@ export class Layout {
 
         $('.gi-copyright-text').html(UI.Lang.get('layout.copyright'));
         $('.gi-version').html('<a href="#" class="link-whats-new">'+ app.version.replace(/[^\d\.]/, '') +'</a>');
+
+        Object.defineProperty(UI, 'SimpleTooltip', {
+            get: SimpleTooltip(),
+            enumerable: true,
+            configurable: true,
+        });
 
         this.bindEvents();
 
@@ -278,10 +285,11 @@ export class Layout {
             window.location.reload();
         });
 
-        $(document).on('mouseover', '[data-tooltip]', function() {
-            if (!that.isMobile()) {
+        $(document).on('mouseover', '[data-tooltip]', function () {
+            let txt = $(this).data('tooltip');
+            if (!that.isMobile() && txt) {
                 $('.tooltip-wrapper').css('max-width', 300);
-                $('.tooltip-wrapper').text( $(this).data('tooltip') ).show();
+                $('.tooltip-wrapper').html(txt ).show();
             }
             return false;
         });

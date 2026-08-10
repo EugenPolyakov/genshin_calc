@@ -31,7 +31,7 @@ import "../css/icons/weapons.css"
 import "../css/inputs.css"
 import "../css/ui/legacy.css"
 
-import { ArtifactScanner } from "./ui/Window/ArtifactScanner";
+import { ArtifactScanner } from './ui/Modal/ArtifactScanner';
 import { ArtifactSetSettingsModal } from './ui/Modal/ArtifactSetSettings.jsx';
 import { ArtifactSetTab } from './ui/Tab/ArtifactSetTab';
 import { ArtifactsGeneratorTab } from './ui/Tab/ArtifactsGenerator';
@@ -98,12 +98,11 @@ export var UI = {
 
     // popups
     ArtifactWindow: new ArtifactWindow(), // jq
-    ArtifactScanner: new ArtifactScanner(), // jq
+    ArtifactScanner: new ArtifactScanner(),
     ConfirmWindow: new ConfirmModal(),
     PromptWindow: new PromptModal(),
     WindowMessage: new MessageModal(),
     WindowHelp: new HelpModal(),
-    // WindowGood: new WindowGood(), // jq
     WindowGood: new GoodImportModal(),
     WindowSelectFeatureList: new SelectFeatureListModal(),
     WindowSelectGroupList: new SelectGroupListModal(),

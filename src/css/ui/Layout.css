@@ -212,7 +212,7 @@ a:link, a:visited {
 
 .tooltip-wrapper {
     position: absolute;
-    max-width: 300px;
+    max-width: 500px;
     background-color: #353D4F;
     border: solid 2px #626770;
     display: none;

@@ -16,7 +16,7 @@
 
 .gi-scanner-image-controls {
     width: 500px;
-    height: 400px;
+    height: 406px;
     float: left;
 }
 
@@ -38,6 +38,10 @@
 .gi-artifact-scanner-artifact > div {
     width: 50%;
     box-sizing: border-box;
+}
+
+.gi-artifact-scanner-artifact > div.progress-bar {
+    width: 100%;
 }
 
 .gi-artifact-scanner-artifact > div.gi-scanner-text, .gi-artifact-scanner-artifact > div.gi-scanner-progress-wrapper {

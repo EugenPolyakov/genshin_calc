@@ -90,7 +90,7 @@ export class FullHeightScrollable extends React.Component {
         }
 
         return (
-            <ScrolledPanel className="scrolled-content">
+            <ScrolledPanel>
                 {this.props.children}
                 {this.state.showLoading ?
                     <TabLoading>

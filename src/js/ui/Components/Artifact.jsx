@@ -72,6 +72,24 @@ export class ArtifactListItem extends React.Component {
         ;
     }
 
+    isHighlight(stat) {
+        return stat == this.props.highlightStat;
+    }
+
+    getButtons() {
+        return (
+            <ArtifactListItemButtons
+                art={ this.props.art }
+                locked={ this.props.locked }
+                onClick={ this.props.onClick }
+                onEdit={ this.props.onEdit }
+                onDelete={ this.props.onDelete }
+                onLock={ this.props.onLock }
+                showLockCallback={ this.props.showLockCallback }
+            />
+        );
+    }
+
     render() {
         let art = this.props.art;
         let substats = new Array( Object.keys( art.getSubStats() ).length);
@@ -92,7 +110,7 @@ export class ArtifactListItem extends React.Component {
             let value = art.getSubStats()[item];
             let stat = item.replace('_percent', '');
             substats[value.index] = (
-                <div key={item} className={'substat'+ (item == this.props.highlightStat ? ' highlight' : '') + (value.unactivated ? ' unactivated' : '')}>
+                <div key={ item } className={ 'substat' + (this.isHighlight(item, value.value) ? ' highlight' : '') + (value.unactivated ? ' unactivated' : '')}>
                     <span className="stat">{UI.Lang.get('stat_mini.'+ stat)}</span>
                     <span className="value">{ formatStat(item, value.value, {signed: false})}</span>
                 </div>
@@ -105,32 +123,24 @@ export class ArtifactListItem extends React.Component {
         return (
             <div
                 className={classes.join(' ')}
-                onClick={this.props.onClick ? () => this.props.onClick(art) : undefined}
+                onClick={ this.props.onClick ? () => this.props.onClick(art) : undefined }
                 onMouseOver={(e) => {
                     if (this.props.onOver) {
                         UI.TooltipArtifact.updatePosition(e);
                     }
                 }}
                 onMouseEnter={ () => this.props.onOver ? this.props.onOver(art) : ''}
-                onMouseLeave={() => UI.TooltipArtifact.hide()}
+                onMouseLeave={ () => UI.TooltipArtifact.hide()}
             >
                 <div className="line">
                     <ArtifactSetIcon size={60} set={art.getSetName()} slot={art.getSlot()} />
-                    {!art.isValid() ? <div className="invalid"></div> : null}
+                    { !art.isValid() ? <div className="invalid" data-tooltip={ this.props.tooltip } { ...UI.SimpleTooltip }></div> : null}
                     <div className="main">
-                        <ArtifactListItemButtons
-                            art={art}
-                            locked={this.props.locked}
-                            onClick={this.props.onClick}
-                            onEdit={this.props.onEdit}
-                            onDelete={this.props.onDelete}
-                            onLock={this.props.onLock}
-                            showLockCallback={this.props.showLockCallback}
-                        />
+                        { this.getButtons() }
                         <div className="main-stat">
                             {UI.Lang.get('stat_short.'+ stat)}
                         </div>
-                        <div className={'main-stat'+ (statOriginal == this.props.highlightStat ? ' highlight' : '')}>
+                        <div className={ 'main-stat' + (this.isHighlight(statOriginal, art.getMainStatValue()) ? ' highlight' : '')}>
                             <span className="main-value">
                                 { formatStat(statOriginal, art.getMainStatValue(), {signed: true})}
                             </span>
