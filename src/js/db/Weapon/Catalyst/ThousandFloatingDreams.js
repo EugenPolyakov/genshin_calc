@@ -1,11 +1,10 @@
-import { ConditionBoolean } from "../../../classes/Condition/Boolean";
+import { ConditionBooleanValue } from "../../../classes/Condition/Boolean/Value";
 import { ConditionCalcElements } from "../../../classes/Condition/CalcElements";
 import { ConditionStatic } from "../../../classes/Condition/Static";
-import { ConditionStaticRefineDreamsOther } from "../../../classes/Condition/Static/Refine/DreamsOther";
-import { ConditionStaticRefineDreamsSame } from "../../../classes/Condition/Static/Refine/DreamsSame";
+import { ConditionStaticRefineAdditionalLevel } from "../../../classes/Condition/Static/Refine/AdditionalLevel";
 import { DbObjectWeapon } from "../../../classes/DbObject/Weapon";
 import { StatTable } from "../../../classes/StatTable";
-import { weaponStatTables } from "../../generated/WeaponStatTables";
+import { weaponDataTable, weaponStatTables } from "../../generated/WeaponStatTables";
 
 export const ThousandFloatingDreams = new DbObjectWeapon({
     name: 'a_thousand_floating_dreams',
@@ -21,25 +20,45 @@ export const ThousandFloatingDreams = new DbObjectWeapon({
             title: 'talent_name.weapon_a_thousand_nights_dawnsong',
             description: 'talent_descr.weapon_a_thousand_nights_dawnsong_4',
         }),
-        new ConditionStaticRefineDreamsSame({
+        new ConditionStaticRefineAdditionalLevel({
             title: 'talent_name.weapon_a_thousand_nights_dawnsong',
             description: 'talent_descr.weapon_a_thousand_nights_dawnsong_3',
+            effectLevelSetting: 'party_elements_same',
             stats: [
-                new StatTable('mastery', [32, 40, 48, 56, 64]),
+                new StatTable('text_mastery', weaponDataTable.ThousandFloatingDreams.a_thousand_nights_dawnsong.param1),
             ],
-            subConditions: [
-                new ConditionBoolean({name: 'party_elements_same'}),
+            realStats: [
+                new StatTable('', [
+                    new StatTable('mastery', weaponDataTable.ThousandFloatingDreams.a_thousand_nights_dawnsong.param1, 1),
+                    new StatTable('mastery', weaponDataTable.ThousandFloatingDreams.a_thousand_nights_dawnsong.param1, 2),
+                    new StatTable('mastery', weaponDataTable.ThousandFloatingDreams.a_thousand_nights_dawnsong.param1, 3),
+                ]),
             ],
+            condition: new ConditionBooleanValue({
+                cond: 'gt',
+                value: 0,
+                setting: 'party_elements_same',
+            }),
         }),
-        new ConditionStaticRefineDreamsOther({
+        new ConditionStaticRefineAdditionalLevel({
             title: 'talent_name.weapon_a_thousand_nights_dawnsong',
             description: 'talent_descr.weapon_a_thousand_nights_dawnsong_1',
+            effectLevelSetting: 'party_elements_different',
             stats: [
-                new StatTable('dmg_own', [10, 14, 18, 22, 26]),
+                new StatTable('dmg_own_text', weaponDataTable.ThousandFloatingDreams.a_thousand_nights_dawnsong.param2, 100),
             ],
-            subConditions: [
-                new ConditionBoolean({name: 'party_elements_different'}),
+            realStats: [
+                new StatTable('', [
+                    new StatTable('dmg_own', weaponDataTable.ThousandFloatingDreams.a_thousand_nights_dawnsong.param2, 100),
+                    new StatTable('dmg_own', weaponDataTable.ThousandFloatingDreams.a_thousand_nights_dawnsong.param2, 200),
+                    new StatTable('dmg_own', weaponDataTable.ThousandFloatingDreams.a_thousand_nights_dawnsong.param2, 300),
+                ]),
             ],
+            condition: new ConditionBooleanValue({
+                cond: 'gt',
+                value: 0,
+                setting: 'party_elements_different',
+            }),
         }),
     ],
 });

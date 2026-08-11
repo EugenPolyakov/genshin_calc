@@ -526,6 +526,14 @@ export const weaponStatTables = {
 		enumStatTables.atk44,
 		enumStatTables.atkp6,
 	],
+	heretics_molten_blade: [
+		enumStatTables.atk42,
+		enumStatTables.crit6,
+	],
+	emberwell: [
+		enumStatTables.atk42,
+		enumStatTables.mastery36,
+	],
 	AquilaFavonia: [
 		enumStatTables.atk48,
 		enumStatTables.phys9,
@@ -710,6 +718,14 @@ export const weaponStatTables = {
 		enumStatTables.atk41,
 		enumStatTables.recharge13,
 	],
+	forged_by_the_golden_melody: [
+		enumStatTables.atk42,
+		enumStatTables.crit6,
+	],
+	blade_of_atonement: [
+		enumStatTables.atk44,
+		enumStatTables.atkp6,
+	],
 	SkywardPride: [
 		enumStatTables.atk48,
 		enumStatTables.recharge8,
@@ -857,6 +873,14 @@ export const weaponStatTables = {
 	sacrificers_staff: [
 		enumStatTables.atk45,
 		enumStatTables.crit2_5,
+	],
+	frostbreath: [
+		enumStatTables.atk42,
+		enumStatTables.recharge10,
+	],
+	song_of_the_vigil: [
+		enumStatTables.atk44,
+		enumStatTables.mastery24,
 	],
 	StaffofHoma: [
 		enumStatTables.atk46,
@@ -1029,6 +1053,14 @@ export const weaponStatTables = {
 	dawning_frost: [
 		enumStatTables.atk42,
 		enumStatTables.cdmg12,
+	],
+	clash_of_kings: [
+		enumStatTables.atk42,
+		enumStatTables.crit6,
+	],
+	echoes_of_the_heart: [
+		enumStatTables.atk44,
+		enumStatTables.atkp6,
 	],
 	SkywardAtlas: [
 		enumStatTables.atk48,
@@ -1237,6 +1269,14 @@ export const weaponStatTables = {
 	rainbow_serpents_rain_bow: [
 		enumStatTables.atk42,
 		enumStatTables.recharge10,
+	],
+	jade_vista: [
+		enumStatTables.atk42,
+		enumStatTables.crit6,
+	],
+	covenant_of_frost_and_snow: [
+		enumStatTables.atk42,
+		enumStatTables.def11,
 	],
 	SkywardHarp: [
 		enumStatTables.atk48,
@@ -1623,6 +1663,29 @@ export const weaponDataTable = {
 			param1: [0.2, 0.25, 0.3, 0.35, 0.4],
 			param2: [0.16, 0.2, 0.24, 0.28, 0.32],
 			param3: [0.28, 0.35, 0.42, 0.49, 0.56],
+		},
+	},
+	heretics_molten_blade: {
+		rarity: 4,
+		weapon: "sword",
+		gameId: 11435,
+		heretics_molten_blade: {
+			param1: [14],
+			param2: [14],
+			param3: [0.18, 0.225, 0.27, 0.315, 0.36],
+			param4: [0.36, 0.45, 0.54, 0.63, 0.72],
+			param5: [7],
+		},
+	},
+	emberwell: {
+		rarity: 4,
+		weapon: "sword",
+		gameId: 11436,
+		emberwell: {
+			param1: [0.16, 0.2, 0.24, 0.28, 0.32],
+			param2: [12],
+			param3: [0.16, 0.2, 0.24, 0.28, 0.32],
+			param4: [12],
 		},
 	},
 	AquilaFavonia: {
@@ -2114,6 +2177,30 @@ export const weaponDataTable = {
 			param3: [60, 75, 90, 105, 120],
 		},
 	},
+	forged_by_the_golden_melody: {
+		rarity: 4,
+		weapon: "claymore",
+		gameId: 12435,
+		forged_by_the_golden_melody: {
+			param1: [0.18, 0.225, 0.27, 0.315, 0.36],
+			param2: [120, 150, 180, 210, 240],
+			param3: [0.28, 0.35, 0.42, 0.49, 0.56],
+			param4: [10],
+			param5: [12],
+			param6: [12],
+		},
+	},
+	blade_of_atonement: {
+		rarity: 4,
+		weapon: "claymore",
+		gameId: 12436,
+		blade_of_atonement: {
+			param1: [64, 80, 96, 112, 128],
+			param2: [12],
+			param3: [0.16, 0.2, 0.24, 0.28, 0.32],
+			param4: [12],
+		},
+	},
 	SkywardPride: {
 		rarity: 5,
 		weapon: "claymore",
@@ -2490,6 +2577,28 @@ export const weaponDataTable = {
 			param2: [0.08, 0.1, 0.12, 0.14, 0.16],
 			param3: [0.06, 0.075, 0.09, 0.105, 0.12],
 			param4: [3],
+		},
+	},
+	frostbreath: {
+		rarity: 4,
+		weapon: "polearm",
+		gameId: 13435,
+		frostbreath: {
+			param1: [0.2, 0.25, 0.3, 0.35, 0.4],
+			param2: [15],
+			param3: [6, 7.5, 9, 10.5, 12],
+			param4: [16],
+		},
+	},
+	song_of_the_vigil: {
+		rarity: 4,
+		weapon: "polearm",
+		gameId: 13436,
+		song_of_the_vigil: {
+			param1: [4, 5, 6, 7, 8],
+			param2: [0.2, 0.25, 0.3, 0.35, 0.4],
+			param3: [9],
+			param4: [12],
 		},
 	},
 	StaffofHoma: {
@@ -2944,6 +3053,29 @@ export const weaponDataTable = {
 			param2: [10],
 			param3: [48, 60, 72, 84, 96],
 			param4: [10],
+		},
+	},
+	clash_of_kings: {
+		rarity: 4,
+		weapon: "catalyst",
+		gameId: 14435,
+		clash_of_kings: {
+			param1: [0.2, 0.25, 0.3, 0.35, 0.4],
+			param2: [100, 125, 150, 175, 200],
+			param3: [6],
+			param4: [12],
+			param5: [6],
+		},
+	},
+	echoes_of_the_heart: {
+		rarity: 4,
+		weapon: "catalyst",
+		gameId: 14436,
+		echoes_of_the_heart: {
+			param1: [60, 75, 90, 105, 120],
+			param2: [0.16, 0.2, 0.24, 0.28, 0.32],
+			param3: [12],
+			param4: [12],
 		},
 	},
 	SkywardAtlas: {
@@ -3501,6 +3633,24 @@ export const weaponDataTable = {
 		rainbow_serpents_rain_bow: {
 			param1: [8],
 			param2: [0.28, 0.35, 0.42, 0.49, 0.56],
+		},
+	},
+	jade_vista: {
+		rarity: 4,
+		weapon: "bow",
+		gameId: 15435,
+		jade_vista: {
+			param1: [0.12, 0.15, 0.18, 0.21, 0.24],
+			param2: [64, 80, 96, 112, 128],
+		},
+	},
+	covenant_of_frost_and_snow: {
+		rarity: 4,
+		weapon: "bow",
+		gameId: 15436,
+		covenant_of_frost_and_snow: {
+			param1: [120, 150, 180, 210, 240],
+			param2: [12],
 		},
 	},
 	SkywardHarp: {

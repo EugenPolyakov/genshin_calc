@@ -40,6 +40,8 @@ import { FlameForgedInsight } from "./Claymore/FlameForgedInsight";
 import { master_key } from "./Claymore/master_key";
 import { gest_of_the_mighty_wolf } from "./Claymore/gest_of_the_mighty_wolf";
 import { a_teaspoon_of_transcendence } from "./Claymore/a_teaspoon_of_transcendence";
+import { forged_by_the_golden_melody } from "./Claymore/forged_by_the_golden_melody";
+import { blade_of_atonement } from "./Claymore/blade_of_atonement";
 
 export const Claymore = new DbObjectListSerializeStats({
     Bell: Bell, // 71
@@ -83,4 +85,6 @@ export const Claymore = new DbObjectListSerializeStats({
     master_key: master_key, // 225
     gest_of_the_mighty_wolf: gest_of_the_mighty_wolf, // 241
     a_teaspoon_of_transcendence: a_teaspoon_of_transcendence, // 245
+    forged_by_the_golden_melody: forged_by_the_golden_melody, // 252
+    blade_of_atonement: blade_of_atonement, // 253
 });

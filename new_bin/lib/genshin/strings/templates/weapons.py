@@ -2828,9 +2828,9 @@ a_thousand_nights_dawnsong = Template(
         [],
     ],
     results=[
-        [2, '(%{dreams_elements_different|0})'],
+        [2, '(%{dmg_own|0})'],
         [4, 5],
-        [1, '(%{dreams_elements_same|0})'],
+        [1, '(%{mastery|0})'],
         [0, 3],
     ],
 )
@@ -3351,6 +3351,250 @@ a_teaspoon_of_transcendence_eng = Template(
     ],
     extracted_names=[
         'Transcendence',
+    ],
+)
+
+jade_vista_rus = Template(
+    replace={
+        ' · ': '\n',
+    },
+    sentences=[
+        [],
+        ['64:text_1'],
+        ['12:text_percent_1'],
+        ['3:ignore'],
+        [],
+    ],
+    results=[
+        [0, 1, '(%{mastery|0})', 3, 4],
+        [0, 2, '(%{atk_percent|0})',  3, 4],
+    ],
+)
+
+jade_vista_eng = Template(
+    replace={
+        ' · ': '\n',
+        ';': '.',
+    },
+    sentences=[
+        [],
+        ['64:text_1'],
+        ['12:text_percent_1'],
+        ['3:ignore'],
+    ],
+    results=[
+        [0, 1, '(%{mastery|0})', 3],
+        [0, 2, '(%{atk_percent|0})',  3],
+    ],
+)
+
+covenant_of_frost_and_snow_rus = Template(
+    sentences=[
+        ['120:mastery', '12:ignore'],
+    ],
+)
+
+covenant_of_frost_and_snow_eng = Template(
+    sentences=[
+        ['12:ignore', '120:mastery'],
+    ],
+)
+
+clash_of_kings_rus = Template(
+    names=['Законом доски'],
+    sentences=[
+        ['6:ignore', '20:atk_percent', '100:mastery'],
+        ['12:ignore'],
+        ['6:ignore'],
+        ['6:ignore'],
+    ],
+)
+
+clash_of_kings_eng = Template(
+    names=['Laws of the Board'],
+    sentences=[
+        ['20:atk_percent', '100:mastery'],
+        ['6:ignore', '12:ignore'],
+        [],
+        ['6:ignore'],
+        ['6:ignore'],
+    ],
+)
+
+echoes_of_the_heart_rus = Template(
+    sentences=[
+        ['12:ignore', '60:mastery'],
+        ['12:ignore', '16:dmg_reaction_stellar_glimmer'],
+        [],
+    ],
+    results=[
+        [0, 2],
+        [1, 2],
+    ],
+)
+
+echoes_of_the_heart_eng = Template(
+    replace={
+        ', while triggering': '. Triggering',
+    },
+    sentences=[
+        ['60:mastery', '12:ignore'],
+        ['16:dmg_reaction_stellar_glimmer', '12:ignore'],
+        [],
+    ],
+    results=[
+        [0, 2],
+        [1, 2],
+    ],
+)
+
+frostbreath = Template(
+    sentences=[
+        ['15:ignore', '20:atk_percent', '6:text'],
+        ['16:ignore'],
+    ],
+)
+
+frostbreath_eng = Template(
+    sentences=[
+        ['20:atk_percent', '15:ignore', '6:text'],
+        ['16:ignore'],
+    ],
+)
+
+song_of_the_vigil = Template(
+    sentences=[
+        ['4:text'],
+        ['9:ignore'],
+        ['12:ignore', '20:atk_percent'],
+        [],
+    ],
+)
+
+song_of_the_vigil_eng = Template(
+    sentences=[
+        ['4:text'],
+        ['9:ignore'],
+        ['20:atk_percent', '12:ignore'],
+        [],
+    ],
+)
+
+forged_by_the_golden_melody = Template(
+    names=['Гармонический фрагмент: Полифония', 'Гармонический фрагмент'],
+    replace={
+        ', активируя следующие эффекты в таком порядке: ': ', активируя\n',
+        ' > ': '.\n',
+    },
+    sentences=[
+        ['10:ignore'],
+        ['18:atk_percent'],
+        ['120:mastery'],
+        ['28:dmg_reaction_stellar_glimmer'],
+        ['10:ignore'],
+        [],
+        ['12:ignore'],
+        ['12:ignore'],
+    ],
+    results=[
+        [0, 1, 4],
+        [0, 2, 4],
+        [0, 3, 4],
+        [6, 7],
+    ],
+)
+
+forged_by_the_golden_melody_eng = Template(
+    names=['Harmonic Movement: Contrapuntal', 'Harmonic Movement'],
+    replace={
+        ' > ': '.\n',
+        ' in the following order: ': ':\n',
+    },
+    sentences=[
+        ['10:ignore'],
+        ['18:atk_percent'],
+        ['120:mastery'],
+        ['28:dmg_reaction_stellar_glimmer'],
+        ['10:ignore'],
+        [],
+        [],
+        ['12:ignore'],
+        ['12:ignore'],
+    ],
+    results=[
+        [0, 1, 4, 5],
+        [0, 2, 4, 5],
+        [0, 3, 4, 5],
+        [7, 8],
+    ],
+)
+
+blade_of_atonement_rus = Template(
+    sentences=[
+        ['12:ignore', '64:mastery'],
+        ['12:ignore', '16:atk_percent'],
+        [],
+    ],
+    results=[
+        [0, 2],
+        [1, 2],
+    ],
+)
+
+blade_of_atonement_eng = Template(
+    replace={
+        ', while triggering': '. Triggering',
+    },
+    sentences=[
+        ['64:mastery', '12:ignore'],
+        ['16:atk_percent', '12:ignore'],
+        [],
+    ],
+    results=[
+        [0, 2],
+        [1, 2],
+    ],
+)
+
+heretics_molten_blade_rus = Template(
+    sentences=[
+        ['18:min_percent', '36:max_percent'],
+        ['14:ignore', '14:ignore'],
+    ],
+)
+
+heretics_molten_blade_eng = Template(
+    sentences=[
+        [],
+        ['18:min_percent', '36:max_percent'],
+        ['14:ignore', '14:ignore'],
+    ],
+)
+
+emberwell_rus = Template(
+    sentences=[
+        ['12:ignore', '16:atk_percent'],
+        ['12:ignore', '16:dmg_reaction_stellar_glimmer'],
+        [],
+    ],
+    results=[
+        [0, 2],
+        [1, 2],
+    ],
+)
+
+emberwell_eng = Template(
+    replace={
+        ', while triggering': '. Triggering',
+    },
+    sentences=[
+        ['16:atk_percent', '12:ignore'],
+        ['16:dmg_reaction_stellar_glimmer', '12:ignore'],
+        [],
+    ],
+    results=[
+        [0, 2],
+        [1, 2],
     ],
 )
 

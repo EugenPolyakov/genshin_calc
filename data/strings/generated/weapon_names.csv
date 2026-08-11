@@ -24,6 +24,7 @@ weapon_name;blackcliff_pole;Черногорская пика;Blackcliff Pole
 weapon_name;blackcliff_slasher;Черногорская бритва;Blackcliff Slasher
 weapon_name;blackcliff_warbow;Черногорский боевой лук;Blackcliff Warbow
 weapon_name;blackmarrow_lantern;Фонарь чёрной сердцевины;Blackmarrow Lantern
+weapon_name;blade_of_atonement;Клинок искупления;Blade of Atonement
 weapon_name;bloodsoaked_ruins;Окровавленные руины;Bloodsoaked Ruins
 weapon_name;bloodtainted_greatsword;Меч драконьей крови;Bloodtainted Greatsword
 weapon_name;calamity_of_eshu;Бедствие Эшу;Calamity of Eshu
@@ -31,9 +32,11 @@ weapon_name;calamity_queller;Усмиритель бед;Calamity Queller
 weapon_name;cashflow_supervision;Казначейский надзор;Cashflow Supervision
 weapon_name;chain_breaker;Разбивающий цепи;Chain Breaker
 weapon_name;cinnabar_spindle;Киноварное веретено;Cinnabar Spindle
+weapon_name;clash_of_kings;Игры королей;Clash of Kings
 weapon_name;cloudforged;Выкованный из облаков;Cloudforged
 weapon_name;compound_bow;Составной лук;Compound Bow
 weapon_name;cool_steel;Холодное лезвие;Cool Steel
+weapon_name;covenant_of_frost_and_snow;Завет льда и снега;Covenant of Frost and Snow
 weapon_name;cranes_echoing_call;Звонкий клич журавля;Crane's Echoing Call
 weapon_name;crescent_pike;Пика полумесяца;Crescent Pike
 weapon_name;crimson_moons_semblance;Очертания алой луны;Crimson Moon's Semblance
@@ -47,7 +50,9 @@ weapon_name;dodoco_tales;Истории Додоко;Dodoco Tales
 weapon_name;dragons_bane;Гроза драконов;Dragon's Bane
 weapon_name;dragonspine_spear;Копьё Драконьего хребта;Dragonspine Spear
 weapon_name;earth_shaker;Сотрясающий землю;Earth Shaker
+weapon_name;echoes_of_the_heart;Отголоски сердца;Echoes of the Heart
 weapon_name;elegy_for_the_end;Элегия погибели;Elegy for the End
+weapon_name;emberwell;Источник пламени;Emberwell
 weapon_name;emerald_orb;Изумрудный шар;Emerald Orb
 weapon_name;end_of_the_line;Иссушитель;End of the Line
 weapon_name;engulfing_lightning;Сияющая жатва;Engulfing Lightning
@@ -72,9 +77,11 @@ weapon_name;flowing_purity;Сверкание чистых вод;Flowing Purity
 weapon_name;flute_of_ezpitzal;Флейта Эспицаль;Flute of Ezpitzal
 weapon_name;footprint_of_the_rainbow;След радуги;Footprint of the Rainbow
 weapon_name;forest_regalia;Регалия леса;Forest Regalia
+weapon_name;forged_by_the_golden_melody;Творение золотой мелодии;Forged by the Golden Melody
 weapon_name;fractured_halo;Расколотый ореол;Fractured Halo
 weapon_name;freedom_sworn;Клятва свободы;Freedom-Sworn
 weapon_name;frostbearer;Плод вечной мерзлоты;Frostbearer
+weapon_name;frostbreath;Морозное дыхание;Frostbreath
 weapon_name;fruit_of_fulfillment;Плод восполнения;Fruit of Fulfillment
 weapon_name;fruitful_hook;Плодотворный крюк;Fruitful Hook
 weapon_name;gest_of_the_mighty_wolf;Подвиг могучего волка;Gest of the Mighty Wolf
@@ -84,9 +91,11 @@ weapon_name;halberd;Алебарда Миллелита;Halberd
 weapon_name;hamayumi;Хамаюми;Hamayumi
 weapon_name;haran_geppaku_futsu;Харан гэппаку фуцу;Haran Geppaku Futsu
 weapon_name;harbinger_of_dawn;Предвестник зари;Harbinger of Dawn
+weapon_name;heretics_molten_blade;Расплавленный клинок еретика;Heretic's Molten Blade
 weapon_name;hunters_path;Охотничья тропа;Hunter's Path
 weapon_name;ibis_piercer;Клюв ибиса;Ibis Piercer
 weapon_name;iron_sting;Стальное жало;Iron Sting
+weapon_name;jade_vista;Поникшая артемизия;Jade Vista
 weapon_name;jadefalls_splendor;Великолепие лазурного свода;Jadefall's Splendor
 weapon_name;kagotsurube_isshin;Кагоцурубэ Иссин;Kagotsurube Isshin
 weapon_name;kaguras_verity;Истина кагура;Kagura's Verity
@@ -174,6 +183,7 @@ weapon_name;snow_tombed_starsilver;Заснеженное звёздное се�
 weapon_name;solar_pearl;Солнечная жемчужина;Solar Pearl
 weapon_name;song_of_broken_pines;Песнь разбитых сосен;Song of Broken Pines
 weapon_name;song_of_stillness;Мелодия покоя;Song of Stillness
+weapon_name;song_of_the_vigil;Песнь бдения;Song of the Vigil
 weapon_name;splendor_of_tranquil_waters;Блеск тихих вод;Splendor of Tranquil Waters
 weapon_name;staff_of_homa;Посох Хомы;Staff of Homa
 weapon_name;staff_of_the_scarlet_sands;Посох алых песков;Staff of the Scarlet Sands

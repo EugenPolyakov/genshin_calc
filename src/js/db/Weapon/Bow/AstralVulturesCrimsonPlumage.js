@@ -1,7 +1,7 @@
 import { ConditionBoolean } from "../../../classes/Condition/Boolean";
 import { ConditionBooleanRefine } from "../../../classes/Condition/Boolean/Refine";
 import { ConditionCalcElements } from "../../../classes/Condition/CalcElements";
-import { ConditionStaticRefineCrimsonPlumage } from "../../../classes/Condition/Static/Refine/CrimsonPlumage";
+import { ConditionStaticRefineAdditionalLevel } from "../../../classes/Condition/Static/Refine/AdditionalLevel";
 import { DbObjectWeapon } from "../../../classes/DbObject/Weapon";
 import { StatTable } from "../../../classes/StatTable";
 import { weaponStatTables } from "../../generated/WeaponStatTables";
@@ -26,11 +26,11 @@ export const AstralVulturesCrimsonPlumage = new DbObjectWeapon({
                 new StatTable('atk_percent', weaponDataTable.AstralVulturesCrimsonPlumage.the_moonring_sighted.param1, 100),
             ],
         }),
-        new ConditionStaticRefineCrimsonPlumage({
+        new ConditionStaticRefineAdditionalLevel({
             title: 'talent_name.weapon_the_moonring_sighted',
             description: 'talent_descr.weapon_the_moonring_sighted_2',
-            levelSetting: 'weapon_refine',
             effectLevelSetting: 'party_elements_different',
+            maxLevel: 2,
             stats: [
                 new StatTable('text_percent_1', weaponDataTable.AstralVulturesCrimsonPlumage.the_moonring_sighted.param3, 100),
                 new StatTable('text_percent_2', weaponDataTable.AstralVulturesCrimsonPlumage.the_moonring_sighted.param4, 100),

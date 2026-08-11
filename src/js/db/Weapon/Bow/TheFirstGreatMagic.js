@@ -1,7 +1,7 @@
 import { ConditionBooleanValue } from "../../../classes/Condition/Boolean/Value";
 import { ConditionCalcElements } from "../../../classes/Condition/CalcElements";
 import { ConditionStaticRefine } from "../../../classes/Condition/Static/Refine";
-import { ConditionStaticRefineFirstMagic } from "../../../classes/Condition/Static/Refine/FirstMagic";
+import { ConditionStaticRefineAdditionalLevel } from "../../../classes/Condition/Static/Refine/AdditionalLevel";
 import { DbObjectWeapon } from "../../../classes/DbObject/Weapon";
 import { StatTable } from "../../../classes/StatTable";
 import { weaponStatTables } from "../../generated/WeaponStatTables";
@@ -31,11 +31,11 @@ export const TheFirstGreatMagic = new DbObjectWeapon({
                 new StatTable('dmg_charged', [16, 20, 24, 28, 32]),
             ],
         }),
-        new ConditionStaticRefineFirstMagic({
+        new ConditionStaticRefineAdditionalLevel({
             title: 'talent_name.weapon_parsifal_the_great_2',
             description: 'talent_descr.weapon_parsifal_the_great_2',
-            levelSetting: 'weapon_refine',
             effectLevelSetting: 'party_elements_same_inc',
+            maxLevel: 3,
             stats: [
                 new StatTable('text_number_percent_1', atk_table_1),
                 new StatTable('text_number_percent_2', atk_table_2),
@@ -49,11 +49,11 @@ export const TheFirstGreatMagic = new DbObjectWeapon({
                 ]),
             ],
         }),
-        new ConditionStaticRefineFirstMagic({
+        new ConditionStaticRefineAdditionalLevel({
             title: 'talent_name.weapon_parsifal_the_great_3',
             description: 'talent_descr.weapon_parsifal_the_great_3',
-            levelSetting: 'weapon_refine',
             effectLevelSetting: 'party_elements_different',
+            maxLevel: 3,
             stats: [
                 new StatTable('text_number_percent_1', ms_table_1),
                 new StatTable('text_number_percent_2', ms_table_2),
@@ -66,13 +66,11 @@ export const TheFirstGreatMagic = new DbObjectWeapon({
                     new StatTable('move_speed', ms_table_3),
                 ]),
             ],
-            subConditions: [
-                new ConditionBooleanValue({
-                    setting: 'party_elements_different',
-                    cond: 'ge',
-                    value: 1,
-                }),
-            ],
+            conditions: new ConditionBooleanValue({
+                setting: 'party_elements_different',
+                cond: 'ge',
+                value: 1,
+            }),
         }),
     ],
 });
