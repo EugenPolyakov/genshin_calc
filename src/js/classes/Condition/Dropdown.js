@@ -179,7 +179,7 @@ export class ConditionDropdown extends Condition {
         return result;
     }
 
-    getAllStats(settings,) {
+    getAllStats(settings) {
         let result = new Stats();
 
         let conditions = this.getSelectedConditions(settings);

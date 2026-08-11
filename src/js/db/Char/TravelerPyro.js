@@ -116,7 +116,7 @@ const C4PyroDmg = 20;
 const C6CritDmg = 40;
 
 export let travelerElevation = new ConditionDropdownElement({
-    name: 'n10050001',
+    name: 'common.n10050001',
     serializeId: 20,
     multiple: true,
     hideEmpty: true,

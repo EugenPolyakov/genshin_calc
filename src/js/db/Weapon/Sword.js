@@ -51,6 +51,8 @@ import { athame_artis } from "./Sword/athame_artis";
 import { lightbearing_moonshard } from "./Sword/lightbearing_moonshard";
 import { heretics_molten_blade } from "./Sword/heretics_molten_blade";
 import { emberwell } from "./Sword/emberwell";
+import { whitelake_frostfeather } from "./Sword/whitelake_frostfeather";
+import { exaiphanes_blade } from "./Sword/exaiphanes_blade";
 
 export const Swords = new DbObjectListSerializeStats({
     AlleyFlash: AlleyFlash,
@@ -105,4 +107,6 @@ export const Swords = new DbObjectListSerializeStats({
     lightbearing_moonshard: lightbearing_moonshard, //235
     heretics_molten_blade: heretics_molten_blade, // 254
     emberwell: emberwell, // 255
+    whitelake_frostfeather: whitelake_frostfeather, // 256
+    exaiphanes_blade: exaiphanes_blade, // 257
 });

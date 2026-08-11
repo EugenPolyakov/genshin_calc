@@ -3598,3 +3598,64 @@ emberwell_eng = Template(
     ],
 )
 
+whitelake_frostfeather_rus = Template(
+    sentences=[
+        ['8:atk_percent', '8:ignore'],
+        ['3:ignore', '0.1:ignore'],
+        [],
+        ['3:ignore', '50:dmg_reaction_stellar_glimmer', '4:text|4|1'],
+        ['3.5:ignore'],
+        [],
+    ],
+    results=[
+        [0, 1, 2, 5],
+        [3, 4, 5],
+    ],
+)
+
+whitelake_frostfeather_eng = Template(
+    sentences=[
+        ['8:atk_percent', '8:ignore'],
+        ['0.1:ignore'],
+        ['3:ignore'],
+        ['3:ignore', '50:dmg_reaction_stellar_glimmer', '4:text|4|1'],
+        ['3.5:ignore'],
+        [],
+    ],
+    results=[
+        [0, 1, 2, 5],
+        [3, 4, 5],
+    ],
+)
+
+exaiphanes_blade_rus = Template(
+    replace = {
+        'Кроме того, экипированный ': 'Экипированный ',
+    },
+    sentences=[
+        ['6:'],
+        ['40:atk_percent', '8:ignore', '5:text'],
+        ['5:ignore'],
+    ],
+    results=[
+        [0, '(%{crit_dmg|0})'],
+        [1, 2],
+    ],
+)
+
+exaiphanes_blade_eng = Template(
+    replace = {
+        'Additionally, the ': 'The ',
+    },
+    sentences=[
+        ['6:'],
+        ['40:atk_percent', '8:ignore', '5:text'],
+        ['5:ignore'],
+        [],
+    ],
+    results=[
+        [0, '(%{crit_dmg|0})'],
+        [1, 2, 3],
+    ],
+)
+

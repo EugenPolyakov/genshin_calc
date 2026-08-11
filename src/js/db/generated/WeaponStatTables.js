@@ -598,6 +598,14 @@ export const weaponStatTables = {
 		enumStatTables.atk44_2,
 		enumStatTables.cdmg19,
 	],
+	whitelake_frostfeather: [
+		enumStatTables.atk48,
+		enumStatTables.crit5,
+	],
+	exaiphanes_blade: [
+		enumStatTables.atk46,
+		enumStatTables.crit7,
+	],
 	FerrousShadow: [
 		enumStatTables.atk39,
 		enumStatTables.hp8,
@@ -1882,6 +1890,31 @@ export const weaponDataTable = {
 			param1: [0.64, 0.8, 0.96, 1.12, 1.28],
 			param2: [5],
 			def_percent: [20.0, 25.0, 30.000001907348633, 35.0, 40.0],
+		},
+	},
+	whitelake_frostfeather: {
+		rarity: 5,
+		weapon: "sword",
+		gameId: 11520,
+		whitelake_frostfeather: {
+			param1: [4, 4.5, 5, 5.5, 6],
+			param2: [0.08, 0.1, 0.12, 0.14, 0.16],
+			param3: [8],
+			param4: [3],
+			param5: [0.5, 0.65, 0.8, 0.95, 1.1],
+			param6: [3.5],
+		},
+	},
+	exaiphanes_blade: {
+		rarity: 5,
+		weapon: "sword",
+		gameId: 11521,
+		exaiphanes_blade: {
+			param1: [0.16, 0.2, 0.24, 0.32, 0.4],
+			param2: [8],
+			param3: [0, 0.06],
+			param4: [3, 3, 5],
+			param5: [5],
 		},
 	},
 	FerrousShadow: {
