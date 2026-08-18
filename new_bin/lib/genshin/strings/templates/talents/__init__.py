@@ -97,6 +97,7 @@ from .tartaglia import char_tartaglia  # noqa
 from .thoma import char_thoma  # noqa
 from .tighnari import char_tighnari  # noqa
 from .traveler_anemo import char_traveler_anemo  # noqa
+from .traveler_cryo import char_traveler_cryo  # noqa
 from .traveler_geo import char_traveler_geo  # noqa
 from .traveler_electro import char_traveler_electro  # noqa
 from .traveler_hydro import char_traveler_hydro  # noqa
@@ -126,6 +127,7 @@ from .zibai import char_zibai  # noqa
 
 templates = Template(
     patterns=[
+        (r'{NON_BREAK_SPACE}', '&nbsp;'),
         # (r'<color=\#99FFFFFF>([^<]*?)<\/color>', 'cryo{\\1}'),
         # (r'<color=\#FFE699FF>([^<]*?)<\/color>', 'geo{\\1}'),
         # (r'<color=\#FF9999FF>([^<]*?)<\/color>', 'pyro{\\1}'),

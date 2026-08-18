@@ -72,7 +72,7 @@ char_varka = TemplateList(
     ),
     winds_vanguard_eng=Template(
         sentences=[
-            ['7.5:dmg_sturm_und_drang', '8:ignore'],
+            ['1:ignore', '7.5:dmg_sturm_und_drang', '8:ignore'],
             ['4:ignore'],
             ['1:ignore'],
         ],

@@ -2069,7 +2069,8 @@ old_values = {
         1: "continuous_attack_dmg",
         2: "dreamdrifter_duration",
         3: "elemental_mastery_based_swirl_dmg_increase",
-        4: "cd", #Default
+        4: "elemental_mastery_based_stellar_swirl_dmg_increase",
+        5: "cd", #Default
     },
     #anraku_secret_spring_therapy
     (11095, 10939): {
@@ -2571,23 +2572,26 @@ old_values = {
         3: "charged_attack_sweeping_fire_dmg",
         4: "charged_attack_condensed_beam_dmg",
         5: "charged_attack_condensed_beam_stellar_conduct_dmg",
-        6: "dmg_when_in_power_overdrive",
-        7: "plunge", #Default
-        8: "plunge_low/plunge_high", #Default
+        6: "charged_attack_condensed_beam_stellar_swirl_dmg",
+        7: "dmg_when_in_power_overdrive",
+        8: "plunge", #Default
+        9: "plunge_low/plunge_high", #Default
     },
     #differential_analysis
     (11332, 13332): {
         0: "prism_shot_dmg",
         1: "prism_shot_stellar_conduct_dmg",
-        2: "cd", #Default
+        2: "prism_shot_stellar_swirl_dmg",
+        3: "cd", #Default
     },
     #q_e_d
     (11335, 13339): {
         0: "bombardment_dmg",
         1: "convective_inhibition_ray_dmg",
         2: "convective_inhibition_ray_stellar_conduct_dmg",
-        3: "cd", #Default
-        4: "energy_cost", #Default
+        3: "convective_inhibition_ray_stellar_swirl_dmg",
+        4: "cd", #Default
+        5: "energy_cost", #Default
     },
 #kujou_sara
     #tengu_bowmanship
@@ -2925,6 +2929,39 @@ old_values = {
         2: "duration", #Default
         3: "cd", #Default
         4: "energy_cost", #Default
+    },
+#traveler_cryo
+    #foreign_frostglint
+    (100554, 831): {
+        0: "normal_hit_1", #Default
+        1: "normal_hit_2", #Default
+        2: "normal_hit_3", #Default
+        3: "normal_hit_4", #Default
+        4: "normal_hit_5", #Default
+        5: "charged_hit", #Default
+        6: "stamina_cost", #Default
+        7: "plunge", #Default
+        8: "plunge_low/plunge_high", #Default
+    },
+    #ice_fog_piercer
+    (10127, 832): {
+        0: "skill_dmg", #Default
+        1: "ice_crystal_dmg",
+        2: "frostpierce_star_duration",
+        3: "cd", #Default
+    },
+    #frostbound_javelin
+    (10128, 839): {
+        0: "ice_javelin_dmg",
+        1: "frostglow_dmg_bonus",
+        2: "stellar_conduct_ice_javelin_single_strike_dmg",
+        3: "stellar_conduct_frostglow_dmg_bonus",
+        4: "stellar_swirl_ice_javelin_single_strike_dmg",
+        5: "stellar_swirl_frostglow_dmg_bonus",
+        6: "no_of_strikes_in_attack",
+        7: "additional_frostglow_attack_strikes_at_stack_max",
+        8: "cd", #Default
+        9: "energy_cost", #Default
     },
 #traveler_dendro
     #foreign_fieldcleaver

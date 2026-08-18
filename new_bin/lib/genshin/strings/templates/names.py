@@ -6,6 +6,7 @@ names_eng = Template(
         'Life Bond',
         'Hexerei: Secret Rite',
         'Hexerei',
+        'Stellar Vortex',
 
         'Nightsoul\'s Blessing',
         'Nightsoul point',
@@ -99,6 +100,7 @@ names_eng = Template(
 
 keywords_eng = Template(
     keywords=[
+        ('Stellar Glimmer DMG', 'stcond'),
         ('Stellar-Conduct', 'stcond'),
         ('Stellar Swirl', 'stcond'),
         ('Stellar Glimmer', 'stcond'),
@@ -173,6 +175,7 @@ keywords_eng = Template(
 
 patterns_eng = Template(
     patterns=[
+        (r'{NON_BREAK_SPACE}', '&nbsp;'),
         (r'{M#(.*?)}', '\\1'),
         (r'{F#(.*?)}', ''),
         (r'{LAYOUT_PC#(.*?)}', '\\1'),
@@ -230,6 +233,7 @@ names_rus = Template(
         'Долга жизни',
         'Ведьмовство: Тайный обряд',
         'Ведьмовски[хме]',
+        'Звёздный вихрь',
 
         'Вспышку Ночного духа',
         'Вспышке Ночного духа',
@@ -333,9 +337,9 @@ names_rus = Template(
 
 keywords_rus = Template(
     keywords=[
-        ('Звёздный [пП]роводник', 'stcond'),
-        ('Звёздн(ый|ого) [бБ]леск[а]', 'stcond'),
-        ('Звёздн(ое|ого) [рР]ассеивани[ея]', 'stcond'),
+        ('Звёздн(ый|ого) [пП]роводника?', 'stcond'),
+        ('Звёздн(ый|ого) [бБ]леска?', 'stcond'),
+        ('Звёздн(ое|ого|ым) [рР]ассеивани[ея]м?', 'stcond'),
 
         ('Лунная бутонизация', 'dendro'),
         ('Лунную бутонизацию', 'dendro'),
@@ -381,11 +385,11 @@ keywords_rus = Template(
         ('Перегрузка', 'pyro'),
         ('Горение', 'pyro'),
         ('Горения', 'pyro'),
-        ('Сверхпроводник', 'cryo'),
-        ('Крио [Рр]ассеивание', 'cryo'),
-        ('Гидро [Рр]ассеивание', 'hydro'),
-        ('Пиро [Рр]ассеивание', 'pyro'),
-        ('Электро [Рр]ассеивание', 'electro'),
+        ('Сверхпроводника?', 'cryo'),
+        ('Крио [Рр]ассеивани[ея]', 'cryo'),
+        ('Гидро [Рр]ассеивани[ея]', 'hydro'),
+        ('Пиро [Рр]ассеивани[ея]', 'pyro'),
+        ('Электро [Рр]ассеивани[ея]', 'electro'),
         ('Рассеивание', 'anemo'),
         ('Рассеивания', 'anemo'),
         ('Стимуляцию', 'dendro'),

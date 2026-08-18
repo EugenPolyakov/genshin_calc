@@ -87,11 +87,26 @@ char_yumemizuki_mizuki = TemplateList(
         extracted_names=[2],
     ),
     vast_be_the_dream=Template(
+        replace={
+            'Кроме того, когда ': 'Когда\nКроме того, когда\n',
+            'Additionally, while ': 'While\nAdditionally, while\n',
+        },
         sentences=[
             ['1000:'],
             ['2.5:ignore'],
             [],
+            ['1000:'],
+            [],
+            [],
+            [],
+            [],
             ['10:'],
+            [],
+            ['8:ignore'],
+        ],
+        results=[
+            [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+            [6, 8],
         ],
     ),
     bright_moons_restless_voice=Template(
@@ -108,21 +123,27 @@ char_yumemizuki_mizuki = TemplateList(
     in_mist_like_waters=Template(
         sentences=[
             ['3:ignore', '3.5:ignore'],
-            ['1100:'],
+            ['1100:', '550:'],
         ],
     ),
     in_mist_like_waters_hex_rus=Template(
         sentences=[
             ['3.5:ignore', '3:ignore'],
-            ['1100:'],
-            ['1000:']
+            ['1100:', '550:'],
+            ['1000:'],
+            [],
+            ['400:'],
+            [],
         ],
     ),
     in_mist_like_waters_hex_eng=Template(
         sentences=[
             ['3:ignore', '3.5:ignore'],
-            ['1100:'],
-            ['1000:']
+            ['1100:', '550:'],
+            ['1000:'],
+            [],
+            ['400:'],
+            [],
         ],
     ),
     your_echo_i_meet_in_dreams=Template(
@@ -153,18 +174,34 @@ char_yumemizuki_mizuki = TemplateList(
     the_heart_lingers_long=Template(
         sentences=[
             ['30:crit_rate_swirl', '100:crit_dmg_swirl'],
+            ['10:crit_rate_stellar_swirl', '20:crit_dmg_stellar_swirl'],
         ],
     ),
     the_heart_lingers_long_rus=Template(
         sentences=[
             [],
             ['30:crit_rate_swirl', '100:crit_dmg_swirl'],
+            ['10:crit_rate_stellar_swirl', '20:crit_dmg_stellar_swirl'],
         ],
     ),
     the_heart_lingers_long_hex_rus=Template(
         sentences=[
             [],
             ['30:crit_rate_swirl', '100:crit_dmg_swirl'],
+            ['10:crit_rate_stellar_swirl', '20:crit_dmg_stellar_swirl'],
+            [],
+            ['500:', '0.04:', '0.16:'],
+            ['20:', '80:'],
+        ],
+        results=[
+            [0, 1, 2, 3],
+            [4, 5],
+        ],
+    ),
+    the_heart_lingers_long_hex_eng=Template(
+        sentences=[
+            ['30:crit_rate_swirl', '100:crit_dmg_swirl'],
+            ['10:crit_rate_stellar_swirl', '20:crit_dmg_stellar_swirl'],
             [],
             ['500:', '0.04:', '0.16:'],
             ['20:', '80:'],
@@ -172,18 +209,6 @@ char_yumemizuki_mizuki = TemplateList(
         results=[
             [0, 1, 2],
             [3, 4],
-        ],
-    ),
-    the_heart_lingers_long_hex_eng=Template(
-        sentences=[
-            ['30:crit_rate_swirl', '100:crit_dmg_swirl'],
-            [],
-            ['500:', '0.04:', '0.16:'],
-            ['20:', '80:'],
-        ],
-        results=[
-            [0, 1],
-            [2, 3],
         ],
     ),
 )

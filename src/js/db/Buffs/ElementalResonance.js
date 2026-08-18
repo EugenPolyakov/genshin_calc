@@ -493,6 +493,16 @@ export const ElementalResonance = new DbObjectBuff({
             ],
             condition: new ConditionBoolean({ name: 'allowed_stellar_conduct' }),
         }),
+        new ConditionStacks({
+            name: 'common.radiance_stellar_swirl',
+            serializeId: 88,
+            title: 'talent_name.stellar_vortex',
+            description: 'talent_descr.stellar_vortex',
+            rotation: 'buffs',
+            maxStacks: 2,
+            hideInactive: true,
+            condition: new ConditionBoolean({ name: 'allowed_stellar_swirl' }),
+        }),
     ],
     postEffects: [
         new PostEffectStats({
@@ -548,3 +558,5 @@ export const ElementalResonance = new DbObjectBuff({
 //"673034151": "Лунное знамение - Высшее сияние",
 //"815173912": "Высшее сияние",
 //"1561440071": "Лунное знамение - Высшее сияние",
+
+//3182314560 звёздный вихрь

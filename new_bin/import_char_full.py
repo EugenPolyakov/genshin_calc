@@ -80,7 +80,7 @@ traveler_depot_ids = {
     702: 'pyro',
     503: 'hydro',
     504: 'anemo',
-    # 705: 'cryo',
+    705: 'cryo',
     706: 'geo',
     707: 'electro',
     508: 'dendro',
@@ -100,6 +100,7 @@ NEED_PASSIVE_TALENTS = [
     'linnea',
     'arlecchino',
     'sandrone',
+    'traveler_cryo',
 ]
 
 skiped_features = set([
@@ -157,7 +158,7 @@ def make_tables(data):
             ), ', true' if fmt.find('P') >= 0 else ''))
             del params[ind]
 
-        generator.add_param(tmp, params_indices)
+        generator.add_param(char_key, tmp, params_indices)
 
     return
 
@@ -170,8 +171,6 @@ for char in char_data.get_list():
 
     char_name = lang_default.get(char['nameTextMapHash'])
     char_id = convert_id(char_name)
-
-    if do_single and char_id != generate_char: continue
 
     # print([char_id, char['id']])
 
@@ -187,6 +186,7 @@ for char in char_data.get_list():
             # print(key)
             # print(char['id'])
             # print(traveler_id)
+            if do_single and traveler_id != generate_char: continue
             char_keys[key] = {
                 'char_id': char_id,
                 'char_key': traveler_id,
@@ -196,6 +196,7 @@ for char in char_data.get_list():
                 'depot_id': depot_id,
             }
     else:
+        if do_single and char_id != generate_char: continue
         key = static.getCharById(char['id'], char_name)
 
         char_keys[key] = {
@@ -315,7 +316,7 @@ def prepare_talents(talent_items, generate):
         talent_id = char_id + '_' + talent_short_id
 
         if generate:
-            generator.constellation(talent_id, talent.get('no_descr'), talent['descTextMapHash_hex'] and lang_default.get(talent['descTextMapHash_hex']))
+            generator.constellation(char_key, talent_id, talent.get('no_descr'), talent['descTextMapHash_hex'] and lang_default.get(talent['descTextMapHash_hex']))
 
         if uniq_skills.get(talent_id):
             continue
@@ -332,12 +333,12 @@ def prepare_talents(talent_items, generate):
             nameItems[lang_name] = [skill_name]
             tpl_keywords = lang_data[lang_name]['keywords']
             #if not tpl_char: texts[eng_name].append(skill_name)
-            texts[eng_name].append(skill_name)
+            texts[char_key].append(skill_name)
             tpl_talents = lang_data[lang_name]['talents']
 
             if talent['descTextMapHash']:
                 try:
-                    texts[eng_name].append(lang.get(talent['descTextMapHash']))
+                    texts[char_key].append(lang.get(talent['descTextMapHash']))
                     skill_descr = process_talent_desc(skill_name, lang_name, lang.get(talent['descTextMapHash']), talent_short_id, tpl_talents, talent['no_descr'], None, tpl_keywords)
                     descItems[lang_name] = skill_descr['descr']
                     nameItems[lang_name].extend(skill_descr['names'])
@@ -348,7 +349,7 @@ def prepare_talents(talent_items, generate):
 
             if talent['descTextMapHash_hex'] and lang.get(talent['descTextMapHash_hex']):
                 try:
-                    texts[eng_name].append(lang.get(talent['descTextMapHash_hex']))
+                    texts[char_key].append(lang.get(talent['descTextMapHash_hex']))
                     skill_descr = process_talent_desc(skill_name, lang_name, lang.get(talent['descTextMapHash_hex']), talent_short_id, tpl_talents, talent['no_descr'], talent_short_id + '_hex', tpl_keywords)
                     descItems_hex[lang_name] = skill_descr['descr']
                     nameItems[lang_name].extend(skill_descr['names'])
@@ -357,7 +358,7 @@ def prepare_talents(talent_items, generate):
                     logger.exception(e)
                     err = True
             #if not tpl_char: texts[eng_name].append('\n')
-            texts[eng_name].append('\n')
+            texts[char_key].append('\n')
         if err: continue
 
         add_array(nameItems, result_hero_strings, talent_id, 'talent_name')
@@ -430,12 +431,12 @@ def processPassiveTalent(proud, paramList):
     })
     talent_short_id = convert_id(talent_name, removeSemicolon=True)
     talent_id = char_id + '_' + talent_short_id
-    generator.condition(char_id, talent_id, passive.get(needAvatarPromoteLevel_fld) or 0)
+    generator.condition(char_key, talent_id, passive.get(needAvatarPromoteLevel_fld) or 0)
 
-inherentProudSkillOpens_fld = 'BOIOJNENKHP'#'inherentProudSkillOpens'
-hexProudSkillOpens_fld = 'EIBOFEEGGID'
-needAvatarPromoteLevel_fld = 'CCHNLJKDDKI'#'needAvatarPromoteLevel'
-hex_descr_fld = 'OBHFOBHLHFK'#'JDKOMPNCEMO'#'HCAOGPJPGLM' # 'IACNAENANDH'
+inherentProudSkillOpens_fld = 'FDCALBEEAOM'#'inherentProudSkillOpens'
+hexProudSkillOpens_fld = 'MONOHPPNDHN'
+needAvatarPromoteLevel_fld = 'JNHNGFDPBEF'#'needAvatarPromoteLevel'
+hex_descr_fld = 'CMGEIEOLPPL'
 extra_descr_fld = 'extraDescTextMapHash'
 
 for charVarName in sorted(char_keys):
@@ -444,7 +445,7 @@ for charVarName in sorted(char_keys):
     char_id = char['char_id']
     char_key = char['char_key']
     eng_name = lang_data['eng']['lang'].get(char['nameTextMapHash'])
-    generator.set_charName(char_id, charVarName)
+    generator.set_charName(char_key, charVarName, char_id)
 
     res_item = OrderedDict(
         category='char_name',
@@ -461,7 +462,7 @@ for charVarName in sorted(char_keys):
     #     continue
 
     #if not tpl_char: texts[eng_name] = []
-    texts[eng_name] = []
+    texts[char_key] = []
 
     talenttable("\t" + charVarName + ': {\n')
     talenttable(f"\t\tchar_id: {char['id']},\n")
@@ -504,7 +505,7 @@ for charVarName in sorted(char_keys):
 
         if uniq_skills.get(skill_id):
             continue
-        generator.talent_begin(char_id, skill_id, index, skill_type)
+        generator.talent_begin(char_key, skill_id, index, skill_type)
         if statgenerator and skill_type == 'feature_burst':
             statgenerator.processBurst(skill)
         uniq_skills[skill_id] = 1
@@ -512,7 +513,7 @@ for charVarName in sorted(char_keys):
         if not do_single:
             updated_values.write(f'    #{talent_short_id}\n')
         proud_params = scales_and_proud(id, skill.get('proudSkillGroupId'), index, char_id, skill_type == 'feature_attack')
-        generator.end_talent(char_id)
+        generator.end_talent(char_key)
         if proud_params['desc']:
             index+= 1
 
@@ -564,7 +565,7 @@ for charVarName in sorted(char_keys):
         if descItems_hex:
             add_array(descItems_hex, result_hero_strings, skill_id + '_hex', 'talent_descr')
 
-    generator.begin_char(char_id, skiped_features)
+    generator.begin_char(char_key, skiped_features)
 
     talent_items = []
     const_num = 0
@@ -588,13 +589,13 @@ for charVarName in sorted(char_keys):
 
     talenttable('\t\tpasssive: [\n')
     passive_count = 0
-    needed = char_id in NEED_PASSIVE_TALENTS
+    needed = char_key in NEED_PASSIVE_TALENTS
     for passive in depot.get(inherentProudSkillOpens_fld, []):
-        passive_id = passive.get('proudSkillGroupId')
+        passive_id = passive.get('proudSkillGroupId', 0)
         if passive_id > 0:
             proud = proud_data.get_item_by_field('proudSkillGroupId', passive_id)
             paramList = extractPramList(proud)
-            if passive[needAvatarPromoteLevel_fld] > 0 or needed or len(paramList) > 0:
+            if (passive.get(needAvatarPromoteLevel_fld) or 0) > 0 or needed or len(paramList) > 0:
                 passive_count += 1
                 processPassiveTalent(proud, paramList)
             elif needed: break
@@ -602,14 +603,14 @@ for charVarName in sorted(char_keys):
         elif needed: break
         else: continue
     for passive in depot.get(hexProudSkillOpens_fld, []):
-        passive_id = passive.get('proudSkillGroupId')
+        passive_id = passive.get('proudSkillGroupId', 0)
         if passive_id > 0:
             proud = proud_data.get_item_by_field('proudSkillGroupId', passive_id)
             passive_count += 1
             processPassiveTalent(proud, [])
     talenttable('\t\t],\n')
 
-    generator.begin_constellation(char_id)
+    generator.begin_constellation(char_key)
 
     prepare_talents(talent_items[-passive_count:], False)
     prepare_talents(talent_items[0:-passive_count], True)

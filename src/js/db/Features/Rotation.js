@@ -719,4 +719,21 @@ export const Rotation = new DbObjectRotation({
 
     'attack.wriothesley_normal_hit_5_icicle': 698,
     'attack.wriothesley_vaulting_fist_stellar_icicle_dmg': 699,
+
+    'skill.yumemizuki_mizuki_additional_attack_dmg': 700,
+    'skill.yumemizuki_mizuki_in_mist_like_waters_dmg': 701,
+    'skill.yumemizuki_mizuki_in_mist_like_waters_stellar_dmg': 702,
+
+    'other.sandrone_additional_condensed_beam_dmg': 703,
+    'skill.sandrone_prism_shot_stellar_swirl_dmg': 704,
+
+    "reaction.stellar_swirl_contrubution_1": 705,
+    "reaction.stellar_swirl_contrubution_2": 706,
+    "reaction.stellar_swirl_contrubution_3": 707,
+    "reaction.stellar_swirl_vortex_contrubution_1": 708,
+    "reaction.stellar_swirl_vortex_contrubution_2": 709,
+    "reaction.stellar_swirl_vortex_contrubution_3": 710,
+
+    'skill.traveler_ice_crystal_dmg': 711,
+    'burst.traveler_ice_javelin_dmg': 712,
 });

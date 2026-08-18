@@ -20,9 +20,12 @@ export class FeatureMultiplierReaction extends FeatureMultiplier  {
      * @returns {number}
      */
     getTreeBonusMultiplier(data) {
+        let rate = this.reactionRate;
+        if (typeof rate == "function")
+            rate = rate(data);
         let parts = [
             new CConst({
-                value: this.reactionRate,
+                value: rate,
                 percent: true,
                 comment: 'reaction_ratio',
             }),

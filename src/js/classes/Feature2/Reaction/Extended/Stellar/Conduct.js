@@ -6,6 +6,7 @@ import { FeatureReactionStellarGlimmer } from "../StellarGlimmer";
 
 export class FeatureReactionStellarConduct extends FeatureReactionStellarGlimmer {
     constructor (params) {
+        params.damageType ||= 'stellardirect';
         if (!Array.isArray(params.tags))
             params.tags = [];
         params.tags.push('stellar_conduct_reaction');

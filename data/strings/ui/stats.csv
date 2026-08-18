@@ -70,11 +70,14 @@ stat;lunarcharged_multi;Бонус Базового урона Лунного з
 stat;lunarbloom_multi;Бонус Базового урона Лунной бутонизации;Lunar-Bloom Base Bonus
 stat;lunarcrystallize_multi;Бонус Базового урона Лунной кристаллизации;Lunar-Crystallize Base Bonus
 stat;stellar_conduct_multi;Бонус Базового урона Звёздного проводника;Stellar-Conduct Base Bonus
+stat;stellar_swirl_multi;Бонус Базового урона Звёздного рассеивания;Stellar Swirl Base Bonus
 stat;dmg_reaction_lunar_bonus;Возвышение Лунных реакций;Lunar reactions Elevation
 stat;dmg_reaction_lunarbloom_bonus;Возвышение Лунной бутонизации;Lunar-Bloom Elevation
 stat;dmg_reaction_lunarcharged_bonus;Возвышение Лунного заряда;Lunar-Charged Elevation
 stat;dmg_reaction_lunarcrystallize_bonus;Возвышение Лунной кристаллизации;Lunar-Crystallize Elevation
+stat;dmg_reaction_stellar_glimmer_bonus;Возвышение Звёздного блеска;Stellar Glimmer Elevation
 stat;dmg_reaction_stellar_conduct_bonus;Возвышение Звёздного проводника;Stellar-Conduct Elevation
+stat;dmg_reaction_stellar_swirl_bonus;Возвышение Звёздного рассеивания;Stellar Swirl Elevation
 
 stat;dmg_reaction_electrocharged;Урон Заряжен;Electro-Charged DMG
 stat;dmg_reaction_vaporize;Урон Пара;Vaporize DMG

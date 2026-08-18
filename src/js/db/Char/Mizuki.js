@@ -20,6 +20,7 @@ import { FeatureMultiplier } from "../../classes/Feature2/Multiplier";
 import { FeatureMultiplierList } from "../../classes/Feature2/Multiplier/List";
 import { FeatureMultiplierTarget } from "../../classes/Feature2/Multiplier/Target";
 import { FeaturePostEffectValue } from "../../classes/Feature2/PostEffectValue";
+import { FeatureReactionStellarSwirlLike } from "../../classes/Feature2/Reaction/Extended/Stellar/SwirlLike";
 import { PostEffectStats } from "../../classes/PostEffect/Stats";
 import { PostEffectStatsMastery } from "../../classes/PostEffect/Stats/Mastery";
 import { StatTable } from "../../classes/StatTable";
@@ -77,7 +78,11 @@ const Talents = new DbObjectTalents({
             },
             {
                 digits: 2,
-                table: new StatTable('yumemizuki_mizuki_elemental_mastery_based_swirl_dmg_increase', charTalentTables.Mizuki.s2.p2),
+                table: new StatTable('yumemizuki_mizuki_elemental_mastery_based_swirl_dmg_increase', charTalentTables.Mizuki.s2.p2, 0.01),
+            },
+            {
+                digits: 4,
+                table: new StatTable('yumemizuki_mizuki_elemental_mastery_based_stellar_swirl_dmg_increase', charTalentTables.Mizuki.s2.p6, 0.01),
             },
             {
                 unit: 'sec',
@@ -122,7 +127,6 @@ const Talents = new DbObjectTalents({
 });
 
 const A4Mastery = 100;
-const C1SwirlBonus = 1100;
 const C2ElemBonus = 4;
 const C6SwirlCritRate = 30;
 const C6SwirlCritDmg = 100;
@@ -132,6 +136,14 @@ const buffSwirl = new PostEffectStatsMastery({
     percent: Talents.getAlias('skill.yumemizuki_mizuki_elemental_mastery_based_swirl_dmg_increase', 'dmg_reaction_swirl'),
     conditions: [
         new ConditionBoolean({name: 'mizuki_dreamdrifter'}),
+    ],
+});
+
+const buffStellarSwirl = new PostEffectStatsMastery({
+    levelSetting: 'char_skill_elemental',
+    percent: Talents.getAlias('skill.yumemizuki_mizuki_elemental_mastery_based_stellar_swirl_dmg_increase', 'dmg_reaction_stellar_swirl'),
+    conditions: [
+        new ConditionBoolean({ name: 'mizuki_dreamdrifter' }),
     ],
 });
 
@@ -257,6 +269,49 @@ export const Mizuki = new DbObjectChar({
             ],
             condition: new ConditionBoolean({ name: 'yumemizuki_mizuki_vast_be_the_dream' }),
         }),
+        new FeatureReactionStellarSwirlLike({
+            element: 'anemo',
+            category: 'skill',
+            name: 'yumemizuki_mizuki_additional_attack_dmg',
+            multipliers: [
+                new FeatureMultiplier({
+                    source: 'yumemizuki_mizuki_vast_be_the_dream',
+                    scaling: 'mastery*',
+                    values: new ValueTable([charTalentTables.Mizuki.passsive[2][3]], 100),
+                }),
+            ],
+            condition: new ConditionBoolean({ name: 'yumemizuki_mizuki_vast_be_the_dream' }),
+        }),
+        new FeatureDamageSkill({
+            element: 'anemo',
+            name: 'yumemizuki_mizuki_in_mist_like_waters_dmg',
+            multipliers: [
+                new FeatureMultiplier({
+                    source: 'constellation1',
+                    scaling: 'mastery*',
+                    values: new ValueTable([charTalentTables.Mizuki.cons[0][0]], 100),
+                }),
+            ],
+            condition: new ConditionAnd([
+                new ConditionBoolean({ name: 'yumemizuki_mizuki_vast_be_the_dream' }),
+            ]),
+        }),
+        new FeatureReactionStellarSwirlLike({
+            element: 'anemo',
+            category: 'skill',
+            name: 'yumemizuki_mizuki_in_mist_like_waters_stellar_dmg',
+            multipliers: [
+                new FeatureMultiplier({
+                    source: 'constellation1',
+                    scaling: 'mastery*',
+                    values: new ValueTable([charTalentTables.Mizuki.cons[0][4]], 100),
+                }),
+            ],
+            condition: new ConditionAnd([
+                new ConditionBoolean({ name: 'yumemizuki_mizuki_vast_be_the_dream' }),
+                new ConditionBoolean({ name: 'allowed_stellar_swirl' }),
+            ]),
+        }),
         new FeatureDamageBurst({
             element: 'anemo',
             multipliers: [
@@ -305,6 +360,12 @@ export const Mizuki = new DbObjectChar({
             postEffect: buffSwirl,
             format: 'percent',
         }),
+        new FeaturePostEffectValue({
+            category: 'skill',
+            name: 'mizuki_stellar_swirl_bonus',
+            postEffect: buffStellarSwirl,
+            format: 'percent',
+        }),
         new FeatureDamageSkill({
             element: 'anemo',
             name: 'mizuki_twenty_three_nights_awaiting',
@@ -329,13 +390,22 @@ export const Mizuki = new DbObjectChar({
             format: 'percent',
             condition: new ConditionConstellation({constellation: 2}),
         }),
+        new FeaturePostEffectValue({
+            category: 'other',
+            name: 'mastery_bonus',
+            postEffect: new PostEffectStats({
+                from: 'mastery*',
+                percent: new StatTable('mastery', [charTalentTables.Mizuki.passsive[2][2]]),
+            }),
+            condition: new ConditionBoolean({ name: 'yumemizuki_mizuki_vast_be_the_dream' }),
+        }),
     ],
     conditions: [
         new ConditionBoolean({
             name: 'yumemizuki_mizuki_vast_be_the_dream',
             serializeId: 4,
             title: 'talent_name.yumemizuki_mizuki_vast_be_the_dream',
-            description: 'talent_descr.yumemizuki_mizuki_vast_be_the_dream',
+            description: 'talent_descr.yumemizuki_mizuki_vast_be_the_dream_1',
         }),
         new ConditionBoolean({
             name: 'mizuki_dreamdrifter',
@@ -369,7 +439,7 @@ export const Mizuki = new DbObjectChar({
         new FeatureMultiplier({
             scaling: 'mastery*',
             source: 'constellation1',
-            values: new ValueTable([C1SwirlBonus]),
+            values: new ValueTable([charTalentTables.Mizuki.cons[0][0]], 100),
             condition: new ConditionAnd([
                 new ConditionBoolean({name: 'mizuki_dreamdrifter'}),
                 new ConditionBoolean({name: 'mizuki_in_mist_like_waters'}),
@@ -380,9 +450,24 @@ export const Mizuki = new DbObjectChar({
                 isReactionFlatBonus: true,
             }),
         }),
+        new FeatureMultiplier({
+            scaling: 'mastery*',
+            source: 'constellation1',
+            values: new ValueTable([charTalentTables.Mizuki.cons[0][5]], 100),
+            condition: new ConditionAnd([
+                new ConditionBoolean({ name: 'mizuki_dreamdrifter' }),
+                new ConditionBoolean({ name: 'mizuki_in_mist_like_waters' }),
+                new ConditionConstellation({ constellation: 1 }),
+            ]),
+            target: new FeatureMultiplierTarget({
+                tags: ['stellar_swirl_reaction'],
+                isReactionFlatBonus: true,
+            }),
+        }),
     ],
     postEffects: [
         buffSwirl,
+        buffStellarSwirl,
         buffElemental,
         new PostEffectStats({
             from: 'mastery*',
@@ -492,6 +577,8 @@ export const Mizuki = new DbObjectChar({
                     stats: {
                         crit_rate_swirl: C6SwirlCritRate,
                         crit_dmg_swirl: C6SwirlCritDmg,
+                        crit_rate_stellar_swirl: charTalentTables.Mizuki.cons[5][6] * 100,
+                        crit_dmg_stellar_swirl: charTalentTables.Mizuki.cons[5][7] * 100,
                     },
                     hideCondition: new ConditionBoolean({ name: 'yumemizuki_mizuki_vast_be_the_dream' }),
                     condition: new ConditionAnd([
@@ -505,6 +592,8 @@ export const Mizuki = new DbObjectChar({
                     stats: {
                         crit_rate_swirl: C6SwirlCritRate,
                         crit_dmg_swirl: C6SwirlCritDmg,
+                        crit_rate_stellar_swirl: charTalentTables.Mizuki.cons[5][6] * 100,
+                        crit_dmg_stellar_swirl: charTalentTables.Mizuki.cons[5][7] * 100,
                     },
                     hideCondition: new ConditionBoolean({ name: 'yumemizuki_mizuki_vast_be_the_dream', invert: 1 }),
                     condition: new ConditionAnd([
@@ -531,7 +620,7 @@ export const Mizuki = new DbObjectChar({
                 name: 'party.yumemizuki_mizuki_vast_be_the_dream',
                 serializeId: 8,
                 title: 'talent_name.yumemizuki_mizuki_vast_be_the_dream',
-                description: 'talent_descr.yumemizuki_mizuki_vast_be_the_dream',
+                description: 'talent_descr.yumemizuki_mizuki_vast_be_the_dream_2',
             }),
             new Condition({
                 settings: {
@@ -569,9 +658,6 @@ export const Mizuki = new DbObjectChar({
                 description: 'talent_descr.yumemizuki_mizuki_in_mist_like_waters',
                 rotation: 'party',
                 info: {constellation: 1},
-                stats: {
-                    text_percent_dmg: C1SwirlBonus,
-                },
                 subConditions: [
                     new ConditionBoolean({name: 'party.mizuki_dreamdrifter'}),
                 ],
@@ -622,6 +708,8 @@ export const Mizuki = new DbObjectChar({
                 stats: {
                     crit_rate_swirl: C6SwirlCritRate,
                     crit_dmg_swirl: C6SwirlCritDmg,
+                    crit_rate_stellar_swirl: charTalentTables.Mizuki.cons[5][6] * 100,
+                    crit_dmg_stellar_swirl: charTalentTables.Mizuki.cons[5][7] * 100,
                 },
             }),
         ],
@@ -629,13 +717,26 @@ export const Mizuki = new DbObjectChar({
             new FeatureMultiplier({
                 scaling: 'mizuki_mastery',
                 source: 'yumemizuki_mizuki',
-                values: new ValueTable([C1SwirlBonus]),
+                values: new ValueTable([charTalentTables.Mizuki.cons[0][0]], 100),
                 condition: new ConditionAnd([
                     new ConditionBoolean({name: 'party.mizuki_dreamdrifter'}),
                     new ConditionBoolean({name: 'party.mizuki_in_mist_like_waters'}),
                 ]),
                 target: new FeatureMultiplierTarget({
                     tags: ['swirl'],
+                    isReactionFlatBonus: true,
+                }),
+            }),
+            new FeatureMultiplier({
+                scaling: 'mizuki_mastery',
+                source: 'yumemizuki_mizuki',
+                values: new ValueTable([charTalentTables.Mizuki.cons[0][5]], 100),
+                condition: new ConditionAnd([
+                    new ConditionBoolean({ name: 'party.mizuki_dreamdrifter' }),
+                    new ConditionBoolean({ name: 'party.mizuki_in_mist_like_waters' }),
+                ]),
+                target: new FeatureMultiplierTarget({
+                    tags: ['stellar_swirl_reaction'],
                     isReactionFlatBonus: true,
                 }),
             }),
@@ -647,6 +748,21 @@ export const Mizuki = new DbObjectChar({
                 percent: Talents.getAlias('skill.yumemizuki_mizuki_elemental_mastery_based_swirl_dmg_increase', 'dmg_reaction_swirl'),
                 conditions: [
                     new ConditionBoolean({name: 'party.mizuki_dreamdrifter'}),
+                ],
+            }),
+            new PostEffectStats({
+                from: 'mizuki_mastery',
+                levelSetting: 'mizuki_char_skill_elemental',
+                percent: Talents.getAlias('skill.yumemizuki_mizuki_elemental_mastery_based_stellar_swirl_dmg_increase', 'dmg_reaction_stellar_swirl'),
+                conditions: [
+                    new ConditionBoolean({ name: 'party.mizuki_dreamdrifter' }),
+                ],
+            }),
+            new PostEffectStats({
+                from: 'mizuki_mastery',
+                percent: new StatTable('mastery', [charTalentTables.Mizuki.passsive[2][2]]),
+                conditions: [
+                    new ConditionBoolean({ name: 'party.mizuki_dreamdrifter' }),
                 ],
             }),
             new PostEffectStats({

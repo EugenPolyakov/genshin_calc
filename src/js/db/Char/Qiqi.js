@@ -438,8 +438,10 @@ export const Qiqi = new DbObjectChar({
             title: 'talent_name.qiqi_seven_sacred_treasures',
             description: 'talent_descr.qiqi_seven_sacred_treasures_2',
             stats: {
-                dmg_reaction_stellar_conduct: charTalentTables.Qiqi.passsive[1][0] * 100,
-                dmg_reaction_superconduct: charTalentTables.Qiqi.passsive[1][0] * 100,
+                dmg_reaction_stellar_conduct: charTalentTables.Qiqi.passsive[2][1] * 100,
+                dmg_reaction_superconduct: charTalentTables.Qiqi.passsive[2][1] * 100,
+                dmg_reaction_stellar_swirl: charTalentTables.Qiqi.passsive[2][1] * 100,
+                dmg_reaction_swirl_cryo: charTalentTables.Qiqi.passsive[2][1] * 100,
             },
             condition: new ConditionAnd([
                 new ConditionBoolean({ name: 'qiqi_seven_sacred_treasures' }),
@@ -589,8 +591,10 @@ export const Qiqi = new DbObjectChar({
                 title: 'talent_name.qiqi_seven_sacred_treasures',
                 description: 'talent_descr.qiqi_seven_sacred_treasures_2',
                 stats: {
-                    dmg_reaction_stellar_conduct: charTalentTables.Qiqi.passsive[1][0] * 100,
-                    dmg_reaction_superconduct: charTalentTables.Qiqi.passsive[1][0] * 100,
+                    dmg_reaction_stellar_conduct: charTalentTables.Qiqi.passsive[2][1] * 100,
+                    dmg_reaction_superconduct: charTalentTables.Qiqi.passsive[2][1] * 100,
+                    dmg_reaction_stellar_swirl: charTalentTables.Qiqi.passsive[2][1] * 100,
+                    dmg_reaction_swirl_cryo: charTalentTables.Qiqi.passsive[2][1] * 100,
                 },
                 condition: new ConditionAnd([
                     new ConditionBoolean({ name: 'party.qiqi_seven_sacred_treasures' }),

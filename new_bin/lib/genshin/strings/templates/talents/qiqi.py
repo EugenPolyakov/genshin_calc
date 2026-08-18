@@ -33,9 +33,13 @@ char_qiqi = TemplateList(
         sentences=[
             ['15:ignore'],
             [],
+            [],
+            [],
             ['50:dmg_reaction_stellar_conduct'],
             [],
+            ['50:dmg_reaction_stellar_swirl'],
             [],
+            ['8:ignore'],
         ],
         results=[
             [0],
@@ -102,10 +106,11 @@ char_qiqi = TemplateList(
             ['4:ignore'],
             ['1:ignore', '600:'],
             ['12:ignore'],
+            [],
         ],
         results=[
-            list(range(0, 8)),
-            ['После', 5, 6, 7],
+            list(range(0, 9)),
+            ['После', 5, 6, 7, 8],
         ],
     ),
     rite_of_resurrection_hex_eng=Template(

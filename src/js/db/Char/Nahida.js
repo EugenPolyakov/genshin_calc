@@ -322,7 +322,7 @@ export const Nahida = new DbObjectChar({
         }),
         new FeaturePostEffectValue({
             category: 'other',
-            name: 'nahida_mastery_bonus',
+            name: 'mastery_bonus',
             postEffect: masteryBuffPost,
             condition: new ConditionAscensionChar({ascension: 1}),
         }),

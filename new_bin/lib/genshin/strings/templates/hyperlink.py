@@ -1,5 +1,17 @@
 from ..template import Template
 
+n11130002_rus = Template(
+    replace = {
+        '{PARAM#P1132101|5S100}': '0,24',
+    },
+)
+
+n11130002_eng = Template(
+    replace = {
+        '{PARAM#P1132101|5S100}': '0.24',
+    },
+)
+
 n11220001 = Template(
     replace = {
         '{PARAM#P1223201|3S1}': '3',
@@ -12,6 +24,27 @@ n11220003 = Template(
         '{PARAM#P1222101|1S1}': '3',
         '{PARAM#P1222101|2S1}': '9',
     },
+)
+
+n10050001 = Template(
+    names=['защита'],
+    sentences=[
+        [],
+        [],
+        ['10:'],
+        [],
+        ['20:'],
+        [],
+        ['20:'],
+        [],
+        ['60:'],
+        [],
+        ['20:'],
+        [],
+        ['20:'],
+        [],
+        ['20:'],
+    ],
 )
 
 n11260001 = Template(

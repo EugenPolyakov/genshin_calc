@@ -81,7 +81,9 @@ const dmgStatsList = [
     '!dmg_reaction_lunarcrystallize_bonus',
     '!dmg_reaction_lunarbloom_bonus',
     '!dmg_reaction_lunarcharged_bonus',
-    'dmg_reaction_stellar_conduct_bonus',
+    'dmg_reaction_stellar_glimmer_bonus',
+    '!dmg_reaction_stellar_conduct_bonus',
+    '!dmg_reaction_stellar_swirl_bonus',
 ];
 
 const reactionStatList = {

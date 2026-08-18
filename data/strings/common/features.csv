@@ -42,7 +42,7 @@ feature_other;lunarcharged_base_bonus;Базовый урон Лунного з�
 feature_other;lunarbloom_base_bonus;Базовый урон Лунной бутонизации;Lunar-Bloom Base Bonus
 feature_other;lunarcrystallize_base_bonus;Базовый урон Лунной кристаллизации;Lunar-Crystallize Base Bonus
 feature_other;lunar_base_bonus;Базовый урон Лунных реакций;Lunar reaction Base Bonus
-feature_other;stellarconduct_base_bonus;Базовый урон Лунных реакций;Lunar reaction Base Bonus
+feature_other;stellarglimmer_base_bonus;Базовый урон реакций Звёздного блеска;Stellar Glimmer reaction Base Bonus
 feature_other;heal;Лечение;Heal
 feature_reaction;amplifying;Мультипликативные реакции;Amplifying Reactions
 feature_reaction;transformative;Трансформативные реакции;Transformative Reactions
@@ -57,6 +57,12 @@ feature_reaction;lunarcharged_contrubution_12;Вклад в Лунный зар�
 feature_reaction;lunarcrystallize_contrubution;Вклад в Лунный кристалл;Lunar-Crystallize Contribution
 feature_reaction;lunarcrystallize_contrubution_2;Вклад в Лунный кристалл / 2;Lunar-Crystallize Contribution / 2
 feature_reaction;lunarcrystallize_contrubution_12;Вклад в Лунный кристалл / 12;Lunar-Crystallize Contribution / 12
+feature_reaction;stellar_swirl_contrubution_1;Вклад в Звёздное Рассеивание 60%;Stellar Swirl Contribution 60%
+feature_reaction;stellar_swirl_contrubution_2;Вклад в Звёздное Рассеивание 30%;Stellar Swirl Contribution 30%
+feature_reaction;stellar_swirl_contrubution_3;Вклад в Звёздное Рассеивание 5%;Stellar Swirl Contribution 5%
+feature_reaction;stellar_swirl_vortex_contrubution_1;Вклад в Звёздный Вихрь 60%;Stellar Vortex Contribution 60%
+feature_reaction;stellar_swirl_vortex_contrubution_2;Вклад в Звёздный Вихрь 30%;Stellar Vortex Contribution 30%
+feature_reaction;stellar_swirl_vortex_contrubution_3;Вклад в Звёздный Вихрь 5%;Stellar Vortex Contribution 5%
 feature_reaction;melt;Таяние;Melt
 feature_reaction;none;Без реакции;No reaction
 feature_reaction;overloaded;Перегрузка;Overloaded
@@ -104,7 +110,8 @@ feature_rotation;pyro;Пиро урон;Pyro DMG
 feature_rotation;reaction;Трансформ. реакции;Transform. Reactions
 feature_rotation;lunarreaction;Лунные реакции;Lunar Reactions
 feature_rotation;lunardirect;Лунный урон;Direct Lunar DMG
-feature_rotation;stellarconductreaction;Звёздный урон;Stellar-Conduct DMG
+feature_rotation;stellardirect;Урон Звёздного блеска;Stellar Glimmer DMG
+feature_rotation;stellarglimmerreaction; Реакции Звёздного блеска;Stellar Glimmer Reactions
 feature_rotation;skill;Элемент. навык;Elemental Skill
 feature_rotation;total;Урона всего;Total DMG
 feature_rotation;heal_total;Лечения всего;Total Healing

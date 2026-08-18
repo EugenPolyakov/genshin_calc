@@ -1,13 +1,13 @@
 class EmptyCharGenerator:
     def header(self): return
 
-    def set_charName(self, char_id, charVarName: str): return
+    def set_charName(self, char_key, charVarName: str, char_id: str): return
 
     def talent_begin(self, char_id, skill_id, index, skill_type): return
 
     def end_talent(self, char_id): return
 
-    def add_param(self, paramName: str, params_indices): return
+    def add_param(self, char_key, paramName: str, params_indices): return
 
     def skillmult(self, elem, name, vals, isChild): return
 
@@ -17,18 +17,19 @@ class EmptyCharGenerator:
 
     def begin_constellation(self, char_id): return
 
-    def constellation(self, talent_id, noDescr, hasHex): return
+    def constellation(self, char_key, talent_id, noDescr, hasHex): return
 
     def end_char(self): return
 
 class CharGenerator(EmptyCharGenerator):
-    def __init__(self, char_id: str):
-        self.char_id = char_id
+    def __init__(self, char_key: str):
+        self.char_key = char_key
         self.feature_list = []
 
     def header(self):
         print('import { Condition } from "../../classes/Condition";')
         print('import { ConditionAscensionChar } from "../../classes/Condition/Ascension/Char";')
+        print('import { ConditionBoolean } from "../../classes/Condition/Boolean";')
         print('import { ConditionStatic } from "../../classes/Condition/Static";')
         print('import { DbObjectChar } from "../../classes/DbObject/Char";')
         print('import { DbObjectConstellation } from "../../classes/DbObject/Constellation";')
@@ -44,12 +45,13 @@ class CharGenerator(EmptyCharGenerator):
         print()
         print("const Talents = new DbObjectTalents({")
 
-    def set_charName(self, char_id, charVarName: str):
-        if self.char_id == char_id:
+    def set_charName(self, char_key, charVarName: str, char_id: str):
+        if self.char_key == char_key:
             self.charVarName = charVarName
+            self.char_id = char_id
 
-    def talent_begin(self, char_id, skill_id, index, skill_type):
-        if self.char_id == char_id:
+    def talent_begin(self, char_key, skill_id, index, skill_type):
+        if self.char_key == char_key:
             print(f"    {skill_type[8:]}: {{")
             print(f"        gameId: charTalentTables.{self.charVarName}.s{index}_id,")
             print(f"        title: 'talent_name.{skill_id}',")
@@ -57,12 +59,14 @@ class CharGenerator(EmptyCharGenerator):
             print("        items: [")
             self.feature_list.append({'index': index, 'elements': [], 'type': skill_type})
 
-    def end_talent(self, char_id):
-        if self.char_id == char_id:
+    def end_talent(self, char_key):
+        if self.char_key == char_key:
             print("        ],")
             print("    },")
 
-    def add_param(self, paramName: str, params_indices):
+    def add_param(self, char_key, paramName: str, params_indices):
+        if self.char_key != char_key:
+            return
         lst = paramName.split('/')
         last = self.feature_list[len(self.feature_list) - 1]
         id = last['index']
@@ -120,8 +124,8 @@ class CharGenerator(EmptyCharGenerator):
             print("            ],")
             print("        }),")
 
-    def begin_char(self, char_id, skiped_features):
-        if self.char_id == char_id:
+    def begin_char(self, char_key, skiped_features):
+        if self.char_key == char_key:
             print(f"    links: charTalentTables.{self.charVarName}.links,")
             print("});")
             print()
@@ -145,8 +149,8 @@ class CharGenerator(EmptyCharGenerator):
             print("    ],")
             print("    conditions: [")
 
-    def condition(self, char_id, talent_id, needAvatarPromoteLevel):
-        if self.char_id == char_id:
+    def condition(self, char_key, talent_id, needAvatarPromoteLevel):
+        if self.char_key == char_key:
             print("        new ConditionStatic({")
             print(f"            name: '{talent_id}',")
             print("            serializeId: 1,")
@@ -157,14 +161,16 @@ class CharGenerator(EmptyCharGenerator):
                 print(f"            condition: new ConditionAscensionChar({{ ascension: {needAvatarPromoteLevel} }}),")
             print("        }),")
 
-    def begin_constellation(self, char_id):
-        if self.char_id == char_id:
+    def begin_constellation(self, char_key):
+        if self.char_key == char_key:
             print("    ],")
             print("    multipliers: [")
             print("    ],")
             print("    constellation: new DbObjectConstellation([")
 
-    def constellation(self, talent_id, noDescr, hasHex):
+    def constellation(self, char_key, talent_id, noDescr, hasHex):
+        if self.char_key != char_key:
+            return
         print("        {")
         print("            conditions: [")
         if noDescr:

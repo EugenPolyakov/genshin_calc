@@ -100,28 +100,16 @@ char_sandrone = TemplateList(
             ['100:', '10:'],
         ],
     ),
-    light_of_rationalisme_rus=Template(
+    light_of_rationalisme=Template(
         sentences=[
+            ['8:ignore'],
+            [],
             ['0.7:', '100:'],
             ['14:'],
-            [],
-            [],
         ],
         results=[
             [0, 1, 2, 3],
-            [0, 1],
-        ],
-    ),
-    light_of_rationalisme_eng=Template(
-        sentences=[
-            ['100:', '0.7:'],
-            ['14:'],
-            [],
-            [],
-        ],
-        results=[
-            [0, 1, 2, 3],
-            [0, 1],
+            [2, 3],
         ],
     ),
     morrow_after_the_golden_dusk=Template(
@@ -138,14 +126,14 @@ char_sandrone = TemplateList(
     ),
     in_knowledge_lies_the_worlds_true_ground_rus=Template(
         sentences=[
-            ['125:'],
+            ['125:', '187.5:'],
             [],
             ['4:ignore'],
         ],
     ),
     in_knowledge_lies_the_worlds_true_ground_eng=Template(
         sentences=[
-            ['125:'],
+            ['125:', '187.5:'],
             ['4:ignore'],
         ],
     ),
@@ -154,15 +142,28 @@ char_sandrone = TemplateList(
             [],
             ['4:ignore', '100:'],
             [],
-            ['4:ignore', '80:'],
+            ['4:ignore'],
             [],
+            ['80:'],
             [],
-            ['20:dmg_reaction_stellar_conduct_bonus'],
+            ['120:'],
+            [],
+            ['20:dmg_reaction_stellar_glimmer_bonus'],
         ],
     ),
-    # name=Template(
-    #     sentences=[
-    #         [],
-    #     ],
-    # ),
+    narcissus_wakes_her_eyes_upon_the_dawn_eng=Template(
+        sentences=[
+            [],
+            ['4:ignore', '100:'],
+            [],
+            ['4:ignore'],
+            [],
+            [],
+            ['80:'],
+            [],
+            ['120:'],
+            [],
+            ['20:dmg_reaction_stellar_glimmer_bonus'],
+        ],
+    ),
 )

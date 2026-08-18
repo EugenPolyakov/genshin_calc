@@ -19,6 +19,7 @@ const REACTION_BONUS_STATS = [
     'dmg_reaction_lunarbloom_bonus',
     'dmg_reaction_lunarcharged_bonus',
     'dmg_reaction_stellar_conduct_bonus',
+    'dmg_reaction_stellar_swirl_bonus',
     'dmg_reaction_vaporize',
     'dmg_reaction_melt',
     'dmg_reaction_swirl_pyro',

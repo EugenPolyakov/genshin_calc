@@ -1,14 +1,6 @@
 import re
 from .genshin.utils import to_float32
 
-weapon_stamina_cost = {
-    'WEAPON_CLAYMORE': 40,
-    'WEAPON_POLE': 25,
-    'WEAPON_CATALYST': 50,
-    'WEAPON_BOW': 0,
-    'WEAPON_SWORD_ONE_HAND': 20,
-}
-
 WEAPON_TYPES = {
     'WEAPON_SWORD_ONE_HAND': 'sword',
     'WEAPON_CLAYMORE': 'claymore',
@@ -247,7 +239,7 @@ char_ids = {
     702: 'TravelerPyro',
     503: 'TravelerHydro',
     504: 'TravelerAnemo',
-    # 705: 'TravelerCryo',
+    705: 'TravelerCryo',
     706: 'TravelerGeo',
     707: 'TravelerElectro',
     508: 'TravelerDendro',
@@ -389,9 +381,6 @@ def trimToVal(value, scale = None):
     if val.is_integer():
         return int(val)
     return val
-
-def getStaminaCost(weapon_type):
-    return weapon_stamina_cost.get(weapon_type, 0);
 
 def getStatByName(name):
     if name in stat_info:
