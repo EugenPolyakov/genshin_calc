@@ -4,6 +4,7 @@ from .aino import char_aino  # noqa
 from .albedo import char_albedo  # noqa
 from .alhaitham import char_alhaitham  # noqa
 from .aloy import char_aloy  # noqa
+from .alyosha import char_alyosha  # noqa
 from .amber import char_amber  # noqa
 from .arataki_itto import char_arataki_itto  # noqa
 from .arlecchino import char_arlecchino  # noqa

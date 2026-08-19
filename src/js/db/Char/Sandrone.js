@@ -94,6 +94,8 @@ const Talents = new DbObjectTalents({
         description: 'talent_descr.sandrone_q_e_d',
         items: [
             {
+                type: 'multihit',
+                hits: 3,
                 table: new StatTable('sandrone_bombardment_dmg', charTalentTables.Sandrone.s3.p1),
             },
             {
@@ -436,8 +438,27 @@ export const Sandrone = new DbObjectChar({
                 new ConditionBoolean({ name: 'common.radiance_stellar_swirl' }),
             ]),
         }),
-        new FeatureDamageBurst({
+        new FeatureDamageMultihit({
+            category: 'burst',
+            damageType: 'burst',
             element: 'cryo',
+            name: 'sandrone_bombardment_dmg',
+            items: [
+                {
+                    hits: 4,
+                    multipliers: [
+                        new FeatureMultiplier({
+                            leveling: 'char_skill_burst',
+                            values: Talents.get('burst.sandrone_bombardment_dmg'),
+                        }),
+                    ],
+                }
+            ],
+        }),
+        new FeatureDamageBurst({
+            isChild: true,
+            element: 'cryo',
+            name: 'sandrone_bombardment_dmg_1_hit',
             multipliers: [
                 new FeatureMultiplier({
                     leveling: 'char_skill_burst',

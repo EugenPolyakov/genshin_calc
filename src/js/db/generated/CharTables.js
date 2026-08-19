@@ -204,6 +204,54 @@ export const charTables = {
 			multi: 100,
 		}),
 	],
+	Alyosha: [
+		new StatTableAscensionScale({
+			stat: 'atk_base',
+			base: 22.26,
+			ascension: new ValueTable([16.62975, 28.445625, 44.200127, 56.016, 67.83188, 79.64775]),
+			scale: charScales.s4atk,
+		}),
+		new StatTableAscensionScale({
+			stat: 'burst_energy_cost',
+			base: 70,
+		}),
+		new StatTableAscensionScale({
+			stat: 'charged_stamina_cost',
+			base: 25,
+		}),
+		new StatTableAscensionScale({
+			stat: 'crit_dmg_base',
+			base: 0.5,
+			multi: 100,
+		}),
+		new StatTableAscensionScale({
+			stat: 'crit_rate_base',
+			base: 0.05,
+			multi: 100,
+		}),
+		new StatTableAscensionScale({
+			stat: 'def_base',
+			base: 58.94175,
+			ascension: new ValueTable([44.0325, 75.31875, 117.03375, 148.32, 179.60625, 210.8925]),
+			scale: charScales.s4hp,
+		}),
+		new StatTableAscensionScale({
+			stat: 'hp_base',
+			base: 1002.9701,
+			ascension: new ValueTable([749.27, 1281.6461, 1991.4808, 2523.857, 3056.233, 3588.6091]),
+			scale: charScales.s4hp,
+		}),
+		new StatTableAscensionScale({
+			stat: 'mastery_base',
+			base: 0,
+		}),
+		new StatTableAscensionScale({
+			stat: 'recharge_base',
+			base: 1,
+			multi: 100,
+			ascension: new ValueTable([0, 0.0667, 0.1333, 0.1333, 0.2, 0.2667], 100),
+		}),
+	],
 	Amber: [
 		new StatTableAscensionScale({
 			stat: 'atk_base',

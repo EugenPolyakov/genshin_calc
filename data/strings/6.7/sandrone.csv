@@ -6,3 +6,4 @@ feature_other;sandrone_additional_condensed_beam_dmg;Урон дополните
 feature_attack;sandrone_charged_attack_enhanced_condensed_beam_dmg;Урон усиленного конденсационного луча заряженной атаки;Charged Attack Enhanced Condensed Beam DMG
 feature_attack;sandrone_charged_attack_enhanced_condensed_beam_stellar_conduct_dmg;Усиленный конденсационный луч заряженной атаки: урон Звёздного проводника;Charged Attack Enhanced Condensed Beam Stellar-Conduct DMG
 feature_attack;sandrone_charged_attack_enhanced_condensed_beam_stellar_swirl_dmg;Усиленный конденсационный луч заряженной атаки: урон Звёздного рассеивания;Charged Attack Enhanced Condensed Beam Stellar Swirl DMG
+feature_burst;sandrone_bombardment_dmg_1_hit;Урон бомбардировки 1 удар;Bombardment DMG 1-Hit

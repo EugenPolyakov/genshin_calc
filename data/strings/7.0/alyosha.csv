@@ -1,0 +1,4 @@
+category;name;rus;eng
+feature_other;alyosha_heal;Дополнительное лечение;Additional Heal
+talent_name;alyosha_hunters_precision;Меткость охотника;Hunter's Precision
+talent_descr;alyosha_hunters_precision;На %{text} сек. повышает силу атаки персонажа на поле на %{atk_percent};Increases the active character's ATK by %{atk_percent} for %{text} seconds.

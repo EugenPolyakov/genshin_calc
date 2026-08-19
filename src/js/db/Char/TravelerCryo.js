@@ -647,7 +647,6 @@ export const TravelerCryo = new DbObjectChar({
             condition: new ConditionAscensionChar({ ascension: 4 }),
         }),
         new FeaturePostEffectValue({
-            category: 'other',
             name: 'stellarglimmer_base_bonus',
             format: 'percent',
             postEffect: stellarPost,
@@ -777,7 +776,7 @@ export const TravelerCryo = new DbObjectChar({
             conditions: [
                 new Condition({
                     settings: {
-                        char_skill_burst_bonus: 3, char_skill_elemental_bonus: 3,
+                        char_skill_burst_bonus: 3,
                     },
                 }),
             ],
@@ -795,7 +794,7 @@ export const TravelerCryo = new DbObjectChar({
             conditions: [
                 new Condition({
                     settings: {
-                        char_skill_burst_bonus: 3, char_skill_elemental_bonus: 3,
+                        char_skill_elemental_bonus: 3,
                     },
                 }),
             ],

@@ -114,6 +114,35 @@ old_values = {
         1: "cd", #Default
         2: "energy_cost", #Default
     },
+#alyosha
+    #skirmishing_spear
+    (11481, 14831): {
+        0: "normal_hit_1", #Default
+        1: "normal_hit_2", #Default
+        2: "normal_hit_3", #Default
+        3: "normal_hit_4", #Default
+        4: "charged_hit", #Default
+        5: "stamina_cost", #Default
+        6: "plunge", #Default
+        7: "plunge_low/plunge_high", #Default
+    },
+    #thunderbolt_strike
+    (11482, 14832): {
+        0: "press_dmg", #Default
+        1: "hold_dmg", #Default
+        2: "cd", #Default
+        3: "hunters_mark_duration",
+        4: "hunters_precision_atk_bonus",
+        5: "hunters_precision_duration",
+    },
+    #hunters_advance
+    (11485, 14839): {
+        0: "fulgurite_hunting_field_dmg",
+        1: "tugarin_dmg",
+        2: "duration", #Default
+        3: "cd", #Default
+        4: "energy_cost", #Default
+    },
 #amber
     #sharpshooter
     (10041, 2131): {
