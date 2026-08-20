@@ -736,4 +736,13 @@ export const Rotation = new DbObjectRotation({
 
     'skill.traveler_ice_crystal_dmg': 711,
     'burst.traveler_ice_javelin_dmg': 712,
+
+    'skill.odette_coda_at_dawns_tolling_dot': 713,
+    'skill.odette_coda_at_dawns_tolling_dmg': 714,
+    'skill.odette_plume_dance_move_dmg': 715,
+    'skill.odette_wing_dance_move_dmg': 716,
+    'burst.odette_slash_dmg': 717,
+    'burst.odette_final_slash_dmg': 718,
+    'skill.odette_coda_at_dawns_tolling_additional_dmg': 719,
+    'other.odette_assist_dmg': 720,
 });

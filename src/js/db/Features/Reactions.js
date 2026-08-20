@@ -234,11 +234,14 @@ export const Reactions = [
                 reactionValue: reactionDamageValues,
             })
         ],
-        condition: new ConditionOr([
-            new ConditionBooleanCharElement({element: ['cryo', 'electro', 'anemo']}),
-            new ConditionBoolean({name: 'allowed_infusion_cryo'}),
-            new ConditionBoolean({name: 'allowed_infusion_anemo'}),
-            new ConditionBoolean({name: 'allowed_infusion_electro'}),
+        condition: new ConditionAnd([
+            new ConditionOr([
+                new ConditionBooleanCharElement({element: ['cryo', 'electro', 'anemo']}),
+                new ConditionBoolean({name: 'allowed_infusion_cryo'}),
+                new ConditionBoolean({name: 'allowed_infusion_anemo'}),
+                new ConditionBoolean({name: 'allowed_infusion_electro'}),
+            ]),
+            new ConditionBoolean({ name: 'allowed_stellar_conduct', invert: 1 }),
         ]),
     }),
     new FeatureReactionLunarCrystallize({

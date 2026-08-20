@@ -24,6 +24,7 @@ import { FeatureReactionStellarSwirlLike } from "../../classes/Feature2/Reaction
 import { PostEffectStats } from "../../classes/PostEffect/Stats";
 import { StatTable } from "../../classes/StatTable";
 import { ValueTable } from "../../classes/ValueTable";
+import { conditionDefaultAttack, conditionStellarConductAttack, conditionStellarSwirlAttack } from "../Utils";
 import { charTables } from "../generated/CharTables";
 import { charTalentTables } from "../generated/CharTalentTables";
 
@@ -133,6 +134,30 @@ const stellarPost = new PostEffectStats({
     statCap: new ValueTable([charTalentTables.Sandrone.passsive[2][1] * 100]),
 });
 
+export const stellarGlimmerConditions = [
+    new ConditionBoolean({
+        name: 'common.enemy_superconduct',
+        serializeId: 1,
+        title: 'talent_name.n11330003',
+        description: 'talent_descr.n11330003',
+        customStats: [
+            new ConditionStacks({
+                name: 'common.polestar_field_stacks',
+                serializeId: 3,
+                title: 'buff_view.stacks_count',
+                maxStacks: 12,
+            }),
+        ],
+    }),
+    new ConditionStacks({
+        name: 'common.radiance_stellar_swirl',
+        serializeId: 2,
+        maxStacks: 2,
+        title: 'talent_name.stellar_vortex',
+        description: 'talent_descr.stellar_vortex',
+    }),
+];
+
 export const Sandrone = new DbObjectChar({
     name: 'sandrone',
     serializeId: 123,
@@ -191,10 +216,7 @@ export const Sandrone = new DbObjectChar({
                     values: Talents.get('attack.sandrone_charged_attack_condensed_beam_dmg'),
                 }),
             ],
-            condition: new ConditionAnd([
-                new ConditionBoolean({ name: 'common.enemy_superconduct', invert: 1 }),
-                new ConditionBoolean({ name: 'common.radiance_stellar_swirl', invert: 1 }),
-            ]),
+            condition: conditionDefaultAttack,
         }),
         new FeatureReactionStellarConduct({
             category: 'attack',
@@ -227,7 +249,7 @@ export const Sandrone = new DbObjectChar({
                     },
                 }];
             },
-            condition: new ConditionBoolean({ name: 'common.enemy_superconduct' }),
+            condition: conditionStellarConductAttack,
         }),
         new FeatureReactionStellarSwirlLike({
             category: 'attack',
@@ -260,10 +282,7 @@ export const Sandrone = new DbObjectChar({
                     },
                 }];
             },
-            condition: new ConditionAnd([
-                new ConditionBoolean({ name: 'common.enemy_superconduct', invert: 1 }),
-                new ConditionBoolean({ name: 'common.radiance_stellar_swirl' }),
-            ]),
+            condition: conditionStellarSwirlAttack,
         }),
         new FeatureDamageCharged({
             element: 'cryo',
@@ -415,7 +434,7 @@ export const Sandrone = new DbObjectChar({
                     values: Talents.get('skill.sandrone_prism_shot_stellar_conduct_dmg'),
                 }),
             ],
-            condition: new ConditionBoolean({ name: 'common.enemy_superconduct' }),
+            condition: conditionStellarConductAttack,
         }),
         new FeatureReactionStellarSwirlLike({
             category: 'skill',
@@ -433,10 +452,7 @@ export const Sandrone = new DbObjectChar({
                     values: Talents.get('skill.sandrone_prism_shot_stellar_swirl_dmg'),
                 }),
             ],
-            condition: new ConditionAnd([
-                new ConditionBoolean({ name: 'common.enemy_superconduct', invert: 1 }),
-                new ConditionBoolean({ name: 'common.radiance_stellar_swirl' }),
-            ]),
+            condition: conditionStellarSwirlAttack,
         }),
         new FeatureDamageMultihit({
             category: 'burst',
@@ -476,10 +492,7 @@ export const Sandrone = new DbObjectChar({
                     values: Talents.get('burst.sandrone_convective_inhibition_ray_dmg'),
                 }),
             ],
-            condition: new ConditionAnd([
-                new ConditionBoolean({ name: 'common.enemy_superconduct', invert: 1 }),
-                new ConditionBoolean({ name: 'common.radiance_stellar_swirl', invert: 1 }),
-            ]),
+            condition: conditionDefaultAttack,
         }),
         new FeatureReactionStellarConduct({
             category: 'burst',
@@ -509,7 +522,7 @@ export const Sandrone = new DbObjectChar({
                     values: Talents.get('burst.sandrone_convective_inhibition_ray_stellar_conduct_dmg'),
                 }),
             ],
-            condition: new ConditionBoolean({ name: 'common.enemy_superconduct' }),
+            condition: conditionStellarConductAttack,
         }),
         new FeatureReactionStellarSwirlLike({
             category: 'burst',
@@ -539,10 +552,7 @@ export const Sandrone = new DbObjectChar({
                     values: Talents.get('burst.sandrone_convective_inhibition_ray_stellar_swirl_dmg'),
                 }),
             ],
-            condition: new ConditionAnd([
-                new ConditionBoolean({ name: 'common.enemy_superconduct', invert: 1 }),
-                new ConditionBoolean({ name: 'common.radiance_stellar_swirl' }),
-            ]),
+            condition: conditionStellarSwirlAttack,
         }),
         new FeaturePostEffectValue({
             category: 'other',
@@ -558,18 +568,7 @@ export const Sandrone = new DbObjectChar({
         }),
     ],
     conditions: [
-        new ConditionBoolean({
-            name: 'common.enemy_superconduct',
-            serializeId: 3,
-            title: 'talent_name.n11330003',
-        }),
-        new ConditionStacks({
-            name: 'common.radiance_stellar_swirl',
-            serializeId: 5,
-            maxStacks: 2,
-            title: 'talent_name.stellar_vortex',
-            description: 'talent_descr.stellar_vortex',
-        }),
+        ...stellarGlimmerConditions,
         new ConditionBoolean({
             name: 'sandrone_eternal_speculation_engine',
             serializeId: 4,
@@ -586,7 +585,7 @@ export const Sandrone = new DbObjectChar({
         }),
         new ConditionStacks({
             name: 'sandrone_refined_tactics',
-            serializeId: 1,
+            serializeId: 6,
             title: 'talent_name.sandrone_refined_tactics',
             info: { ascension: 1 },
             maxStacks: 10,
@@ -640,7 +639,7 @@ export const Sandrone = new DbObjectChar({
             conditions: [
                 new ConditionStacks({
                     name: 'sandrone_an_heiress_gazed_into_the_looking_glass',
-                    serializeId: 2,
+                    serializeId: 5,
                     title: 'talent_name.sandrone_an_heiress_gazed_into_the_looking_glass',
                     description: 'talent_descr.sandrone_an_heiress_gazed_into_the_looking_glass',
                     maxStacks: 3,
@@ -696,7 +695,7 @@ export const Sandrone = new DbObjectChar({
                             values: new ValueTable([charTalentTables.Sandrone.cons[3][0]], 100),
                         }),
                     ],
-                    condition: new ConditionBoolean({ name: 'common.enemy_superconduct' }),
+                    condition: conditionStellarConductAttack,
                 }),
                 new FeatureReactionStellarSwirlLike({
                     category: 'other',
@@ -708,10 +707,7 @@ export const Sandrone = new DbObjectChar({
                             values: new ValueTable([charTalentTables.Sandrone.cons[3][2]], 100),
                         }),
                     ],
-                    condition: new ConditionAnd([
-                        new ConditionBoolean({ name: 'common.enemy_superconduct', invert: 1 }),
-                        new ConditionBoolean({ name: 'common.radiance_stellar_swirl' }),
-                    ]),
+                    condition: conditionStellarSwirlAttack,
                 }),
             ],
         },

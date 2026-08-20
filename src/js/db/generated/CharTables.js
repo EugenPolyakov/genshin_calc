@@ -3996,6 +3996,54 @@ export const charTables = {
 			multi: 100,
 		}),
 	],
+	Odette: [
+		new StatTableAscensionScale({
+			stat: 'atk_base',
+			base: 26.068,
+			ascension: new ValueTable([22.34932, 38.2291, 59.40214, 75.28192, 91.1617, 107.04148]),
+			scale: charScales.s5atk,
+		}),
+		new StatTableAscensionScale({
+			stat: 'burst_energy_cost',
+			base: 60,
+		}),
+		new StatTableAscensionScale({
+			stat: 'charged_stamina_cost',
+			base: 20,
+		}),
+		new StatTableAscensionScale({
+			stat: 'crit_dmg_base',
+			base: 0.5,
+			multi: 100,
+			ascension: new ValueTable([0, 0.096, 0.192, 0.192, 0.288, 0.384], 100),
+		}),
+		new StatTableAscensionScale({
+			stat: 'crit_rate_base',
+			base: 0.05,
+			multi: 100,
+		}),
+		new StatTableAscensionScale({
+			stat: 'def_base',
+			base: 61.26592,
+			ascension: new ValueTable([52.5312, 89.856, 139.6224, 176.9472, 214.272, 251.5968]),
+			scale: charScales.s5hp,
+		}),
+		new StatTableAscensionScale({
+			stat: 'hp_base',
+			base: 1010.5192,
+			ascension: new ValueTable([866.42883, 1482.0493, 2302.8767, 2918.497, 3534.1177, 4149.7383]),
+			scale: charScales.s5hp,
+		}),
+		new StatTableAscensionScale({
+			stat: 'mastery_base',
+			base: 0,
+		}),
+		new StatTableAscensionScale({
+			stat: 'recharge_base',
+			base: 1,
+			multi: 100,
+		}),
+	],
 	Ororon: [
 		new StatTableAscensionScale({
 			stat: 'atk_base',

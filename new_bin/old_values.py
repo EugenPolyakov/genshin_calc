@@ -2408,6 +2408,42 @@ old_values = {
         4: "cd", #Default
         5: "energy_cost", #Default
     },
+#odette
+    #snow_swan_variation
+    (11501, 15031): {
+        0: "normal_hit_1", #Default
+        1: "normal_hit_2", #Default
+        2: "normal_hit_3", #Default
+        3: "normal_hit_4", #Default
+        4: "normal_hit_5", #Default
+        5: "charged_hit", #Default
+        6: "stamina_cost", #Default
+        7: "plunge", #Default
+        8: "plunge_low/plunge_high", #Default
+    },
+    #phantom_night_dancers
+    (11502, 15032): {
+        0: "skill_dmg", #Default
+        1: "coda_at_dawns_tolling_dot",
+        2: "coda_at_dawns_tolling_stellar_conduct_stellar_swirl_dmg", #ManualToDefault coda_at_dawns_tolling_stellar_conduct_stellar_swirl_dmg
+        3: "plume_dance_move_dmg",
+        4: "plume_dance_move_stellar_conduct_stellar_swirl_dmg", #ManualToDefault plume_dance_move_stellar_conduct_stellar_swirl_dmg
+        5: "wing_dance_move_dmg",
+        6: "wing_dance_move_stellar_conduct_stellar_swirl_dmg", #ManualToDefault wing_dance_move_stellar_conduct_stellar_swirl_dmg
+        7: "coda_at_dawns_tolling_cd",
+        8: "solo_dance_double_duration",
+        9: "cd", #Default
+    },
+    #bluebird_finale
+    (11505, 15039): {
+        0: "slash_dmg",
+        1: "final_slash_dmg",
+        2: "snow_swans_dream_stellar_glimmer_reaction_dmg_bonus",
+        3: "snow_swans_dream_duration",
+        4: "solo_dance_double_duration",
+        5: "cd", #Default
+        6: "energy_cost", #Default
+    },
 #ororon
     #spiritvessel_snapshot
     (30501, 10531): {

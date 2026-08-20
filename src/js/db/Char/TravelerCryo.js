@@ -26,6 +26,7 @@ import { StatTable } from "../../classes/StatTable";
 import { ValueTable } from "../../classes/ValueTable";
 import { charTables } from "../generated/CharTables";
 import { charTalentTables } from "../generated/CharTalentTables";
+import { stellarGlimmerConditions } from "./Sandrone";
 import { travelerElevation } from "./TravelerPyro";
 
 const Talents = new DbObjectTalents({
@@ -653,21 +654,10 @@ export const TravelerCryo = new DbObjectChar({
         }),
     ],
     conditions: [
-        new ConditionBoolean({
-            name: 'common.enemy_superconduct',
-            serializeId: 1,
-            title: 'talent_name.n11330003',
-        }),
-        new ConditionStacks({
-            name: 'common.radiance_stellar_swirl',
-            serializeId: 2,
-            maxStacks: 2,
-            title: 'talent_name.stellar_vortex',
-            description: 'talent_descr.stellar_vortex',
-        }),
+        ...stellarGlimmerConditions,
         new ConditionBoolean({
             name: 'traveler_frostpierce_star',
-            serializeId: 3,
+            serializeId: 11,
             title: 'talent_name.traveler_ice_fog_piercer_2',
             description: 'talent_descr.traveler_ice_fog_piercer_2',
         }),
@@ -882,12 +872,10 @@ export const TravelerCryo = new DbObjectChar({
         postEffects: [
             new PostEffectStats({
                 from: 'traveler_atk_total',
-                percent: new StatTable('stellar_conduct_multi', [charTalentTables.TravelerCryo.passsive[2][0]], 100),
-                statCap: new ValueTable([charTalentTables.Sandrone.passsive[2][1] * 100]),
-            }),
-            new PostEffectStats({
-                from: 'traveler_atk_total',
-                percent: new StatTable('stellar_swirl_multi', [charTalentTables.TravelerCryo.passsive[2][2]], 100),
+                percent: [
+                    new StatTable('stellar_conduct_multi', [charTalentTables.TravelerCryo.passsive[2][0]], 100),
+                    new StatTable('stellar_swirl_multi', [charTalentTables.TravelerCryo.passsive[2][2]], 100),
+                ],
                 statCap: new ValueTable([charTalentTables.TravelerCryo.passsive[2][1] * 100]),
             }),
         ],

@@ -23,7 +23,7 @@ export class Condition {
         if (!this.params.customStats)
             return [this.getName()];
         else
-            return [this.getName()].concat(this.customStats.flatMap(x => x.getNamesList()));
+            return [this.getName()].concat(this.params.customStats.flatMap(x => x.getNamesList()));
     }
 
     getType() {

@@ -101,6 +101,7 @@ NEED_PASSIVE_TALENTS = [
     'arlecchino',
     'sandrone',
     'traveler_cryo',
+    'odette',
 ]
 
 skiped_features = set([
@@ -233,7 +234,7 @@ def scales_and_proud(skillId, proudId, index, char_id, isAttack):
                         if (skillId, proudId) in old_values and cur_desc in old_values[(skillId, proudId)]:
                             name_idx = old_values[(skillId, proudId)][cur_desc]
                             if not name_idx in names_mapping.values():
-                                if name in names_mapping.keys():
+                                if name in names_mapping:
                                     comments = f' #ManualFromDefault {names_mapping[name]}: {convert_id(name, True)}'
                                 else:
                                     name = convert_id(name, True)
@@ -241,12 +242,12 @@ def scales_and_proud(skillId, proudId, index, char_id, isAttack):
                                         comments = f' #WasChanged from {name}'
                                 scaleData['customParams'][name_idx] = str(desc)
                             else:
-                                if not name in names_mapping.keys():
+                                if not name in names_mapping:
                                     comments = f' #ManualToDefault {convert_id(name, True)}'
                                 else:
                                     comments = ' #Default'
                                 isDefault = True
-                        elif not name in names_mapping.keys():
+                        elif not name in names_mapping:
                             name = convert_id(name, True)
                             idx = 0
                             name_idx = name
@@ -687,7 +688,9 @@ if not do_single:
 
                     tpl_patterns = lang_data[lang_name]['patterns']
                     tpl_names = lang_data[lang_name]['names']
+                    tpl_keywords = lang_data[lang_name]['keywords']
                     skill_descr = tpl_patterns.process(skill_descr)['descr'][0]
+                    skill_descr = tpl_keywords.process(skill_descr)['descr'][0]
                     skill_descr = tpl_names.process(skill_descr)['descr'][0]
                     tpl_hyper = getattr(hyperlink, f"{skill_id}_{lang_name}", None) or getattr(hyperlink, skill_id, None)
                     if tpl_hyper:

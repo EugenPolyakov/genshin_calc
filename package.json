@@ -1,6 +1,6 @@
 {
     "name": "genshin_impact_calculator",
-    "version": "3.2.11",
+    "version": "3.3.0",
     "private": true,
     "scripts": {
         "dev": "echo Start: %date% %time% && npm run build:lang && rollup -c --environment mode:development,min:false && echo End: %date% %time%",

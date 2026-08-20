@@ -123,6 +123,7 @@ import { Lohen } from "./Char/Lohen"
 import { Sandrone } from "./Char/Sandrone"
 import { TravelerCryo } from "./Char/TravelerCryo"
 import { Alyosha } from "./Char/Alyosha"
+import { Odette } from "./Char/Odette"
 
 export const Chars = new DbObjectListSerializeChars({
     Albedo: Albedo, // 1
@@ -249,4 +250,5 @@ export const Chars = new DbObjectListSerializeChars({
     Sandrone: Sandrone, //123
     TravelerCryo: TravelerCryo, //124
     Alyosha: Alyosha, //125
+    Odette: Odette, //126
 });

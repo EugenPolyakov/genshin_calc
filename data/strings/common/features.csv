@@ -43,6 +43,7 @@ feature_other;lunarbloom_base_bonus;Базовый урон Лунной бут�
 feature_other;lunarcrystallize_base_bonus;Базовый урон Лунной кристаллизации;Lunar-Crystallize Base Bonus
 feature_other;lunar_base_bonus;Базовый урон Лунных реакций;Lunar reaction Base Bonus
 feature_other;stellarglimmer_base_bonus;Базовый урон реакций Звёздного блеска;Stellar Glimmer reaction Base Bonus
+feature_other;dmg_reaction_stellar_glimmer_bonus;Бонус урона реакций Звёздного блеска;Stellar Glimmer reaction DMG Bonus
 feature_other;heal;Лечение;Heal
 feature_reaction;amplifying;Мультипликативные реакции;Amplifying Reactions
 feature_reaction;transformative;Трансформативные реакции;Transformative Reactions

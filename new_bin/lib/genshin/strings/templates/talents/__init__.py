@@ -79,6 +79,7 @@ from .nicole import char_nicole  # noqa
 from .nilou import char_nilou  # noqa
 from .ningguang import char_ningguang  # noqa
 from .noelle import char_noelle  # noqa
+from .odette import char_odette  # noqa
 from .ororon import char_ororon  # noqa
 from .prune import char_prune  # noqa
 from .qiqi import char_qiqi  # noqa

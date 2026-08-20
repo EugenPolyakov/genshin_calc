@@ -51,6 +51,7 @@ const Talents = new DbObjectTalents({
                 table: new StatTable('charged_hit', charTalentTables.Alyosha.s1.p6),
             },
             {
+                unit: 'unit',
                 table: new StatTable('stamina_cost', charTalentTables.Alyosha.s1.p7),
             },
             {
@@ -411,7 +412,7 @@ export const Alyosha = new DbObjectChar({
             new ConditionBoolean({
                 name: 'party.alyosha_constellation_3',
                 serializeId: 5,
-                title: 'talent_name.bennett_true_explorer',
+                title: 'talent_name.alyosha_friendly_call',
                 description: 'talent_descr.char_constellation_burst',
                 settings: {
                     alyosha_char_skill_burst_bonus: 3,

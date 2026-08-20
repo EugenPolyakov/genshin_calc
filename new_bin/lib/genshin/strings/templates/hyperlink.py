@@ -75,3 +75,27 @@ n11290004 = Template(
         '{PARAM#P1293201|16S1}': '20',
     },
 )
+
+n11500003_rus = Template(
+    names=['Одетта', 'Весеннее жертвоприношение избранницы'],
+    sentences=[
+        [],
+        [],
+        ['15:'],
+        [],
+        [],
+        ['1:ignore'],
+    ],
+)
+
+n11500003_eng = Template(
+    names=['Odette', 'Spring Rite of the Chosen One'],
+    sentences=[
+        [],
+        [],
+        ['15:'],
+        [],
+        [],
+        ['1:ignore', '1:ignore'],
+    ],
+)
