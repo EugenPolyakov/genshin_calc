@@ -222,6 +222,8 @@ export class chanceCalculator extends CalcBuildFastPermutations {
 
         this.actualValues = data.actualValues;
         this.slot = data.artifacts[0].slot;
+        let feature = this.featureName.split('.');
+        this.isPercent = feature[0] == 'stats' && isPercent(feature[1]);
 
         this.maxVal = {
             normal: 0,
@@ -411,6 +413,8 @@ export class chanceCalculator extends CalcBuildFastPermutations {
                 for (let key of ['normal', 'crit', 'average']) {
                     let val1 = this.actualValues[key];
                     let val2 = feat2[FEATURE_TYPE_INDEX[key]];
+                    if (this.isPercent)
+                        val2 *= 100;
                     let diff = Math.round(val2 / val1 * 1000) / 10 - 100;
                     if (diff > 0) {
                         if (val2 > this.maxVal[key])

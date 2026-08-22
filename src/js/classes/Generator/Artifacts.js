@@ -45,6 +45,7 @@ export class ArtifactGenerator {
         let ensureStats = ['recharge'].concat(usedStats);
         this.buildData.stats.ensure(ensureStats);
 
+        // todo: кажется можно удалить, но нужно проверить
         if (usedStats.includes('crit_value')) {
             this.calcCritValue = true;
             usedStats.push('crit_rate');

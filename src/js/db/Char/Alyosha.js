@@ -20,6 +20,7 @@ import { FeatureMultiplier } from "../../classes/Feature2/Multiplier";
 import { FeaturePostEffectValue } from "../../classes/Feature2/PostEffectValue";
 import { PostEffectStats } from "../../classes/PostEffect/Stats";
 import { StatTable } from "../../classes/StatTable";
+import { StatTableConditions } from "../../classes/StatTable/Condition";
 import { ValueTable } from "../../classes/ValueTable";
 import { charTables } from "../generated/CharTables";
 import { charTalentTables } from "../generated/CharTalentTables";
@@ -293,6 +294,20 @@ export const Alyosha = new DbObjectChar({
         })
     ],
     conditions: [
+        new ConditionBoolean({
+            name: 'common.enemy_superconduct',
+            serializeId: 2,
+            title: 'talent_name.n11330003',
+            description: 'talent_descr.n11330003',
+            customStats: [
+                new ConditionStacks({
+                    name: 'common.polestar_field_stacks',
+                    serializeId: 3,
+                    title: 'buff_view.stacks_count',
+                    maxStacks: 12,
+                }),
+            ],
+        }),
         new ConditionStatic({
             title: 'talent_name.alyosha_awakened_by_the_baying_hounds',
             description: 'talent_descr.alyosha_awakened_by_the_baying_hounds',
@@ -315,8 +330,23 @@ export const Alyosha = new DbObjectChar({
             stats: [
                 Talents.getAlias('skill.alyosha_hunters_precision_atk_bonus', 'atk_percent'),
                 Talents.getAlias('skill.alyosha_hunters_precision_duration', 'text'),
+                new StatTableConditions('dmg_reaction_stellar_conduct', [charTalentTables.Alyosha.passsive[2][0] * 100], new ConditionAnd([
+                    new ConditionBoolean({ name: 'common.enemy_superconduct' }),
+                    new ConditionBoolean({ name: 'allowed_stellar_conduct' }),
+                    new ConditionBoolean({ name: 'common.char_status_off_field', invert: 1 }),
+                ])),
             ],
             condition: new ConditionBoolean({ name: 'common.char_status_off_field', invert: 1 }),
+        }),
+        new ConditionStatic({
+            title: 'talent_name.alyosha_into_the_fray',
+            description: 'talent_descr.alyosha_into_the_fray',
+            condition: new ConditionAnd([
+                new ConditionBoolean({ name: 'alyosha_hunters_precision' }),
+                new ConditionBoolean({ name: 'common.char_status_off_field', invert: 1 }),
+                new ConditionBoolean({ name: 'common.enemy_superconduct' }),
+                new ConditionBoolean({ name: 'allowed_stellar_conduct' }),
+            ]),
         }),
     ],
     multipliers: [
@@ -432,8 +462,23 @@ export const Alyosha = new DbObjectChar({
                 stats: [
                     Talents.getAlias('skill.alyosha_hunters_precision_atk_bonus', 'atk_percent'),
                     Talents.getAlias('skill.alyosha_hunters_precision_duration', 'text'),
+                    new StatTableConditions('dmg_reaction_stellar_conduct', [charTalentTables.Alyosha.passsive[2][0] * 100], new ConditionAnd([
+                        new ConditionBoolean({ name: 'common.enemy_superconduct' }),
+                        new ConditionBoolean({ name: 'allowed_stellar_conduct' }),
+                        new ConditionBoolean({ name: 'common.char_status_off_field', invert: 1 }),
+                    ])),
                 ],
                 condition: new ConditionBoolean({ name: 'common.char_status_off_field', invert: 1 }),
+            }),
+            new ConditionStatic({
+                title: 'talent_name.alyosha_into_the_fray',
+                description: 'talent_descr.alyosha_into_the_fray',
+                condition: new ConditionAnd([
+                    new ConditionBoolean({ name: 'party.alyosha_hunters_precision' }),
+                    new ConditionBoolean({ name: 'common.char_status_off_field', invert: 1 }),
+                    new ConditionBoolean({ name: 'common.enemy_superconduct' }),
+                    new ConditionBoolean({ name: 'allowed_stellar_conduct' }),
+                ]),
             }),
             new ConditionStatic({
                 title: 'talent_name.alyosha_standard_reclaimed',
@@ -449,7 +494,7 @@ export const Alyosha = new DbObjectChar({
                         cond: 'ge'
                     }),
                     new ConditionBoolean({ name: 'common.char_status_off_field', invert: 1 }),
-                ])
+                ]),
             }),
         ],
     },

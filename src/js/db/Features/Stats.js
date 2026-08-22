@@ -1,3 +1,4 @@
+import { FeatureStatCritValue } from "../../classes/Feature2/CritValue";
 import { FeatureStat } from "../../classes/Feature2/Stat";
 
 export const Stats = [
@@ -25,8 +26,7 @@ export const Stats = [
         stat: 'crit_dmg',
         format: 'percent',
     }),
-    new FeatureStat({
-        stat: 'crit_value',
+    new FeatureStatCritValue({
         format: 'percent',
     }),
 ];

@@ -102,6 +102,7 @@ NEED_PASSIVE_TALENTS = [
     'sandrone',
     'traveler_cryo',
     'odette',
+    'alyosha',
 ]
 
 skiped_features = set([

@@ -357,8 +357,9 @@ export const charTalentTables = {
 		passsive: [
 			FixTable([1.2, 0]),
 			FixTable([0.0035, 200, 0]),
+			FixTable([0.2, 0]),
 		],
-		links: [11480001, 11480002],
+		links: [11330003, 11480001, 11480002],
 	},
 	Amber: {
 		char_id: 10000021,
