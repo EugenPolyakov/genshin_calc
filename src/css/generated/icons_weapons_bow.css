@@ -32,6 +32,8 @@
 .weapon-icon-bow-sequence-of-solitude {background-image: url("../../images/weapons/bow/bow_stinger.png")}
 .weapon-icon-bow-snare-hook {background-image: url("../../images/weapons/bow/bow_ilmarinen.png")}
 .weapon-icon-bow-rainbow-serpents-rain-bow {background-image: url("../../images/weapons/bow/bow_elegguabow.png")}
+.weapon-icon-bow-jade-vista {background-image: url("../../images/weapons/bow/bow_shatteredmirror.png")}
+.weapon-icon-bow-covenant-of-frost-and-snow {background-image: url("../../images/weapons/bow/bow_glintstonebow.png")}
 .weapon-icon-bow-skyward-harp {background-image: url("../../images/weapons/bow/bow_dvalin.png")}
 .weapon-icon-bow-amos-bow {background-image: url("../../images/weapons/bow/bow_amos.png")}
 .weapon-icon-bow-elegy-for-the-end {background-image: url("../../images/weapons/bow/bow_widsith.png")}
@@ -45,15 +47,15 @@
 .weapon-icon-bow-the-daybreak-chronicles {background-image: url("../../images/weapons/bow/bow_arianna.png")}
 .weapon-icon-bow-golden-frostbound-oath {background-image: url("../../images/weapons/bow/bow_alkonost.png")}
 .sprite-weapon-bow.sprite-24 {
-	background-image: url("../../images/sprites/weapon_bow_c127f4eb26a1a9d3c475f147884d8187.png");
+	background-image: url("../../images/sprites/weapon_bow_731e6a4d68dfef22707a431d4a1078c9.png");
 	background-size: 120px 264px;
 }
 .sprite-weapon-bow.sprite-40 {
-	background-image: url("../../images/sprites/weapon_bow_ba2a50f00fdbb0866835b6cad67303cb.png");
+	background-image: url("../../images/sprites/weapon_bow_92a080e51ae7996010e271858d6c834f.png");
 	background-size: 200px 440px;
 }
 .sprite-weapon-bow.sprite-60 {
-	background-image: url("../../images/sprites/weapon_bow_4753cd7b44351ce1f085072478695846.png");
+	background-image: url("../../images/sprites/weapon_bow_14e1547b0a079dd86f2c1ed124726d91.png");
 	background-size: 300px 660px;
 }
 .sprite.weapon-icon-bow-unknown {background-position: 0% 0%}
@@ -90,18 +92,20 @@
 .sprite.weapon-icon-bow-sequence-of-solitude {background-position: 25% 60%}
 .sprite.weapon-icon-bow-snare-hook {background-position: 50% 60%}
 .sprite.weapon-icon-bow-rainbow-serpents-rain-bow {background-position: 75% 60%}
-.sprite.weapon-icon-bow-skyward-harp {background-position: 100% 60%}
-.sprite.weapon-icon-bow-amos-bow {background-position: 0% 70%}
-.sprite.weapon-icon-bow-elegy-for-the-end {background-position: 25% 70%}
-.sprite.weapon-icon-bow-polar-star {background-position: 50% 70%}
-.sprite.weapon-icon-bow-aqua-simulacra {background-position: 75% 70%}
-.sprite.weapon-icon-bow-thundering-pulse {background-position: 100% 70%}
-.sprite.weapon-icon-bow-hunters-path {background-position: 0% 80%}
-.sprite.weapon-icon-bow-the-first-great-magic {background-position: 25% 80%}
-.sprite.weapon-icon-bow-silvershower-heartstrings {background-position: 50% 80%}
-.sprite.weapon-icon-bow-astral-vultures-crimson-plumage {background-position: 75% 80%}
-.sprite.weapon-icon-bow-the-daybreak-chronicles {background-position: 100% 80%}
-.sprite.weapon-icon-bow-golden-frostbound-oath {background-position: 0% 90%}
+.sprite.weapon-icon-bow-jade-vista {background-position: 100% 60%}
+.sprite.weapon-icon-bow-covenant-of-frost-and-snow {background-position: 0% 70%}
+.sprite.weapon-icon-bow-skyward-harp {background-position: 25% 70%}
+.sprite.weapon-icon-bow-amos-bow {background-position: 50% 70%}
+.sprite.weapon-icon-bow-elegy-for-the-end {background-position: 75% 70%}
+.sprite.weapon-icon-bow-polar-star {background-position: 100% 70%}
+.sprite.weapon-icon-bow-aqua-simulacra {background-position: 0% 80%}
+.sprite.weapon-icon-bow-thundering-pulse {background-position: 25% 80%}
+.sprite.weapon-icon-bow-hunters-path {background-position: 50% 80%}
+.sprite.weapon-icon-bow-the-first-great-magic {background-position: 75% 80%}
+.sprite.weapon-icon-bow-silvershower-heartstrings {background-position: 100% 80%}
+.sprite.weapon-icon-bow-astral-vultures-crimson-plumage {background-position: 0% 90%}
+.sprite.weapon-icon-bow-the-daybreak-chronicles {background-position: 25% 90%}
+.sprite.weapon-icon-bow-golden-frostbound-oath {background-position: 50% 90%}
 
 @media
 only screen and (-webkit-min-device-pixel-ratio: 2),
@@ -144,6 +148,8 @@ only screen and (                min-resolution: 2dppx) {
 	.weapon-icon-bow-sequence-of-solitude {background-image: url("../../images/weapons/bow/bow_stinger_2x.png")}
 	.weapon-icon-bow-snare-hook {background-image: url("../../images/weapons/bow/bow_ilmarinen_2x.png")}
 	.weapon-icon-bow-rainbow-serpents-rain-bow {background-image: url("../../images/weapons/bow/bow_elegguabow_2x.png")}
+	.weapon-icon-bow-jade-vista {background-image: url("../../images/weapons/bow/bow_shatteredmirror_2x.png")}
+	.weapon-icon-bow-covenant-of-frost-and-snow {background-image: url("../../images/weapons/bow/bow_glintstonebow_2x.png")}
 	.weapon-icon-bow-skyward-harp {background-image: url("../../images/weapons/bow/bow_dvalin_2x.png")}
 	.weapon-icon-bow-amos-bow {background-image: url("../../images/weapons/bow/bow_amos_2x.png")}
 	.weapon-icon-bow-elegy-for-the-end {background-image: url("../../images/weapons/bow/bow_widsith_2x.png")}
@@ -156,7 +162,7 @@ only screen and (                min-resolution: 2dppx) {
 	.weapon-icon-bow-astral-vultures-crimson-plumage {background-image: url("../../images/weapons/bow/bow_qoyllorsnova_2x.png")}
 	.weapon-icon-bow-the-daybreak-chronicles {background-image: url("../../images/weapons/bow/bow_arianna_2x.png")}
 	.weapon-icon-bow-golden-frostbound-oath {background-image: url("../../images/weapons/bow/bow_alkonost_2x.png")}
-	.sprite-weapon-bow.sprite-24 {background-image: url("../../images/sprites/weapon_bow_8411567059464c11c212ad81cdaa5838.png")}
-	.sprite-weapon-bow.sprite-40 {background-image: url("../../images/sprites/weapon_bow_1aece02f35b9693df404a37f45680045.png")}
-	.sprite-weapon-bow.sprite-60 {background-image: url("../../images/sprites/weapon_bow_c304811a9be0ddd2af5ca38aed926ffa.png")}
+	.sprite-weapon-bow.sprite-24 {background-image: url("../../images/sprites/weapon_bow_b13fc33de5a1e854cf912858866f8a4d.png")}
+	.sprite-weapon-bow.sprite-40 {background-image: url("../../images/sprites/weapon_bow_e7fa61bc083f1ae6c9a6cf979e07edea.png")}
+	.sprite-weapon-bow.sprite-60 {background-image: url("../../images/sprites/weapon_bow_bf98ba2b999af53ba7267092b28e4cfe.png")}
 }

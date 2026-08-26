@@ -25,6 +25,8 @@
 .weapon-icon-polearm-tamayuratei-no-ohanashi {background-image: url("../../images/weapons/polearm/pole_aoandon.png")}
 .weapon-icon-polearm-prospectors-shovel {background-image: url("../../images/weapons/polearm/pole_ilmarinen.png")}
 .weapon-icon-polearm-sacrificers-staff {background-image: url("../../images/weapons/polearm/pole_krivule.png")}
+.weapon-icon-polearm-frostbreath {background-image: url("../../images/weapons/polearm/pole_faescrystalle.png")}
+.weapon-icon-polearm-song-of-the-vigil {background-image: url("../../images/weapons/polearm/pole_glintstonepolearm.png")}
 .weapon-icon-polearm-staff-of-homa {background-image: url("../../images/weapons/polearm/pole_homa.png")}
 .weapon-icon-polearm-skyward-spine {background-image: url("../../images/weapons/polearm/pole_dvalin.png")}
 .weapon-icon-polearm-vortex-vanquisher {background-image: url("../../images/weapons/polearm/pole_kunwu.png")}
@@ -39,15 +41,15 @@
 .weapon-icon-polearm-bloodsoaked-ruins {background-image: url("../../images/weapons/polearm/pole_tummalyhty.png")}
 .weapon-icon-polearm-disaster-and-remorse {background-image: url("../../images/weapons/polearm/pole_carbine.png")}
 .sprite-weapon-polearm.sprite-24 {
-	background-image: url("../../images/sprites/weapon_polearm_3da55264a7f3b651adb16732e8ce8ef7.png");
+	background-image: url("../../images/sprites/weapon_polearm_f8ca06a4a59ac8d90dd2aac27b22ed7a.png");
 	background-size: 120px 264px;
 }
 .sprite-weapon-polearm.sprite-40 {
-	background-image: url("../../images/sprites/weapon_polearm_cd756d1312e934d2992287f31fc587f0.png");
+	background-image: url("../../images/sprites/weapon_polearm_04fae8078bde2acefee58b3125f13370.png");
 	background-size: 200px 440px;
 }
 .sprite-weapon-polearm.sprite-60 {
-	background-image: url("../../images/sprites/weapon_polearm_c473fd74cd9228d43b5fb30905a8db41.png");
+	background-image: url("../../images/sprites/weapon_polearm_701c020c69eb0d073cdba7635e3a7c35.png");
 	background-size: 300px 660px;
 }
 .sprite.weapon-icon-polearm-unknown {background-position: 0% 0%}
@@ -77,19 +79,21 @@
 .sprite.weapon-icon-polearm-tamayuratei-no-ohanashi {background-position: 100% 40%}
 .sprite.weapon-icon-polearm-prospectors-shovel {background-position: 0% 50%}
 .sprite.weapon-icon-polearm-sacrificers-staff {background-position: 25% 50%}
-.sprite.weapon-icon-polearm-staff-of-homa {background-position: 50% 50%}
-.sprite.weapon-icon-polearm-skyward-spine {background-position: 75% 50%}
-.sprite.weapon-icon-polearm-vortex-vanquisher {background-position: 100% 50%}
-.sprite.weapon-icon-polearm-primordial-jade-winged-spear {background-position: 0% 60%}
-.sprite.weapon-icon-polearm-calamity-queller {background-position: 25% 60%}
-.sprite.weapon-icon-polearm-engulfing-lightning {background-position: 50% 60%}
-.sprite.weapon-icon-polearm-staff-of-the-scarlet-sands {background-position: 75% 60%}
-.sprite.weapon-icon-polearm-crimson-moons-semblance {background-position: 100% 60%}
-.sprite.weapon-icon-polearm-lumidouce-elegy {background-position: 0% 70%}
-.sprite.weapon-icon-polearm-symphonist-of-scents {background-position: 25% 70%}
-.sprite.weapon-icon-polearm-fractured-halo {background-position: 50% 70%}
-.sprite.weapon-icon-polearm-bloodsoaked-ruins {background-position: 75% 70%}
-.sprite.weapon-icon-polearm-disaster-and-remorse {background-position: 100% 70%}
+.sprite.weapon-icon-polearm-frostbreath {background-position: 50% 50%}
+.sprite.weapon-icon-polearm-song-of-the-vigil {background-position: 75% 50%}
+.sprite.weapon-icon-polearm-staff-of-homa {background-position: 100% 50%}
+.sprite.weapon-icon-polearm-skyward-spine {background-position: 0% 60%}
+.sprite.weapon-icon-polearm-vortex-vanquisher {background-position: 25% 60%}
+.sprite.weapon-icon-polearm-primordial-jade-winged-spear {background-position: 50% 60%}
+.sprite.weapon-icon-polearm-calamity-queller {background-position: 75% 60%}
+.sprite.weapon-icon-polearm-engulfing-lightning {background-position: 100% 60%}
+.sprite.weapon-icon-polearm-staff-of-the-scarlet-sands {background-position: 0% 70%}
+.sprite.weapon-icon-polearm-crimson-moons-semblance {background-position: 25% 70%}
+.sprite.weapon-icon-polearm-lumidouce-elegy {background-position: 50% 70%}
+.sprite.weapon-icon-polearm-symphonist-of-scents {background-position: 75% 70%}
+.sprite.weapon-icon-polearm-fractured-halo {background-position: 100% 70%}
+.sprite.weapon-icon-polearm-bloodsoaked-ruins {background-position: 0% 80%}
+.sprite.weapon-icon-polearm-disaster-and-remorse {background-position: 25% 80%}
 
 @media
 only screen and (-webkit-min-device-pixel-ratio: 2),
@@ -125,6 +129,8 @@ only screen and (                min-resolution: 2dppx) {
 	.weapon-icon-polearm-tamayuratei-no-ohanashi {background-image: url("../../images/weapons/polearm/pole_aoandon_2x.png")}
 	.weapon-icon-polearm-prospectors-shovel {background-image: url("../../images/weapons/polearm/pole_ilmarinen_2x.png")}
 	.weapon-icon-polearm-sacrificers-staff {background-image: url("../../images/weapons/polearm/pole_krivule_2x.png")}
+	.weapon-icon-polearm-frostbreath {background-image: url("../../images/weapons/polearm/pole_faescrystalle_2x.png")}
+	.weapon-icon-polearm-song-of-the-vigil {background-image: url("../../images/weapons/polearm/pole_glintstonepolearm_2x.png")}
 	.weapon-icon-polearm-staff-of-homa {background-image: url("../../images/weapons/polearm/pole_homa_2x.png")}
 	.weapon-icon-polearm-skyward-spine {background-image: url("../../images/weapons/polearm/pole_dvalin_2x.png")}
 	.weapon-icon-polearm-vortex-vanquisher {background-image: url("../../images/weapons/polearm/pole_kunwu_2x.png")}
@@ -138,7 +144,7 @@ only screen and (                min-resolution: 2dppx) {
 	.weapon-icon-polearm-fractured-halo {background-image: url("../../images/weapons/polearm/pole_perdix_2x.png")}
 	.weapon-icon-polearm-bloodsoaked-ruins {background-image: url("../../images/weapons/polearm/pole_tummalyhty_2x.png")}
 	.weapon-icon-polearm-disaster-and-remorse {background-image: url("../../images/weapons/polearm/pole_carbine_2x.png")}
-	.sprite-weapon-polearm.sprite-24 {background-image: url("../../images/sprites/weapon_polearm_75f1803edd698f4a588e70f428ee59a5.png")}
-	.sprite-weapon-polearm.sprite-40 {background-image: url("../../images/sprites/weapon_polearm_2122ee2d9f245c3eee24d212685e2ab8.png")}
-	.sprite-weapon-polearm.sprite-60 {background-image: url("../../images/sprites/weapon_polearm_f19510803e78e8b8ca0f60461f386050.png")}
+	.sprite-weapon-polearm.sprite-24 {background-image: url("../../images/sprites/weapon_polearm_fb515a9205c1d9a5ad29ab12bef1e71f.png")}
+	.sprite-weapon-polearm.sprite-40 {background-image: url("../../images/sprites/weapon_polearm_47b4a319bcda207ad63fdc6cfcebf86b.png")}
+	.sprite-weapon-polearm.sprite-60 {background-image: url("../../images/sprites/weapon_polearm_d32f4cb37f1e310cfe082db1aa8022d1.png")}
 }

@@ -38,6 +38,8 @@ import { prospectors_shovel } from "./Polearm/prospectors_shovel";
 import { sacrificers_staff } from "./Polearm/sacrificers_staff";
 import { bloodsoaked_ruins } from "./Polearm/bloodsoaked_ruins";
 import { disaster_and_remorse } from "./Polearm/disaster_and_remorse";
+import { frostbreath } from "./Polearm/frostbreath";
+import { song_of_the_vigil } from "./Polearm/song_of_the_vigil";
 
 export const Polearm = new DbObjectListSerializeStats({
     BlackcliffPole: BlackcliffPole, // 85
@@ -79,4 +81,6 @@ export const Polearm = new DbObjectListSerializeStats({
     sacrificers_staff: sacrificers_staff, // 230
     bloodsoaked_ruins: bloodsoaked_ruins, // 236
     disaster_and_remorse: disaster_and_remorse, // 244
+    frostbreath: frostbreath, // 250
+    song_of_the_vigil: song_of_the_vigil, // 251
 });

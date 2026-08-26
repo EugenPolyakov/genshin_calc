@@ -113,16 +113,17 @@ for set_id in sorted(set_data.keys()):
                 descr = lang.get(bonus['descTextMapHash'])
 
                 tpl_art = getattr(artifacts, tpl_name, None) or getattr(lang_data['eng']['art_tpl'], tpl_name)
-                tpl_names = lang_data[lang_name]['names']
+                tpl_result = lang_data[lang_name]['patterns'].process(descr)['descr'][0]
                 tpl_keywords = lang_data[lang_name]['keywords']
+                if tpl_keywords:
+                    tpl_result = tpl_keywords.process(tpl_result)['descr'][0]
+                tpl_names = lang_data[lang_name]['names']
+                if tpl_names:
+                    tpl_result = tpl_names.process(tpl_result)['descr'][0]
 
-                tpl_result = tpl_art.process(lang_data[lang_name]['patterns'].process(descr)['descr'][0])['descr']
+                tpl_result = tpl_art.process(tpl_result)['descr']
 
                 for item in tpl_result:
-                    if tpl_keywords:
-                        item = tpl_keywords.process(item)['descr'][0]
-                    if tpl_names:
-                        item = tpl_names.process(item)['descr'][0]
                     item = postprocess_art.process(item)['descr'][0]
                     res_lang[lang_name].append(item)
             except Exception as e:

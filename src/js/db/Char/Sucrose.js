@@ -247,7 +247,7 @@ export const Sucrose = new DbObjectChar({
         }),
         new FeaturePostEffectValue({
             category: 'other',
-            name: 'sucrose_mastery_bonus',
+            name: 'mastery_bonus',
             postEffect: new PostEffectStatsMastery({
                 percent: new StatTable('mastery', [0.2]),
             }),

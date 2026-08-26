@@ -3,11 +3,11 @@
     display: flex;
     height: 30px;
     align-items: center;
+    justify-content: flex-end;
 }
 
 .buff-custom-stats .name {
-    width: 260px;
-    flex-shrink: 0;
+    flex-shrink: 1;
     text-align: right;
     padding-right: 5px;
     overflow: hidden;
@@ -17,7 +17,8 @@
 
 .buff-custom-stats .value {
     display: flex;
-    flex-grow: 1;
+    flex-shrink: 0;
+    width: 170px;
     align-items: center;
 }
 

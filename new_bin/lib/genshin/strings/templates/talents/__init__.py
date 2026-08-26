@@ -4,6 +4,7 @@ from .aino import char_aino  # noqa
 from .albedo import char_albedo  # noqa
 from .alhaitham import char_alhaitham  # noqa
 from .aloy import char_aloy  # noqa
+from .alyosha import char_alyosha  # noqa
 from .amber import char_amber  # noqa
 from .arataki_itto import char_arataki_itto  # noqa
 from .arlecchino import char_arlecchino  # noqa
@@ -78,6 +79,7 @@ from .nicole import char_nicole  # noqa
 from .nilou import char_nilou  # noqa
 from .ningguang import char_ningguang  # noqa
 from .noelle import char_noelle  # noqa
+from .odette import char_odette  # noqa
 from .ororon import char_ororon  # noqa
 from .prune import char_prune  # noqa
 from .qiqi import char_qiqi  # noqa
@@ -97,6 +99,7 @@ from .tartaglia import char_tartaglia  # noqa
 from .thoma import char_thoma  # noqa
 from .tighnari import char_tighnari  # noqa
 from .traveler_anemo import char_traveler_anemo  # noqa
+from .traveler_cryo import char_traveler_cryo  # noqa
 from .traveler_geo import char_traveler_geo  # noqa
 from .traveler_electro import char_traveler_electro  # noqa
 from .traveler_hydro import char_traveler_hydro  # noqa
@@ -126,6 +129,7 @@ from .zibai import char_zibai  # noqa
 
 templates = Template(
     patterns=[
+        (r'{NON_BREAK_SPACE}', '&nbsp;'),
         # (r'<color=\#99FFFFFF>([^<]*?)<\/color>', 'cryo{\\1}'),
         # (r'<color=\#FFE699FF>([^<]*?)<\/color>', 'geo{\\1}'),
         # (r'<color=\#FF9999FF>([^<]*?)<\/color>', 'pyro{\\1}'),

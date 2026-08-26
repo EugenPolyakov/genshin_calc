@@ -2,7 +2,11 @@ category;name;rus;eng
 feature_burst;mizuki_snack_other_heal;Восстановление HP закусками (отряд);Snack Pick-Up HP Regeneration (Party)
 feature_burst;mizuki_snack_self_heal;Восстановление HP закусками (себя);Snack Pick-Up HP Regeneration (Self)
 feature_skill;mizuki_swirl_bonus;Бонус урона Рассеивания;Swirl DMG Bonus
+feature_skill;mizuki_stellar_swirl_bonus;Бонус урона Звёздного Рассеивания;Stellar Swirl DMG Bonus
 feature_other;mizuki_elemental_bonus;Бонус элем. урона;Elemental DMG Bonus
 feature_other;mizuki_twenty_three_nights_awaiting;Урон Двадцать три ночи ожидания;Twenty-Three Nights' Awaiting DMG
 feature_skill;yumemizuki_mizuki_enhanced_continuous_attack_dmg;Урон усиленной периодической атаки;Enhanced Continuous Attack DMG
+feature_skill;yumemizuki_mizuki_additional_attack_dmg;Урон дополнительной атаки;Additional Attack DMG
+feature_skill;yumemizuki_mizuki_in_mist_like_waters_dmg;Урон В туманных водах;In Mist-Like Waters DMG
+feature_skill;yumemizuki_mizuki_in_mist_like_waters_stellar_dmg;Звёздный урон В туманных водах;In Mist-Like Waters Stellar DMG
 stat_short;yumemizuki_mizuki_vast_be_the_dream;Да будет сон<br/>безграничным;Vast Be<br/>the Dream

@@ -1,12 +1,10 @@
-import { Condition } from "../../classes/Condition";
-import { ConditionAnd } from "../../classes/Condition";
+import { Condition, ConditionAnd, ConditionOr } from "../../classes/Condition";
 import { ConditionAscensionChar } from "../../classes/Condition/Ascension/Char";
 import { ConditionBoolean } from "../../classes/Condition/Boolean";
 import { ConditionConstellation } from "../../classes/Condition/Constellation";
 import { ConditionMoonPhaseSetting } from "../../classes/Condition/CustomOrigin/MoonPhaseSetting";
 import { ConditionJahodaParty } from "../../classes/Condition/JahodaParty";
 import { ConditionMoonPhaseCheck } from "../../classes/Condition/MoonPhaseCheck";
-import { ConditionOr } from "../../classes/Condition/Or";
 import { ConditionOriginCheck } from "../../classes/Condition/OriginCheck";
 import { ConditionStatic } from "../../classes/Condition/Static";
 import { DbObjectChar } from "../../classes/DbObject/Char";

@@ -16,7 +16,7 @@ import { FeatureDamagePlungeShockWave } from "../../classes/Feature2/Damage/Plun
 import { FeatureDamageSkill } from "../../classes/Feature2/Damage/Skill";
 import { FeatureMultiplier } from "../../classes/Feature2/Multiplier";
 import { FeatureMultiplierTarget } from "../../classes/Feature2/Multiplier/Target";
-import { FeatureReactionStellarConduct } from "../../classes/Feature2/Reaction/Extended/StellarConduct";
+import { FeatureReactionStellarConduct } from "../../classes/Feature2/Reaction/Extended/Stellar/Conduct";
 import { StatTable } from "../../classes/StatTable";
 import { ValueTable } from "../../classes/ValueTable";
 import { charTables } from "../generated/CharTables";

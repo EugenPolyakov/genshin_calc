@@ -1,8 +1,7 @@
-import { Condition } from "../../classes/Condition";
+import { Condition, ConditionAnd, ConditionOr } from "../../classes/Condition";
 import { ConditionMoonPhaseBuff } from "../../classes/Condition/MoonPhaseBuff";
 import { ConditionMoonPhaseBoolean } from "../../classes/Condition/Boolean/MoonPhase";
 import { ConditionMoonPhaseSetting } from "../../classes/Condition/CustomOrigin/MoonPhaseSetting";
-import { ConditionAnd } from "../../classes/Condition";
 import { ConditionArchaic } from "../../classes/Condition/Archaic";
 import { ConditionBoolean } from "../../classes/Condition/Boolean";
 import { ConditionBooleanCharElement } from "../../classes/Condition/Boolean/CharElement";
@@ -12,7 +11,6 @@ import { ConditionBooleanPiecesCount } from "../../classes/Condition/Boolean/Pie
 import { ConditionDropdownElement } from "../../classes/Condition/Dropdown/Element";
 import { ConditionNot } from "../../classes/Condition/Not";
 import { ConditionNumber } from "../../classes/Condition/Number";
-import { ConditionOr } from "../../classes/Condition/Or";
 import { DbObjectBuff } from "../../classes/DbObject/Buff";
 import { FeatureMultiplier } from "../../classes/Feature2/Multiplier";
 import { FeatureMultiplierTarget } from "../../classes/Feature2/Multiplier/Target";
@@ -506,6 +504,26 @@ export const Artifacts = new DbObjectBuff({
                     new ConditionHexCheck({ hex: 2 }),
                 ]),
             })
+        }),
+        new ConditionBoolean({
+            name: 'set_other.heart_of_the_furnace_4',
+            rotation: 'buffs',
+            serializeId: 87,
+            title: 'set_bonus.heart_of_the_furnace_4',
+            description: 'set_descr.heart_of_the_furnace_4_2',
+            icon: {
+                rarity: 5,
+                name: 'sprite-artifact artifact-icon-heart-of-the-furnace flower',
+            },
+        }),
+        new Condition({
+            stats: {
+                dmg_reaction_stellar_glimmer: 50,
+            },
+            condition: new ConditionOr([
+                new ConditionBoolean({ name: 'set_other.heart_of_the_furnace_4' }),
+                new ConditionBoolean({ name: 'set.heart_of_the_furnace_4' }),
+            ])
         }),
     ],
     postEffects: [],

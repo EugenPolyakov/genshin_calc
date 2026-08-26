@@ -61,12 +61,13 @@ export class DbObjectChar extends DbObject {
         return !!this.partyData;
     }
 
-    getAllConditions() {
+    getAllConditions(consLevel) {
         let result = this.getConditions();
 
         if (this.constellation) {
-            result = result.concat(this.constellation.getConditions(6));
+            result = result.concat(this.constellation.getConditions(typeof consLevel == "undefined" ? 6 : consLevel));
         }
+
         result = result.concat(DB.Conditions.Character);
 
         return result;

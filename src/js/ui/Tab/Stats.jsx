@@ -15,7 +15,7 @@ import { FeatureReactionOverloaded } from '../../classes/Feature2/Reaction/Trans
 import { FeatureReactionRupture } from '../../classes/Feature2/Reaction/Transformative/Bloom/Rupture';
 import { FeatureReactionSuperConduct } from '../../classes/Feature2/Reaction/Transformative/SuperConduct';
 import { FeatureReactionTransformative } from '../../classes/Feature2/Reaction/Transformative';
-import { FullHeight, FullHeightScrollable } from '../Components/FullHeight';
+import { FullHeight, FullHeightStatic, FullHeightFloatTitle, FloatTitleBlock } from '../Components/FullHeight';
 import { ReactTab } from '../Components/Tab';
 import { isPercent } from '../../classes/Stats';
 import { Tab } from "../Tab";
@@ -30,9 +30,10 @@ import { FeatureReactionSwirlHydro } from '../../classes/Feature2/Reaction/Trans
 import { FeatureReactionSwirlElectro } from '../../classes/Feature2/Reaction/Transformative/Swirl/Electro';
 import { FeatureReactionSwirlCryo } from '../../classes/Feature2/Reaction/Transformative/Swirl/Cryo';
 import { UI } from '../../ui';
-import { FeatureReactionStellarConduct } from '../../classes/Feature2/Reaction/Extended/StellarConduct';
-import { FloatTitleBlock, StickyTableBlock, StickyTableHeader } from '../Components/ScrolledTable';
 import { formatStat } from '../Utils';
+import { FeatureReactionStellarGlimmer } from '../../classes/Feature2/Reaction/Extended/StellarGlimmer';
+import { FeatureReactionStellarConduct } from '../../classes/Feature2/Reaction/Extended/Stellar/Conduct';
+import { FeatureReactionStellarSwirl } from '../../classes/Feature2/Reaction/Extended/Stellar/Swirl';
 
 const secondaryStatsList = [
     'recharge',
@@ -80,7 +81,9 @@ const dmgStatsList = [
     '!dmg_reaction_lunarcrystallize_bonus',
     '!dmg_reaction_lunarbloom_bonus',
     '!dmg_reaction_lunarcharged_bonus',
-    'dmg_reaction_stellar_conduct_bonus',
+    'dmg_reaction_stellar_glimmer_bonus',
+    '!dmg_reaction_stellar_conduct_bonus',
+    '!dmg_reaction_stellar_swirl_bonus',
 ];
 
 const reactionStatList = {
@@ -108,7 +111,9 @@ const reactionStatList = {
     '!dmg_reaction_lunarcrystallize': FeatureReactionLunarCrystallize,
     '!dmg_reaction_lunarcharged': FeatureReactionLunarCharged,
     '!dmg_reaction_lunarbloom': FeatureReactionLunarBloom,
-    'dmg_reaction_stellar_conduct': FeatureReactionStellarConduct,
+    'dmg_reaction_stellar_glimmer': FeatureReactionStellarGlimmer,
+    '!dmg_reaction_stellar_conduct': FeatureReactionStellarConduct,
+    '!dmg_reaction_stellar_swirl': FeatureReactionStellarSwirl,
 
     'dmg_reaction_crystalize': FeatureReactionCrystallize,
 };
@@ -404,11 +409,11 @@ class StatsView extends React.Component {
         buildData.applyPostEffects();
 
         return (
-            <ReactTab title={ this.props.title }>
+            <ReactTab title={this.props.title}>
                 <FullHeight>
                     <FullHeightScrollable>
                         <StickyTableBlock addClass="stats-table">
-                            <StatsTableHeader />
+                        <StatsTableHeader />
                             <StatsTableBlock items={ this.getBaseStats(stats) } title={ UI.Lang.get('stat_view.base_stats') } />
                             <StatsTableBlock items={ this.getSecondaryStats(stats) } title={ UI.Lang.get('stat_view.secondary_stats') } />
                             <StatsTableBlock items={ this.getElementalStats(stats) } title={ UI.Lang.get('stat_view.elemental_stats') } />

@@ -1,0 +1,11 @@
+category;name;rus;eng
+feature_skill;odette_coda_at_dawns_tolling_dmg;Рассветная кода: урон Звёздного проводника;Coda at Dawn's Tolling Stellar-Conduct DMG
+feature_skill;odette_coda_at_dawns_tolling_stellar_swirl_dmg;Рассветная кода: урон Звёздного рассеивания;Coda at Dawn's Tolling Stellar Swirl DMG
+feature_skill;odette_coda_at_dawns_tolling_additional_dmg;Рассветная кода: дополнительный урон Звёздного проводника;Coda at Dawn's Tolling additional Stellar-Conduct DMG
+feature_skill;odette_coda_at_dawns_tolling_stellar_swirl_additional_dmg;Рассветная кода: дополнительный урон Звёздного рассеивания;Coda at Dawn's Tolling additional Stellar Swirl DMG
+feature_skill;odette_plume_dance_move_stellar_conduct_dmg;Танцевальное движение Пера: урон Звёздного проводника;"""Plume"" Dance Move Stellar-Conduct DMG"
+feature_skill;odette_plume_dance_move_stellar_swirl_dmg;Танцевальное движение Пера: урон Звёздного рассеивания;"""Plume"" Dance Move Stellar Swirl DMG"
+feature_skill;odette_wing_dance_move_stellar_conduct_dmg;Танцевальное движение Крыла: урон Звёздного проводника;"""Wing"" Dance Move Stellar-Conduct DMG"
+feature_skill;odette_wing_dance_move_stellar_swirl_dmg;Танцевальное движение Крыла: урон Звёздного рассеивания;"""Wing"" Dance Move Stellar Swirl DMG"
+feature_other;odette_assist_dmg;Совместная атака: урон Звёздного проводника;Assist attack Stellar-Conduct DMG
+feature_other;odette_assist_stellar_swirl_dmg;Совместная атака: урон Звёздного рассеивания;Assist attack Stellar Swirl DMG

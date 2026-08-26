@@ -48,6 +48,8 @@ import { reliquary_of_truth } from "./Catalyst/reliquary_of_truth";
 import { nightweavers_looking_glass } from "./Catalyst/nightweavers_looking_glass";
 import { nocturnes_curtain_call } from "./Catalyst/nocturnes_curtain_call";
 import { angelos_heptades } from "./Catalyst/angelos_heptades";
+import { clash_of_kings } from "./Catalyst/clash_of_kings";
+import { echoes_of_the_heart } from "./Catalyst/echoes_of_the_heart";
 
 export const Catalyst = new DbObjectListSerializeStats({
     SolarPearl: SolarPearl, // 43
@@ -99,4 +101,6 @@ export const Catalyst = new DbObjectListSerializeStats({
     nightweavers_looking_glass: nightweavers_looking_glass, // 239
     nocturnes_curtain_call: nocturnes_curtain_call, // 240
     angelos_heptades: angelos_heptades, // 243
+    clash_of_kings: clash_of_kings, // 248
+    echoes_of_the_heart: echoes_of_the_heart, // 249
 });

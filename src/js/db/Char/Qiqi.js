@@ -1,5 +1,4 @@
-import { Condition } from "../../classes/Condition";
-import { ConditionAnd } from "../../classes/Condition";
+import { Condition, ConditionAnd, ConditionOr } from "../../classes/Condition";
 import { ConditionAscensionChar } from "../../classes/Condition/Ascension/Char";
 import { ConditionBoolean } from "../../classes/Condition/Boolean";
 import { ConditionEnemyStatus } from "../../classes/Condition/Boolean/EnemyStatus";
@@ -20,7 +19,7 @@ import { FeatureHeal } from "../../classes/Feature2/Heal";
 import { FeatureMultiplier } from "../../classes/Feature2/Multiplier";
 import { FeatureMultiplierList } from "../../classes/Feature2/Multiplier/List";
 import { FeatureMultiplierTarget } from "../../classes/Feature2/Multiplier/Target";
-import { FeatureReactionStellarConduct } from "../../classes/Feature2/Reaction/Extended/StellarConduct";
+import { FeatureReactionStellarConduct } from "../../classes/Feature2/Reaction/Extended/Stellar/Conduct";
 import { StatTable } from "../../classes/StatTable";
 import { ValueTable } from "../../classes/ValueTable";
 import { charTables } from "../generated/CharTables";
@@ -429,6 +428,11 @@ export const Qiqi = new DbObjectChar({
     ],
     conditions: [
         new ConditionBoolean({
+            name: 'qiqi_herald_of_frost',
+            serializeId: 4,
+            title: 'talent_name.qiqi_herald_of_frost',
+        }),
+        new ConditionBoolean({
             name: 'qiqi_seven_sacred_treasures',
             serializeId: 3,
             title: 'talent_name.qiqi_seven_sacred_treasures',
@@ -438,13 +442,28 @@ export const Qiqi = new DbObjectChar({
             title: 'talent_name.qiqi_seven_sacred_treasures',
             description: 'talent_descr.qiqi_seven_sacred_treasures_2',
             stats: {
-                dmg_reaction_stellar_conduct: charTalentTables.Qiqi.passsive[1][0] * 100,
-                dmg_reaction_superconduct: charTalentTables.Qiqi.passsive[1][0] * 100,
+                dmg_reaction_stellar_conduct: charTalentTables.Qiqi.passsive[2][1] * 100,
+                dmg_reaction_superconduct: charTalentTables.Qiqi.passsive[2][1] * 100,
             },
             condition: new ConditionAnd([
+                new ConditionBoolean({ name: 'qiqi_herald_of_frost' }),
                 new ConditionBoolean({ name: 'qiqi_seven_sacred_treasures' }),
                 new ConditionBoolean({ name: 'common.enemy_superconduct' }),
                 new ConditionBoolean({ name: 'allowed_stellar_conduct' }),
+            ]),
+        }),
+        new ConditionStatic({
+            title: 'talent_name.qiqi_seven_sacred_treasures',
+            description: 'talent_descr.qiqi_seven_sacred_treasures_3',
+            stats: {
+                dmg_reaction_stellar_swirl: charTalentTables.Qiqi.passsive[2][1] * 100,
+                dmg_reaction_swirl_cryo: charTalentTables.Qiqi.passsive[2][1] * 100,
+            },
+            condition: new ConditionAnd([
+                new ConditionBoolean({ name: 'qiqi_herald_of_frost' }),
+                new ConditionBoolean({ name: 'qiqi_seven_sacred_treasures' }),
+                new ConditionBoolean({ name: 'common.radiance_stellar_swirl' }),
+                new ConditionBoolean({ name: 'allowed_stellar_swirl' }),
             ]),
         }),
         new ConditionBoolean({
@@ -579,6 +598,12 @@ export const Qiqi = new DbObjectChar({
                 max: 10000,
             }),
             new ConditionBoolean({
+                name: 'party.qiqi_herald_of_frost',
+                serializeId: 5,
+                rotation: 'party',
+                title: 'talent_name.qiqi_herald_of_frost',
+            }),
+            new ConditionBoolean({
                 name: 'party.qiqi_seven_sacred_treasures',
                 serializeId: 3,
                 partySetting: 'qiqi_seven_sacred_treasures',
@@ -589,13 +614,28 @@ export const Qiqi = new DbObjectChar({
                 title: 'talent_name.qiqi_seven_sacred_treasures',
                 description: 'talent_descr.qiqi_seven_sacred_treasures_2',
                 stats: {
-                    dmg_reaction_stellar_conduct: charTalentTables.Qiqi.passsive[1][0] * 100,
-                    dmg_reaction_superconduct: charTalentTables.Qiqi.passsive[1][0] * 100,
+                    dmg_reaction_stellar_conduct: charTalentTables.Qiqi.passsive[2][1] * 100,
+                    dmg_reaction_superconduct: charTalentTables.Qiqi.passsive[2][1] * 100,
                 },
                 condition: new ConditionAnd([
+                    new ConditionBoolean({ name: 'party.qiqi_herald_of_frost' }),
                     new ConditionBoolean({ name: 'party.qiqi_seven_sacred_treasures' }),
                     new ConditionBoolean({ name: 'common.enemy_superconduct' }),
                     new ConditionBoolean({ name: 'allowed_stellar_conduct' }),
+                ]),
+            }),
+            new ConditionStatic({
+                title: 'talent_name.qiqi_seven_sacred_treasures',
+                description: 'talent_descr.qiqi_seven_sacred_treasures_3',
+                stats: {
+                    dmg_reaction_stellar_swirl: charTalentTables.Qiqi.passsive[2][1] * 100,
+                    dmg_reaction_swirl_cryo: charTalentTables.Qiqi.passsive[2][1] * 100,
+                },
+                condition: new ConditionAnd([
+                    new ConditionBoolean({ name: 'party.qiqi_herald_of_frost' }),
+                    new ConditionBoolean({ name: 'party.qiqi_seven_sacred_treasures' }),
+                    new ConditionBoolean({ name: 'common.radiance_stellar_swirl' }),
+                    new ConditionBoolean({ name: 'allowed_stellar_swirl' }),
                 ]),
             }),
             new ConditionBoolean({
@@ -608,17 +648,21 @@ export const Qiqi = new DbObjectChar({
                 stats: {
                     healing_recv: 20,
                 },
+                condition: new ConditionBoolean({ name: 'party.qiqi_herald_of_frost' }),
             }),
             new ConditionBoolean({
                 name: 'party.qiqi_rite_of_resurrection',
                 serializeId: 2,
+                rotation: 'party',
                 title: 'talent_name.qiqi_rite_of_resurrection',
                 description: 'talent_descr.qiqi_rite_of_resurrection_hex_2',
                 info: { constellation: 6 },
                 condition: new ConditionAnd([
                     new ConditionBoolean({ name: 'party.qiqi_seven_sacred_treasures' }),
-                    new ConditionBoolean({ name: 'common.enemy_superconduct' }),
-                    new ConditionBoolean({ name: 'allowed_stellar_conduct' }),
+                    new ConditionOr([
+                        new ConditionBoolean({ name: 'allowed_stellar_conduct' }),
+                        new ConditionBoolean({ name: 'allowed_stellar_swirl' }),
+                    ]),
                 ]),
             }),
         ],
@@ -629,12 +673,14 @@ export const Qiqi = new DbObjectChar({
                 values: new StatTable('', [charTalentTables.Qiqi.cons[5][1]], 100),
                 target: new FeatureMultiplierTarget({
                     isReactionFlatBonus: true,
-                    tags: 'stellar_conduct_reaction',
+                    damageTypes: ['stellardirect'],
                 }),
                 condition: new ConditionAnd([
                     new ConditionBoolean({ name: 'party.qiqi_seven_sacred_treasures' }),
-                    new ConditionBoolean({ name: 'common.enemy_superconduct' }),
-                    new ConditionBoolean({ name: 'allowed_stellar_conduct' }),
+                    new ConditionOr([
+                        new ConditionBoolean({ name: 'allowed_stellar_conduct' }),
+                        new ConditionBoolean({ name: 'allowed_stellar_swirl' }),
+                    ]),
                     new ConditionBoolean({ name: 'party.qiqi_rite_of_resurrection' }),
                 ]),
             }),

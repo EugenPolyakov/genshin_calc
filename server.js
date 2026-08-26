@@ -1,7 +1,7 @@
-const http = require('http');
-const fs = require('fs');
-const path = require('path');
-const url = require('url');
+import * as http from 'http'
+import * as fs from  'fs';
+import * as path from  'path';
+import * as url from  'url';
 
 const port = process.argv[3] || 3000;
 const host = 'localhost';
@@ -19,11 +19,14 @@ const mimeTypes = {
     '.svg': 'image/svg+xml'
 };
 
+const __filename = url.fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
 const server = http.createServer((req, res) => {
     console.log(`${new Date().toISOString()} - ${req.method} ${req.url}`);
     
     // Парсим URL
-    const parsedUrl = url.parse(req.url);
+    const parsedUrl = new URL(req.url, 'http://www');
     let pathname = parsedUrl.pathname;
     
     // Если корневой путь - отдаем index.html

@@ -82,6 +82,8 @@ weapon_names = {
     11432: 'CalamityOfEshu',
     11433: 'serenitys_call',
     11434: 'moonweavers_dawn',
+    11435: 'heretics_molten_blade',
+    11436: 'emberwell',
     11501: "AquilaFavonia",
     11502: "SkywardBlade",
     11503: "FreedomSworn",
@@ -101,6 +103,8 @@ weapon_names = {
     11517: "Azurelight",
     11518: "athame_artis",
     11519: "lightbearing_moonshard",
+    11520: "whitelake_frostfeather",
+    11521: "exaiphanes_blade",
 
     #CLAYMORES
     12301: "FerrousShadow",
@@ -134,6 +138,8 @@ weapon_names = {
     12431: 'Earthshaker',
     12432: 'FlameForgedInsight',
     12433: 'master_key',
+    12435: 'forged_by_the_golden_melody',
+    12436: 'blade_of_atonement',
     12501: "SkywardPride",
     12502: "WolfsGravestone",
     12503: "SongofBrokenPines",
@@ -178,6 +184,8 @@ weapon_names = {
     13432: 'BriefPavilionChatter',
     13433: 'prospectors_shovel',
     13434: 'sacrificers_staff',
+    13435: 'frostbreath',
+    13436: 'song_of_the_vigil',
     13501: "StaffofHoma",
     13502: "SkywardSpine",
     # 13503: "",
@@ -227,6 +235,8 @@ weapon_names = {
     14432: 'etherlight_spindlelute',
     14433: 'blackmarrow_lantern',
     14434: 'dawning_frost',
+    14435: 'clash_of_kings',
+    14436: 'echoes_of_the_heart',
     14501: "SkywardAtlas",
     14502: "LostPrayer",
     # 14503: "Lost Ballade",
@@ -284,6 +294,8 @@ weapon_names = {
     15432: 'SequenceofSolitude',
     15433: 'snare_hook',
     15434: 'rainbow_serpents_rain_bow',
+    15435: 'jade_vista',
+    15436: "covenant_of_frost_and_snow",
     15501: "SkywardHarp",
     15502: "AmosBow",
     15503: "ElegyfortheEnd",
@@ -432,7 +444,7 @@ def prepare_data():
             #if id in affixSet: continue
             try:
                 affixList = weapon_skill_data.get_list_by_field('id', id)
-                affixList = sorted(affixList, key=lambda d: d['level'])
+                affixList = sorted(affixList, key=lambda d: d.get('level', 0))
 
                 skill_id = convert_id(lang_eng.get(affixList[0]['nameTextMapHash']))
 
@@ -609,7 +621,11 @@ def print_Texts(weapons):
                 continue
 
             try:
-                skill = weapon_skill_data.get_item_by_field('id', id)
+                #меч гг имеет урезанный текст без пробуд, нужно брать следующие пробуды
+                if weapon["gameId"] == 11521:
+                    skill = weapon_skill_data.get_item_by_filter(lambda x: x['id'] == id and x.get('level', 0) == 4)
+                else:
+                    skill = weapon_skill_data.get_item_by_field('id', id)
                 # skill_id = convert_id(lang_eng.get(skill['nameTextMapHash']))
                 skill_id = v['skill']
                 skill_title = v['skill_title']

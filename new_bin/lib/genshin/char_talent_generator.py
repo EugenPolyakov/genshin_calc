@@ -42,20 +42,24 @@ class StatGenerator:
         self.out = open(fileName, 'w', encoding='utf-8')
 
     def prepareChar(self, jsonData):
-        self.values['hp_base'] = jsonData["hpBase"]
-        self.values['atk_base'] = jsonData["attackBase"]
-        self.values['def_base'] = jsonData["defenseBase"]
-        self.values['mastery_base'] = jsonData["elementMastery"]
-        self.values['crit_rate_base'] = jsonData["critical"]
-        self.values['crit_dmg_base'] = jsonData["criticalHurt"]
-        self.values['recharge_base'] = jsonData["chargeEfficiency"]
-        self.values.pop('charged_stamina_cost', None)
-        self.values.pop('burst_energy_cost', None)
-        self.grows = {}
-        for grow in jsonData.get('propGrowCurves', []):
-            stat = static.getStatByName(grow.get('type'))
-            self.grows[stat] = static.getCurveName(grow.get('growCurve'))
-        self.ascension = self.ascensions.get(jsonData.get('avatarPromoteId'), {})
+        try:
+            self.values['hp_base'] = jsonData["hpBase"]
+            self.values['atk_base'] = jsonData["attackBase"]
+            self.values['def_base'] = jsonData["defenseBase"]
+            self.values['mastery_base'] = jsonData.get("elementMastery", 0)
+            self.values['crit_rate_base'] = jsonData["critical"]
+            self.values['crit_dmg_base'] = jsonData["criticalHurt"]
+            self.values['recharge_base'] = jsonData["chargeEfficiency"]
+            self.values.pop('charged_stamina_cost', None)
+            self.values.pop('burst_energy_cost', None)
+            self.grows = {}
+            for grow in jsonData.get('propGrowCurves', []):
+                stat = static.getStatByName(grow.get('type'))
+                self.grows[stat] = static.getCurveName(grow.get('growCurve'))
+            self.ascension = self.ascensions.get(jsonData.get('avatarPromoteId'), {})
+        except:
+            print(jsonData)
+            raise
 
     def processScaleData(self, scaleData, isAttack):
         if isAttack:
@@ -70,7 +74,7 @@ class StatGenerator:
                     return
 
     def processBurst(self, skill):
-        self.values['burst_energy_cost'] = skill.get('costElemVal')
+        self.values['burst_energy_cost'] = skill.get('costElemVal', 0) # Mavuika
 
     def generateHeader(self):
         self.out.write('// This file is auto generated\n')

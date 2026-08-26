@@ -1,13 +1,13 @@
 .sprite-artifact.goblet.sprite-24 {
-	background-image: url("../../images/sprites/artifacts_28c5e03bbf39e1b9c0f59529193c3414.png");
+	background-image: url("../../images/sprites/artifacts_7608535c2fe798fc19592c438d88f7a2.png");
 	background-size: 144px 264px;
 }
 .sprite-artifact.goblet.sprite-40 {
-	background-image: url("../../images/sprites/artifacts_d11686790f7cd63c3449a8e7ee30e660.png");
+	background-image: url("../../images/sprites/artifacts_f5304529ff36404191960373b08c685c.png");
 	background-size: 240px 440px;
 }
 .sprite-artifact.goblet.sprite-60 {
-	background-image: url("../../images/sprites/artifacts_27f80f5e147af171cf1f19e36ccdaaf5.png");
+	background-image: url("../../images/sprites/artifacts_cd29a57debbe921f5528af716c2cae05.png");
 	background-size: 360px 660px;
 }
 .sprite.artifact-icon-unknown {background-position: 0% 0%}
@@ -68,6 +68,8 @@
 .sprite.artifact-icon-a-day-carved-from-rising-winds.goblet {background-position: 20% 90%}
 .sprite.artifact-icon-celestial-gift.goblet {background-position: 40% 90%}
 .sprite.artifact-icon-disenchantment-in-deep-shadow.goblet {background-position: 60% 90%}
+.sprite.artifact-icon-scarlet-proof.goblet {background-position: 80% 90%}
+.sprite.artifact-icon-heart-of-the-furnace.goblet {background-position: 100% 90%}
 
 @media
 only screen and (-webkit-min-device-pixel-ratio: 2),
@@ -76,7 +78,7 @@ only screen and (     -o-min-device-pixel-ratio: 2/1),
 only screen and (        min-device-pixel-ratio: 2),
 only screen and (                min-resolution: 192dpi),
 only screen and (                min-resolution: 2dppx) {
-	.sprite-artifact.goblet.sprite-24 {background-image: url("../../images/sprites/artifacts_94e73afa4e4816e15300c422a53cb776.png")}
-	.sprite-artifact.goblet.sprite-40 {background-image: url("../../images/sprites/artifacts_c3488d5b47a8f369faeca740cd162919.png")}
-	.sprite-artifact.goblet.sprite-60 {background-image: url("../../images/sprites/artifacts_d92e85728225cb944bd6dfec153eab6c.png")}
+	.sprite-artifact.goblet.sprite-24 {background-image: url("../../images/sprites/artifacts_c22ce77c82017e6fbafb354f740d3101.png")}
+	.sprite-artifact.goblet.sprite-40 {background-image: url("../../images/sprites/artifacts_171422541acf03e21fbbe1753b22d969.png")}
+	.sprite-artifact.goblet.sprite-60 {background-image: url("../../images/sprites/artifacts_d43d64e6f1d2f09a489049d48b2450ab.png")}
 }

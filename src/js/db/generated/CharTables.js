@@ -204,6 +204,54 @@ export const charTables = {
 			multi: 100,
 		}),
 	],
+	Alyosha: [
+		new StatTableAscensionScale({
+			stat: 'atk_base',
+			base: 22.26,
+			ascension: new ValueTable([16.62975, 28.445625, 44.200127, 56.016, 67.83188, 79.64775]),
+			scale: charScales.s4atk,
+		}),
+		new StatTableAscensionScale({
+			stat: 'burst_energy_cost',
+			base: 70,
+		}),
+		new StatTableAscensionScale({
+			stat: 'charged_stamina_cost',
+			base: 25,
+		}),
+		new StatTableAscensionScale({
+			stat: 'crit_dmg_base',
+			base: 0.5,
+			multi: 100,
+		}),
+		new StatTableAscensionScale({
+			stat: 'crit_rate_base',
+			base: 0.05,
+			multi: 100,
+		}),
+		new StatTableAscensionScale({
+			stat: 'def_base',
+			base: 58.94175,
+			ascension: new ValueTable([44.0325, 75.31875, 117.03375, 148.32, 179.60625, 210.8925]),
+			scale: charScales.s4hp,
+		}),
+		new StatTableAscensionScale({
+			stat: 'hp_base',
+			base: 1002.9701,
+			ascension: new ValueTable([749.27, 1281.6461, 1991.4808, 2523.857, 3056.233, 3588.6091]),
+			scale: charScales.s4hp,
+		}),
+		new StatTableAscensionScale({
+			stat: 'mastery_base',
+			base: 0,
+		}),
+		new StatTableAscensionScale({
+			stat: 'recharge_base',
+			base: 1,
+			multi: 100,
+			ascension: new ValueTable([0, 0.0667, 0.1333, 0.1333, 0.2, 0.2667], 100),
+		}),
+	],
 	Amber: [
 		new StatTableAscensionScale({
 			stat: 'atk_base',
@@ -3948,6 +3996,54 @@ export const charTables = {
 			multi: 100,
 		}),
 	],
+	Odette: [
+		new StatTableAscensionScale({
+			stat: 'atk_base',
+			base: 26.068,
+			ascension: new ValueTable([22.34932, 38.2291, 59.40214, 75.28192, 91.1617, 107.04148]),
+			scale: charScales.s5atk,
+		}),
+		new StatTableAscensionScale({
+			stat: 'burst_energy_cost',
+			base: 60,
+		}),
+		new StatTableAscensionScale({
+			stat: 'charged_stamina_cost',
+			base: 20,
+		}),
+		new StatTableAscensionScale({
+			stat: 'crit_dmg_base',
+			base: 0.5,
+			multi: 100,
+			ascension: new ValueTable([0, 0.096, 0.192, 0.192, 0.288, 0.384], 100),
+		}),
+		new StatTableAscensionScale({
+			stat: 'crit_rate_base',
+			base: 0.05,
+			multi: 100,
+		}),
+		new StatTableAscensionScale({
+			stat: 'def_base',
+			base: 61.26592,
+			ascension: new ValueTable([52.5312, 89.856, 139.6224, 176.9472, 214.272, 251.5968]),
+			scale: charScales.s5hp,
+		}),
+		new StatTableAscensionScale({
+			stat: 'hp_base',
+			base: 1010.5192,
+			ascension: new ValueTable([866.42883, 1482.0493, 2302.8767, 2918.497, 3534.1177, 4149.7383]),
+			scale: charScales.s5hp,
+		}),
+		new StatTableAscensionScale({
+			stat: 'mastery_base',
+			base: 0,
+		}),
+		new StatTableAscensionScale({
+			stat: 'recharge_base',
+			base: 1,
+			multi: 100,
+		}),
+	],
 	Ororon: [
 		new StatTableAscensionScale({
 			stat: 'atk_base',
@@ -4785,6 +4881,58 @@ export const charTables = {
 		}),
 	],
 	TravelerAnemo: [
+		new StatTableAscensionScale({
+			stat: 'atk_base',
+			base: 17.808,
+			ascension: new ValueTable([13.3038, 22.7565, 35.3601, 44.8128, 54.2655, 63.7182]),
+			scale: charScales.s4atk,
+		}),
+		new StatTableAscensionScale({
+			stat: 'atk_percent',
+			base: 0,
+			ascension: new ValueTable([0, 0.06, 0.12, 0.12, 0.18, 0.24], 100),
+		}),
+		new StatTableAscensionScale({
+			stat: 'burst_energy_cost',
+			base: 60,
+		}),
+		new StatTableAscensionScale({
+			stat: 'charged_stamina_cost',
+			base: 20,
+		}),
+		new StatTableAscensionScale({
+			stat: 'crit_dmg_base',
+			base: 0.5,
+			multi: 100,
+		}),
+		new StatTableAscensionScale({
+			stat: 'crit_rate_base',
+			base: 0.05,
+			multi: 100,
+		}),
+		new StatTableAscensionScale({
+			stat: 'def_base',
+			base: 57.225,
+			ascension: new ValueTable([42.75, 73.125, 113.625, 144, 174.375, 204.75]),
+			scale: charScales.s4hp,
+		}),
+		new StatTableAscensionScale({
+			stat: 'hp_base',
+			base: 911.791,
+			ascension: new ValueTable([681.15454, 1165.1328, 1810.4371, 2294.4153, 2778.3936, 3262.3718]),
+			scale: charScales.s4hp,
+		}),
+		new StatTableAscensionScale({
+			stat: 'mastery_base',
+			base: 0,
+		}),
+		new StatTableAscensionScale({
+			stat: 'recharge_base',
+			base: 1,
+			multi: 100,
+		}),
+	],
+	TravelerCryo: [
 		new StatTableAscensionScale({
 			stat: 'atk_base',
 			base: 17.808,

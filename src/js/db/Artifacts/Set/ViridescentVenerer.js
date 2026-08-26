@@ -38,6 +38,7 @@ export const ViridescentVenerer = new ArtifactSet({
                     settings: {},
                     stats: {
                         dmg_reaction_swirl: 60,
+                        dmg_reaction_stellar_swirl: 20,
                     },
                 }),
                 new ConditionDropdownElement({

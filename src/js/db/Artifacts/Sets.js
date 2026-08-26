@@ -60,6 +60,8 @@ import { ADayCarvedFromRisingWinds } from "./Set/ADayCarvedFromRisingWinds.js"
 import { AubadeOfMorningstarAndMoon } from "./Set/AubadeOfMorningstarAndMoon.js"
 import { CelestialGift } from "./Set/CelestialGift.js"
 import { DisenchantmentInDeepShadow } from "./Set/DisenchantmentInDeepShadow.js"
+import { HeartOfTheFurnace } from "./Set/HeartOfTheFurnace.js"
+import { ScarletProof } from "./Set/ScarletProof.js"
 
 export const Sets = new DbObjectListArtifactSets({
     Adventurer: Adventurer, // 1
@@ -123,4 +125,6 @@ export const Sets = new DbObjectListArtifactSets({
     AubadeOfMorningstarAndMoon: AubadeOfMorningstarAndMoon, // 59
     CelestialGift: CelestialGift, //60
     DisenchantmentInDeepShadow: DisenchantmentInDeepShadow, //61
+    ScarletProof: ScarletProof, //62
+    HeartOfTheFurnace: HeartOfTheFurnace, //63
 });

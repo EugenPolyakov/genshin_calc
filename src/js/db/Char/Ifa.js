@@ -4,7 +4,6 @@ import { ConditionAscensionChar } from "../../classes/Condition/Ascension/Char";
 import { ConditionBoolean } from "../../classes/Condition/Boolean";
 import { ConditionConstellation } from "../../classes/Condition/Constellation";
 import { ConditionNumber } from "../../classes/Condition/Number";
-import { ConditionNumberIfa } from "../../classes/Condition/Number/Ifa";
 import { ConditionStatic } from "../../classes/Condition/Static";
 import { DbObjectChar } from "../../classes/DbObject/Char";
 import { DbObjectConstellation } from "../../classes/DbObject/Constellation";
@@ -137,6 +136,18 @@ const reactionDmgPost2 = new PostEffectStats({
         new ConditionBoolean({name: 'common.nightsoul_blessing_state'}),
         new ConditionBoolean({name: 'ifa_field_medics_vision'}),
         new ConditionAscensionChar({ascension: 1}),
+    ]),
+});
+
+const reactionDmgPost3 = new PostEffectStats({
+    from: 'ifa_field_medics_vision',
+    percent: [
+        new StatTable('dmg_reaction_stellar_swirl', [charTalentTables.Ifa.passsive[0][4]], 100),
+    ],
+    condition: new ConditionAnd([
+        new ConditionBoolean({ name: 'common.nightsoul_blessing_state' }),
+        new ConditionBoolean({ name: 'ifa_field_medics_vision' }),
+        new ConditionAscensionChar({ ascension: 1 }),
     ]),
 });
 
@@ -281,6 +292,12 @@ export const Ifa = new DbObjectChar({
             postEffect: reactionDmgPost2,
             format: 'percent',
         }),
+        new FeaturePostEffectValue({
+            category: 'other',
+            name: 'ifa_reaction_bonus_3',
+            postEffect: reactionDmgPost3,
+            format: 'percent',
+        }),
     ],
     conditions: [
         new ConditionBoolean({
@@ -288,13 +305,20 @@ export const Ifa = new DbObjectChar({
             serializeId: 1,
             title: 'talent_name.nightsoul_blessing_state',
         }),
-        new ConditionNumberIfa({
+        new ConditionNumber({
             name: 'ifa_field_medics_vision',
             serializeId: 2,
             title: 'talent_name.ifa_field_medics_vision',
             description: 'talent_descr.ifa_field_medics_vision',
-            max: A1Stacks,
-            c2bonus: C2Stacks,
+            max(settings) {
+                let value = A1Stacks;
+
+                if (settings.char_constellation >= 2) {
+                    value += C2Stacks;
+                }
+
+                return value;
+            },
             info: {ascension: 1},
             condition: new ConditionAscensionChar({ascension: 1}),
         }),
@@ -313,6 +337,7 @@ export const Ifa = new DbObjectChar({
     postEffects: [
         reactionDmgPost,
         reactionDmgPost2,
+        reactionDmgPost3,
     ],
     constellation: new DbObjectConstellation([
         {
@@ -393,6 +418,7 @@ export const Ifa = new DbObjectChar({
                     new StatTable('dmg_reaction_swirl', [A1ReactionDmg]),
                     new StatTable('dmg_reaction_electrocharged', [A1ReactionDmg]),
                     new StatTable('dmg_reaction_lunarcharged', [A1MoonReactionDmg]),
+                    new StatTable('dmg_reaction_stellar_swirl', [charTalentTables.Ifa.passsive[0][4]], 100),
                 ],
                 condition: new ConditionBoolean({name: 'party_ifa_field_medics_vision'}),
             }),

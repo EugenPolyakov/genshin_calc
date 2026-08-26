@@ -25,3 +25,6 @@ talent_name;exalted_one;Возвышенный;Exalted One
 talent_descr;exalted_one;После включения в отряд name{макс. HP}, name{сила атаки} и name{защита} увеличиваются на %{atk_percent}. Эффект действует в Мрачном натиске.;After chatacter joins your party, name{Max HP}, name{ATK}, and name{DEF} are increased by %{atk_percent}. This will take effect Stygian Onslaught.
 
 talent_name;nightsoul_blessing_state;Благословение Ночного духа;Nightsoul's Blessing state
+
+talent_name;stellar_vortex;Уровень Звёздного Вихря;Stellar Vortex Level
+talent_descr;stellar_vortex;После активации stcond{Звёздного рассеивания} определённое количество раз уровень вихря на поле повысится до 2. Такой вихрь при взрыве наносит повышенный stcond{Крио урон} по большей площади.;A Stellar Vortex on the field will level up to Lv. 2 after a certain number of stcond{Stellar Swirl} reactions have been triggered. A higher-level Vortex deals more stcond{AoE Cryo DMG} to opponents over a wider area when it explodes.

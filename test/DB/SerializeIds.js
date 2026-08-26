@@ -21,12 +21,14 @@ expect.extend({toBeEmptyArray});
 
 for (const data of list) {
     let items = getItems(data);
+    let mid = 0;
+    items.forEach(x => mid = x.id > mid ? x.id : mid);
 
-    test('Empty ids for '+ data.name, () => {
+    test('Empty ids for ' + data.name + ', max id: ' + mid, () => {
         expect( getEmptyIds(items) ).toBeEmptyArray();
     });
 
-    test('Duplicate ids for '+ data.name, () => {
+    test('Duplicate ids for ' + data.name + ', max id: ' + mid, () => {
         expect( getDuplicatedIds(items) ).toBeEmptyArray();
     });
 }

@@ -10,7 +10,6 @@ feature_burst;nahida_heart_electro_2;Электро: Уменьшение отк
 feature_burst;nahida_heart_hydro_1;Гидро: Продление Святилища (1 персонаж);Hydro: Duration Extension (1 Character)
 feature_burst;nahida_heart_hydro_2;Гидро: Продление Святилища (2 персонажа);Hydro: Duration Extension (2 Characters)
 feature_skill;nahida_trikarma_purification_karmic_dmg;Урон Очищения трикармы: Кармическое небытие;Tri-Karma Purification: Karmic Oblivion DMG
-feature_other;nahida_mastery_bonus;Бонус мастерства стихий;Mastery Bonus
 feature_other;nahida_crit_bonus;Бонус шанса крит. попадания Очищения трикармы;Tri-Karma Purification Crit Rate Bonus
 feature_other;nahida_skill_bonus;Бонус урона Очищения трикармы;Tri-Karma Purification DMG Bonus
 

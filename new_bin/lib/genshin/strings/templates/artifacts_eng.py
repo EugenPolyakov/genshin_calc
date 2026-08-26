@@ -240,12 +240,14 @@ viridescent_venerer_2 = Template(
 viridescent_venerer_4 = Template(
     names=['сопротивление'],
     sentences=[
-        ['dmg_reaction_swirl'],
-        ['text_percent|40', 'ignore']
+        ['60:dmg_reaction_swirl', '20:dmg_reaction_stellar_swirl'],
+        ['40:', '10:ignore'],
+        ['40:'],
+        [],
     ],
     results=[
         [0],
-        [1],
+        [1, 2, 3],
     ]
 )
 
@@ -514,7 +516,7 @@ gilded_dreams_2 = Template(
 
 gilded_dreams_4 = Template(
     replace={
-        'character, and Elemental': 'character. Elemental',
+        'character, and name{Elemental': 'character. name{Elemental',
         'same as the equipping character.': 'same as the equipping character (%{text_value}).',
         'different Elemental Type.': 'different Elemental Type (%{text_value2}).',
     },
@@ -871,6 +873,36 @@ disenchantment_in_deep_shadow_4 = Template(
     results=[
         [0],
         [1],
+    ],
+)
+
+heart_of_the_furnace_2 = Template(
+    sentences=[
+        ['18:atk_percent'],
+    ],
+)
+
+heart_of_the_furnace_4 = Template(
+    sentences=[
+        ['12:atk_percent', '12:ignore'],
+        ['50:'],
+        [],
+    ],
+    results=[
+        [0],
+        [1, 2],
+    ],
+)
+
+scarlet_proof_2 = Template(
+    sentences=[
+        ['18:atk_percent'],
+    ],
+)
+
+scarlet_proof_4 = Template(
+    sentences=[
+        ['16:crit_rate', '40:dmg_reaction_stellar_swirl', '10:ignore'],
     ],
 )
 

@@ -1,8 +1,7 @@
-import { Condition } from "../../classes/Condition";
+import { Condition, ConditionOr } from "../../classes/Condition";
 import { ConditionBoolean } from "../../classes/Condition/Boolean";
 import { ConditionDropdownElement } from "../../classes/Condition/Dropdown/Element";
 import { ConditionNot } from "../../classes/Condition/Not";
-import { ConditionOr } from "../../classes/Condition/Or";
 import { DbObjectEnemy } from "../../classes/DbObject/Enemy";
 import { DbObjectListSerialize } from "../../classes/DbObject/List/Serialize";
 

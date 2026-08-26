@@ -114,6 +114,35 @@ old_values = {
         1: "cd", #Default
         2: "energy_cost", #Default
     },
+#alyosha
+    #skirmishing_spear
+    (11481, 14831): {
+        0: "normal_hit_1", #Default
+        1: "normal_hit_2", #Default
+        2: "normal_hit_3", #Default
+        3: "normal_hit_4", #Default
+        4: "charged_hit", #Default
+        5: "stamina_cost", #Default
+        6: "plunge", #Default
+        7: "plunge_low/plunge_high", #Default
+    },
+    #thunderbolt_strike
+    (11482, 14832): {
+        0: "press_dmg", #Default
+        1: "hold_dmg", #Default
+        2: "cd", #Default
+        3: "hunters_mark_duration",
+        4: "hunters_precision_atk_bonus",
+        5: "hunters_precision_duration",
+    },
+    #hunters_advance
+    (11485, 14839): {
+        0: "fulgurite_hunting_field_dmg",
+        1: "tugarin_dmg",
+        2: "duration", #Default
+        3: "cd", #Default
+        4: "energy_cost", #Default
+    },
 #amber
     #sharpshooter
     (10041, 2131): {
@@ -2069,7 +2098,8 @@ old_values = {
         1: "continuous_attack_dmg",
         2: "dreamdrifter_duration",
         3: "elemental_mastery_based_swirl_dmg_increase",
-        4: "cd", #Default
+        4: "elemental_mastery_based_stellar_swirl_dmg_increase",
+        5: "cd", #Default
     },
     #anraku_secret_spring_therapy
     (11095, 10939): {
@@ -2378,6 +2408,42 @@ old_values = {
         4: "cd", #Default
         5: "energy_cost", #Default
     },
+#odette
+    #snow_swan_variation
+    (11501, 15031): {
+        0: "normal_hit_1", #Default
+        1: "normal_hit_2", #Default
+        2: "normal_hit_3", #Default
+        3: "normal_hit_4", #Default
+        4: "normal_hit_5", #Default
+        5: "charged_hit", #Default
+        6: "stamina_cost", #Default
+        7: "plunge", #Default
+        8: "plunge_low/plunge_high", #Default
+    },
+    #phantom_night_dancers
+    (11502, 15032): {
+        0: "skill_dmg", #Default
+        1: "coda_at_dawns_tolling_dot",
+        2: "coda_at_dawns_tolling_stellar_conduct_stellar_swirl_dmg", #ManualToDefault coda_at_dawns_tolling_stellar_conduct_stellar_swirl_dmg
+        3: "plume_dance_move_dmg",
+        4: "plume_dance_move_stellar_conduct_stellar_swirl_dmg", #ManualToDefault plume_dance_move_stellar_conduct_stellar_swirl_dmg
+        5: "wing_dance_move_dmg",
+        6: "wing_dance_move_stellar_conduct_stellar_swirl_dmg", #ManualToDefault wing_dance_move_stellar_conduct_stellar_swirl_dmg
+        7: "coda_at_dawns_tolling_cd",
+        8: "solo_dance_double_duration",
+        9: "cd", #Default
+    },
+    #bluebird_finale
+    (11505, 15039): {
+        0: "slash_dmg",
+        1: "final_slash_dmg",
+        2: "snow_swans_dream_stellar_glimmer_reaction_dmg_bonus",
+        3: "snow_swans_dream_duration",
+        4: "solo_dance_double_duration",
+        5: "cd", #Default
+        6: "energy_cost", #Default
+    },
 #ororon
     #spiritvessel_snapshot
     (30501, 10531): {
@@ -2571,23 +2637,26 @@ old_values = {
         3: "charged_attack_sweeping_fire_dmg",
         4: "charged_attack_condensed_beam_dmg",
         5: "charged_attack_condensed_beam_stellar_conduct_dmg",
-        6: "dmg_when_in_power_overdrive",
-        7: "plunge", #Default
-        8: "plunge_low/plunge_high", #Default
+        6: "charged_attack_condensed_beam_stellar_swirl_dmg",
+        7: "dmg_when_in_power_overdrive",
+        8: "plunge", #Default
+        9: "plunge_low/plunge_high", #Default
     },
     #differential_analysis
     (11332, 13332): {
         0: "prism_shot_dmg",
         1: "prism_shot_stellar_conduct_dmg",
-        2: "cd", #Default
+        2: "prism_shot_stellar_swirl_dmg",
+        3: "cd", #Default
     },
     #q_e_d
     (11335, 13339): {
         0: "bombardment_dmg",
         1: "convective_inhibition_ray_dmg",
         2: "convective_inhibition_ray_stellar_conduct_dmg",
-        3: "cd", #Default
-        4: "energy_cost", #Default
+        3: "convective_inhibition_ray_stellar_swirl_dmg",
+        4: "cd", #Default
+        5: "energy_cost", #Default
     },
 #kujou_sara
     #tengu_bowmanship
@@ -2925,6 +2994,39 @@ old_values = {
         2: "duration", #Default
         3: "cd", #Default
         4: "energy_cost", #Default
+    },
+#traveler_cryo
+    #foreign_frostglint
+    (100554, 831): {
+        0: "normal_hit_1", #Default
+        1: "normal_hit_2", #Default
+        2: "normal_hit_3", #Default
+        3: "normal_hit_4", #Default
+        4: "normal_hit_5", #Default
+        5: "charged_hit", #Default
+        6: "stamina_cost", #Default
+        7: "plunge", #Default
+        8: "plunge_low/plunge_high", #Default
+    },
+    #ice_fog_piercer
+    (10127, 832): {
+        0: "skill_dmg", #Default
+        1: "ice_crystal_dmg",
+        2: "frostpierce_star_duration",
+        3: "cd", #Default
+    },
+    #frostbound_javelin
+    (10128, 839): {
+        0: "ice_javelin_dmg",
+        1: "frostglow_dmg_bonus",
+        2: "stellar_conduct_ice_javelin_single_strike_dmg",
+        3: "stellar_conduct_frostglow_dmg_bonus",
+        4: "stellar_swirl_ice_javelin_single_strike_dmg",
+        5: "stellar_swirl_frostglow_dmg_bonus",
+        6: "no_of_strikes_in_attack",
+        7: "additional_frostglow_attack_strikes_at_stack_max",
+        8: "cd", #Default
+        9: "energy_cost", #Default
     },
 #traveler_dendro
     #foreign_fieldcleaver
