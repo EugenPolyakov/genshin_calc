@@ -1,11 +1,10 @@
-import { Condition, ConditionAnd } from "../../classes/Condition";
+import { Condition, ConditionAnd, ConditionOr } from "../../classes/Condition";
 import { ConditionAscensionChar } from "../../classes/Condition/Ascension/Char";
 import { ConditionBoolean } from "../../classes/Condition/Boolean";
 import { ConditionBooleanLevels } from "../../classes/Condition/Boolean/Levels";
 import { ConditionConstellation } from "../../classes/Condition/Constellation";
 import { ConditionNumber } from "../../classes/Condition/Number";
 import { ConditionNumberTalent } from "../../classes/Condition/Number/Talent";
-import { ConditionOr } from "../../classes/Condition/Or";
 import { ConditionStacks } from "../../classes/Condition/Stacks";
 import { ConditionStatic } from "../../classes/Condition/Static";
 import { DbObjectChar } from "../../classes/DbObject/Char";
@@ -704,12 +703,14 @@ export const Odette = new DbObjectChar({
                 name: 'party.n11500001',
                 partySetting: 'n11500001',
                 serializeId: 4,
+                rotation: 'party',
                 title: 'talent_name.n11500001',
                 description: 'talent_descr.n11500001_1',
             }),
             new ConditionStacks({
                 name: 'party.n11500003',
                 serializeId: 5,
+                rotation: 'party',
                 title: 'talent_name.n11500003',
                 description: 'talent_descr.n11500003',
                 maxStacks: 6,

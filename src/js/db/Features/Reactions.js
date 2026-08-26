@@ -1,6 +1,6 @@
 import { ConditionBoolean } from "../../classes/Condition/Boolean";
 import { ConditionBooleanCharElement } from "../../classes/Condition/Boolean/CharElement";
-import { ConditionOr } from "../../classes/Condition/Or";
+import { ConditionAnd, ConditionOr } from "../../classes/Condition";
 import { FeatureReactionElectroCharged } from "../../classes/Feature2/Reaction/Transformative/ElectroCharged";
 import { FeatureReactionOverloaded } from "../../classes/Feature2/Reaction/Transformative/Overloaded";
 import { FeatureReactionSuperConduct } from "../../classes/Feature2/Reaction/Transformative/SuperConduct";
@@ -10,7 +10,6 @@ import { FeatureReactionBurning } from "../../classes/Feature2/Reaction/Transfor
 import { FeatureReactionHyperBurgeon } from "../../classes/Feature2/Reaction/Transformative/Bloom/Burgeon";
 import { FeatureReactionCrystallize } from "../../classes/Feature2/Reaction/Crystallize";
 import { FeatureReactionRupture } from "../../classes/Feature2/Reaction/Transformative/Bloom/Rupture";
-import { ConditionAnd } from "../../classes/Condition";
 import { FeatureReactionLunarCharged } from "../../classes/Feature2/Reaction/Extended/Lunar/Charged";
 import { FeatureMultiplierReaction } from "../../classes/Feature2/Multiplier/Reaction";
 import { reactionDamageValues, reactionShieldValues } from "../generated/ElementScale";

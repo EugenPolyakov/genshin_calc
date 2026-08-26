@@ -45,13 +45,6 @@ export class ArtifactGenerator {
         let ensureStats = ['recharge'].concat(usedStats);
         this.buildData.stats.ensure(ensureStats);
 
-        // todo: кажется можно удалить, но нужно проверить
-        if (usedStats.includes('crit_value')) {
-            this.calcCritValue = true;
-            usedStats.push('crit_rate');
-            usedStats.push('crit_dmg');
-        }
-
         compiler.prepare(this.buildData);
         compiler.compile();
         this.compiled = compiler;
@@ -410,9 +403,6 @@ export class ArtifactGenerator {
                         let rollValue = obj.addRoll(stat);
                         stats.add(stat, DB.Artifacts.Substats.get(stat).rollsReal[4][rollValue]);
                     }
-                }
-                if (this.calcCritValue) {
-                    stats.set('crit_value', stats.get('crit_rate') * 2 + stats.get('crit_dmg'));
                 }
 
                 this.buildData.stats = stats;
@@ -956,11 +946,6 @@ export function getMainStatCombinations(params) {
 
     if (params.settings.minRecharge > 100) {
         usedStats.push('recharge')
-    }
-
-    if (usedStats.includes('crit_value')) {
-        usedStats.push('crit_rate')
-        usedStats.push('crit_dmg')
     }
 
     for (let stat of DB.Artifacts.Mainstats.getKeys()) {

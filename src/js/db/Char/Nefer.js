@@ -1,5 +1,4 @@
-import { Condition } from "../../classes/Condition";
-import { ConditionOr } from "../../classes/Condition/Or";
+import { Condition, ConditionAnd } from "../../classes/Condition";
 import { ConditionAscensionChar } from "../../classes/Condition/Ascension/Char";
 import { ConditionBoolean } from "../../classes/Condition/Boolean";
 import { ConditionConstellation } from "../../classes/Condition/Constellation";
@@ -24,7 +23,6 @@ import { charTables } from "../generated/CharTables";
 import { charTalentTables } from "../generated/CharTalentTables";
 import { PostEffectStats } from "../../classes/PostEffect/Stats";
 import { PostEffectStatsMastery } from "../../classes/PostEffect/Stats/Mastery";
-import { ConditionAnd } from "../../classes/Condition";
 import { ConditionMoonPhaseCheck } from "../../classes/Condition/MoonPhaseCheck";
 import { ConditionNumber } from "../../classes/Condition/Number";
 import { FeatureDamageMultihit } from "../../classes/Feature2/Damage/Multihit";

@@ -1,8 +1,7 @@
-import { Condition } from "../../classes/Condition";
+import { Condition, ConditionAnd, ConditionOr } from "../../classes/Condition";
 import { ConditionMoonPhaseBuff } from "../../classes/Condition/MoonPhaseBuff";
 import { ConditionMoonPhaseBoolean } from "../../classes/Condition/Boolean/MoonPhase";
 import { ConditionMoonPhaseSetting } from "../../classes/Condition/CustomOrigin/MoonPhaseSetting";
-import { ConditionAnd } from "../../classes/Condition";
 import { ConditionArchaic } from "../../classes/Condition/Archaic";
 import { ConditionBoolean } from "../../classes/Condition/Boolean";
 import { ConditionBooleanCharElement } from "../../classes/Condition/Boolean/CharElement";
@@ -12,7 +11,6 @@ import { ConditionBooleanPiecesCount } from "../../classes/Condition/Boolean/Pie
 import { ConditionDropdownElement } from "../../classes/Condition/Dropdown/Element";
 import { ConditionNot } from "../../classes/Condition/Not";
 import { ConditionNumber } from "../../classes/Condition/Number";
-import { ConditionOr } from "../../classes/Condition/Or";
 import { DbObjectBuff } from "../../classes/DbObject/Buff";
 import { FeatureMultiplier } from "../../classes/Feature2/Multiplier";
 import { FeatureMultiplierTarget } from "../../classes/Feature2/Multiplier/Target";

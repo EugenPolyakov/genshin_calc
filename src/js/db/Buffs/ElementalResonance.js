@@ -1,5 +1,4 @@
-import { Condition } from "../../classes/Condition";
-import { ConditionAnd } from "../../classes/Condition";
+import { Condition, ConditionAnd, ConditionOr } from "../../classes/Condition";
 import { ConditionBoolean } from "../../classes/Condition/Boolean";
 import { ConditionEnemyStatus } from "../../classes/Condition/Boolean/EnemyStatus";
 import { ConditionBooleanResonanceEnabled } from "../../classes/Condition/Boolean/ResonanceEnabled";
@@ -12,9 +11,7 @@ import { ConditionGroup } from "../../classes/Condition/Group";
 import { ConditionLevels } from "../../classes/Condition/Levels";
 import { ConditionMoonPhaseCheck } from "../../classes/Condition/MoonPhaseCheck";
 import { ConditionNonLunarElement } from "../../classes/Condition/NonLunarElement";
-import { ConditionNot } from "../../classes/Condition/Not";
 import { ConditionNumber } from "../../classes/Condition/Number";
-import { ConditionOr } from "../../classes/Condition/Or";
 import { ConditionResonance } from "../../classes/Condition/Resonance";
 import { ConditionStacks } from "../../classes/Condition/Stacks";
 import { ConditionStatic } from "../../classes/Condition/Static";

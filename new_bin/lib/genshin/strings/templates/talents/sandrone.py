@@ -114,7 +114,7 @@ char_sandrone = TemplateList(
     ),
     morrow_after_the_golden_dusk=Template(
         sentences=[
-            ['50:ignore', '30:dmg_reaction_stellar_conduct'],
+            ['50:ignore', '30:dmg_reaction_stellar_glimmer'],
         ],
     ),
     an_heiress_gazed_into_the_looking_glass=Template(

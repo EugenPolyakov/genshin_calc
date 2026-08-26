@@ -486,7 +486,6 @@ export const Nahida = new DbObjectChar({
                 new ConditionLevelSelect({
                     name: 'weapon.nahida_the_stem_of_manifest_inference',
                     serializeId: 4,
-                    rotation: 'buffs',
                     title: 'talent_name.nahida_the_stem_of_manifest_inference',
                     description: 'talent_descr.nahida_the_stem_of_manifest_inference',
                     maxStacks: 4,

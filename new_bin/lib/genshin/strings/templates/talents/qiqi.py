@@ -44,6 +44,7 @@ char_qiqi = TemplateList(
         results=[
             [0],
             [2, 3, 4],
+            [2, 3, 6],
         ],
     ),
     a_glimpse_into_arcanum_hex=Template(

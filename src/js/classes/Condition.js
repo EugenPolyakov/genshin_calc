@@ -184,7 +184,7 @@ export class Condition {
         let params = Object.assign({}, parent.params);
         if (this.params.hideCondition) {
             if (params.hideCondition)
-                params.hideCondition = new ConditionAnd([this.params.hideCondition, params.hideCondition]);
+                params.hideCondition = new ConditionOr([this.params.hideCondition, params.hideCondition]);
             else
                 params.hideCondition = this.params.hideCondition;
         }
@@ -194,6 +194,8 @@ export class Condition {
             else
                 params.condition = this.params.condition;
         }
+        if (params.hideInactive == null)
+            params.hideInactive = this.params.hideInactive;
         params.title = this.params.title + ';' + params.title;
         params.rotation = this.params.rotation;
         let constructor = Object.getPrototypeOf(parent).constructor;
@@ -296,6 +298,25 @@ export class ConditionAnd extends Condition {
             result = result && cond.isActive(settings);
         }
 
-        return result;
+        return this.params.invert ? !result : result;
+    }
+}
+
+export class ConditionOr extends Condition {
+    constructor (items) {
+        super({})
+        this.items = items;
+    }
+
+    isActive(settings) {
+        let result = false;
+        for (let cond of this.items) {
+            result ||= cond.isActive(settings)
+            if (result) {
+                break;
+            }
+        }
+
+        return this.params.invert ? !result : result;
     }
 }

@@ -1,11 +1,10 @@
-import { Condition } from "../../classes/Condition";
+import { Condition, ConditionOr } from "../../classes/Condition";
 import { ConditionAscensionChar } from "../../classes/Condition/Ascension/Char";
 import { ConditionBoolean } from "../../classes/Condition/Boolean";
 import { ConditionBooleanLevels } from "../../classes/Condition/Boolean/Levels";
 import { ConditionConstellation } from "../../classes/Condition/Constellation";
 import { ConditionNot } from "../../classes/Condition/Not";
 import { ConditionNumberTalent } from "../../classes/Condition/Number/Talent";
-import { ConditionOr } from "../../classes/Condition/Or";
 import { ConditionStacks } from "../../classes/Condition/Stacks";
 import { ConditionStatic } from "../../classes/Condition/Static";
 import { DbObjectChar } from "../../classes/DbObject/Char";

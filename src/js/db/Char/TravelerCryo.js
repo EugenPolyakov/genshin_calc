@@ -1,11 +1,8 @@
-import { Condition, ConditionAnd } from "../../classes/Condition";
+import { Condition, ConditionAnd, ConditionOr } from "../../classes/Condition";
 import { ConditionAscensionChar } from "../../classes/Condition/Ascension/Char";
 import { ConditionBoolean } from "../../classes/Condition/Boolean";
-import { ConditionBooleanLevels } from "../../classes/Condition/Boolean/Levels";
 import { ConditionNumber } from "../../classes/Condition/Number";
-import { ConditionOr } from "../../classes/Condition/Or";
 import { ConditionStacks } from "../../classes/Condition/Stacks";
-import { ConditionStacksHidden } from "../../classes/Condition/Stacks/Hidden";
 import { ConditionStatic } from "../../classes/Condition/Static";
 import { DbObjectChar } from "../../classes/DbObject/Char";
 import { DbObjectConstellation } from "../../classes/DbObject/Constellation";
@@ -791,22 +788,9 @@ export const TravelerCryo = new DbObjectChar({
         },
         {
             conditions: [
-                new ConditionBoolean({
-                    name: 'traveler_brumal_grimfrost',
-                    serializeId: 10,
+                new ConditionStatic({
                     title: 'talent_name.traveler_brumal_grimfrost',
                     description: 'talent_descr.traveler_brumal_grimfrost',
-                }),
-                new ConditionStacksHidden({
-                    name: 'n10050002',
-                    maxStacks: 8,
-                    stats: [
-                        new StatTable('dmg_reaction_stellar_glimmer', [charTalentTables.TravelerCryo.cons[5][0]], 100)
-                    ],
-                    condition: new ConditionAnd([
-                        new ConditionBoolean({ name: 'traveler_brumal_grimfrost' }),
-                        new ConditionBoolean({ name: 'common.char_status_off_field', invert: 1 }),
-                    ]),
                 }),
             ],
         },
@@ -836,6 +820,7 @@ export const TravelerCryo = new DbObjectChar({
                 name: 'party.traveler_frostfall_reverberation',
                 partySetting: 'traveler_frostfall_reverberation',
                 serializeId: 2,
+                rotation: 'party',
                 title: 'talent_name.traveler_frostfall_reverberation',
                 description: 'talent_descr.traveler_frostfall_reverberation_1',
                 info: { constellation: 2 },
@@ -847,6 +832,7 @@ export const TravelerCryo = new DbObjectChar({
                 name: 'party.traveler_frostfall_reverberation_2',
                 partySetting: 'traveler_frostfall_reverberation_2',
                 serializeId: 3,
+                rotation: 'party',
                 title: 'talent_name.traveler_frostfall_reverberation',
                 description: 'talent_descr.traveler_frostfall_reverberation_2',
                 info: { constellation: 2 },
@@ -859,6 +845,7 @@ export const TravelerCryo = new DbObjectChar({
                 name: 'party.traveler_brumal_grimfrost',
                 partySetting: 'n10050002',
                 serializeId: 4,
+                rotation: 'party',
                 title: 'talent_name.traveler_brumal_grimfrost',
                 description: 'talent_descr.traveler_brumal_grimfrost',
                 maxStacks: 8,
@@ -866,7 +853,6 @@ export const TravelerCryo = new DbObjectChar({
                 stats: [
                     new StatTable('dmg_reaction_stellar_glimmer', [charTalentTables.TravelerCryo.cons[5][0]], 100)
                 ],
-                condition: new ConditionBoolean({ name: 'common.char_status_off_field', invert: 1 }),
             }),
         ],
         postEffects: [

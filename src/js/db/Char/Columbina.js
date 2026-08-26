@@ -1,5 +1,4 @@
-import { Condition } from "../../classes/Condition";
-import { ConditionAnd } from "../../classes/Condition";
+import { Condition, ConditionAnd, ConditionOr } from "../../classes/Condition";
 import { ConditionAscensionChar } from "../../classes/Condition/Ascension/Char";
 import { ConditionBoolean } from "../../classes/Condition/Boolean";
 import { ConditionBooleanDropdownValue } from "../../classes/Condition/Boolean/DropdownValue";
@@ -13,7 +12,6 @@ import { ConditionGroup } from "../../classes/Condition/Group";
 import { ConditionMoonPhaseCheck } from "../../classes/Condition/MoonPhaseCheck";
 import { ConditionNumber } from "../../classes/Condition/Number";
 import { ConditionNumberTalent } from "../../classes/Condition/Number/Talent";
-import { ConditionOr } from "../../classes/Condition/Or";
 import { ConditionStacks } from "../../classes/Condition/Stacks";
 import { ConditionStatic } from "../../classes/Condition/Static";
 import { DbObjectChar } from "../../classes/DbObject/Char";

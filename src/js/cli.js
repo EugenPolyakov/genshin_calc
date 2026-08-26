@@ -7,7 +7,6 @@ import { ConditionAnd } from "./classes/Condition";
 import { ConditionBoolean } from "./classes/Condition/Boolean";
 import { ConditionBooleanCharElement } from "./classes/Condition/Boolean/CharElement";
 import { ConditionBooleanPiecesCount } from "./classes/Condition/Boolean/PiecesCount";
-import { ConditionOr } from "./classes/Condition/Or";
 import { makeStatTotalItem } from "./classes/Feature2/Compile/Helpers";
 import { CBlock } from "./classes/Feature2/Compile/Types";
 import { CMulti, CPostEffect, CSum, CVar } from "./classes/Feature2/Compile/Types/Block";
