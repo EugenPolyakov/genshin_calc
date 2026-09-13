@@ -2,14 +2,6 @@
     width: 500px;
 }
 
-.gi-window-select-featurelist .gi-window-select-content {
-    grid-template-columns: none;
-}
-
-.gi-window-select-featurelist .gi-modal-buttons {
-    display: flex;
-}
-
 .gi-featurelist-caption {
     width: 100%;
     color: #D3BC8E;

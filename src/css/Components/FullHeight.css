@@ -4,6 +4,7 @@
     display: grid;
     grid-template-rows: min-content 1fr min-content;
     grid-template-areas: "header" "body" "footer";
+    grid-template-columns: 100%;
 }
 
 .full-height > .header {

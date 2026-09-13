@@ -15,7 +15,7 @@ import { FeatureReactionOverloaded } from '../../classes/Feature2/Reaction/Trans
 import { FeatureReactionRupture } from '../../classes/Feature2/Reaction/Transformative/Bloom/Rupture';
 import { FeatureReactionSuperConduct } from '../../classes/Feature2/Reaction/Transformative/SuperConduct';
 import { FeatureReactionTransformative } from '../../classes/Feature2/Reaction/Transformative';
-import { FullHeight, FullHeightStatic, FullHeightFloatTitle, FloatTitleBlock } from '../Components/FullHeight';
+import { FullHeight, FullHeightScrollable } from '../Components/FullHeight';
 import { ReactTab } from '../Components/Tab';
 import { isPercent } from '../../classes/Stats';
 import { Tab } from "../Tab";
@@ -30,6 +30,7 @@ import { FeatureReactionSwirlHydro } from '../../classes/Feature2/Reaction/Trans
 import { FeatureReactionSwirlElectro } from '../../classes/Feature2/Reaction/Transformative/Swirl/Electro';
 import { FeatureReactionSwirlCryo } from '../../classes/Feature2/Reaction/Transformative/Swirl/Cryo';
 import { UI } from '../../ui';
+import { FloatTitleBlock, StickyTableBlock, StickyTableHeader } from '../Components/ScrolledTable';
 import { formatStat } from '../Utils';
 import { FeatureReactionStellarGlimmer } from '../../classes/Feature2/Reaction/Extended/StellarGlimmer';
 import { FeatureReactionStellarConduct } from '../../classes/Feature2/Reaction/Extended/Stellar/Conduct';

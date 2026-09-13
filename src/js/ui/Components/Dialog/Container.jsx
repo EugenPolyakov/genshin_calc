@@ -2,7 +2,6 @@ import React from 'react'
 import ReactDOM from 'react-dom';
 
 import "../../../../css/Components/Dialog/Container.css"
-import { UI } from '../../../ui';
 
 export class DialogContainer extends React.Component {
     render() {

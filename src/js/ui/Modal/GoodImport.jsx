@@ -289,13 +289,13 @@ export class GoodImportComponent extends React.Component {
                 <ControlsBar>
                     <ControlsBarDivider />
                     <TitledButton
-                        icon="button-icon-ok"
+                        icon="icon-ok"
                         title={UI.Lang.get('modal_buttons.confirm')}
                         disabled={!this.state.canImport}
                         onClick={() => this.handleConfirm()}
                     />
                     <TitledButton
-                        icon="button-icon-cancel"
+                        icon="icon-cancel"
                         title={UI.Lang.get('modal_buttons.cancel')}
                         onClick={() => this.handleClose()}
                     />

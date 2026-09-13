@@ -33,7 +33,6 @@ export class ArtifactScanner extends Modal {
                 ref={ (obj) => this.modal = obj }
                 storage={ this.app.storage.char }
                 artifactStorage={ this.app.storage.artifacts }
-                addClass="lockartifacts-select-modal"
                 title={ UI.Lang.get('modal_window.lock_artifact') }
             />
         );
@@ -134,19 +133,19 @@ class ArtifactScannerComponent extends React.Component {
 
                     <ControlsBar>
                         <TitledButton
-                            icon="button-icon-ok"
+                            icon="icon-ok"
                             title={ UI.Lang.get('scanner.add_to_pool') }
                             disabled={ !this.state.canAdd }
                             onClick={ () => this.addToPool() }
                         />
                         <TitledButton
-                            icon="button-icon-ok"
+                            icon="icon-ok"
                             title={ UI.Lang.get('scanner.update_storage') }
                             disabled={ !this.state.canUpdate }
                             onClick={ () => this.updateStorage() }
                         />
                         <TitledButton
-                            icon="button-icon-cancel"
+                            icon="icon-cancel"
                             title={ UI.Lang.get('modal_buttons.cancel') }
                             onClick={ () => this.handleClose() }
                         />
@@ -183,11 +182,11 @@ class ArtifactScannerComponent extends React.Component {
         if (this.state.art && this.callback && this.state.index >= 0) {
             this.state.art.setGroups(this.state.groupNames)
 
-            let exArt = this.app.storage.artifacts.getArtByIndex(this.state.index);
+            let exArt = UI.Layout.app.storage.artifacts.getArtByIndex(this.state.index);
 
             this.state.art.setLocked(exArt.isLocked());
-            this.app.storage.artifacts.updateByHash(exArt.getHash(), this.state.art);
-            this.app.refresh();
+            UI.Layout.app.storage.artifacts.updateByHash(exArt.getHash(), this.state.art);
+            UI.Layout.app.refresh();
 
             this.clearResult();
         }

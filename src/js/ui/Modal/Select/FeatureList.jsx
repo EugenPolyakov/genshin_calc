@@ -94,18 +94,18 @@ class FeatureListComponent extends React.Component {
                         <div className="gi-hr" />
                         <ControlsBar>
                             <TitledButton
-                                icon="button-icon-delete"
+                                icon="icon-delete"
                                 title={UI.Lang.get('modal_buttons.reset')}
                                 onClick={() => this.handleReset()}
                             />
                             <ControlsBarDivider />
                             <TitledButton
-                                icon="button-icon-ok"
+                                icon="icon-ok"
                                 title={UI.Lang.get('modal_buttons.confirm')}
                                 onClick={() => this.handleConfirm()}
                             />
                             <TitledButton
-                                icon="button-icon-cancel"
+                                icon="icon-cancel"
                                 title={UI.Lang.get('modal_buttons.cancel')}
                                 onClick={() => this.handleClose()}
                             />

@@ -12,7 +12,7 @@
     margin: 20px;
     display: grid;
     grid-template-rows: min-content 1fr;
-    overflow: hidden;
+    grid-template-columns: 100%;
 }
 
 @media (width < 1150px) {
@@ -70,7 +70,6 @@
     position: relative;
     z-index: 2;
     box-sizing: border-box;
-    overflow: hidden;
     min-height: 0;
 }
 

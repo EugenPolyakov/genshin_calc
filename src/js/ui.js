@@ -1,9 +1,6 @@
-import 'simplebar/dist/simplebar.min.css';
-
-import "./ui/Slider";
-import "./ui/Dropdown";
-
 import "../css/app.css"
+import "../css/modal.css"
+import "../css/modal/WindowZIndex.css"
 import "../css/generated/icons_chars.css"
 import "../css/generated/icons_enemies_abyss.css";
 import "../css/generated/icons_enemies_automatons.css";
@@ -39,7 +36,7 @@ import { ArtifactsStorageTab } from './ui/Tab/ArtifactStorage';
 import { ArtifactsTab } from './ui/Tab/Artifacts';
 import { ArtifactSubstatTab } from './ui/Tab/ArtifactSubstatTab';
 import { ArtifactTooltip } from './ui/Components/ArtifactTooltip.jsx';
-import { ArtifactWindow } from './ui/Window/ArtifactWindow'
+import { ArtifactWindow } from './ui/Modal/ArtifactWindow.jsx';
 import { BestArtifactTab } from "./ui/Tab/BestArtifacts.jsx";
 import { BuffsTab } from './ui/Tab/Buffs';
 import { CharTab } from './ui/Tab/Char';
@@ -97,7 +94,7 @@ export var UI = {
     CompareTab: new CompareTab({position: 'right'}),
 
     // popups
-    ArtifactWindow: new ArtifactWindow(), // jq
+    ArtifactWindow: new ArtifactWindow(),
     ArtifactScanner: new ArtifactScanner(),
     ConfirmWindow: new ConfirmModal(),
     PromptWindow: new PromptModal(),

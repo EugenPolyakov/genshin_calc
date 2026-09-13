@@ -1,6 +1,5 @@
 import $ from "jquery";
 
-import 'simplebar/dist/simplebar.css';
 import "../../css/ui/Layout.css"
 import "../../css/ui/LayoutTouch.css"
 import { UI } from "../ui";
@@ -72,6 +71,7 @@ export class Layout {
         UI.LockArtifacts.init(app);
         UI.PartyLoad.init(app);
         UI.EnkaImport.init(app);
+        UI.ArtifactWindow.init(app);
 
         UI.TooltipArtifact.init(app);
         UI.WindowCharTalent.init(app);

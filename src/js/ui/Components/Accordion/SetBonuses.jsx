@@ -98,8 +98,8 @@ export class AccordionSetBonuses extends React.Component {
         return (
             <Fragment>
                 <ControlsBar>
-                    <div><TitledButton title={this.strings.enable_all} onClick={this.props.enableAction} icon="button-icon-unlock"/></div>
-                    <div><TitledButton title={this.strings.disable_all} onClick={this.props.disableAction} icon="button-icon-lock"/></div>
+                    <div><TitledButton title={this.strings.enable_all} onClick={this.props.enableAction} icon="icon-unlock"/></div>
+                    <div><TitledButton title={this.strings.disable_all} onClick={this.props.disableAction} icon="icon-lock"/></div>
                 </ControlsBar>
                 {setBonuses}
             </Fragment>

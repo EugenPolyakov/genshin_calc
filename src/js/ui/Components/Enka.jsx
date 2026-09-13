@@ -135,7 +135,7 @@ export class EnkaApp extends React.Component {
                             onEnter={() => this.handleLoadUid()}
                         />
                         <TitledButton
-                            icon="button-icon-ok"
+                            icon="icon-ok"
                             title={UI.Lang.get('enka_import.button')}
                             disabled={!uidIsValid || this.state.isLoading}
                             onClick={() => this.handleLoadUid()}
@@ -145,13 +145,13 @@ export class EnkaApp extends React.Component {
                     </ControlsBar>
                     <ControlsBar>
                         <TitledButton
-                            icon="button-icon-ok"
+                            icon="icon-ok"
                             title={UI.Lang.get('enka_import.save_all_chars')}
                             disabled={this.state.characters == 0}
                             onClick={() => this.props.saveAllCharacters(this.state.characters)}
                         />
                         <TitledButton
-                            icon="button-icon-ok"
+                            icon="icon-ok"
                             title={UI.Lang.get('enka_import.save_all_arts')}
                             disabled={this.state.artifacts == 0}
                             onClick={() => this.props.saveAllArtifacts(this.state.artifacts)}

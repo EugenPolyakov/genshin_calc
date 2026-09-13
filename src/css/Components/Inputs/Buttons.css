@@ -30,13 +30,13 @@
     background-image: url("../../../images/icons/buttons.png");
 }
 
-.inputs-button-icon.button-icon-unlock {
+.inputs-button-icon.icon-unlock {
     background-image: url("../../../images/icons/editart.png");
     background-size: 60px 40px;
     background-position: 40px 20px;
 }
 
-.inputs-button-icon.button-icon-lock {
+.inputs-button-icon.icon-lock {
     background-image: url("../../../images/icons/editart.png");
     background-size: 60px 40px;
     background-position: 0px 20px;

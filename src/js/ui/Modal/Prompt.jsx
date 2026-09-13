@@ -71,12 +71,12 @@ export class PromptComponent extends React.Component {
                 <ControlsBar>
                     <ControlsBarDivider />
                     <TitledButton
-                        icon="button-icon-ok"
+                        icon="icon-ok"
                         title={UI.Lang.get('modal_buttons.confirm')}
                         onClick={() => this.handleConfirm()}
                     />
                     <TitledButton
-                        icon="button-icon-cancel"
+                        icon="icon-cancel"
                         title={UI.Lang.get('modal_buttons.cancel')}
                         onClick={() => this.handleClose()}
                     />
