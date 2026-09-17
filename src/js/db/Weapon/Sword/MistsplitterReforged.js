@@ -55,6 +55,10 @@ export const MistsplitterReforged = new DbObjectWeapon({
                         new ConditionStaticRefine({
                             stats: [
                                 new StatTable('dmg_own', [8, 10, 12, 14, 16]),
+                                new StatTable('text_percent_1', [8, 10, 12, 14, 16]),
+                                new StatTable('text_percent_2', [16, 20, 24, 28, 32]),
+                                new StatTable('text_percent_3', [28, 35, 42, 49, 56]),
+                                new StatTable('text_number_f', [1]),
                             ],
                         }),
                     ],
@@ -67,6 +71,10 @@ export const MistsplitterReforged = new DbObjectWeapon({
                         new ConditionStaticRefine({
                             stats: [
                                 new StatTable('dmg_own', [16, 20, 24, 28, 32]),
+                                new StatTable('text_percent_1', [8, 10, 12, 14, 16]),
+                                new StatTable('text_percent_2', [16, 20, 24, 28, 32]),
+                                new StatTable('text_percent_3', [28, 35, 42, 49, 56]),
+                                new StatTable('text_number_f', [2]),
                             ],
                         }),
                     ],
@@ -79,6 +87,10 @@ export const MistsplitterReforged = new DbObjectWeapon({
                         new ConditionStaticRefine({
                             stats: [
                                 new StatTable('dmg_own', [28, 35, 42, 49, 56]),
+                                new StatTable('text_percent_1', [8, 10, 12, 14, 16]),
+                                new StatTable('text_percent_2', [16, 20, 24, 28, 32]),
+                                new StatTable('text_percent_3', [28, 35, 42, 49, 56]),
+                                new StatTable('text_number_f', [3]),
                             ],
                         }),
                     ],
