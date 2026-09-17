@@ -198,11 +198,11 @@ class ArtifactTooltipWindow extends React.PureComponent {
         let setData = DB.Artifacts.Sets.get(art.getSet());
         let conditions = setData.getConditionsByPieces();
 
-        let subStats = new Array( Object.keys( art.getSubStats() ).length );
-        for (let item in art.getSubStats()) {
-            subStats[art.getSubStats()[item].index] =(
-                <li key={ "stat" + (art.getSubStats()[item].index - 1)}>
-                    { UI.Lang.getStat('stat.' + item) }&nbsp;{ formatStat( item, art.getSubStats()[item].value, {signed: 1})}
+        let subStats = [];
+        for (let item of art.getSubStats()) {
+            subStats.push(
+                <li key={ item.stat }>
+                    { UI.Lang.getStat('stat.' + item.stat) }&nbsp;{ formatStat( item.stat, item.value, {signed: 1}) }
                 </li>
             );
         }

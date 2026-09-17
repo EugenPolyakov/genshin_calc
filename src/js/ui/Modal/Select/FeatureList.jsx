@@ -6,7 +6,7 @@ import { Checkbox } from "../../Components/Inputs/Input";
 import { ControlsBar, ControlsBarDivider } from "../../Components/ControlsBar";
 import { DialogContainer } from "../../Components/Dialog/Container";
 import { Feature2 } from "../../../classes/Feature2";
-import { FullHeight, FullHeightScrollable, FullHeightStatic } from "../../Components/FullHeight";
+import { FullHeight, FullHeightFooter, FullHeightScrollable } from "../../Components/FullHeight";
 import { Modal } from "../../Modal";
 import { TitledButton } from "../../Components/Inputs/Buttons";
 import { UI } from "../../../ui";
@@ -90,27 +90,27 @@ class FeatureListComponent extends React.Component {
                             onChange={(name) => this.handleSelectName(name)}
                         />
                     </FullHeightScrollable>
-                    <FullHeightStatic>
+                    <FullHeightFooter>
                         <div className="gi-hr" />
                         <ControlsBar>
                             <TitledButton
-                                icon="button-icon-delete"
+                                icon="icon-delete"
                                 title={UI.Lang.get('modal_buttons.reset')}
                                 onClick={() => this.handleReset()}
                             />
                             <ControlsBarDivider />
                             <TitledButton
-                                icon="button-icon-ok"
+                                icon="icon-ok"
                                 title={UI.Lang.get('modal_buttons.confirm')}
                                 onClick={() => this.handleConfirm()}
                             />
                             <TitledButton
-                                icon="button-icon-cancel"
+                                icon="icon-cancel"
                                 title={UI.Lang.get('modal_buttons.cancel')}
                                 onClick={() => this.handleClose()}
                             />
                         </ControlsBar>
-                    </FullHeightStatic>
+                    </FullHeightFooter>
                 </FullHeight>
             </DialogContainer>
         );

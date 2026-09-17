@@ -7,7 +7,7 @@ import { ControlsBar, ControlsBarDivider } from "./ControlsBar";
 import { formatNumber } from "../Utils";
 import { ResultTableButton, RoundButton } from "./Inputs/Buttons";
 import { Dropdown } from "./Inputs/Dropdown";
-import { FullHeight, FullHeightScrollable, FullHeightStatic } from "./FullHeight";
+import { FullHeight, FullHeightHeader, FullHeightScrollable } from "./FullHeight";
 import { TabDisclaimer } from "./Tab";
 import { DB } from "../../db/DB";
 import { UI } from "../../ui";
@@ -46,7 +46,7 @@ export function SuggestResult(props) {
 
     return (
         <FullHeight>
-            <FullHeightStatic>
+            <FullHeightHeader>
                 <ControlsBar>
                     <RoundButton
                         icon="icon-settings"
@@ -63,7 +63,7 @@ export function SuggestResult(props) {
                         onChange={(item) => props.onDisplayModeChange(item.value)}
                     />
                 </ControlsBar>
-            </FullHeightStatic>
+            </FullHeightHeader>
             <FullHeightScrollable noPadding={true}>
                 {lines}
             </FullHeightScrollable>

@@ -3,7 +3,7 @@ import "../../../css/Components/Tab/Artifacts.css"
 
 import { ConditionList } from '../Components/ConditionList';
 import { ControlsBar, ControlsBarDivider } from '../Components/ControlsBar';
-import { FullHeight, FullHeightScrollable, FullHeightStatic } from '../Components/FullHeight';
+import { FullHeight, FullHeightHeader, FullHeightScrollable } from '../Components/FullHeight';
 import { ArtifactIcon } from '../Components/Icons';
 import { TitledButton } from '../Components/Inputs/Buttons';
 import { ReactTab } from '../Components/Tab';
@@ -172,7 +172,7 @@ export class ArtifactsView extends React.Component {
 
         return (
             <FullHeight>
-                <FullHeightStatic>
+                <FullHeightHeader>
                     <ControlsBar>
                         <TitledButton
                             icon="icon-scan"
@@ -191,7 +191,7 @@ export class ArtifactsView extends React.Component {
                             onClick={() => this.handleClearClick()}
                         />
                     </ControlsBar>
-                </FullHeightStatic>
+                </FullHeightHeader>
                 <FullHeightScrollable>
                     <ArtifactsList
                         artifacts={artifacts}
@@ -253,13 +253,13 @@ function ArtifactBlock(props) {
     }
 
     let setData = DB.Artifacts.Sets.get(art.set);
-    let substats = new Array( Object.keys( art.getSubStats() ).length );
+    let substats = [];
 
-    for (let subStat in art.getSubStats()) {
-        substats[art.getSubStats()[subStat].index] = (
-            <div key={subStat} className="value">
-                <span className="stat-name">{UI.Lang.get('stat.'+ subStat)} </span>
-                { formatStat( subStat, art.getSubStats()[subStat].value, {signed: true})}
+    for (let subStat of art.getSubStats()) {
+        substats.push = (
+            <div key={subStat.stat} className="value">
+                <span className="stat-name">{UI.Lang.get('stat.'+ subStat.stat)} </span>
+                { formatStat( subStat.stat, subStat.value, {signed: true})}
             </div>
         );
     }
@@ -334,7 +334,7 @@ function ArtifactButton(props) {
         <div
             className={'button '+ props.icon}
             onClick={props.onClick}
-            data-tooltip={props.tooltip}
+            data-tooltip={ props.tooltip }
         />
     );
 }

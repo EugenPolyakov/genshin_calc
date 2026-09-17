@@ -17,6 +17,7 @@
     flex-direction: column;
     overflow: hidden;
     flex-grow: 1;
+    position: relative;
 }
 
 .gi-tab-right .tab-content {
@@ -27,17 +28,24 @@
     padding-right: 3px;
 }
 
-.react-tab {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    position: absolute;
-    top: 0px;
-    bottom: 0px;
+@media (width >= 1150px) {
+    .react-tab {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        position: absolute;
+        top: 0px;
+        bottom: 0px;
+    }
 }
 
-.narrow .react-tab {
-    position: unset;
+@media (width < 1150px) {
+    .react-tab {
+        position: unset;
+        height: 100%;
+        display: grid;
+        grid-template-rows: min-content 1fr;
+    }
 }
 
 .content-scrollable {

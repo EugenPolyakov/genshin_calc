@@ -3,7 +3,7 @@ import React from 'react';
 import "../../../css/Components/Tab/Enemy.css"
 
 import { ConditionList } from '../Components/ConditionList';
-import { FullHeight, FullHeightScrollable, FullHeightStatic } from '../Components/FullHeight';
+import { FullHeight, FullHeightHeader, FullHeightScrollable } from '../Components/FullHeight';
 import { EnemyObjectBlock } from '../Components/ObjectBlock';
 import { ResistanceBlock } from '../Components/ResistanceBlock';
 import { ReactTab } from '../Components/Tab';
@@ -113,7 +113,7 @@ export class EnemyView extends React.Component {
 
         return (
             <FullHeight>
-                <FullHeightStatic>
+                <FullHeightHeader>
                     <EnemyObjectBlock
                         enemy={enemy}
                         stats={data.stats}
@@ -131,7 +131,7 @@ export class EnemyView extends React.Component {
                         stats={data.stats}
                         settings={data.settings}
                     />
-                </FullHeightStatic>
+                </FullHeightHeader>
                 <FullHeightScrollable>
                     <ConditionList
                         addClass="last"

@@ -41,16 +41,16 @@ export class RollsInfo extends React.Component {
                 continue;
             }
 
-            for (let item in art.getSubStats()) {
-                if (!usefulSubstats.includes(item)) {
+            for (let item of art.getSubStats()) {
+                if (!usefulSubstats.includes(item.stat)) {
                     continue;
                 }
 
-                let data = substatCheck(item, art.getRarity(), art.getSubStats()[item].value, art.getSubStats()[item].values);
+                let data = substatCheck(item.stat, art.getRarity(), item.value, item.values);
 
                 if (data && data.steps) {
-                    rolls[item] += data.steps.length;
-                    rollsMaxSum[item] += data.steps.reduce((a, x) => a + x.rarity + 5, 0);
+                    rolls[item.stat] += data.steps.length;
+                    rollsMaxSum[item.stat] += data.steps.reduce((a, x) => a + x.rarity + 5, 0);
                 }
             }
         }

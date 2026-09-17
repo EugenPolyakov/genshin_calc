@@ -1,15 +1,3 @@
-.gi-window-select.gi-window-select-grouplist {
-    width: 500px;
-}
-
-.gi-window-select-grouplist .gi-window-select-content {
-    grid-template-columns: none;
-}
-
-.gi-window-select-grouplist .gi-modal-buttons {
-    display: flex;
-}
-
 .gi-grouplist-caption {
     width: 100%;
     color: #D3BC8E;

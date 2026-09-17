@@ -1,5 +1,5 @@
-.gi-artifact-window {
-    width: 880px;
+.gi-artifact-window.dialog {
+    width: 920px;
 }
 
 .gi-modal-art-line {
@@ -152,10 +152,22 @@
     flex-shrink: 0;
 }
 
-.gi-artifact-window .gi-inputs-number-input {
+.gi-artifact-window .inputs-text {
     width: 70px;
     display: block;
     float: left;
+    background-color: #ECE5D8;
+    border: 0px none;
+    color: black;
+    margin: 0px 4px;
+}
+
+.gi-artifact-window .controls-bar .item {
+    margin: 0px 5px;
+}
+
+.gi-artifact-window .controls-bar {
+    justify-content: flex-end;
 }
 
 .gi-modal-substat-value-slider {
@@ -213,7 +225,7 @@
     display: flex;
 }
 
-.gi-artifact-window-level .gi-slider-wrapper {
+.gi-artifact-window-level .slider-wrapper {
     padding-top: 10px;
     width: 165px;
 }
@@ -239,23 +251,6 @@
 
 .narrow .gi-artifact-window-group {
     max-width: none;
-}
-
-.gi-artifact-window-group-add-button {
-    width: 26px;
-    height: 26px;
-    max-height: 26px;
-    flex-shrink: 0;
-    background-color: #ECE5D8;
-    background-size: 80%;
-    background-position: center;
-    border-radius: 50%;
-    background-repeat: no-repeat;
-    margin: 3px;
-    cursor: pointer;
-    background-image: url("../../images/icons/plus.png");
-    background-size: 18px 18px;
-    background-position: center;
 }
 
 .gi-artifact-set {
@@ -337,9 +332,9 @@
     flex-wrap: wrap;
 }
 
-.narrow .gi-artifact-window {
-    min-width: 560px;
-    min-height: 580px;
+.narrow .gi-artifact-window.dialog {
+    min-width: 600px;
+    min-height: 620px;
 }
 
 .narrow .gi-modal-substat-value-wrapper {

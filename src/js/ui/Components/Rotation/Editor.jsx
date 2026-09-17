@@ -3,7 +3,7 @@ import React from "react";
 import { RotationConditionModal } from "./ConditionModal";
 import { RotationFeatureModal } from "./FeatureModal";
 import { CollapseMenu } from "../CollapseMenu";
-import { FullHeight, FullHeightScrollable, FullHeightStatic } from "../FullHeight";
+import { FullHeight, FullHeightHeader, FullHeightScrollable } from "../FullHeight";
 import { RotationList } from "./List";
 import { Rotation } from "../../../classes/Rotation";
 import { RotationStorageModal } from "./StorageModal";
@@ -255,11 +255,11 @@ export class RotationEditor extends React.Component {
 
         return (
             <FullHeight>
-                <FullHeightStatic>
+                <FullHeightHeader>
                     <CollapseMenu
                         items={this.menuButtons}
                     />
-                </FullHeightStatic>
+                </FullHeightHeader>
                 <FullHeightScrollable>
                     <RotationList
                         build={this.props.build}

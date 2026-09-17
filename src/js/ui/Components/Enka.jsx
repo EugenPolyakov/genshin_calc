@@ -1,5 +1,4 @@
 import React from 'react';
-import SimpleBar from 'simplebar-react';
 import "../../../css/Components/Enka.css"
 
 import { CharacterList } from './Character/List';
@@ -7,7 +6,7 @@ import { ControlsBar, ControlsBarDivider } from './ControlsBar';
 import { EnkaApi } from '../classes/API/Enka';
 import { TextInput } from './Inputs/Input';
 import { TitledButton } from './Inputs/Buttons';
-import { FullHeight, FullHeightScrollable, FullHeightStatic } from './FullHeight';
+import { FullHeight, FullHeightHeader, FullHeightScrollable } from './FullHeight';
 import { Dropdown } from './Inputs/Dropdown';
 import { UI } from '../../ui';
 
@@ -126,7 +125,7 @@ export class EnkaApp extends React.Component {
 
         return (
             <FullHeight>
-                <FullHeightStatic>
+                <FullHeightHeader>
                     <ControlsBar>
                         <div>{UI.Lang.get('enka_import.enter_uid')}</div>
                         <TextInput
@@ -136,7 +135,7 @@ export class EnkaApp extends React.Component {
                             onEnter={() => this.handleLoadUid()}
                         />
                         <TitledButton
-                            icon="button-icon-ok"
+                            icon="icon-ok"
                             title={UI.Lang.get('enka_import.button')}
                             disabled={!uidIsValid || this.state.isLoading}
                             onClick={() => this.handleLoadUid()}
@@ -146,13 +145,13 @@ export class EnkaApp extends React.Component {
                     </ControlsBar>
                     <ControlsBar>
                         <TitledButton
-                            icon="button-icon-ok"
+                            icon="icon-ok"
                             title={UI.Lang.get('enka_import.save_all_chars')}
                             disabled={this.state.characters == 0}
                             onClick={() => this.props.saveAllCharacters(this.state.characters)}
                         />
                         <TitledButton
-                            icon="button-icon-ok"
+                            icon="icon-ok"
                             title={UI.Lang.get('enka_import.save_all_arts')}
                             disabled={this.state.artifacts == 0}
                             onClick={() => this.props.saveAllArtifacts(this.state.artifacts)}
@@ -167,7 +166,7 @@ export class EnkaApp extends React.Component {
                             onChange={(hash) => this.handleChangeHash(hash)}
                         /> : ''
                     }
-                </FullHeightStatic>
+                </FullHeightHeader>
                 <FullHeightScrollable>
                     {content}
                 </FullHeightScrollable>

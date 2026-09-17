@@ -6,7 +6,7 @@ import "../../../css/Components/Tab/ArtifactSetTab.css"
 import { ControlsBar } from '../Components/ControlsBar';
 import { Dropdown } from '../Components/Inputs/Dropdown';
 import { FeatureTableHeader, FeatureTableValues } from '../Components/FeatureTable';
-import { FullHeight, FullHeightStatic, FullHeightScrollable } from '../Components/FullHeight';
+import { FullHeight, FullHeightScrollable, FullHeightHeader } from '../Components/FullHeight';
 import { ReactTab } from '../Components/Tab';
 import { ResultTableButton } from '../Components/Inputs/Buttons';
 import { Tab } from "../Tab";
@@ -182,7 +182,7 @@ class ArtifactSetView extends React.Component {
         return (
             <ReactTab title={UI.Lang.get('tab_header.suggest-artifact-set')}>
                 <FullHeight>
-                    <FullHeightStatic>
+                    <FullHeightHeader>
                         <ControlsBar>
                             <Dropdown
                                 barClass="resizable"
@@ -201,7 +201,7 @@ class ArtifactSetView extends React.Component {
                             />
                         </ControlsBar>
                         <FeatureTableHeader />
-                    </FullHeightStatic>
+                    </FullHeightHeader>
                     <FullHeightScrollable
                         noPadding={true}
                         isLoading={this.state.isLoading}

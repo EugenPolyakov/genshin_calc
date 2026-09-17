@@ -194,12 +194,12 @@ class LockArtifactComponent extends ModalSelectBase {
                         onChange={(item) => this.handleLockMode(item.value)}
                     />
                     <TitledButton
-                        icon="button-icon-unlock"
+                        icon="icon-unlock"
                         title={UI.Lang.get('pool_view.unlock_artifacts')}
                         onClick={() => this.handleLockArtifacts(false)}
                     />
                     <TitledButton
-                        icon="button-icon-lock"
+                        icon="icon-lock"
                         title={UI.Lang.get('pool_view.lock_artifacts')}
                         onClick={() => this.handleLockArtifacts(true)}
                     />

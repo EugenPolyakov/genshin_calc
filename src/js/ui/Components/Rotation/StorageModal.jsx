@@ -3,7 +3,7 @@ import React from "react";
 import "../../../../css/Components/Rotation/StorageModal.css"
 
 import { DialogContainer } from "../Dialog/Container";
-import { FullHeight, FullHeightScrollable, FullHeightStatic } from "../FullHeight";
+import { FullHeight, FullHeightHeader, FullHeightScrollable } from "../FullHeight";
 import { TextInput, TextInputWithButton, TextInputWithCopy } from "../Inputs/Input";
 import { ControlsBar } from "../ControlsBar";
 import { Rotation } from "../../../classes/Rotation";
@@ -96,7 +96,7 @@ export class RotationStorageModal extends React.Component {
                 closeCallback={() => this.handleClose()}
             >
                 <FullHeight>
-                    <FullHeightStatic>
+                    <FullHeightHeader>
                         <ControlsBar>
                             <TextInputWithCopy
                                 barClass="resizable"
@@ -123,7 +123,7 @@ export class RotationStorageModal extends React.Component {
                                 onChange={(value) => this.handleFilterChange(value)}
                             />
                         </ControlsBar>
-                    </FullHeightStatic>
+                    </FullHeightHeader>
                     <FullHeightScrollable>
                         <RotationList
                             items={this.items}

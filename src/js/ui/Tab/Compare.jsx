@@ -6,7 +6,7 @@ import { ControlsBar, ControlsBarDivider } from '../Components/ControlsBar';
 import { Dropdown } from '../Components/Inputs/Dropdown';
 import { Feature2 } from '../../classes/Feature2';
 import { FeatureTableHeader, FeatureTableValues } from '../Components/FeatureTable';
-import { FullHeight, FullHeightScrollable, FullHeightStatic } from '../Components/FullHeight';
+import { FullHeight, FullHeightHeader, FullHeightScrollable } from '../Components/FullHeight';
 import { Radio } from '../Components/Inputs/Input';
 import { ReactTab } from '../Components/Tab';
 import { RoundButton, TitledButton, ToggleRoundButton } from '../Components/Inputs/Buttons';
@@ -281,7 +281,7 @@ export class CompareView extends React.Component {
         return (
             <ReactTab title={UI.Lang.get('tab_header.compare')}>
                 <FullHeight>
-                    <FullHeightStatic>
+                    <FullHeightHeader>
                         <ControlsBar>
                             <RoundButton
                                 icon="icon-add"
@@ -342,7 +342,7 @@ export class CompareView extends React.Component {
                             />
                         </ControlsBar>
                         <FeatureTableHeader />
-                    </FullHeightStatic>
+                    </FullHeightHeader>
                     <FullHeightScrollable noPadding={true}>
                         <CompareItems
                             {...this.state}

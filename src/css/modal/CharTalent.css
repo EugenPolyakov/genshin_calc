@@ -38,6 +38,26 @@
     padding: 10px 15px;
     line-height: 22px;
     color: #E6DCD2;
+    height: calc(100% - 10px);
+    box-sizing: border-box;
+    display: grid;
+    grid-template-rows: auto auto;
+    align-content: start;
+}
+
+.gi-window-talent-content {
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-template-rows: min-content 1fr;
+}
+
+.gi-window-talent-content > div {
+    min-height: 0;
+}
+
+.gi-talent-description .full-height {
+    min-height: 0;
 }
 
 .gi-talent-icon {
@@ -48,7 +68,7 @@
     float: left;
 }
 
-.gi-window-talent .gi-talent-table {
+.gi-window-talent .content {
     margin-top: 10px;
 }
 
@@ -66,12 +86,4 @@
 .gi-talent-description p {
     margin: 0;
     margin-bottom: 10px;
-}
-
-.gi-talent-description .simplebar-track.simplebar-vertical {
-    margin: 15px 0px;
-}
-
-.simplebar-content .gi-talent-table-line:last-child {
-    padding-bottom: 10px;
 }

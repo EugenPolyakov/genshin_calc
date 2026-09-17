@@ -202,29 +202,38 @@ function listArtifacts(data) {
         let rarity = item.flat.rankLevel;
         let level = item.reliquary.level - 1;
 
-        let subStats = {};
-        let pos = 0;
+        let subStats = [];
         if (item.reliquary.appendPropIdList) {
+            var list = {};
+            let pos = 0;
             for (let ss of item.reliquary.appendPropIdList) {
                 let roll = ss % 10;
                 let group = Math.floor((ss % 1000) / 10);
                 let statId = GroupToSubstats[group];
                 let stat = DB.Artifacts.Substats.get(statId);
                 if (stat) {
-                    if (!subStats[statId])
-                        subStats[statId] = { index: pos++, values: [roll - 1], initialValue: roll };
+                    if (!list[statId])
+                        list[statId] = { index: pos++, values: [roll - 1], initialValue: roll };
                     else {
-                        subStats[statId].values.push(roll - 1);
-                        subStats[statId].values.sort();
+                        list[statId].values.push(roll - 1);
                     }
-                    subStats[statId].value = stat.rollsToValue[rarity - 1][subStats[statId].values.join('')];
                 }
             }
+            Object.keys(list).sort((a, b) => list[a].index - list[b].index).forEach(x => {
+                list[x].values.sort();
+                let stat = DB.Artifacts.Substats.get(x);
+                subStats.push({
+                    stat: x,
+                    values: list[x].values,
+                    value: stat.rollsToValue[rarity - 1][list[x].values.join('')],
+                    initialValue: list[x].initialValue,
+                });
+            });
         } else {
             for (let ss of item.flat.reliquarySubstats) {
                 let stat = DB.Artifacts.Substats.getKeyIdGame(ss.appendPropId);
                 if (stat) {
-                    subStats[stat] = { index: pos++, value: ss.statValue };
+                    subStats.push({stat: stat, value: ss.statValue });
                 }
             }
         }

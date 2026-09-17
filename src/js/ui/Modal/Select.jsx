@@ -2,7 +2,7 @@ import React from "react";
 import "../../../css/Components/Modal/Select.css"
 
 import { DialogContainer } from "../Components/Dialog/Container";
-import { FullHeight, FullHeightScrollable, FullHeightStatic } from "../Components/FullHeight";
+import { FullHeight, FullHeightHeader, FullHeightScrollable } from "../Components/FullHeight";
 import { TextInputWithButton } from "../Components/Inputs/Input";
 import { StorageItemSettings } from "../classes/StorageItem/Settings";
 import { UI } from "../../ui";
@@ -103,9 +103,9 @@ export class ModalSelectBase extends React.Component {
                 closeCallback={() => this.handleClose()}
             >
                 <FullHeight>
-                    <FullHeightStatic>
+                    <FullHeightHeader>
                         {this.getControls()}
-                    </FullHeightStatic>
+                    </FullHeightHeader>
                     <FullHeightScrollable>
                         {this.getContent()}
                     </FullHeightScrollable>

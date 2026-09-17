@@ -1,10 +1,9 @@
 import React from 'react';
-import SimpleBar from 'simplebar-react';
-import { InView } from 'react-intersection-observer';
 
-import "../../../css/Components/FullHeight.css"
+import "../../../css/Components/FullHeight.css";
 import { TabLoading } from './Tab';
 import { formatNumber } from '../Utils';
+import { ScrolledPanel } from './ScrolledPanel';
 
 const OVERLAY_DELAY = 100;
 
@@ -14,9 +13,15 @@ export function FullHeight(props) {
     );
 }
 
-export function FullHeightStatic(props) {
+export function FullHeightHeader(props) {
     return (
-        <div className="block">{props.children}</div>
+        <div className={ "header" + (props.addClass ? ' ' + props.addClass : '') }>{ props.children }</div>
+    );
+}
+
+export function FullHeightFooter(props) {
+    return (
+        <div className="footer">{ props.children }</div>
     );
 }
 
@@ -85,95 +90,15 @@ export class FullHeightScrollable extends React.Component {
         }
 
         return (
-            <div className="content">
-                <SimpleBar autoHide={true} className="full-height-wrapper" style={style}>
-                    <div className={'content-scrollbar'+ (this.props.noPadding ? ' no-padding' : '')}>
-                        {this.props.children}
-                    </div>
-                </SimpleBar>
+            <ScrolledPanel>
+                {this.props.children}
                 {this.state.showLoading ?
                     <TabLoading>
                         <div>{this.props.loadingOverlay}</div>
                         {progressMessages}
                     </TabLoading>
                 : null}
-            </div>
+            </ScrolledPanel>
         );
     }
-}
-
-export class FullHeightFloatTitle extends React.Component {
-    constructor(props) {
-        super(props);
-
-        this.visibleItems = []
-        this.state = {
-            visibleTitle: '',
-        }
-    }
-
-    handleChangeVisibility(index, value) {
-        this.visibleItems[index] = value;
-        let title = this.getFloatTitle();
-
-        if (title != this.state.visibleTitle) {
-            this.setState({visibleTitle: title});
-        }
-    }
-
-    getFloatTitle() {
-        let index = -1;
-
-        for (let i = 0; i < this.visibleItems.length; ++i) {
-            if (this.visibleItems[i]) {
-                break;
-            }
-            index = i;
-        }
-
-        if (index >= 0 && this.props.children[index]) {
-            return this.props.children[index].props.title;
-        }
-        return '';
-    }
-
-    render() {
-        let items = [];
-
-        let index = 0;
-        for (let item of this.props.children) {
-            let key = index;
-            items.push(
-                <InView
-                    as="div"
-                    key={'index'+ index}
-                    threshold={1}
-                    onChange={(visible) => this.handleChangeVisibility(key, visible)}
-                >
-                    {item}
-                </InView>
-            );
-            ++index;
-        }
-
-        return (
-            <div className="content">
-                <SimpleBar autoHide={true} className="full-height-wrapper">
-                    <div className={'content-scrollbar'+ (this.props.noPadding ? ' no-padding' : '')}>
-                    {items}
-                    </div>
-                </SimpleBar>
-                {this.state.visibleTitle ? <div className="title float-title odd">{this.state.visibleTitle}</div> : ''}
-            </div>
-        );
-    }
-}
-
-export function FloatTitleBlock(props) {
-    return (
-        <div className="float-table-block">
-            <div className="title">{props.title}</div>
-            {props.children}
-        </div>
-    );
 }

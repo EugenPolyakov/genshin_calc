@@ -3,7 +3,7 @@ import React from 'react';
 import "../../../css/Components/Tab/Weapon.css"
 
 import { ConditionList } from '../Components/ConditionList';
-import { FullHeight, FullHeightScrollable, FullHeightStatic } from '../Components/FullHeight';
+import { FullHeight, FullHeightHeader, FullHeightScrollable } from '../Components/FullHeight';
 import { WeaponObjectBlock } from '../Components/ObjectBlock';
 import { ReactTab } from '../Components/Tab';
 import { Tab } from "../Tab";
@@ -113,14 +113,14 @@ export class WeaponView extends React.Component {
 
         return (
             <FullHeight>
-                <FullHeightStatic>
+                <FullHeightHeader>
                     <WeaponObjectBlock
                         weapon={weapon}
                         settings={settings}
                         onObjectChange={() => this.handleWeaponChange()}
                         onLevelChange={(data) => this.handleLevelChange(data)}
                     />
-                </FullHeightStatic>
+                </FullHeightHeader>
                 <FullHeightScrollable>
                     <ConditionList
                         addClass="last"

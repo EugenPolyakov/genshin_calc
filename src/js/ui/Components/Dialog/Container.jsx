@@ -2,14 +2,11 @@ import React from 'react'
 import ReactDOM from 'react-dom';
 
 import "../../../../css/Components/Dialog/Container.css"
-import { UI } from '../../../ui';
 
 export class DialogContainer extends React.Component {
     render() {
         return (
             <Modal
-                width={this.props.width}
-                height={this.props.height}
                 maxHeight={this.props.maxHeight}
                 isVisible={this.props.isVisible}
                 addClass={this.props.addClass}
@@ -21,7 +18,7 @@ export class DialogContainer extends React.Component {
                     <div className="dialog-corner bottom-left"></div>
                     <div className="dialog-corner bottom-right"></div>
                 </div>
-                <div className="dialog-wrapper">
+                <div className="dialog-wrapper" style={{ width: this.props.width }}>
                     <div className="dialog-caption">
                         <span className="dialog-caption-text">{this.props.title}</span>
                         {this.props.closeCallback ? <div className="dialog-close" onClick={this.props.closeCallback}></div> : ''}
@@ -45,52 +42,6 @@ class Modal extends React.Component {
             top: 0,
             width: props.width,
         };
-
-        this.resizeCallback = () => this.resizeModal();
-    }
-
-    resizeModal() {
-        let left = 6;
-        let top = 6;
-        let width = 0;
-        let windowHeight = UI.Layout.windowHeight();
-        let modalHeight  = this.props.height || this.el.clientHeight;
-        let useMaxHeight = this.props.maxHeight || modalHeight + 90 > windowHeight;
-
-        if (!UI.Layout.isMobile()) {
-            let windowWidth  = UI.Layout.windowWidth();
-            let modalWidth   = this.el.clientWidth;
-
-            left = Math.max(6, (windowWidth - modalWidth) / 2);
-            top = Math.max(6, (windowHeight - modalHeight) / 2);
-
-            width = this.props.width;
-        }
-
-        if (useMaxHeight) {
-            this.el.querySelector('.dialog-wrapper').style.height = (windowHeight - 90) +'px';
-            this.el.style.top = null;
-        } else {
-            this.el.style.top = top +'px';
-        }
-
-        this.el.style.left = left +'px';
-        this.el.style.width = width ? width +'px' : null;
-        this.el.classList.toggle('max-height', useMaxHeight)
-    }
-
-    componentDidMount() {
-        window.addEventListener('resize', this.resizeCallback);
-        this.resizeModal();
-    };
-
-    componentWillUnmount() {
-        window.removeEventListener('resize', this.resizeCallback);
-    };
-
-    componentDidUpdate() {
-        this.resizeModal();
-        setTimeout(() => {this.resizeModal()}, 1);
     }
 
     shouldComponentUpdate(nextProps, nextState) {
@@ -98,15 +49,24 @@ class Modal extends React.Component {
     }
 
     dialogNode() {
-        let hiddenClass = this.props.isVisible ? '' : ' hidden';
-        let classPart = hiddenClass + (this.props.addClass ? ' '+ this.props.addClass : '');
+        let classes = [];
+        if (!this.props.isVisible)
+            classes.push('hidden');
+        if (this.props.addClass)
+            classes.push(this.props.addClass);
+
+        let back = ['dialog-back'].concat(classes);
+
+        if (this.props.maxHeight)
+            classes.push('max-height');
+        classes.push('dialog');
+
         return (
-            <>
-                <div ref={ el => this.el = el } className={ 'dialog' + classPart } data-char={ this.props['data-char'] }>
-                    {this.props.children}
+            <div className={ back.join(' ') }>
+                <div ref={ el => this.el = el } className={ classes.join(' ') } data-char={ this.props['data-char'] }>
+                    { this.props.children }
                 </div>
-                <div className={'dialog-back' + classPart}/>
-            </>
+            </div>
         );
     }
 

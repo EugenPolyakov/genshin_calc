@@ -1,0 +1,74 @@
+
+.sticky-table tr td:nth-child(n+3) {
+    text-align: right;
+    white-space: nowrap;
+}
+
+table.sticky-table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+.sticky-table .float-line td, .sticky-table thead th {
+    position: sticky;
+    /*имитируем оригинальный фон*/
+    background: linear-gradient(rgba(60, 60, 60, 0.4), rgba(60, 60, 60, 0.4)), url("../../images/background.jpg");
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: repeat;
+    z-index: 10;
+    container-type: scroll-state;
+    container-name: sticky-table;
+    padding: 0;
+}
+
+@container sticky-table scroll-state(stuck: top) {
+    div {
+        background-color: rgba(23, 17, 16, 0.5);
+        z-index: 9;
+        position: relative;
+    }
+}
+
+.sticky-table .float-line > .title > div {
+    width: 100%;
+    text-align: left;
+    padding: 3px 5px;
+    color: #D3BC8E;
+    box-sizing: border-box;
+}
+
+.sticky-table .float-line td {
+    top: 28px;
+}
+
+.sticky-table thead th {
+    top: 0;
+    text-align: right;
+    white-space: nowrap;
+}
+
+.sticky-table .green {
+    color: #32af00;
+}
+
+.sticky-table tr:nth-child(2n) {
+    background-color: rgba(23, 17, 16, 0.5);
+}
+
+.sticky-table tr.optional {
+    font-size: 13px;
+    color: #BEAEA9;
+}
+
+.sticky-table tr .icon {
+    width: 20px;
+}
+
+.sticky-table tr {
+    line-height: 22px;
+}
+
+.sticky-table tr td, .sticky-table tr th {
+    padding: 3px;
+}

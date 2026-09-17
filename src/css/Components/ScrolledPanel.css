@@ -1,0 +1,6 @@
+.scrolled-content {
+    overflow: auto;
+    scrollbar-color: #CCC5B9 transparent;
+    scrollbar-gutter: stable;
+    scrollbar-width: thin;
+}

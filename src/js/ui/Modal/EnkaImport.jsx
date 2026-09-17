@@ -13,7 +13,6 @@ export class EnkaImportModal extends Modal {
                 ref={(obj) => this.modal = obj}
                 storage={this.app.storage.char}
                 artifactStorage={this.app.storage.artifacts}
-                addClass="lockartifacts-select-modal"
                 title={UI.Lang.get('modal_window.lock_artifact')}
             />
         );

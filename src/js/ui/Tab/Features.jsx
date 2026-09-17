@@ -2,11 +2,10 @@ import React from 'react';
 import parse from 'html-react-parser';
 import "../../../css/Components/Tab/Features.css"
 
-import { ControlsBar, ControlsBarDivider } from '../Components/ControlsBar';
+import { ControlsBar } from '../Components/ControlsBar';
 import { Dropdown } from '../Components/Inputs/Dropdown';
-import { FeatureTableHeader, FeatureTableValues } from '../Components/FeatureTable';
 import { FeatureViewTree } from './Features/Tree';
-import { FullHeight, FullHeightStatic, FullHeightFloatTitle, FloatTitleBlock, FullHeightScrollable } from '../Components/FullHeight';
+import { FullHeight, FullHeightScrollable, FullHeightFooter, FullHeightHeader } from '../Components/FullHeight';
 import { Lang } from '../Lang';
 import { ReactTab } from '../Components/Tab';
 import { Tab } from "../Tab";
@@ -14,6 +13,8 @@ import { Feature2 } from '../../classes/Feature2';
 import { TitledButton } from '../Components/Inputs/Buttons';
 import { BlockRemark } from '../Components/TextBlocks';
 import { UI } from '../../ui';
+import { FloatTitleBlock, StickyTableBlock, StickyTableHeader } from '../Components/ScrolledTable';
+import { formatNumber } from '../Utils';
 
 let lang = new Lang();
 
@@ -180,17 +181,16 @@ class FeaturesView extends React.Component {
 
         for (let section of sections) {
             items.push(
-                <FloatTitleBlock key={section.name} title={UI.Lang.get('feature_section.'+ section.name)}>
-                    <FeaturesTableBlock items={section.items} />
-                </FloatTitleBlock>
+               <FeaturesTableBlock key={ section.name } title={ UI.Lang.get('feature_section.' + section.name) } items={section.items} />
             );
         }
 
         return (
             <>
-                <FullHeightStatic>
+                <FullHeightHeader>
                     <ControlsBar>
                         <Dropdown
+                            key="reaction"
                             barClass="resizable"
                             items={REACTION_ITEMS}
                             selected={this.state.reaction}
@@ -202,14 +202,16 @@ class FeaturesView extends React.Component {
                             onClick={() => this.handleViewChange('detail')}
                         />
                     </ControlsBar>
-                    <FeatureTableHeader />
-                </FullHeightStatic>
-                <FullHeightFloatTitle noPadding={true}>
-                    {items}
-                </FullHeightFloatTitle>
-                {this.state.reaction ? <FullHeightStatic>
+                </FullHeightHeader>
+                <FullHeightScrollable>
+                    <StickyTableBlock addClass="features-table">
+                        <FeatureTableHeader />
+                        { items }
+                    </StickyTableBlock>
+                </FullHeightScrollable>
+                { this.state.reaction ? <FullHeightFooter>
                     <BlockRemark>{parse(UI.Lang.getTalent('features_view.reaction_remark'))}</BlockRemark>
-                </FullHeightStatic> : ''}
+                </FullHeightFooter> : ''}
             </>
         );
     }
@@ -239,7 +241,7 @@ class FeaturesView extends React.Component {
 
         return (
             <>
-                <FullHeightStatic>
+                <FullHeightHeader>
                     <ControlsBar>
                         <Dropdown
                             barClass="resizable"
@@ -248,13 +250,14 @@ class FeaturesView extends React.Component {
                             onChange={(item) => this.handleFeature(item.value)}
                         />
                         <Dropdown
+                            key="reaction"
                             barClass="feature-type"
                             items={REACTION_ITEMS}
                             selected={this.state.reaction}
                             onChange={(item) => this.handleReaction(item.value)}
                         />
                     </ControlsBar>
-                </FullHeightStatic>
+                </FullHeightHeader>
                 <FullHeightScrollable>
                     {item}
                 </FullHeightScrollable>
@@ -275,6 +278,82 @@ class FeaturesView extends React.Component {
             </ReactTab>
         );
     }
+}
+
+const FEATURE_VALUES = ['normal', 'crit', 'average'];
+const FEATURE_HEAL_EMPTY = ['normal', 'crit'];
+
+function FeatureTableHeader(props) {
+    return (
+        <StickyTableHeader>
+            <tr>
+                <th colSpan="2"/>
+                <th>{ UI.Lang.get('stat_view.normal') }</th>
+                <th>{ UI.Lang.get('stat_view.crit') }</th>
+                <th>{ UI.Lang.get('stat_view.average') }</th>
+            </tr>
+        </StickyTableHeader>
+    );
+}
+
+function FeatureTableValues(props) {
+    let items = [];
+    let format = props.result ? { format: props.result.format, digits: props.result.digits, no_decimal_zero: true } : null;
+
+    for (let name of FEATURE_VALUES) {
+        let value = props.result ? props.result[name] : 0;
+        let base = props.base ? props.base[name] : 0;
+
+        if (props.result && props.result.noCritValues && FEATURE_HEAL_EMPTY.includes(name)) {
+            base = value = 0;
+        }
+
+        items.push(
+            <FeatureTableValue
+                key={ name }
+                value={ value }
+                base={ base }
+                displayMode={ props.displayMode }
+                format={ format }
+            />
+        )
+    }
+
+    return (
+        <>{ items }</>
+    )
+}
+
+function FeatureTableValue(props) {
+    let value = '';
+    let subValue;
+    let addClass = '';
+    let format = props.format ? props.format.format : '';
+
+    if (format == 'percent') {
+        value = formatNumber(props.value, { percent: true, digits: props.format.digits, no_decimal_zero: 1 });
+    } else if (format == 'decimal') {
+        value = formatNumber(props.value, { digits: props.format.digits });
+    } else {
+        value = formatNumber(props.value);
+    }
+
+    if (props.base) {
+        if (props.displayMode == 'percent') {
+            subValue = formatNumber(props.value / props.base * 100, { percent: 1, digits: 1, no_decimal_zero: 1 });
+        } else if (props.displayMode == 'absolute') {
+            let diff = Math.round(props.value - props.base, 5);
+            subValue = formatNumber(diff, { signed: true, minimize: true, zero:'-' });
+            addClass = diff > 0 ? ' positive' : (diff < 0 ? ' negative' : '');
+        }
+    }
+
+    return (
+        <td>
+            { value }
+            { subValue !== undefined ? <div className={ 'remark' + addClass }>{ subValue }</div> : null }
+        </td>
+    );
 }
 
 function FeaturesTableBlock(props) {
@@ -302,22 +381,22 @@ function FeaturesTableBlock(props) {
         }
 
         items.push(
-            <div className={ classes.join(' ') } key={ item.key }>
-                <div className="title">
-                    <span className="flex-spacer">{parse(title)}</span>
-                    {item.portion ? <span>{item.portion.toFixed(1)}%</span> : ''}
-                </div>
-                <div className="icon"><div className={'stat-'+ (item.icon || item.feature.icon)} /></div>
+            <tr className={classes.join(' ')} key={item.key }>
+                <td>{parse(title) }</td>
+                <td className="icon"><div className={'stat-'+ (item.icon || item.feature.icon) } /></td>
                 <FeatureTableValues
                     result={item.feature}
                 />
-            </div>
+                <td>{item.base}</td>
+                <td className="green">{item.bonus}</td>
+                <td>{item.total}</td>
+            </tr>
         );
     }
 
-    return(
-        <div className="features-table-block">
+    return (
+        <FloatTitleBlock title={ props.title }>
             {items}
-        </div>
+        </FloatTitleBlock>
     );
 }

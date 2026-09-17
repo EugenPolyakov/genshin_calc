@@ -7,7 +7,7 @@ import { Feature2 } from '../../classes/Feature2';
 import { FeatureTableHeader } from '../Components/FeatureTable';
 import { FoodList } from './Food/List';
 import { FoodTypes } from './Food/Types';
-import { FullHeight, FullHeightScrollable, FullHeightStatic } from '../Components/FullHeight';
+import { FullHeight, FullHeightHeader, FullHeightScrollable } from '../Components/FullHeight';
 import { ReactTab } from '../Components/Tab';
 import { Tab } from "../Tab";
 import { DB } from '../../db/DB';
@@ -174,7 +174,7 @@ export class FoodView extends React.Component {
         return (
             <ReactTab title={this.strings.title}>
                 <FullHeight>
-                    <FullHeightStatic>
+                    <FullHeightHeader>
                         <ControlsBar>
                             <Dropdown
                                 barClass="resizable"
@@ -198,7 +198,7 @@ export class FoodView extends React.Component {
                             onClick={(level) => this.handleLevelSelect(level)}
                         />
                         <FeatureTableHeader />
-                    </FullHeightStatic>
+                    </FullHeightHeader>
                     <FullHeightScrollable>
                         <FoodList
                             foodCategory={this.state.foodCategory}

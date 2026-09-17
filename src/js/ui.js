@@ -1,9 +1,6 @@
-import 'simplebar/dist/simplebar.min.css';
-
-import "./ui/Slider";
-import "./ui/Dropdown";
-
 import "../css/app.css"
+import "../css/modal.css"
+import "../css/modal/WindowZIndex.css"
 import "../css/generated/icons_chars.css"
 import "../css/generated/icons_enemies_abyss.css";
 import "../css/generated/icons_enemies_automatons.css";
@@ -31,7 +28,7 @@ import "../css/icons/weapons.css"
 import "../css/inputs.css"
 import "../css/ui/legacy.css"
 
-import { ArtifactScanner } from "./ui/Window/ArtifactScanner";
+import { ArtifactScanner } from './ui/Modal/ArtifactScanner';
 import { ArtifactSetSettingsModal } from './ui/Modal/ArtifactSetSettings.jsx';
 import { ArtifactSetTab } from './ui/Tab/ArtifactSetTab';
 import { ArtifactsGeneratorTab } from './ui/Tab/ArtifactsGenerator';
@@ -39,7 +36,7 @@ import { ArtifactsStorageTab } from './ui/Tab/ArtifactStorage';
 import { ArtifactsTab } from './ui/Tab/Artifacts';
 import { ArtifactSubstatTab } from './ui/Tab/ArtifactSubstatTab';
 import { ArtifactTooltip } from './ui/Components/ArtifactTooltip.jsx';
-import { ArtifactWindow } from './ui/Window/ArtifactWindow'
+import { ArtifactWindow } from './ui/Modal/ArtifactWindow.jsx';
 import { BestArtifactTab } from "./ui/Tab/BestArtifacts.jsx";
 import { BuffsTab } from './ui/Tab/Buffs';
 import { CharTab } from './ui/Tab/Char';
@@ -97,13 +94,12 @@ export var UI = {
     CompareTab: new CompareTab({position: 'right'}),
 
     // popups
-    ArtifactWindow: new ArtifactWindow(), // jq
-    ArtifactScanner: new ArtifactScanner(), // jq
+    ArtifactWindow: new ArtifactWindow(),
+    ArtifactScanner: new ArtifactScanner(),
     ConfirmWindow: new ConfirmModal(),
     PromptWindow: new PromptModal(),
     WindowMessage: new MessageModal(),
     WindowHelp: new HelpModal(),
-    // WindowGood: new WindowGood(), // jq
     WindowGood: new GoodImportModal(),
     WindowSelectFeatureList: new SelectFeatureListModal(),
     WindowSelectGroupList: new SelectGroupListModal(),

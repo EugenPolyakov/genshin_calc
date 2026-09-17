@@ -5,7 +5,7 @@ import "../../../../css/Components/Modal/Select/GroupList.css"
 import { Checkbox } from "../../Components/Inputs/Input";
 import { ControlsBar, ControlsBarDivider } from "../../Components/ControlsBar";
 import { DialogContainer } from "../../Components/Dialog/Container";
-import { FullHeight, FullHeightScrollable, FullHeightStatic } from "../../Components/FullHeight";
+import { FullHeight, FullHeightFooter, FullHeightScrollable } from "../../Components/FullHeight";
 import { Modal } from "../../Modal";
 import { MiniButton, TitledButton } from "../../Components/Inputs/Buttons";
 import { BlockRemark } from "../../Components/TextBlocks";
@@ -116,27 +116,27 @@ class GroupListComponent extends React.Component {
                             onDelete={(name) => this.handleDeleteGroup(name)}
                         />
                     </FullHeightScrollable>
-                    <FullHeightStatic>
+                    <FullHeightFooter>
                         <div className="gi-hr" />
                         <ControlsBar>
                             <TitledButton
-                                icon="button-icon-delete"
+                                icon="icon-delete"
                                 title={UI.Lang.get('modal_buttons.reset')}
                                 onClick={() => this.handleReset()}
                             />
                             <ControlsBarDivider />
                             <TitledButton
-                                icon="button-icon-ok"
+                                icon="icon-ok"
                                 title={UI.Lang.get('modal_buttons.confirm')}
                                 onClick={() => this.handleConfirm()}
                             />
                             <TitledButton
-                                icon="button-icon-cancel"
+                                icon="icon-cancel"
                                 title={UI.Lang.get('modal_buttons.cancel')}
                                 onClick={() => this.handleClose()}
                             />
                         </ControlsBar>
-                    </FullHeightStatic>
+                    </FullHeightFooter>
                 </FullHeight>
             </DialogContainer>
         );

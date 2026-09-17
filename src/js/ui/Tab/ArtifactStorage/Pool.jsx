@@ -3,7 +3,7 @@ import React from "react";
 import { ArtifactPoolList } from "../../Components/Artifact";
 import { ControlsBar, ControlsBarDivider } from "../../Components/ControlsBar";
 import { Dropdown } from "../../Components/Inputs/Dropdown";
-import { FullHeight, FullHeightScrollable, FullHeightStatic } from "../../Components/FullHeight";
+import { FullHeight, FullHeightFooter, FullHeightHeader, FullHeightScrollable } from "../../Components/FullHeight";
 import { RoundButton, ToggleRoundButton } from "../../Components/Inputs/Buttons";
 import { DB } from "../../../db/DB";
 import { UI } from "../../../ui";
@@ -143,7 +143,7 @@ export class ArtifactStoragePool extends React.Component {
 
         return (
             <FullHeight>
-                <FullHeightStatic>
+                <FullHeightHeader>
                     <ControlsBar>
                         <ToggleRoundButton
                             icon="icon-sort"
@@ -182,7 +182,7 @@ export class ArtifactStoragePool extends React.Component {
                             onClick={this.props.onScannerOpen}
                         />
                     </ControlsBar>
-                </FullHeightStatic>
+                </FullHeightHeader>
                 <FullHeightScrollable
                     isLoading={this.state.isLoading}
                     loadingOverlay={UI.Lang.get('pool_view.loading')}
@@ -200,7 +200,7 @@ export class ArtifactStoragePool extends React.Component {
                         onOver={this.props.onArtifactOver}
                     />
                 </FullHeightScrollable>
-                <FullHeightStatic>
+                <FullHeightFooter>
                     <ControlsBar>
                         <Dropdown
                             barClass="resizable"
@@ -217,7 +217,7 @@ export class ArtifactStoragePool extends React.Component {
                             onChange={this.props.onStatSortChange}
                         />
                     </ControlsBar>
-                </FullHeightStatic>
+                </FullHeightFooter>
             </FullHeight>
         );
     }
