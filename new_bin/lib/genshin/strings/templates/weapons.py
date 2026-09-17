@@ -1897,17 +1897,18 @@ lithic_axiom_unity = Template(
 
 mistsplitters_edge = Template(
     replace={
-        ': ': ':<br>•',
-        '; ': '<br>•',
+        ': ': ':<br>• ',
+        '; ': '<br>• ',
         '. Продолжительность': '.<br>Продолжительность',
     },
     names=['Эмблемы рассекателя тумана'],
-    patterns=[
-        ('8%, 16% или 28%', '28%'),
-    ],
     sentences=[
         ['12:dmg_pyro'],
-        ['1:ignore', '2:ignore', '3:ignore', '28:dmg_own'],
+        ['1:ignore', '2:ignore', '3:ignore',
+         '8:format{weapon_mistsplitters_reforged=1|{value}}:',
+         '16:format{weapon_mistsplitters_reforged=2|{value}}:',
+         '28:format{weapon_mistsplitters_reforged=3|{value}}:',
+        ],
         ['1:ignore', '5:ignore', '10:ignore', '100:'],
     ],
     results=[
@@ -1918,18 +1919,19 @@ mistsplitters_edge = Template(
 
 mistsplitters_edge_eng = Template(
     replace={
-        ': ': ':<br>•',
-        '; ': '<br>•',
+        ': ': ':<br>• ',
+        '; ': '<br>• ',
         ', casting': '<br>casting',
         '. Each stack': '.<br>Each stack',
     },
     names=['Mistsplitter\'s Emblem'],
-    patterns=[
-        ('8/16/28%', '28%'),
-    ],
     sentences=[
         ['12:dmg_pyro'],
-        ['1:ignore', '2:ignore', '3:ignore', '28:dmg_own'],
+        ['1:ignore', '2:ignore', '3:ignore',
+         '8:format{weapon_mistsplitters_reforged=1|{value}}:',
+         '16:format{weapon_mistsplitters_reforged=2|{value}}:',
+         '28:format{weapon_mistsplitters_reforged=3|{value}}:',
+        ],
         ['1:ignore', '5:ignore', '10:ignore', '100:'],
     ],
     results=[

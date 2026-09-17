@@ -274,7 +274,7 @@ export const Nefer = new DbObjectChar({
             ],
         }),
         new FeatureDamageCharged({
-            fullName: 'skill.nefer_phantasm_performance_1_hit_dmg_nefer',
+            customId: 'skill.nefer_phantasm_performance_1_hit_dmg_nefer',
             element: 'dendro',
             multipliers: [
                 new FeatureMultiplier({
@@ -304,7 +304,7 @@ export const Nefer = new DbObjectChar({
             condition: new ConditionBoolean({ name: 'nefer_dance_of_a_thousand_nights' }),
         }),
         new FeatureDamageCharged({
-            fullName: 'skill.nefer_phantasm_performance_2_hit_dmg_nefer',
+            customId: 'skill.nefer_phantasm_performance_2_hit_dmg_nefer',
             element: 'dendro',
             multipliers: [
                 new FeatureMultiplier({

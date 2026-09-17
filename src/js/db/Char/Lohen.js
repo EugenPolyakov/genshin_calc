@@ -562,7 +562,7 @@ export const Lohen = new DbObjectChar({
             ],
         }),
         new FeaturePostEffectValue({
-            fullName: 'burst.lohen_dmg_increase_from_will_to_win',
+            customId: 'burst.lohen_dmg_increase_from_will_to_win',
             format: 'percent',
             postEffect: willToWin,
         })

@@ -658,7 +658,7 @@ export const Nicole = new DbObjectChar({
         features: [
             new FeatureDamage({
                 category: 'other',
-                fullName: 'burst.nicole_arcane_projection_dmg',
+                customId: 'burst.nicole_arcane_projection_dmg',
                 element: function (settings) { return settings.char_element; },
                 multipliers: [
                     new FeatureMultiplier({

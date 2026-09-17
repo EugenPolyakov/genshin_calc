@@ -206,7 +206,7 @@ export const Ayato = new DbObjectChar({
             condition: condNotStance,
         }),
         new FeatureDamageNormal({
-            fullName: 'skill.kamisato_ayato_shunsuiken_1_hit_dmg',
+            customId: 'skill.kamisato_ayato_shunsuiken_1_hit_dmg',
             element: 'hydro',
             damageBonuses: ['dmg_normal_ayato'],
             tags: ['shunsuiken'],
@@ -219,7 +219,7 @@ export const Ayato = new DbObjectChar({
             condition: condStance,
         }),
         new FeatureDamageNormal({
-            fullName: 'skill.kamisato_ayato_shunsuiken_2_hit_dmg',
+            customId: 'skill.kamisato_ayato_shunsuiken_2_hit_dmg',
             element: 'hydro',
             damageBonuses: ['dmg_normal_ayato'],
             tags: ['shunsuiken'],
@@ -232,7 +232,7 @@ export const Ayato = new DbObjectChar({
             condition: condStance,
         }),
         new FeatureDamageNormal({
-            fullName: 'skill.kamisato_ayato_shunsuiken_3_hit_dmg',
+            customId: 'skill.kamisato_ayato_shunsuiken_3_hit_dmg',
             element: 'hydro',
             damageBonuses: ['dmg_normal_ayato'],
             tags: ['shunsuiken'],

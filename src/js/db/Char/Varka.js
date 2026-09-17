@@ -477,7 +477,7 @@ export const Varka = new DbObjectChar({
         new FeatureDamageVarka({
             category: 'attack',
             damageType: 'normal',
-            fullName: 'skill.varka_sturm_und_drang_1_hit_dmg',
+            customId: 'skill.varka_sturm_und_drang_1_hit_dmg',
             allowInfusion: true,
             damageBonuses: ['dmg_sturm_und_drang'],
             condition: new ConditionBoolean({ name: 'varka_sturm_und_drang' }),
@@ -493,7 +493,7 @@ export const Varka = new DbObjectChar({
         }),
         new FeatureDamageNormal({
             element: 'anemo',
-            fullName: 'skill.varka_sturm_und_drang_2_hit_dmg_anemo',
+            customId: 'skill.varka_sturm_und_drang_2_hit_dmg_anemo',
             name: 'varka_sturm_und_drang_2_hit_dmg_anemo',
             damageBonuses: ['dmg_sturm_und_drang'],
             condition: new ConditionBoolean({ name: 'varka_sturm_und_drang' }),
@@ -510,7 +510,7 @@ export const Varka = new DbObjectChar({
         new FeatureDamageVarka({
             category: 'attack',
             damageType: 'normal',
-            fullName: 'skill.varka_sturm_und_drang_2_hit_dmg',
+            customId: 'skill.varka_sturm_und_drang_2_hit_dmg',
             name: 'varka_sturm_und_drang_2_hit_dmg',
             allowInfusion: true,
             damageBonuses: ['dmg_sturm_und_drang'],
@@ -527,7 +527,7 @@ export const Varka = new DbObjectChar({
         }),
         new FeatureDamageNormal({
             element: 'anemo',
-            fullName: 'skill.varka_sturm_und_drang_3_hit_dmg_anemo',
+            customId: 'skill.varka_sturm_und_drang_3_hit_dmg_anemo',
             name: 'varka_sturm_und_drang_3_hit_dmg_anemo',
             damageBonuses: ['dmg_sturm_und_drang'],
             condition: new ConditionBoolean({ name: 'varka_sturm_und_drang' }),
@@ -544,7 +544,7 @@ export const Varka = new DbObjectChar({
         new FeatureDamageVarka({
             category: 'attack',
             damageType: 'normal',
-            fullName: 'skill.varka_sturm_und_drang_3_hit_dmg',
+            customId: 'skill.varka_sturm_und_drang_3_hit_dmg',
             name: 'varka_sturm_und_drang_3_hit_dmg',
             allowInfusion: true,
             damageBonuses: ['dmg_sturm_und_drang'],
@@ -562,7 +562,7 @@ export const Varka = new DbObjectChar({
         new FeatureDamageVarka({
             category: 'attack',
             damageType: 'normal',
-            fullName: 'skill.varka_sturm_und_drang_4_hit_dmg',
+            customId: 'skill.varka_sturm_und_drang_4_hit_dmg',
             name: 'varka_sturm_und_drang_4_hit_dmg',
             allowInfusion: true,
             damageBonuses: ['dmg_sturm_und_drang'],
@@ -579,7 +579,7 @@ export const Varka = new DbObjectChar({
         }),
         new FeatureDamageNormal({
             element: 'anemo',
-            fullName: 'skill.varka_sturm_und_drang_4_hit_dmg_anemo',
+            customId: 'skill.varka_sturm_und_drang_4_hit_dmg_anemo',
             name: 'varka_sturm_und_drang_4_hit_dmg_anemo',
             damageBonuses: ['dmg_sturm_und_drang'],
             condition: new ConditionBoolean({ name: 'varka_sturm_und_drang' }),
@@ -596,7 +596,7 @@ export const Varka = new DbObjectChar({
         new FeatureDamageVarka({
             category: 'attack',
             damageType: 'normal',
-            fullName: 'skill.varka_sturm_und_drang_5_hit_dmg',
+            customId: 'skill.varka_sturm_und_drang_5_hit_dmg',
             name: 'varka_sturm_und_drang_5_hit_dmg',
             allowInfusion: true,
             damageBonuses: ['dmg_sturm_und_drang'],
@@ -613,7 +613,7 @@ export const Varka = new DbObjectChar({
         }),
         new FeatureDamageNormal({
             element: 'anemo',
-            fullName: 'skill.varka_sturm_und_drang_5_hit_dmg_anemo',
+            customId: 'skill.varka_sturm_und_drang_5_hit_dmg_anemo',
             name: 'varka_sturm_und_drang_5_hit_dmg_anemo',
             damageBonuses: ['dmg_sturm_und_drang'],
             condition: new ConditionBoolean({ name: 'varka_sturm_und_drang' }),
@@ -630,7 +630,7 @@ export const Varka = new DbObjectChar({
         new FeatureDamageVarka({
             category: 'attack',
             damageType: 'charged',
-            fullName: 'skill.varka_sturm_und_drang_charged_attack_dmg',
+            customId: 'skill.varka_sturm_und_drang_charged_attack_dmg',
             name: 'varka_sturm_und_drang_charged_attack_dmg',
             allowInfusion: true,
             damageBonuses: ['dmg_sturm_und_drang'],
@@ -650,7 +650,7 @@ export const Varka = new DbObjectChar({
             damageType: 'charged',
             element: 'anemo',
             damageBonuses: ['dmg_sturm_und_drang'],
-            fullName: 'skill.varka_sturm_und_drang_charged_attack_dmg_anemo',
+            customId: 'skill.varka_sturm_und_drang_charged_attack_dmg_anemo',
             name: 'varka_sturm_und_drang_charged_attack_dmg_anemo',
             condition: new ConditionBoolean({ name: 'varka_sturm_und_drang' }),
             multipliers: [
@@ -666,7 +666,7 @@ export const Varka = new DbObjectChar({
         new FeatureDamageMultihit({
             category: 'attack',
             damageType: 'charged',
-            fullName: 'skill.varka_azure_devour_dmg',
+            customId: 'skill.varka_azure_devour_dmg',
             name: 'varka_azure_devour_dmg',
             element: getVarkaActiveElement,
             allowInfusion: true,
@@ -690,7 +690,7 @@ export const Varka = new DbObjectChar({
         new FeatureDamageVarka({
             category: 'attack',
             damageType: 'charged',
-            fullName: 'skill.varka_azure_devour_dmg_1',
+            customId: 'skill.varka_azure_devour_dmg_1',
             allowInfusion: true,
             damageBonuses: ['dmg_sturm_und_drang'],
             isChild: true,
@@ -708,7 +708,7 @@ export const Varka = new DbObjectChar({
         new FeatureDamageMultihit({
             category: 'attack',
             damageType: 'charged',
-            fullName: 'skill.varka_azure_devour_dmg_anemo',
+            customId: 'skill.varka_azure_devour_dmg_anemo',
             name: 'varka_azure_devour_dmg_anemo',
             element: 'anemo',
             damageBonuses: ['dmg_sturm_und_drang'],
@@ -731,7 +731,7 @@ export const Varka = new DbObjectChar({
         new FeatureDamage({
             category: 'attack',
             damageType: 'charged',
-            fullName: 'skill.varka_azure_devour_dmg_anemo_1',
+            customId: 'skill.varka_azure_devour_dmg_anemo_1',
             name: 'varka_azure_devour_dmg_anemo_1',
             element: 'anemo',
             damageBonuses: ['dmg_sturm_und_drang'],
@@ -807,18 +807,6 @@ export const Varka = new DbObjectChar({
                 }),
             ],
         }),
-        new FeatureDamage({
-            element: 'anemo',
-            category: 'other',
-            name: 'varka_constellation2',
-            multipliers: [
-                new FeatureMultiplier({
-                    leveling: 'char_skill_burst',
-                    values: new ValueTable([charTalentTables.Varka.cons[1][0]]),
-                }),
-            ],
-            condition: new ConditionConstellation({ constellation: 2 }),
-        }),
     ],
     conditions: [
         new ConditionCalcElementsVarka(),
@@ -891,6 +879,19 @@ export const Varka = new DbObjectChar({
                     name: 'varka_when_dawn_breaks_our_journey_shall_take_flight',
                     title: 'talent_name.varka_when_dawn_breaks_our_journey_shall_take_flight',
                     description: 'talent_descr.varka_when_dawn_breaks_our_journey_shall_take_flight',
+                }),
+            ],
+            features: [
+                new FeatureDamage({
+                    element: 'anemo',
+                    category: 'other',
+                    name: 'varka_constellation2',
+                    multipliers: [
+                        new FeatureMultiplier({
+                            source: 'constellation2',
+                            values: new ValueTable([charTalentTables.Varka.cons[1][0] * 100]),
+                        }),
+                    ],
                 }),
             ],
         },

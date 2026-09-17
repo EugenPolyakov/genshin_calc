@@ -431,7 +431,7 @@ export const Zibai = new DbObjectChar({
         new FeatureReactionLunarCrystallizeLike({
             element: 'geo',
             category: 'attack',
-            fullName: 'skill.zibai_lunar_phase_shift_4_hit_additional_dmg',
+            customId: 'skill.zibai_lunar_phase_shift_4_hit_additional_dmg',
             multipliers: [
                 new FeatureMultiplier({
                     scaling: 'def*',

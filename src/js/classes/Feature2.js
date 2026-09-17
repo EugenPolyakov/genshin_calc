@@ -13,7 +13,7 @@ if (process.env.NODE_ENV !== 'production') {
         'damageBonuses', 'critRateBonuses', 'critDamageBonuses',
         'subtractBoL', 'partyHeal', 'noSelfHeal',
         'rotationHitCount', 'rotationHitDescription',
-        'rotationAfterItems',
+        'rotationAfterItems', 'customId',
     ];
 }
 
@@ -34,6 +34,7 @@ export class Feature2 {
         this.tags = params.tags || [];
         this.multipliers = params.multipliers || [];
         this.category = params.category;
+        this.customId = params.customId;
         this.fullName = params.fullName;
         this.condition = params.condition;
         this.element = '';
@@ -59,7 +60,7 @@ export class Feature2 {
     }
 
     getName() {
-        return this.category + '.' + this.name;
+        return this.customId ? this.customId : this.category + '.' + this.name;
     }
 
     getIsChild() {
