@@ -92,7 +92,7 @@ export class ArtifactListItem extends React.Component {
 
     render() {
         let art = this.props.art;
-        let substats = new Array( Object.keys( art.getSubStats() ).length);
+        let substats = [];
         let classes = ['artifact-list-box', 'border-rarity-' + art.getRarity()];
 
         if (this.props.equipped) {
@@ -105,14 +105,13 @@ export class ArtifactListItem extends React.Component {
             classes.push('hidden');
         }
 
-        for ( let item in art.getSubStats() )
+        for (let value of art.getSubStats() )
         {
-            let value = art.getSubStats()[item];
-            let stat = item.replace('_percent', '');
-            substats[value.index] = (
-                <div key={ item } className={ 'substat' + (this.isHighlight(item, value.value) ? ' highlight' : '') + (value.unactivated ? ' unactivated' : '')}>
+            let stat = value.stat.replace('_percent', '');
+            substats.push(
+                <div key={ value.stat } className={ 'substat' + (this.isHighlight(value.stat, value.value) ? ' highlight' : '') + (value.unactivated ? ' unactivated' : '')}>
                     <span className="stat">{UI.Lang.get('stat_mini.'+ stat)}</span>
-                    <span className="value">{ formatStat(item, value.value, {signed: false})}</span>
+                    <span className="value">{ formatStat(value.stat, value.value, {signed: false})}</span>
                 </div>
             );
         }
@@ -134,7 +133,7 @@ export class ArtifactListItem extends React.Component {
             >
                 <div className="line">
                     <ArtifactSetIcon size={60} set={art.getSetName()} slot={art.getSlot()} />
-                    { !art.isValid() ? <div className="invalid" data-tooltip={ this.props.tooltip } { ...UI.SimpleTooltip }></div> : null}
+                    { !art.isValid() ? <div className="invalid" data-tooltip={ this.props.tooltip }></div> : null}
                     <div className="main">
                         { this.getButtons() }
                         <div className="main-stat">
@@ -196,24 +195,24 @@ function ArtifactListItemButtons(props) {
         }}>
             {props.onEdit ? <div
                 className="button edit"
-                data-tooltop={UI.Lang.get('tooltip.artifact_edit')}
+                data-tooltip={UI.Lang.get('tooltip.artifact_edit')}
                 onClick={() => props.onEdit(props.art)}
             /> : ''}
             {props.onDelete ? <div
                 className="button delete"
-                data-tooltop={UI.Lang.get('tooltip.artifact_delete')}
+                data-tooltip={UI.Lang.get('tooltip.artifact_delete')}
                 onClick={() => props.onDelete(props.art)}
             /> : ''}
             {showLocking ? (props.locked ?
                 <div
                     className="button locked"
-                    data-tooltop={UI.Lang.get('tooltip.artifact_unlock')}
+                    data-tooltip={UI.Lang.get('tooltip.artifact_unlock')}
                     onClick={() => props.onLock(props.art, false)}
                 />
                 :
                 <div
                     className="button unlocked"
-                    data-tooltop={UI.Lang.get('tooltip.artifact_lock')}
+                    data-tooltip={UI.Lang.get('tooltip.artifact_lock')}
                     onClick={() => props.onLock(props.art, true)}
                 />
             ) : ''}

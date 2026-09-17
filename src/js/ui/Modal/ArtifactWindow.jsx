@@ -109,13 +109,14 @@ class ArtifactWindowComponent extends React.Component {
                             <div className="gi-artifact-window-group-wrapper">
                                 <div className="gi-artifact-window-group">
                                     <Dropdown
+                                        addClass="comma"
                                         isMultiple={ true }
                                         items={ this.state.groupsList }
                                         selected={ this.state.groups }
                                         onChange={ (items) => this.handleGroupName(items) }
                                         />
                                 </div>
-                                <RoundButton icon="icon-add" data-tooltip={ UI.Lang.get('artifact_group.add') } onClick={ () => this.handleAddGroup() } { ...UI.SimpleTooltip } />
+                                <RoundButton icon="icon-add" data-tooltip={ UI.Lang.get('artifact_group.add') } onClick={ () => this.handleAddGroup() } />
                             </div>
                     }
 
@@ -265,7 +266,7 @@ class ArtifactWindowComponent extends React.Component {
         substat.stat = stat;
 
         if (stat) {
-            let data = substatCheck(stat, rarity, substat.value, substat.values);
+            let data = substatCheck(stat, this.state.rarity, substat.value, substat.values);
             if (data.last == 0)
                 substat.values = data.steps.map(x => x.rarity - 2);
             else
@@ -278,16 +279,18 @@ class ArtifactWindowComponent extends React.Component {
     getSubstatsFromArt(artifact) {
         let substats = [{}, {}, {}, {}];
         let slots = new Set([0, 1, 2, 3]);
-        for (let stat in artifact.subStats) {
-            substats[artifact.subStats[stat].index] = {
-                stat,
-                value: artifact.subStats[stat].value,
-                values: artifact.subStats[stat].values ? artifact.subStats[stat].values.slice() : null,
+        let index = 0;
+        for (let stat of artifact.getSubStats()) {
+            substats[index] = {
+                stat: stat.stat,
+                value: stat.value,
+                values: stat.values ? stat.values.slice() : null,
             }
-            slots.delete(artifact.subStats[stat].index);
+            slots.delete(index);
+            index++;
         }
 
-        for (let i of slots) {
+        for (let i of Array.from(slots)) {
             substats[i] = { stat: '', value: 0, values: [] };
         }
 
@@ -327,7 +330,7 @@ class ArtifactWindowComponent extends React.Component {
     setSubstatValue(slot, value) {
         if (slot >= 0 && slot < 4) {
             let substats = this.state.substats.slice();
-            substats[slot].value = value;
+            substats[slot].value = Math.round(value * 10) / 10;
             let state = Object.assign({}, this.state, { substats });
             let art = this.getArtifact(state);
             art.tryDoRightSubstats();
@@ -393,8 +396,13 @@ class ArtifactWindowComponent extends React.Component {
         });
     }
 
-    handleGroupName(name) {
-        this.setState({ groups: name });
+    handleGroupName(items) {
+        let result = items.map((i) => { return i.value });
+        if (result.length == 0) {
+            result = [""]
+        }
+
+        this.setState({ groups: result });
     }
 
     handleAddGroup() {
@@ -416,8 +424,8 @@ class ArtifactWindowComponent extends React.Component {
         newGroupName = Artifact.trimGroupName(newGroupName);
         let groupsList = this.state.groupsList.slice();
         let groups = this.state.groups.slice();
-        if (!groupsList.includes(newGroupName))
-            groupsList.push(newGroupName);
+        if (!groupsList.filter(x => x.value == newGroupName).length)
+            groupsList.push({ text: newGroupName, value: newGroupName });
         if (!groups.includes(newGroupName))
             groups.push(newGroupName);
 
@@ -433,7 +441,10 @@ class ArtifactWindowComponent extends React.Component {
 
         let state = {
             groups: [],
-            groupsList: opts.groups ? opts.groups.slice() : null,
+            groupsList: opts.groups ? opts.groups.map(x => ({
+                text: x.title,
+                value: x.value,
+            })) : null,
             lockedSlot: false,
             isVisible: true,
         };
@@ -496,7 +507,6 @@ function SubStatsLine(props) {
                     key={ roll }
                     className={ "gi-modal-substat-value-roll active border-rarity-" + (rarity + 2) }
                     data-tooltip={ addRoll }
-                    { ...UI.SimpleTooltip }
                     onClick={ () => props.addRoll(actRarity) }
                 >
                     { Stats.roundStatValue('', roll, percent) }
@@ -527,7 +537,7 @@ function SubStatsLine(props) {
     return (
         <div className="gi-modal-substat-line">
             <div className="gi-modal-substat-stats">
-                <div className="gi-modal-substat-item gi-modal-substat-item-none">{ UI.Lang.get('stat_short.none') }</div>
+                <div className={ "gi-modal-substat-item gi-modal-substat-item-none" + (props.data.stat == '' ? " active" : "")} onClick={ () => props.changeSubstat('') }>{ UI.Lang.get('stat_short.none') }</div>
                 { stats }
             </div>
             <div className="gi-modal-substat-value-wrapper">

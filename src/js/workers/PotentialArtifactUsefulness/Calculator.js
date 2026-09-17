@@ -311,10 +311,10 @@ export class chanceCalculator extends CalcBuildFastPermutations {
         ]);
         allSubStats.delete(mainStat);
         this.supportedStats = Array.from(allSubStats);
-        this.newStatsCount = rarity.maxSubstats - Object.keys(this.currentArtifact.getSubStats()).length;
-        this.customStats -= this.newStatsCount + (this.currentArtifact.getLevel() < 4 ? Object.entries(this.currentArtifact.getSubStats()).reduce((a, x) => x[1].unactivated ? a + 1 : a, 0) : 0);
+        this.newStatsCount = rarity.maxSubstats - this.currentArtifact.getSubStats().length;
+        this.customStats -= this.newStatsCount + (this.currentArtifact.getLevel() < 4 ? this.currentArtifact.getSubStats().reduce((a, x) => x.unactivated ? a + 1 : a, 0) : 0);
         this.newStatsCombCount = factor(this.supportedStats.length, this.supportedStats.length - this.newStatsCount) * Math.pow(this.subStatsRollsCount, this.newStatsCount);
-        if (this.rarity == 4 && Object.values(this.currentArtifact.getSubStats()).some(x => x.unactivated)) {
+        if (this.rarity == 4 && this.currentArtifact.getSubStats().some(x => x.unactivated)) {
             combCount = factor(this.customStats + 16 - 1, 16 - 1) / factor(this.customStats, 1);
         } else {
             combCount = factor(this.customStats + this.subStatsRollsCount * rarity.maxSubstats - 1, this.subStatsRollsCount * rarity.maxSubstats - 1) /
@@ -343,7 +343,7 @@ export class chanceCalculator extends CalcBuildFastPermutations {
         let stats = {};
         for (let stat of this.atrKeys) {
             stats[stat] = {
-                values: newArt.subStats[stat].values.slice(),
+                values: newArt.getSubStats().filter(x => x.stat == stat)[0].values.slice(),
             };
         }
         //let dbgVal = Object.fromEntries(this.atrKeys.map(x => [x, []]));
@@ -615,7 +615,7 @@ export class chanceCalculator extends CalcBuildFastPermutations {
                 this.processedArt.addStatByProcs(this.supportedStats[ofs % this.supportedStats.length], Math.floor(ofs / this.supportedStats.length % this.subStatsRollsCount).toString());
                 ofs = Math.floor(ofs / this.supportedStats.length / this.subStatsRollsCount);
             }
-            this.atrKeys = Object.keys(this.processedArt.getSubStats());
+            this.atrKeys = this.processedArt.getSubStats().map(x => x.stat);
             this.lowComb.clear();
             this.skipped = 0;
             this.badComb = 0;

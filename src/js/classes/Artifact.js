@@ -10,22 +10,26 @@ export class Artifact {
         this.slot = slot;
         this.set = set;
         this.mainStat = mainStat;
+        this.subStats = [];
         if (subStats)
-            this.subStats = Object.assign({}, subStats);
-        else
-            this.subStats = {};
+            subStats.forEach(x => this.addNewStat(x.stat, x.value, x.values, x.unactivated, x.initialValue));
         this.locked = false;
         this.groups = [];
         this.calculated = null;
     }
 
-    addStat(stat, value, unactivated, firstValue) {
-        this.subStats[stat] = {
-            index: Object.keys(this.subStats).length,
-            value: value,
-            unactivated: unactivated,
+    addNewStat(stat, value, values, unactivated, firstValue) {
+        this.subStats.push({
+            stat,
+            value,
+            values,
+            unactivated,
             initialValue: firstValue,
-        };
+        });
+    }
+
+    addStat(stat, value, unactivated, firstValue) {
+        this.addNewStat(stat, value, null, unactivated, firstValue);
 
         this.calculated = null;
     }
@@ -33,26 +37,14 @@ export class Artifact {
     addStatByProcs(stat, values, unactivated, firstValue) {
         let substat = DB.Artifacts.Substats.get(stat);
         if (!substat) {
-            this.subStats[stat] = {
-                index: Object.keys(this.subStats).length,
-                value: 0,
-                values: [],
-                unactivated: unactivated,
-                initialValue: firstValue,
-            };
+            this.addNewStat(stat, 0, [], unactivated, firstValue);
         } else {
-            values = values.sort((a, b) => a - b);
+            values.sort();
             let value = substat.rollsToValue[this.rarity - 1][values.join('')];
             if (!value)
                 value = values.reduce((a, x) => a + substat.rolls[this.rarity - 1][x], 0);
 
-            this.subStats[stat] = {
-                index: Object.keys(this.subStats).length,
-                value: value,
-                values: values,
-                unactivated: unactivated,
-                initialValue: firstValue,
-            };
+            this.addNewStat(stat, value, values, unactivated, firstValue);
         }
 
         this.calculated = null;
@@ -61,10 +53,10 @@ export class Artifact {
     tryDoRightSubstats() {
         let upgradesCnt = 0;
         let isWrong = false;
-        Object.keys(this.subStats).forEach((i) => {
-            this.tryGetSubstatValues(this.subStats[i], i);
-            if (this.subStats[i].values)
-                upgradesCnt += this.subStats[i].values.length - 1;
+        this.subStats.forEach((i) => {
+            this.tryGetSubstatValues(i, i.stat);
+            if (i.values)
+                upgradesCnt += i.values.length - 1;
             else
                 isWrong = true;
         });
@@ -75,14 +67,13 @@ export class Artifact {
         let minRarityUpdates = Math.max(0, rarityData.minSubstats - 4 + Math.floor(this.level / 4));
         if (upgradesCnt < minRarityUpdates) {
             let possibleStacks = {};
-            Object.keys(this.subStats).forEach((sub) => {
-                let subStat = this.subStats[sub];
+            this.subStats.forEach((subStat, i) => {
                 if (subStat.values.length > 1) {
-                    let statData = DB.Artifacts.Substats.get(sub);
+                    let statData = DB.Artifacts.Substats.get(subStat.stat);
                     let stacks = statData.stacks[this.rarity - 1][subStat.value];
                     if (subStat.initialValue)
                         stacks = stacks.filter(x => x.includes(subStat.initialValue - 1));
-                    possibleStacks[sub] = stacks;
+                    possibleStacks[i] = stacks;
                 }
             });
             let keys = Object.keys(possibleStacks);
@@ -167,15 +158,14 @@ export class Artifact {
             result.add(this.mainStat, statTable.getValue(this.level));
         }
 
-        Object.keys(this.subStats).forEach((i) =>
+        this.subStats.forEach((item) =>
         {
-            let item = this.subStats[i];
-            let substatData = DB.Artifacts.Substats.get(i);
-            this.tryGetSubstatValues(item, i);
+            let substatData = DB.Artifacts.Substats.get(item.stat);
+            this.tryGetSubstatValues(item, item.stat);
             if (item.values)
-                result.add(i, substatData.getPreciseValueByStacks(item.values, this.rarity));
+                result.add(item.stat, substatData.getPreciseValueByStacks(item.values, this.rarity));
             else
-                result.add(i, substatData.getPreciseValue(item.value, this.rarity));
+                result.add(item.stat, substatData.getPreciseValue(item.value, this.rarity));
         });
 
         result.add('crit_value', result.get('crit_rate') * 2 + result.get('crit_dmg'));
@@ -238,6 +228,11 @@ export class Artifact {
 
     getSubStats() {
         return this.subStats;
+    }
+
+    getSubStatValue(stat) {
+        var val = this.subStats.filter(x => x.stat == stat)[0];
+        return val ? val.value : 0;
     }
 
     setGroups(value) {
@@ -316,7 +311,7 @@ export class Artifact {
 
         let rarityData = DB.Artifacts.Rarity[this.rarity-1];
 
-        let statsCnt = Object.keys(this.subStats).length;
+        let statsCnt = this.subStats.length;
         if (statsCnt < rarityData.minSubstats || statsCnt > rarityData.maxSubstats) {
             errors.push('substat_count_mismatch');
         }
@@ -329,22 +324,22 @@ export class Artifact {
         let allSubstats = [];
         let upgradesCnt = 0;
 
-        Object.keys(this.subStats).forEach((sub) => {
-            if (sub == this.mainStat) {
+        this.subStats.forEach((subStat) => {
+            if (subStat.stat == this.mainStat) {
                 isStatEqulaMain = true;
             }
 
-            if (allSubstats.includes(sub)) {
+            if (allSubstats.includes(subStat.stat)) {
                 isSubstatDuplicate = true;
             }
-            let statData = DB.Artifacts.Substats.get(sub);
+            let statData = DB.Artifacts.Substats.get(subStat.stat);
             if (!statData) return;
-            allSubstats.push(sub);
+            allSubstats.push(subStat.stat);
 
-            if (substatListValid(sub, this.subStats[sub].value, this.subStats[sub].values, this.rarity)) {
-                upgradesCnt += this.subStats[sub].values.length - 1;
+            if (substatListValid(subStat.stat, subStat.value, subStat.values, this.rarity)) {
+                upgradesCnt += subStat.values.length - 1;
             } else {
-                let rollData = substatCheck(sub, this.rarity, this.subStats[sub].value);
+                let rollData = substatCheck(subStat.stat, this.rarity, subStat.value);
 
                 if (rollData.last > 0) {
                     if (rollData.steps.length < rollData.maxUpgrades) {
@@ -363,7 +358,7 @@ export class Artifact {
         let maxRarityUpdates = rarityData.maxSubstats - 4 + Math.floor(this.level / 4);
         let minRarityUpdates = Math.max(0, rarityData.minSubstats - 4 + Math.floor(this.level / 4));
 
-        if (upgradesCnt > 0 && Object.keys(this.subStats).length < 4) {
+        if (upgradesCnt > 0 && this.subStats.length < rarityData.maxSubstats) {
             errors.push('not_full_substats');
         }
 
@@ -425,10 +420,9 @@ export class Artifact {
         };
 
         this.tryDoRightSubstats();
-        Object.keys(this.subStats).forEach((item) => {
-            let data = DB.Artifacts.Substats.get(item);
+        this.subStats.forEach((subStat) => {
+            let data = DB.Artifacts.Substats.get(subStat.stat);
             if (data) {
-                let subStat = this.subStats[item];
                 if (subStat.unactivated)
                     result.unactivatedSubstats.push({
                         key: data.goodId,
@@ -458,7 +452,7 @@ export class Artifact {
         result.push(this.level);
         result.push(DB.Artifacts.Slots.getId(this.slot));
         result.push(DB.Artifacts.Mainstats.getId(this.mainStat) || 0);
-        result.push(Object.keys(this.subStats).length);
+        result.push(this.subStats.length);
 
         this.tryDoRightSubstats();
         let flatStatValues;
@@ -470,13 +464,12 @@ export class Artifact {
         } else if (rollsCount == 2) {
             flatStatValues = [8, 10];
         }
-        Object.keys(this.subStats).sort((a, b) => this.subStats[a].index - this.subStats[b].index).forEach((stat) => {
-            let statData = this.subStats[stat];
+        this.subStats.forEach((statData) => {
             if (statData.unactivated)
                 result.push(25);
-            result.push(DB.Artifacts.Substats.getId(stat));
+            result.push(DB.Artifacts.Substats.getId(statData.stat));
 
-            let substat = DB.Artifacts.Substats.get(stat);
+            let substat = DB.Artifacts.Substats.get(statData.stat);
             let value = statData.value;
 
             if (statData.values && statData.values.length > 0 && value.toFixed(1) == substat.rollsToValue[this.rarity - 1][statData.values.join('')].toFixed(1)) {
@@ -665,15 +658,14 @@ export class Artifact {
     }
 
     static subStatsIsSimilar(sample, art) {
-        if (Object.keys(sample.subStats).length < Object.keys(art.subStats).length) {
+        if (sample.subStats.length < art.subStats.length) {
             return false;
         }
 
-        for (let i of Object.keys(art.subStats)) {
-            if (sample.subStats[i] == undefined || sample.subStats[i].value < art.subStats[i].value) {
+        for (let i = 0; i < sample.subStats.length; i++)
+            if (sample.subStats[i].value < art.subStats[i].value) {
                 return false;
             }
-        }
 
         return true;
     }

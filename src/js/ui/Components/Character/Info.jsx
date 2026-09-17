@@ -81,7 +81,6 @@ export class CharInfo extends React.Component {
                         className={ `line-button ${ item.icon }` }
                         data-tooltip={ item.tooltip }
                         onClick={ () => item.callback(this.props.set, this.props.callbackData) }
-                        { ...UI.SimpleTooltip }
                     />
                 );
             }

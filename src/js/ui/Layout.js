@@ -3,7 +3,6 @@ import $ from "jquery";
 import "../../css/ui/Layout.css"
 import "../../css/ui/LayoutTouch.css"
 import { UI } from "../ui";
-import { SimpleTooltip } from "./Components/SimpleTooltip";
 
 const beforeUnloadHandler = (event) => {
     event.preventDefault();
@@ -25,12 +24,6 @@ export class Layout {
 
         $('.gi-copyright-text').html(UI.Lang.get('layout.copyright'));
         $('.gi-version').html('<a href="#" class="link-whats-new">'+ app.version.replace(/[^\d\.]/, '') +'</a>');
-
-        Object.defineProperty(UI, 'SimpleTooltip', {
-            get: SimpleTooltip(),
-            enumerable: true,
-            configurable: true,
-        });
 
         this.bindEvents();
 
@@ -133,7 +126,7 @@ export class Layout {
         }
 
         UI.TooltipArtifact.hide();
-        $('.tooltip-wrapper').hide();
+        $('.tooltip-wrapper').toggleClass("block", false);
     }
 
     showTab(name) {
@@ -276,7 +269,7 @@ export class Layout {
 
 
         $(window).resize(function() {
-            $('.tooltip-wrapper').hide();
+            $('.tooltip-wrapper').toggleClass("block", false);
             that.toggleLayout($(window).width() < 1150)
         })
 
@@ -288,41 +281,37 @@ export class Layout {
         $(document).on('mouseover', '[data-tooltip]', function () {
             let txt = $(this).data('tooltip');
             if (!that.isMobile() && txt) {
-                $('.tooltip-wrapper').css('max-width', 300);
-                $('.tooltip-wrapper').html(txt ).show();
+                var docWidth = $(document).width() / 2 + 575;
+                var tip = $('.tooltip-wrapper').html(txt).toggleClass("block", true);
+                void tip[0].offsetWidth;
+                var rect = tip[0].getBoundingClientRect();
+                var width = rect.width;
+                var height = rect.height;
+                var offset = $(this).offset();
+
+                let left = offset.left - width / 2;
+                let top = offset.top - height - 20;
+
+                if (top < 0) {
+                    top = e.clientY + 20;
+                }
+
+                if (left + width > docWidth) {
+                    left = docWidth - width;
+                }
+
+                if (left < 0) {
+                    left = 0;
+                }
+
+                tip.css('left', left);
+                tip.css('top', top);
             }
             return false;
         });
 
-        $(document).on('mouseleave', '[data-tooltip]', function() {
-            $('.tooltip-wrapper').hide();
-            return false;
-        });
-
-        $(document).on('mousemove', '[data-tooltip]', function(e) {
-            const docWidth = $(document).width();
-            const width = $('.tooltip-wrapper').width();
-            const height = $('.tooltip-wrapper').height();
-            const offset = $(this).offset();
-
-            let left = offset.left - width / 2;
-            let top = offset.top - height - 20;
-
-            if (top < 0) {
-                top = e.clientY + 20;
-            }
-
-            if (left + width > docWidth) {
-                left = docWidth - width;
-            }
-
-            if (left < 0) {
-                left = 0;
-            }
-
-            $('.tooltip-wrapper').css('left', left);
-            $('.tooltip-wrapper').css('top', top);
-
+        $(document).on('mouseleave', '[data-tooltip]', function () {
+            $('.tooltip-wrapper').toggleClass("block", false);
             return false;
         });
 
@@ -332,7 +321,7 @@ export class Layout {
         });
 
         $(document).on('tab_active',  function() {
-            $('.tooltip-wrapper').hide();
+            $('.tooltip-wrapper').toggleClass("block", false);
         });
 
         $(document).on('click', '.gi-skill-info', function() {

@@ -20,7 +20,7 @@
             "^.+\\.jsx?$": [
                 "babel-jest",
                 {
-                    "configFile": "./babel-jest.config.js"
+                    "configFile": "./babel-jest.config.cjs"
                 }
             ]
         }

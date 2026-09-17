@@ -94,7 +94,7 @@ export class Dropdown extends React.Component {
             let itemsHeight = this.props.items.length * 26 + 10;
             let height = Math.min(itemsHeight, MAX_HEIGHT) + 30;
 
-            //переделать на автоматические стили
+            //todo: переделать на автоматические стили
             if (this.state.clickY > height && this.state.clickY + height > window.innerHeight) {
                 this.optionsRef.classList.add('up');
             } else {

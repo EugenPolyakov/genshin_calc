@@ -46,6 +46,30 @@
     display: block;
 }
 
+.comma .dropdown-current {
+    display: block;
+    padding: 0 15px 0 13px;
+}
+
+.comma .dropdown-current .dropdown-option {
+    width: auto;
+    display: inline;
+    margin: 0;
+}
+
+.comma .dropdown-current .dropdown-option::after {
+    content: ", ";
+}
+
+.comma .dropdown-current .dropdown-option:last-child::after {
+    content: "";
+}
+
+.comma .dropdown-current .dropdown-option > .text {
+    text-overflow: unset;
+    display: inline;
+}
+
 .dropdown-option {
     height: 26px;
     margin: 0px 3px;

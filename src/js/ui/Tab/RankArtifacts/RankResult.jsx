@@ -33,15 +33,14 @@ export function RankResultItemList(props) {
 export function RankResultItem(props) {
     let art = props.art;
     let setData = DB.Artifacts.Sets.get(art.set);
-    let substats = new Array(Object.keys(art.getSubStats()).length);
+    let substats = [];
 
-    for (let item in art.getSubStats()) {
-        let value = art.getSubStats()[item];
-        let stat = item.replace('_percent', '');
-        substats[value.index] = (
-            <div key={ item } className={ 'substat' + (value.unactivated ? ' unactivated' : '') }>
+    for (let value of art.getSubStats()) {
+        let stat = value.stat.replace('_percent', '');
+        substats.push(
+            <div key={ value.stat } className={ 'substat' + (value.unactivated ? ' unactivated' : '') }>
                 <span className="stat">{ UI.Lang.get('stat_mini.' + stat) }</span>
-                <span className="value">{ formatStat(item, value.value, { signed: false }) }</span>
+                <span className="value">{ formatStat(value.stat, value.value, { signed: false }) }</span>
             </div>
         );
     }

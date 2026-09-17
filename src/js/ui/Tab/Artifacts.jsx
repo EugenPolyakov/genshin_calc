@@ -253,13 +253,13 @@ function ArtifactBlock(props) {
     }
 
     let setData = DB.Artifacts.Sets.get(art.set);
-    let substats = new Array( Object.keys( art.getSubStats() ).length );
+    let substats = [];
 
-    for (let subStat in art.getSubStats()) {
-        substats[art.getSubStats()[subStat].index] = (
-            <div key={subStat} className="value">
-                <span className="stat-name">{UI.Lang.get('stat.'+ subStat)} </span>
-                { formatStat( subStat, art.getSubStats()[subStat].value, {signed: true})}
+    for (let subStat of art.getSubStats()) {
+        substats.push = (
+            <div key={subStat.stat} className="value">
+                <span className="stat-name">{UI.Lang.get('stat.'+ subStat.stat)} </span>
+                { formatStat( subStat.stat, subStat.value, {signed: true})}
             </div>
         );
     }
@@ -335,7 +335,6 @@ function ArtifactButton(props) {
             className={'button '+ props.icon}
             onClick={props.onClick}
             data-tooltip={ props.tooltip }
-            { ...UI.SimpleTooltip }
         />
     );
 }

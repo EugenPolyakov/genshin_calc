@@ -58,7 +58,7 @@ export function substatCheck(stat, rarity, value, values, initialValue) {
     return {
         steps: result,
         maxValue: statData.rollsToValue[rarity - 1]['3'.repeat(result.length)],
-        last: Stats.roundStatValue('', last, percent),
+        last: Math.round(last * 10) / 10,
         maxUpgrades: rarityData.maxUpgrades,
         initialValue: initialValue && resultRolls.includes(initialValue - 1) ? initialValue : 0,
     };

@@ -210,6 +210,10 @@ a:link, a:visited {
     cursor: pointer;
 }
 
+.tooltip-wrapper.block {
+    display: block;
+}
+
 .tooltip-wrapper {
     position: absolute;
     max-width: 500px;
@@ -218,6 +222,7 @@ a:link, a:visited {
     display: none;
     padding: 5px;
     border-radius: 10px;
+    width: max-content;
 }
 
 .tooltip-wrapper p {

@@ -89,6 +89,7 @@ class ArtifactScannerComponent extends React.Component {
                                 tooltip={ art.getErrorsFormatted() }
                             />) }
                         { art && this.opts.groups && (<Dropdown
+                            addClass="comma"
                             isMultiple={ true }
                             items={ this.opts.groups }
                             selected={ this.state.groupNames }
@@ -185,6 +186,10 @@ class ArtifactScannerComponent extends React.Component {
             let exArt = UI.Layout.app.storage.artifacts.getArtByIndex(this.state.index);
 
             this.state.art.setLocked(exArt.isLocked());
+            var oldSubStats = exArt.getSubStats();
+            for (let i = 0; i < oldSubStats.length; i++)
+                if (oldSubStats[i].initialValue || oldSubStats[i].values.length == 1)
+                    this.state.art.getSubStats()[i].initialValue = oldSubStats[i].initialValue || (oldSubStats[i].values[0] + 1);
             UI.Layout.app.storage.artifacts.updateByHash(exArt.getHash(), this.state.art);
             UI.Layout.app.refresh();
 
@@ -490,18 +495,15 @@ class ArtifactScannerComponent extends React.Component {
 
     processStats(data) {
         let lines = (data.stats + data.statsLastLine).split("\n");
-        let result = {};
+        let result = [];
 
         let parser = new ScannerTextSubstat();
-        let pos = 0;
-        let lastStat = '';
+        let lastStat = 0;
         for (let line of lines) {
             let item = parser.process(line);
 
             if (item) {
-                result[item.stat] = { index: pos, value: item.value, unactivated: item.unactivated };
-                lastStat = item.stat;
-                pos++;
+                lastStat = result.push({ stat: item.stat, value: item.value, unactivated: item.unactivated }) - 1;
             } else if (line.toLowerCase().includes(UI.Lang.get('stat_artifact.unactivated').toLowerCase())) {
                 result[lastStat].unactivated = true;
             }

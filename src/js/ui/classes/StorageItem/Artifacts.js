@@ -158,11 +158,10 @@ export class StorageItemArtifacts extends StorageItem {
         let anyUpdated = false;
         nextItem: for (let item of itemList) {
             let newSubs = item.newArt.getSubStats();
-            let keys = Object.keys(newSubs);
-            if (newSubs[keys[0]].initialValue) {
+            if (newSubs[0].initialValue) {
                 let oldSubs = item.oldArt.getSubStats();
                 let oldHash = item.oldArt.getHash();
-                if (!oldSubs[keys[0]].initialValue) {
+                if (!oldSubs[0].initialValue) {
                     let upd = this.getItemByHash(oldHash);
                     if (upd) {
                         upd.data = Serializer.pack(item.newArt);
@@ -282,14 +281,14 @@ export class StorageItemArtifacts extends StorageItem {
     getSimilar(sample) {
         let result = [];
 
-        if (!sample || !sample.slot || /*!sample.set ||*/ !sample.mainStat) {
+        if (!sample || !sample.slot || !sample.set || !sample.mainStat) {
             return [];
         }
 
         for (let i in this.artifactsCache) {
             const art = this.artifactsCache[i];
 
-            if ( /*sample.set != art.set ||*/ sample.slot != art.slot || sample.mainStat != art.mainStat || sample.rarity != art.rarity || sample.level < art.level) {
+            if ( sample.set != art.set || sample.slot != art.slot || sample.mainStat != art.mainStat || sample.rarity != art.rarity || sample.level < art.level) {
                 continue;
             }
 

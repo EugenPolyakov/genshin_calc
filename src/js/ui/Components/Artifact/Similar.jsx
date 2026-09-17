@@ -19,7 +19,7 @@ export class ArtifactListItemSimilar extends ArtifactListItem {
         if (this.props.sample.getMainStat() == stat)
             return this.props.sample.getMainStatValue() > value;
         else
-            return this.props.sample.subStats[stat].value > value;
+            return this.props.sample.getSubStatValue(stat) > value;
     }
 
     getButtons() {

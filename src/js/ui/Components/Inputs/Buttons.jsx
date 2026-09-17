@@ -22,7 +22,6 @@ export function RoundButton(props) {
             className={'round-button ' + props.icon}
             data-tooltip={props.tooltip}
             onClick={ props.onClick }
-            { ...UI.SimpleTooltip }
         >{props.text || ''}</div>
     );
 }
@@ -33,7 +32,6 @@ export function ResultTableButton(props) {
             className={'result-table-button ' + props.icon}
             data-tooltip={props.tooltip}
             onClick={ props.onClick }
-            { ...UI.SimpleTooltip }
         />
     );
 }
@@ -58,7 +56,6 @@ export class ToggleRoundButton extends React.PureComponent {
             <div
                 className={classes.join(' ')}
                 data-tooltip={ this.props.tooltip }
-                { ...UI.SimpleTooltip }
                 onClick={() => this.props.onChange(!this.props.checked)}
             >{this.props.text || ''}</div>
         )
@@ -71,7 +68,6 @@ export function MiniButton(props) {
             className={'mini-button '+ props.icon}
             onClick={props.onClick}
             data-tooltip={ props.tooltip }
-            { ...UI.SimpleTooltip }
         />
     );
 }
