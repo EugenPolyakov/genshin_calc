@@ -14,7 +14,7 @@ from lib.genshin.strings.templates.names import names_eng, names_rus, keywords_e
 from lib.genshin.strings.csv import CsvDumper
 from lib.genshin.strings.text import TextDumper
 import lib.static as static
-from lib.static import WEAPON_TYPES, shrink_table
+from lib.static import WEAPON_TYPES, format_table, shrink_table
 import accumulator
 
 dirname  = os.path.dirname(__file__)
@@ -84,6 +84,8 @@ weapon_names = {
     11434: 'moonweavers_dawn',
     11435: 'heretics_molten_blade',
     11436: 'emberwell',
+    11437: 'new_bough',
+    11438: 'silver_light',
     11501: "AquilaFavonia",
     11502: "SkywardBlade",
     11503: "FreedomSworn",
@@ -105,6 +107,7 @@ weapon_names = {
     11519: "lightbearing_moonshard",
     11520: "whitelake_frostfeather",
     11521: "exaiphanes_blade",
+    11522: 'beyond_the_chrysalis',
 
     #CLAYMORES
     12301: "FerrousShadow",
@@ -237,6 +240,7 @@ weapon_names = {
     14434: 'dawning_frost',
     14435: 'clash_of_kings',
     14436: 'echoes_of_the_heart',
+    14437: 'winters_heavy_heart',
     14501: "SkywardAtlas",
     14502: "LostPrayer",
     # 14503: "Lost Ballade",
@@ -258,6 +262,7 @@ weapon_names = {
     14521: 'reliquary_of_truth',
     14522: 'nocturnes_curtain_call',
     14523: "angelos_heptades",
+    14524: 'hymn_of_the_maelstrom',
 
     #BOWS
     15301: "RavenBow",
@@ -296,6 +301,7 @@ weapon_names = {
     15434: 'rainbow_serpents_rain_bow',
     15435: 'jade_vista',
     15436: "covenant_of_frost_and_snow",
+    15437: 'breezeborne_refrain',
     15501: "SkywardHarp",
     15502: "AmosBow",
     15503: "ElegyfortheEnd",
@@ -458,8 +464,8 @@ def prepare_data():
                 if tpl_weapon:
                     # если есть описание навыка, то проверим совпадает ли оно с другими навыками
                     item_descr = lang_eng.get(affixList[0]['descTextMapHash'])
-                    item_descr = tpl_keywords.process(item_descr)['descr'][0]
                     item_descr = common_tpl.process(item_descr)['descr'][0]
+                    item_descr = tpl_keywords.process(item_descr)['descr'][0]
                     item_descr = tpl_names.process(item_descr)['descr'][0]
                     item_descr = tpl_weapon.process(item_descr)['descr'][0]
                     elem['descr'] = item_descr
@@ -491,7 +497,7 @@ def prepare_data():
                     elem['params'][i] = l
 
                 for idx in elem['params']:
-                    elem['params'][idx] = shrink_table(elem['params'][idx])
+                    elem['params'][idx] = format_table(elem['params'][idx])
 
                 resultItem["refines"].append(elem)
             except Exception as e:
@@ -562,7 +568,7 @@ def print_StatTables(result):
     out.write("};\n\n")
 
     out.write('const enumStatTables = {\n')
-    for scaleName in scaleTables:
+    for scaleName in sorted(scaleTables.keys()):
         scaleItem = scaleTables[scaleName]
         out.write("\t"+ scaleName +": new StatTableAscensionScale({\n")
         out.write("\t\tstat: '%s',\n" % (scaleItem['stat']))
@@ -663,8 +669,8 @@ def print_Texts(weapons):
                     # tpl_patterns = lang_data[lang_name]['patterns']
 
                     # item_descr[lang_name] = tpl_patterns.process(item_descr[lang_name])
-                    item_descr[lang_name] = tpl_keywords.process(item_descr[lang_name])['descr'][0]
                     item_descr[lang_name] = common_tpl.process(item_descr[lang_name])['descr'][0]
+                    item_descr[lang_name] = tpl_keywords.process(item_descr[lang_name])['descr'][0]
                     item_descr[lang_name] = tpl_names.process(item_descr[lang_name])['descr'][0]
 
                     tpl_weapon = getattr(weapons_tpl, f'{weapon_id}_{lang_name}', None) or getattr(weapons_tpl, weapon_id, None) or \

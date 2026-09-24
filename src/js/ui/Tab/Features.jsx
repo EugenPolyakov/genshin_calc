@@ -164,7 +164,6 @@ class FeaturesView extends React.Component {
 
     handleFeature(feature) {
         UI.Layout.app.setFeature(feature);
-        this.setState({feature: feature});
     }
 
     handleReaction(reaction) {

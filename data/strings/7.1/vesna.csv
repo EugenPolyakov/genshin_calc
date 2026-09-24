@@ -1,0 +1,6 @@
+category;name;rus;eng
+stat_short;vesna_disciplinary_action_percent;Дисципл. меры;Disciplinary<br/>Action
+feature_skill;vesna_windborne_sword_lv_3_spirit_blade_dmg_1;Меч реющих ветров 3 ур.: урон Клинка духа;Windborne Sword Lv. 3 Spirit Blade DMG
+feature_skill;vesna_windborne_sword_lv_3_spirit_blade_stellar_swirl_dmg_1;Меч реющих ветров 3 ур.: урон Звёздного рассеивания Клинка духа;Windborne Sword Lv. 3 Spirit Blade Stellar Swirl DMG
+feature_skill;vesna_windborne_sword_transpose_dmg;Урон Меча реющих ветров: Перемены;Windborne Sword: Transpose DMG
+feature_skill;vesna_windborne_sword_transpose_spirit_blade_dmg;Меч реющих ветров: Перемены: урон Клинка духа;Windborne Sword: Transpose Spirit Blade DMG

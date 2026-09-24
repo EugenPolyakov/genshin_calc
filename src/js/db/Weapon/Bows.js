@@ -46,6 +46,7 @@ import { the_daybreak_chronicles } from "./Bow/the_daybreak_chronicles";
 import { golden_frostbound_oath } from "./Bow/golden_frostbound_oath";
 import { jade_vista } from "./Bow/jade_vista";
 import { covenant_of_frost_and_snow } from "./Bow/covenant_of_frost_and_snow";
+import { breezeborne_refrain } from "./Bow/breezeborne_refrain";
 
 export const Bows = new DbObjectListSerializeStats({
     AlleyHunter: AlleyHunter,
@@ -95,4 +96,5 @@ export const Bows = new DbObjectListSerializeStats({
     golden_frostbound_oath: golden_frostbound_oath, // 242
     jade_vista: jade_vista, // 246
     covenant_of_frost_and_snow: covenant_of_frost_and_snow, // 247
+    breezeborne_refrain: breezeborne_refrain, // 261
 });

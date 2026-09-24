@@ -7,12 +7,23 @@ export class ConditionCalcElements extends Condition {
         let same_elements = 0;
         let different_elements = 0;
         let different_chars = 0;
+        let elements_count = {
+            party_elements_cryo_count: 0,
+            party_elements_electro_count: 0,
+            party_elements_anemo_count: 0,
+            party_elements_dendro_count: 0,
+            party_elements_hydro_count: 0,
+            party_elements_pyro_count: 0,
+            party_elements_geo_count: 0,
+        }
 
         for (let name of ['char_element', 'resonance_element_1', 'resonance_element_2', 'resonance_element_3']) {
             let element = settings[name] || '';
             if (!element) continue;
 
             elements[element] = 1;
+
+            elements_count["party_elements_" + element + "_count"]++;
 
             if (name == 'char_element') {
                 continue;
@@ -33,6 +44,7 @@ export class ConditionCalcElements extends Condition {
             party_elements_same_inc: same_elements + 1,
             party_elements_different: different_elements,
             party_elements_different_total: different_chars,
+            ...elements_count,
         };
     }
 

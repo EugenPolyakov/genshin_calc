@@ -429,3 +429,15 @@ def extractPramList(proud):
             paramList.append(trimToVal(prop.get('value', 0)))
     return paramList
 
+def foramt_value(val):
+    return int(float(val)) if float(val).is_integer() else float(val)
+
+def format_table(data):
+    def fff(val):
+        if not float(val).is_integer() and int(float(val)) != float(val) and val==40.0:
+            print(val)
+        return foramt_value(val)
+    # data = list(map(foramt_value, data))
+    data = [foramt_value(x) for x in data]
+
+    return shrink_table(data)

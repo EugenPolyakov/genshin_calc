@@ -3661,3 +3661,176 @@ exaiphanes_blade_eng = Template(
     ],
 )
 
+new_bough = Template(
+    names=[
+        'Зарослей',
+    ],
+    sentences=[
+        ['12:ignore', '4:text_percent_1', '20:text_2'],
+        ['6:ignore', '3:ignore', '1:ignore', '1:ignore'],
+        [],
+        ['6:text_percent_2', '8:text_percent_3'],
+    ],
+)
+
+new_bough_eng = Template(
+    names=[
+        'Verdant',
+    ],
+    sentences=[
+        ['12:ignore', '4:text_percent_1', '20:text_2'],
+        ['6:ignore'],
+        ['3:ignore'],
+        [],
+        [],
+        ['6:text_percent_2', '8:text_percent_3'],
+    ],
+)
+
+silver_light = Template(
+    sentences=[
+        ['12:ignore', '52:mastery'],
+        ['2:ignore'],
+        [],
+    ],
+)
+
+silver_light_eng = Template(
+    sentences=[
+        ['52:mastery', '12:ignore'],
+        ['2:ignore'],
+    ],
+)
+
+winters_heavy_heart = Template(
+    names=['Серебряный договор крови'],
+    sentences=[
+        ['24:text_mastery', '4.8:text_atk_percent'],
+        ['4:ignore'],
+        [],
+        ['20:text_mastery', '6:text_percent'],
+    ],
+    results=[
+        [0, 1],
+        [3],
+    ],
+)
+
+winters_heavy_heart_eng = Template(
+    names=['Silver-Tinged Blood Pact'],
+    sentences=[
+        ['24:text_mastery'],
+        ['4.8:text_atk_percent'],
+        ['4:ignore'],
+        [],
+        ['20:text_mastery', '6:text_percent'],
+    ],
+    results=[
+        [0, 1, 2],
+        [4],
+    ],
+)
+
+breezeborne_refrain = Template(
+    names=['Гимна? непорочных', 'Смертельный яд змеи',],
+    sentences=[
+        ['20:recharge'],
+        ['1:ignore'],
+        ['3:ignore', '0.03:ignore'],
+        ['3:ignore', '24:text_percent|24', '12:ignore'],
+        [],
+        [],
+    ],
+    results=[
+        [0,],
+        [1, 2, 3, 4, 5],
+    ],
+)
+
+breezeborne_refrain_eng = Template(
+    names=['Hymn of the Pure', 'Thus Lied the Viper',],
+    sentences=[
+        ['20:recharge'],
+        ['0.03:ignore', '3:ignore', '3:ignore'],
+        ['24:text_percent|24', '12:ignore'],
+        [],
+    ],
+    results=[
+        [0,],
+        [1, 2, 3],
+    ],
+)
+
+hymn_of_the_maelstrom = Template(
+    names=['Вещий мёд Уацамонги'],
+    sentences=[
+        ['4:healing'],
+        [],
+        ['4:text_hp_percent|4', '0.4:text_atk_percent|0.4', '8:text_percent|8', '1000:', '40000:ignore'],
+        ['10:ignore', '3:ignore'],
+        [],
+        ['5:ignore', '75:'],
+        [],
+        [],
+    ],
+    results=[
+        [0],
+        [2, 3, 6, 7],
+        [5, 6, 7],
+        [2, 3, 4, 5, 6, 7],
+    ],
+)
+
+hymn_of_the_maelstrom_eng = Template(
+    names=["Vatsamonga's Vatic Vintage"],
+    sentences=[
+        ['4:healing'],
+        [],
+        ['4:text_hp_percent|4', '0.4:text_atk_percent|0.4', '1000:', '40000:ignore'],
+        ['8:text_percent|8'],
+        ['10:ignore', '3:ignore'],
+        [],
+        ['75:', '5:ignore'],
+        [],
+        [],
+    ],
+    results=[
+        [0],
+        [2, 3, 4, 7, 8],
+        [6, 7, 8],
+        [2, 3, 4, 5, 6, 7, 8],
+    ],
+)
+
+beyond_the_chrysalis = Template(
+    replace={
+        ':': '\n',
+    },
+    sentences=[
+        [],
+        [],
+        [],
+        [],
+        ['56:crit_dmg', '10:ignore'],
+        [],
+        [],
+        ['36:dmg_reaction_stellar_swirl', '10:ignore'],
+        [],
+        [],
+        ['5:text_energy'],
+        ['5:text_energy', '4:ignore'],
+        [],
+        [],
+    ],
+    results=[
+        [0, ': ', 3, ', ', 6, ', ', 9, '.', 12, 13],
+        [4],
+        [7],
+        [10, 11],
+        [3],
+        [6],
+        [9]
+    ],
+    extracted_names=[4, 5, 6],
+)
+

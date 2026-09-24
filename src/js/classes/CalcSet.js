@@ -6,7 +6,9 @@ import { CalcObjectBuffs } from "./CalcObject/Buffs";
 import { CalcObjectCharacter } from "./CalcObject/Character"
 import { CalcObjectEnemy } from "./CalcObject/Enemy";
 import { CalcObjectFood } from "./CalcObject/Food";
+import { CalcObjectReaction } from "./CalcObject/Reaction";
 import { CalcObjectRotation } from "./CalcObject/Rotation";
+import { CalcObjectStatic } from "./CalcObject/Static";
 import { CalcObjectWeapon } from "./CalcObject/Weapon";
 import { Condition } from "./Condition";
 import { PRIORITIES } from "./PostEffect";
@@ -25,6 +27,8 @@ export class CalcSet {
         this.buffs     = new CalcObjectBuffs(this);
         this.rotation  = new CalcObjectRotation(this);
         this.food      = new CalcObjectFood(this);
+        this.reaction  = new CalcObjectReaction();
+        this.static    = new CalcObjectStatic();
         this.profitArtsSet = new Map();
     }
 

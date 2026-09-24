@@ -8,7 +8,7 @@ import { FeatureResult } from "./FeatureResult";
 if (process.env.NODE_ENV !== 'production') {
     var FIELD_NAMES = [
         'name', 'category', 'element', 'damageType', 'multipliers', 'condition', 'tags',
-        'cannotReact', 'format', 'digits', 'postEffect', 'items', 'isChild', 'hits',
+        'cannotReact', 'format', 'digits', 'postEffect', 'items', 'isChild', 'hits', 'hitsCount',
         'allowInfusion', 'icon', 'stat', 'fullName',
         'damageBonuses', 'critRateBonuses', 'critDamageBonuses',
         'subtractBoL', 'partyHeal', 'noSelfHeal',
@@ -30,6 +30,7 @@ export class Feature2 {
         this.name = params.name || (params.multipliers && params.multipliers.length > 0 ? params.multipliers[0].getName() : '');
         this.isChild = params.isChild;
         this.hits = params.hits;
+        this.hitsCount = params.hitsCount;
         this.icon = params.icon;
         this.tags = params.tags || [];
         this.multipliers = params.multipliers || [];

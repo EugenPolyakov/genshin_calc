@@ -1,0 +1,33 @@
+import { DB } from "../../db/DB";
+import { BuildSettings } from "../Build/Settings";
+import { CalcObject } from "../CalcObject";
+import { Stats } from "../Stats";
+
+export class CalcObjectStatic extends CalcObject {
+    isBeta() {
+        return false;
+    }
+
+    getSettings() {
+        return {};
+    }
+
+    getStats(settings) {
+        return {
+            stats: new Stats(),
+            settings: new BuildSettings({}),
+        };
+    }
+
+    getConditions() {
+        return [];
+    }
+
+    getFeatures() {
+        return DB.Features.Stats;
+    }
+
+    getPostEffects() {
+        return [];
+    }
+}

@@ -5384,6 +5384,106 @@ export const charTables = {
 			ascension: new ValueTable([0, 0.08, 0.16, 0.16, 0.24, 0.32], 100),
 		}),
 	],
+	Vesna: [
+		new StatTableAscensionScale({
+			stat: 'atk_base',
+			base: 27.5576,
+			ascension: new ValueTable([23.626425, 40.41362, 62.796547, 79.58374, 96.37094, 113.158134]),
+			scale: charScales.s5atk,
+		}),
+		new StatTableAscensionScale({
+			stat: 'burst_energy_cost',
+			base: 60,
+		}),
+		new StatTableAscensionScale({
+			stat: 'charged_stamina_cost',
+			base: 20,
+		}),
+		new StatTableAscensionScale({
+			stat: 'crit_dmg_base',
+			base: 0.5,
+			multi: 100,
+		}),
+		new StatTableAscensionScale({
+			stat: 'crit_rate_base',
+			base: 0.05,
+			multi: 100,
+			ascension: new ValueTable([0, 0.048, 0.096, 0.096, 0.144, 0.192], 100),
+		}),
+		new StatTableAscensionScale({
+			stat: 'def_base',
+			base: 56.8385,
+			ascension: new ValueTable([48.735, 83.3625, 129.5325, 164.16, 198.7875, 233.415]),
+			scale: charScales.s5hp,
+		}),
+		new StatTableAscensionScale({
+			stat: 'hp_base',
+			base: 1032.4456,
+			ascension: new ValueTable([885.2287, 1514.207, 2352.8447, 2981.823, 3610.8013, 4239.78]),
+			scale: charScales.s5hp,
+		}),
+		new StatTableAscensionScale({
+			stat: 'mastery_base',
+			base: 0,
+		}),
+		new StatTableAscensionScale({
+			stat: 'recharge_base',
+			base: 1,
+			multi: 100,
+		}),
+	],
+	Vodyanitsa: [
+		new StatTableAscensionScale({
+			stat: 'atk_base',
+			base: 8.379,
+			ascension: new ValueTable([7.18371, 12.287925, 19.093546, 24.19776, 29.301975, 34.40619]),
+			scale: charScales.s5atk,
+		}),
+		new StatTableAscensionScale({
+			stat: 'burst_energy_cost',
+			base: 60,
+		}),
+		new StatTableAscensionScale({
+			stat: 'charged_stamina_cost',
+			base: 50,
+		}),
+		new StatTableAscensionScale({
+			stat: 'crit_dmg_base',
+			base: 0.5,
+			multi: 100,
+		}),
+		new StatTableAscensionScale({
+			stat: 'crit_rate_base',
+			base: 0.05,
+			multi: 100,
+		}),
+		new StatTableAscensionScale({
+			stat: 'def_base',
+			base: 37.6929,
+			ascension: new ValueTable([32.319, 55.2825, 85.9005, 108.864, 131.8275, 154.791]),
+			scale: charScales.s5hp,
+		}),
+		new StatTableAscensionScale({
+			stat: 'hp_base',
+			base: 1153.5172,
+			ascension: new ValueTable([989.0367, 1691.7733, 2628.7554, 3331.492, 4034.2285, 4736.9653]),
+			scale: charScales.s5hp,
+		}),
+		new StatTableAscensionScale({
+			stat: 'hp_percent',
+			base: 0,
+			ascension: new ValueTable([0, 0.072, 0.144, 0.144, 0.216, 0.288], 100),
+		}),
+		new StatTableAscensionScale({
+			stat: 'mastery_base',
+			base: 0,
+		}),
+		new StatTableAscensionScale({
+			stat: 'recharge_base',
+			base: 1,
+			multi: 100,
+		}),
+	],
 	Wanderer: [
 		new StatTableAscensionScale({
 			stat: 'atk_base',

@@ -91,12 +91,12 @@ class StatGenerator:
         for stat in sorted(stats):
             self.out.write("\t\tnew StatTableAscensionScale({\n")
             self.out.write("\t\t\tstat: '%s',\n" % (stat))
-            self.out.write("\t\t\tbase: %s,\n" % (self.values.get(stat, 0)))
+            self.out.write("\t\t\tbase: %s,\n" % (static.foramt_value(self.values.get(stat, 0))))
             if stat in ['crit_rate_base', 'crit_dmg_base', 'recharge_base']:
                 self.out.write("\t\t\tmulti: 100,\n")
 
             if stat in self.ascension:
-                self.out.write("\t\t\tascension: new ValueTable([" + ', '.join(self.ascension[stat]) + "]" + 
+                self.out.write("\t\t\tascension: new ValueTable(" + repr(static.format_table(self.ascension[stat])) + 
                                (', 100' if stat in ['crit_rate_base', 'crit_dmg_base', 'recharge_base', 'hp_percent', 'atk_percent', 'def_percent'] else '') + "),\n")
 
             if stat in self.grows:

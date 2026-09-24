@@ -27,7 +27,7 @@ class CharGenerator(EmptyCharGenerator):
         self.feature_list = []
 
     def header(self):
-        print('import { Condition } from "../../classes/Condition";')
+        print('import { Condition, ConditionAnd, ConditionOr } from "../../classes/Condition";')
         print('import { ConditionAscensionChar } from "../../classes/Condition/Ascension/Char";')
         print('import { ConditionBoolean } from "../../classes/Condition/Boolean";')
         print('import { ConditionStatic } from "../../classes/Condition/Static";')
@@ -40,6 +40,7 @@ class CharGenerator(EmptyCharGenerator):
         print('import { FeatureDamageSkill } from "../../classes/Feature2/Damage/Skill";')
         print('import { FeatureMultiplier } from "../../classes/Feature2/Multiplier";')
         print('import { StatTable } from "../../classes/StatTable";')
+        print('import { ValueTable } from "../../classes/ValueTable";')
         print('import { charTables } from "../generated/CharTables";')
         print('import { charTalentTables } from "../generated/CharTalentTables";')
         print()

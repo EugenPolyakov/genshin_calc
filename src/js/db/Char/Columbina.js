@@ -204,7 +204,7 @@ export const Columbina = new DbObjectChar({
         new FeatureReactionLunarBloomLike({
             element: 'dendro',
             category: 'attack',
-            hits: 3,
+            hitsCount: 3,
             multipliers: [
                 new FeatureMultiplier({
                     scaling: 'hp*',
@@ -218,6 +218,7 @@ export const Columbina = new DbObjectChar({
             category: 'attack',
             name: 'columbina_moondew_cleanse_dmg_1',
             isChild: true,
+            hits: 3,
             multipliers: [
                 new FeatureMultiplier({
                     scaling: 'hp*',
@@ -300,7 +301,7 @@ export const Columbina = new DbObjectChar({
         new FeatureReactionLunarBloomLike({
             element: 'dendro',
             category: 'skill',
-            hits: 5,
+            hitsCount: 5,
             multipliers: [
                 new FeatureMultiplier({
                     scaling: 'hp*',
@@ -327,6 +328,7 @@ export const Columbina = new DbObjectChar({
             category: 'skill',
             name: 'columbina_lunar_bloom_dmg_1',
             isChild: true,
+            hits: 5,
             multipliers: [
                 new FeatureMultiplier({
                     scaling: 'hp*',

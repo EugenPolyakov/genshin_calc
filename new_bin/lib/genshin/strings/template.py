@@ -27,7 +27,7 @@ class TemplateSentence:
             self.values.append(match.group(1))
             return '{value_%d}' % (len(self.values),)
 
-        self.formatted = re.sub(r'\b(\d+(?:(?:,|\.| )\d+)?\%?)', repalce_callback, source)
+        self.formatted = re.sub(r'\b(\d+(?:(?:,|\.| |&nbsp;)\d+)?\%?)', repalce_callback, source)
 
     def apply(self, values: list):
         #logger.error(f'\n------------------------------\n{self.formatted}')

@@ -122,20 +122,22 @@
 .char-icon-sandrone {background-image: url("../../images/chars/marionettenew.png")}
 .char-icon-traveler {background-image: url("../../images/chars/playerboy.png")}
 .char-icon-traveler {background-image: url("../../images/chars/playergirl.png")}
+.char-icon-vodyanitsa {background-image: url("../../images/chars/vodyanitsa.png")}
+.char-icon-vesna {background-image: url("../../images/chars/vesna.png")}
 .char-icon-alyosha {background-image: url("../../images/chars/alyosha.png")}
 .char-icon-odette {background-image: url("../../images/chars/odette.png")}
 .char-icon-tps-male-discarded {background-image: url("../../images/chars/playerboy.png")}
 .char-icon-tps-female-discarded {background-image: url("../../images/chars/playergirl.png")}
 .sprite-char.sprite-24 {
-	background-image: url("../../images/sprites/char_e1480c1c203a33f0e8c8080d96990e4d.png");
+	background-image: url("../../images/sprites/char_01b7c7d7e08f5fa71d2ede180a4c28f5.png");
 	background-size: 120px 624px;
 }
 .sprite-char.sprite-40 {
-	background-image: url("../../images/sprites/char_aa4ccfce515eb4623a8f245311197462.png");
+	background-image: url("../../images/sprites/char_417dece9117536faa370a51d31b40e2f.png");
 	background-size: 200px 1040px;
 }
 .sprite-char.sprite-60 {
-	background-image: url("../../images/sprites/char_7c273b84b8f986d49e6f2e1ffadbd985.png");
+	background-image: url("../../images/sprites/char_e0f3a8404ae25028db9e70aa3d59bc7d.png");
 	background-size: 300px 1560px;
 }
 .sprite.char-icon-unknown {background-position: 0% 0%}
@@ -262,10 +264,12 @@
 .sprite.char-icon-sandrone {background-position: 25% 96%}
 .sprite.char-icon-traveler {background-position: 50% 96%}
 .sprite.char-icon-traveler {background-position: 75% 96%}
-.sprite.char-icon-alyosha {background-position: 100% 96%}
-.sprite.char-icon-odette {background-position: 0% 100%}
-.sprite.char-icon-tps-male-discarded {background-position: 25% 100%}
-.sprite.char-icon-tps-female-discarded {background-position: 50% 100%}
+.sprite.char-icon-vodyanitsa {background-position: 100% 96%}
+.sprite.char-icon-vesna {background-position: 0% 100%}
+.sprite.char-icon-alyosha {background-position: 25% 100%}
+.sprite.char-icon-odette {background-position: 50% 100%}
+.sprite.char-icon-tps-male-discarded {background-position: 75% 100%}
+.sprite.char-icon-tps-female-discarded {background-position: 100% 100%}
 
 @media
 only screen and (-webkit-min-device-pixel-ratio: 2),
@@ -398,11 +402,13 @@ only screen and (                min-resolution: 2dppx) {
 	.char-icon-sandrone {background-image: url("../../images/chars/marionettenew_2x.png")}
 	.char-icon-traveler {background-image: url("../../images/chars/playerboy_2x.png")}
 	.char-icon-traveler {background-image: url("../../images/chars/playergirl_2x.png")}
+	.char-icon-vodyanitsa {background-image: url("../../images/chars/vodyanitsa_2x.png")}
+	.char-icon-vesna {background-image: url("../../images/chars/vesna_2x.png")}
 	.char-icon-alyosha {background-image: url("../../images/chars/alyosha_2x.png")}
 	.char-icon-odette {background-image: url("../../images/chars/odette_2x.png")}
 	.char-icon-tps-male-discarded {background-image: url("../../images/chars/playerboy_2x.png")}
 	.char-icon-tps-female-discarded {background-image: url("../../images/chars/playergirl_2x.png")}
-	.sprite-char.sprite-24 {background-image: url("../../images/sprites/char_eaa43be7cd18da503380a1dac2c7059f.png")}
-	.sprite-char.sprite-40 {background-image: url("../../images/sprites/char_37401008226f5156af15068b7c4f8fb6.png")}
-	.sprite-char.sprite-60 {background-image: url("../../images/sprites/char_e341f8c8da4a7900283e8d9bf9da66be.png")}
+	.sprite-char.sprite-24 {background-image: url("../../images/sprites/char_bb1ac5e865c110515d9872f115e1e5b5.png")}
+	.sprite-char.sprite-40 {background-image: url("../../images/sprites/char_d3eacd92982517da432f8d20727b9f01.png")}
+	.sprite-char.sprite-60 {background-image: url("../../images/sprites/char_7b70038e893cc7143497856c784ebfc8.png")}
 }

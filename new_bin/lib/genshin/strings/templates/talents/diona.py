@@ -4,7 +4,7 @@ from ...template import Template, TemplateList
 char_diona = TemplateList(
     default_rus=Template(
         names=[
-            'Дионе', 'Дионы',
+            'Дионе', 'Дионы', 'Авторский коктейль',
         ],
         skills={
             'skill': ['Морозные коготочки'],
@@ -15,6 +15,7 @@ char_diona = TemplateList(
         names=[
             'Diona',
             'DMG Absorption',
+            'Signature Mix',
         ],
         skills={
             'skill': ['Icy Paws'],

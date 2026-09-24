@@ -108,6 +108,8 @@ from .traveler_dendro import char_traveler_dendro  # noqa
 from .varesa import char_varesa  # noqa
 from .varka import char_varka  # noqa
 from .venti import char_venti  # noqa
+from .vesna import char_vesna  # noqa
+from .vodyanitsa import char_vodyanitsa  # noqa
 from .wanderer import char_wanderer  # noqa
 from .wriothesley import char_wriothesley  # noqa
 from .xiangling import char_xiangling  # noqa

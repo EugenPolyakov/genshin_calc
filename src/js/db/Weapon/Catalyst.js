@@ -50,6 +50,8 @@ import { nocturnes_curtain_call } from "./Catalyst/nocturnes_curtain_call";
 import { angelos_heptades } from "./Catalyst/angelos_heptades";
 import { clash_of_kings } from "./Catalyst/clash_of_kings";
 import { echoes_of_the_heart } from "./Catalyst/echoes_of_the_heart";
+import { winters_heavy_heart } from "./Catalyst/winters_heavy_heart";
+import { hymn_of_the_maelstrom } from "./Catalyst/hymn_of_the_maelstrom";
 
 export const Catalyst = new DbObjectListSerializeStats({
     SolarPearl: SolarPearl, // 43
@@ -103,4 +105,6 @@ export const Catalyst = new DbObjectListSerializeStats({
     angelos_heptades: angelos_heptades, // 243
     clash_of_kings: clash_of_kings, // 248
     echoes_of_the_heart: echoes_of_the_heart, // 249
+    winters_heavy_heart: winters_heavy_heart, // 260
+    hymn_of_the_maelstrom: hymn_of_the_maelstrom, // 262
 });

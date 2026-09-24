@@ -231,7 +231,6 @@ export class WeaponSuggestView extends React.Component {
 
     handleFeature(feature) {
         UI.Layout.app.setFeature(feature);
-        UI.Layout.app.refresh();
     }
 
     handleDisplayMode(mode) {

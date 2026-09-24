@@ -35,6 +35,8 @@
 .weapon-icon-sword-moonweavers-dawn {background-image: url("../../images/weapons/sword/sword_miekka.png")}
 .weapon-icon-sword-heretics-molten-blade {background-image: url("../../images/weapons/sword/sword_serpenttooth.png")}
 .weapon-icon-sword-emberwell {background-image: url("../../images/weapons/sword/sword_glintstonesword.png")}
+.weapon-icon-sword-new-bough {background-image: url("../../images/weapons/sword/sword_spikedstake.png")}
+.weapon-icon-sword-silver-light {background-image: url("../../images/weapons/sword/sword_fajian.png")}
 .weapon-icon-sword-aquila-favonia {background-image: url("../../images/weapons/sword/sword_falcon.png")}
 .weapon-icon-sword-skyward-blade {background-image: url("../../images/weapons/sword/sword_dvalin.png")}
 .weapon-icon-sword-freedom-sworn {background-image: url("../../images/weapons/sword/sword_widsith.png")}
@@ -53,73 +55,77 @@
 .weapon-icon-sword-lightbearing-moonshard {background-image: url("../../images/weapons/sword/sword_silverwaresaw.png")}
 .weapon-icon-sword-whitelake-frostfeather {background-image: url("../../images/weapons/sword/sword_swanlake.png")}
 .weapon-icon-sword-exaiphanes-blade {background-image: url("../../images/weapons/sword/sword_weaponquestsnezhnaya.png")}
+.weapon-icon-sword-beyond-the-chrysalis {background-image: url("../../images/weapons/sword/sword_samosvist.png")}
 .sprite-weapon-sword.sprite-24 {
-	background-image: url("../../images/sprites/weapon_sword_c39181bd3a043fb25d43eb71ce330660.png");
-	background-size: 120px 264px;
+	background-image: url("../../images/sprites/weapon_sword_db8727132a02aab11dcfbb59b39c0063.png");
+	background-size: 144px 264px;
 }
 .sprite-weapon-sword.sprite-40 {
-	background-image: url("../../images/sprites/weapon_sword_574e11b489449137e5e52518d95faa17.png");
-	background-size: 200px 440px;
+	background-image: url("../../images/sprites/weapon_sword_49c3406bef89f5942007407075df2132.png");
+	background-size: 240px 440px;
 }
 .sprite-weapon-sword.sprite-60 {
-	background-image: url("../../images/sprites/weapon_sword_ac24c022617ac33d4a41ca64bc243ab4.png");
-	background-size: 300px 660px;
+	background-image: url("../../images/sprites/weapon_sword_d3398b33665de02c0dbea2f8239f76a1.png");
+	background-size: 360px 660px;
 }
 .sprite.weapon-icon-sword-unknown {background-position: 0% 0%}
-.sprite.weapon-icon-sword-cool-steel {background-position: 25% 0%}
-.sprite.weapon-icon-sword-harbinger-of-dawn {background-position: 50% 0%}
-.sprite.weapon-icon-sword-travelers-handy-sword {background-position: 75% 0%}
-.sprite.weapon-icon-sword-dark-iron-sword {background-position: 100% 0%}
-.sprite.weapon-icon-sword-fillet-blade {background-position: 0% 10%}
-.sprite.weapon-icon-sword-skyrider-sword {background-position: 25% 10%}
-.sprite.weapon-icon-sword-favonius-sword {background-position: 50% 10%}
-.sprite.weapon-icon-sword-the-flute {background-position: 75% 10%}
-.sprite.weapon-icon-sword-sacrificial-sword {background-position: 100% 10%}
-.sprite.weapon-icon-sword-royal-longsword {background-position: 0% 20%}
-.sprite.weapon-icon-sword-lions-roar {background-position: 25% 20%}
-.sprite.weapon-icon-sword-prototype-rancour {background-position: 50% 20%}
-.sprite.weapon-icon-sword-iron-sting {background-position: 75% 20%}
-.sprite.weapon-icon-sword-blackcliff-longsword {background-position: 100% 20%}
-.sprite.weapon-icon-sword-the-black-sword {background-position: 0% 30%}
-.sprite.weapon-icon-sword-the-alley-flash {background-position: 25% 30%}
-.sprite.weapon-icon-sword-sword-of-descension {background-position: 50% 30%}
-.sprite.weapon-icon-sword-festering-desire {background-position: 75% 30%}
-.sprite.weapon-icon-sword-amenoma-kageuchi {background-position: 100% 30%}
-.sprite.weapon-icon-sword-cinnabar-spindle {background-position: 0% 40%}
-.sprite.weapon-icon-sword-kagotsurube-isshin {background-position: 25% 40%}
-.sprite.weapon-icon-sword-sapwood-blade {background-position: 50% 40%}
-.sprite.weapon-icon-sword-xiphos-moonlight {background-position: 75% 40%}
-.sprite.weapon-icon-sword-toukabou-shigure {background-position: 100% 40%}
-.sprite.weapon-icon-sword-wolf-fang {background-position: 0% 50%}
-.sprite.weapon-icon-sword-finale-of-the-deep {background-position: 25% 50%}
-.sprite.weapon-icon-sword-fleuve-cendre-ferryman {background-position: 50% 50%}
-.sprite.weapon-icon-sword-the-dockhands-assistant {background-position: 75% 50%}
-.sprite.weapon-icon-sword-sword-of-narzissenkreuz {background-position: 100% 50%}
-.sprite.weapon-icon-sword-sturdy-bone {background-position: 0% 60%}
-.sprite.weapon-icon-sword-flute-of-ezpitzal {background-position: 25% 60%}
-.sprite.weapon-icon-sword-calamity-of-eshu {background-position: 50% 60%}
-.sprite.weapon-icon-sword-serenitys-call {background-position: 75% 60%}
-.sprite.weapon-icon-sword-moonweavers-dawn {background-position: 100% 60%}
-.sprite.weapon-icon-sword-heretics-molten-blade {background-position: 0% 70%}
-.sprite.weapon-icon-sword-emberwell {background-position: 25% 70%}
-.sprite.weapon-icon-sword-aquila-favonia {background-position: 50% 70%}
-.sprite.weapon-icon-sword-skyward-blade {background-position: 75% 70%}
-.sprite.weapon-icon-sword-freedom-sworn {background-position: 100% 70%}
-.sprite.weapon-icon-sword-summit-shaper {background-position: 0% 80%}
-.sprite.weapon-icon-sword-primordial-jade-cutter {background-position: 25% 80%}
-.sprite.weapon-icon-sword-mistsplitter-reforged {background-position: 50% 80%}
-.sprite.weapon-icon-sword-haran-geppaku-futsu {background-position: 75% 80%}
-.sprite.weapon-icon-sword-key-of-khaj-nisut {background-position: 100% 80%}
-.sprite.weapon-icon-sword-light-of-foliar-incision {background-position: 0% 90%}
-.sprite.weapon-icon-sword-splendor-of-tranquil-waters {background-position: 25% 90%}
-.sprite.weapon-icon-sword-uraku-misugiri {background-position: 50% 90%}
-.sprite.weapon-icon-sword-absolution {background-position: 75% 90%}
-.sprite.weapon-icon-sword-peak-patrol-song {background-position: 100% 90%}
-.sprite.weapon-icon-sword-azurelight {background-position: 0% 100%}
-.sprite.weapon-icon-sword-athame-artis {background-position: 25% 100%}
-.sprite.weapon-icon-sword-lightbearing-moonshard {background-position: 50% 100%}
-.sprite.weapon-icon-sword-whitelake-frostfeather {background-position: 75% 100%}
-.sprite.weapon-icon-sword-exaiphanes-blade {background-position: 100% 100%}
+.sprite.weapon-icon-sword-cool-steel {background-position: 20% 0%}
+.sprite.weapon-icon-sword-harbinger-of-dawn {background-position: 40% 0%}
+.sprite.weapon-icon-sword-travelers-handy-sword {background-position: 60% 0%}
+.sprite.weapon-icon-sword-dark-iron-sword {background-position: 80% 0%}
+.sprite.weapon-icon-sword-fillet-blade {background-position: 100% 0%}
+.sprite.weapon-icon-sword-skyrider-sword {background-position: 0% 10%}
+.sprite.weapon-icon-sword-favonius-sword {background-position: 20% 10%}
+.sprite.weapon-icon-sword-the-flute {background-position: 40% 10%}
+.sprite.weapon-icon-sword-sacrificial-sword {background-position: 60% 10%}
+.sprite.weapon-icon-sword-royal-longsword {background-position: 80% 10%}
+.sprite.weapon-icon-sword-lions-roar {background-position: 100% 10%}
+.sprite.weapon-icon-sword-prototype-rancour {background-position: 0% 20%}
+.sprite.weapon-icon-sword-iron-sting {background-position: 20% 20%}
+.sprite.weapon-icon-sword-blackcliff-longsword {background-position: 40% 20%}
+.sprite.weapon-icon-sword-the-black-sword {background-position: 60% 20%}
+.sprite.weapon-icon-sword-the-alley-flash {background-position: 80% 20%}
+.sprite.weapon-icon-sword-sword-of-descension {background-position: 100% 20%}
+.sprite.weapon-icon-sword-festering-desire {background-position: 0% 30%}
+.sprite.weapon-icon-sword-amenoma-kageuchi {background-position: 20% 30%}
+.sprite.weapon-icon-sword-cinnabar-spindle {background-position: 40% 30%}
+.sprite.weapon-icon-sword-kagotsurube-isshin {background-position: 60% 30%}
+.sprite.weapon-icon-sword-sapwood-blade {background-position: 80% 30%}
+.sprite.weapon-icon-sword-xiphos-moonlight {background-position: 100% 30%}
+.sprite.weapon-icon-sword-toukabou-shigure {background-position: 0% 40%}
+.sprite.weapon-icon-sword-wolf-fang {background-position: 20% 40%}
+.sprite.weapon-icon-sword-finale-of-the-deep {background-position: 40% 40%}
+.sprite.weapon-icon-sword-fleuve-cendre-ferryman {background-position: 60% 40%}
+.sprite.weapon-icon-sword-the-dockhands-assistant {background-position: 80% 40%}
+.sprite.weapon-icon-sword-sword-of-narzissenkreuz {background-position: 100% 40%}
+.sprite.weapon-icon-sword-sturdy-bone {background-position: 0% 50%}
+.sprite.weapon-icon-sword-flute-of-ezpitzal {background-position: 20% 50%}
+.sprite.weapon-icon-sword-calamity-of-eshu {background-position: 40% 50%}
+.sprite.weapon-icon-sword-serenitys-call {background-position: 60% 50%}
+.sprite.weapon-icon-sword-moonweavers-dawn {background-position: 80% 50%}
+.sprite.weapon-icon-sword-heretics-molten-blade {background-position: 100% 50%}
+.sprite.weapon-icon-sword-emberwell {background-position: 0% 60%}
+.sprite.weapon-icon-sword-new-bough {background-position: 20% 60%}
+.sprite.weapon-icon-sword-silver-light {background-position: 40% 60%}
+.sprite.weapon-icon-sword-aquila-favonia {background-position: 60% 60%}
+.sprite.weapon-icon-sword-skyward-blade {background-position: 80% 60%}
+.sprite.weapon-icon-sword-freedom-sworn {background-position: 100% 60%}
+.sprite.weapon-icon-sword-summit-shaper {background-position: 0% 70%}
+.sprite.weapon-icon-sword-primordial-jade-cutter {background-position: 20% 70%}
+.sprite.weapon-icon-sword-mistsplitter-reforged {background-position: 40% 70%}
+.sprite.weapon-icon-sword-haran-geppaku-futsu {background-position: 60% 70%}
+.sprite.weapon-icon-sword-key-of-khaj-nisut {background-position: 80% 70%}
+.sprite.weapon-icon-sword-light-of-foliar-incision {background-position: 100% 70%}
+.sprite.weapon-icon-sword-splendor-of-tranquil-waters {background-position: 0% 80%}
+.sprite.weapon-icon-sword-uraku-misugiri {background-position: 20% 80%}
+.sprite.weapon-icon-sword-absolution {background-position: 40% 80%}
+.sprite.weapon-icon-sword-peak-patrol-song {background-position: 60% 80%}
+.sprite.weapon-icon-sword-azurelight {background-position: 80% 80%}
+.sprite.weapon-icon-sword-athame-artis {background-position: 100% 80%}
+.sprite.weapon-icon-sword-lightbearing-moonshard {background-position: 0% 90%}
+.sprite.weapon-icon-sword-whitelake-frostfeather {background-position: 20% 90%}
+.sprite.weapon-icon-sword-exaiphanes-blade {background-position: 40% 90%}
+.sprite.weapon-icon-sword-beyond-the-chrysalis {background-position: 60% 90%}
 
 @media
 only screen and (-webkit-min-device-pixel-ratio: 2),
@@ -165,6 +171,8 @@ only screen and (                min-resolution: 2dppx) {
 	.weapon-icon-sword-moonweavers-dawn {background-image: url("../../images/weapons/sword/sword_miekka_2x.png")}
 	.weapon-icon-sword-heretics-molten-blade {background-image: url("../../images/weapons/sword/sword_serpenttooth_2x.png")}
 	.weapon-icon-sword-emberwell {background-image: url("../../images/weapons/sword/sword_glintstonesword_2x.png")}
+	.weapon-icon-sword-new-bough {background-image: url("../../images/weapons/sword/sword_spikedstake_2x.png")}
+	.weapon-icon-sword-silver-light {background-image: url("../../images/weapons/sword/sword_fajian_2x.png")}
 	.weapon-icon-sword-aquila-favonia {background-image: url("../../images/weapons/sword/sword_falcon_2x.png")}
 	.weapon-icon-sword-skyward-blade {background-image: url("../../images/weapons/sword/sword_dvalin_2x.png")}
 	.weapon-icon-sword-freedom-sworn {background-image: url("../../images/weapons/sword/sword_widsith_2x.png")}
@@ -183,7 +191,8 @@ only screen and (                min-resolution: 2dppx) {
 	.weapon-icon-sword-lightbearing-moonshard {background-image: url("../../images/weapons/sword/sword_silverwaresaw_2x.png")}
 	.weapon-icon-sword-whitelake-frostfeather {background-image: url("../../images/weapons/sword/sword_swanlake_2x.png")}
 	.weapon-icon-sword-exaiphanes-blade {background-image: url("../../images/weapons/sword/sword_weaponquestsnezhnaya_2x.png")}
-	.sprite-weapon-sword.sprite-24 {background-image: url("../../images/sprites/weapon_sword_077c29e6e79b2096154da2d54fd12cf4.png")}
-	.sprite-weapon-sword.sprite-40 {background-image: url("../../images/sprites/weapon_sword_f1f8a059370d33745cc03c4456a67371.png")}
-	.sprite-weapon-sword.sprite-60 {background-image: url("../../images/sprites/weapon_sword_0db98794eb0539588c01dfe2d7b1b37d.png")}
+	.weapon-icon-sword-beyond-the-chrysalis {background-image: url("../../images/weapons/sword/sword_samosvist_2x.png")}
+	.sprite-weapon-sword.sprite-24 {background-image: url("../../images/sprites/weapon_sword_9c1e3899df63016e59d057a6f4e34dbf.png")}
+	.sprite-weapon-sword.sprite-40 {background-image: url("../../images/sprites/weapon_sword_2e2ec2b23cbdb2c6f50c140c70381a8d.png")}
+	.sprite-weapon-sword.sprite-60 {background-image: url("../../images/sprites/weapon_sword_17172f09309cc975c458d119112e8721.png")}
 }

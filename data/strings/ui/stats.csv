@@ -195,12 +195,14 @@ stat;crit_rate_lunarcharged;Лунный заряд;Lunar-Charged
 stat;crit_rate_lunarbloom;Лунная бутонизация;Lunar-Bloom
 stat;crit_rate_lunarcrystallize;Лунный кристалл;Lunar-Crystallize
 stat;crit_rate_stellar_conduct;Звёздный проводник;Stellar-Conduct
+stat;crit_rate_stellar_swirl;Звёздное рассеивание;Stellar Swirl
 
 stat;crit_dmg_lunar;Лунные реакции;Lunar Reactions
 stat;crit_dmg_lunarcharged;Лунный заряд;Lunar-Charged
 stat;crit_dmg_lunarbloom;Лунная бутонизация;Lunar-Bloom
 stat;crit_dmg_lunarcrystallize;Лунный кристалл;Lunar-Crystallize
 stat;crit_dmg_stellar_conduct;Звёздный проводник;Stellar-Conduct
+stat;crit_dmg_stellar_swirl;Звёздное рассеивание;Stellar Swirl
 
 stat;dmg_normal_elemental;Элементальный урон;Elemental DMG
 stat;enemy_def_reduce;Снижение защиты противника;Enemy DEF reduce

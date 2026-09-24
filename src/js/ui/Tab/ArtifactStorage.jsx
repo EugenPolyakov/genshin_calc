@@ -62,7 +62,6 @@ export class ArtifactsPoolView extends React.Component {
 
     handleFeature(item) {
         let feature = item.value;
-        this.setState({feature: feature});
         UI.Layout.app.setFeature(feature);
     }
 

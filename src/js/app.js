@@ -280,6 +280,7 @@ export class App {
     setFeature(value) {
         this.setSetting('suggester_feature_name', value);
         this.currentSet().clearProfitData();
+        this.refresh();
     }
 
     getFeature() {

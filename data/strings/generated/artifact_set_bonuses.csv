@@ -191,7 +191,7 @@ set_descr;retracing_bolide_4;Под защитой щита увеличивае
 set_bonus;scarlet_proof_2;Багряное доказательство (2 предмета);Scarlet Proof (2-Piece bonus)
 set_descr;scarlet_proof_2;name{Сила атаки} увеличивается на %{atk_percent}.;name{ATK} +%{atk_percent}.
 set_bonus;scarlet_proof_4;Багряное доказательство (4 предмета);Scarlet Proof (4-Piece bonus)
-set_descr;scarlet_proof_4;На 10 сек. после того как экипированный персонаж вызывает stcond{Звёздное рассеивание}, его name{шанс крит. попадания} повышается на %{crit_rate}, а урон stcond{Звёздного рассеивания} увеличивается на %{dmg_reaction_stellar_swirl}.;Increases the equipping character's name{CRIT Rate} by %{crit_rate}, and their stcond{Stellar Swirl} reaction dealt by %{dmg_reaction_stellar_swirl}, for 10s after they trigger a stcond{Stellar Swirl} reaction.
+set_descr;scarlet_proof_4;На 10 сек. после того как экипированный персонаж вызывает stcond{Звёздное рассеивание}, его name{шанс крит. попадания} повышается на %{crit_rate}, а урон stcond{Звёздного рассеивания} увеличивается на %{dmg_reaction_stellar_swirl}.;Increases the equipping character's name{CRIT Rate} by %{crit_rate}, and their stcond{Stellar Swirl} reaction DMG dealt by %{dmg_reaction_stellar_swirl}, for 10s after they trigger a stcond{Stellar Swirl} reaction.
 set_bonus;scholar_2;Учёный (2 предмета);Scholar (2-Piece bonus)
 set_descr;scholar_2;Увеличивает скорость name{восстановления энергии} на %{recharge}.;name{Energy Recharge} +%{recharge}
 set_bonus;scholar_4;Учёный (4 предмета);Scholar (4-Piece bonus)

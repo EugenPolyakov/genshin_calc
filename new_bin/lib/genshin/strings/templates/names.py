@@ -100,6 +100,7 @@ names_eng = Template(
 
 keywords_eng = Template(
     keywords=[
+        ('Radiance( -|:) Stellar Glimmer', 'name'),
         ('Stellar Glimmer DMG', 'stcond'),
         ('Stellar-Conduct', 'stcond'),
         ('Stellar Swirl', 'stcond'),
@@ -246,6 +247,7 @@ names_rus = Template(
         'частицы',
         'элементальные сферы',
         'частицы',
+
         'Лунное знамение( -|:) Зарождающееся сияние',
         'Лунное знамение( -|:) Высшее сияние',
         'Лунное знамение',
@@ -337,9 +339,11 @@ names_rus = Template(
 
 keywords_rus = Template(
     keywords=[
+        ('Сияние( -|:) Звёздный блеск', 'name'),
         ('Звёздн(ый|ого) [пП]роводника?', 'stcond'),
         ('Звёздн(ый|ого) [бБ]леска?', 'stcond'),
         ('Звёздн(ое|ого|ым) [рР]ассеивани[ея]м?', 'stcond'),
+        ('Анемо вихр[ья]', 'name'),
 
         ('Лунная бутонизация', 'dendro'),
         ('Лунную бутонизацию', 'dendro'),

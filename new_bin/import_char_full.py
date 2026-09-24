@@ -21,7 +21,7 @@ from lib.genshin import char_generator
 from lib.genshin.char_generator import CharGenerator, EmptyCharGenerator
 from lib.genshin.char_talent_generator import StatGenerator
 from lib import static
-from lib.static import WEAPON_TYPES, shrink_table, names_mapping, fix_name, extractPramList, trimToVal, trimValue
+from lib.static import WEAPON_TYPES, shrink_table, names_mapping, fix_name, extractPramList, trimToVal, trimValue, foramt_value, format_table
 from old_values import old_values
 from lib.genshin.strings.templates import hyperlink
 import logging
@@ -103,6 +103,7 @@ NEED_PASSIVE_TALENTS = [
     'traveler_cryo',
     'odette',
     'alyosha',
+    'vesna',
 ]
 
 skiped_features = set([
@@ -120,15 +121,6 @@ skiped_features = set([
 def talenttable(s):
     if not do_single:
         talentfile.write(s)
-
-def format_table(data):
-    def foramt_value(val):
-        return str(val)
-
-    # data = list(map(foramt_value, data))
-    data = [foramt_value(x) for x in data]
-
-    return shrink_table(data)
 
 def make_tables(data):
     params = {}
@@ -155,9 +147,7 @@ def make_tables(data):
             processed[ind] = 1
 
             talenttable('\t\t\t// ' + name + '\n\t\t\t')
-            talenttable('p%d: FixTable([%s]%s),\n' % (ind, ', '.join(
-                format_table(params.get(ind, []))
-            ), ', true' if fmt.find('P') >= 0 else ''))
+            talenttable('p%d: FixTable(%s%s),\n' % (ind, repr(format_table(params.get(ind, []))), ', true' if fmt.find('P') >= 0 else ''))
             del params[ind]
 
         generator.add_param(char_key, tmp, params_indices)
@@ -420,7 +410,7 @@ def processPassiveTalent(proud, paramList):
     talenttable('\t\t\tFixTable(')
 
     paramList.extend(proud.get('paramList'))
-    talenttable(repr(shrink_table(paramList)))
+    talenttable(repr(format_table(paramList)))
     talenttable('),\n')
     talent_name = lang_default.get(proud.get('nameTextMapHash'))
     if not talent_name:
@@ -435,10 +425,10 @@ def processPassiveTalent(proud, paramList):
     talent_id = char_id + '_' + talent_short_id
     generator.condition(char_key, talent_id, passive.get(needAvatarPromoteLevel_fld) or 0)
 
-inherentProudSkillOpens_fld = 'FDCALBEEAOM'#'inherentProudSkillOpens'
-hexProudSkillOpens_fld = 'MONOHPPNDHN'
-needAvatarPromoteLevel_fld = 'JNHNGFDPBEF'#'needAvatarPromoteLevel'
-hex_descr_fld = 'CMGEIEOLPPL'
+inherentProudSkillOpens_fld = 'LLEFDMDOMGG'#'inherentProudSkillOpens'
+hexProudSkillOpens_fld = 'KDCMKCFKPBL'
+needAvatarPromoteLevel_fld = 'DHIEHDPAFGI'#'needAvatarPromoteLevel'
+hex_descr_fld = 'CJJODEPIILB'
 extra_descr_fld = 'extraDescTextMapHash'
 
 for charVarName in sorted(char_keys):
@@ -585,7 +575,7 @@ for charVarName in sorted(char_keys):
             'no_descr': const_num == 3 or const_num == 5,
         })
         talenttable('\t\t\tFixTable(')
-        talenttable(repr(shrink_table(talent.get('paramList'))))
+        talenttable(repr(format_table(talent.get('paramList'))))
         talenttable('),\n')
     talenttable('\t\t],\n')
 
@@ -738,9 +728,9 @@ def parse_curves():
         stat_name = static.getCurveName(curve_name)
         values = list(curves[curve_name].values())
 
-        out.write("\t%s: new ValueTable([" % (stat_name))
-        out.write(", ".join(values))
-        out.write("]),\n")
+        out.write("\t%s: new ValueTable(" % (stat_name))
+        out.write(repr(format_table(values)))
+        out.write("),\n")
 
     out.write("};\n")
     out.close()

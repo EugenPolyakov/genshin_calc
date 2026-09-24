@@ -3,13 +3,17 @@ import { ConditionBoolean } from "../../classes/Condition/Boolean";
 import { ConditionHexCheck } from "../../classes/Condition/HexCheck";
 import { ConditionHexCurrent } from "../../classes/Condition/HexCurrent";
 import { ConditionLevelSelect } from "../../classes/Condition/LevelSelect";
+import { ConditionLevels } from "../../classes/Condition/Levels";
 import { ConditionNot } from "../../classes/Condition/Not";
+import { ConditionNumber } from "../../classes/Condition/Number";
 import { ConditionPartyWeapon } from "../../classes/Condition/PartyWeapon";
+import { ConditionStacks } from "../../classes/Condition/Stacks";
 import { ConditionStacksHidden } from "../../classes/Condition/Stacks/Hidden";
 import { DbObjectBuff } from "../../classes/DbObject/Buff";
 import { PostEffectStats } from "../../classes/PostEffect/Stats";
 import { StatTable } from "../../classes/StatTable";
 import { StatTableConditions } from "../../classes/StatTable/Condition";
+import { ValueTable } from "../../classes/ValueTable";
 import { CHARACTER_MAX_POSSIBLE_HP } from "../Constants";
 import { weaponDataTable } from "../generated/WeaponStatTables";
 
@@ -407,6 +411,59 @@ export const Weapons = new DbObjectBuff({
         new ConditionStacksHidden({ serializeId: 76, name: 'temp' }),
         new ConditionStacksHidden({ serializeId: 77, name: 'temp' }),
         new ConditionStacksHidden({ serializeId: 78, name: 'temp' }),
+
+        new ConditionLevelSelect({
+            name: 'weapon_other.weapon_breezeborne_refrain',
+            serializeId: 89,
+            rotation: 'buffs',
+            title: 'weapon_name.breezeborne_refrain',
+            description: 'talent_descr.weapon_breezeborne_refrain_2',
+            maxStacks: 5,
+            icon: {
+                rarity: 4,
+                name: 'sprite-weapon-bow weapon-icon-bow-breezeborne-refrain',
+            },
+            stats: [
+                new StatTable('text_percent', weaponDataTable.breezeborne_refrain.breezeborne_refrain.param1, 100),
+            ],
+        }),
+        new ConditionLevelSelect({
+            name: 'weapon_other.weapon_hymn_of_the_maelstrom_1',
+            serializeId: 90,
+            rotation: 'buffs',
+            maxStacks: 5,
+            title: 'weapon_name.hymn_of_the_maelstrom',
+            description: 'talent_descr.weapon_hymn_of_the_maelstrom_4',
+            icon: {
+                rarity: 5,
+                name: 'sprite-weapon-catalyst weapon-icon-catalyst-hymn-of-the-maelstrom',
+            },
+            stats: [
+                new StatTable('text_hp_percent', weaponDataTable.hymn_of_the_maelstrom.hymn_of_the_maelstrom.param1, 100),
+                new StatTable('text_atk_percent', weaponDataTable.hymn_of_the_maelstrom.hymn_of_the_maelstrom.param3, 100),
+                new StatTable('text_percent', weaponDataTable.hymn_of_the_maelstrom.hymn_of_the_maelstrom.param4, 100),
+            ],
+            customStats: [
+                new ConditionNumber({
+                    name: 'weapon_hymn_of_the_maelstrom_hp',
+                    serializeId: 91,
+                    max: 100000,
+                    partyStat: 'hp',
+                    title: 'pool_stat.hp',
+                }),
+                new ConditionStacks({
+                    name: 'weapon_other.weapon_hymn_of_the_maelstrom_2',
+                    serializeId: 92,
+                    title: 'talent_name.weapon_hymn_of_the_maelstrom',
+                    maxStacks: 3,
+                }),
+                new ConditionBoolean({
+                    name: 'common.weapon_hymn_of_the_maelstrom',
+                    serializeId: 93,
+                    title: 'talent_name.weapon_frozen_or_stellar_swirl',
+                }),
+            ],
+        }),
     ],
     postEffects: [
         new PostEffectStats({
@@ -497,6 +554,38 @@ export const Weapons = new DbObjectBuff({
                 new ConditionHexCurrent(),
                 new ConditionBoolean({ name: 'weapon_angelos_heptades', invert: 1 }),
                 new ConditionBoolean({ name: 'common.char_status_off_field' }),
+            ]),
+        }),
+        new PostEffectStats({
+            from: 'weapon_hymn_of_the_maelstrom_hp',
+            levelSetting: 'weapon_other.weapon_hymn_of_the_maelstrom_1',
+            stacksSetting: 'weapon_other.weapon_hymn_of_the_maelstrom_2',
+            percent: new StatTable('atk_percent', weaponDataTable.hymn_of_the_maelstrom.hymn_of_the_maelstrom.param3, 0.1),
+            statCap: new ValueTable(weaponDataTable.hymn_of_the_maelstrom.hymn_of_the_maelstrom.param4, 100),
+            capUseStacks: true,
+            exceed: weaponDataTable.hymn_of_the_maelstrom.hymn_of_the_maelstrom.param2[0],
+            condition: new ConditionAnd([
+                new ConditionBoolean({ name: 'weapon_hymn_of_the_maelstrom_1', invert: 1 }),
+                new ConditionBoolean({ name: 'common.char_status_off_field', invert: 1 }),
+                new ConditionBoolean({ name: 'common.weapon_hymn_of_the_maelstrom', invert: 1 }),
+                new ConditionBoolean({ name: 'weapon_other.weapon_hymn_of_the_maelstrom_2' }),
+                new ConditionBoolean({ name: 'weapon_other.weapon_hymn_of_the_maelstrom_1' }),
+            ]),
+        }),
+        new PostEffectStats({
+            from: 'weapon_hymn_of_the_maelstrom_hp',
+            levelSetting: 'weapon_other.weapon_hymn_of_the_maelstrom_1',
+            stacksSetting: 'weapon_other.weapon_hymn_of_the_maelstrom_2',
+            percent: new StatTable('atk_percent', weaponDataTable.hymn_of_the_maelstrom.hymn_of_the_maelstrom.param3, 0.175),
+            statCap: new ValueTable(weaponDataTable.hymn_of_the_maelstrom.hymn_of_the_maelstrom.param4, 175),
+            capUseStacks: true,
+            exceed: weaponDataTable.hymn_of_the_maelstrom.hymn_of_the_maelstrom.param2[0],
+            condition: new ConditionAnd([
+                new ConditionBoolean({ name: 'weapon_hymn_of_the_maelstrom_1', invert: 1 }),
+                new ConditionBoolean({ name: 'common.char_status_off_field', invert: 1 }),
+                new ConditionBoolean({ name: 'common.weapon_hymn_of_the_maelstrom' }),
+                new ConditionBoolean({ name: 'weapon_other.weapon_hymn_of_the_maelstrom_2' }),
+                new ConditionBoolean({ name: 'weapon_other.weapon_hymn_of_the_maelstrom_1' }),
             ]),
         }),
     ]

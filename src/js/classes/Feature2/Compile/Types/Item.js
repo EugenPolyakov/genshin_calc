@@ -1,3 +1,4 @@
+import { isPercent } from "../../../Stats";
 import { CItem } from "../Types";
 import { CMulti, CSum, CSumPlusOne } from "./Block";
 
@@ -18,7 +19,7 @@ export class CStat extends CItem {
 
     process(opts) {
         if (opts.staticStats && opts.staticStats.includes(this.stat)) {
-            return new CConst({value: this.value, comment: this.stat});
+            return new CConst({ value: this.value, comment: this.stat, percent: isPercent(this.stat) });
         }
 
         return super.process();

@@ -10,9 +10,8 @@ export class FeatureReaction extends FeatureDamage {
     constructor(params) {
         params.category ||= 'reaction';
         params.damageType ||= 'reaction';
+        params.hitsCount ||= 1;
         super(params);
-
-        this.hits = params.hits || 1;
     }
 
     /**
@@ -104,8 +103,8 @@ export class FeatureReaction extends FeatureDamage {
             }
         }
 
-        if (this.hits > 1)
-            items.push(new CConst({ value: this.hits }));
+        if (this.hitsCount > 1)
+            items.push(new CConst({ value: this.hitsCount }));
 
         return new CDamage(items, {
             critRate: this.getCritRateBlock(data),

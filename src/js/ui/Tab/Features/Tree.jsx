@@ -53,6 +53,7 @@ const INLINE_TYPES = {
     'reaction_base': LeafMulti,
     'reaction_base_bonus': LeafSum,
     'value_cap': LeafValueCap,
+    'value_above_zero': LeafAboveZero,
     'number_floor': LeftFloor,
 };
 
@@ -406,6 +407,48 @@ function LeftFloor(props) {
     return <LeafMathFunc {...props} func="Floor" />
 }
 
+function LeafAboveZero(props) {
+    const [collapsed, setCollapsed] = useState(!props.onlyResult);
+
+    let itemType = props.tree.items[0].getType()
+    let leaf = INLINE_TYPES[itemType];
+    if (!leaf) {
+        console.log('unknown line type ' + itemType);
+        return '';
+    }
+
+    let item = <>
+        <div className="feature-detail-block cap op" onClick={ () => { setCollapsed(true); return false } }>Max</div>
+        <div className="l-bracket" />
+        <LeafSum tree={ props.tree } data={ props.data } collapsable={ true } hideZero={ false } />
+        <span className="op">,</span>
+        <div class="feature-detail-block const"><div class="stat-value">0</div></div>
+        <div className="r-bracket" />
+    </>
+
+    if (props.collapsable) {
+        if (collapsed) {
+            return (
+                <div className="feature-detail-block cap collapsed" onClick={ () => { setCollapsed(false); return false } }>
+                    <div className="feature-detail-block const">
+                        <div className="stat-value"><TreeValue tree={ props.tree } data={ props.data } /></div>
+                    </div>
+                </div>
+            );
+        } else {
+            return item;
+        }
+    } else {
+        return <>
+            { item }
+            <span className="op">=</span>
+            <div className="feature-detail-block const">
+                <div className="stat-value"><TreeValue tree={ props.tree } data={ props.data } /></div>
+            </div>
+        </>;
+    }
+}
+
 function LeafValueCap(props) {
     const [collapsed, setCollapsed] = useState(!props.onlyResult);
 
@@ -426,7 +469,7 @@ function LeafValueCap(props) {
     let item = <>
         <div className="feature-detail-block cap op" onClick={() => {setCollapsed(true); return false}}>Min</div>
         <div className="l-bracket" />
-        {leafItem}
+        <LeafSum tree={ props.tree } data={ props.data } collapsable={ true } hideZero={ false } />
         <span className="op">,</span>
         <LeafSum tree={new CSum([props.tree.value])} data={props.data} />
         <div className="r-bracket" />
@@ -515,16 +558,16 @@ function LeafInlineConst(props) {
     if (props.tree.stat) {
         comment = langStat(props.tree.stat, props.data);
         if (isPercent(props.tree.stat)) {
-            value = formatNumber(props.tree.value * 100, {percent: 1, digits: digits, no_decimal_zero: true});
+            value = formatNumber(props.tree.value * 100, {percent: 1, digits: digits, no_decimal_zero: true, zero: true});
         }
     } else if (props.tree.comment) {
         comment = langStat(props.tree.comment, props.data);
         if (props.tree.percent) {
-            value = formatNumber(props.tree.value * 100, {percent: 1, digits: digits, no_decimal_zero: true});
+            value = formatNumber(props.tree.value * 100, { percent: 1, digits: digits, no_decimal_zero: true, zero: true });
         }
     }
 
-    value ||= formatNumber(props.tree.value, {digits: digits, no_decimal_zero: true});
+    value ||= formatNumber(props.tree.value, { digits: digits, no_decimal_zero: true, zero: true });
 
     if (!value && !props.collapsable) {
         return '';

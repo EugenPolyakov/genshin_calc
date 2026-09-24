@@ -99,3 +99,13 @@ n11500003_eng = Template(
         ['1:ignore', '1:ignore'],
     ],
 )
+
+n11400001 = Template(
+    replace={
+        '{PARAM#P1402201|3S1}': 'value{40000}',
+        '{PARAM#P1402201|4S1}': 'value{260}',
+        '{PARAM#P1402201|5S1}': 'value{140}',
+        '{PARAM#P1402201|6S1}': 'value{6500}',
+        '{PARAM#P1402201|7S1}': 'value{3500}',
+    },
+)

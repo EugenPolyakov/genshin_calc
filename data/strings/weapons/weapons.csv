@@ -7,3 +7,4 @@ weapon_type;bow;Лук;Bow
 weapon_type;polerarm;Копье;Polearm
 
 talent_name;weapon_talent_unknown;???;???
+talent_name;weapon_frozen_or_stellar_swirl;Реакция cryo{Заморозка} или stcond{Звёздное рассеивание};<p>A cryo{Frozen} or stcond{Stellar Swirl} reaction

@@ -104,7 +104,6 @@ class ArtifactSubstatView extends React.Component {
     }
 
     handleFeature(feature) {
-        this.setState({feature: feature});
         UI.Layout.app.setFeature(feature);
     }
 

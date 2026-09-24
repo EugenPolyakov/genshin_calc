@@ -122,7 +122,6 @@ class RankArtifact extends React.Component {
 
     handleFeature(selectedItem) {
         let feature = selectedItem.value;
-        this.setState({feature: feature});
         UI.Layout.app.setFeature(feature);
     }
 

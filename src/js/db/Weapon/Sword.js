@@ -53,6 +53,9 @@ import { heretics_molten_blade } from "./Sword/heretics_molten_blade";
 import { emberwell } from "./Sword/emberwell";
 import { whitelake_frostfeather } from "./Sword/whitelake_frostfeather";
 import { exaiphanes_blade } from "./Sword/exaiphanes_blade";
+import { new_bough } from "./Sword/new_bough";
+import { silver_light } from "./Sword/silver_light";
+import { beyond_the_chrysalis } from "./Sword/beyond_the_chrysalis";
 
 export const Swords = new DbObjectListSerializeStats({
     AlleyFlash: AlleyFlash,
@@ -109,4 +112,7 @@ export const Swords = new DbObjectListSerializeStats({
     emberwell: emberwell, // 255
     whitelake_frostfeather: whitelake_frostfeather, // 256
     exaiphanes_blade: exaiphanes_blade, // 257
+    new_bough: new_bough, // 258
+    silver_light: silver_light, // 259
+    beyond_the_chrysalis: beyond_the_chrysalis, // 263
 });

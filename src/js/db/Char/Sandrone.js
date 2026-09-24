@@ -133,28 +133,32 @@ const stellarPost = new PostEffectStats({
     statCap: new ValueTable([charTalentTables.Sandrone.passsive[2][1] * 100]),
 });
 
+export const stellarConductCondition = new ConditionBoolean({
+    name: 'common.enemy_superconduct',
+    serializeId: 1,
+    title: 'talent_name.n11330003',
+    description: 'talent_descr.n11330003',
+    customStats: [
+        new ConditionStacks({
+            name: 'common.polestar_field_stacks',
+            serializeId: 3,
+            title: 'buff_view.stacks_count',
+            maxStacks: 12,
+        }),
+    ],
+});
+
+export const stellarSwirlCondition = new ConditionStacks({
+    name: 'common.radiance_stellar_swirl',
+    serializeId: 2,
+    maxStacks: 2,
+    title: 'talent_name.stellar_vortex',
+    description: 'talent_descr.stellar_vortex',
+});
+
 export const stellarGlimmerConditions = [
-    new ConditionBoolean({
-        name: 'common.enemy_superconduct',
-        serializeId: 1,
-        title: 'talent_name.n11330003',
-        description: 'talent_descr.n11330003',
-        customStats: [
-            new ConditionStacks({
-                name: 'common.polestar_field_stacks',
-                serializeId: 3,
-                title: 'buff_view.stacks_count',
-                maxStacks: 12,
-            }),
-        ],
-    }),
-    new ConditionStacks({
-        name: 'common.radiance_stellar_swirl',
-        serializeId: 2,
-        maxStacks: 2,
-        title: 'talent_name.stellar_vortex',
-        description: 'talent_descr.stellar_vortex',
-    }),
+    stellarConductCondition,
+    stellarSwirlCondition,
 ];
 
 export const Sandrone = new DbObjectChar({

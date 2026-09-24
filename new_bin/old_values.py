@@ -3270,6 +3270,73 @@ old_values = {
         3: "cd", #Default
         4: "energy_cost", #Default
     },
+#vesna
+    #vila_blade_dance
+    (11431, 14331): {
+        0: "normal_hit_1", #Default
+        1: "normal_hit_2", #Default
+        2: "normal_hit_3", #Default
+        3: "normal_hit_4", #Default
+        4: "normal_hit_5", #Default
+        5: "normal_hit_6", #Default
+        6: "charged_hit", #Default
+        7: "stamina_cost", #Default
+        8: "plunge", #Default
+        9: "plunge_low/plunge_high", #Default
+    },
+    #the_art_of_victory
+    (11432, 14332): {
+        0: "skill_dmg", #Default
+        1: "windborne_sword_lv_1_dmg",
+        2: "windborne_sword_lv_2_dmg",
+        3: "windborne_sword_lv_2_spirit_blade_dmg",
+        4: "windborne_sword_lv_3_spirit_blade_dmg",
+        5: "windborne_sword_lv_3_spirit_blade_final_hit_dmg",
+        6: "windborne_sword_lv_2_spirit_blade_stellar_swirl_dmg",
+        7: "windborne_sword_lv_3_spirit_blade_stellar_swirl_dmg",
+        8: "windborne_sword_lv_3_spirit_blade_final_hit_stellar_swirl_dmg",
+        9: "wind_pinion_dmg",
+        10: "armed_for_action_duration",
+        11: "cd", #Default
+    },
+    #for_the_tsaritsa
+    (11435, 14339): {
+        0: "spirit_blade_dmg",
+        1: "spirit_blade_stellar_swirl_dmg",
+        2: "cd", #Default
+        3: "energy_cost", #Default
+    },
+#vodyanitsa
+    #psyshkhwe_arietta
+    (11401, 14031): {
+        0: "normal_hit_1", #Default
+        1: "normal_hit_2", #Default
+        2: "normal_hit_3", #Default
+        3: "normal_hit_4", #Default
+        4: "charged_hit", #Default
+        5: "stamina_cost", #Default
+        6: "plunge", #Default
+        7: "plunge_low/plunge_high", #Default
+    },
+    #sonorous_dawn
+    (11402, 14032): {
+        0: "skill_dmg", #Default
+        1: "duration", #Default
+        2: "horn_of_springs_call_attack_interval",
+        3: "horn_of_springs_call_dmg",
+        4: "song_of_ages_past_healing",
+        5: "song_of_ages_past_healing_interval",
+        6: "hydro_cryo_res_reduction",
+        7: "res_reduction_duration",
+        8: "cd", #Default
+    },
+    #sink_with_thee
+    (11405, 14039): {
+        0: "skill_dmg", #Default
+        1: "song_of_ages_past_dmg_bonus",
+        2: "cd", #Default
+        3: "energy_cost", #Default
+    },
 #wanderer
     #yuuban_meigen
     (10751, 7531): {

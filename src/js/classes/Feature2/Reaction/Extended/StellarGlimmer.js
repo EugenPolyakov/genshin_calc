@@ -6,7 +6,7 @@ export class FeatureReactionStellarGlimmer extends FeatureReactionExtended {
         params.damageType ||= 'stellarglimmerreaction';
         if (!Array.isArray(params.tags))
             params.tags = [];
-        params.tags.push('stellar_conduct_glimmer');
+        params.tags.push('stellar_glimmer');
         params.cannotReact = true;
         super(params);
     }

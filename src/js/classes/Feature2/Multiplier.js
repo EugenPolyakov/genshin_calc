@@ -4,7 +4,7 @@ import { Feature2 } from "../Feature2";
 import { ValueTable } from "../ValueTable";
 import { makeStatItem, makeStatTotalItem } from "./Compile/Helpers";
 import { CBlock, CItem} from "./Compile/Types";
-import { CMax, CMulti, CSubtract, CSumPlusOne, CValueCap} from "./Compile/Types/Block";
+import { CMax, CMulti, CSubtract, CSumPlusOne, CValueAboveZero, CValueCap} from "./Compile/Types/Block";
 import { CConst } from "./Compile/Types/Item";
 import { FeatureMultiplierTarget } from "./Multiplier/Target";
 
@@ -290,12 +290,11 @@ export class FeatureMultiplier {
         let value = makeStatItem(this.scaling, data.stats);
 
         if (this.exceedStatValue) {
-            value = new CMax([
+            value = new CValueAboveZero([
                 new CSubtract([
                     value,
                     new CConst({value: this.exceedStatValue}),
-                ]),
-                new CConst({value: 0}),
+                ])
             ]);
         }
 

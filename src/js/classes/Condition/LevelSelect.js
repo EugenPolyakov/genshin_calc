@@ -36,6 +36,11 @@ export class ConditionLevelSelect extends Condition {
             stats.add(stat.getName(), stat.getValue(level));
         }
 
+        let list = this.getSubConditions();
+        if (list)
+            for (let c of list)
+                stats.concat(c.getActualStats(settings));
+
         return stats;
     }
 }

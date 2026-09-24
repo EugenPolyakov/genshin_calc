@@ -10,107 +10,17 @@ const enumAscensionTables = {
 };
 
 const enumStatTables = {
-	atk39: new StatTableAscensionScale({
-		stat: 'atk_base',
-		base: 38.74129867553711,
-		ascension: enumAscensionTables.n1,
-		scale: weaponStatScales.atk_1_1,
-	}),
-	atkp8: new StatTableAscensionScale({
-		stat: 'atk_percent',
-		base: 7.659999847412109,
-		scale: weaponStatScales.crt_1_1,
-	}),
-	cdmg10: new StatTableAscensionScale({
-		stat: 'crit_dmg_base',
-		base: 10.199999809265137,
-		scale: weaponStatScales.crt_1_1,
-	}),
-	atk40: new StatTableAscensionScale({
-		stat: 'atk_base',
-		base: 39.875099182128906,
-		ascension: enumAscensionTables.n1,
-		scale: weaponStatScales.atk_1_2,
-	}),
-	def6: new StatTableAscensionScale({
-		stat: 'def_percent',
-		base: 6.373299598693848,
-		scale: weaponStatScales.crt_1_1,
-	}),
-	mastery31: new StatTableAscensionScale({
-		stat: 'mastery_base',
-		base: 30.600000381469727,
-		scale: weaponStatScales.crt_1_1,
-	}),
 	atk38: new StatTableAscensionScale({
 		stat: 'atk_base',
 		base: 37.60749816894531,
 		ascension: enumAscensionTables.n1,
 		scale: weaponStatScales.atk_1_4,
 	}),
-	recharge11: new StatTableAscensionScale({
-		stat: 'recharge_base',
-		base: 11.333300590515137,
-		scale: weaponStatScales.crt_1_1,
-	}),
-	atk41: new StatTableAscensionScale({
+	atk39: new StatTableAscensionScale({
 		stat: 'atk_base',
-		base: 41.067100524902344,
-		ascension: enumAscensionTables.n2,
-		scale: weaponStatScales.atk_2_4,
-	}),
-	recharge13: new StatTableAscensionScale({
-		stat: 'recharge_base',
-		base: 13.33329963684082,
-		scale: weaponStatScales.crt_2_1,
-	}),
-	atk42: new StatTableAscensionScale({
-		stat: 'atk_base',
-		base: 42.4010009765625,
-		ascension: enumAscensionTables.n2,
-		scale: weaponStatScales.atk_2_1,
-	}),
-	atkp9: new StatTableAscensionScale({
-		stat: 'atk_percent',
-		base: 9,
-		scale: weaponStatScales.crt_2_1,
-	}),
-	atk44: new StatTableAscensionScale({
-		stat: 'atk_base',
-		base: 43.734901428222656,
-		ascension: enumAscensionTables.n2,
-		scale: weaponStatScales.atk_2_2,
-	}),
-	phys8: new StatTableAscensionScale({
-		stat: 'dmg_phys_base',
-		base: 7.506700038909912,
-		scale: weaponStatScales.crt_2_1,
-	}),
-	mastery36: new StatTableAscensionScale({
-		stat: 'mastery_base',
-		base: 36,
-		scale: weaponStatScales.crt_2_1,
-	}),
-	cdmg8: new StatTableAscensionScale({
-		stat: 'crit_dmg_base',
-		base: 8,
-		scale: weaponStatScales.crt_2_1,
-	}),
-	crit6: new StatTableAscensionScale({
-		stat: 'crit_rate_base',
-		base: 6,
-		scale: weaponStatScales.crt_2_1,
-	}),
-	atk45: new StatTableAscensionScale({
-		stat: 'atk_base',
-		base: 45.06869888305664,
-		ascension: enumAscensionTables.n2,
-		scale: weaponStatScales.atk_2_3,
-	}),
-	mastery12: new StatTableAscensionScale({
-		stat: 'mastery_base',
-		base: 11.999987602233887,
-		scale: weaponStatScales.crt_2_1,
+		base: 38.74129867553711,
+		ascension: enumAscensionTables.n1,
+		scale: weaponStatScales.atk_1_1,
 	}),
 	atk39_1: new StatTableAscensionScale({
 		stat: 'atk_base',
@@ -118,67 +28,29 @@ const enumStatTables = {
 		ascension: enumAscensionTables.n2,
 		scale: weaponStatScales.atk_1_1,
 	}),
-	recharge10: new StatTableAscensionScale({
-		stat: 'recharge_base',
-		base: 10,
-		scale: weaponStatScales.crt_2_1,
-	}),
-	atkp12: new StatTableAscensionScale({
-		stat: 'atk_percent',
-		base: 12,
-		scale: weaponStatScales.crt_2_1,
-	}),
-	def15: new StatTableAscensionScale({
-		stat: 'def_percent',
-		base: 15.013299942016602,
-		scale: weaponStatScales.crt_2_1,
-	}),
-	recharge7: new StatTableAscensionScale({
-		stat: 'recharge_base',
-		base: 6.6666998863220215,
-		scale: weaponStatScales.crt_2_1,
-	}),
-	atkp6: new StatTableAscensionScale({
-		stat: 'atk_percent',
-		base: 6,
-		scale: weaponStatScales.crt_2_1,
-	}),
-	hp9: new StatTableAscensionScale({
-		stat: 'hp_percent',
-		base: 9,
-		scale: weaponStatScales.crt_2_1,
-	}),
-	atk48: new StatTableAscensionScale({
+	atk40: new StatTableAscensionScale({
 		stat: 'atk_base',
-		base: 47.5369987487793,
-		ascension: enumAscensionTables.n3,
-		scale: weaponStatScales.atk_3_2,
+		base: 39.875099182128906,
+		ascension: enumAscensionTables.n1,
+		scale: weaponStatScales.atk_1_2,
 	}),
-	phys9: new StatTableAscensionScale({
-		stat: 'dmg_phys_base',
-		base: 9,
-		scale: weaponStatScales.crt_3_1,
-	}),
-	atk46: new StatTableAscensionScale({
+	atk41: new StatTableAscensionScale({
 		stat: 'atk_base',
-		base: 45.9364013671875,
-		ascension: enumAscensionTables.n3,
-		scale: weaponStatScales.atk_3_1,
+		base: 41.067100524902344,
+		ascension: enumAscensionTables.n2,
+		scale: weaponStatScales.atk_2_4,
 	}),
-	recharge12: new StatTableAscensionScale({
-		stat: 'recharge_base',
-		base: 12,
-		scale: weaponStatScales.crt_3_1,
+	atk42: new StatTableAscensionScale({
+		stat: 'atk_base',
+		base: 42.4010009765625,
+		ascension: enumAscensionTables.n2,
+		scale: weaponStatScales.atk_2_1,
 	}),
-	mastery43: new StatTableAscensionScale({
-		stat: 'mastery_base',
-		base: 43.20000076293945,
-		scale: weaponStatScales.crt_3_1,
-	}),
-	atkp11: new StatTableAscensionScale({
-		stat: 'atk_percent',
-		base: 10.800000190734863,
-		scale: weaponStatScales.crt_3_1,
+	atk44: new StatTableAscensionScale({
+		stat: 'atk_base',
+		base: 43.734901428222656,
+		ascension: enumAscensionTables.n2,
+		scale: weaponStatScales.atk_2_2,
 	}),
 	atk44_2: new StatTableAscensionScale({
 		stat: 'atk_base',
@@ -186,23 +58,92 @@ const enumStatTables = {
 		ascension: enumAscensionTables.n3,
 		scale: weaponStatScales.atk_3_4,
 	}),
-	crit10: new StatTableAscensionScale({
-		stat: 'crit_rate_base',
-		base: 9.600000381469727,
+	atk45: new StatTableAscensionScale({
+		stat: 'atk_base',
+		base: 45.06869888305664,
+		ascension: enumAscensionTables.n2,
+		scale: weaponStatScales.atk_2_3,
+	}),
+	atk46: new StatTableAscensionScale({
+		stat: 'atk_base',
+		base: 45.9364013671875,
+		ascension: enumAscensionTables.n3,
+		scale: weaponStatScales.atk_3_1,
+	}),
+	atk48: new StatTableAscensionScale({
+		stat: 'atk_base',
+		base: 47.5369987487793,
+		ascension: enumAscensionTables.n3,
+		scale: weaponStatScales.atk_3_2,
+	}),
+	atk49: new StatTableAscensionScale({
+		stat: 'atk_base',
+		base: 49.137699127197266,
+		ascension: enumAscensionTables.n3,
+		scale: weaponStatScales.atk_3_3,
+	}),
+	atkp11: new StatTableAscensionScale({
+		stat: 'atk_percent',
+		base: 10.800000190734863,
 		scale: weaponStatScales.crt_3_1,
+	}),
+	atkp12: new StatTableAscensionScale({
+		stat: 'atk_percent',
+		base: 12,
+		scale: weaponStatScales.crt_2_1,
+	}),
+	atkp3: new StatTableAscensionScale({
+		stat: 'atk_percent',
+		base: 3,
+		scale: weaponStatScales.crt_2_1,
+	}),
+	atkp4: new StatTableAscensionScale({
+		stat: 'atk_percent',
+		base: 3.5999999046325684,
+		scale: weaponStatScales.crt_3_1,
+	}),
+	atkp5: new StatTableAscensionScale({
+		stat: 'atk_percent',
+		base: 5.1066999435424805,
+		scale: weaponStatScales.crt_1_1,
+	}),
+	atkp6: new StatTableAscensionScale({
+		stat: 'atk_percent',
+		base: 6,
+		scale: weaponStatScales.crt_2_1,
+	}),
+	atkp7: new StatTableAscensionScale({
+		stat: 'atk_percent',
+		base: 7.199999809265137,
+		scale: weaponStatScales.crt_3_1,
+	}),
+	atkp8: new StatTableAscensionScale({
+		stat: 'atk_percent',
+		base: 7.659999847412109,
+		scale: weaponStatScales.crt_1_1,
+	}),
+	atkp9: new StatTableAscensionScale({
+		stat: 'atk_percent',
+		base: 9,
+		scale: weaponStatScales.crt_2_1,
+	}),
+	cdmg10: new StatTableAscensionScale({
+		stat: 'crit_dmg_base',
+		base: 10.199999809265137,
+		scale: weaponStatScales.crt_1_1,
 	}),
 	cdmg10_3: new StatTableAscensionScale({
 		stat: 'crit_dmg_base',
 		base: 9.600000381469727,
 		scale: weaponStatScales.crt_3_1,
 	}),
-	crit7: new StatTableAscensionScale({
-		stat: 'crit_rate_base',
-		base: 7.199999809265137,
-		scale: weaponStatScales.crt_3_1,
+	cdmg12: new StatTableAscensionScale({
+		stat: 'crit_dmg_base',
+		base: 12,
+		scale: weaponStatScales.crt_2_1,
 	}),
-	hp14: new StatTableAscensionScale({
-		stat: 'hp_percent',
+	cdmg14: new StatTableAscensionScale({
+		stat: 'crit_dmg_base',
 		base: 14.399999618530273,
 		scale: weaponStatScales.crt_3_1,
 	}),
@@ -211,33 +152,73 @@ const enumStatTables = {
 		base: 19.200000762939453,
 		scale: weaponStatScales.crt_3_1,
 	}),
-	def18: new StatTableAscensionScale({
-		stat: 'def_percent',
-		base: 18,
+	cdmg7: new StatTableAscensionScale({
+		stat: 'crit_dmg_base',
+		base: 6.800000190734863,
+		scale: weaponStatScales.crt_1_1,
+	}),
+	cdmg8: new StatTableAscensionScale({
+		stat: 'crit_dmg_base',
+		base: 8,
+		scale: weaponStatScales.crt_2_1,
+	}),
+	crit10: new StatTableAscensionScale({
+		stat: 'crit_rate_base',
+		base: 9.600000381469727,
 		scale: weaponStatScales.crt_3_1,
+	}),
+	crit2: new StatTableAscensionScale({
+		stat: 'crit_rate_base',
+		base: 2.4000000953674316,
+		scale: weaponStatScales.crt_3_1,
+	}),
+	crit2_5: new StatTableAscensionScale({
+		stat: 'crit_rate_base',
+		base: 2,
+		scale: weaponStatScales.crt_2_1,
+	}),
+	crit3: new StatTableAscensionScale({
+		stat: 'crit_rate_base',
+		base: 3.4000000953674316,
+		scale: weaponStatScales.crt_1_1,
+	}),
+	crit4: new StatTableAscensionScale({
+		stat: 'crit_rate_base',
+		base: 4,
+		scale: weaponStatScales.crt_2_1,
 	}),
 	crit5: new StatTableAscensionScale({
 		stat: 'crit_rate_base',
 		base: 4.800000190734863,
 		scale: weaponStatScales.crt_3_1,
 	}),
-	hp8: new StatTableAscensionScale({
-		stat: 'hp_percent',
-		base: 7.659999847412109,
+	crit5_4: new StatTableAscensionScale({
+		stat: 'crit_rate_base',
+		base: 5.099999904632568,
 		scale: weaponStatScales.crt_1_1,
 	}),
-	mastery41: new StatTableAscensionScale({
-		stat: 'mastery_base',
-		base: 40.79999923706055,
+	crit6: new StatTableAscensionScale({
+		stat: 'crit_rate_base',
+		base: 6,
+		scale: weaponStatScales.crt_2_1,
+	}),
+	crit7: new StatTableAscensionScale({
+		stat: 'crit_rate_base',
+		base: 7.199999809265137,
+		scale: weaponStatScales.crt_3_1,
+	}),
+	crit7_7: new StatTableAscensionScale({
+		stat: 'crit_rate_base',
+		base: 6.800000190734863,
 		scale: weaponStatScales.crt_1_1,
+	}),
+	crit8: new StatTableAscensionScale({
+		stat: 'crit_rate_base',
+		base: 8,
+		scale: weaponStatScales.crt_2_1,
 	}),
 	def10: new StatTableAscensionScale({
 		stat: 'def_percent',
-		base: 9.5600004196167,
-		scale: weaponStatScales.crt_1_1,
-	}),
-	phys10: new StatTableAscensionScale({
-		stat: 'dmg_phys_base',
 		base: 9.5600004196167,
 		scale: weaponStatScales.crt_1_1,
 	}),
@@ -246,55 +227,19 @@ const enumStatTables = {
 		base: 11.260000228881836,
 		scale: weaponStatScales.crt_2_1,
 	}),
-	cdmg12: new StatTableAscensionScale({
-		stat: 'crit_dmg_base',
-		base: 12,
+	def15: new StatTableAscensionScale({
+		stat: 'def_percent',
+		base: 15.013299942016602,
 		scale: weaponStatScales.crt_2_1,
 	}),
-	mastery24: new StatTableAscensionScale({
-		stat: 'mastery_base',
-		base: 24,
-		scale: weaponStatScales.crt_2_1,
-	}),
-	crit4: new StatTableAscensionScale({
-		stat: 'crit_rate_base',
-		base: 4,
-		scale: weaponStatScales.crt_2_1,
-	}),
-	hp12: new StatTableAscensionScale({
-		stat: 'hp_percent',
-		base: 12,
-		scale: weaponStatScales.crt_2_1,
-	}),
-	recharge8: new StatTableAscensionScale({
-		stat: 'recharge_base',
-		base: 8,
+	def18: new StatTableAscensionScale({
+		stat: 'def_percent',
+		base: 18,
 		scale: weaponStatScales.crt_3_1,
 	}),
-	atk49: new StatTableAscensionScale({
-		stat: 'atk_base',
-		base: 49.137699127197266,
-		ascension: enumAscensionTables.n3,
-		scale: weaponStatScales.atk_3_3,
-	}),
-	phys4: new StatTableAscensionScale({
-		stat: 'dmg_phys_base',
-		base: 4.5,
-		scale: weaponStatScales.crt_3_1,
-	}),
-	crit2: new StatTableAscensionScale({
-		stat: 'crit_rate_base',
-		base: 2.4000000953674316,
-		scale: weaponStatScales.crt_3_1,
-	}),
-	crit5_4: new StatTableAscensionScale({
-		stat: 'crit_rate_base',
-		base: 5.099999904632568,
-		scale: weaponStatScales.crt_1_1,
-	}),
-	atkp5: new StatTableAscensionScale({
-		stat: 'atk_percent',
-		base: 5.1066999435424805,
+	def6: new StatTableAscensionScale({
+		stat: 'def_percent',
+		base: 6.373299598693848,
 		scale: weaponStatScales.crt_1_1,
 	}),
 	hp10: new StatTableAscensionScale({
@@ -302,14 +247,89 @@ const enumStatTables = {
 		base: 10.213299751281738,
 		scale: weaponStatScales.crt_1_1,
 	}),
+	hp11: new StatTableAscensionScale({
+		stat: 'hp_percent',
+		base: 10.800000190734863,
+		scale: weaponStatScales.crt_3_1,
+	}),
+	hp12: new StatTableAscensionScale({
+		stat: 'hp_percent',
+		base: 12,
+		scale: weaponStatScales.crt_2_1,
+	}),
+	hp14: new StatTableAscensionScale({
+		stat: 'hp_percent',
+		base: 14.399999618530273,
+		scale: weaponStatScales.crt_3_1,
+	}),
+	hp6: new StatTableAscensionScale({
+		stat: 'hp_percent',
+		base: 6,
+		scale: weaponStatScales.crt_2_1,
+	}),
+	hp8: new StatTableAscensionScale({
+		stat: 'hp_percent',
+		base: 7.659999847412109,
+		scale: weaponStatScales.crt_1_1,
+	}),
+	hp9: new StatTableAscensionScale({
+		stat: 'hp_percent',
+		base: 9,
+		scale: weaponStatScales.crt_2_1,
+	}),
+	mastery12: new StatTableAscensionScale({
+		stat: 'mastery_base',
+		base: 11.999987602233887,
+		scale: weaponStatScales.crt_2_1,
+	}),
+	mastery20: new StatTableAscensionScale({
+		stat: 'mastery_base',
+		base: 20.399999618530273,
+		scale: weaponStatScales.crt_1_1,
+	}),
+	mastery24: new StatTableAscensionScale({
+		stat: 'mastery_base',
+		base: 24,
+		scale: weaponStatScales.crt_2_1,
+	}),
+	mastery31: new StatTableAscensionScale({
+		stat: 'mastery_base',
+		base: 30.600000381469727,
+		scale: weaponStatScales.crt_1_1,
+	}),
+	mastery36: new StatTableAscensionScale({
+		stat: 'mastery_base',
+		base: 36,
+		scale: weaponStatScales.crt_2_1,
+	}),
+	mastery41: new StatTableAscensionScale({
+		stat: 'mastery_base',
+		base: 40.79999923706055,
+		scale: weaponStatScales.crt_1_1,
+	}),
+	mastery43: new StatTableAscensionScale({
+		stat: 'mastery_base',
+		base: 43.20000076293945,
+		scale: weaponStatScales.crt_3_1,
+	}),
 	mastery48: new StatTableAscensionScale({
 		stat: 'mastery_base',
 		base: 48,
 		scale: weaponStatScales.crt_2_1,
 	}),
-	crit8: new StatTableAscensionScale({
-		stat: 'crit_rate_base',
-		base: 8,
+	mastery58: new StatTableAscensionScale({
+		stat: 'mastery_base',
+		base: 57.599998474121094,
+		scale: weaponStatScales.crt_3_1,
+	}),
+	phys10: new StatTableAscensionScale({
+		stat: 'dmg_phys_base',
+		base: 9.5600004196167,
+		scale: weaponStatScales.crt_1_1,
+	}),
+	phys11: new StatTableAscensionScale({
+		stat: 'dmg_phys_base',
+		base: 11.260000228881836,
 		scale: weaponStatScales.crt_2_1,
 	}),
 	phys15: new StatTableAscensionScale({
@@ -317,75 +337,55 @@ const enumStatTables = {
 		base: 15.013299942016602,
 		scale: weaponStatScales.crt_2_1,
 	}),
-	atkp3: new StatTableAscensionScale({
-		stat: 'atk_percent',
-		base: 3,
-		scale: weaponStatScales.crt_2_1,
-	}),
-	hp6: new StatTableAscensionScale({
-		stat: 'hp_percent',
-		base: 6,
-		scale: weaponStatScales.crt_2_1,
-	}),
-	crit2_5: new StatTableAscensionScale({
-		stat: 'crit_rate_base',
-		base: 2,
-		scale: weaponStatScales.crt_2_1,
-	}),
-	cdmg14: new StatTableAscensionScale({
-		stat: 'crit_dmg_base',
-		base: 14.399999618530273,
+	phys4: new StatTableAscensionScale({
+		stat: 'dmg_phys_base',
+		base: 4.5,
 		scale: weaponStatScales.crt_3_1,
 	}),
-	atkp4: new StatTableAscensionScale({
-		stat: 'atk_percent',
-		base: 3.5999999046325684,
+	phys8: new StatTableAscensionScale({
+		stat: 'dmg_phys_base',
+		base: 7.506700038909912,
+		scale: weaponStatScales.crt_2_1,
+	}),
+	phys9: new StatTableAscensionScale({
+		stat: 'dmg_phys_base',
+		base: 9,
+		scale: weaponStatScales.crt_3_1,
+	}),
+	recharge10: new StatTableAscensionScale({
+		stat: 'recharge_base',
+		base: 10,
+		scale: weaponStatScales.crt_2_1,
+	}),
+	recharge11: new StatTableAscensionScale({
+		stat: 'recharge_base',
+		base: 11.333300590515137,
+		scale: weaponStatScales.crt_1_1,
+	}),
+	recharge12: new StatTableAscensionScale({
+		stat: 'recharge_base',
+		base: 12,
+		scale: weaponStatScales.crt_3_1,
+	}),
+	recharge13: new StatTableAscensionScale({
+		stat: 'recharge_base',
+		base: 13.33329963684082,
+		scale: weaponStatScales.crt_2_1,
+	}),
+	recharge7: new StatTableAscensionScale({
+		stat: 'recharge_base',
+		base: 6.6666998863220215,
+		scale: weaponStatScales.crt_2_1,
+	}),
+	recharge8: new StatTableAscensionScale({
+		stat: 'recharge_base',
+		base: 8,
 		scale: weaponStatScales.crt_3_1,
 	}),
 	recharge8_6: new StatTableAscensionScale({
 		stat: 'recharge_base',
 		base: 8.5,
 		scale: weaponStatScales.crt_1_1,
-	}),
-	mastery20: new StatTableAscensionScale({
-		stat: 'mastery_base',
-		base: 20.399999618530273,
-		scale: weaponStatScales.crt_1_1,
-	}),
-	crit3: new StatTableAscensionScale({
-		stat: 'crit_rate_base',
-		base: 3.4000000953674316,
-		scale: weaponStatScales.crt_1_1,
-	}),
-	atkp7: new StatTableAscensionScale({
-		stat: 'atk_percent',
-		base: 7.199999809265137,
-		scale: weaponStatScales.crt_3_1,
-	}),
-	hp11: new StatTableAscensionScale({
-		stat: 'hp_percent',
-		base: 10.800000190734863,
-		scale: weaponStatScales.crt_3_1,
-	}),
-	mastery58: new StatTableAscensionScale({
-		stat: 'mastery_base',
-		base: 57.599998474121094,
-		scale: weaponStatScales.crt_3_1,
-	}),
-	crit7_7: new StatTableAscensionScale({
-		stat: 'crit_rate_base',
-		base: 6.800000190734863,
-		scale: weaponStatScales.crt_1_1,
-	}),
-	cdmg7: new StatTableAscensionScale({
-		stat: 'crit_dmg_base',
-		base: 6.800000190734863,
-		scale: weaponStatScales.crt_1_1,
-	}),
-	phys11: new StatTableAscensionScale({
-		stat: 'dmg_phys_base',
-		base: 11.260000228881836,
-		scale: weaponStatScales.crt_2_1,
 	}),
 };
 
@@ -534,6 +534,14 @@ export const weaponStatTables = {
 		enumStatTables.atk42,
 		enumStatTables.mastery36,
 	],
+	new_bough: [
+		enumStatTables.atk42,
+		enumStatTables.cdmg12,
+	],
+	silver_light: [
+		enumStatTables.atk42,
+		enumStatTables.atkp9,
+	],
 	AquilaFavonia: [
 		enumStatTables.atk48,
 		enumStatTables.phys9,
@@ -605,6 +613,10 @@ export const weaponStatTables = {
 	exaiphanes_blade: [
 		enumStatTables.atk46,
 		enumStatTables.crit7,
+	],
+	beyond_the_chrysalis: [
+		enumStatTables.atk48,
+		enumStatTables.cdmg10_3,
 	],
 	FerrousShadow: [
 		enumStatTables.atk39,
@@ -1070,6 +1082,10 @@ export const weaponStatTables = {
 		enumStatTables.atk44,
 		enumStatTables.atkp6,
 	],
+	winters_heavy_heart: [
+		enumStatTables.atk42,
+		enumStatTables.cdmg12,
+	],
 	SkywardAtlas: [
 		enumStatTables.atk48,
 		enumStatTables.atkp7,
@@ -1145,6 +1161,10 @@ export const weaponStatTables = {
 	angelos_heptades: [
 		enumStatTables.atk49,
 		enumStatTables.atkp4,
+	],
+	hymn_of_the_maelstrom: [
+		enumStatTables.atk44_2,
+		enumStatTables.hp14,
 	],
 	RavenBow: [
 		enumStatTables.atk40,
@@ -1285,6 +1305,10 @@ export const weaponStatTables = {
 	covenant_of_frost_and_snow: [
 		enumStatTables.atk42,
 		enumStatTables.def11,
+	],
+	breezeborne_refrain: [
+		enumStatTables.atk42,
+		enumStatTables.crit6,
 	],
 	SkywardHarp: [
 		enumStatTables.atk48,
@@ -1696,6 +1720,31 @@ export const weaponDataTable = {
 			param4: [12],
 		},
 	},
+	new_bough: {
+		rarity: 4,
+		weapon: "sword",
+		gameId: 11437,
+		new_bough: {
+			param1: [12],
+			param2: [6],
+			param3: [3],
+			param4: [0.04, 0.05, 0.06, 0.07, 0.08],
+			param5: [0.06, 0.075, 0.09, 0.105, 0.12],
+			param6: [20, 25, 30, 35, 40],
+			param7: [0.08, 0.1, 0.12, 0.14, 0.16],
+			param8: [1],
+		},
+	},
+	silver_light: {
+		rarity: 4,
+		weapon: "sword",
+		gameId: 11438,
+		silver_light: {
+			param1: [52, 65, 78, 91, 104],
+			param2: [12],
+			param3: [2],
+		},
+	},
 	AquilaFavonia: {
 		rarity: 5,
 		weapon: "sword",
@@ -1705,7 +1754,7 @@ export const weaponDataTable = {
 			param2: [1, 1.15, 1.3, 1.45, 1.6],
 			param3: [2, 2.3, 2.6, 2.9, 3.2],
 			param4: [15],
-			atk_percent: [20.0, 25.0, 30.000001907348633, 35.0, 40.0],
+			atk_percent: [20, 25, 30.000001907348633, 35, 40],
 		},
 	},
 	SkywardBlade: {
@@ -1718,7 +1767,7 @@ export const weaponDataTable = {
 			param3: [0.1],
 			param4: [0.2, 0.25, 0.3, 0.35, 0.4],
 			param5: [12],
-			crit_rate_base: [4.0, 5.0, 6.0, 7.0, 8.0],
+			crit_rate_base: [4, 5, 6, 7, 8],
 		},
 	},
 	FreedomSworn: {
@@ -1732,7 +1781,7 @@ export const weaponDataTable = {
 			param4: [0.16, 0.2, 0.24, 0.28, 0.32],
 			param5: [0.2, 0.25, 0.3, 0.35, 0.4],
 			param6: [20],
-			dmg_all: [10.0, 12.5, 15.000000953674316, 17.5, 20.0],
+			dmg_all: [10, 12.5, 15.000000953674316, 17.5, 20],
 		},
 	},
 	SummitShaper: {
@@ -1743,7 +1792,7 @@ export const weaponDataTable = {
 			param1: [0.2, 0.25, 0.3, 0.35, 0.4],
 			param2: [0.04, 0.05, 0.06, 0.07, 0.08],
 			param3: [8],
-			shield: [20.0, 25.0, 30.000001907348633, 35.0, 40.0],
+			shield: [20, 25, 30.000001907348633, 35, 40],
 		},
 	},
 	PrimordialJadeCutter: {
@@ -1753,7 +1802,7 @@ export const weaponDataTable = {
 		protectors_virtue: {
 			param1: [0.2, 0.25, 0.3, 0.35, 0.4],
 			param2: [0.012, 0.015, 0.018, 0.021, 0.024],
-			hp_percent: [20.0, 25.0, 30.000001907348633, 35.0, 40.0],
+			hp_percent: [20, 25, 30.000001907348633, 35, 40],
 		},
 	},
 	MistsplitterReforged: {
@@ -1792,7 +1841,7 @@ export const weaponDataTable = {
 			param4: [0.3],
 			param5: [0.002, 0.0025, 0.003, 0.0035, 0.004],
 			param6: [20],
-			hp_percent: [20.0, 25.0, 30.000001907348633, 35.0, 40.0],
+			hp_percent: [20, 25, 30.000001907348633, 35, 40],
 		},
 	},
 	LightofFoliarIncision: {
@@ -1805,7 +1854,7 @@ export const weaponDataTable = {
 			param3: [28],
 			param4: [12],
 			param5: [12],
-			crit_rate_base: [4.0, 5.0, 6.0, 7.0, 8.0],
+			crit_rate_base: [4, 5, 6, 7, 8],
 		},
 	},
 	SplendorOfStillWaters: {
@@ -1831,7 +1880,7 @@ export const weaponDataTable = {
 			param3: [0.24, 0.3, 0.36, 0.42, 0.48],
 			param4: [1],
 			param5: [15],
-			def_percent: [20.0, 25.0, 30.000001907348633, 35.0, 40.0],
+			def_percent: [20, 25, 30.000001907348633, 35, 40],
 		},
 	},
 	Absolution: {
@@ -1842,7 +1891,7 @@ export const weaponDataTable = {
 			param1: [0.2, 0.25, 0.3, 0.35, 0.4],
 			param2: [0.16, 0.2, 0.24, 0.28, 0.32],
 			param3: [6],
-			crit_dmg_base: [20.0, 25.0, 30.000001907348633, 35.0, 40.0],
+			crit_dmg_base: [20, 25, 30.000001907348633, 35, 40],
 		},
 	},
 	PeakPatrolSong: {
@@ -1889,7 +1938,7 @@ export const weaponDataTable = {
 		lightbearing_moonshard: {
 			param1: [0.64, 0.8, 0.96, 1.12, 1.28],
 			param2: [5],
-			def_percent: [20.0, 25.0, 30.000001907348633, 35.0, 40.0],
+			def_percent: [20, 25, 30.000001907348633, 35, 40],
 		},
 	},
 	whitelake_frostfeather: {
@@ -1915,6 +1964,18 @@ export const weaponDataTable = {
 			param3: [0, 0.06],
 			param4: [3, 3, 5],
 			param5: [5],
+		},
+	},
+	beyond_the_chrysalis: {
+		rarity: 5,
+		weapon: "sword",
+		gameId: 11522,
+		beyond_the_chrysalis: {
+			param1: [0.56, 0.72, 0.88, 1.04, 1.2],
+			param2: [0.36, 0.45, 0.54, 0.63, 0.72],
+			param3: [5, 5.5, 6, 6.5, 7],
+			param4: [10],
+			param5: [4],
 		},
 	},
 	FerrousShadow: {
@@ -2155,7 +2216,7 @@ export const weaponDataTable = {
 			param1: [0.12, 0.15, 0.18, 0.21, 0.24],
 			param2: [0.02, 0.025, 0.03, 0.035, 0.04],
 			param3: [0.12, 0.15, 0.18, 0.21, 0.24],
-			atk_percent: [12.0, 15.000000953674316, 18.0, 21.0, 24.0],
+			atk_percent: [12, 15.000000953674316, 18, 21, 24],
 		},
 	},
 	PortablePowerSaw: {
@@ -2243,7 +2304,7 @@ export const weaponDataTable = {
 			param2: [0.8, 1, 1.2, 1.4, 1.6],
 			param3: [20],
 			param4: [8],
-			dmg_all: [8.0, 10.0, 12.0, 14.0, 16.0],
+			dmg_all: [8, 10, 12, 14, 16],
 		},
 	},
 	WolfsGravestone: {
@@ -2253,7 +2314,7 @@ export const weaponDataTable = {
 		wolfish_tracker: {
 			param1: [0.2, 0.25, 0.3, 0.35, 0.4],
 			param2: [0.4, 0.5, 0.6, 0.7, 0.8],
-			atk_percent: [20.0, 25.0, 30.000001907348633, 35.0, 40.0],
+			atk_percent: [20, 25, 30.000001907348633, 35, 40],
 		},
 	},
 	SongofBrokenPines: {
@@ -2267,7 +2328,7 @@ export const weaponDataTable = {
 			param4: [0.12, 0.15, 0.18, 0.21, 0.24],
 			param5: [0.2, 0.25, 0.3, 0.35, 0.4],
 			param6: [20],
-			atk_percent: [16.0, 20.0, 24.0, 28.0, 32.0],
+			atk_percent: [16, 20, 24, 28, 32],
 		},
 	},
 	Unforged: {
@@ -2278,7 +2339,7 @@ export const weaponDataTable = {
 			param1: [0.2, 0.25, 0.3, 0.35, 0.4],
 			param2: [0.04, 0.05, 0.06, 0.07, 0.08],
 			param3: [8],
-			shield: [20.0, 25.0, 30.000001907348633, 35.0, 40.0],
+			shield: [20, 25, 30.000001907348633, 35, 40],
 		},
 	},
 	RedhornStonethresher: {
@@ -2289,7 +2350,7 @@ export const weaponDataTable = {
 			param1: [0.28, 0.35, 0.42, 0.49, 0.56],
 			param2: [0.4, 0.5, 0.6, 0.7, 0.8],
 			param3: [80000],
-			def_percent: [28.0, 35.0, 42.0, 49.0, 56.0],
+			def_percent: [28, 35, 42, 49, 56],
 		},
 	},
 	BeaconOfTheReedSea: {
@@ -2312,7 +2373,7 @@ export const weaponDataTable = {
 			param1: [0.18, 0.225, 0.27, 0.315, 0.36],
 			param2: [15],
 			param3: [1],
-			atk_percent: [20.0, 25.0, 30.000001907348633, 35.0, 40.0],
+			atk_percent: [20, 25, 30.000001907348633, 35, 40],
 		},
 	},
 	MountainKingsFang: {
@@ -2642,7 +2703,7 @@ export const weaponDataTable = {
 			param1: [0.2, 0.25, 0.3, 0.35, 0.4],
 			param2: [0.008, 0.01, 0.012, 0.014, 0.016],
 			param3: [0.01, 0.012, 0.014, 0.016, 0.018],
-			hp_percent: [20.0, 25.0, 30.000001907348633, 35.0, 40.0],
+			hp_percent: [20, 25, 30.000001907348633, 35, 40],
 		},
 	},
 	SkywardSpine: {
@@ -2655,7 +2716,7 @@ export const weaponDataTable = {
 			param3: [0.5],
 			param4: [0.4, 0.55, 0.7, 0.85, 1],
 			param5: [2],
-			crit_rate_base: [8.0, 10.0, 12.0, 14.0, 16.0],
+			crit_rate_base: [8, 10, 12, 14, 16],
 		},
 	},
 	VortexVanquisher: {
@@ -2666,7 +2727,7 @@ export const weaponDataTable = {
 			param1: [0.2, 0.25, 0.3, 0.35, 0.4],
 			param2: [0.04, 0.05, 0.06, 0.07, 0.08],
 			param3: [8],
-			shield: [20.0, 25.0, 30.000001907348633, 35.0, 40.0],
+			shield: [20, 25, 30.000001907348633, 35, 40],
 		},
 	},
 	PrimordialJadeWingedSpear: {
@@ -2735,7 +2796,7 @@ export const weaponDataTable = {
 			param3: [8],
 			param4: [12, 13, 14, 15, 16],
 			param5: [12],
-			atk_percent: [15.000000953674316, 19.0, 23.0, 27.000001907348633, 31.0],
+			atk_percent: [15.000000953674316, 19, 23, 27.000001907348633, 31],
 		},
 	},
 	SymphonistofScents: {
@@ -2747,7 +2808,7 @@ export const weaponDataTable = {
 			param2: [0.12, 0.15, 0.18, 0.21, 0.24],
 			param3: [0.32, 0.4, 0.48, 0.56, 0.64],
 			param4: [3],
-			atk_percent: [12.0, 15.000000953674316, 18.0, 21.0, 24.0],
+			atk_percent: [12, 15.000000953674316, 18, 21, 24],
 		},
 	},
 	FracturedHalo: {
@@ -3111,6 +3172,18 @@ export const weaponDataTable = {
 			param4: [12],
 		},
 	},
+	winters_heavy_heart: {
+		rarity: 4,
+		weapon: "catalyst",
+		gameId: 14437,
+		winters_heavy_heart: {
+			param1: [24, 30, 36, 42, 48],
+			param2: [0.048, 0.06, 0.072, 0.084, 0.096],
+			param3: [20, 25, 30, 35, 40],
+			param4: [0.06, 0.075, 0.09, 0.105, 0.12],
+			param5: [4],
+		},
+	},
 	SkywardAtlas: {
 		rarity: 5,
 		weapon: "catalyst",
@@ -3139,7 +3212,7 @@ export const weaponDataTable = {
 			param1: [0.2, 0.25, 0.3, 0.35, 0.4],
 			param2: [0.04, 0.05, 0.06, 0.07, 0.08],
 			param3: [8],
-			shield: [20.0, 25.0, 30.000001907348633, 35.0, 40.0],
+			shield: [20, 25, 30.000001907348633, 35, 40],
 		},
 	},
 	JadefallsSplendor: {
@@ -3164,7 +3237,7 @@ export const weaponDataTable = {
 			param3: [12],
 			param4: [0.6],
 			param5: [0.1],
-			healing_base: [10.0, 12.5, 15.000000953674316, 17.5, 20.0],
+			healing_base: [10, 12.5, 15.000000953674316, 17.5, 20],
 		},
 	},
 	KagurasVerity: {
@@ -3213,7 +3286,7 @@ export const weaponDataTable = {
 			param4: [0.14, 0.175, 0.21, 0.245, 0.28],
 			param5: [0.08, 0.1, 0.12, 0.14, 0.16],
 			param6: [0.14, 0.175, 0.21, 0.245, 0.28],
-			atk_percent: [16.0, 20.0, 24.0, 28.0, 32.0],
+			atk_percent: [16, 20, 24, 28, 32],
 		},
 	},
 	TomeoftheEternalFlow: {
@@ -3226,7 +3299,7 @@ export const weaponDataTable = {
 			param3: [0.14, 0.18, 0.22, 0.26, 0.3],
 			param4: [8, 9, 10, 11, 12],
 			param5: [12],
-			hp_percent: [16.0, 20.0, 24.0, 28.0, 32.0],
+			hp_percent: [16, 20, 24, 28, 32],
 		},
 	},
 	CranesEchoingCall: {
@@ -3253,7 +3326,7 @@ export const weaponDataTable = {
 			param6: [1.5],
 			param7: [1],
 			param8: [1.5],
-			hp_percent: [20.0, 25.0, 30.000001907348633, 35.0, 40.0],
+			hp_percent: [20, 25, 30.000001907348633, 35, 40],
 		},
 	},
 	StarcallersWatch: {
@@ -3264,7 +3337,7 @@ export const weaponDataTable = {
 			param1: [0.28, 0.35, 0.42, 0.49, 0.56],
 			param2: [15],
 			param3: [14],
-			mastery_base: [100.0, 125.0, 150.0, 175.0, 200.0],
+			mastery_base: [100, 125, 150, 175, 200],
 		},
 	},
 	MorningHibernation: {
@@ -3289,7 +3362,7 @@ export const weaponDataTable = {
 			param2: [15],
 			param3: [0.28, 0.35, 0.42, 0.49, 0.56],
 			param4: [0.4, 0.5, 0.6, 0.7, 0.8],
-			atk_percent: [28.0, 35.0, 42.0, 49.0, 56.0],
+			atk_percent: [28, 35, 42, 49, 56],
 		},
 	},
 	nightweavers_looking_glass: {
@@ -3317,7 +3390,7 @@ export const weaponDataTable = {
 			param4: [4],
 			param5: [0.5],
 			param6: [0.08, 0.1, 0.12, 0.14, 0.16],
-			crit_rate_base: [8.0, 10.0, 12.0, 14.0, 16.0],
+			crit_rate_base: [8, 10, 12, 14, 16],
 		},
 	},
 	nocturnes_curtain_call: {
@@ -3330,7 +3403,7 @@ export const weaponDataTable = {
 			param3: [12],
 			param4: [14, 15, 16, 17, 18],
 			param5: [18],
-			hp_percent: [10.0, 12.0, 14.0, 16.0, 18.0],
+			hp_percent: [10, 12, 14, 16, 18],
 		},
 	},
 	angelos_heptades: {
@@ -3346,7 +3419,23 @@ export const weaponDataTable = {
 			param6: [14, 15, 16, 17, 18],
 			param7: [14],
 			param8: [0.5],
-			atk_percent: [12.0, 15.000000953674316, 18.0, 21.0, 24.0],
+			atk_percent: [12, 15.000000953674316, 18, 21, 24],
+		},
+	},
+	hymn_of_the_maelstrom: {
+		rarity: 5,
+		weapon: "catalyst",
+		gameId: 14524,
+		hymn_of_the_maelstrom: {
+			param1: [0.04, 0.05, 0.06, 0.07, 0.08],
+			param2: [40000],
+			param3: [0.004, 0.005, 0.006, 0.007, 0.008],
+			param4: [0.08, 0.1, 0.12, 0.14, 0.16],
+			param5: [10],
+			param6: [3],
+			param7: [5],
+			param8: [0.75],
+			healing_base: [4, 5, 6, 7, 8],
 		},
 	},
 	RavenBow: {
@@ -3686,6 +3775,19 @@ export const weaponDataTable = {
 			param2: [12],
 		},
 	},
+	breezeborne_refrain: {
+		rarity: 4,
+		weapon: "bow",
+		gameId: 15437,
+		breezeborne_refrain: {
+			param1: [0.24, 0.3, 0.36, 0.42, 0.48],
+			param2: [3],
+			param3: [0.03],
+			param4: [12],
+			param5: [12],
+			recharge_base: [20, 25, 30.000001907348633, 35, 40],
+		},
+	},
 	SkywardHarp: {
 		rarity: 5,
 		weapon: "bow",
@@ -3695,7 +3797,7 @@ export const weaponDataTable = {
 			param2: [0.6, 0.7, 0.8, 0.9, 1],
 			param3: [1.25],
 			param4: [4, 3.5, 3, 2.5, 2],
-			crit_dmg_base: [20.0, 25.0, 30.000001907348633, 35.0, 40.0],
+			crit_dmg_base: [20, 25, 30.000001907348633, 35, 40],
 		},
 	},
 	AmosBow: {
@@ -3718,7 +3820,7 @@ export const weaponDataTable = {
 			param4: [100, 125, 150, 175, 200],
 			param5: [0.2, 0.25, 0.3, 0.35, 0.4],
 			param6: [20],
-			mastery_base: [60.0, 75.0, 90.0, 105.0, 120.0],
+			mastery_base: [60, 75, 90, 105, 120],
 		},
 	},
 	PolarStar: {
@@ -3743,7 +3845,7 @@ export const weaponDataTable = {
 			param2: [0.2, 0.25, 0.3, 0.35, 0.4],
 			param3: [0.5],
 			param4: [1.2],
-			hp_percent: [16.0, 20.0, 24.0, 28.0, 32.0],
+			hp_percent: [16, 20, 24, 28, 32],
 		},
 	},
 	ThunderingPulse: {
@@ -3757,7 +3859,7 @@ export const weaponDataTable = {
 			param4: [0.4, 0.5, 0.6, 0.7, 0.8],
 			param5: [5],
 			param6: [10],
-			atk_percent: [20.0, 25.0, 30.000001907348633, 35.0, 40.0],
+			atk_percent: [20, 25, 30.000001907348633, 35, 40],
 		},
 	},
 	HuntersPath: {
@@ -3837,7 +3939,7 @@ export const weaponDataTable = {
 			param3: [0.4, 0.5, 0.6, 0.7, 0.8],
 			param4: [0.5],
 			param5: [0.16, 0.2, 0.24, 0.28, 0.32],
-			def_percent: [16.0, 20.0, 24.0, 28.0, 32.0],
+			def_percent: [16, 20, 24, 28, 32],
 		},
 	},
 };

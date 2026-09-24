@@ -511,6 +511,7 @@ export const Diona = new DbObjectChar({
                     hideCondition: new ConditionBoolean({ name: 'diona_choice_treasures', invert: 1 }),
                     condition: new ConditionAnd([
                         new ConditionBoolean({ name: 'diona_choice_treasures' }),
+                        new ConditionBoolean({ name: 'common.radiance_stellar_swirl' }),
                         new ConditionBoolean({ name: 'allowed_stellar_swirl' }),
                     ]),
                 }),
@@ -594,7 +595,10 @@ export const Diona = new DbObjectChar({
                     dmg_reaction_swirl_cryo: charTalentTables.Diona.cons[5][3] * 100,
                     dmg_reaction_stellar_swirl: charTalentTables.Diona.cons[5][3] * 100,
                 },
-                condition: new ConditionBoolean({ name: 'allowed_stellar_swirl' }),
+                condition: new ConditionAnd([
+                    new ConditionBoolean({ name: 'common.radiance_stellar_swirl' }),
+                    new ConditionBoolean({ name: 'allowed_stellar_swirl' }),
+                ]),
             }),
         ],
     },

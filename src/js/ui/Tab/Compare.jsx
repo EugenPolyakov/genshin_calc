@@ -139,7 +139,6 @@ export class CompareView extends React.Component {
 
     handleFeature(feature) {
         UI.Layout.app.setFeature(feature);
-        UI.Layout.app.refresh();
     }
 
     handleDisplayMode(mode) {

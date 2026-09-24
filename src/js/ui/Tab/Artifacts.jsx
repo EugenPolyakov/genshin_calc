@@ -256,7 +256,7 @@ function ArtifactBlock(props) {
     let substats = [];
 
     for (let subStat of art.getSubStats()) {
-        substats.push = (
+        substats.push(
             <div key={subStat.stat} className="value">
                 <span className="stat-name">{UI.Lang.get('stat.'+ subStat.stat)} </span>
                 { formatStat( subStat.stat, subStat.value, {signed: true})}

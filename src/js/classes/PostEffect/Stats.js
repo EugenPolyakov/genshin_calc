@@ -32,6 +32,7 @@ export class PostEffectStats extends PostEffect {
         let result = [];
         let percents = this.getPercents(data);
         let level = this.getLevel(data.settings);
+        let stacks = this.getStacks(data);
 
         let maxValue;
         let maxValuePost;
@@ -48,8 +49,8 @@ export class PostEffectStats extends PostEffect {
                 let bonusLevel = data.settings.getLevel(this.params.percentBonusLevel);
                 bonus = this.params.percentBonus.getValue(bonusLevel);
                 if (this.params.bonusStackSettings) {
-                    let stacks = data.settings[this.params.bonusStackSettings];
-                    bonus *= stacks;
+                    let bonusStacks = data.settings[this.params.bonusStackSettings];
+                    bonus *= bonusStacks;
                 }
             }
         }
@@ -79,7 +80,6 @@ export class PostEffectStats extends PostEffect {
                 ]);
             }
 
-            let stacks = this.getStacks(data);
             let valueConst = new CConst({value: value});
             if (stacks > 1) {
                 valueConst = new CMulti([valueConst, new CConst({value: stacks, comment: 'stacks'})]);
@@ -106,9 +106,15 @@ export class PostEffectStats extends PostEffect {
             }
 
             if (statMaxValue) {
-                items = [new CValueCap(items, {value: new CConst({value: statMaxValue})})];
+                if (this.params.capUseStacks)
+                    items = [new CValueCap(items, { value: new CConst({ value: statMaxValue * stacks }) })];
+                else
+                    items = [new CValueCap(items, { value: new CConst({ value: statMaxValue }) })];
             } else if (maxValuePost) {
-                items = [new CValueCap(items, {value: maxValuePost})];
+                if (this.params.capUseStacks)
+                    items = [new CValueCap(items, { value: new CMulti([maxValuePost, new CConst({ value: stacks })]) })];
+                else
+                    items = [new CValueCap(items, { value: maxValuePost })];
             }
 
             result.push(new CPostEffect(items, {

@@ -23,7 +23,7 @@ export class Condition {
         if (!this.params.customStats)
             return [this.getName()];
         else
-            return [this.getName()].concat(this.params.customStats.flatMap(x => x.getNamesList()));
+            return [this.getName()].concat(this.params.customStats.map(x => x.getNamesList()));
     }
 
     getType() {
@@ -194,6 +194,9 @@ export class Condition {
             else
                 params.condition = this.params.condition;
         }
+        if (this.params.icon)
+            if (!params.icon)
+                params.icon = this.params.icon;
         if (params.hideInactive == null)
             params.hideInactive = this.params.hideInactive;
         params.title = this.params.title + ';' + params.title;
@@ -286,8 +289,8 @@ export class Condition {
 }
 
 export class ConditionAnd extends Condition {
-    constructor (items) {
-        super({})
+    constructor (items, invert) {
+        super({ invert })
         this.items = items;
     }
 
@@ -303,8 +306,8 @@ export class ConditionAnd extends Condition {
 }
 
 export class ConditionOr extends Condition {
-    constructor (items) {
-        super({})
+    constructor (items, invert) {
+        super({ invert })
         this.items = items;
     }
 

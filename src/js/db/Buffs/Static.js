@@ -58,6 +58,13 @@ export const Static = new DbObjectBuff({
                 new StatTable('dmg_reaction_lunarbloom', weaponDataTable.nightweavers_looking_glass.nightweavers_looking_glass.param7, 100),
             ],
         }),
+        new ConditionPartyWeaponSelect({
+            activeWeaponCondition: new ConditionBoolean({ name: 'weapon_breezeborne_refrain' }),
+            partyWeaponCondition: 'weapon_other.weapon_breezeborne_refrain',
+            stats: [
+                new StatTable('dmg_reaction_stellar_glimmer', weaponDataTable.breezeborne_refrain.breezeborne_refrain.param1, 100),
+            ],
+        }),
     ],
     postEffects: [
         new PostEffectKhajNisut({

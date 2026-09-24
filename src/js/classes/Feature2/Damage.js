@@ -1,5 +1,5 @@
 import { BuildData } from "../Build/Data";
-import { CBaseDamage, CDivide, CMulti, CMultiplierBonus, CMultiplierDefence, CMultiplierReaction, CMultiplierResistance, CResistanceValue, CSubtract, CSum } from "./Compile/Types/Block";
+import { CBaseDamage, CDivide, CMulti, CMultiplierBonus, CMultiplierDefence, CMultiplierReaction, CMultiplierResistance, CResistanceValue, CSubtract, CSum, CValueAboveZero, CValueCap } from "./Compile/Types/Block";
 import { CBlock } from "./Compile/Types";
 import { CConst } from "./Compile/Types/Item";
 import { CCritDmg, CCritRate, CDamage } from "./Compile/Types/Damage";
@@ -184,14 +184,16 @@ export class FeatureDamage extends Feature2 {
                 new CMulti([
                     target,
                     new CSubtract([
-                        new CConst({value: 1}),
-                        makeStatItem('enemy_def_reduce', data.stats),
+                        new CConst({ value: 1 }),
+                        new CValueCap([
+                            makeStatItem('enemy_def_reduce', data.stats),
+                        ], { value: new CConst({ value: 1 }) }),
                     ]),
                     new CSubtract([
-                        new CConst({value: 1}),
-                        new CSum([
+                        new CConst({ value: 1 }),
+                        new CValueCap([
                             ...this.getStatsDefIgnore(data).map((stat) => { return makeStatItem(stat, data.stats) })
-                        ]),
+                        ], { value: new CConst({ value: 1 }) }),
                     ]),
                 ]),
                 source,
