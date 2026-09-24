@@ -3,6 +3,8 @@ import { Serializer } from './Serializer';
 import { Stats } from './Stats';
 import { substatCheck, substatListValid } from './SubstatCheck';
 
+import { getRollCombinations } from './ArtifactRollCombinations';
+
 export class Artifact {
     constructor(rarity, level, slot, set, mainStat, subStats) {
         this.rarity = rarity;
@@ -451,11 +453,15 @@ export class Artifact {
     }
 
     serialize(lex) {
-        let result = [3];
+        let result = [lex ? 3 : 5];
 
         result.push(DB.Artifacts.Sets.getId(this.set));
-        result.push(this.rarity);
-        result.push(this.level);
+        if (lex) {
+            result.push(this.rarity, this.level);
+        } else {
+            // Common 5-star levels fit in one base26 character.
+            result.push((5 - this.rarity) * 21 + this.level);
+        }
         result.push(DB.Artifacts.Slots.getId(this.slot));
         result.push(DB.Artifacts.Mainstats.getId(this.mainStat) || 0);
         result.push(Object.keys(this.subStats).length);
@@ -472,9 +478,13 @@ export class Artifact {
         }
         Object.keys(this.subStats).sort((a, b) => this.subStats[a].index - this.subStats[b].index).forEach((stat) => {
             let statData = this.subStats[stat];
-            if (statData.unactivated)
-                result.push(25);
-            result.push(DB.Artifacts.Substats.getId(stat));
+            const statId = DB.Artifacts.Substats.getId(stat);
+            if (lex) {
+                if (statData.unactivated) result.push(25);
+                result.push(statId);
+            } else {
+                result.push(statId + 16 * ((statData.initialValue || 0) + (statData.unactivated ? 5 : 0)));
+            }
 
             let substat = DB.Artifacts.Substats.get(stat);
             let value = statData.value;
@@ -483,10 +493,7 @@ export class Artifact {
                 if (lex) {
                     value = statData.values.reduce((a, x) => a + flatStatValues[x], 0);
                 } else {
-                    value = statData.values[statData.values.length - 1] + 1;
-                    for (let i = statData.values.length - 2; i >= 0; i--) {
-                        value = (value << 3) + statData.values[i] + 1;
-                    }
+                    value = getRollCombinations(rollsCount).ids.get(statData.values.join(''));
                 }
                 result.push((value << 1) + 1);
             } else {
@@ -495,8 +502,6 @@ export class Artifact {
                 }
                 result.push(value << 1);
             }
-            if (!lex)
-                result.push(statData.initialValue || 0);
         });
 
         return result;
@@ -514,10 +519,11 @@ export class Artifact {
             let set = DB.Artifacts.Sets.getKeyId(input.shift());
             if (!set) return null;
 
-            let rarity = input.shift();
+            const rarityLevel = input.shift();
+            let rarity = version >= 4 ? 5 - Math.floor(rarityLevel / 21) : rarityLevel;
             if (rarity < 1 || rarity > 5) return null;
 
-            let level = input.shift();
+            let level = version >= 4 ? rarityLevel % 21 : input.shift();
             if (level < 0 || level > 20) return null;
 
             let slot = DB.Artifacts.Slots.getKeyId(input.shift());
@@ -534,8 +540,14 @@ export class Artifact {
             if (version >= 2) {
                 for (let i = 1; i <= substatCnt; ++i) {
                     let key = input.shift();
+                    let initialValue = 0;
                     let unactivated;
-                    if (key == 25) {
+                    if (version >= 4) {
+                        const metadata = Math.floor(key / 16);
+                        key %= 16;
+                        initialValue = metadata % 5;
+                        unactivated = metadata >= 5;
+                    } else if (key == 25) {
                         key = input.shift();
                         unactivated = true;
                     }
@@ -548,17 +560,26 @@ export class Artifact {
                     let substat = DB.Artifacts.Substats.get(statKey);
                     if (!substat) return null;
 
-                    let initialValue = 0;
-                    if (version >= 3)
+                    if (version == 3)
                         initialValue = input.shift();
 
                     let isStacks = value % 2;
                     value = value >> 1;
                     if (isStacks) {
                         let values = [];
-                        do {
-                            values.push((value % 8) - 1);
-                            value = value >> 3;
+                        const radix = substat.rolls[rarity - 1].length;
+                        if (version >= 5) {
+                            const combination = getRollCombinations(radix).values[value];
+                            if (!combination) return null;
+                            values = [...combination];
+                        } else do {
+                            if (version >= 4) {
+                                values.push((value - 1) % radix);
+                                value = Math.floor((value - 1) / radix);
+                            } else {
+                                values.push((value % 8) - 1);
+                                value = value >> 3;
+                            }
                         } while (value > 0);
 
                         result.addStatByProcs(statKey, values, unactivated, initialValue);
@@ -720,4 +741,4 @@ export class Artifact {
 }
 
 
-
+
