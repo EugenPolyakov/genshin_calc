@@ -88,7 +88,7 @@ export class Rotation {
     serialize() {
         let result = serializeItems(this.getItems());
         result.unshift(0); // reserved for properties
-        result.unshift(3); // version
+        result.unshift(4); // version
 
         return result;
     }
@@ -97,7 +97,7 @@ export class Rotation {
         let version = input.shift();
         let result = null;
 
-        if (version == 1 || version == 2 || version == 3) {
+        if (version == 1 || version == 2 || version == 3 || version == 4) {
             if (version >= 2) {
                 input.shift(); // reserved for properties
             }
@@ -267,15 +267,15 @@ function serializeItems(items) {
     for (const item of items) {
         if (!item) continue;
 
-        result.push(item.disabled ? 1 : 0);
-        result.push(item.collapsed ? 1 : 0);
+        // Four types and two flags fit in one base26 character (0..15).
+        const flags = (item.disabled ? 1 : 0) + (item.collapsed ? 2 : 0);
 
         if (item.type == 'feature') {
             let id = DB.Features.Rotation.getByName(item.feature);
 
             if (id) {
                 ++count;
-                result.push(ITEM_TYPE_FEATURE);
+                result.push((ITEM_TYPE_FEATURE - 1) * 4 + flags);
                 result.push(id);
                 result.push(Math.max(1, item.count));
                 result.push(item.reaction || 0); // reaction
@@ -285,7 +285,7 @@ function serializeItems(items) {
 
             if (data.cond) {
                 ++count;
-                result.push(ITEM_TYPE_CONDITION);
+                result.push((ITEM_TYPE_CONDITION - 1) * 4 + flags);
                 result.push(data.typeId);
                 result.push(item.itemId);
                 result.push(data.cond.params.serializeId);
@@ -301,14 +301,14 @@ function serializeItems(items) {
             }
         } else if (item.type == 'repeat') {
             ++count;
-            result.push(ITEM_TYPE_REPEAT);
+            result.push((ITEM_TYPE_REPEAT - 1) * 4 + flags);
             result.push(Math.max(1, item.count));
 
             let subResult = serializeItems(item.items);
             result = result.concat(subResult);
         } else if (item.type == 'uptime') {
             ++count;
-            result.push(ITEM_TYPE_UPTIME);
+            result.push((ITEM_TYPE_UPTIME - 1) * 4 + flags);
             result.push(1); // TODO type
             result.push(Math.min(100, Math.max(0, item.percent)));
 
@@ -329,15 +329,20 @@ function deserializeItems(input, counter, version) {
     for (let i = 0; i < count; ++i) {
         let item = {disabled: false};
 
-        if (version >= 2) {
+        if (version >= 2 && version < 4) {
             item.disabled = !!input.shift();
         }
 
-        if (version >= 3) {
+        if (version == 3) {
             item.collapsed = !!input.shift();
         }
 
         let type = input.shift();
+        if (version >= 4) {
+            item.disabled = !!(type & 1);
+            item.collapsed = !!(type & 2);
+            type = Math.floor(type / 4) + 1;
+        }
         item.id = ++counter;
 
         if (type == ITEM_TYPE_FEATURE) {
