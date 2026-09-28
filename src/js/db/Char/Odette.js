@@ -665,7 +665,7 @@ export const Odette = new DbObjectChar({
     partyData: {
         loadStats: {
             stats: ['atk_total'],
-            settings: ['char_skill_burst', 'n11500001'],
+            settings: ['char_skill_burst'],
         },
         conditions: [
             new ConditionNumber({

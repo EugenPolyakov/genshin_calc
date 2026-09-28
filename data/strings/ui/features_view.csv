@@ -71,6 +71,8 @@ features_view;stat_yunjin_def_total;Защита;DEF
 features_view;stat_mizuki_mastery;М. стихий;EM
 features_view;stat_shenhe_atk_total;Атака;ATK
 features_view;stat_escoffier_atk_total;Атака;ATK
+features_view;stat_xianyun_atk_total;Атака;ATK
+features_view;stat_vodyanitsa_hp_total;HP;HP
 features_view;stat_xilonen_def_total;Защита;DEF
 features_view;stat_traveler_clear_waters_percent;Чистые воды;Clear Waters
 features_view;stat_days_past_healing_recorded;Лечение;Healing

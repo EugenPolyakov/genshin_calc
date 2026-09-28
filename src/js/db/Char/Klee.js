@@ -3,7 +3,6 @@ import { ConditionAnd } from "../../classes/Condition";
 import { ConditionAscensionChar } from "../../classes/Condition/Ascension/Char";
 import { ConditionBoolean } from "../../classes/Condition/Boolean";
 import { ConditionConstellation } from "../../classes/Condition/Constellation";
-import { ConditionDropdown } from "../../classes/Condition/Dropdown";
 import { ConditionHexCheck } from "../../classes/Condition/HexCheck";
 import { ConditionHexCurrent } from "../../classes/Condition/HexCurrent";
 import { ConditionStacks } from "../../classes/Condition/Stacks";

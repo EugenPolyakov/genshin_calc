@@ -515,6 +515,7 @@ export const Vodyanitsa = new DbObjectChar({
                 serializeId: 4,
                 title: 'talent_name.vodyanitsa_sonorous_dawn',
                 levelSetting: 'party.vodyanitsa_char_skill_elemental',
+                rotation: 'party',
                 stats: [
                     Talents.getAlias('skill.vodyanitsa_hydro_cryo_res_reduction', 'enemy_res_hydro', -1),
                     Talents.getAlias('skill.vodyanitsa_hydro_cryo_res_reduction', 'enemy_res_cryo', -1),
@@ -548,6 +549,7 @@ export const Vodyanitsa = new DbObjectChar({
                 title: 'talent_name.vodyanitsa_waters_in_full_splendor',
                 description: 'talent_descr.vodyanitsa_waters_in_full_splendor',
                 info: { constellation: 1 },
+                rotation: 'party',
             }),
             new ConditionBoolean({
                 name: 'party.vodyanitsa_echoes_that_pierce_the_snow',
@@ -555,12 +557,14 @@ export const Vodyanitsa = new DbObjectChar({
                 title: 'talent_name.vodyanitsa_echoes_that_pierce_the_snow',
                 description: 'talent_descr.vodyanitsa_echoes_that_pierce_the_snow',
                 info: { constellation: 2 },
+                rotation: 'party',
             }),
             new ConditionBoolean({
                 name: 'party.vodyanitsa_neverending_song_of_revelry',
                 serializeId: 9,
                 title: 'talent_name.vodyanitsa_neverending_song_of_revelry',
                 description: 'talent_descr.vodyanitsa_neverending_song_of_revelry',
+                info: { constellation: 6 },
             }),
             new Condition({
                 isHidden: true,
