@@ -461,12 +461,13 @@ export const TravelerAnemo = new DbObjectChar({
                 hp_base: 50,
             },
         }),
-        travelerElevation,
+        ...travelerElevation,
         new ConditionBoolean({
             name: 'traveler_foreign_windwrath',
             serializeId: 5,
             title: 'talent_name.traveler_foreign_windwrath',
             description: 'talent_descr.traveler_foreign_windwrath',
+            condition: new ConditionBoolean({ name: 'traveler_n10050001' }),
         }),
     ],
     constellation: new DbObjectConstellation([

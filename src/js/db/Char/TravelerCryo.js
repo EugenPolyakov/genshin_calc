@@ -704,7 +704,7 @@ export const TravelerCryo = new DbObjectChar({
                 hp_base: 50,
             },
         }),
-        travelerElevation,
+        ...travelerElevation,
         new ConditionStatic({
             title: 'talent_name.traveler_illusory_frostmirror',
             description: 'talent_descr.traveler_illusory_frostmirror_1',
@@ -718,6 +718,7 @@ export const TravelerCryo = new DbObjectChar({
             serializeId: 6,
             title: 'talent_name.traveler_foreign_permafrost',
             description: 'talent_descr.traveler_foreign_permafrost',
+            condition: new ConditionBoolean({ name: 'traveler_n10050001' }),
         }),
     ],
     multipliers: [
@@ -798,7 +799,7 @@ export const TravelerCryo = new DbObjectChar({
     partyData: {
         loadStats: {
             stats: ['atk_total'],
-            settings: ['traveler_frostfall_reverberation', 'traveler_frostfall_reverberation_2', 'n10050002'],
+            settings: ['n10050002'],
         },
         conditions: [
             new ConditionNumber({

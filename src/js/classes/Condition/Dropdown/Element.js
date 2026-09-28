@@ -5,7 +5,7 @@ export class ConditionDropdownElement extends ConditionDropdown {
         let result = [];
 
         if (this.params.values) {
-            for (const item of this.params.values) {
+            for (let item of this.params.values) {
                 result.push({
                     value: item.value,
                     icon: ' gi-stat-element-icon stat-'+ item.value,
@@ -14,20 +14,5 @@ export class ConditionDropdownElement extends ConditionDropdown {
         }
 
         return result;
-    }
-
-    getAllConditionsOn() {
-        if (!this.params.multiple) {
-            return {};
-        }
-
-        let values = [];
-        for (const item of this.params.values) {
-            values.push(item.value);
-        }
-
-        return {
-            [this.getName()]: values.join(';'),
-        }
     }
 }

@@ -115,94 +115,108 @@ const C1DmgBonusNightsoul = 9;
 const C4PyroDmg = 20;
 const C6CritDmg = 40;
 
-export let travelerElevation = new ConditionDropdownElement({
-    name: 'common.n10050001',
-    serializeId: 20,
-    multiple: true,
-    hideEmpty: true,
-    dropdownClass: 'big select-element-multiple',
-    title: 'talent_name.n10050001',
-    description: 'talent_descr.n10050001',
-    values: [
-        {
-            value: 'anemo',
-            serializeId: 1,
-            conditions: [
-                new Condition({
-                    stats: {
-                        crit_rate_base: 10,
-                    }
-                }),
-            ],
-        },
-        {
-            value: 'geo',
-            serializeId: 2,
-            conditions: [
-                new Condition({
-                    stats: {
-                        def_percent: 20,
-                    }
-                }),
-            ],
-        },
-        {
-            value: 'electro',
-            serializeId: 3,
-            conditions: [
-                new Condition({
-                    stats: {
-                        recharge_base: 20,
-                    }
-                }),
-            ],
-        },
-        {
-            value: 'dendro',
-            serializeId: 4,
-            conditions: [
-                new Condition({
-                    stats: {
-                        mastery: 60,
-                    }
-                }),
-            ],
-        },
-        {
-            value: 'hydro',
-            serializeId: 5,
-            conditions: [
-                new Condition({
-                    stats: {
-                        hp_percent: 20,
-                    }
-                }),
-            ],
-        },
-        {
-            value: 'pyro',
-            serializeId: 6,
-            conditions: [
-                new Condition({
-                    stats: {
-                        atk_percent: 20,
-                    }
-                }),
-            ],
-        },
-        {
-            value: 'cryo',
-            serializeId: 7,
-            conditions: [
-                new Condition({
-                    stats: {
-                        crit_dmg_base: 20,
-                    }
-                }),
-            ],
-        },
-    ],
-});
+export let travelerElevation = [
+    new ConditionDropdownElement({
+        name: 'common.n10050001',
+        serializeId: 20,
+        multiple: true,
+        hideEmpty: true,
+        dropdownClass: 'big select-element-multiple',
+        title: 'talent_name.traveler_element',
+        values: [
+            {
+                value: 'anemo',
+                serializeId: 1,
+                conditions: [
+                    new Condition({
+                        condition: new ConditionBoolean({ name: 'traveler_n10050001' }),
+                        stats: {
+                            crit_rate_base: 10,
+                        }
+                    }),
+                ],
+            },
+            {
+                value: 'geo',
+                serializeId: 2,
+                conditions: [
+                    new Condition({
+                        condition: new ConditionBoolean({ name: 'traveler_n10050001' }),
+                        stats: {
+                            def_percent: 20,
+                        }
+                    }),
+                ],
+            },
+            {
+                value: 'electro',
+                serializeId: 3,
+                conditions: [
+                    new Condition({
+                        condition: new ConditionBoolean({ name: 'traveler_n10050001' }),
+                        stats: {
+                            recharge_base: 20,
+                        }
+                    }),
+                ],
+            },
+            {
+                value: 'dendro',
+                serializeId: 4,
+                conditions: [
+                    new Condition({
+                        condition: new ConditionBoolean({ name: 'traveler_n10050001' }),
+                        stats: {
+                            mastery: 60,
+                        }
+                    }),
+                ],
+            },
+            {
+                value: 'hydro',
+                serializeId: 5,
+                conditions: [
+                    new Condition({
+                        condition: new ConditionBoolean({ name: 'traveler_n10050001' }),
+                        stats: {
+                            hp_percent: 20,
+                        }
+                    }),
+                ],
+            },
+            {
+                value: 'pyro',
+                serializeId: 6,
+                conditions: [
+                    new Condition({
+                        condition: new ConditionBoolean({ name: 'traveler_n10050001' }),
+                        stats: {
+                            atk_percent: 20,
+                        }
+                    }),
+                ],
+            },
+            {
+                value: 'cryo',
+                serializeId: 7,
+                conditions: [
+                    new Condition({
+                        condition: new ConditionBoolean({ name: 'traveler_n10050001' }),
+                        stats: {
+                            crit_dmg_base: 20,
+                        }
+                    }),
+                ],
+            },
+        ],
+    }),
+    new ConditionBoolean({
+        name: 'traveler_n10050001',
+        serializeId: 21,
+        title: 'talent_name.n10050001',
+        description: 'talent_descr.n10050001',
+    }),
+];
 
 export const TravelerPyro = new DbObjectChar({
     name: 'traveler_pyro',
@@ -428,12 +442,13 @@ export const TravelerPyro = new DbObjectChar({
                 hp_base: 50,
             },
         }),
-        travelerElevation,
+        ...travelerElevation,
         new ConditionBoolean({
             name: 'traveler_foreign_starfire',
             serializeId: 8,
             title: 'talent_name.traveler_foreign_starfire',
             description: 'talent_descr.traveler_foreign_starfire',
+            condition: new ConditionBoolean({ name: 'traveler_n10050001' }),
         }),
     ],
     constellation: new DbObjectConstellation([

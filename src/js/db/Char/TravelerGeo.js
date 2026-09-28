@@ -321,12 +321,13 @@ export const TravelerGeo = new DbObjectChar({
                 hp_base: 50,
             },
         }),
-        travelerElevation,
+        ...travelerElevation,
         new ConditionBoolean({
             name: 'traveler_foreign_adamantine',
             serializeId: 4,
             title: 'talent_name.traveler_foreign_adamantine',
             description: 'talent_descr.traveler_foreign_adamantine_1',
+            condition: new ConditionBoolean({ name: 'traveler_n10050001' }),
             stats: {
                 shield: 20,
             }

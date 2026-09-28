@@ -460,12 +460,13 @@ export const TravelerHydro = new DbObjectChar({
                 hp_base: 50,
             },
         }),
-        travelerElevation,
+        ...travelerElevation,
         new ConditionBoolean({
             name: 'traveler_foreign_aqualis',
             serializeId: 5,
             title: 'talent_name.traveler_foreign_aqualis',
             description: 'talent_descr.traveler_foreign_aqualis',
+            condition: new ConditionBoolean({ name: 'traveler_n10050001' }),
         }),
     ],
     constellation: new DbObjectConstellation([

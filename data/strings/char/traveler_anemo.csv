@@ -28,3 +28,4 @@ talent_descr;traveler_swordfighting_techniques;name{Базовая сила ат
 talent_name;traveler_special_training;Особая тренировка Скирк;Skirk's Special Training
 talent_descr;traveler_special_training;name{Базовая сила атаки} увеличивается на %{atk_base}, name{мастрество стихий} на %{mastery} и базовое name{HP} на %{hp_base}.;name{Base ATK} increased by %{atk_base}, name{elemental mastery} by %{mastery} and name{base HP} by %{hp_base}.
 features_view;stat_traveler_elevation;Доп. усиление;Additional<br>Buff Effect
+talent_name;traveler_element;Элементы с которыми резонировал Путешественник;Elements Traveler have resonated

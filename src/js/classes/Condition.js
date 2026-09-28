@@ -227,6 +227,12 @@ export class Condition {
                 settings[cond.getName()] = true;
             } else if (type == 'dropdown') {
                 settings[cond.getName()] = cond.params.suggesterValue || 0;
+            } else if (type == 'dropdown_multiple') {
+                let values = [];
+                for (let item of cond.params.values) {
+                    values.push(item.value);
+                }
+                settings[cond.getName()] = values.join(';');
             } else if (type == 'number') {
                 settings[cond.getName()] = cond.getMinValue();
             } else if (cond.getAllConditionsOn) {
