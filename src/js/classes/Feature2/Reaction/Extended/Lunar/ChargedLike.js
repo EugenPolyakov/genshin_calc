@@ -1,6 +1,6 @@
 import { BuildData } from "../../../../Build/Data";
 import { CConst } from "../../../Compile/Types/Item";
-import { CBaseBonusReaction, CMultiplierCustom, CMultiplierReaction } from "../../../Compile/Types/Block";
+import { CBaseBonusReaction } from "../../../Compile/Types/Block";
 import { FeatureReactionLunarCharged } from "./Charged";
 import { makeStatItem } from "../../../Compile/Helpers";
 
@@ -20,8 +20,8 @@ export class FeatureReactionLunarChargedLike extends FeatureReactionLunarCharged
         result.push(
             new CBaseBonusReaction([
                 makeStatItem('lunarcharged_multi', data.stats),
-            ], { percent: true, comment: 'reaction_bonus' }),
-            new CMultiplierCustom([new CConst({value: 3, comment: 'lunarcharged', percent: false})]),
+            ], { percent: true }),
+            new CConst({ value: 3, comment: 'direct_reaction' }),
         );
         return result;
     }

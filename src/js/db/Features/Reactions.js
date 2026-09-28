@@ -42,6 +42,15 @@ const lunarcrystallizeCond = new ConditionAnd([
     ]),
 ]);
 
+const stellarSwirlCond = new ConditionAnd([
+    new ConditionBoolean({ name: 'allowed_stellar_swirl' }),
+    new ConditionOr([
+        new ConditionBooleanCharElement({ element: ['anemo', 'cryo'] }),
+        new ConditionBoolean({ name: 'allowed_infusion_anemo' }),
+        new ConditionBoolean({ name: 'allowed_infusion_cryo' }),
+    ]),
+]);
+
 function StellarVortexRate(data) {
     if ((data.settings['common.radiance_stellar_swirl'] || 0) > 1)
         return 3;
@@ -88,124 +97,82 @@ export const Reactions = [
         name: 'stellar_swirl_contrubution_1',
         element: 'anemo',
         cannotReact: true,
+        reactionPenalty: 3 / 5,
         multipliers: [
             new FeatureMultiplierReaction({
                 reactionRate: 0.75,
                 reactionValue: reactionDamageValues,
-                reactionPenalty: 3 / 5,
                 scalingStat: 'stellar_swirl_multi',
             })
         ],
-        condition: new ConditionAnd([
-            new ConditionBoolean({ name: 'allowed_stellar_swirl' }),
-            new ConditionOr([
-                new ConditionBooleanCharElement({ element: ['anemo', 'cryo'] }),
-                new ConditionBoolean({ name: 'allowed_infusion_anemo' }),
-                new ConditionBoolean({ name: 'allowed_infusion_cryo' }),
-            ]),
-        ]),
+        condition: stellarSwirlCond,
     }),
     new FeatureReactionStellarSwirl({
         name: 'stellar_swirl_contrubution_2',
         element: 'anemo',
         cannotReact: true,
+        reactionPenalty: 3 / 10,
         multipliers: [
             new FeatureMultiplierReaction({
                 reactionRate: 0.75,
                 reactionValue: reactionDamageValues,
-                reactionPenalty: 3 / 10,
                 scalingStat: 'stellar_swirl_multi',
             })
         ],
-        condition: new ConditionAnd([
-            new ConditionBoolean({ name: 'allowed_stellar_swirl' }),
-            new ConditionOr([
-                new ConditionBooleanCharElement({ element: ['anemo', 'cryo'] }),
-                new ConditionBoolean({ name: 'allowed_infusion_anemo' }),
-                new ConditionBoolean({ name: 'allowed_infusion_cryo' }),
-            ]),
-        ]),
+        condition: stellarSwirlCond,
     }),
     new FeatureReactionStellarSwirl({
         name: 'stellar_swirl_contrubution_3',
         element: 'anemo',
         cannotReact: true,
+        reactionPenalty: 1 / 20,
         multipliers: [
             new FeatureMultiplierReaction({
                 reactionRate: 0.75,
                 reactionValue: reactionDamageValues,
-                reactionPenalty: 1 / 20,
                 scalingStat: 'stellar_swirl_multi',
             })
         ],
-        condition: new ConditionAnd([
-            new ConditionBoolean({ name: 'allowed_stellar_swirl' }),
-            new ConditionOr([
-                new ConditionBooleanCharElement({ element: ['anemo', 'cryo'] }),
-                new ConditionBoolean({ name: 'allowed_infusion_anemo' }),
-                new ConditionBoolean({ name: 'allowed_infusion_cryo' }),
-            ]),
-        ]),
+        condition: stellarSwirlCond,
     }),
     new FeatureReactionStellarSwirl({
         name: 'stellar_swirl_vortex_contrubution_1',
         element: 'cryo',
+        reactionPenalty: 3 / 5,
         multipliers: [
             new FeatureMultiplierReaction({
                 reactionRate: StellarVortexRate,
                 reactionValue: reactionDamageValues,
-                reactionPenalty: 3 / 5,
                 scalingStat: 'stellar_swirl_multi',
             })
         ],
-        condition: new ConditionAnd([
-            new ConditionBoolean({ name: 'allowed_stellar_swirl' }),
-            new ConditionOr([
-                new ConditionBooleanCharElement({ element: ['anemo', 'cryo'] }),
-                new ConditionBoolean({ name: 'allowed_infusion_anemo' }),
-                new ConditionBoolean({ name: 'allowed_infusion_cryo' }),
-            ]),
-        ]),
+        condition: stellarSwirlCond,
     }),
     new FeatureReactionStellarSwirl({
         name: 'stellar_swirl_vortex_contrubution_2',
         element: 'cryo',
+        reactionPenalty: 3 / 10,
         multipliers: [
             new FeatureMultiplierReaction({
                 reactionRate: StellarVortexRate,
                 reactionValue: reactionDamageValues,
-                reactionPenalty: 3 / 10,
                 scalingStat: 'stellar_swirl_multi',
             })
         ],
-        condition: new ConditionAnd([
-            new ConditionBoolean({ name: 'allowed_stellar_swirl' }),
-            new ConditionOr([
-                new ConditionBooleanCharElement({ element: ['anemo', 'cryo'] }),
-                new ConditionBoolean({ name: 'allowed_infusion_anemo' }),
-                new ConditionBoolean({ name: 'allowed_infusion_cryo' }),
-            ]),
-        ]),
+        condition: stellarSwirlCond,
     }),
     new FeatureReactionStellarSwirl({
         name: 'stellar_swirl_vortex_contrubution_3',
         element: 'cryo',
+        reactionPenalty: 1 / 20,
         multipliers: [
             new FeatureMultiplierReaction({
                 reactionRate: StellarVortexRate,
                 reactionValue: reactionDamageValues,
-                reactionPenalty: 1 / 20,
                 scalingStat: 'stellar_swirl_multi',
             })
         ],
-        condition: new ConditionAnd([
-            new ConditionBoolean({ name: 'allowed_stellar_swirl' }),
-            new ConditionOr([
-                new ConditionBooleanCharElement({ element: ['anemo', 'cryo'] }),
-                new ConditionBoolean({ name: 'allowed_infusion_anemo' }),
-                new ConditionBoolean({ name: 'allowed_infusion_cryo' }),
-            ]),
-        ]),
+        condition: stellarSwirlCond,
     }),
     new FeatureReactionBurning({
         name: 'burning',
@@ -260,11 +227,11 @@ export const Reactions = [
         name: 'lunarcrystallize_contrubution_2',
         element: 'geo',
         cannotReact: true,
+        reactionPenalty: 1 / 2,
         multipliers: [
             new FeatureMultiplierReaction({
                 reactionRate: 0.96,
                 reactionValue: reactionDamageValues,
-                reactionPenalty: 1 / 2,
                 scalingStat: 'lunarcrystallize_multi',
             })
         ],
@@ -274,11 +241,11 @@ export const Reactions = [
         name: 'lunarcrystallize_contrubution_12',
         element: 'geo',
         cannotReact: true,
+        reactionPenalty: 1 / 12,
         multipliers: [
             new FeatureMultiplierReaction({
                 reactionRate: 0.96,
                 reactionValue: reactionDamageValues,
-                reactionPenalty: 1 / 12,
                 scalingStat: 'lunarcrystallize_multi',
             })
         ],
@@ -316,11 +283,11 @@ export const Reactions = [
         name: 'lunarcharged_contrubution_2',
         element: 'electro',
         cannotReact: true,
+        reactionPenalty: 1 / 2,
         multipliers: [
             new FeatureMultiplierReaction({
                 reactionRate: 1.8,
                 reactionValue: reactionDamageValues,
-                reactionPenalty: 1 / 2,
                 scalingStat: 'lunarcharged_multi',
             })
         ],
@@ -330,11 +297,11 @@ export const Reactions = [
         name: 'lunarcharged_contrubution_12',
         element: 'electro',
         cannotReact: true,
+        reactionPenalty: 1 / 12,
         multipliers: [
             new FeatureMultiplierReaction({
                 reactionRate: 1.8,
                 reactionValue: reactionDamageValues,
-                reactionPenalty: 1 / 12,
                 scalingStat: 'lunarcharged_multi',
             })
         ],

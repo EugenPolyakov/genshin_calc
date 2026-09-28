@@ -33,6 +33,8 @@ features_view;comment_reaction_base;Ур.;Lvl
 features_view;comment_reaction_ratio;Реакция;Ratio
 features_view;comment_reaction_bonus;Бонус;Bonus
 features_view;comment_reaction_penalty;Штраф;Penalty
+features_view;comment_direct_reaction;Множ. прямого<br/>урона;Direct<br/>Multiplier
+features_view;comment_hits;Неск. ударов;Few hits
 features_view;comment_talent_attack;Об. атака;N. Attack
 features_view;comment_talent_elemental;Элем. навык;El. Skill
 features_view;comment_talent_burst;Взрыв стихий;El. Burst

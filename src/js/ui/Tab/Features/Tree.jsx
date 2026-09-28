@@ -312,7 +312,7 @@ class LeafMathOp extends React.Component {
                 );
             }
 
-            if (this.props.onlyResult && !item.group) {
+            if (this.props.onlyResult && !item.group && itemType != 'item_const') {
                 items.push(
                     <div key={'item'+ items.length} className="feature-detail-block const">
                         <div className="stat-value"><TreeValue tree={item} data={this.props.data} /></div>

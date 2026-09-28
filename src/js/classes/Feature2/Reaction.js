@@ -104,7 +104,7 @@ export class FeatureReaction extends FeatureDamage {
         }
 
         if (this.hitsCount > 1)
-            items.push(new CConst({ value: this.hitsCount }));
+            items.push(new CConst({ value: this.hitsCount, comment: 'hits' }));
 
         return new CDamage(items, {
             critRate: this.getCritRateBlock(data),

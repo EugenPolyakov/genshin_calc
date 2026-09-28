@@ -11,7 +11,6 @@ export class FeatureMultiplierReaction extends FeatureMultiplier  {
          */
         this.reactionValue = params.reactionValue;
         this.reactionRate = params.reactionRate;
-        this.reactionPenalty = params.reactionPenalty;
         this.scalingStat = params.scalingStat;
     }
 
@@ -36,12 +35,6 @@ export class FeatureMultiplierReaction extends FeatureMultiplier  {
                 new CBaseBonusReaction([
                     makeStatItem(this.scalingStat, data.stats),
                 ], {percent: true, comment: 'reaction_bonus'}),
-            );
-        }
-
-        if (this.reactionPenalty && this.reactionPenalty != 1) {
-            parts.push(
-                new CConst({value: this.reactionPenalty, percent: true, comment: 'reaction_penalty'})
             );
         }
 

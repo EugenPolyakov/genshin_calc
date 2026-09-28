@@ -19,7 +19,7 @@ export class FeatureReactionStellarSwirlLike extends FeatureReactionStellarSwirl
         result.push(
             new CBaseBonusReaction([
                 makeStatItem('stellar_swirl_multi', data.stats),
-            ], { percent: true, comment: 'reaction_bonus' }),
+            ], { percent: true }),
         );
         return result;
     }

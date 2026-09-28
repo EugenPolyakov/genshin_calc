@@ -1,6 +1,6 @@
 import { BuildData } from "../../../../Build/Data";
 import { CConst } from "../../../Compile/Types/Item";
-import { CBaseBonusReaction, CMultiplierAmplifying, CMultiplierCustom, CMultiplierReaction } from "../../../Compile/Types/Block";
+import { CBaseBonusReaction } from "../../../Compile/Types/Block";
 import { makeStatItem } from "../../../Compile/Helpers";
 import { FeatureReactionLunarCrystallize } from "./Crystallize";
 
@@ -20,8 +20,8 @@ export class FeatureReactionLunarCrystallizeLike extends FeatureReactionLunarCry
         result.push(
             new CBaseBonusReaction([
                 makeStatItem('lunarcrystallize_multi', data.stats),
-            ], { percent: true, comment: 'reaction_bonus' }),
-            new CMultiplierCustom([new CConst({ value: 1.6, comment: 'lunarcrystallize', percent: false})]),
+            ], { percent: true }),
+            new CConst({ value: 1.6, comment: 'direct_reaction' }),
         );
         return result;
     }

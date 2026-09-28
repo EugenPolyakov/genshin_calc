@@ -9,7 +9,7 @@ if (process.env.NODE_ENV !== 'production') {
     var FIELD_NAMES = [
         'name', 'category', 'element', 'damageType', 'multipliers', 'condition', 'tags',
         'cannotReact', 'format', 'digits', 'postEffect', 'items', 'isChild', 'hits', 'hitsCount',
-        'allowInfusion', 'icon', 'stat', 'fullName',
+        'allowInfusion', 'icon', 'stat', 'fullName', 'reactionPenalty',
         'damageBonuses', 'critRateBonuses', 'critDamageBonuses',
         'subtractBoL', 'partyHeal', 'noSelfHeal',
         'rotationHitCount', 'rotationHitDescription',

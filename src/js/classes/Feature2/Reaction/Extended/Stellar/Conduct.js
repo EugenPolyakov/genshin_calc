@@ -53,7 +53,7 @@ export class FeatureReactionStellarConduct extends FeatureReactionStellarGlimmer
         result.push(
             new CBaseBonusReaction([
                 makeStatItem('stellar_conduct_multi', data.stats),
-            ], { percent: true, comment: 'reaction_bonus' }),
+            ], { percent: true }),
         );
         if (data.settings.allowed_stellar_conduct && data.settings['common.enemy_superconduct'] && data.settings['common.polestar_field_stacks'])
             result.push(new CMultiplierCustom([new CConst({ value: 1, comment: 'base_bonus', percent: true }), makeStatItem('polestar_field', data.stats)]));
