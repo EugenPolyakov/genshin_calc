@@ -3,6 +3,35 @@ import { Serializer } from './Serializer';
 import { Stats } from './Stats';
 import { substatCheck, substatListValid } from './SubstatCheck';
 
+var serializeTableProcs = [
+    //rarity 1
+    '0', '1', '00', '01', '11',
+    //rarity 2
+    '2', '02', '12', '22', '000', '001', '002', '011', '012', '111', '022', '112', '122', '222',
+    //rarity 3
+    '3', '03', '13', '23', '33', '003', '013', '023', '113', '033', '123', '0000', '133', '223', '0001', '233', '0002', '0011', '333', '0003', '0012', '0111', '0013', '0022', '0112', '1111', '0023', '0113', '0122', '1112', '0033', '0123', '0222', '1113', '1122',
+    '0133', '0223', '1123', '1222', '0233', '1133', '1223', '2222', '0333', '1233', '2223', '1333', '2233', '2333', '3333',
+    //rarity 4
+    '00000', '00001', '00002', '00011', '00003', '00012', '00111', '00013', '00022', '00112', '01111', '00023', '00113', '00122', '01112', '11111', '00033', '00123', '00222', '01113', '01122', '11112', '00133', '00223', '01123', '01222', '11113', '11122', '00233', '01133',
+    '01223', '02222', '11123', '11222', '00333', '01233', '02223', '11133', '11223', '12222', '01333', '02233', '11233', '12223', '22222', '02333', '11333', '12233', '22223', '03333', '12333', '22233', '13333', '22333', '23333', '33333',
+    //rarity 5
+    '000000', '000001', '000002', '000011', '000003', '000012', '000111', '000013', '000022', '000112', '001111', '000023', '000113', '000122', '001112', '011111', '000033', '000123', '000222', '001113', '001122', '011112', '111111', '000133', '000223', '001123',
+    '001222', '011113', '011122', '111112', '000233', '001133', '001223', '002222', '011123', '011222', '111113', '111122', '000333', '001233', '002223', '011133', '011223', '012222', '111123', '111222', '001333', '002233', '011233', '012223', '022222', '111133',
+    '111223', '112222', '002333', '011333', '012233', '022223', '111233', '112223', '122222', '003333', '012333', '022233', '111333', '112233', '122223', '222222', '013333', '022333', '112333', '122233', '222223', '023333', '113333', '122333', '222233', '033333',
+    '123333', '222333', '133333', '223333', '233333', '333333',
+];
+
+var deserializeTableProcs = (function () {
+    var result = {};
+    for (var i = 0, cnt = serializeTableProcs.length; i < cnt; i++) {
+        if (result[serializeTableProcs[i]] == null)
+            result[serializeTableProcs[i]] = i;
+        else
+            debugger;
+    }
+    return result;
+})();
+
 export class Artifact {
     constructor(rarity, level, slot, set, mainStat, subStats) {
         this.rarity = rarity;
@@ -445,14 +474,14 @@ export class Artifact {
     }
 
     serialize(lex) {
-        let result = [3];
+        let result = [4];
 
         result.push(DB.Artifacts.Sets.getId(this.set));
-        result.push(this.rarity);
-        result.push(this.level);
-        result.push(DB.Artifacts.Slots.getId(this.slot));
+        // Common 5-star levels fit in one base26 character.
+        result.push((5 - this.rarity) * 21 + this.level);
         result.push(DB.Artifacts.Mainstats.getId(this.mainStat) || 0);
-        result.push(this.subStats.length);
+        // slot and subStats count in one
+        result.push(DB.Artifacts.Slots.getId(this.slot) * 5 + this.subStats.length);
 
         this.tryDoRightSubstats();
         let flatStatValues;
@@ -465,21 +494,24 @@ export class Artifact {
             flatStatValues = [8, 10];
         }
         this.subStats.forEach((statData) => {
-            if (statData.unactivated)
-                result.push(25);
-            result.push(DB.Artifacts.Substats.getId(statData.stat));
-
+            let statId = DB.Artifacts.Substats.getId(statData.stat);
             let substat = DB.Artifacts.Substats.get(statData.stat);
             let value = statData.value;
+            let stackIsValid = statData.values && statData.values.length > 0 && value.toFixed(1) == substat.rollsToValue[this.rarity - 1][statData.values.join('')].toFixed(1);
+            if (lex) {
+                result.push(statId + (statData.unactivated ? 11 : 0));
+            } else {
+                if (stackIsValid && statData.values.length == 1)
+                    result.push(statId + (statData.unactivated ? 11 : 0));
+                else
+                    result.push(statId + 11 * ((statData.initialValue || 0) + (statData.unactivated ? 5 : 0)));
+            }
 
-            if (statData.values && statData.values.length > 0 && value.toFixed(1) == substat.rollsToValue[this.rarity - 1][statData.values.join('')].toFixed(1)) {
+            if (stackIsValid) {
                 if (lex) {
                     value = statData.values.reduce((a, x) => a + flatStatValues[x], 0);
                 } else {
-                    value = statData.values[statData.values.length - 1] + 1;
-                    for (let i = statData.values.length - 2; i >= 0; i--) {
-                        value = (value << 3) + statData.values[i] + 1;
-                    }
+                    value = deserializeTableProcs[statData.values.join('')];
                 }
                 result.push((value << 1) + 1);
             } else {
@@ -488,8 +520,6 @@ export class Artifact {
                 }
                 result.push(value << 1);
             }
-            if (!lex)
-                result.push(statData.initialValue || 0);
         });
 
         return result;
@@ -507,24 +537,79 @@ export class Artifact {
             let set = DB.Artifacts.Sets.getKeyId(input.shift());
             if (!set) return null;
 
-            let rarity = input.shift();
-            if (rarity < 1 || rarity > 5) return null;
+            let rarity, level, slot, mainStat, substatCnt;
+            if (version >= 4) {
+                let temp = input.shift();
 
-            let level = input.shift();
-            if (level < 0 || level > 20) return null;
+                rarity = 5 - Math.floor(temp / 21);
+                if (rarity < 1 || rarity > 5) return null;
 
-            let slot = DB.Artifacts.Slots.getKeyId(input.shift());
-            if (!slot) return null;
+                level = temp % 21;
 
-            let mainStat = DB.Artifacts.Mainstats.getKeyId(input.shift()) || '';
-            // if (!mainStat) return null;
+                mainStat = DB.Artifacts.Mainstats.getKeyId(input.shift()) || '';
 
-            let substatCnt = input.shift();
-            if (substatCnt < 0 || substatCnt > 4) return null;
+                temp = input.shift();
+
+                slot = DB.Artifacts.Slots.getKeyId(Math.floor(temp / 5));
+                if (!slot) return null;
+
+                substatCnt = temp % 5;
+            } else {
+                rarity = input.shift();
+                if (rarity < 1 || rarity > 5) return null;
+
+                level = input.shift();
+                if (level < 0 || level > 20) return null;
+
+                slot = DB.Artifacts.Slots.getKeyId(input.shift());
+                if (!slot) return null;
+
+                mainStat = DB.Artifacts.Mainstats.getKeyId(input.shift()) || '';
+
+                substatCnt = input.shift();
+                if (substatCnt < 0 || substatCnt > 4) return null;
+            }
 
             result = new Artifact(rarity, level, slot, set, mainStat);
 
-            if (version >= 2) {
+            if (version >= 4) {
+                for (let i = 1; i <= substatCnt; ++i) {
+                    let key = input.shift();
+                    let statKey = DB.Artifacts.Substats.getKeyId(key % 11);
+                    if (!statKey) return null;
+                    let substat = DB.Artifacts.Substats.get(statKey);
+                    if (!substat) return null;
+
+                    let value = input.shift();
+                    if (value < 1) return null;
+
+                    let isStacks = value % 2;
+                    value = value >> 1;
+                    if (isStacks) {
+                        let values = serializeTableProcs[value].split('').map(x => parseInt(x));
+                        let unactivated, initialValue;
+                        if (values.length == 1) {
+                            unactivated = Math.floor(key / 11) > 0;
+                            initialValue = values[0] + 1;
+                        } else {
+                            unactivated = Math.floor(key / 11 / 5);
+                            initialValue = Math.floor(key / 11) % 5;
+                        }
+                        result.addStatByProcs(statKey, values, unactivated, initialValue);
+                    } else {
+                        let unactivated = Math.floor(key / 11 / 5);
+                        let initialValue = Math.floor(key / 11) % 5;
+
+                        if (substat.type == 'percent') {
+                            value = parseFloat(value) / 10;
+                        } else {
+                            value = parseInt(value)
+                        }
+
+                        result.addStat(statKey, value, unactivated, initialValue);
+                    }
+                }
+            } else if (version >= 2) {
                 for (let i = 1; i <= substatCnt; ++i) {
                     let key = input.shift();
                     let unactivated;

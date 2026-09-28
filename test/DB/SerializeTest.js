@@ -95,26 +95,39 @@ function checkArtifactsLoading(build) {
 
 expect.extend({ checkDefault, checkArtifactsLoading });
 
+let currentArtVersion = "bbbaabbbabbababeBuubjjJjkBveBniBnabcbabradaadaaa";
+
 let list = [
-    { name: 'default', hash: "bbbaabbbabbabaaabcbabradaadaaa", checkResult: "checkDefault" },
-    { name: 'artifactV1', hash: "bbbaabbbabbababbBufubbejHfkFzeCgiCnabcbabradaadaaa", checkResult: "checkArtifactsLoading" },
-    { name: 'artifactV2', hash: "bbbaabbbabbababdBufubbejCDKfakCvaejaijaabcbabradaadaaa", checkResult: "checkArtifactsLoading" },
+    { name: 'artifactV1', hash: "bbbaabbbabbababbBufubbejHfkFzeCgiCnabcbabradaadaaa"},
+    { name: 'artifactV3', hash: "bbbaabbbabbababdBufubbejCDKfakCvaejaijaabcbabradaadaaa" },
+    { name: 'artifactV4', hash: "bbbaabbbabbababeBuubjjJjkBveBniBnabcbabradaadaaa" },
 ];
 
-for (let value of list) {
-    let input = Serializer.unpack(value.hash);
+test('check serialization for default', () => {
+    let input = Serializer.unpack("bbbaabbbabbabaaabcbabradaadaaa");
     let build = CalcSet.deserialize(input);
+    expect(build).checkDefault();
+});
+
+for (let value of list) {
     //let loadedRotation = Rotation.deserialize(input);
 
-    test('wrong serialization for ' + value.name, () => {
-        expect(build)[value.checkResult]();
+    test('check serialization for ' + value.name, () => {
+        let input = Serializer.unpack(value.hash);
+        let build = CalcSet.deserialize(input);
+        expect(build).checkArtifactsLoading();
+        expect(Serializer.pack(build)).toEqual(currentArtVersion);
     });
 }
 
-//for (const char of DB.Chars.getList(1)) {
-//    let items = getItems(char);
+test('check lex hash', () => {
+    let input = Serializer.unpack("bbbaabbbabbababeBuubjjJlkBveBniBnabcbabradaadaaa");
+    let build = CalcSet.deserialize(input);
+    var art1 = build.getArtifacts().flower;
 
-//    test('Empty ids for '+ char.name, () => {
-//        expect(Object.keys(items)).toBeEmptyArray();
-//    });
-//}
+    input = Serializer.unpack(currentArtVersion);
+    build = CalcSet.deserialize(input);
+    var art2 = build.getArtifacts().flower;
+
+    expect(art1.getLexHash()).toEqual(art2.getLexHash());
+});
