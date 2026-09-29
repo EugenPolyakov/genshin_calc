@@ -13,6 +13,8 @@
     display: grid;
     grid-template-rows: min-content 1fr;
     grid-template-columns: 100%;
+    flex: 1;
+    min-height: 0;
 }
 
 @media (width < 1150px) {
@@ -42,6 +44,12 @@
         grid-template-rows: min-content;
         align-content: center;
         justify-content: center;
+    }
+
+    .dialog {
+        max-height: calc(100vh - 50px);
+        display: flex;
+        flex-direction: column;
     }
 }
 

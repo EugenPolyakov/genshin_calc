@@ -201,6 +201,7 @@ function TalentTable(props) {
     }
 
     let settings = UI.Layout.app.current.getAllSettings({});
+    let index = 0;
 
     for (let item of items) {
         if (item.isHidden && item.isHidden(settings))
@@ -379,7 +380,7 @@ function TalentTable(props) {
         }
 
         lineItems.push(
-            <tr>
+            <tr key={ index++ }>
                 <td>{title}</td>
                 {cols}
             </tr>
