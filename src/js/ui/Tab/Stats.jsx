@@ -414,7 +414,14 @@ class StatsView extends React.Component {
                 <FullHeight>
                     <FullHeightScrollable>
                         <StickyTableBlock addClass="stats-table">
-                        <StatsTableHeader />
+                            <colgroup>
+                                <col />
+                                <col />
+                                <col style={ { minWidth: 70 } } />
+                                <col style={ { minWidth: 70 } } />
+                                <col style={ { minWidth: 70 } } />
+                            </colgroup>
+                            <StatsTableHeader />
                             <StatsTableBlock items={ this.getBaseStats(stats) } title={ UI.Lang.get('stat_view.base_stats') } />
                             <StatsTableBlock items={ this.getSecondaryStats(stats) } title={ UI.Lang.get('stat_view.secondary_stats') } />
                             <StatsTableBlock items={ this.getElementalStats(stats) } title={ UI.Lang.get('stat_view.elemental_stats') } />

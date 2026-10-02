@@ -204,6 +204,13 @@ class FeaturesView extends React.Component {
                 </FullHeightHeader>
                 <FullHeightScrollable>
                     <StickyTableBlock addClass="features-table">
+                        <colgroup>
+                            <col />
+                            <col />
+                            <col style={ { minWidth: 70 } } />
+                            <col style={ { minWidth: 70 } } />
+                            <col style={ { minWidth: 70 } } />
+                        </colgroup>
                         <FeatureTableHeader />
                         { items }
                     </StickyTableBlock>
@@ -386,9 +393,6 @@ function FeaturesTableBlock(props) {
                 <FeatureTableValues
                     result={item.feature}
                 />
-                <td>{item.base}</td>
-                <td className="green">{item.bonus}</td>
-                <td>{item.total}</td>
             </tr>
         );
     }
