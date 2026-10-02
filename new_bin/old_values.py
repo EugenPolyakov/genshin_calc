@@ -2097,8 +2097,8 @@ old_values = {
         0: "skill_dmg", #Default
         1: "continuous_attack_dmg",
         2: "dreamdrifter_duration",
-        3: "elemental_mastery_based_swirl_dmg_increase",
-        4: "elemental_mastery_based_stellar_swirl_dmg_increase",
+        3: "elemental_mastery_based_swirl_dmg_increase", #ManualToDefault elemental_mastery_based_swirl_dmg_increase
+        4: "elemental_mastery_based_stellar_swirl_dmg_increase", #ManualToDefault elemental_mastery_based_stellar_swirl_dmg_increase
         5: "cd", #Default
     },
     #anraku_secret_spring_therapy

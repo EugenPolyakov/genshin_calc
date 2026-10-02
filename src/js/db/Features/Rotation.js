@@ -721,8 +721,8 @@ export const Rotation = new DbObjectRotation({
     'attack.wriothesley_vaulting_fist_stellar_icicle_dmg': 699,
 
     'skill.yumemizuki_mizuki_additional_attack_dmg': 700,
-    'skill.yumemizuki_mizuki_in_mist_like_waters_dmg': 701,
-    'skill.yumemizuki_mizuki_in_mist_like_waters_stellar_dmg': 702,
+    'skill.mizuki_twenty_three_nights_awaiting': 701,
+    //'skill.yumemizuki_mizuki_in_mist_like_waters_stellar_dmg': 702,
 
     'other.sandrone_additional_condensed_beam_dmg': 703,
     'skill.sandrone_prism_shot_stellar_swirl_dmg': 704,
@@ -745,4 +745,6 @@ export const Rotation = new DbObjectRotation({
     'burst.odette_final_slash_dmg': 718,
     'skill.odette_coda_at_dawns_tolling_additional_dmg': 719,
     'other.odette_assist_dmg': 720,
+
+    'skill.yumemizuki_mizuki_enhanced_continuous_attack_dmg': 721,
 });

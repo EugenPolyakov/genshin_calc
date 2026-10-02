@@ -230,6 +230,8 @@ names_mapping = {
     '1': 'coda_at_dawns_tolling_stellar_conduct_stellar_swirl_dmg',
     '2': 'plume_dance_move_stellar_conduct_stellar_swirl_dmg',
     '3': 'wing_dance_move_stellar_conduct_stellar_swirl_dmg',
+    '4': 'elemental_mastery_based_swirl_dmg_increase',
+    '5': 'elemental_mastery_based_stellar_swirl_dmg_increase',
 }
 
 char_ids = {

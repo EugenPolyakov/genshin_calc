@@ -115,7 +115,7 @@ skiped_features = set([
     'additional_shield_absorption', 'stone_stele_resonance_dmg',
     'pyro_dmg_bonus', 'electro_trigger_interval_decrease', 'hydro_duration_extension',
     'sword_dance_whirling_steps_1_hit_dmg', 'sword_dance_whirling_steps_2_hit_dmg',
-    'luminous_illusion_water_wheel_dmg', 'resolve_bonus'
+    'luminous_illusion_water_wheel_dmg', 'resolve_bonus',
 ])
 
 def talenttable(s):
