@@ -1,7 +1,5 @@
 const DRIVE_CLIENT_ID = '91947417144-f6ms5ii6v48nu9h8lurvsn7d06nu7qn1.apps.googleusercontent.com' // prod
 // const DRIVE_CLIENT_ID = '212641732900-mhmqk2643a60b0t2qmpadmu0ermht4cq.apps.googleusercontent.com' // dev
-const DRIVE_API_KEY = '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' // prod
-// const DRIVE_API_KEY = 'AIzaSyCKO7h7FTs4TWfNU41T2YZQEezoumA6D7c' // dev
 const DRIVE_SCOPE = 'https://www.googleapis.com/auth/drive.appdata'
 const DRIVE_DISCOVERY = 'https://www.googleapis.com/discovery/v1/apis/drive/v3/rest'
 
@@ -18,13 +16,12 @@ export class GoogleDrive {
             };
 
             if (!manual) {
-                params.prompt = '';
+                params.prompt = 'none';
             }
 
             gapi.load('client', () => {
                 this.client = google.accounts.oauth2.initTokenClient(params);
 
-                gapi.client.setApiKey(DRIVE_API_KEY);
                 gapi.client.load(DRIVE_DISCOVERY).then(() => {
                     if (token) {
                         this.setToken(token);
@@ -36,6 +33,7 @@ export class GoogleDrive {
             });
         } else {
             if (token) {
+                this.setToken(token);
                 loginCallback();
             } else {
                 this.requestLogin(manual);
@@ -50,19 +48,6 @@ export class GoogleDrive {
         }
     }
 
-    checkLogin(response, callback) {
-        if (response && response.access_token) {
-            this.response = response;
-            gapi.client.setApiKey(DRIVE_API_KEY);
-            gapi.client.setToken(response);
-            gapi.client.load(DRIVE_DISCOVERY).then(() => {
-                if (this.isLogged()) {
-                    callback()
-                }
-            });
-        }
-    }
-
     isLogged() {
         if (this.hasAccess()) {
             return true
@@ -71,7 +56,7 @@ export class GoogleDrive {
     }
 
     hasAccess() {
-        return google.accounts.oauth2.hasGrantedAnyScope(this.response, DRIVE_SCOPE)
+        return this.response && google.accounts.oauth2.hasGrantedAnyScope(this.response, DRIVE_SCOPE)
     }
 
     requestLogin(manual, hint) {
@@ -80,7 +65,7 @@ export class GoogleDrive {
             this.client.requestAccessToken({prompt: 'select_account'})
         } else {
             this.client.requestAccessToken({
-                prompt: '',
+                prompt: 'none',
                 hint: hint,
             })
         }
@@ -88,8 +73,8 @@ export class GoogleDrive {
 
     revoke() {
         if (this.response) {
+            google.accounts.oauth2.revoke(this.response.access_token);
             this.response = undefined;
-            google.accounts.oauth2.revoke(this.response.access_token)
         }
     }
 
@@ -104,7 +89,7 @@ export class GoogleDrive {
             if (file.name == fileName && !fileId) {
                 fileId = file.id
             } else {
-                this.delete(file.id)
+                await this.delete(file.id)
             }
         }
 
@@ -145,15 +130,5 @@ export class GoogleDrive {
 
     async delete(fileId) {
         await gapi.client.drive.files.delete({fileId: fileId});
-    }
-
-    isGapiLoaded() {
-        return gapi && gapi.auth2
-    }
-
-    logout() {
-        if (this.isGapiLoaded()) {
-            gapi.auth2.getAuthInstance().signOut();
-        }
     }
 }

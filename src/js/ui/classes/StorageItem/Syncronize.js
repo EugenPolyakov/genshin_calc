@@ -61,25 +61,7 @@ export class Syncronize {
 
     driveInitApp(manual) {
         this.setStatus(manual ? 'auth' : 'init');
-        this.api.init(() => {this.apiIsLoaded()}, manual, manual ? '' : this.getSavedToken());
-    }
-
-    getSavedToken() {
-        try {
-            let data = JSON.parse(this.app.getSetting('token_response'));
-            if (data.access_token) {
-                return data;
-            }
-        } catch {}
-    }
-
-    saveToken() {
-        let data = this.api.response;
-        if (data) {
-            this.app.setSetting('token_response', JSON.stringify(data));
-        } else {
-            this.app.setSetting('token_response', '');
-        }
+        this.api.init(() => {this.apiIsLoaded()}, manual);
     }
 
     apiIsLoaded() {
@@ -87,7 +69,6 @@ export class Syncronize {
             this.authFail = 0;
             this.app.setSetting('storage_sync_enabled', 1);
             this.app.refresh();
-            this.saveToken();
             this.storageSync();
         } else {
             this.setError('not_logged');
@@ -192,7 +173,6 @@ export class Syncronize {
         if (deleteFile) {
             await this.deleteBackupFiles();
             this.api.revoke();
-            this.saveToken();
         }
 
         UI.Sync.disable();
