@@ -1,6 +1,7 @@
 import re
 from .. import static
 from .datafiles.char import PromoteData
+from .fieldsRename import value_fld
 
 def parse_ascension():
     file = PromoteData()
@@ -14,7 +15,7 @@ def parse_ascension():
         for prop in item['addProps']:
             type = prop.get('propType')
 
-            values[static.getStatByName(type)] = str(prop.get('value', 0))
+            values[static.getStatByName(type)] = str(prop.get(value_fld, 0))
 
         if not item['avatarPromoteId'] in table:
             table[item['avatarPromoteId']] = {}

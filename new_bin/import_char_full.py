@@ -24,6 +24,7 @@ from lib import static
 from lib.static import WEAPON_TYPES, shrink_table, names_mapping, fix_name, extractPramList, trimToVal, trimValue, foramt_value, format_table
 from old_values import old_values
 from lib.genshin.strings.templates import hyperlink
+from lib.genshin.fieldsRename import extra_descr_fld, value_fld, hex_descr_fld, hexProudSkillOpens_fld, inherentProudSkillOpens_fld, needAvatarPromoteLevel_fld
 import logging
 
 logger = logging.getLogger(__name__)
@@ -425,12 +426,6 @@ def processPassiveTalent(proud, paramList):
     talent_id = char_id + '_' + talent_short_id
     generator.condition(char_key, talent_id, passive.get(needAvatarPromoteLevel_fld) or 0)
 
-inherentProudSkillOpens_fld = 'LLEFDMDOMGG'#'inherentProudSkillOpens'
-hexProudSkillOpens_fld = 'KDCMKCFKPBL'
-needAvatarPromoteLevel_fld = 'DHIEHDPAFGI'#'needAvatarPromoteLevel'
-hex_descr_fld = 'CJJODEPIILB'
-extra_descr_fld = 'extraDescTextMapHash'
-
 for charVarName in sorted(char_keys):
     result_hero_strings = []
     char = char_keys[charVarName]
@@ -590,10 +585,7 @@ for charVarName in sorted(char_keys):
             if (passive.get(needAvatarPromoteLevel_fld) or 0) > 0 or needed or len(paramList) > 0:
                 passive_count += 1
                 processPassiveTalent(proud, paramList)
-            elif needed: break
-            else: continue
         elif needed: break
-        else: continue
     for passive in depot.get(hexProudSkillOpens_fld, []):
         passive_id = passive.get('proudSkillGroupId', 0)
         if passive_id > 0:
@@ -717,8 +709,7 @@ def parse_curves():
         for info in item['curveInfos']:
             if not info['type'] in curves:
                 curves[info['type']] = {}
-
-            curves[info['type']][level] = str(info['value'])
+            curves[info['type']][level] = str(info[value_fld])
 
     out.write('// This file is auto generated\n')
     out.write('import { ValueTable } from "../../classes/ValueTable";\n\n')

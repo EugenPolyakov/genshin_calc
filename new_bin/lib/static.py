@@ -1,5 +1,6 @@
 import re
 from .genshin.utils import to_float32
+from .genshin.fieldsRename import value_fld
 
 WEAPON_TYPES = {
     'WEAPON_SWORD_ONE_HAND': 'sword',
@@ -427,8 +428,8 @@ def extractPramList(proud):
     paramList = []
     for prop in proud['addProps']:
         type = prop.get('propType')
-        if type != "FIGHT_PROP_NONE" and prop.get('value', 0):
-            paramList.append(trimToVal(prop.get('value', 0)))
+        if type != "FIGHT_PROP_NONE" and prop.get(value_fld, 0):
+            paramList.append(trimToVal(prop.get(value_fld, 0)))
     return paramList
 
 def foramt_value(val):
